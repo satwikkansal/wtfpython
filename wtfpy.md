@@ -37,11 +37,6 @@ Python being an awesomoe higher level language, provides us many functionalities
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Checklist
-
-[ ] https://www.youtube.com/watch?v=sH4XF6pKKmk
-[ ] https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python/
-
 # 👀 Examples
 
 ## Example heading
@@ -426,8 +421,9 @@ All patches are Welcome! Filing an issue first before submitting a patch will be
 
 The idea and design for this list is inspired from Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs).
 
-* Reddit Link
-* Youtube video link
+### Some nice Links!
+* https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python
+* https://www.youtube.com/watch?v=sH4XF6pKKmk
 
 # 🎓 License
 

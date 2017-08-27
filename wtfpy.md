@@ -236,7 +236,7 @@ And when the `board` is initialized by multiplying the `row`, this is what happe
 
 ![image](/images/tic-tac-toe/after_board_initialized.png)
 
-## Beware of default mutable arguments
+## Beware of default mutable arguments!
 
 ```py
 def some_func(default_arg=[]):
@@ -252,10 +252,59 @@ def some_func(default_arg=[]):
 ['some_string', 'some_string']
 >>> some_func([])
 ['some_string']
+>>> some_func()
+['some_string', 'some_string', 'some_string']
+```
+
+### Explanation
+
+The default mutable arguments of functions in Python aren't really initialized every time you call the function. Instead, the recently assigned value to them is used as the default value. When we explicitly passed `[]` to `some_func` as the argument, the default value of the `default_arg` variable was not used, so the function returned as expected.
+
+```py
+def some_func(default_arg=[]):
+    default_arg.append("some_string")
+    return default_arg
+```
+
+```py
+>>> some_func.__defaults__ #This will show the default argument values for the function
+([],)
+>>> some_func()
+>>> some_func.__defaults__
+(['some_string'],)
+>>> some)func()
+>>> some_func.__defaults__
+(['some_string', 'some_string'],)
+>>> some_func([])
+>>> some_func.__defaults__
+(['some_string', 'some_string'],)
 ```
 
 
-## You can't change the values contained in tuples.. Oh really?
+## You can't change the values contained in tuples because they're immutable.. Oh really?
+
+This might be obvious for most of you guys, but it took me a lot of time to realize it.
+
+```py
+some_tuple = ("A", "tuple", "with", "values")
+another_tuple = ([1, 2], [3, 4], [5, 6])
+```
+
+**Output:**
+```py
+>>> some_tuple[2] = "change this"
+TypeError: 'tuple' object does not support item assignment
+>>> another_tuple[2].append(1000) #This throws no error
+>>> another_tuple
+([1, 2], [3, 4], [5, 6, 1000])
+```
+
+### Explanation
+
+Quoting from https://docs.python.org/2/reference/datamodel.html
+
+> Immutable sequences
+    An object of an immutable sequence type cannot change once it is created. (If the object contains references to other objects, these other objects may be mutable and may be changed; however, the collection of objects directly referenced by an immutable object cannot change.)
 
 # Contributing
 

@@ -151,6 +151,57 @@ Quoting from https://docs.python.org/3/c-api/long.html
 ```
 
 
+## The loop magic
+
+```py
+funcs = []
+results = []
+for x in range(7):
+    def some_func():
+        return x
+    funcs.append(some_func)
+    results.append(some_func())
+
+funcs_results = [func() for func in funcs]
+```
+
+**Output:**
+```py
+>>> results
+[0, 1, 2, 3, 4, 5, 6]
+>>> funcs_results
+[6, 6, 6, 6, 6, 6, 6]
+```
+
+//OR
+
+```py
+>>> powers_of_x = [lambda x: x**i for i in range(10)]
+>>> [f(2) for f in powers_of_x]
+[512, 512, 512, 512, 512, 512, 512, 512, 512, 512]
+```
+
+### Explaination
+
+When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the variable, not its value. So all of the functions use the latest value assigned to the variable for computation.
+
+To get the desired behavior you can pass in the loop variable as a named varibable to the function which will define the variable again within the function's scope.
+
+```py
+funcs = []
+for x in range(7):
+    def some_func(x=x):
+        return x
+    funcs.append(some_func)
+```
+
+**Output:**
+```py
+>>> funcs_results = [func() for func in funcs]
+>>> funcs_results
+[0, 1, 2, 3, 4, 5, 6]
+```
+
 # Contributing
 
 All patches are Welcome! Filing an issue first before submitting a patch will be appreciated :)

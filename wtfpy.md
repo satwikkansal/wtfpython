@@ -204,6 +204,69 @@ for x in range(7):
 [0, 1, 2, 3, 4, 5, 6]
 ```
 
+
+## Loop variables leaking out of local scope!
+
+1.
+```py
+for x in range(7):
+    if x == 6:
+        print(x, ': for x inside loop')
+print(x, ': x in global')
+```
+
+**Output:**
+```py
+6 : for x inside loop
+6 : x in global
+```
+
+But `x` was never defined ourtside the scope of for loop...
+
+2.
+```py
+# This time let's initialize x first
+x = -1
+for x in range(7):
+    if x == 6:
+        print(x, ': for x inside loop')
+print(x, ': x in global')
+```
+
+**Output:**
+```py
+6 : for x inside loop
+6 : x in global
+```
+
+3.
+```
+x = 1
+print([x for x in range(5)])
+print(x, ': x in global')
+```
+
+**Output (on Python 2.x):**
+```
+[0, 1, 2, 3, 4]
+(4, ': x in global')
+```
+
+**Output (on Python 3.x):**
+```
+[0, 1, 2, 3, 4]
+1 : x in global
+```
+
+### Explanation
+
+In Python for-loops use the scope they exist in and leave their defined loop-variable behind. This also applies if we explicitly defined the for-loop variable in the global namespace before. In this case it will rebind the existing variable.
+
+The differences in the output of Python 2.x and Python 3.x interpreters for list comprehension example can be explained by following change documented in [What’s New In Python 3.0](https://docs.python.org/3/whatsnew/3.0.html) documentation:
+
+> "List comprehensions no longer support the syntactic form `[... for var in item1, item2, ...]`. Use `[... for var in (item1, item2, ...)]` instead. Also note that list comprehensions have different semantics: they are closer to syntactic sugar for a generator expression inside a `list()` constructor, and in particular the loop control variables are no longer leaked into the surrounding scope."
+
+
 ## A tic-tac-toe where X wins in first attempt!
 
 ```py
@@ -316,7 +379,29 @@ Quoting from https://docs.python.org/2/reference/datamodel.html
 > Immutable sequences
     An object of an immutable sequence type cannot change once it is created. (If the object contains references to other objects, these other objects may be mutable and may be changed; however, the collection of objects directly referenced by an immutable object cannot change.)
 
-## 
+## Using a varibale not defined in scope
+
+```py
+a = 1
+def some_func():
+    return a
+
+def another_func():
+    a += 1
+    return a
+```
+
+**Output:**
+```py
+>>> some_func()
+1
+>>> another_func()
+UnboundLocalError: local variable 'a' referenced before assignment
+```
+
+**Explanation:**
+When you make an assignment to a variable in a scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func` but it has not been initialized previously in the same scope which throws an error. Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but awesome guide to learn more about how namespaces and scope resolution works in Python.
+
 
 # Contributing
 

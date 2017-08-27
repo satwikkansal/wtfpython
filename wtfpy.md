@@ -4,7 +4,7 @@
 
 > A collection of tricky Python examples
 
-Python being an awesomoe higher level language, provides us many functionalities for our comfort. But sometimes, the outcomes may not seem obvious to a normal Python user at the first sight. Here's an attempt to collect such examples and see what exactly is happening under the hood! I find it a nice way to learn internals of a language and I think you'll like them as well!
+Python being an awesomoe higher level language, provides us many functionalities for our comfort. But sometimes, the outcomes may not seem obvious to a normal Python user at the first sight. Here's an attempt to collect such classic examples of unexpected behaviors in Python and see what exactly is happening under the hood! I find it a nice way to learn internals of a language and I think you'll like them as well!
 
 # Table of Contents
 
@@ -130,6 +130,8 @@ Quoting from https://docs.python.org/3/c-api/long.html
 140084850247344
 ```
 
+Here the integer isn't smart enough while executing `y = 257` to recongnize that we've already created an integer of the value `257` and so it goes on to create another object in the memory.
+
 
 **Both `a` and `b` refer to same object, when initialized with same value in same line**
 
@@ -151,7 +153,7 @@ Quoting from https://docs.python.org/3/c-api/long.html
 ```
 
 
-## The loop magic
+## The function inside loop magic
 
 ```py
 funcs = []
@@ -201,6 +203,59 @@ for x in range(7):
 >>> funcs_results
 [0, 1, 2, 3, 4, 5, 6]
 ```
+
+## A tic-tac-toe where X wins in first attempt!
+
+```py
+# Let's initialize a row
+row = [""]*3 #row i['', '', '']
+# Let's make a bord
+board = [row]*3
+```
+
+**Output:**
+```py
+>>> board
+[['', '', ''], ['', '', ''], ['', '', '']]
+>>> board[0]
+['', '', '']
+>>> board[0][0]
+''
+>>> board[0][0] = "X"
+>>> board
+[['X', '', ''], ['X', '', ''], ['X', '', '']]
+```
+
+### Explanation
+
+When we initialize `row` varaible, this visualization explains what happens in the memory
+
+![image](/images/tic-tac-toe/after_row_initialized.png)
+
+And when the `board` is initialized by multiplying the `row`, this is what happens inside the memory (each of the elements board[0], board[1] and board[2] is a reference to the same list referred by `row`)
+
+![image](/images/tic-tac-toe/after_board_initialized.png)
+
+## Beware of default mutable arguments
+
+```py
+def some_func(default_arg=[]):
+    default_arg.append("some_string")
+    return default_arg
+```
+
+**Output:**
+```py
+>>> some_func()
+['some_string']
+>>> some_func()
+['some_string', 'some_string']
+>>> some_func([])
+['some_string']
+```
+
+
+## You can't change the values contained in tuples.. Oh really?
 
 # Contributing
 

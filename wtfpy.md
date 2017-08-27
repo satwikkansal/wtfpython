@@ -280,6 +280,16 @@ def some_func(default_arg=[]):
 (['some_string', 'some_string'],)
 ```
 
+A common practice to avoid bugs due to mutable arguments is to assign `None` as the default value and later check if any value is passed to the function corresponding to that argument. Examlple:
+
+```py
+def some_func(default_arg=None):
+    if not default_arg:
+        default_arg = []
+    default_arg.append("some_string")
+    return default_arg
+```
+
 
 ## You can't change the values contained in tuples because they're immutable.. Oh really?
 
@@ -305,6 +315,8 @@ Quoting from https://docs.python.org/2/reference/datamodel.html
 
 > Immutable sequences
     An object of an immutable sequence type cannot change once it is created. (If the object contains references to other objects, these other objects may be mutable and may be changed; however, the collection of objects directly referenced by an immutable object cannot change.)
+
+## 
 
 # Contributing
 

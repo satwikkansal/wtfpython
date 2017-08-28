@@ -552,6 +552,25 @@ I've lost faith in truth!
 Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true). Then they added `True`, `False`, and a `bool` type, but, for backwards compatibility, they couldn't make `True` and `False` constants- they just were built-in variables.
 Python 3 was backwards-incompatible, so it was now finally possible to fix that, and so this example wont't work with Python 3.x.
 
+## Evaluation time disperancy
+
+```py
+array = [1, 8, 15]
+g = (x for x in array if array.count(x) > 0)
+array = [2, 8, 22]
+```
+
+**Output:**
+```py
+>>> print(list(g))
+[8]
+```
+
+### Explainiation
+
+- In a generator expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at run time.
+- So before run time, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
+
 
 ## The GIL messes it up (Multithreading vs Mutliprogramming example)
 
@@ -690,9 +709,71 @@ False
 - `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
 - `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise.
 
+## Identical looking names
+
+```py
+>>> value = 11
+>>> valuе = 32
+>>> value
+11
+```
+
+Wut?
+
+### Explaination
+
+Some Unicode characters look identical to ASCII ones, but are considered distinct by the interpreter.
+
+```py
+>>> value = 42 #ascii e
+>>> valuе = 23 #cyrillic e, Python 2.x interpreter would raise a `SyntaxError` here
+>>> print(value)
+```
+
+## Name resolution ignoring class scope
+
+1.
+```py
+x = 5
+class SomeClass:
+    x = 17
+    y = (x for i in range(10))
+```
+
+**Output:**
+```py
+>>> list(SomeClass.y)[0]
+5
+```
+
+2.
+```py
+x = 5
+class SomeClass:
+    x = 17
+    y = [x for i in range(10)]
+```
+
+**Output (Python 2.x):**
+```py
+>>> SomeClass.y[0]
+17
+```
+
+**Output (Python 3.x):**
+```py
+>>> SomeClass.y[0]
+5
+```
+
+### Explaination
+- Scopes nested inside class definition ignore names bound at the class level.
+- A generator expression has its own scope.
+- Starting in 3.X, list comprehensions also have their own scope.
+
 ## Minor ones
 
-- `join()` is a string operation instead of list operation. (sort of counterintuitive)
+- `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
   **Explanation:**
   If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic list.
 
@@ -755,8 +836,9 @@ All patches are Welcome! Filing an issue first before submitting a patch will be
 The idea and design for this list is inspired from Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs).
 
 ### Some nice Links!
-* https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python
 * https://www.youtube.com/watch?v=sH4XF6pKKmk
+* https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python
+* https://sopython.com/wiki/Common_Gotchas_In_Python
 
 # 🎓 License
 

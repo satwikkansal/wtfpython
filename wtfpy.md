@@ -4,7 +4,9 @@
 
 > A collection of tricky Python examples
 
-Python being an awesomoe higher level language, provides us many functionalities for our comfort. But sometimes, the outcomes may not seem obvious to a normal Python user at the first sight. Here's an attempt to collect such classic examples of unexpected behaviors in Python and see what exactly is happening under the hood! I find it a nice way to learn internals of a language and I think you'll like them as well!
+Python being an awesome higher level language, provides us many functionalities for our comfort. But sometimes, the outcomes may not seem obvious to a normal Python user at the first sight.
+
+Here's an attempt to collect such classic and tricky examples of unexpected behaviors in Python and see what exactly is happening under the hood! I find it a nice way to learn internals of a language and I think you'll like them as well!
 
 # Table of Contents
 
@@ -569,19 +571,30 @@ As per https://docs.python.org/2/reference/expressions.html#not-in
 
 ## a += b doesn't behave the same way as a = a + b
 
+1.
+```py
+a = [1, 2, 3, 4]
+b = a
+a = a + [5, 6, 7, 8]
 ```
->>> a=[1,2,3,4]
->>> b=a
->>> a=a+[5,6,7,8]
+
+**Output:**
+```py
 >>> a
 [1, 2, 3, 4, 5, 6, 7, 8]
 >>> b
 [1, 2, 3, 4]
+```
 
+2.
+```py
+a = [1, 2, 3, 4]
+b = a
+a += [5, 6, 7, 8]
+```
 
->>> a=[1,2,3,4]
->>> b=a
->>> a+=[5,6,7,8]
+**Output:**
+```py
 >>> a
 [1, 2, 3, 4, 5, 6, 7, 8]
 >>> b
@@ -590,23 +603,59 @@ As per https://docs.python.org/2/reference/expressions.html#not-in
 
 ### Explanation
 
-The expression a=a+[5,6,7,8] generates a new object and sets the A reference to that new object, leaving b to the old object unchanged.
+* The expression `a = a + [5,6,7,8]` generates a new object and sets `a`'s reference to that new object, leaving `b` unchanged.
 
-The expression a+=[5,6,7,8] is actually mapped to an "extend" function that operates on the object in place such that a and b still point to the same object that has been modified in place
+* The expression `a + =[5,6,7,8]` is actually mapped to an "extend" function that operates on the object such that `a` and `b` still point to the same object that has been modified in-place.
 
+## Backslashes at the end of string
 
-
-## That "is" on the same non-static method of the class instance returns False. It was the first and the last time I tried prettify my code with "is".
-
-## Some title
 ```
+>>> print("\\ some string \\")
+>>> print(r"\ some string")
+>>> print(r"\ some string \")
+
+    File "<stdin>", line 1
+      print(r"\ some string \")
+                             ^
+SyntaxError: EOL while scanning string literal
+```
+
+### Explaination
+
+A raw string literal, where the backslash doesn't have the special meaning, as indicated by the prefix r. What it actually does, though, is simply change the behavior of backslashes so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
+
+## Editing a dictionary while iterating over it
+
+```py
 x = {0: None}
 
 for i in x:
     del x[i]
     x[i+1] = None
-    print i
+    print(i)
 ```
+
+**Output:**
+
+```
+0
+1
+2
+3
+4
+5
+6
+7
+```
+
+Yes, it runs for exactly 8 times and stops.
+
+### Explaination:
+
+* Iteration over a dictionary that you edit at the same time is not supported.
+* It runs 8 times because that's the point at which the dictionary resizes to hold more keys (we have 8 deletion entries so a resize is needed). This is actually an implementation detail.
+* Refer to this StackOverflow [thread](https://stackoverflow.com/questions/44763802/bug-in-python-dict) explaining a similar example.
+
 
 ## Minor ones
 
@@ -616,6 +665,18 @@ for i in x:
 
   Also, it's string specific, and it sounds wrong to put a string-specific method on a generic list.
 - `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
+- Python uses 2 bytes for local variable storage in functions. In theory this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
+ ```py
+ import dis
+ exec("""
+ def f():
+     """ + """
+     """.join(["X"+str(x)+"=" + str(x) for x in range(65539)]))
+
+ f()
+
+ print(dis.dis(f))
+ ```
 - No multicore support yet
 
 ## "Needle in a Haystack" bugs

@@ -409,9 +409,166 @@ def another_func():
 UnboundLocalError: local variable 'a' referenced before assignment
 ```
 
-**Explanation:**
+### Explanation
 When you make an assignment to a variable in a scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func` but it has not been initialized previously in the same scope which throws an error. Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but awesome guide to learn more about how namespaces and scope resolution works in Python.
 
+
+## The disappearing variable from outer scope
+
+```py
+e = 7
+try:
+    raise Exception()
+except Exception as e:
+    pass
+```
+
+**Output (Python 2.x):**
+```py
+>>> print(e)
+# prints nothing
+```
+
+**Output (Python 3.x):**
+```py
+>>> print(e)
+NameError: name 'e' is not defined
+```
+
+### Explanation
+
+* Source: https://docs.python.org/3/reference/compound_stmts.html#except
+
+  When an exception has been assigned using as target, it is cleared at the end of the except clause. This is as if
+
+  ```py
+  except E as N:
+      foo
+  ```
+
+  was translated to
+
+  ```py
+  except E as N:
+      try:
+          foo
+      finally:
+          del N
+  ```
+
+  This means the exception must be assigned to a different name to be able to   refer to it after the except clause. Exceptions are cleared because with the   traceback attached to them, they form a reference cycle with the stack frame, keeping all locals in that frame alive until the next garbage collection occurs.
+
+* The clauses are not scoped in Python. Everything in the example is present in same scope and the variable `e` got removed due to the execution of the `except` clause. The same is not the case with functions which have their separate inner-scopes. The example below illustrates this:
+
+ ```py
+ def f(x):
+     del(x)
+     print(x)
+
+ x = 5
+ y = [5, 4, 3]
+ ```
+
+ **Output:**
+ ```py
+ >>>f(x)
+ UnboundLocalError: local variable 'x' referenced before assignment
+ >>>f(y)
+ UnboundLocalError: local variable 'x' referenced before assignment
+ >>> x
+ 5
+ >>> y
+ [5, 4, 3]
+ ```
+
+* In Python 2.x the variable name `e` gets assigned to `Exception()` instance, so when you try to print, it prints nothing.
+
+**Output (Python 2.x):**
+```py
+>>> e
+Exception()
+>>> print e
+# Nothing is printed!
+```
+
+
+## Return in both `try` and `finally` clauses
+
+```py
+def some_func():
+    try:
+        return 'from_try'
+    finally:
+        return 'from_finally'
+```
+
+**Output:**
+```py
+>>> some_func()
+'from_finally'
+```
+
+### Explanation
+
+When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed ‘on the way out. The return value of a function is determined by the last `return` statement executed. Since the `finally` clause always executes, a `return` statement executed in the `finally` clause will always be the last one executed.
+
+## When True is actually False
+
+## The GIL messes it up (Multithreading vs Mutliprogramming example)
+
+## Take care of the operator precedence buddy! (located inside GIL thread)
+
+```py
+>>> True is False == False
+False
+>>> False is False is False
+True
+```
+
+## Implicit conversion can hurt sometimes
+
+```py
+>>> True + 1
+2
+```
+
+## a += b doesn't behave the same way as a = a+b
+
+```
+>>> a=[1,2,3,4]
+>>> b=a
+>>> a=a+[5,6,7,8]
+>>> a
+[1, 2, 3, 4, 5, 6, 7, 8]
+>>> b
+[1, 2, 3, 4]
+
+
+>>> a=[1,2,3,4]
+>>> b=a
+>>> a+=[5,6,7,8]
+>>> a
+[1, 2, 3, 4, 5, 6, 7, 8]
+>>> b
+[1, 2, 3, 4, 5, 6, 7, 8]
+```
+
+## That "is" on the same non-static method of the class instance returns False. It was the first and the last time I tried prettify my code with "is".
+
+## Some title
+```
+x = {0: None}
+
+for i in x:
+    del x[i]
+    x[i+1] = None
+    print i
+```
+
+## Minor ones
+
+- join() is a string operation instead of list operation. (sort of counterintuitive)
+- No multicore support yet
 
 # Contributing
 

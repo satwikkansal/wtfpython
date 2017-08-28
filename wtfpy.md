@@ -514,16 +514,56 @@ When a `return`, `break` or `continue` statement is executed in the `try` suite 
 
 ## When True is actually False
 
+```py
+True == False
+if True == False:
+    print("I've lost faith in truth!")
+```
+
+**Output:**
+```
+I've lost faith in truth!
+```
+
+### Explanation
+
+Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true). Then they added `True`, `False`, and a `bool` type, but, for backwards compatibility, they couldn't make `True` and `False` constants- they just were built-in variables.
+Python 3 was backwards-incompatible, so it was now finally possible to fix that, and so this example wont't work with Python 3.x.
+
+
 ## The GIL messes it up (Multithreading vs Mutliprogramming example)
 
-## Take care of the operator precedence buddy! (located inside GIL thread)
+## Be careful with chained comparisons
 
 ```py
 >>> True is False == False
 False
 >>> False is False is False
 True
+>>> 1 > 0 < 1
+True
+>>> (1 > 0) < 1
+False
+>>> 1 > (0 < 1)
+False
 ```
+
+### Explanation
+
+As per https://docs.python.org/2/reference/expressions.html#not-in
+
+> Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.
+
+* `False is False is False` is equivalent to `(False is False) and (False is False)`
+* `True is False == False` is equivalent to `True is False and False == False` and since the first part of the statement (`True is False`) evaluates to `False`, the overall expression evaluates to `False`.
+* `1 > 0 < 1` is equivalent to `1 > 0 and 0 < 1` which evaluates to `True`.
+* The expression `(1 > 0) < 1` is equivalent to `True < 1` and
+  ```py
+  >>> int(True)
+  1
+  ```
+  So, `1 < 1` evaluates to `False`
+
 
 ## Implicit conversion can hurt sometimes
 
@@ -567,8 +607,43 @@ for i in x:
 
 ## Minor ones
 
-- join() is a string operation instead of list operation. (sort of counterintuitive)
+- `join()` is a string operation instead of list operation. (sort of counterintuitive)
+- `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
 - No multicore support yet
+
+## "Needle in a Haystack" bugs
+
+This contains some of the potential bugs in you code that are very common but hard to detect.
+
+### Initializing a tuple containing single element
+
+```py
+t = ('one', 'two')
+for i in t:
+    print(i)
+
+t = ('one')
+for i in t:
+    print(i)
+
+t = ()
+print(t)
+```
+
+**Output:**
+```py
+one
+two
+o
+n
+e
+tuple()
+```
+
+#### Explanation
+* The correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
+* `()` is a special token and denotes empty `tuple`.
+
 
 # Contributing
 

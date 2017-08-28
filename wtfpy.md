@@ -676,6 +676,19 @@ Yes, it runs for exactly 8 times and stops.
 * It runs 8 times because that's the point at which the dictionary resizes to hold more keys (we have 8 deletion entries so a resize is needed). This is actually an implementation detail.
 * Refer to this StackOverflow [thread](https://stackoverflow.com/questions/44763802/bug-in-python-dict) explaining a similar example.
 
+## `is not ...` is different from `is (not ...)`
+
+```py
+>>> 'something' is not None
+True
+>>> 'something' is (not None)
+False
+```
+
+### Explaination
+
+- `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
+- `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise.
 
 ## Minor ones
 

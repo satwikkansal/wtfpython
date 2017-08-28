@@ -14,7 +14,6 @@ Here's an attempt to collect such classic and tricky examples of unexpected beha
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Checklist](#checklist)
 - [👀 Examples](#-examples)
   - [Example heading](#example-heading)
     - [Explanation:](#explanation)
@@ -33,8 +32,29 @@ Here's an attempt to collect such classic and tricky examples of unexpected beha
   - [You can't change the values contained in tuples because they're immutable.. Oh really?](#you-cant-change-the-values-contained-in-tuples-because-theyre-immutable-oh-really)
     - [Explanation](#explanation-4)
   - [Using a varibale not defined in scope](#using-a-varibale-not-defined-in-scope)
+    - [Explanation](#explanation-5)
+  - [The disappearing variable from outer scope](#the-disappearing-variable-from-outer-scope)
+    - [Explanation](#explanation-6)
+  - [Return in both `try` and `finally` clauses](#return-in-both-try-and-finally-clauses)
+    - [Explanation](#explanation-7)
+  - [When True is actually False](#when-true-is-actually-false)
+    - [Explanation](#explanation-8)
+  - [The GIL messes it up (Multithreading vs Mutliprogramming example)](#the-gil-messes-it-up-multithreading-vs-mutliprogramming-example)
+  - [Be careful with chained comparisons](#be-careful-with-chained-comparisons)
+    - [Explanation](#explanation-9)
+  - [a += b doesn't behave the same way as a = a + b](#a--b-doesnt-behave-the-same-way-as-a--a--b)
+    - [Explanation](#explanation-10)
+  - [Backslashes at the end of string](#backslashes-at-the-end-of-string)
+    - [Explaination](#explaination-1)
+  - [Editing a dictionary while iterating over it](#editing-a-dictionary-while-iterating-over-it)
+    - [Explaination:](#explaination)
+  - [Minor ones](#minor-ones)
+  - ["Needle in a Haystack" bugs](#needle-in-a-haystack-bugs)
+    - [Initializing a tuple containing single element](#initializing-a-tuple-containing-single-element)
+      - [Explanation](#explanation-11)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
+    - [Some nice Links!](#some-nice-links)
 - [🎓 License](#-license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->

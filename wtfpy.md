@@ -561,18 +561,13 @@ As per https://docs.python.org/2/reference/expressions.html#not-in
   ```py
   >>> int(True)
   1
+  >>> True + 1 #not relevant for this example, but just for fun
+  2
   ```
   So, `1 < 1` evaluates to `False`
 
 
-## Implicit conversion can hurt sometimes
-
-```py
->>> True + 1
-2
-```
-
-## a += b doesn't behave the same way as a = a+b
+## a += b doesn't behave the same way as a = a + b
 
 ```
 >>> a=[1,2,3,4]
@@ -593,6 +588,14 @@ As per https://docs.python.org/2/reference/expressions.html#not-in
 [1, 2, 3, 4, 5, 6, 7, 8]
 ```
 
+### Explanation
+
+The expression a=a+[5,6,7,8] generates a new object and sets the A reference to that new object, leaving b to the old object unchanged.
+
+The expression a+=[5,6,7,8] is actually mapped to an "extend" function that operates on the object in place such that a and b still point to the same object that has been modified in place
+
+
+
 ## That "is" on the same non-static method of the class instance returns False. It was the first and the last time I tried prettify my code with "is".
 
 ## Some title
@@ -608,6 +611,10 @@ for i in x:
 ## Minor ones
 
 - `join()` is a string operation instead of list operation. (sort of counterintuitive)
+  **Explanation:**
+  If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic list.
+
+  Also, it's string specific, and it sounds wrong to put a string-specific method on a generic list.
 - `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
 - No multicore support yet
 

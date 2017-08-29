@@ -439,7 +439,20 @@ UnboundLocalError: local variable 'a' referenced before assignment
 ```
 
 ### Explanation
-When you make an assignment to a variable in a scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func` but it has not been initialized previously in the same scope which throws an error. Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but awesome guide to learn more about how namespaces and scope resolution works in Python.
+* When you make an assignment to a variable in a scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func` but it has not been initialized previously in the same scope which throws an error.
+* Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but awesome guide to learn more about how namespaces and scope resolution works in Python.
+* To actually modify the outer scope variable `a` in `another_func`, use `global` keyword.
+  ```py
+  def another_func()
+      global a
+      a += 1
+      return a
+  ```
+  **Output:**
+  ```py
+  >>> another_func()
+  2
+  ```
 
 
 ## The disappearing variable from outer scope
@@ -716,6 +729,34 @@ False
 - `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
 - `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise.
 
+## Time for some hash brownies!
+
+```py
+some_dict = {}
+some_dict[5.5] = "Ruby"
+some_dict[5.0] = "JavaScript"
+some_dict[5] = "Python"
+```
+
+**Output:**
+```py
+>>> some_dict[5.5]
+"Ruby"
+>>> some_dict[5.0]
+"Python"
+>>> some_dict[5]
+"Python"
+```
+
+### Explaination
+
+* `5` (an `int` type) is implicitly converted to `5.0` (a `float` type) before calculating the hash in Python.
+  ```py
+  >>> hash(5) == hash(5.0)
+  True
+  ```
+* This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains beautifully the rationale behind it.
+
 ## Identical looking names
 
 ```py
@@ -802,7 +843,7 @@ None
 
 ### Explaination
 
-The functions like append
+Most methods that modiy the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list))
 
 ## Deleting a list item while iterating over it
 
@@ -849,6 +890,7 @@ for idx, item in enumerate(list_4):
  139798779601192
  ```
 
+
 **Difference between `del`, `remove`, and `pop`:**
 * `remove` removes the first matching value, not a specific index, raises `ValueError` if value is not found.
 * `del` removes a specific index (That's why first `list_1` was unaffected), raises `IndexError` if invalid index is specified.
@@ -858,8 +900,77 @@ for idx, item in enumerate(list_4):
 
 * See this StackOverflow [thread](https://stackoverflow.com/questions/45877614/how-to-change-all-the-dictionary-keys-in-a-for-loop-with-d-items) for a similar example related to dictionaries in Python.
 
+## Explicit typecast of strings
 
-## Minor ones
+```py
+a = float('inf')
+b = float('nan')
+c = float('-iNf')  #These strings are case-insensitive
+d = float('nan')
+```
+
+**Output:**
+```py
+>>> a
+inf
+>>> b
+nan
+>>> c
+-inf
+>>> float('some_other_string')
+ValueError: could not convert string to float: some_other_string
+>>> a == -c #inf==inf
+True
+>>> b == d #but nan!=nan
+False
+>>> 50/a
+0
+>>> a/a
+nan
+>>> 23 + b
+nan
+```
+
+### Explanation
+
+`'inf'` and `'nan'` are special strings (case-insensitieve), which when explicitly type casted to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
+
+
+## Well, something is fishy...
+
+```py
+def square(x):
+    sum_so_far = 0
+    for counter in range(x):
+        sum_so_far = sum_so_far + x
+  return sum_so_far
+
+print(square(10))
+```
+
+**Output (Python 2.x):**
+
+(After pasting the above snippet in the interactive Python interpreter)
+```py
+10
+```
+
+**Output (Python 3.x):**
+```py
+TabError: inconsistent use of tabs and spaces in indentation
+```
+
+**Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
+
+### Explaination
+
+* **Don't mix tabs and spaces!** The character just preceding return is a "tab" and the code is indented by multiple of "4 spaces" elsewhere in the example.
+* This is how Python handle tabs:
+  > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
+* So the "tab" at the last line of `square` function is replace with 8 spaces and it gets into the loop.
+
+
+## Minor Ones
 
 - `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
   **Explanation:**
@@ -879,7 +990,15 @@ for idx, item in enumerate(list_4):
 
  print(dis.dis(f))
  ```
-- No multicore support yet
+- **Explicit type cast of string**
+  ```py
+  >>> float('inf')
+  inf
+  >>> float('nan') #case-insensitive
+  nan
+  >>> float('some_other_string')
+  ValueError: could not convert string to float: some_other_string
+  ```
 
 ## "Needle in a Haystack" bugs
 

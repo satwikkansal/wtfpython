@@ -4,9 +4,14 @@
 
 > A collection of tricky Python examples
 
-Python being an awesome higher level language, provides us many functionalities for our comfort. But sometimes, the outcomes may not seem obvious to a normal Python user at the first sight.
+Python being an awesome higher level language, provides us many functionalities for programmer's comfort. But sometimes, the outcomes may not seem obvious to a normal Python user at the first sight.
 
-Here's an attempt to collect such classic and tricky examples of unexpected behaviors in Python and see what exactly is happening under the hood! I find it a nice way to learn internals of a language and I think you'll like them as well!
+Here's an attempt to collect such classic and tricky examples of unexpected behaviors in Python and see what exactly is happening under the hood! Anyways, I find it a nice way to learn internals of a language and I think you'll like them as well!
+
+- If you're an beginner to intermdediate level Python programmer, I'd personally recommend you to go through all of the examples below, as being aware about such pitfalls may be able to save a lot of debugging time in your future.
+- If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to bring up some nice old memories of being bitten by the gotchas.
+
+So, here ya go...
 
 # Table of Contents
 
@@ -60,6 +65,8 @@ Here's an attempt to collect such classic and tricky examples of unexpected beha
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # 👀 Examples
+
+**Environment:** All the examples mentioned below are run on Python 3.5.2 interactive interpreter unless explicitly specified.
 
 ## Example heading
 
@@ -771,6 +778,86 @@ class SomeClass:
 - A generator expression has its own scope.
 - Starting in 3.X, list comprehensions also have their own scope.
 
+## In-place update functions of mutable object types
+
+```py
+some_list = [1, 2, 3]
+some_dict = {
+  "key_1": 1,
+  "key_2": 2,
+  "key_3": 3
+}
+
+some_list = some_list.append(4)
+some_dict = some_dict.update({"key_4": 4})
+```
+
+**Output:**
+```py
+>>> print(some_list)
+None
+>>> print(some_dict)
+None
+```
+
+### Explaination
+
+The functions like append
+
+## Deleting a list item while iterating over it
+
+```py
+list_1 = [1, 2, 3, 4]
+list_2 = [1, 2, 3, 4]
+list_3 = [1, 2, 3, 4]
+list_4 = [1, 2, 3, 4]
+
+for idx, item in enumerate(list_1):
+    del item
+
+for idx, item in enumerate(list_2):
+    list_2.remove(item)
+
+for idx, item in enumerate(list_3[:]):
+    list_3.remove(item)
+
+for idx, item in enumerate(list_4):
+    list_4.pop(idx)
+```
+
+**Output:**
+```py
+>>> list_1
+[1, 2, 3, 4]
+>>> list_2
+[2, 4]
+>>> list_3
+[]
+>>> list_4
+[2, 4]
+```
+
+### Explanation
+
+* Python does not support modifying a `list` while iterating over it. The correct way to do so is to iterate over a copy of the `list` instead, and `list_3[:]` does just that.
+
+ ```py
+ >>> some_list = [1, 2, 3, 4]
+ >>> id(some_list)
+ 139798789457608
+ >>> id(some_list[:]) # Notice that python creates new object for sliced list.
+ 139798779601192
+ ```
+
+**Difference between `del`, `remove`, and `pop`:**
+* `remove` removes the first matching value, not a specific index, raises `ValueError` if value is not found.
+* `del` removes a specific index (That's why first `list_1` was unaffected), raises `IndexError` if invalid index is specified.
+* `pop` removes element at specific index and returns it, raises `IndexError` if invalid index is specified.
+
+* **Why the output is `[2, 4]`?** The list iteration is done index by index, and when we remove `1` from `list_2` or `list_4`, the contents of the lists are now `[2, 3, 4]`. Now `2` is at index 0 and `3` is at index 1. Since the next iteration is going to look at index 1 (which is the `3`), the `2` gets skipped entirely. Similar thing will happen with every alternate element in the list sequence.
+
+
+
 ## Minor ones
 
 - `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
@@ -839,6 +926,7 @@ The idea and design for this list is inspired from Denys Dovhan's awesome projec
 * https://www.youtube.com/watch?v=sH4XF6pKKmk
 * https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python
 * https://sopython.com/wiki/Common_Gotchas_In_Python
+* https://stackoverflow.com/questions/530530/python-2-x-gotchas-and-landmines
 
 # 🎓 License
 

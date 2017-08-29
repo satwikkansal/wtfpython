@@ -9,7 +9,7 @@ Python being an awesome higher level language, provides us many functionalities 
 Here's an attempt to collect such classic and tricky examples of unexpected behaviors in Python and see what exactly is happening under the hood! Anyways, I find it a nice way to learn internals of a language and I think you'll like them as well!
 
 - If you're an beginner to intermdediate level Python programmer, I'd personally recommend you to go through all of the examples below, as being aware about such pitfalls may be able to save a lot of debugging time in your future.
-- If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to bring up some nice old memories of being bitten by the gotchas.
+- If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to revive some nice old memories of yours being bitten by these gotchas.
 
 So, here ya go...
 
@@ -839,7 +839,7 @@ for idx, item in enumerate(list_4):
 
 ### Explanation
 
-* Python does not support modifying a `list` while iterating over it. The correct way to do so is to iterate over a copy of the `list` instead, and `list_3[:]` does just that.
+* It's never a good idea to change the object you're iterating over. The correct way to do so is to iterate over a copy of the object instead, and `list_3[:]` does just that.
 
  ```py
  >>> some_list = [1, 2, 3, 4]
@@ -854,8 +854,9 @@ for idx, item in enumerate(list_4):
 * `del` removes a specific index (That's why first `list_1` was unaffected), raises `IndexError` if invalid index is specified.
 * `pop` removes element at specific index and returns it, raises `IndexError` if invalid index is specified.
 
-* **Why the output is `[2, 4]`?** The list iteration is done index by index, and when we remove `1` from `list_2` or `list_4`, the contents of the lists are now `[2, 3, 4]`. Now `2` is at index 0 and `3` is at index 1. Since the next iteration is going to look at index 1 (which is the `3`), the `2` gets skipped entirely. Similar thing will happen with every alternate element in the list sequence.
+* **Why the output is `[2, 4]`?** The list iteration is done index by index, and when we remove `1` from `list_2` or `list_4`, the contents of the lists are now `[2, 3, 4]`. The remaining elements are shifted down i.e. `2` is at index 0 and `3` is at index 1. Since the next iteration is going to look at index 1 (which is the `3`), the `2` gets skipped entirely. Similar thing will happen with every alternate element in the list sequence.
 
+* See this StackOverflow [thread](https://stackoverflow.com/questions/45877614/how-to-change-all-the-dictionary-keys-in-a-for-loop-with-d-items) for a similar example related to dictionaries in Python.
 
 
 ## Minor ones

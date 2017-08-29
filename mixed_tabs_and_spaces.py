@@ -1,6 +1,7 @@
 def square(x):
-    runningtotal = 0
+    sum_so_far = 0
     for counter in range(x):
-        runningtotal = runningtotal + x
-	return runningtotal
+        sum_so_far = sum_so_far + x
+	return sum_so_far
+
 print(square(10))

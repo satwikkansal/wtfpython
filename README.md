@@ -643,8 +643,6 @@ array = [2, 8, 22]
 - So before run time, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
 
 
-## The GIL messes it up (Multithreading vs Mutliprogramming example)
-
 ## Be careful with chained operations
 
 ```py
@@ -1003,7 +1001,7 @@ print(square(10))
 
 **Output (Python 2.x):**
 
-(After pasting the above snippet in the interactive Python interpreter)
+
 ```py
 10
 ```
@@ -1227,7 +1225,7 @@ def convert_list_to_string(l, iters):
   ```py
   >>> isinstance(True, int)
   True
-  >>> isinstance(False, float)
+  >>> isinstance(False,   float)
   True
   ```
 * Python uses 2 bytes for local variable storage in functions. In theory this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
@@ -1241,6 +1239,8 @@ def convert_list_to_string(l, iters):
 
  print(dis.dis(f))
  ```
+
+* Multiple Python threads don't run concurrently (yes you heard it right!). It may seem intuitive to spawn several threads and let them execute concurrently, but, because of the Global Interpreter Lock in Python, all you're doing is making your threads execute on the same core turn by turn. To achieve actual parallelization in Python, you might want to use the Python [multiprocessing](https://docs.python.org/2/library/multiprocessing.html) module.
 
 * List slicing with out of the bound indices throws no errors
   ```py
@@ -1360,6 +1360,7 @@ The idea and design for this list is inspired from Denys Dovhan's awesome projec
 * https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python
 * https://sopython.com/wiki/Common_Gotchas_In_Python
 * https://stackoverflow.com/questions/530530/python-2-x-gotchas-and-landmines
+* https://stackoverflow.com/questions/1011431/common-pitfalls-in-python (This StackOverflow thread has some DOs and DONTs which are definitely worth reading.)
 
 # 🎓 License
 

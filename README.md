@@ -136,36 +136,342 @@ A good way to get the most out of these examples, in my opinion, will be just to
 
 # 👀 Examples
 
-### Midnight time doesn't exist?
+###  Skipping lines?
 
 ```py
-from datetime import datetime
+>>> value = 11
+>>> valuе = 32
+>>> value
+11
+```
 
-midnight = datetime(2018, 1, 1, 0, 0)
-midnight_time = midnight.time()
+Wut?
 
-noon = datetime(2018, 1, 1, 12, 0)
-noon_time = noon.time()
+#### Explanation
 
-if midnight_time:
-    print("Time at midnight is", midnight_time)
+Some Unicode characters look identical to ASCII ones, but are considered distinct by the interpreter.
 
-if noon_time:
-    print("Time at noon is", noon_time)
+```py
+>>> value = 42 #ascii e
+>>> valuе = 23 #cyrillic e, Python 2.x interpreter would raise a `SyntaxError` here
+>>> print(value)
+```
+
+---
+
+###  Well, something is fishy...
+
+```py
+def square(x):
+    sum_so_far = 0
+    for counter in range(x):
+        sum_so_far = sum_so_far + x
+  return sum_so_far
+
+print(square(10))
+```
+
+**Output (Python 2.x):**
+
+```py
+10
+```
+
+**Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
+
+#### Explanation
+
+* **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
+* This is how Python handles tabs:
+  > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
+* So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
+* Python 3 is nice enough to automatically throw an error for such cases.
+    **Output (Python 3.x):**
+    ```py
+    TabError: inconsistent use of tabs and spaces in indentation
+    ```
+
+---
+
+###  Time for some hash brownies!
+
+```py
+some_dict = {}
+some_dict[5.5] = "Ruby"
+some_dict[5.0] = "JavaScript"
+some_dict[5] = "Python"
 ```
 
 **Output:**
-```sh
-('Time at noon is', datetime.time(12, 0))
+```py
+>>> some_dict[5.5]
+"Ruby"
+>>> some_dict[5.0]
+"Python"
+>>> some_dict[5]
+"Python"
 ```
-The midnight time is not printed.
+
+#### Explanation
+
+* `5` (an `int` type) is implicitly converted to `5.0` (a `float` type) before calculating the hash in Python.
+  ```py
+  >>> hash(5) == hash(5.0)
+  True
+  ```
+* This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains beautifully the rationale behind it.
+
+---
+
+###  Evaluation time disperancy
+
+```py
+array = [1, 8, 15]
+g = (x for x in array if array.count(x) > 0)
+array = [2, 8, 22]
+```
+
+**Output:**
+```py
+>>> print(list(g))
+[8]
+```
+
+#### 💡 Explanation
+
+- In a generator expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at run time.
+- So before run time, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
+
+---
+
+###  Modifying a dictionary while iterating over it
+
+```py
+x = {0: None}
+
+for i in x:
+    del x[i]
+    x[i+1] = None
+    print(i)
+```
+
+**Output:**
+
+```
+0
+1
+2
+3
+4
+5
+6
+7
+```
+
+Yes, it runs for exactly eight times and stops.
+
+#### Explanation:
+
+* Iteration over a dictionary that you edit at the same time is not supported.
+* It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
+* Refer to this StackOverflow [thread](https://stackoverflow.com/questions/44763802/bug-in-python-dict) explaining a similar example.
+
+---
+
+###  Deleting a list item while iterating over it
+
+```py
+list_1 = [1, 2, 3, 4]
+list_2 = [1, 2, 3, 4]
+list_3 = [1, 2, 3, 4]
+list_4 = [1, 2, 3, 4]
+
+for idx, item in enumerate(list_1):
+    del item
+
+for idx, item in enumerate(list_2):
+    list_2.remove(item)
+
+for idx, item in enumerate(list_3[:]):
+    list_3.remove(item)
+
+for idx, item in enumerate(list_4):
+    list_4.pop(idx)
+```
+
+**Output:**
+```py
+>>> list_1
+[1, 2, 3, 4]
+>>> list_2
+[2, 4]
+>>> list_3
+[]
+>>> list_4
+[2, 4]
+```
+
+Can you guess why the output is [2, 4]?
 
 #### 💡 Explanation:
 
-Before Python 3.5, the boolean value fo `datetime.time` object was considered to be `False` if it represented midnight in UTC. It is error-prone when using the `if obj:` syntax to check if the `obj` is null or some equivalent of "empty."
+* It's never a good idea to change the object you're iterating over. The correct way to do so is to iterate over a copy of the object instead, and `list_3[:]` does just that.
 
+     ```py
+     >>> some_list = [1, 2, 3, 4]
+     >>> id(some_list)
+     139798789457608
+     >>> id(some_list[:]) # Notice that python creates new object for sliced list.
+     139798779601192
+     ```
+
+
+**Difference between `del`, `remove`, and `pop`:**
+* `remove` removes the first matching value, not a specific index, raises `ValueError` if the value is not found.
+* `del` removes a specific index (That's why first `list_1` was unaffected), raises `IndexError` if an invalid index is specified.
+* `pop` removes element at a specific index and returns it, raises `IndexError` if an invalid index is specified.
+
+**Why the output is `[2, 4]`?**
+- The list iteration is done index by index, and when we remove `1` from `list_2` or `list_4`, the contents of the lists are now `[2, 3, 4]`. The remaining elements are shifted down, i.e. `2` is at index 0, and `3` is at index 1. Since the next iteration is going to look at index 1 (which is the `3`), the `2` gets skipped entirely. A similar thing will happen with every alternate element in the list sequence.
+
+* See this nice StackOverflow [thread](https://stackoverflow.com/questions/45877614/how-to-change-all-the-dictionary-keys-in-a-for-loop-with-d-items) for a similar example related to dictionaries in Python.
 
 ---
+
+###  Backslashes at the end of string
+
+**Output:**
+```
+>>> print("\\ some string \\")
+>>> print(r"\ some string")
+>>> print(r"\ some string \")
+
+    File "<stdin>", line 1
+      print(r"\ some string \")
+                             ^
+SyntaxError: EOL while scanning string literal
+```
+
+#### Explanation
+
+A raw string literal, where the backslash doesn't have the special meaning, as indicated by the prefix r. What it actually does, though, is simply change the behavior of backslashes, so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
+
+---
+
+###  Let's make a giant string!
+
+This is not a WTF at all, just some nice things to be aware of :)
+
+```py
+def add_string_with_plus(iters):
+    s = ""
+    for i in range(iters):
+        s += "xyz"
+    assert len(s) == 3*iters
+
+def add_string_with_format(iters):
+    fs = "{}"*iters
+    s = fs.format(*(["xyz"]*iters))
+    assert len(s) == 3*iters
+
+def add_string_with_join(iters):
+    l = []
+    for i in range(iters):
+        l.append("xyz")
+    s = "".join(l)
+    assert len(s) == 3*iters
+
+def convert_list_to_string(l, iters):
+    s = "".join(l)
+    assert len(s) == 3*iters
+```
+
+**Output:**
+```py
+>>> timeit(add_string_with_plus(10000))
+100 loops, best of 3: 9.73 ms per loop
+>>> timeit(add_string_with_format(10000))
+100 loops, best of 3: 5.47 ms per loop
+>>> timeit(add_string_with_join(10000))
+100 loops, best of 3: 10.1 ms per loop
+>>> l = ["xyz"]*10000
+>>> timeit(convert_list_to_string(l, 10000))
+10000 loops, best of 3: 75.3 µs per loop
+```
+
+#### Explanation
+- You can read more about [timeit](https://docs.python.org/3/library/timeit.html) from here. It is generally used to measure the execution time of snippets.
+- Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases.
+- Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for short strings).
+- Or better, if already you've contents available in the form of an iterable object, then use `''.join(iterable_object)` which is much faster.
+
+---
+
+### String concatenation interpreter optimizations.
+
+```py
+>>> a = "some_string"
+140420665652016
+>>> id(a)
+>>> id("some" + "_" + "string") # Notice that both the ids are same.
+140420665652016
+# using "+", three strings:
+>>> timeit.timeit("s1 = s1 + s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
+0.25748300552368164
+# using "+=", three strings:
+>>> timeit.timeit("s1 += s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
+0.012188911437988281
+```
+
+#### 💡 Explanation:
++ `+=` is faster than `+` for concatenating more than two strings because the first string (example, `s1` for `s1 += s2 + s3`) is not destroyed while calculating the complete string.
++ Both the strings refer to the same object because of CPython optimization hat tries to use existing immutable objects in some cases (implementation specific) rather than creating a new object every time. You can read more about this [here](https://stackoverflow.com/questions/24245324/about-the-changing-id-of-an-immutable-string)
+
+---
+
+### Yes, it exists!
+
+The `else` clause for loops. One typical example might be
+```py
+  def does_exists_num(l, to_find):
+      for num in l:
+          if num == to_find:
+              print("Exists!")
+              break
+      else:
+          print("Does not exist")
+```
+
+**Output:**
+```py
+>>> some_list = [1, 2, 3, 4, 5]
+>>> does_exists_num(some_list, 4)
+Exists!
+>>> does_exists_num(some_list, -1)
+Does not exist
+```
+
+The `else` clause in exception handling. An example,
+```py
+try:
+    pass
+except:
+    print("Exception occurred!!!")
+else:
+    print("Try block executed successfully...")
+```
+
+**Output:**
+```py
+Try block executed successfully...
+```
+
+#### 💡 Explanation:
+- The `else` clause is executed only when there's no explicit `break` after all the iterations of the loop.
+- `else` clause after try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
+
+---
+
 ###  `is` is not what it is!
 
 
@@ -245,6 +551,23 @@ Here the integer isn't smart enough while executing `y = 257` to recognize that 
 * It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once.
 
 ---
+
+###  `is not ...` is different from `is (not ...)`
+
+```py
+>>> 'something' is not None
+True
+>>> 'something' is (not None)
+False
+```
+
+#### Explanation
+
+- `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
+- `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise.
+
+---
+
 ###  The function inside loop sticks to the same output
 
 ```py
@@ -299,6 +622,7 @@ Even when the values of `x` were different in every iteration prior to appending
 
 
 ---
+
 ###  Loop variables leaking out of local scope!
 
 1\.
@@ -362,6 +686,7 @@ print(x, ': x in global')
 
 
 ---
+
 ###  A tic-tac-toe where X wins in the first attempt!
 
 ```py
@@ -395,6 +720,7 @@ And when the `board` is initialized by multiplying the `row`, this is what happe
 ![image](/images/tic-tac-toe/after_board_initialized.png)
 
 ---
+
 ###  Beware of default mutable arguments!
 
 ```py
@@ -450,8 +776,8 @@ def some_func(default_arg=[]):
         return default_arg
     ```
 
-
 ---
+
 ###  Mutating the immutable!
 
 This might be obvious for most of you guys, but it took me a lot of time to realize it.
@@ -484,6 +810,7 @@ TypeError: 'tuple' object does not support item assignment
 * `+=` operator changes the list in-place. The item assignment doesn't work, but when the exception occurs, the item has already been changed in place.
 
 ---
+
 ###  Using a variable not defined in scope
 
 ```py
@@ -520,8 +847,8 @@ UnboundLocalError: local variable 'a' referenced before assignment
   2
   ```
 
-
 ---
+
 ###  The disappearing variable from outer scope
 
 ```py
@@ -573,7 +900,7 @@ NameError: name 'e' is not defined
      def f(x):
          del(x)
          print(x)
-    
+
      x = 5
      y = [5, 4, 3]
      ```
@@ -602,6 +929,7 @@ NameError: name 'e' is not defined
 
 
 ---
+
 ###  Return return everywhere!
 
 ```py
@@ -620,7 +948,7 @@ def some_func():
 
 #### 💡 Explanation:
 
-- When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed ‘on the way out. 
+- When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed ‘on the way out.
 - The return value of a function is determined by the last `return` statement executed. Since the `finally` clause always executes, a `return` statement executed in the `finally` clause will always be the last one executed.
 
 ---
@@ -643,27 +971,7 @@ I've lost faith in truth!
 - Python 3 was backwards-incompatible, so it was now finally possible to fix that, and so this example won't work with Python 3.x.
 
 ---
-###  Evaluation time disperancy
 
-```py
-array = [1, 8, 15]
-g = (x for x in array if array.count(x) > 0)
-array = [2, 8, 22]
-```
-
-**Output:**
-```py
->>> print(list(g))
-[8]
-```
-
-#### 💡 Explanation
-
-- In a generator expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at run time.
-- So before run time, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
-
-
----
 ###  Be careful with chained operations
 
 ```py
@@ -701,6 +1009,7 @@ While such behavior might seem silly to you in the above examples, it's fantasti
 
 
 ---
+
 ###  a += b doesn't behave the same way as a = a + b
 
 1\.
@@ -740,124 +1049,7 @@ a += [5, 6, 7, 8]
 * The expression `a + =[5,6,7,8]` is actually mapped to an "extend" function that operates on the object such that `a` and `b` still point to the same object that has been modified in-place.
 
 ---
-###  Backslashes at the end of string
 
-**Output:**
-```
->>> print("\\ some string \\")
->>> print(r"\ some string")
->>> print(r"\ some string \")
-
-    File "<stdin>", line 1
-      print(r"\ some string \")
-                             ^
-SyntaxError: EOL while scanning string literal
-```
-
-#### Explanation
-
-A raw string literal, where the backslash doesn't have the special meaning, as indicated by the prefix r. What it actually does, though, is simply change the behavior of backslashes, so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
-
----
-###  Editing a dictionary while iterating over it
-
-```py
-x = {0: None}
-
-for i in x:
-    del x[i]
-    x[i+1] = None
-    print(i)
-```
-
-**Output:**
-
-```
-0
-1
-2
-3
-4
-5
-6
-7
-```
-
-Yes, it runs for exactly eight times and stops.
-
-#### Explanation:
-
-* Iteration over a dictionary that you edit at the same time is not supported.
-* It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
-* Refer to this StackOverflow [thread](https://stackoverflow.com/questions/44763802/bug-in-python-dict) explaining a similar example.
-
----
-###  `is not ...` is different from `is (not ...)`
-
-```py
->>> 'something' is not None
-True
->>> 'something' is (not None)
-False
-```
-
-#### Explanation
-
-- `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
-- `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise.
-
----
-###  Time for some hash brownies!
-
-```py
-some_dict = {}
-some_dict[5.5] = "Ruby"
-some_dict[5.0] = "JavaScript"
-some_dict[5] = "Python"
-```
-
-**Output:**
-```py
->>> some_dict[5.5]
-"Ruby"
->>> some_dict[5.0]
-"Python"
->>> some_dict[5]
-"Python"
-```
-
-#### Explanation
-
-* `5` (an `int` type) is implicitly converted to `5.0` (a `float` type) before calculating the hash in Python.
-  ```py
-  >>> hash(5) == hash(5.0)
-  True
-  ```
-* This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains beautifully the rationale behind it.
-
----
-###  Skipping lines?
-
-```py
->>> value = 11
->>> valuе = 32
->>> value
-11
-```
-
-Wut?
-
-#### Explanation
-
-Some Unicode characters look identical to ASCII ones, but are considered distinct by the interpreter.
-
-```py
->>> value = 42 #ascii e
->>> valuе = 23 #cyrillic e, Python 2.x interpreter would raise a `SyntaxError` here
->>> print(value)
-```
-
----
 ###  Name resolution ignoring class scope
 
 1\.
@@ -927,65 +1119,7 @@ None
 Most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list))
 
 ---
-###  Deleting a list item while iterating over it
 
-```py
-list_1 = [1, 2, 3, 4]
-list_2 = [1, 2, 3, 4]
-list_3 = [1, 2, 3, 4]
-list_4 = [1, 2, 3, 4]
-
-for idx, item in enumerate(list_1):
-    del item
-
-for idx, item in enumerate(list_2):
-    list_2.remove(item)
-
-for idx, item in enumerate(list_3[:]):
-    list_3.remove(item)
-
-for idx, item in enumerate(list_4):
-    list_4.pop(idx)
-```
-
-**Output:**
-```py
->>> list_1
-[1, 2, 3, 4]
->>> list_2
-[2, 4]
->>> list_3
-[]
->>> list_4
-[2, 4]
-```
-
-Can you guess why the output is [2, 4]?
-
-#### 💡 Explanation:
-
-* It's never a good idea to change the object you're iterating over. The correct way to do so is to iterate over a copy of the object instead, and `list_3[:]` does just that.
-
-     ```py
-     >>> some_list = [1, 2, 3, 4]
-     >>> id(some_list)
-     139798789457608
-     >>> id(some_list[:]) # Notice that python creates new object for sliced list.
-     139798779601192
-     ```
-
-
-**Difference between `del`, `remove`, and `pop`:**
-* `remove` removes the first matching value, not a specific index, raises `ValueError` if the value is not found.
-* `del` removes a specific index (That's why first `list_1` was unaffected), raises `IndexError` if an invalid index is specified.
-* `pop` removes element at a specific index and returns it, raises `IndexError` if an invalid index is specified.
-
-**Why the output is `[2, 4]`?** 
-- The list iteration is done index by index, and when we remove `1` from `list_2` or `list_4`, the contents of the lists are now `[2, 3, 4]`. The remaining elements are shifted down, i.e. `2` is at index 0, and `3` is at index 1. Since the next iteration is going to look at index 1 (which is the `3`), the `2` gets skipped entirely. A similar thing will happen with every alternate element in the list sequence.
-
-* See this nice StackOverflow [thread](https://stackoverflow.com/questions/45877614/how-to-change-all-the-dictionary-keys-in-a-for-loop-with-d-items) for a similar example related to dictionaries in Python.
-
----
 ###  Explicit typecast of strings
 
 ```py
@@ -1021,41 +1155,8 @@ nan
 
 `'inf'` and `'nan'` are special strings (case-insensitive), which when explicitly type casted to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
 
-
 ---
-###  Well, something is fishy...
 
-```py
-def square(x):
-    sum_so_far = 0
-    for counter in range(x):
-        sum_so_far = sum_so_far + x
-  return sum_so_far
-
-print(square(10))
-```
-
-**Output (Python 2.x):**
-
-```py
-10
-```
-
-**Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
-
-#### Explanation
-
-* **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
-* This is how Python handles tabs:
-  > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
-* So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
-* Python 3 is nice enough to automatically throw an error for such cases.
-    **Output (Python 3.x):**
-    ```py
-    TabError: inconsistent use of tabs and spaces in indentation
-    ```
-
----
 ###  Class attributes and instance attributes
 
 1\.
@@ -1126,6 +1227,7 @@ True
 * The `+=` operator modifies the mutable object in-place without creating a new object. So changing the attribute of one instance affects the other instances and the class attribute as well.
 
 ---
+
 ###  Catching the Exceptions!
 
 ```py
@@ -1200,55 +1302,69 @@ SyntaxError: invalid syntax
   ```
 
 ---
-###  String concatenation
 
-This is not a WTF at all, but just some nice things to be aware of :)
+### Midnight time doesn't exist?
 
 ```py
-def add_string_with_plus(iters):
-    s = ""
-    for i in range(iters):
-        s += "xyz"
-    assert len(s) == 3*iters
+from datetime import datetime
 
-def add_string_with_format(iters):
-    fs = "{}"*iters
-    s = fs.format(*(["xyz"]*iters))
-    assert len(s) == 3*iters
+midnight = datetime(2018, 1, 1, 0, 0)
+midnight_time = midnight.time()
 
-def add_string_with_join(iters):
-    l = []
-    for i in range(iters):
-        l.append("xyz")
-    s = "".join(l)
-    assert len(s) == 3*iters
+noon = datetime(2018, 1, 1, 12, 0)
+noon_time = noon.time()
 
-def convert_list_to_string(l, iters):
-    s = "".join(l)
-    assert len(s) == 3*iters
+if midnight_time:
+    print("Time at midnight is", midnight_time)
+
+if noon_time:
+    print("Time at noon is", noon_time)
+```
+
+**Output:**
+```sh
+('Time at noon is', datetime.time(12, 0))
+```
+The midnight time is not printed.
+
+#### 💡 Explanation:
+
+Before Python 3.5, the boolean value fo `datetime.time` object was considered to be `False` if it represented midnight in UTC. It is error-prone when using the `if obj:` syntax to check if the `obj` is null or some equivalent of "empty."
+
+---
+
+### Needle in a Haystack
+
+```py
+t = ('one', 'two')
+for i in t:
+    print(i)
+
+t = ('one')
+for i in t:
+    print(i)
+
+t = ()
+print(t)
 ```
 
 **Output:**
 ```py
->>> timeit(add_string_with_plus(10000))
-100 loops, best of 3: 9.73 ms per loop
->>> timeit(add_string_with_format(10000))
-100 loops, best of 3: 5.47 ms per loop
->>> timeit(add_string_with_join(10000))
-100 loops, best of 3: 10.1 ms per loop
->>> l = ["xyz"]*10000
->>> timeit(convert_list_to_string(l, 10000))
-10000 loops, best of 3: 75.3 µs per loop
+one
+two
+o
+n
+e
+tuple()
 ```
 
-#### Explanation
-- You can read more about [timeit](https://docs.python.org/3/library/timeit.html) from here. It is generally used to measure the execution time of snippets.
-- Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases.
-- Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for short strings).
-- Or better, if already you've contents available in the form of an iterable object, then use `''.join(iterable_object)` which is much faster.
 
+#### 💡 Explanation:
+* The correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
+* `()` is a special token and denotes empty `tuple`.
 
 ---
+
 ###  Minor Ones
 
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
@@ -1288,95 +1404,7 @@ def convert_list_to_string(l, iters):
   []
   ```
 
-* The `else` clause for loops (yeah, it exists!). One typical example might be
-  ```py
-    def does_exists_num(l, to_find):
-        for num in l:
-            if num == to_find:
-                print("Exists!")
-                break
-        else:
-            print("Does not exist")
-  ```
-
-  **Output:**
-  ```py
-  >>> some_list = [1, 2, 3, 4, 5]
-  >>> does_exists_num(some_list, 4)
-  Exists!
-  >>> does_exists_num(some_list, -1)
-  Does not exist
-  ```
-
-  **💡 Explanation:**
-  The `else` clause is executed only when there's no explicit `break` after all the iterations of the loop.
-
-* The `else` clause in exception handling. An example,
-  ```py
-  try:
-      pass
-  except:
-      print("Exception occurred!!!")
-  else:
-      print("Try block executed successfully...")
-  ```
-
-  **Output:**
-  ```py
-  Try block executed successfully...
-  ```
-  Such an `else` clause is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
-
-* String concatenation interpreter optimizations.
-  ```py
-  >>> a = "some_string"
-  140420665652016
-  >>> id(a)
-  >>> id("some" + "_" + "string") # Notice that both the ids are same.
-  140420665652016
-  # using "+", three strings:
-  >>> timeit.timeit("s1 = s1 + s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
-  0.25748300552368164
-  # using "+=", three strings:
-  >>> timeit.timeit("s1 += s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
-  0.012188911437988281
-  ```
-
-  **💡 Explanation:**
-  + `+=` is faster than `+` for concatenating more than two strings because the first string (example, `s1` for `s1 += s2 + s3`) is not destroyed while calculating the complete string.
-  + Both the strings refer to the same object because of CPython optimization hat tries to use existing immutable objects in some cases (implementation specific) rather than creating a new object every time. You can read more about this [here](https://stackoverflow.com/questions/24245324/about-the-changing-id-of-an-immutable-string)
-
-
-### Needle in a Haystack
-
-```py
-t = ('one', 'two')
-for i in t:
-    print(i)
-
-t = ('one')
-for i in t:
-    print(i)
-
-t = ()
-print(t)
-```
-
-**Output:**
-```py
-one
-two
-o
-n
-e
-tuple()
-```
-
 ---
-#### 💡 Explanation:
-* The correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
-* `()` is a special token and denotes empty `tuple`.
-
 
 
 # TODO: Hell of an example!

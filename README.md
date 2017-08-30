@@ -21,35 +21,35 @@ So, here ya go...
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Structure of the Examples](#structure-of-the-examples)
-    - [Explanation:](#explanation)
-    - [Explanation](#explanation)
+    - [💡 Explanation:](#💡 Explanation:)
+    - [💡 Explanation:](#💡 Explanation:)
   - [`is` is not what it is!](#is-is-not-what-it-is)
-    - [💡 Explanation:](#-explanation)
+    - [💡 Explanation:](#-💡 Explanation:)
   - [The function inside loop magic](#the-function-inside-loop-magic)
     - [Explaination](#explaination)
   - [Loop variables leaking out of local scope!](#loop-variables-leaking-out-of-local-scope)
-    - [Explanation](#explanation-1)
+    - [💡 Explanation:](#💡 Explanation:-1)
   - [A tic-tac-toe where X wins in first attempt!](#a-tic-tac-toe-where-x-wins-in-first-attempt)
-    - [Explanation](#explanation-2)
+    - [💡 Explanation:](#💡 Explanation:-2)
   - [Beware of default mutable arguments!](#beware-of-default-mutable-arguments)
-    - [Explanation](#explanation-3)
+    - [💡 Explanation:](#💡 Explanation:-3)
   - [You can't change the values contained in tuples because they're immutable.. Oh really?](#you-cant-change-the-values-contained-in-tuples-because-theyre-immutable-oh-really)
-    - [Explanation](#explanation-4)
+    - [💡 Explanation:](#💡 Explanation:-4)
   - [Using a varibale not defined in scope](#using-a-varibale-not-defined-in-scope)
-    - [Explanation](#explanation-5)
+    - [💡 Explanation:](#💡 Explanation:-5)
   - [The disappearing variable from outer scope](#the-disappearing-variable-from-outer-scope)
-    - [Explanation](#explanation-6)
+    - [💡 Explanation:](#💡 Explanation:-6)
   - [Return in both `try` and `finally` clauses](#return-in-both-try-and-finally-clauses)
-    - [Explanation](#explanation-7)
+    - [💡 Explanation:](#💡 Explanation:-7)
   - [When True is actually False](#when-true-is-actually-false)
-    - [Explanation](#explanation-8)
+    - [💡 Explanation:](#💡 Explanation:-8)
   - [Evaluation time disperancy](#evaluation-time-disperancy)
     - [Explainiation](#explainiation)
   - [The GIL messes it up (Multithreading vs Mutliprogramming example)](#the-gil-messes-it-up-multithreading-vs-mutliprogramming-example)
   - [Be careful with chained comparisons](#be-careful-with-chained-comparisons)
-    - [Explanation](#explanation-9)
+    - [💡 Explanation:](#💡 Explanation:-9)
   - [a += b doesn't behave the same way as a = a + b](#a--b-doesnt-behave-the-same-way-as-a--a--b)
-    - [Explanation](#explanation-10)
+    - [💡 Explanation:](#💡 Explanation:-10)
   - [Backslashes at the end of string](#backslashes-at-the-end-of-string)
     - [Explaination](#explaination-1)
   - [Editing a dictionary while iterating over it](#editing-a-dictionary-while-iterating-over-it)
@@ -65,9 +65,9 @@ So, here ya go...
   - [In-place update functions of mutable object types](#in-place-update-functions-of-mutable-object-types)
     - [Explaination](#explaination-6)
   - [Deleting a list item while iterating over it](#deleting-a-list-item-while-iterating-over-it)
-    - [Explanation](#explanation-11)
+    - [💡 Explanation:](#💡 Explanation:-11)
   - [Explicit typecast of strings](#explicit-typecast-of-strings)
-    - [Explanation](#explanation-12)
+    - [💡 Explanation:](#💡 Explanation:-12)
   - [Well, something is fishy...](#well-something-is-fishy)
     - [Explaination](#explaination-7)
   - [Class attributes and instance attributes](#class-attributes-and-instance-attributes)
@@ -79,7 +79,7 @@ So, here ya go...
   - [Minor Ones](#minor-ones)
   - ["Needle in a Haystack" bugs](#needle-in-a-haystack-bugs)
     - [Initializing a tuple containing single element](#initializing-a-tuple-containing-single-element)
-      - [Explanation](#explanation-13)
+      - [💡 Explanation:](#💡 Explanation:-13)
 - [TODO: Hell of an example!](#todo-hell-of-an-example)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
@@ -109,8 +109,8 @@ Probably unexpected output
 **Note:** All the examples mentioned below are run on Python 3.5.2 interactive interpreter unless explicitly specified.
 
 
-#### Explanation:
-* Brief explanation of what's happening and why is it happening.
+#### 💡 Explanation:
+* Brief 💡 Explanation: of what's happening and why is it happening.
   ```py
   Setting up examples for clarification (if necessary)
   ```
@@ -157,7 +157,7 @@ if noon_time:
 ('Time at noon is', datetime.time(12, 0))
 ```
 
-### Explanation
+### 💡 Explanation:
 
 Before Python 3.5, a datetime.time object was considered to be false if it represented midnight in UTC. It is error-prone when using the `if obj:` syntax to check if the `obj` is null or some equivalent of "empty".
 
@@ -345,7 +345,7 @@ print(x, ': x in global')
 1 : x in global
 ```
 
-### Explanation
+### 💡 Explanation:
 
 In Python for-loops use the scope they exist in and leave their defined loop-variable behind. This also applies if we explicitly defined the for-loop variable in the global namespace before. In this case it will rebind the existing variable.
 
@@ -376,7 +376,7 @@ board = [row]*3
 [['X', '', ''], ['X', '', ''], ['X', '', '']]
 ```
 
-### Explanation
+### 💡 Explanation:
 
 When we initialize `row` varaible, this visualization explains what happens in the memory
 
@@ -406,7 +406,7 @@ def some_func(default_arg=[]):
 ['some_string', 'some_string', 'some_string']
 ```
 
-### Explanation
+### 💡 Explanation:
 
 The default mutable arguments of functions in Python aren't really initialized every time you call the function. Instead, the recently assigned value to them is used as the default value. When we explicitly passed `[]` to `some_func` as the argument, the default value of the `default_arg` variable was not used, so the function returned as expected.
 
@@ -463,7 +463,7 @@ TypeError: 'tuple' object does not support item assignment
 ([1, 2], [3, 4], [5, 6, 1000, 99, 999])
 ```
 
-### Explanation
+### 💡 Explanation:
 
 * Quoting from https://docs.python.org/2/reference/datamodel.html
 
@@ -492,7 +492,7 @@ def another_func():
 UnboundLocalError: local variable 'a' referenced before assignment
 ```
 
-### Explanation
+### 💡 Explanation:
 * When you make an assignment to a variable in a scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func` but it has not been initialized previously in the same scope which throws an error.
 * Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but awesome guide to learn more about how namespaces and scope resolution works in Python.
 * To actually modify the outer scope variable `a` in `another_func`, use `global` keyword.
@@ -531,7 +531,7 @@ except Exception as e:
 NameError: name 'e' is not defined
 ```
 
-### Explanation
+### 💡 Explanation:
 
 * Source: https://docs.python.org/3/reference/compound_stmts.html#except
 
@@ -604,7 +604,7 @@ def some_func():
 'from_finally'
 ```
 
-### Explanation
+### 💡 Explanation:
 
 When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed ‘on the way out. The return value of a function is determined by the last `return` statement executed. Since the `finally` clause always executes, a `return` statement executed in the `finally` clause will always be the last one executed.
 
@@ -621,7 +621,7 @@ if True == False:
 I've lost faith in truth!
 ```
 
-### Explanation
+### 💡 Explanation:
 
 Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true). Then they added `True`, `False`, and a `bool` type, but, for backwards compatibility, they couldn't make `True` and `False` constants- they just were built-in variables.
 Python 3 was backwards-incompatible, so it was now finally possible to fix that, and so this example wont't work with Python 3.x.
@@ -661,7 +661,7 @@ False
 False
 ```
 
-### Explanation
+### 💡 Explanation:
 
 As per https://docs.python.org/2/reference/expressions.html#not-in
 
@@ -714,7 +714,7 @@ a += [5, 6, 7, 8]
 [1, 2, 3, 4, 5, 6, 7, 8]
 ```
 
-### Explanation
+### 💡 Explanation:
 
 * The expression `a = a + [5,6,7,8]` generates a new object and sets `a`'s reference to that new object, leaving `b` unchanged.
 
@@ -932,7 +932,7 @@ for idx, item in enumerate(list_4):
 [2, 4]
 ```
 
-### Explanation
+### 💡 Explanation:
 
 * It's never a good idea to change the object you're iterating over. The correct way to do so is to iterate over a copy of the object instead, and `list_3[:]` does just that.
 
@@ -985,7 +985,7 @@ nan
 nan
 ```
 
-### Explanation
+### 💡 Explanation:
 
 `'inf'` and `'nan'` are special strings (case-insensitieve), which when explicitly type casted to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
 
@@ -1216,7 +1216,7 @@ def convert_list_to_string(l, iters):
 ## Minor Ones
 
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
-  **Explanation:**
+  **💡 Explanation:**
   If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic list.
 
   Also, it's string specific, and it sounds wrong to put a string-specific method on a generic list.
@@ -1272,7 +1272,7 @@ def does_exists_num(l, to_find):
   Does not exist
   ```
 
-  **Explanation:**
+  **💡 Explanation:**
   The `else` clause is executed only when there's no explicit `break` after all the iterations of the loop.
 
 * The `else` clause in exception handling. An example,
@@ -1340,7 +1340,7 @@ e
 tuple()
 ```
 
-#### Explanation
+#### 💡 Explanation:
 * The correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
 

@@ -1,8 +1,8 @@
-# What the f*ck Python? 🐍
+<h1 align="center"> What the f*ck Python? 🐍 </h1>
+<p align="center"> A collection of subtle and tricky Python examples. </p>
 
 [![WTFPL 2.0][license-image]][license-url]
 
-> A collection of subtle and tricky Python examples.
 
 Python, being awesome by design high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of your Python code may not seem obvious to a regular user at first sight.
 

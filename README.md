@@ -1,17 +1,17 @@
-# What the f*ck Python!
+# What the f*ck Python! 🐍
 
 [![WTFPL 2.0][license-image]][license-url]
 
-> A collection of tricky Python examples
+> A collection of nice and tricky Python examples.
 
-Python being an awesome higher level language, provides us many functionalities for programmer's comfort. But sometimes, the outcomes may not seem obvious to a normal Python user at the first sight.
+Python, being a high-level and interpreter based programming language which is awesome by design, provides us with many features for programmer's comfort. But sometimes, the outcomes of your code may not seem obvious to a normal Python user at the first sight.
 
-Here's an attempt to collect such classic and tricky examples of unexpected behaviors in Python and see what exactly is happening under the hood! While some of the examples may not be WTFs in truest sense, but they'll definitely reveal some of the interesting parts of Pyhton. Anyways, I find it a nice way to learn internals of a language and I think you'll like them as well!
+Here's an attempt to collect such classic and tricky examples of unexpected behaviors in Python and discuss what exactly is happening under the hood! While some of the examples you see below may not be WTFs in truest sense, but they'll definitely reveal some of the interesting parts of Pyhton that you might be unaware of. Anyways, I find it a nice way to learn internals of a language and I think you'll like them as well!
 
-- If you're an beginner to intermdediate level Python programmer, I'd personally recommend you to go through all of the examples below, as being aware about such pitfalls may be able to save a lot of debugging time in your future.
-- If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to revive some nice old memories of yours being bitten by these gotchas.
+If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to revive some nice old memories of yours being bitten by these gotchas.
 
 So, here ya go...
+
 
 # Table of Contents
 

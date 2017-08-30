@@ -18,8 +18,6 @@ So, here ya go...
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
-
 - [Structure of the Examples](#structure-of-the-examples)
     - [Some fancy Title](#some-fancy-title)
       - [💡 Explanation:](#-explanation)
@@ -137,6 +135,13 @@ A good way to get the most out of these examples, in my opinion, will be just to
     - If no, read the explanation (and if you still don't understand, shout out! and create an issue [here]()).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
+PS: You can also read these examples at the command line. First install the npm package `wtfpython`,
+```sh
+$ npm install -g wtfpython
+```
+Now, just run `wtfpython` at the command line which will open this collection in your selected `$PAGER`.
+
+#TODO: Add pypi package for reading via command line
 
 # 👀 Examples
 

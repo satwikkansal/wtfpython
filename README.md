@@ -6,7 +6,7 @@
 
 Python being an awesome higher level language, provides us many functionalities for programmer's comfort. But sometimes, the outcomes may not seem obvious to a normal Python user at the first sight.
 
-Here's an attempt to collect such classic and tricky examples of unexpected behaviors in Python and see what exactly is happening under the hood! Anyways, I find it a nice way to learn internals of a language and I think you'll like them as well!
+Here's an attempt to collect such classic and tricky examples of unexpected behaviors in Python and see what exactly is happening under the hood! While some of the examples may not be WTFs in truest sense, but they'll definitely reveal some of the interesting parts of Pyhton. Anyways, I find it a nice way to learn internals of a language and I think you'll like them as well!
 
 - If you're an beginner to intermdediate level Python programmer, I'd personally recommend you to go through all of the examples below, as being aware about such pitfalls may be able to save a lot of debugging time in your future.
 - If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to revive some nice old memories of yours being bitten by these gotchas.
@@ -645,7 +645,7 @@ array = [2, 8, 22]
 
 ## The GIL messes it up (Multithreading vs Mutliprogramming example)
 
-## Be careful with chained comparisons
+## Be careful with chained operations
 
 ```py
 >>> True is False == False
@@ -665,6 +665,8 @@ False
 As per https://docs.python.org/2/reference/expressions.html#not-in
 
 > Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.
+
+While such behavior might seem silly to you in the above examples, it's fantastic with stuff like `a == b == c` and `0 <= x <= 100`.
 
 * `False is False is False` is equivalent to `(False is False) and (False is False)`
 * `True is False == False` is equivalent to `True is False and False == False` and since the first part of the statement (`True is False`) evaluates to `False`, the overall expression evaluates to `False`.
@@ -1206,8 +1208,8 @@ def convert_list_to_string(l, iters):
 ### Explanination
 - You can read more about [timeit](https://docs.python.org/3/library/timeit.html) from here. It is generally used to measure the execution time of snippets.
 - Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases.
-- Therefore, it's advised to use .format or % syntax (however, they are slightly slower than + for short strings).
-- Or better, if already you've contents available in the form of an iterable object, then use ''.join(iterable_object) which is much faster.
+- Therefore, it's advised to use `.format` or `%` syntax (however, they are slightly slower than `+` for short strings).
+- Or better, if already you've contents available in the form of an iterable object, then use `''.join(iterable_object)` which is much faster.
 
 
 ## Minor Ones
@@ -1230,15 +1232,52 @@ def convert_list_to_string(l, iters):
 
  print(dis.dis(f))
  ```
-- **Explicit type cast of string**
+
+* List slicing with out of the bound indices.
   ```py
-  >>> float('inf')
-  inf
-  >>> float('nan') #case-insensitive
-  nan
-  >>> float('some_other_string')
-  ValueError: could not convert string to float: some_other_string
+  >>> some_list = [1, 2, 3, 4, 5]
+  >>> some_list[111:]
+  []
   ```
+
+* The `else` clause for loops (yeah, it exists!). One typical example might be
+  ```py
+def does_exists_num(l, to_find):
+    for num in l:
+        if num == to_find:
+            print("Exists!")
+            break
+    else:
+        print("Does not exist")
+  ```
+
+  **Output:**
+  ```py
+  >>> some_list = [1, 2, 3, 4, 5]
+  >>> does_exists_num(some_list, 4)
+  Exists!
+  >>> does_exists_num(some_list, -1)
+  Does not exist
+  ```
+
+  **Explanation:**
+  The `else` clause is executed only when there's no explicit `break` after all the iterations of the loop.
+
+* The `else` clause in exception handling. An example,
+  ```py
+  try:
+      pass
+  except:
+      print("Exception occurred!!!")
+  else:
+      print("Try block executed successfully...")
+  ```
+
+  **Output:**
+  ```py
+  Try block executed successfully...
+  ```
+  Such an `else` clause is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
 
 ## "Needle in a Haystack" bugs
 

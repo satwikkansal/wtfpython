@@ -975,6 +975,75 @@ TabError: inconsistent use of tabs and spaces in indentation
   > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
 * So the "tab" at the last line of `square` function is replace with 8 spaces and it gets into the loop.
 
+## Class attributes and instance attributes
+
+1.
+```py
+class A:
+    x = 1
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+```
+
+**Ouptut:**
+```py
+>>> A.x, B.x, C.x
+(1, 1, 1)
+>>> B.x = [2]
+>>> A.x, B.x, C.x
+(1, 2, 1)
+>>> A.x = 3
+>>> A.x, B.x, C.x
+(3, 2, 3)
+>>> a = A()
+>>> a.x, A.x
+(3, 3)
+>>> a.x += 1
+>>> a.x, A.x
+(4, 3)
+```
+
+2.
+```py
+class SomeClass:
+    some_var = 15
+    some_list = [5]
+    another_list = [5]
+    def __init__(self, x):
+        self.some_var = x + 1
+        self.some_list = self.some_list + [x]
+        self.another_list += [x]
+```
+
+**Output:**
+
+```py
+>>> some_obj = SomeClass(420)
+>>> some_obj.some_list
+[5, 420]
+>>> some_obj.another_list
+[5, 420]
+>>> another_obj = SomeClass(111)
+>>> another_obj.some_list
+[5, 111]
+>>> another_obj.another_list
+[5, 420, 111]
+>>> another_obj.another_list is SomeClass.another_list
+True
+>>> another_obj.another_list is some_obj.another_list
+True
+```
+
+
+### Explaination:
+
+* Class variables and variables in class instances are internally handled as dictionaries of a class object. If a variable name is not found in the dictionary of current class, the parent classes are searched for it.
+* The `+=` operator modifies the mutable object in-place without creating a new object.
+
 ## Catching the Exceptions!
 
 ```py
@@ -1048,6 +1117,53 @@ SyntaxError: invalid syntax
   list.remove(x): x not in list
   ```
 
+## String concatenation
+
+This is not a WTF, but just a nice thing to be aware of :)
+
+```py
+def add_string_with_plus(iters):
+    s = ""
+    for i in range(iters):
+        s += "xyz"
+    assert len(s) == 3*iters
+
+def add_string_with_format(iters):
+    fs = "{}"*iters
+    s = fs.format(*(["xyz"]*iters))
+    assert len(s) == 3*iters
+
+def add_string_with_join(iters):
+    l = []
+    for i in range(iters):
+        l.append("xyz")
+    s = "".join(l)
+    assert len(s) == 3*iters
+
+def convert_list_to_string(l, iters):
+    s = "".join(l)
+    assert len(s) == 3*iters
+```
+
+**Output:**
+```py
+>>> timeit(add_string_with_plus(10000))
+100 loops, best of 3: 9.73 ms per loop
+>>> timeit(add_string_with_format(10000))
+100 loops, best of 3: 5.47 ms per loop
+>>> timeit(add_string_with_join(10000))
+100 loops, best of 3: 10.1 ms per loop
+>>> l = ["xyz"]*10000
+>>> timeit(convert_list_to_string(l, 10000))
+10000 loops, best of 3: 75.3 µs per loop
+```
+
+### Explanination
+- You can read more about [timeit](https://docs.python.org/3/library/timeit.html) from here. It is generally used to measure the execution time of snippets.
+- Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases.
+- Therefore, it's advised to use .format or % syntax (however, they are slightly slower than + for short strings).
+- Or better, if already you've contents available in the form of an iterable object, then use ''.join(iterable_object) which is much faster.
+
 
 ## Minor Ones
 
@@ -1112,6 +1228,9 @@ tuple()
 * The correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
 
+# TODO: Hell of an example!
+
+Trying to comeup with an example that combines multiple examples discussed above, making it difficult for the reader to guess the output correctly :sweat_smile:.
 
 # Contributing
 

@@ -1,16 +1,16 @@
-# What the f*ck Python! :snake:
+# What the f*ck Python? 🐍
 
 [![WTFPL 2.0][license-image]][license-url]
 
-> A collection of nice and tricky Python examples.
+> A collection of subtle and tricky Python examples.
 
-Python, being a high-level and interpreter based programming language which is awesome by design, provides us with many functionalities for programmer's comfort. But sometimes, the outcomes of your code may not seem obvious to a normal Python user at the first sight.
+Python, being awesome by design high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of your Python code may not seem obvious to a regular user at first sight.
 
-Here's an attempt to collect such classic and tricky examples of unexpected behaviors in Python and discuss what exactly is happening under the hood! While some of the examples you see below may not be WTFs in truest sense, but they'll definitely reveal some of the interesting parts of Pyhton that you might be unaware of.
+This is a fun project attempting to collect such classic and tricky examples of unexpected behaviors in Python and discuss what exactly is happening under the hood!
 
-Anyways, I find it a nice way to learn internals of a programming language and I think you'll like them as well!
+While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. Anyways, I find it a nice way to learn the internals of a programming language, and I think you'll like them as well!
 
-If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to revive some nice old memories of yours being bitten by these gotchas :sweat_smile:
+If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to revive some sweet old memories of yours being bitten by these gotchas :sweat_smile:
 
 So, here ya go...
 
@@ -22,66 +22,66 @@ So, here ya go...
 
 - [Structure of the Examples](#structure-of-the-examples)
     - [Some fancy Title](#some-fancy-title)
-        - [💡 Explaination:](#-explaination)
+        - [💡 Explanation:](#-explanation)
 - [Usage](#usage)
 - [👀 Examples](#-examples)
     - [Midnight time doesn't exist?](#midnight-time-doesnt-exist)
-      - [💡 Explaination:](#-explaination-1)
+      - [💡 Explanation:](#-explanation-1)
     - [`is` is not what it is!](#is-is-not-what-it-is)
-      - [💡 Explaination:](#-explaination-2)
+      - [💡 Explanation:](#-explanation-2)
     - [The function inside loop sticks to the same output](#the-function-inside-loop-sticks-to-the-same-output)
-        - [Explaination](#explaination)
+        - [Explanation](#explanation)
     - [Loop variables leaking out of local scope!](#loop-variables-leaking-out-of-local-scope)
-      - [💡 Explaination:](#-explaination-3)
+      - [💡 Explanation:](#-explanation-3)
     - [A tic-tac-toe where X wins in first attempt!](#a-tic-tac-toe-where-x-wins-in-first-attempt)
-      - [💡 Explaination:](#-explaination-4)
+      - [💡 Explanation:](#-explanation-4)
     - [Beware of default mutable arguments!](#beware-of-default-mutable-arguments)
-      - [💡 Explaination:](#-explaination-5)
+      - [💡 Explanation:](#-explanation-5)
     - [Mutating the immutable!](#mutating-the-immutable)
-      - [💡 Explaination:](#-explaination-6)
+      - [💡 Explanation:](#-explanation-6)
     - [Using a variable not defined in scope](#using-a-variable-not-defined-in-scope)
-      - [💡 Explaination:](#-explaination-7)
+      - [💡 Explanation:](#-explanation-7)
     - [The disappearing variable from outer scope](#the-disappearing-variable-from-outer-scope)
-      - [💡 Explaination:](#-explaination-8)
+      - [💡 Explanation:](#-explanation-8)
     - [Return return everywhere!](#return-return-everywhere)
-      - [💡 Explaination:](#-explaination-9)
+      - [💡 Explanation:](#-explanation-9)
     - [When True is actually False](#when-true-is-actually-false)
-      - [💡 Explaination:](#-explaination-10)
+      - [💡 Explanation:](#-explanation-10)
     - [Evaluation time disperancy](#evaluation-time-disperancy)
-        - [💡 Explaination](#-explaination)
+        - [💡 Explanation](#-explanation)
     - [Be careful with chained operations](#be-careful-with-chained-operations)
-      - [💡 Explaination:](#-explaination-11)
+      - [💡 Explanation:](#-explanation-11)
     - [a += b doesn't behave the same way as a = a + b](#a--b-doesnt-behave-the-same-way-as-a--a--b)
-      - [💡 Explaination:](#-explaination-12)
+      - [💡 Explanation:](#-explanation-12)
     - [Backslashes at the end of string](#backslashes-at-the-end-of-string)
-        - [Explaination](#explaination-1)
+        - [Explanation](#explanation-1)
     - [Editing a dictionary while iterating over it](#editing-a-dictionary-while-iterating-over-it)
-        - [Explaination:](#explaination)
+        - [Explanation:](#explanation)
     - [`is not ...` is different from `is (not ...)`](#is-not--is-different-from-is-not-)
-        - [Explaination](#explaination-2)
+        - [Explanation](#explanation-2)
     - [Time for some hash brownies!](#time-for-some-hash-brownies)
-        - [Explaination](#explaination-3)
+        - [Explanation](#explanation-3)
     - [Skipping lines?](#skipping-lines)
-        - [Explaination](#explaination-4)
+        - [Explanation](#explanation-4)
     - [Name resolution ignoring class scope](#name-resolution-ignoring-class-scope)
-        - [💡 Explaination](#-explaination-1)
+        - [💡 Explanation](#-explanation-1)
     - [From filled to None in one instruction...](#from-filled-to-none-in-one-instruction)
-        - [💡 Explaination](#-explaination-2)
+        - [💡 Explanation](#-explanation-2)
     - [Deleting a list item while iterating over it](#deleting-a-list-item-while-iterating-over-it)
-      - [💡 Explaination:](#-explaination-13)
+      - [💡 Explanation:](#-explanation-13)
     - [Explicit typecast of strings](#explicit-typecast-of-strings)
-      - [💡 Explaination:](#-explaination-14)
+      - [💡 Explanation:](#-explanation-14)
     - [Well, something is fishy...](#well-something-is-fishy)
-        - [Explaination](#explaination-5)
+        - [Explanation](#explanation-5)
     - [Class attributes and instance attributes](#class-attributes-and-instance-attributes)
-        - [Explaination:](#explaination-1)
+        - [Explanation:](#explanation-1)
     - [Catching the Exceptions!](#catching-the-exceptions)
-        - [Explaination](#explaination-6)
+        - [Explanation](#explanation-6)
     - [String concatenation](#string-concatenation)
         - [Explanination](#explanination)
     - [Minor Ones](#minor-ones)
     - [Needle in a Haystack](#needle-in-a-haystack)
-        - [💡 Explaination:](#-explaination-15)
+        - [💡 Explanation:](#-explanation-15)
 - [TODO: Hell of an example!](#todo-hell-of-an-example)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
@@ -111,8 +111,8 @@ Probably unexpected output
 **Note:** All the examples mentioned below are run on Python 3.5.2 interactive interpreter unless explicitly specified.
 
 
-#### 💡 Explaination:
-* Brief Explaination of what's happening and why is it happening.
+#### 💡 Explanation:
+* Brief explanation of what's happening and why is it happening.
   ```py
   Setting up examples for clarification (if necessary)
   ```
@@ -125,13 +125,13 @@ Probably unexpected output
 
 # Usage
 
-A good way to get the most out of these examples, in my opinion, will be to just read the examples chronologically, and for every example:
+A good way to get the most out of these examples, in my opinion, will be just to read the examples chronologically, and for every example:
 - Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's gonna happen next.
 - Read the output snippets and
   + Check if the outputs are the same as you'd expect.
   + Make sure know the exact reason behind the output being the way it is.
-    - If no, read the explaination (and if you still don't understand, shout out! and create an issue [here]()).
-    - If yes, give a gentle pat on your back and you may skip to the next example.
+    - If no, read the explanation (and if you still don't understand, shout out! and create an issue [here]()).
+    - If yes, give a gentle pat on your back, and you may skip to the next example.
 
 
 # 👀 Examples
@@ -160,9 +160,9 @@ if noon_time:
 ```
 The midnight time is not printed.
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
-Before Python 3.5, the boolean value fo `datetime.time` object was considered to be `False` if it represented midnight in UTC. It is error-prone when using the `if obj:` syntax to check if the `obj` is null or some equivalent of "empty".
+Before Python 3.5, the boolean value fo `datetime.time` object was considered to be `False` if it represented midnight in UTC. It is error-prone when using the `if obj:` syntax to check if the `obj` is null or some equivalent of "empty."
 
 
 ---
@@ -186,7 +186,7 @@ True
 ```
 
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
 **The difference between `is` and `==`**
 
@@ -197,10 +197,10 @@ True
 
 **`256` is an existing object but `257` isn't**
 
-When you start up python the numbers from `-5` to `256` will be allocated. These numbers are used a lot, so it makes sense to just have them ready.
+When you start up python the numbers from `-5` to `256` will be allocated. These numbers are used a lot, so it makes sense just to have them ready.
 
 Quoting from https://docs.python.org/3/c-api/long.html
-> The current implementation keeps an array of integer objects for all integers between -5 and 256, when you create an int in that range you actually just get back a reference to the existing object. So it should be possible to change the value of 1. I suspect the behaviour of Python in this case is undefined. :-)
+> The current implementation keeps an array of integer objects for all integers between -5 and 256, when you create an int in that range you just get back a reference to the existing object. So it should be possible to change the value of 1. I suspect the behavior of Python, in this case, is undefined. :-)
 
 ```py
 >>> id(256)
@@ -221,10 +221,10 @@ Quoting from https://docs.python.org/3/c-api/long.html
 140084850247344
 ```
 
-Here the integer isn't smart enough while executing `y = 257` to recongnize that we've already created an integer of the value `257` and so it goes on to create another object in the memory.
+Here the integer isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257 ,` and so it goes on to create another object in the memory.
 
 
-**Both `a` and `b` refer to same object, when initialized with same value in the same line.**
+**Both `a` and `b` refer to the same object, when initialized with same value in the same line.**
 
 ```py
 >>> a, b = 257, 257
@@ -241,8 +241,8 @@ Here the integer isn't smart enough while executing `y = 257` to recongnize that
 ```
 
 
-* When a and b are set to `257` in the same line, the Python interpretor creates new object, then references the second variable at the same time. If you do it in separate lines, it doesn't "know" that there's already `257` as an object.
-* It's a compiler optimization and specifically applies to interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once.
+* When a and b are set to `257` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `257` as an object.
+* It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once.
 
 ---
 ###  The function inside loop sticks to the same output
@@ -276,11 +276,11 @@ Even when the values of `x` were different in every iteration prior to appending
 [512, 512, 512, 512, 512, 512, 512, 512, 512, 512]
 ```
 
-##### Explaination
+#### Explanation
 
 - When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the variable, not its value. So all of the functions use the latest value assigned to the variable for computation.
 
-- To get the desired behavior you can pass in the loop variable as a named varibable to the function which will define the variable again within the function's scope.
+- To get the desired behavior you can pass in the loop variable as a named variable to the function which will define the variable again within the function's scope.
 
     ```py
     funcs = []
@@ -315,7 +315,7 @@ print(x, ': x in global')
 6 : x in global
 ```
 
-But `x` was never defined ourtside the scope of for loop...
+But `x` was never defined outside the scope of for loop...
 
 2\.
 ```py
@@ -352,17 +352,17 @@ print(x, ': x in global')
 1 : x in global
 ```
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
-- In Python for-loops use the scope they exist in and leave their defined loop-variable behind. This also applies if we explicitly defined the for-loop variable in the global namespace before. In this case it will rebind the existing variable.
+- In Python, for-loops use the scope they exist in and leave their defined loop-variable behind. This also applies if we explicitly defined the for-loop variable in the global namespace before. In this case, it will rebind the existing variable.
 
 - The differences in the output of Python 2.x and Python 3.x interpreters for list comprehension example can be explained by following change documented in [What’s New In Python 3.0](https://docs.python.org/3/whatsnew/3.0.html) documentation:
 
-    > "List comprehensions no longer support the syntactic form `[... for var in item1, item2, ...]`. Use `[... for var in (item1, item2, ...)]` instead. Also note that list comprehensions have different semantics: they are closer to syntactic sugar for a generator expression inside a `list()` constructor, and in particular the loop control variables are no longer leaked into the surrounding scope."
+    > "List comprehensions no longer support the syntactic form `[... for var in item1, item2, ...]`. Use `[... for var in (item1, item2, ...)]` instead. Also, note that list comprehensions have different semantics: they are closer to syntactic sugar for a generator expression inside a `list()` constructor, and in particular the loop control variables are no longer leaked into the surrounding scope."
 
 
 ---
-###  A tic-tac-toe where X wins in first attempt!
+###  A tic-tac-toe where X wins in the first attempt!
 
 ```py
 # Let's initialize a row
@@ -384,9 +384,9 @@ board = [row]*3
 [['X', '', ''], ['X', '', ''], ['X', '', '']]
 ```
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
-When we initialize `row` varaible, this visualization explains what happens in the memory
+When we initialize `row` variable, this visualization explains what happens in the memory
 
 ![image](/images/tic-tac-toe/after_row_initialized.png)
 
@@ -415,7 +415,7 @@ def some_func(default_arg=[]):
 ['some_string', 'some_string', 'some_string']
 ```
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
 - The default mutable arguments of functions in Python aren't really initialized every time you call the function. Instead, the recently assigned value to them is used as the default value. When we explicitly passed `[]` to `some_func` as the argument, the default value of the `default_arg` variable was not used, so the function returned as expected.
 
@@ -474,12 +474,12 @@ TypeError: 'tuple' object does not support item assignment
 ([1, 2], [3, 4], [5, 6, 1000, 99, 999])
 ```
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
 * Quoting from https://docs.python.org/2/reference/datamodel.html
 
     > Immutable sequences
-        An object of an immutable sequence type cannot change once it is created. (If the object contains references to other objects, these other objects may be mutable and may be changed; however, the collection of objects directly referenced by an immutable object cannot change.)
+        An object of an immutable sequence type cannot change once it is created. (If the object contains references to other objects, these other objects may be mutable and may be modified; however, the collection of objects directly referenced by an immutable object cannot change.)
 
 * `+=` operator changes the list in-place. The item assignment doesn't work, but when the exception occurs, the item has already been changed in place.
 
@@ -504,10 +504,10 @@ def another_func():
 UnboundLocalError: local variable 'a' referenced before assignment
 ```
 
-#### 💡 Explaination:
-* When you make an assignment to a variable in a scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func` but it has not been initialized previously in the same scope which throws an error.
-* Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but awesome guide to learn more about how namespaces and scope resolution works in Python.
-* To actually modify the outer scope variable `a` in `another_func`, use `global` keyword.
+#### 💡 Explanation:
+* When you make an assignment to a variable in a scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`,  but it has not been initialized previously in the same scope which throws an error.
+* Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
+* To modify the outer scope variable `a` in `another_func`, use `global` keyword.
   ```py
   def another_func()
       global a
@@ -544,11 +544,11 @@ except Exception as e:
 NameError: name 'e' is not defined
 ```
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
 * Source: https://docs.python.org/3/reference/compound_stmts.html#except
 
-  When an exception has been assigned using as target, it is cleared at the end of the except clause. This is as if
+  When an exception has been assigned using `as` target, it is cleared at the end of the except clause. This is as if
 
   ```py
   except E as N:
@@ -565,9 +565,9 @@ NameError: name 'e' is not defined
           del N
   ```
 
-  This means the exception must be assigned to a different name to be able to   refer to it after the except clause. Exceptions are cleared because with the   traceback attached to them, they form a reference cycle with the stack frame, keeping all locals in that frame alive until the next garbage collection occurs.
+  This means the exception must be assigned to a different name to be able to refer to it after the except clause. Exceptions are cleared because, with the traceback attached to them, they form a reference cycle with the stack frame, keeping all locals in that frame alive until the next garbage collection occurs.
 
-* The clauses are not scoped in Python. Everything in the example is present in same scope and the variable `e` got removed due to the execution of the `except` clause. The same is not the case with functions which have their separate inner-scopes. The example below illustrates this:
+* The clauses are not scoped in Python. Everything in the example is present in the same scope, and the variable `e` got removed due to the execution of the `except` clause. The same is not the case with functions which have their separate inner-scopes. The example below illustrates this:
 
      ```py
      def f(x):
@@ -618,7 +618,7 @@ def some_func():
 'from_finally'
 ```
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
 - When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed ‘on the way out. 
 - The return value of a function is determined by the last `return` statement executed. Since the `finally` clause always executes, a `return` statement executed in the `finally` clause will always be the last one executed.
@@ -637,10 +637,10 @@ if True == False:
 I've lost faith in truth!
 ```
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
-- Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true). Then they added `True`, `False`, and a `bool` type, but, for backwards compatibility, they couldn't make `True` and `False` constants- they just were built-in variables.
-- Python 3 was backwards-incompatible, so it was now finally possible to fix that, and so this example wont't work with Python 3.x.
+- Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true). Then they added `True`, `False`, and a `bool` type, but, for backward compatibility, they couldn't make `True` and `False` constants- they just were built-in variables.
+- Python 3 was backwards-incompatible, so it was now finally possible to fix that, and so this example won't work with Python 3.x.
 
 ---
 ###  Evaluation time disperancy
@@ -657,7 +657,7 @@ array = [2, 8, 22]
 [8]
 ```
 
-#### 💡 Explaination
+#### 💡 Explanation
 
 - In a generator expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at run time.
 - So before run time, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
@@ -679,7 +679,7 @@ False
 False
 ```
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
 As per https://docs.python.org/2/reference/expressions.html#not-in
 
@@ -733,7 +733,7 @@ a += [5, 6, 7, 8]
 [1, 2, 3, 4, 5, 6, 7, 8]
 ```
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
 * The expression `a = a + [5,6,7,8]` generates a new object and sets `a`'s reference to that new object, leaving `b` unchanged.
 
@@ -754,9 +754,9 @@ a += [5, 6, 7, 8]
 SyntaxError: EOL while scanning string literal
 ```
 
-##### Explaination
+#### Explanation
 
-A raw string literal, where the backslash doesn't have the special meaning, as indicated by the prefix r. What it actually does, though, is simply change the behavior of backslashes so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
+A raw string literal, where the backslash doesn't have the special meaning, as indicated by the prefix r. What it actually does, though, is simply change the behavior of backslashes, so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
 
 ---
 ###  Editing a dictionary while iterating over it
@@ -783,12 +783,12 @@ for i in x:
 7
 ```
 
-Yes, it runs for exactly 8 times and stops.
+Yes, it runs for exactly eight times and stops.
 
-##### Explaination:
+#### Explanation:
 
 * Iteration over a dictionary that you edit at the same time is not supported.
-* It runs 8 times because that's the point at which the dictionary resizes to hold more keys (we have 8 deletion entries so a resize is needed). This is actually an implementation detail.
+* It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
 * Refer to this StackOverflow [thread](https://stackoverflow.com/questions/44763802/bug-in-python-dict) explaining a similar example.
 
 ---
@@ -801,7 +801,7 @@ True
 False
 ```
 
-##### Explaination
+#### Explanation
 
 - `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
 - `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise.
@@ -826,7 +826,7 @@ some_dict[5] = "Python"
 "Python"
 ```
 
-##### Explaination
+#### Explanation
 
 * `5` (an `int` type) is implicitly converted to `5.0` (a `float` type) before calculating the hash in Python.
   ```py
@@ -847,7 +847,7 @@ some_dict[5] = "Python"
 
 Wut?
 
-##### Explaination
+#### Explanation
 
 Some Unicode characters look identical to ASCII ones, but are considered distinct by the interpreter.
 
@@ -894,7 +894,7 @@ class SomeClass:
 5
 ```
 
-#### 💡 Explaination
+#### 💡 Explanation
 - Scopes nested inside class definition ignore names bound at the class level.
 - A generator expression has its own scope.
 - Starting from Python 3.X, list comprehensions also have their own scope.
@@ -922,9 +922,9 @@ None
 None
 ```
 
-#### 💡 Explaination
+#### 💡 Explanation
 
-Most methods that modiy the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list))
+Most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list))
 
 ---
 ###  Deleting a list item while iterating over it
@@ -962,7 +962,7 @@ for idx, item in enumerate(list_4):
 
 Can you guess why the output is [2, 4]?
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
 * It's never a good idea to change the object you're iterating over. The correct way to do so is to iterate over a copy of the object instead, and `list_3[:]` does just that.
 
@@ -976,12 +976,12 @@ Can you guess why the output is [2, 4]?
 
 
 **Difference between `del`, `remove`, and `pop`:**
-* `remove` removes the first matching value, not a specific index, raises `ValueError` if value is not found.
-* `del` removes a specific index (That's why first `list_1` was unaffected), raises `IndexError` if invalid index is specified.
-* `pop` removes element at specific index and returns it, raises `IndexError` if invalid index is specified.
+* `remove` removes the first matching value, not a specific index, raises `ValueError` if the value is not found.
+* `del` removes a specific index (That's why first `list_1` was unaffected), raises `IndexError` if an invalid index is specified.
+* `pop` removes element at a specific index and returns it, raises `IndexError` if an invalid index is specified.
 
 **Why the output is `[2, 4]`?** 
-- The list iteration is done index by index, and when we remove `1` from `list_2` or `list_4`, the contents of the lists are now `[2, 3, 4]`. The remaining elements are shifted down i.e. `2` is at index 0 and `3` is at index 1. Since the next iteration is going to look at index 1 (which is the `3`), the `2` gets skipped entirely. Similar thing will happen with every alternate element in the list sequence.
+- The list iteration is done index by index, and when we remove `1` from `list_2` or `list_4`, the contents of the lists are now `[2, 3, 4]`. The remaining elements are shifted down, i.e. `2` is at index 0, and `3` is at index 1. Since the next iteration is going to look at index 1 (which is the `3`), the `2` gets skipped entirely. A similar thing will happen with every alternate element in the list sequence.
 
 * See this nice StackOverflow [thread](https://stackoverflow.com/questions/45877614/how-to-change-all-the-dictionary-keys-in-a-for-loop-with-d-items) for a similar example related to dictionaries in Python.
 
@@ -1017,9 +1017,9 @@ nan
 nan
 ```
 
-#### 💡 Explaination:
+#### 💡 Explanation:
 
-`'inf'` and `'nan'` are special strings (case-insensitieve), which when explicitly type casted to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
+`'inf'` and `'nan'` are special strings (case-insensitive), which when explicitly type casted to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
 
 
 ---
@@ -1043,12 +1043,12 @@ print(square(10))
 
 **Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
 
-##### Explaination
+#### Explanation
 
-* **Don't mix tabs and spaces!** The character just preceding return is a "tab" and the code is indented by multiple of "4 spaces" elsewhere in the example.
+* **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
 * This is how Python handles tabs:
   > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
-* So the "tab" at the last line of `square` function is replace with 8 spaces and it gets into the loop.
+* So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
 * Python 3 is nice enough to automatically throw an error for such cases.
     **Output (Python 3.x):**
     ```py
@@ -1120,10 +1120,10 @@ True
 ```
 
 
-##### Explaination:
+#### Explanation:
 
-* Class variables and variables in class instances are internally handled as dictionaries of a class object. If a variable name is not found in the dictionary of current class, the parent classes are searched for it.
-* The `+=` operator modifies the mutable object in-place without creating a new object. So changing the attribute of one instance, affects the other instances and the class attribute as well.
+* Class variables and variables in class instances are internally handled as dictionaries of a class object. If a variable name is not found in the dictionary of the current class, the parent classes are searched for it.
+* The `+=` operator modifies the mutable object in-place without creating a new object. So changing the attribute of one instance affects the other instances and the class attribute as well.
 
 ---
 ###  Catching the Exceptions!
@@ -1158,7 +1158,7 @@ ValueError: list.remove(x): x not in list
 SyntaxError: invalid syntax
 ```
 
-##### Explaination
+#### Explanation
 
 * To add multiple Exceptions to the except clause, you need to pass them as parenthesized tuple as the first argument. The second argument is an optional name, which when supplied will bind the Exception instance that has been raised. Example,
   ```py
@@ -1241,10 +1241,10 @@ def convert_list_to_string(l, iters):
 10000 loops, best of 3: 75.3 µs per loop
 ```
 
-##### Explanination
+#### Explanation
 - You can read more about [timeit](https://docs.python.org/3/library/timeit.html) from here. It is generally used to measure the execution time of snippets.
 - Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases.
-- Therefore, it's advised to use `.format` or `%` syntax (however, they are slightly slower than `+` for short strings).
+- Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for short strings).
 - Or better, if already you've contents available in the form of an iterable object, then use `''.join(iterable_object)` which is much faster.
 
 
@@ -1252,8 +1252,8 @@ def convert_list_to_string(l, iters):
 ###  Minor Ones
 
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
-  **💡 Explaination:**
-  If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic list.
+  **💡 Explanation:**
+  If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list, it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic list.
 
   Also, it's string specific, and it sounds wrong to put a string-specific method on a generic list.
 * Few weird looking but semantically correct statements:
@@ -1267,15 +1267,15 @@ def convert_list_to_string(l, iters):
   >>> isinstance(False,   float)
   True
   ```
-* Python uses 2 bytes for local variable storage in functions. In theory this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
+* Python uses 2 bytes for local variable storage in functions. In theory, this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
      ```py
      import dis
      exec("""
      def f():*     """ + """
          """.join(["X"+str(x)+"=" + str(x) for x in range(65539)]))
-    
+
      f()
-    
+
      print(dis.dis(f))
      ```
 
@@ -1308,7 +1308,7 @@ def convert_list_to_string(l, iters):
   Does not exist
   ```
 
-  **💡 Explaination:**
+  **💡 Explanation:**
   The `else` clause is executed only when there's no explicit `break` after all the iterations of the loop.
 
 * The `else` clause in exception handling. An example,
@@ -1342,7 +1342,7 @@ def convert_list_to_string(l, iters):
   0.012188911437988281
   ```
 
-  **💡 Explaination:**
+  **💡 Explanation:**
   + `+=` is faster than `+` for concatenating more than two strings because the first string (example, `s1` for `s1 += s2 + s3`) is not destroyed while calculating the complete string.
   + Both the strings refer to the same object because of CPython optimization hat tries to use existing immutable objects in some cases (implementation specific) rather than creating a new object every time. You can read more about this [here](https://stackoverflow.com/questions/24245324/about-the-changing-id-of-an-immutable-string)
 
@@ -1373,7 +1373,7 @@ tuple()
 ```
 
 ---
-### ## 💡 Explaination:
+#### 💡 Explanation:
 * The correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
 
@@ -1389,14 +1389,14 @@ All patches are Welcome! Filing an issue first before submitting a patch will be
 
 # Acknowledgements
 
-The idea and design for this list is inspired from Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs).
+The idea and design for this list are inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs).
 
 #### Some nice Links!
 * https://www.youtube.com/watch?v=sH4XF6pKKmk
 * https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python
 * https://sopython.com/wiki/Common_Gotchas_In_Python
 * https://stackoverflow.com/questions/530530/python-2-x-gotchas-and-landmines
-* https://stackoverflow.com/questions/1011431/common-pitfalls-in-python (This StackOverflow thread has some DOs and DONTs which are definitely worth reading.)
+* https://stackoverflow.com/questions/1011431/common-pitfalls-in-python (This StackOverflow thread has some DOs and DONTs which are worth reading.)
 
 # 🎓 License
 

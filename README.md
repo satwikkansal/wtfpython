@@ -409,14 +409,20 @@ TypeError: 'tuple' object does not support item assignment
 >>> another_tuple[2].append(1000) #This throws no error
 >>> another_tuple
 ([1, 2], [3, 4], [5, 6, 1000])
+>>> another_tuple[2] += [99, 999]
+TypeError: 'tuple' object does not support item assignment
+>>> another_tuple
+([1, 2], [3, 4], [5, 6, 1000, 99, 999])
 ```
 
 ### Explanation
 
-Quoting from https://docs.python.org/2/reference/datamodel.html
+* Quoting from https://docs.python.org/2/reference/datamodel.html
 
 > Immutable sequences
     An object of an immutable sequence type cannot change once it is created. (If the object contains references to other objects, these other objects may be mutable and may be changed; however, the collection of objects directly referenced by an immutable object cannot change.)
+
+* `+=` operator changes the list in-place. The item assignment doesn't work, but when the exception occurs, the item has already been changed in place.
 
 ## Using a varibale not defined in scope
 
@@ -995,7 +1001,7 @@ ValueError: list.remove(x): x not in list
 
 **Output (Python 3.x):**
 ```py
-  File "<ipython-input-1-67dfe27418d8>", line 3
+  File "<input>", line 3
     except IndexError, ValueError:
                      ^
 SyntaxError: invalid syntax
@@ -1020,7 +1026,7 @@ SyntaxError: invalid syntax
   ```
   **Output (Python 3.x):**
   ```py
-    File "<ipython-input-2-9de83846b87f>", line 4
+    File "<input>", line 4
       except (IndexError, ValueError), e:
                                        ^
   IndentationError: unindent does not match any outer indentation level

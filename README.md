@@ -1214,18 +1214,27 @@ def convert_list_to_string(l, iters):
 
 ## Minor Ones
 
-- `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
+* `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
   **Explanation:**
   If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic list.
 
   Also, it's string specific, and it sounds wrong to put a string-specific method on a generic list.
-- `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
-- Python uses 2 bytes for local variable storage in functions. In theory this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
+* Few weird looking but semantically correct statements:
+  + `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
+  + `'a'[0][0][0][0][0]` is also a semantically correct statement as strings are iterable in Python.
+  + `3 --0-- 5 == 8` and `--5 == 5` are both semantically correct statments and evalute to `True`.
+* Booleans are a subclass of `int`
+  ```py
+  >>> isinstance(True, int)
+  True
+  >>> isinstance(False, float)
+  True
+  ```
+* Python uses 2 bytes for local variable storage in functions. In theory this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
  ```py
  import dis
  exec("""
- def f():
-     """ + """
+ def f():*     """ + """
      """.join(["X"+str(x)+"=" + str(x) for x in range(65539)]))
 
  f()
@@ -1233,7 +1242,7 @@ def convert_list_to_string(l, iters):
  print(dis.dis(f))
  ```
 
-* List slicing with out of the bound indices.
+* List slicing with out of the bound indices throws no errors
   ```py
   >>> some_list = [1, 2, 3, 4, 5]
   >>> some_list[111:]
@@ -1279,6 +1288,26 @@ def does_exists_num(l, to_find):
   ```
   Such an `else` clause is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
 
+* String concatenation interpreter optimizations.
+  ```py
+  >>> a = "some_string"
+  140420665652016
+  >>> id(a)
+  >>> id("some" + "_" + "string") # Notice that both the ids are same.
+  140420665652016
+  # using "+", three strings:
+  >>> timeit.timeit("s1 = s1 + s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
+  0.25748300552368164
+  # using "+=", three strings:
+  >>> timeit.timeit("s1 += s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
+  0.012188911437988281
+  ```
+
+  **Explaination:**
+  + `+=` is faster than `+` for concatenating more than two strings because the first string (example, `s1` for `s1 += s2 + s3`) is not destroyed while calculating the complete string.
+  + Both the strings refer to the same object because of CPython optimization hat tries to use existing immutable objects in some cases (implementation specific) rather than creating a new object every time. You can read more about this [here](https://stackoverflow.com/questions/24245324/about-the-changing-id-of-an-immutable-string)
+
+
 ## "Needle in a Haystack" bugs
 
 This contains some of the potential bugs in you code that are very common but hard to detect.
@@ -1311,6 +1340,8 @@ tuple()
 #### Explanation
 * The correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
+
+### TODO: Collect and add more such examples
 
 # TODO: Hell of an example!
 

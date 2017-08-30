@@ -64,27 +64,49 @@ So, here ya go...
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
+# Structure of the Examples
+
+Almost all the examples are structured like below:
+
+```
+  ## Some fancy title
+
+  (Optional) One line of what's happening:
+
+  ```py
+  Preparing for the magic
+  ```
+
+  **Output (Python version):**
+  ```py
+  >>> triggering_statement
+  Probably unexpected output
+  ```
+
+  **Note:** All the examples mentioned below are run on Python 3.5.2 interactive interpreter unless explicitly specified.
+
+
+  ### Explanation:
+  * Brief explanation of what's happening and why is it happening.
+    ```py
+    Setting up examples for clarification (if required)
+    ```
+    **Outupt:**
+    ```py
+    >>> trigger #some example that makes it easy to unveil the magic
+    # some justified output
+    ```
+```
+
+# Usage
+
+A good way to go through these examples in my opinion will be to just to read them chronologically, and for every example:
+- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's gonna happen next.
+- Read the output snippets and check if
+  + The outputs are the same as you'd expect.
+  + You know the exact reason behind the output being the way it is. If no, read the explaination (and if you still don't understand, shout out and create an issue [here]()). If yes, give a gentle pat on your back and you may skip to the next example.
+
 # 👀 Examples
-
-**Environment:** All the examples mentioned below are run on Python 3.5.2 interactive interpreter unless explicitly specified.
-
-## Example heading
-
-One line of what's happening:
-
-```py
-setting up
-```
-
-```py
->>> triggering_statement
-weird output
-```
-
-### Explanation:
-
-* Better to give outside links
-* or just explain again in brief
 
 ## `datetime.time` object is considered to be false if it represented midnight in UTC
 

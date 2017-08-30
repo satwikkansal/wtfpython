@@ -1,17 +1,18 @@
-# What the f*ck Python! 🐍
+# What the f*ck Python! :snake:
 
 [![WTFPL 2.0][license-image]][license-url]
 
-> A collection of nice and tricky Python examples.
+> A collection of tricky Python examples
 
-Python, being a high-level and interpreter based programming language which is awesome by design, provides us with many features for programmer's comfort. But sometimes, the outcomes of your code may not seem obvious to a normal Python user at the first sight.
+Python, being a high-level and interpreter based programming language which is awesome by design, provides us with many functionalities for programmer's comfort. But sometimes, the outcomes of your code may not seem obvious to a normal Python user at the first sight.
 
-Here's an attempt to collect such classic and tricky examples of unexpected behaviors in Python and discuss what exactly is happening under the hood! While some of the examples you see below may not be WTFs in truest sense, but they'll definitely reveal some of the interesting parts of Pyhton that you might be unaware of. Anyways, I find it a nice way to learn internals of a language and I think you'll like them as well!
+Here's an attempt to collect such classic and tricky examples of unexpected behaviors in Python and discuss what exactly is happening under the hood! While some of the examples you see below may not be WTFs in truest sense, but they'll definitely reveal some of the interesting parts of Pyhton that you might be unaware of.
 
-If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to revive some nice old memories of yours being bitten by these gotchas.
+Anyways, I find it a nice way to learn internals of a programming language and I think you'll like them as well!
+
+If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to revive some nice old memories of yours being bitten by these gotchas :sweat_smile:
 
 So, here ya go...
-
 
 # Table of Contents
 
@@ -89,45 +90,47 @@ So, here ya go...
 
 # Structure of the Examples
 
-Almost all the examples are structured like below:
+All the examples are structured like below:
 
+### Some fancy Title
+
+```py
+# Setting up the code.
+# Preparation for the magic...
 ```
-  ## Some fancy title
 
-  (Optional) One line of what's happening:
+**Output (Python version):**
+```py
+>>> triggering_statement
+Probably unexpected output
+```
+(Optional): One line describing the unexpected output.
 
+**Note:** All the examples mentioned below are run on Python 3.5.2 interactive interpreter unless explicitly specified.
+
+
+#### Explanation:
+* Brief explanation of what's happening and why is it happening.
   ```py
-  Preparing for the magic
+  Setting up examples for clarification (if necessary)
+  ```
+  **Outupt:**
+  ```py
+  >>> trigger # some example that makes it easy to unveil the magic
+  # some justified output
   ```
 
-  **Output (Python version):**
-  ```py
-  >>> triggering_statement
-  Probably unexpected output
-  ```
-
-  **Note:** All the examples mentioned below are run on Python 3.5.2 interactive interpreter unless explicitly specified.
-
-
-  ### Explanation:
-  * Brief explanation of what's happening and why is it happening.
-    ```py
-    Setting up examples for clarification (if required)
-    ```
-    **Outupt:**
-    ```py
-    >>> trigger #some example that makes it easy to unveil the magic
-    # some justified output
-    ```
-```
 
 # Usage
 
-A good way to go through these examples in my opinion will be to just to read them chronologically, and for every example:
+A good way to get the most out of these examples, in my opinion, will be to just read the examples chronologically, and for every example:
 - Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's gonna happen next.
-- Read the output snippets and check if
-  + The outputs are the same as you'd expect.
-  + You know the exact reason behind the output being the way it is. If no, read the explaination (and if you still don't understand, shout out and create an issue [here]()). If yes, give a gentle pat on your back and you may skip to the next example.
+- Read the output snippets and
+  + Check if the outputs are the same as you'd expect.
+  + Make sure know the exact reason behind the output being the way it is.
+    - If no, read the explaination (and if you still don't understand, shout out! and create an issue [here]()).
+    - If yes, give a gentle pat on your back and you may skip to the next example.
+
 
 # 👀 Examples
 

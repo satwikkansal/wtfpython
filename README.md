@@ -965,9 +965,82 @@ TabError: inconsistent use of tabs and spaces in indentation
 ### Explaination
 
 * **Don't mix tabs and spaces!** The character just preceding return is a "tab" and the code is indented by multiple of "4 spaces" elsewhere in the example.
-* This is how Python handle tabs:
+* This is how Python handles tabs:
   > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
 * So the "tab" at the last line of `square` function is replace with 8 spaces and it gets into the loop.
+
+## Catching the Exceptions!
+
+```py
+some_list = [1, 2, 3]
+try:
+    # This should raise an ``IndexError``
+    print(some_list[4])
+except IndexError, ValueError:
+    print("Caught!")
+
+try:
+    # This should raise a ``ValueError``
+    some_list.remove(4)
+except IndexError, ValueError:
+    print("Caught again!")
+```
+
+**Output (Python 2.x):**
+```py
+Caught!
+
+ValueError: list.remove(x): x not in list
+```
+
+**Output (Python 3.x):**
+```py
+  File "<ipython-input-1-67dfe27418d8>", line 3
+    except IndexError, ValueError:
+                     ^
+SyntaxError: invalid syntax
+```
+
+### Explaination
+
+* To add multiple Exceptions to the except clause, you need to pass them as parenthesized tuple as the first argument. The second argument is an optional name, which when supplied will bind the Exception instance that has been raised. Example,
+  ```py
+  some_list = [1, 2, 3]
+  try:
+     # This should raise a ``ValueError``
+     some_list.remove(4)
+  except (IndexError, ValueError), e:
+     print("Caught again!")
+     print(e)
+  ```
+  **Output (Python 2.x):**
+  ```
+  Caught again!
+  list.remove(x): x not in list
+  ```
+  **Output (Python 3.x):**
+  ```py
+    File "<ipython-input-2-9de83846b87f>", line 4
+      except (IndexError, ValueError), e:
+                                       ^
+  IndentationError: unindent does not match any outer indentation level
+  ```
+
+* Separating the exception from the variable with a comma is deprecated and does not work in Python 3; the correct way is to use `as`. Example,
+  ```py
+  some_list = [1, 2, 3]
+  try:
+      some_list.remove(4)
+
+  except (IndexError, ValueError) as e:
+      print("Caught again!")
+      print(e)
+  ```
+  **Output:**
+  ```
+  Caught again!
+  list.remove(x): x not in list
+  ```
 
 
 ## Minor Ones

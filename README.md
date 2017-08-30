@@ -2,7 +2,7 @@
 
 [![WTFPL 2.0][license-image]][license-url]
 
-> A collection of tricky Python examples
+> A collection of nice and tricky Python examples.
 
 Python, being a high-level and interpreter based programming language which is awesome by design, provides us with many functionalities for programmer's comfort. But sometimes, the outcomes of your code may not seem obvious to a normal Python user at the first sight.
 
@@ -111,7 +111,7 @@ Probably unexpected output
 **Note:** All the examples mentioned below are run on Python 3.5.2 interactive interpreter unless explicitly specified.
 
 
-##### 💡 Explaination:
+#### 💡 Explaination:
 * Brief Explaination of what's happening and why is it happening.
   ```py
   Setting up examples for clarification (if necessary)
@@ -165,7 +165,8 @@ The midnight time is not printed.
 Before Python 3.5, the boolean value fo `datetime.time` object was considered to be `False` if it represented midnight in UTC. It is error-prone when using the `if obj:` syntax to check if the `obj` is null or some equivalent of "empty".
 
 
-### `is` is not what it is!
+---
+###  `is` is not what it is!
 
 
 ```py
@@ -243,7 +244,8 @@ Here the integer isn't smart enough while executing `y = 257` to recongnize that
 * When a and b are set to `257` in the same line, the Python interpretor creates new object, then references the second variable at the same time. If you do it in separate lines, it doesn't "know" that there's already `257` as an object.
 * It's a compiler optimization and specifically applies to interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once.
 
-### The function inside loop sticks to the same output
+---
+###  The function inside loop sticks to the same output
 
 ```py
 funcs = []
@@ -296,7 +298,8 @@ Even when the values of `x` were different in every iteration prior to appending
     ```
 
 
-### Loop variables leaking out of local scope!
+---
+###  Loop variables leaking out of local scope!
 
 1\.
 ```py
@@ -358,7 +361,8 @@ print(x, ': x in global')
     > "List comprehensions no longer support the syntactic form `[... for var in item1, item2, ...]`. Use `[... for var in (item1, item2, ...)]` instead. Also note that list comprehensions have different semantics: they are closer to syntactic sugar for a generator expression inside a `list()` constructor, and in particular the loop control variables are no longer leaked into the surrounding scope."
 
 
-### A tic-tac-toe where X wins in first attempt!
+---
+###  A tic-tac-toe where X wins in first attempt!
 
 ```py
 # Let's initialize a row
@@ -390,7 +394,8 @@ And when the `board` is initialized by multiplying the `row`, this is what happe
 
 ![image](/images/tic-tac-toe/after_board_initialized.png)
 
-### Beware of default mutable arguments!
+---
+###  Beware of default mutable arguments!
 
 ```py
 def some_func(default_arg=[]):
@@ -446,7 +451,8 @@ def some_func(default_arg=[]):
     ```
 
 
-### Mutating the immutable!
+---
+###  Mutating the immutable!
 
 This might be obvious for most of you guys, but it took me a lot of time to realize it.
 
@@ -477,7 +483,8 @@ TypeError: 'tuple' object does not support item assignment
 
 * `+=` operator changes the list in-place. The item assignment doesn't work, but when the exception occurs, the item has already been changed in place.
 
-### Using a variable not defined in scope
+---
+###  Using a variable not defined in scope
 
 ```py
 a = 1
@@ -514,7 +521,8 @@ UnboundLocalError: local variable 'a' referenced before assignment
   ```
 
 
-### The disappearing variable from outer scope
+---
+###  The disappearing variable from outer scope
 
 ```py
 e = 7
@@ -593,7 +601,8 @@ NameError: name 'e' is not defined
     ```
 
 
-### Return return everywhere!
+---
+###  Return return everywhere!
 
 ```py
 def some_func():
@@ -614,7 +623,8 @@ def some_func():
 - When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed ‘on the way out. 
 - The return value of a function is determined by the last `return` statement executed. Since the `finally` clause always executes, a `return` statement executed in the `finally` clause will always be the last one executed.
 
-### When True is actually False
+---
+###  When True is actually False
 
 ```py
 True == False
@@ -632,7 +642,8 @@ I've lost faith in truth!
 - Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true). Then they added `True`, `False`, and a `bool` type, but, for backwards compatibility, they couldn't make `True` and `False` constants- they just were built-in variables.
 - Python 3 was backwards-incompatible, so it was now finally possible to fix that, and so this example wont't work with Python 3.x.
 
-### Evaluation time disperancy
+---
+###  Evaluation time disperancy
 
 ```py
 array = [1, 8, 15]
@@ -646,13 +657,14 @@ array = [2, 8, 22]
 [8]
 ```
 
-##### 💡 Explaination
+#### 💡 Explaination
 
 - In a generator expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at run time.
 - So before run time, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
 
 
-### Be careful with chained operations
+---
+###  Be careful with chained operations
 
 ```py
 >>> True is False == False
@@ -688,7 +700,8 @@ While such behavior might seem silly to you in the above examples, it's fantasti
   So, `1 < 1` evaluates to `False`
 
 
-### a += b doesn't behave the same way as a = a + b
+---
+###  a += b doesn't behave the same way as a = a + b
 
 1\.
 ```py
@@ -726,7 +739,8 @@ a += [5, 6, 7, 8]
 
 * The expression `a + =[5,6,7,8]` is actually mapped to an "extend" function that operates on the object such that `a` and `b` still point to the same object that has been modified in-place.
 
-### Backslashes at the end of string
+---
+###  Backslashes at the end of string
 
 **Output:**
 ```
@@ -744,7 +758,8 @@ SyntaxError: EOL while scanning string literal
 
 A raw string literal, where the backslash doesn't have the special meaning, as indicated by the prefix r. What it actually does, though, is simply change the behavior of backslashes so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
 
-### Editing a dictionary while iterating over it
+---
+###  Editing a dictionary while iterating over it
 
 ```py
 x = {0: None}
@@ -776,7 +791,8 @@ Yes, it runs for exactly 8 times and stops.
 * It runs 8 times because that's the point at which the dictionary resizes to hold more keys (we have 8 deletion entries so a resize is needed). This is actually an implementation detail.
 * Refer to this StackOverflow [thread](https://stackoverflow.com/questions/44763802/bug-in-python-dict) explaining a similar example.
 
-### `is not ...` is different from `is (not ...)`
+---
+###  `is not ...` is different from `is (not ...)`
 
 ```py
 >>> 'something' is not None
@@ -790,7 +806,8 @@ False
 - `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
 - `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise.
 
-### Time for some hash brownies!
+---
+###  Time for some hash brownies!
 
 ```py
 some_dict = {}
@@ -818,7 +835,8 @@ some_dict[5] = "Python"
   ```
 * This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains beautifully the rationale behind it.
 
-### Skipping lines?
+---
+###  Skipping lines?
 
 ```py
 >>> value = 11
@@ -839,7 +857,8 @@ Some Unicode characters look identical to ASCII ones, but are considered distinc
 >>> print(value)
 ```
 
-### Name resolution ignoring class scope
+---
+###  Name resolution ignoring class scope
 
 1\.
 ```py
@@ -875,12 +894,13 @@ class SomeClass:
 5
 ```
 
-##### 💡 Explaination
+#### 💡 Explaination
 - Scopes nested inside class definition ignore names bound at the class level.
 - A generator expression has its own scope.
 - Starting from Python 3.X, list comprehensions also have their own scope.
 
-### From filled to None in one instruction...
+---
+###  From filled to None in one instruction...
 
 ```py
 some_list = [1, 2, 3]
@@ -902,11 +922,12 @@ None
 None
 ```
 
-##### 💡 Explaination
+#### 💡 Explaination
 
 Most methods that modiy the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list))
 
-### Deleting a list item while iterating over it
+---
+###  Deleting a list item while iterating over it
 
 ```py
 list_1 = [1, 2, 3, 4]
@@ -964,7 +985,8 @@ Can you guess why the output is [2, 4]?
 
 * See this nice StackOverflow [thread](https://stackoverflow.com/questions/45877614/how-to-change-all-the-dictionary-keys-in-a-for-loop-with-d-items) for a similar example related to dictionaries in Python.
 
-### Explicit typecast of strings
+---
+###  Explicit typecast of strings
 
 ```py
 a = float('inf')
@@ -1000,7 +1022,8 @@ nan
 `'inf'` and `'nan'` are special strings (case-insensitieve), which when explicitly type casted to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
 
 
-### Well, something is fishy...
+---
+###  Well, something is fishy...
 
 ```py
 def square(x):
@@ -1032,7 +1055,8 @@ print(square(10))
     TabError: inconsistent use of tabs and spaces in indentation
     ```
 
-### Class attributes and instance attributes
+---
+###  Class attributes and instance attributes
 
 1\.
 ```py
@@ -1101,7 +1125,8 @@ True
 * Class variables and variables in class instances are internally handled as dictionaries of a class object. If a variable name is not found in the dictionary of current class, the parent classes are searched for it.
 * The `+=` operator modifies the mutable object in-place without creating a new object. So changing the attribute of one instance, affects the other instances and the class attribute as well.
 
-### Catching the Exceptions!
+---
+###  Catching the Exceptions!
 
 ```py
 some_list = [1, 2, 3]
@@ -1174,7 +1199,8 @@ SyntaxError: invalid syntax
   list.remove(x): x not in list
   ```
 
-### String concatenation
+---
+###  String concatenation
 
 This is not a WTF at all, but just some nice things to be aware of :)
 
@@ -1222,7 +1248,8 @@ def convert_list_to_string(l, iters):
 - Or better, if already you've contents available in the form of an iterable object, then use `''.join(iterable_object)` which is much faster.
 
 
-### Minor Ones
+---
+###  Minor Ones
 
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
   **💡 Explaination:**
@@ -1345,7 +1372,8 @@ e
 tuple()
 ```
 
-##### 💡 Explaination:
+---
+### ## 💡 Explaination:
 * The correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
 

@@ -118,7 +118,7 @@ Probably unexpected output
   ```py
   Setting up examples for clarification (if necessary)
   ```
-  **Outupt:**
+  **Output:**
   ```py
   >>> trigger # some example that makes it easy to unveil the magic
   # some justified output

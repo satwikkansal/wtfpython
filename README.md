@@ -4,11 +4,11 @@
 [![WTFPL 2.0][license-image]][license-url]
 
 
-Python, being awesome by design high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of your Python code may not seem obvious to a regular user at first sight.
+Python, being awesome by design high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
 
-This is a fun project attempting to collect such classic and tricky examples of unexpected behaviors in Python and discuss what exactly is happening under the hood!
+Here is a fun project attempting to collect such classic and tricky examples of unexpected behaviors in Python and discuss what exactly is happening under the hood!
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. Anyways, I find it a nice way to learn the internals of a programming language, and I think you'll like them as well!
+While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
 
 If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to revive some sweet old memories of yours being bitten by these gotchas :sweat_smile:
 
@@ -163,7 +163,8 @@ Some Unicode characters look identical to ASCII ones, but are considered distinc
 ```py
 >>> value = 42 #ascii e
 >>> valuе = 23 #cyrillic e, Python 2.x interpreter would raise a `SyntaxError` here
->>> print(value)
+>>> value
+42
 ```
 
 ---
@@ -172,19 +173,23 @@ Some Unicode characters look identical to ASCII ones, but are considered distinc
 
 ```py
 def square(x):
+    """
+    A simple function to calculate square of a number by addition.
+    """
     sum_so_far = 0
     for counter in range(x):
         sum_so_far = sum_so_far + x
   return sum_so_far
-
-print(square(10))
 ```
 
 **Output (Python 2.x):**
 
 ```py
+>>> square(10)
 10
 ```
+
+Shouldn't that be 100?
 
 **Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
 
@@ -195,6 +200,7 @@ print(square(10))
   > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
 * So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
 * Python 3 is nice enough to automatically throw an error for such cases.
+    
     **Output (Python 3.x):**
     ```py
     TabError: inconsistent use of tabs and spaces in indentation
@@ -220,6 +226,8 @@ some_dict[5] = "Python"
 >>> some_dict[5]
 "Python"
 ```
+
+"Python" destroyed the existence of "JavaScript"?
 
 #### Explanation
 
@@ -248,7 +256,7 @@ array = [2, 8, 22]
 
 #### 💡 Explanation
 
-- In a generator expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at run time.
+- In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at run time.
 - So before run time, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
 
 ---
@@ -277,7 +285,7 @@ for i in x:
 7
 ```
 
-Yes, it runs for exactly eight times and stops.
+Yes, it runs for exactly **eight** times and stops.
 
 #### Explanation:
 
@@ -320,7 +328,7 @@ for idx, item in enumerate(list_4):
 [2, 4]
 ```
 
-Can you guess why the output is [2, 4]?
+Can you guess why the output is `[2, 4]`?
 
 #### 💡 Explanation:
 
@@ -363,7 +371,8 @@ SyntaxError: EOL while scanning string literal
 
 #### Explanation
 
-A raw string literal, where the backslash doesn't have the special meaning, as indicated by the prefix r. What it actually does, though, is simply change the behavior of backslashes, so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
+- In a raw string literal, as indicated by the prefix `r`, the backslash doesn't have the special meaning.
+- What the interpreter actually does, though, is simply change the behavior of backslashes, so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
 
 ---
 
@@ -440,7 +449,8 @@ def convert_list_to_string(l, iters):
 
 ### Yes, it exists!
 
-The `else` clause for loops. One typical example might be
+**The `else` clause for loops.** One typical example might be:
+
 ```py
   def does_exists_num(l, to_find):
       for num in l:
@@ -460,7 +470,8 @@ Exists!
 Does not exist
 ```
 
-The `else` clause in exception handling. An example,
+**The `else` clause in exception handling.** An example,
+
 ```py
 try:
     pass
@@ -476,13 +487,14 @@ Try block executed successfully...
 ```
 
 #### 💡 Explanation:
-- The `else` clause is executed only when there's no explicit `break` after all the iterations of the loop.
+- The `else` clause after a loop is executed only when there's no explicit `break` after all the iterations.
 - `else` clause after try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
 
 ---
 
 ###  `is` is not what it is!
 
+The following is a very famous example present all over the internet.
 
 ```py
 >>> a = 256
@@ -536,7 +548,7 @@ Quoting from https://docs.python.org/3/c-api/long.html
 140084850247344
 ```
 
-Here the integer isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257 ,` and so it goes on to create another object in the memory.
+Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257 ,` and so it goes on to create another object in the memory.
 
 
 **Both `a` and `b` refer to the same object, when initialized with same value in the same line.**
@@ -612,7 +624,7 @@ Even when the values of `x` were different in every iteration prior to appending
 
 - When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the variable, not its value. So all of the functions use the latest value assigned to the variable for computation.
 
-- To get the desired behavior you can pass in the loop variable as a named variable to the function which will define the variable again within the function's scope.
+- To get the desired behavior you can pass in the loop variable as a named variable to the function. **Why this works?** Because this will define the variable again within the function's scope.
 
     ```py
     funcs = []
@@ -717,6 +729,8 @@ board = [row]*3
 >>> board
 [['X', '', ''], ['X', '', ''], ['X', '', '']]
 ```
+
+We didn't assigned 3 "X"s or did we?
 
 #### 💡 Explanation:
 
@@ -850,6 +864,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
       a += 1
       return a
   ```
+  
   **Output:**
   ```py
   >>> another_func()
@@ -961,6 +976,7 @@ def some_func():
 - The return value of a function is determined by the last `return` statement executed. Since the `finally` clause always executes, a `return` statement executed in the `finally` clause will always be the last one executed.
 
 ---
+
 ###  When True is actually False
 
 ```py
@@ -977,7 +993,7 @@ I've lost faith in truth!
 #### 💡 Explanation:
 
 - Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true). Then they added `True`, `False`, and a `bool` type, but, for backward compatibility, they couldn't make `True` and `False` constants- they just were built-in variables.
-- Python 3 was backwards-incompatible, so it was now finally possible to fix that, and so this example won't work with Python 3.x.
+- Python 3 was backwards-incompatible, so it was now finally possible to fix that, and so this example won't work with Python 3.x!
 
 ---
 
@@ -1130,6 +1146,8 @@ Most methods that modify the items of sequence/mapping objects like `list.append
 ---
 
 ###  Explicit typecast of strings
+
+This is not a WTF at all, but it took me so long to realize such things existed in Python. So sharing it here for the beginners.
 
 ```py
 a = float('inf')

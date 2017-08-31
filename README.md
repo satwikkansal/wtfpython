@@ -120,7 +120,7 @@ Probably unexpected output
   ```py
   Setting up examples for clarification (if necessary)
   ```
-  **Outupt:**
+  **Output:**
   ```py
   >>> trigger # some example that makes it easy to unveil the magic
   # some justified output
@@ -1400,7 +1400,7 @@ tuple()
 
 ### Let's see if you can guess this?
 
-Originally, suggested by @PiaFraus in [this](https://github.com/satwikkansal/wtfPython/issues/9) issue.
+Suggested by @PiaFraus in [this](https://github.com/satwikkansal/wtfPython/issues/9) issue.
 
 ```py
 a, b = a[b] = {}, 5

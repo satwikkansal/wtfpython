@@ -29,7 +29,7 @@ So, here ya go...
       - [Explanation](#explanation-1)
     - [Time for some hash brownies!](#time-for-some-hash-brownies)
       - [Explanation](#explanation-2)
-    - [Evaluation time disperancy](#evaluation-time-disperancy)
+    - [Evaluation time discrepancy](#evaluation-time-discrepancy)
       - [💡 Explanation](#-explanation)
     - [Modifying a dictionary while iterating over it](#modifying-a-dictionary-while-iterating-over-it)
       - [Explanation:](#explanation)
@@ -240,7 +240,7 @@ some_dict[5] = "Python"
 
 ---
 
-###  Evaluation time disperancy
+###  Evaluation time discrepancy
 
 ```py
 array = [1, 8, 15]

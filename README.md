@@ -1022,7 +1022,7 @@ def some_func():
 ###  When True is actually False
 
 ```py
-True == False
+True = False
 if True == False:
     print("I've lost faith in truth!")
 ```

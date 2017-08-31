@@ -1,5 +1,5 @@
-All patches are welcome. If you're ading a new example, please do create an issue before submitting a patch.
-dcd
+All patches are welcome. If you're adding a new example, please do create an issue before submitting a patch.
+
 You can use the following template for adding a new example:
 
 <pre>

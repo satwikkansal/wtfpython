@@ -429,8 +429,8 @@ def convert_list_to_string(l, iters):
 
 ```py
 >>> a = "some_string"
-140420665652016
 >>> id(a)
+140420665652016
 >>> id("some" + "_" + "string") # Notice that both the ids are same.
 140420665652016
 # using "+", three strings:
@@ -1401,9 +1401,8 @@ tuple()
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
   
   **💡 Explanation:**
-  If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list, it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic list.
+  If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list, it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic `list` object API.
 
-  Also, it's string specific, and it sounds wrong to put a string-specific method on a generic list.
 * Few weird looking but semantically correct statements:
   + `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
   + `'a'[0][0][0][0][0]` is also a semantically correct statement as strings are iterable in Python.

@@ -83,6 +83,8 @@ So, here ya go...
       - [💡 Explanation:](#-explanation-16)
     - [Needle in a Haystack](#needle-in-a-haystack)
       - [💡 Explanation:](#-explanation-17)
+    - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
+      - [💡 Explanation:](#-explanation-18)
     - [Minor Ones](#minor-ones)
 - [TODO: Hell of an example!](#todo-hell-of-an-example)
 - [Contributing](#contributing)
@@ -1398,11 +1400,14 @@ tuple()
 
 ### Let's see if you can guess this?
 
-Originally, suggested by @PiaFraus in [this](https://github.com/satwikkansal/wtfPython/issues/9) issue.
+Suggested by @PiaFraus in [this](https://github.com/satwikkansal/wtfPython/issues/9) issue.
+
+```py
+a, b = a[b] = {}, 5
+```
 
 **Output:**
 ```py
->>> a, b = a[b] = {}, 5
 >>> a
 {5: ({...}, 5)}
 ```

@@ -55,19 +55,19 @@ So, here ya go...
       - [💡 Explanation:](#-explanation-6)
     - [Beware of default mutable arguments!](#beware-of-default-mutable-arguments)
       - [💡 Explanation:](#-explanation-7)
-    - [Mutating the immutable!](#mutating-the-immutable)
+    - [Same operands, different story!](#same-operands-different-story)
       - [💡 Explanation:](#-explanation-8)
-    - [Using a variable not defined in scope](#using-a-variable-not-defined-in-scope)
+    - [Mutating the immutable!](#mutating-the-immutable)
       - [💡 Explanation:](#-explanation-9)
-    - [The disappearing variable from outer scope](#the-disappearing-variable-from-outer-scope)
+    - [Using a variable not defined in scope](#using-a-variable-not-defined-in-scope)
       - [💡 Explanation:](#-explanation-10)
-    - [Return return everywhere!](#return-return-everywhere)
+    - [The disappearing variable from outer scope](#the-disappearing-variable-from-outer-scope)
       - [💡 Explanation:](#-explanation-11)
-    - [When True is actually False](#when-true-is-actually-false)
+    - [Return return everywhere!](#return-return-everywhere)
       - [💡 Explanation:](#-explanation-12)
-    - [Be careful with chained operations](#be-careful-with-chained-operations)
+    - [When True is actually False](#when-true-is-actually-false)
       - [💡 Explanation:](#-explanation-13)
-    - [a += b doesn't behave the same way as a = a + b](#a--b-doesnt-behave-the-same-way-as-a--a--b)
+    - [Be careful with chained operations](#be-careful-with-chained-operations)
       - [💡 Explanation:](#-explanation-14)
     - [Name resolution ignoring class scope](#name-resolution-ignoring-class-scope)
       - [💡 Explanation](#-explanation-1)
@@ -801,9 +801,49 @@ def some_func(default_arg=[]):
 
 ---
 
-###  Mutating the immutable!
+### Same operands, different story!
 
-This might be obvious for most of you guys, but it took me a lot of time to realize it.
+1\.
+```py
+a = [1, 2, 3, 4]
+b = a
+a = a + [5, 6, 7, 8]
+```
+
+**Output:**
+```py
+>>> a
+[1, 2, 3, 4, 5, 6, 7, 8]
+>>> b
+[1, 2, 3, 4]
+```
+
+2\.
+```py
+a = [1, 2, 3, 4]
+b = a
+a += [5, 6, 7, 8]
+```
+
+**Output:**
+```py
+>>> a
+[1, 2, 3, 4, 5, 6, 7, 8]
+>>> b
+[1, 2, 3, 4, 5, 6, 7, 8]
+```
+
+#### 💡 Explanation:
+
+*  a += b doesn't behave the same way as a = a + b
+
+* The expression `a = a + [5,6,7,8]` generates a new object and sets `a`'s reference to that new object, leaving `b` unchanged.
+
+* The expression `a + =[5,6,7,8]` is actually mapped to an "extend" function that operates on the object such that `a` and `b` still point to the same object that has been modified in-place.
+
+---
+
+###  Mutating the immutable!
 
 ```py
 some_tuple = ("A", "tuple", "with", "values")
@@ -822,6 +862,8 @@ TypeError: 'tuple' object does not support item assignment
 >>> another_tuple
 ([1, 2], [3, 4], [5, 6, 1000, 99, 999])
 ```
+
+But I thought tuples were immutable...
 
 #### 💡 Explanation:
 
@@ -1032,46 +1074,6 @@ While such behavior might seem silly to you in the above examples, it's fantasti
   ```
   So, `1 < 1` evaluates to `False`
 
-
----
-
-###  a += b doesn't behave the same way as a = a + b
-
-1\.
-```py
-a = [1, 2, 3, 4]
-b = a
-a = a + [5, 6, 7, 8]
-```
-
-**Output:**
-```py
->>> a
-[1, 2, 3, 4, 5, 6, 7, 8]
->>> b
-[1, 2, 3, 4]
-```
-
-2\.
-```py
-a = [1, 2, 3, 4]
-b = a
-a += [5, 6, 7, 8]
-```
-
-**Output:**
-```py
->>> a
-[1, 2, 3, 4, 5, 6, 7, 8]
->>> b
-[1, 2, 3, 4, 5, 6, 7, 8]
-```
-
-#### 💡 Explanation:
-
-* The expression `a = a + [5,6,7,8]` generates a new object and sets `a`'s reference to that new object, leaving `b` unchanged.
-
-* The expression `a + =[5,6,7,8]` is actually mapped to an "extend" function that operates on the object such that `a` and `b` still point to the same object that has been modified in-place.
 
 ---
 
@@ -1362,6 +1364,8 @@ Before Python 3.5, the boolean value fo `datetime.time` object was considered to
 
 ### Needle in a Haystack
 
+Almost every Python programmer would have faced this situation.
+
 ```py
 t = ('one', 'two')
 for i in t:
@@ -1395,6 +1399,7 @@ tuple()
 ###  Minor Ones
 
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
+  
   **💡 Explanation:**
   If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list, it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic list.
 
@@ -1424,7 +1429,7 @@ tuple()
 
 * Multiple Python threads don't run concurrently (yes you heard it right!). It may seem intuitive to spawn several threads and let them execute concurrently, but, because of the Global Interpreter Lock in Python, all you're doing is making your threads execute on the same core turn by turn. To achieve actual parallelization in Python, you might want to use the Python [multiprocessing](https://docs.python.org/2/library/multiprocessing.html) module.
 
-* List slicing with out of the bound indices throws no errors
+* List slicing with out of the bounds indices throws no errors
   ```py
   >>> some_list = [1, 2, 3, 4, 5]
   >>> some_list[111:]
@@ -1444,7 +1449,7 @@ All patches are Welcome! Filing an issue first before submitting a patch will be
 
 # Acknowledgements
 
-The idea and design for this list are inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs).
+The idea and design for this collection are inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs).
 
 #### Some nice Links!
 * https://www.youtube.com/watch?v=sH4XF6pKKmk

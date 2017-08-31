@@ -1,5 +1,5 @@
 <h1 align="center"> What the f*ck Python? 🐍 </h1>
-<p align="center"> A collection of subtle and tricky Python examples. </p>
+<p align="center"> A collection of interesting and tricky Python examples. </p>
 
 [![WTFPL 2.0][license-image]][license-url]
 
@@ -132,7 +132,7 @@ A good way to get the most out of these examples, in my opinion, will be just to
 - Read the output snippets and
   + Check if the outputs are the same as you'd expect.
   + Make sure know the exact reason behind the output being the way it is.
-    - If no, read the explanation (and if you still don't understand, shout out! and create an issue [here]()).
+    - If no, read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
 PS: You can also read these examples at the command line. First install the npm package `wtfpython`,
@@ -1445,7 +1445,7 @@ Trying to come up with an example that combines multiple examples discussed abov
 
 # Contributing
 
-All patches are Welcome! Filing an issue first before submitting a patch will be appreciated :)
+All patches are Welcome! Filing an [issue](https://github.com/satwikkansal/wtfPython) first before submitting a patch will be appreciated :)
 
 # Acknowledgements
 

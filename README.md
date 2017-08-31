@@ -1175,7 +1175,7 @@ True
 >>> b == d #but nan!=nan
 False
 >>> 50/a
-0
+0.0
 >>> a/a
 nan
 >>> 23 + b

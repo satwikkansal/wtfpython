@@ -1177,6 +1177,8 @@ nan
 ValueError: could not convert string to float: some_other_string
 >>> a == -c #inf==inf
 True
+>>> None == None # None==None
+True
 >>> b == d #but nan!=nan
 False
 >>> 50/a

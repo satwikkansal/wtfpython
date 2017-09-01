@@ -1510,8 +1510,8 @@ a, b = a[b] = {}, 5
   ```py
   >>> isinstance(True, int)
   True
-  >>> isinstance(False,   float)
-  True
+  >>> isinstance(True, float)
+  False
   ```
 * Python uses 2 bytes for local variable storage in functions. In theory, this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
      ```py

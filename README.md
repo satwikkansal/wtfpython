@@ -1407,6 +1407,36 @@ tuple()
 
 ---
 
+### Loop variable resilient to changes
+
+Suggested by @tukkek in [this](https://github.com/satwikkansal/wtfPython/issues/11) issue.
+
+```py
+for i in range(7):
+    print(i)
+    i = 10
+```
+
+**Output:**
+```
+0
+1
+2
+3
+4
+5
+6
+```
+
+Did you expect the loop to run just once?
+
+#### 💡 Explanation:
+
+- [Source](https://docs.python.org/3/reference/compound_stmts.html#the-for-statement)
+- The assignment statement `i = 10` never affects the iterations of the loop because of the way for loops work in Python. Before the beginning of every iteration, the next item provided by the iterator (`range(7)` this case) is unpacked and assigned the target list variables (`i` in this case).
+
+---
+
 ### Let's see if you can guess this?
 
 Suggested by @PiaFraus in [this](https://github.com/satwikkansal/wtfPython/issues/9) issue.

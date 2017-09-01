@@ -1377,6 +1377,44 @@ Before Python 3.5, the boolean value fo `datetime.time` object was considered to
 
 ---
 
+### Counting the booleans
+
+```py
+# A simple example to count the number of boolean and
+# integers in an iterable of mixed data types.
+mixed_list = [False, 1.0, "some_string", 3, True, [], False]
+integers_found_so_far = 0
+booleans_found_so_far = 0
+
+for item in mixed_list:
+    if isinstance(item, int):
+        integers_found_so_far += 1
+    elif isinstance(item, bool):
+        booleans_found_so_far += 1
+```
+
+**Outuput:**
+```py
+>>> booleans_found_so_far
+0
+>>> integers_found_so_far
+4
+```
+
+#### 💡 Explanation:
+
+* Booleans are a subclass of `int`
+  ```py
+  >>> isinstance(True, int)
+  True
+  >>> isinstance(False, int)
+  True
+  ```
+
+* See this StackOverflow [answer](https://stackoverflow.com/a/8169049/4354153) for rationale behind it.
+
+---
+
 ### Needle in a Haystack
 
 Almost every Python programmer would have faced this situation.
@@ -1508,13 +1546,7 @@ a, b = a[b] = {}, 5
   + `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
   + `'a'[0][0][0][0][0]` is also a semantically correct statement as strings are iterable in Python.
   + `3 --0-- 5 == 8` and `--5 == 5` are both semantically correct statments and evalute to `True`.
-* Booleans are a subclass of `int`
-  ```py
-  >>> isinstance(True, int)
-  True
-  >>> isinstance(True, float)
-  False
-  ```
+
 * Python uses 2 bytes for local variable storage in functions. In theory, this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
      ```py
      import dis

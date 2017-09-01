@@ -164,7 +164,7 @@ Now, just run `wtfpython` at the command line which will open this collection in
 
 Wut?
 
-**Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shelll.
+**Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shell.
 
 #### Explanation
 

@@ -1,4 +1,6 @@
-All patches are welcome. If you're adding a new example, please do create an issue before submitting a patch.
+All patches are welcome. Feel free to even suggest some catch and funny titles for the existing Examples. I really want to make this collection as interesting to read as possible.
+
+If you're adding a new example, please do create an issue to discuss it before submitting a patch.
 
 You can use the following template for adding a new example:
 

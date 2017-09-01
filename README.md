@@ -1511,7 +1511,7 @@ Trying to come up with an example that combines multiple examples discussed abov
 
 # Contributing
 
-All patches are Welcome! Filing an [issue](https://github.com/satwikkansal/wtfPython) first before submitting a patch will be appreciated :)
+All patches are Welcome! Filing an [issue](https://github.com/satwikkansal/wtfPython) first before submitting a patch will be appreciated :) You can see [CONTRIBUTING.md](/CONTRIBUTING.md) further details.
 
 # Acknowledgements
 

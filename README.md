@@ -98,6 +98,8 @@ So, here ya go...
 
 # Structure of the Examples
 
+**Note:** All the examples mentioned below are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified in the example description.
+
 All the examples are structured like below:
 
 ### Some fancy Title
@@ -114,10 +116,9 @@ Probably unexpected output
 ```
 (Optional): One line describing the unexpected output.
 
-**Note:** All the examples mentioned below are run on Python 3.5.2 interactive interpreter unless explicitly specified.
-
 
 #### 💡 Explanation:
+
 * Brief explanation of what's happening and why is it happening.
   ```py
   Setting up examples for clarification (if necessary)
@@ -151,6 +152,7 @@ Now, just run `wtfpython` at the command line which will open this collection in
 
 ###  Skipping lines?
 
+**Output:**
 ```py
 >>> value = 11
 >>> valuе = 32
@@ -159,6 +161,8 @@ Now, just run `wtfpython` at the command line which will open this collection in
 ```
 
 Wut?
+
+**Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shelll.
 
 #### Explanation
 
@@ -170,8 +174,6 @@ Some Unicode characters look identical to ASCII ones, but are considered distinc
 >>> value
 42
 ```
-
-**Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shelll.
 
 ---
 

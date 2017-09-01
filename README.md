@@ -169,6 +169,8 @@ Some Unicode characters look identical to ASCII ones, but are considered distinc
 42
 ```
 
+**Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shelll.
+
 ---
 
 ###  Well, something is fishy...

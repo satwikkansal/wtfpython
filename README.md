@@ -521,8 +521,13 @@ True
 
 * `is` operator checks if both the operands refer to the same object (i.e. it checks if the identity of the operands matches or not).
 * `==` operator compares the values of both the operands and checks if they are the same.
-* So if the `is` operator returns `True` then the equality is definitely `True`, but the opposite may or may not be True.
-
+* So `is` is for reference equality and `==` is for value equality. An example to clear things up,
+  ```py
+  >>> [] == []
+  True
+  >>> [] is [] # These are two empty lists at two different memory locations.
+  False
+  ```
 
 **`256` is an existing object but `257` isn't**
 
@@ -550,7 +555,7 @@ Quoting from https://docs.python.org/3/c-api/long.html
 140084850247344
 ```
 
-Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257 ,` and so it goes on to create another object in the memory.
+Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257` and so it goes on to create another object in the memory.
 
 
 **Both `a` and `b` refer to the same object, when initialized with same value in the same line.**

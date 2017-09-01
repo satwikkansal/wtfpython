@@ -722,7 +722,7 @@ print(x, ': x in global')
 ```py
 # Let's initialize a row
 row = [""]*3 #row i['', '', '']
-# Let's make a bord
+# Let's make a board
 board = [row]*3
 ```
 
@@ -790,7 +790,7 @@ def some_func(default_arg=[]):
     >>> some_func()
     >>> some_func.__defaults__
     (['some_string'],)
-    >>> some)func()
+    >>> some_func()
     >>> some_func.__defaults__
     (['some_string', 'some_string'],)
     >>> some_func([])

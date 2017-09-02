@@ -24,71 +24,71 @@ So, here ya go...
 - [Usage](#usage)
 - [👀 Examples](#-examples)
     - [Skipping lines?](#skipping-lines)
-      - [Explanation](#explanation)
-    - [Well, something is fishy...](#well-something-is-fishy)
-      - [Explanation](#explanation-1)
-    - [Time for some hash brownies!](#time-for-some-hash-brownies)
-      - [Explanation](#explanation-2)
-    - [Evaluation time discrepancy](#evaluation-time-discrepancy)
       - [💡 Explanation](#-explanation)
-    - [Modifying a dictionary while iterating over it](#modifying-a-dictionary-while-iterating-over-it)
-      - [Explanation:](#explanation)
-    - [Deleting a list item while iterating over it](#deleting-a-list-item-while-iterating-over-it)
-      - [💡 Explanation:](#-explanation-1)
-    - [Backslashes at the end of string](#backslashes-at-the-end-of-string)
-      - [Explanation](#explanation-3)
-    - [Let's make a giant string!](#lets-make-a-giant-string)
-      - [Explanation](#explanation-4)
-    - [String concatenation interpreter optimizations.](#string-concatenation-interpreter-optimizations)
-      - [💡 Explanation:](#-explanation-2)
-    - [Yes, it exists!](#yes-it-exists)
-      - [💡 Explanation:](#-explanation-3)
-    - [`is` is not what it is!](#is-is-not-what-it-is)
-      - [💡 Explanation:](#-explanation-4)
-    - [`is not ...` is different from `is (not ...)`](#is-not--is-different-from-is-not-)
-      - [Explanation](#explanation-5)
-    - [The function inside loop sticks to the same output](#the-function-inside-loop-sticks-to-the-same-output)
-      - [Explanation](#explanation-6)
-    - [Loop variables leaking out of local scope!](#loop-variables-leaking-out-of-local-scope)
-      - [💡 Explanation:](#-explanation-5)
-    - [A tic-tac-toe where X wins in the first attempt!](#a-tic-tac-toe-where-x-wins-in-the-first-attempt)
-      - [💡 Explanation:](#-explanation-6)
-    - [Beware of default mutable arguments!](#beware-of-default-mutable-arguments)
-      - [💡 Explanation:](#-explanation-7)
-    - [Same operands, different story!](#same-operands-different-story)
-      - [💡 Explanation:](#-explanation-8)
-    - [Mutating the immutable!](#mutating-the-immutable)
-      - [💡 Explanation:](#-explanation-9)
-    - [Using a variable not defined in scope](#using-a-variable-not-defined-in-scope)
-      - [💡 Explanation:](#-explanation-10)
-    - [The disappearing variable from outer scope](#the-disappearing-variable-from-outer-scope)
-      - [💡 Explanation:](#-explanation-11)
-    - [Return return everywhere!](#return-return-everywhere)
-      - [💡 Explanation:](#-explanation-12)
-    - [When True is actually False](#when-true-is-actually-false)
-      - [💡 Explanation:](#-explanation-13)
-    - [Be careful with chained operations](#be-careful-with-chained-operations)
-      - [💡 Explanation:](#-explanation-14)
-    - [Name resolution ignoring class scope](#name-resolution-ignoring-class-scope)
+    - [Well, something is fishy...](#well-something-is-fishy)
       - [💡 Explanation](#-explanation-1)
-    - [From filled to None in one instruction...](#from-filled-to-none-in-one-instruction)
+    - [Time for some hash brownies!](#time-for-some-hash-brownies)
       - [💡 Explanation](#-explanation-2)
-    - [Explicit typecast of strings](#explicit-typecast-of-strings)
+    - [Evaluation time discrepancy](#evaluation-time-discrepancy)
+      - [💡 Explanation](#-explanation-3)
+    - [Modifying a dictionary while iterating over it](#modifying-a-dictionary-while-iterating-over-it)
+      - [💡 Explanation:](#-explanation-1)
+    - [Deleting a list item while iterating over it](#deleting-a-list-item-while-iterating-over-it)
+      - [💡 Explanation:](#-explanation-2)
+    - [Backslashes at the end of string](#backslashes-at-the-end-of-string)
+      - [💡 Explanation](#-explanation-4)
+    - [Let's make a giant string!](#lets-make-a-giant-string)
+      - [💡 Explanation](#-explanation-5)
+    - [String concatenation interpreter optimizations.](#string-concatenation-interpreter-optimizations)
+      - [💡 Explanation:](#-explanation-3)
+    - [Yes, it exists!](#yes-it-exists)
+      - [💡 Explanation:](#-explanation-4)
+    - [`is` is not what it is!](#is-is-not-what-it-is)
+      - [💡 Explanation:](#-explanation-5)
+    - [`is not ...` is different from `is (not ...)`](#is-not--is-different-from-is-not-)
+      - [💡 Explanation](#-explanation-6)
+    - [The function inside loop sticks to the same output](#the-function-inside-loop-sticks-to-the-same-output)
+      - [💡 Explanation](#-explanation-7)
+    - [Loop variables leaking out of local scope!](#loop-variables-leaking-out-of-local-scope)
+      - [💡 Explanation:](#-explanation-6)
+    - [A tic-tac-toe where X wins in the first attempt!](#a-tic-tac-toe-where-x-wins-in-the-first-attempt)
+      - [💡 Explanation:](#-explanation-7)
+    - [Beware of default mutable arguments!](#beware-of-default-mutable-arguments)
+      - [💡 Explanation:](#-explanation-8)
+    - [Same operands, different story!](#same-operands-different-story)
+      - [💡 Explanation:](#-explanation-9)
+    - [Mutating the immutable!](#mutating-the-immutable)
+      - [💡 Explanation:](#-explanation-10)
+    - [Using a variable not defined in scope](#using-a-variable-not-defined-in-scope)
+      - [💡 Explanation:](#-explanation-11)
+    - [The disappearing variable from outer scope](#the-disappearing-variable-from-outer-scope)
+      - [💡 Explanation:](#-explanation-12)
+    - [Return return everywhere!](#return-return-everywhere)
+      - [💡 Explanation:](#-explanation-13)
+    - [When True is actually False](#when-true-is-actually-false)
+      - [💡 Explanation:](#-explanation-14)
+    - [Be careful with chained operations](#be-careful-with-chained-operations)
       - [💡 Explanation:](#-explanation-15)
-    - [Class attributes and instance attributes](#class-attributes-and-instance-attributes)
-      - [Explanation:](#explanation-1)
-    - [Catching the Exceptions!](#catching-the-exceptions)
-      - [Explanation](#explanation-7)
-    - [Midnight time doesn't exist?](#midnight-time-doesnt-exist)
+    - [Name resolution ignoring class scope](#name-resolution-ignoring-class-scope)
+      - [💡 Explanation](#-explanation-8)
+    - [From filled to None in one instruction...](#from-filled-to-none-in-one-instruction)
+      - [💡 Explanation](#-explanation-9)
+    - [Explicit typecast of strings](#explicit-typecast-of-strings)
       - [💡 Explanation:](#-explanation-16)
-    - [Counting the booleans](#counting-the-booleans)
+    - [Class attributes and instance attributes](#class-attributes-and-instance-attributes)
       - [💡 Explanation:](#-explanation-17)
-    - [Needle in a Haystack](#needle-in-a-haystack)
+    - [Catching the Exceptions!](#catching-the-exceptions)
+      - [💡 Explanation](#-explanation-10)
+    - [Midnight time doesn't exist?](#midnight-time-doesnt-exist)
       - [💡 Explanation:](#-explanation-18)
-    - [Loop variable resilient to changes](#loop-variable-resilient-to-changes)
+    - [Counting the booleans](#counting-the-booleans)
       - [💡 Explanation:](#-explanation-19)
-    - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
+    - [Needle in a Haystack](#needle-in-a-haystack)
       - [💡 Explanation:](#-explanation-20)
+    - [Loop variable resilient to changes](#loop-variable-resilient-to-changes)
+      - [💡 Explanation:](#-explanation-21)
+    - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
+      - [💡 Explanation:](#-explanation-22)
     - [Minor Ones](#minor-ones)
 - [TODO: Hell of an example!](#todo-hell-of-an-example)
 - [Contributing](#contributing)
@@ -166,7 +166,7 @@ Wut?
 
 **Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shell.
 
-#### Explanation
+#### 💡 Explanation
 
 Some Unicode characters look identical to ASCII ones, but are considered distinct by the interpreter.
 
@@ -203,7 +203,7 @@ Shouldn't that be 100?
 
 **Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
 
-#### Explanation
+#### 💡 Explanation
 
 * **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
 * This is how Python handles tabs:
@@ -239,7 +239,7 @@ some_dict[5] = "Python"
 
 "Python" destroyed the existence of "JavaScript"?
 
-#### Explanation
+#### 💡 Explanation
 
 * `5` (an `int` type) is implicitly converted to `5.0` (a `float` type) before calculating the hash in Python.
   ```py
@@ -297,7 +297,7 @@ for i in x:
 
 Yes, it runs for exactly **eight** times and stops.
 
-#### Explanation:
+#### 💡 Explanation:
 
 * Iteration over a dictionary that you edit at the same time is not supported.
 * It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
@@ -379,7 +379,7 @@ Can you guess why the output is `[2, 4]`?
 SyntaxError: EOL while scanning string literal
 ```
 
-#### Explanation
+#### 💡 Explanation
 
 - In a raw string literal, as indicated by the prefix `r`, the backslash doesn't have the special meaning.
 - What the interpreter actually does, though, is simply change the behavior of backslashes, so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
@@ -427,7 +427,7 @@ def convert_list_to_string(l, iters):
 10000 loops, best of 3: 75.3 µs per loop
 ```
 
-#### Explanation
+#### 💡 Explanation
 - You can read more about [timeit](https://docs.python.org/3/library/timeit.html) from here. It is generally used to measure the execution time of snippets.
 - Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases.
 - Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for short strings).
@@ -597,7 +597,7 @@ True
 False
 ```
 
-#### Explanation
+#### 💡 Explanation
 
 - `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
 - `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise.
@@ -635,7 +635,7 @@ Even when the values of `x` were different in every iteration prior to appending
 [512, 512, 512, 512, 512, 512, 512, 512, 512, 512]
 ```
 
-#### Explanation
+#### 💡 Explanation
 
 - When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the variable, not its value. So all of the functions use the latest value assigned to the variable for computation.
 
@@ -1267,7 +1267,7 @@ True
 ```
 
 
-#### Explanation:
+#### 💡 Explanation:
 
 * Class variables and variables in class instances are internally handled as dictionaries of a class object. If a variable name is not found in the dictionary of the current class, the parent classes are searched for it.
 * The `+=` operator modifies the mutable object in-place without creating a new object. So changing the attribute of one instance affects the other instances and the class attribute as well.
@@ -1306,7 +1306,7 @@ ValueError: list.remove(x): x not in list
 SyntaxError: invalid syntax
 ```
 
-#### Explanation
+#### 💡 Explanation
 
 * To add multiple Exceptions to the except clause, you need to pass them as parenthesized tuple as the first argument. The second argument is an optional name, which when supplied will bind the Exception instance that has been raised. Example,
   ```py

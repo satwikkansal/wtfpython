@@ -1,92 +1,59 @@
-<h1 align="center"> What the f*ck Python? 🐍 </h1>
-<p align="center"> A collection of interesting and tricky Python examples. </p>
+<h1 align="center"> 什么是「什么鬼」Python？ 🐍 </h1>
+<p align="center"> 一些有趣奇特的 Python 示例。 </p>
 
 [![WTFPL 2.0][license-image]][license-url]
 
 
-Python, being awesome by design high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
+Python，是一种非常棒的基于解释器的高级语言。为我们程序员提供了很多令人舒服的特性，但有时候，Python 代码片段的运行结果对于普通用户来说并不明了。
 
-Here is a fun project attempting to collect such classic and tricky examples of unexpected behaviors in Python and discuss what exactly is happening under the hood!
+这是一个有趣的项目，它试图收集 Python 中意想不到行为的经典且奇特的例子，并讨论究竟发生了什么事情！
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
+虽然您在下面看到的实例可能不是真正意义的「什么鬼」，但他们会体现您可能不知道的 Python 的一些有趣的部分。我发现它是学习编程语言内部的一个很好的方法，我想你也会发现乐趣所在的！
 
-If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to revive some sweet old memories of yours being bitten by these gotchas :sweat_smile:
+如果你是一名有经验的 Python 程序员，你可能对其中大多数示例很熟悉，我可能会唤起你们被困扰的痛苦回忆 :sweat_smile:
 
-So, here ya go...
+所以，看这里...
 
-# Table of Contents
+# 目录
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-- [Structure of the Examples](#structure-of-the-examples)
-    - [Some fancy Title](#some-fancy-title)
-      - [💡 Explanation:](#-explanation)
-- [Usage](#usage)
-- [👀 Examples](#-examples)
-    - [Skipping lines?](#skipping-lines)
-      - [Explanation](#explanation)
-    - [Well, something is fishy...](#well-something-is-fishy)
-      - [Explanation](#explanation-1)
+- [示例的结构](#示例的结构)
+    - [花哨的标题](#花哨的标题)
+      - [解释](#解释)
+- [所有示例](#所有示例)
+    - [为什么变量的值没有被覆盖掉](#为什么变量的值没有被覆盖掉)
+    - [换行符和空格的不同居然影响了函数结果](#换行符和空格的不同居然影响了函数结果)
     - [Time for some hash brownies!](#time-for-some-hash-brownies)
-      - [Explanation](#explanation-2)
     - [Evaluation time discrepancy](#evaluation-time-discrepancy)
-      - [💡 Explanation](#-explanation)
     - [Modifying a dictionary while iterating over it](#modifying-a-dictionary-while-iterating-over-it)
-      - [Explanation:](#explanation)
     - [Deleting a list item while iterating over it](#deleting-a-list-item-while-iterating-over-it)
-      - [💡 Explanation:](#-explanation-1)
     - [Backslashes at the end of string](#backslashes-at-the-end-of-string)
-      - [Explanation](#explanation-3)
     - [Let's make a giant string!](#lets-make-a-giant-string)
-      - [Explanation](#explanation-4)
     - [String concatenation interpreter optimizations.](#string-concatenation-interpreter-optimizations)
-      - [💡 Explanation:](#-explanation-2)
     - [Yes, it exists!](#yes-it-exists)
-      - [💡 Explanation:](#-explanation-3)
     - [`is` is not what it is!](#is-is-not-what-it-is)
-      - [💡 Explanation:](#-explanation-4)
     - [`is not ...` is different from `is (not ...)`](#is-not--is-different-from-is-not-)
-      - [Explanation](#explanation-5)
     - [The function inside loop sticks to the same output](#the-function-inside-loop-sticks-to-the-same-output)
-      - [Explanation](#explanation-6)
     - [Loop variables leaking out of local scope!](#loop-variables-leaking-out-of-local-scope)
-      - [💡 Explanation:](#-explanation-5)
     - [A tic-tac-toe where X wins in the first attempt!](#a-tic-tac-toe-where-x-wins-in-the-first-attempt)
-      - [💡 Explanation:](#-explanation-6)
     - [Beware of default mutable arguments!](#beware-of-default-mutable-arguments)
-      - [💡 Explanation:](#-explanation-7)
     - [Same operands, different story!](#same-operands-different-story)
-      - [💡 Explanation:](#-explanation-8)
     - [Mutating the immutable!](#mutating-the-immutable)
-      - [💡 Explanation:](#-explanation-9)
     - [Using a variable not defined in scope](#using-a-variable-not-defined-in-scope)
-      - [💡 Explanation:](#-explanation-10)
     - [The disappearing variable from outer scope](#the-disappearing-variable-from-outer-scope)
-      - [💡 Explanation:](#-explanation-11)
     - [Return return everywhere!](#return-return-everywhere)
-      - [💡 Explanation:](#-explanation-12)
     - [When True is actually False](#when-true-is-actually-false)
-      - [💡 Explanation:](#-explanation-13)
     - [Be careful with chained operations](#be-careful-with-chained-operations)
-      - [💡 Explanation:](#-explanation-14)
     - [Name resolution ignoring class scope](#name-resolution-ignoring-class-scope)
-      - [💡 Explanation](#-explanation-1)
     - [From filled to None in one instruction...](#from-filled-to-none-in-one-instruction)
-      - [💡 Explanation](#-explanation-2)
     - [Explicit typecast of strings](#explicit-typecast-of-strings)
-      - [💡 Explanation:](#-explanation-15)
     - [Class attributes and instance attributes](#class-attributes-and-instance-attributes)
-      - [Explanation:](#explanation-1)
     - [Catching the Exceptions!](#catching-the-exceptions)
-      - [Explanation](#explanation-7)
     - [Midnight time doesn't exist?](#midnight-time-doesnt-exist)
-      - [💡 Explanation:](#-explanation-16)
     - [Needle in a Haystack](#needle-in-a-haystack)
-      - [💡 Explanation:](#-explanation-17)
     - [Loop variable resilient to changes](#loop-variable-resilient-to-changes)
-      - [💡 Explanation:](#-explanation-18)
     - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
-      - [💡 Explanation:](#-explanation-19)
     - [Minor Ones](#minor-ones)
 - [TODO: Hell of an example!](#todo-hell-of-an-example)
 - [Contributing](#contributing)
@@ -96,60 +63,40 @@ So, here ya go...
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Structure of the Examples
+# 示例的结构
 
-All the examples are structured like below:
+所有示例的结构都类似下面这样：
 
-### Some fancy Title
+### 花哨的标题
 
 ```py
-# Setting up the code.
-# Preparation for the magic...
+# 开始你的表演
 ```
 
-**Output (Python version):**
+**输出 (Python 版本):**
 ```py
 >>> triggering_statement
-Probably unexpected output
+可能是一些出乎意料的输出
 ```
-(Optional): One line describing the unexpected output.
+（可选）：用一句话解释这个意料之外的输出
 
-**Note:** All the examples mentioned below are run on Python 3.5.2 interactive interpreter unless explicitly specified.
+**注意：** 下面提到的所有示例就是运行在 Python 3.5.2 解释器下，除非明确指定。
 
 
-#### 💡 Explanation:
-* Brief explanation of what's happening and why is it happening.
+#### 解释
+* 简要说明发生了什么，为什么会发生
   ```py
-  Setting up examples for clarification (if necessary)
+  设定示例进行澄清（如果必要的话）
   ```
   **Output:**
   ```py
-  >>> trigger # some example that makes it easy to unveil the magic
-  # some justified output
+  >>> trigger # 一些例子，使它很容易揭露实时
+  # 一些合理的输出
   ```
 
+# 所有示例
 
-# Usage
-
-A good way to get the most out of these examples, in my opinion, will be just to read the examples chronologically, and for every example:
-- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's gonna happen next.
-- Read the output snippets and
-  + Check if the outputs are the same as you'd expect.
-  + Make sure know the exact reason behind the output being the way it is.
-    - If no, read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
-    - If yes, give a gentle pat on your back, and you may skip to the next example.
-
-PS: You can also read these examples at the command line. First install the npm package `wtfpython`,
-```sh
-$ npm install -g wtfpython
-```
-Now, just run `wtfpython` at the command line which will open this collection in your selected `$PAGER`.
-
-#TODO: Add pypi package for reading via command line
-
-# 👀 Examples
-
-###  Skipping lines?
+### 为什么变量的值没有被覆盖掉
 
 ```py
 >>> value = 11
@@ -158,56 +105,60 @@ Now, just run `wtfpython` at the command line which will open this collection in
 11
 ```
 
-Wut?
+什么鬼？
 
-#### Explanation
+#### 解释
 
-Some Unicode characters look identical to ASCII ones, but are considered distinct by the interpreter.
+一些 Unicode 字符看起来与 ASCII 类似，但被解释器认为是不同的。
 
 ```py
->>> value = 42 #ascii e
->>> valuе = 23 #cyrillic e, Python 2.x interpreter would raise a `SyntaxError` here
+>>> value = 42 # ascii e
+>>> valuе = 23 # 斯拉夫字母 e，Python 2.x 解释器会抛一个 `SyntaxError` 错误
 >>> value
 42
 ```
 
-**Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shelll.
+**注意：** 重现这一点的最简单的方法是简单地复制上述代码段中的语句，并将它们粘贴到文件或者 shell 中。
+
+**译者：** 原来是 value 变量中的 `e` 不同，:rofl:
 
 ---
 
-###  Well, something is fishy...
+### 换行符和空格的不同居然影响了函数结果
 
 ```py
 def square(x):
     """
-    A simple function to calculate square of a number by addition.
+    一个简单的方法，通过加法计算一个数的平方。
     """
     sum_so_far = 0
     for counter in range(x):
         sum_so_far = sum_so_far + x
-  return sum_so_far
+    return sum_so_far
 ```
 
-**Output (Python 2.x):**
+**输出 (Python 2.x):**
 
 ```py
 >>> square(10)
 10
 ```
 
-Shouldn't that be 100?
+结果难道不应该是100吗？
 
-**Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
+**注意：** 如果你无法重现此问题，请尝试在 shell 运行该文件：[mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py)
 
-#### Explanation
+**译者：** 请不要直接复制这段代码运行，因为 Github 显示 README.md 的时候把 tab 转为了空格
 
-* **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
-* This is how Python handles tabs:
+#### 解释
+
+* **不要混用 tab 和 空格** `return` 前面是一个 `tab`，如果使用 4 个空格那么结果是预期中的。
+* 这是 Python 如何处理 tab 的:
   > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
-* So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
-* Python 3 is nice enough to automatically throw an error for such cases.
+* 所以 `square` 最后一行的「tab」被替换成了8个空格，错误的进入了循环的缩进里。
+* Python 3 在这种情况下很赞的自动抛出了异常。
     
-    **Output (Python 3.x):**
+    **输出 (Python 3.x)：**
     ```py
     TabError: inconsistent use of tabs and spaces in indentation
     ```

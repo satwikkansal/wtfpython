@@ -24,7 +24,7 @@ Python，是一种非常棒的基于解释器的高级语言。为我们程序�
 - [所有示例](#所有示例)
     - [为什么变量的值没有被覆盖掉](#为什么变量的值没有被覆盖掉)
     - [换行符和空格的不同居然影响了函数结果](#换行符和空格的不同居然影响了函数结果)
-    - [Time for some hash brownies!](#time-for-some-hash-brownies)
+    - [关于字典hash的奇怪结果](#关于字典hash的奇怪结果)
     - [Evaluation time discrepancy](#evaluation-time-discrepancy)
     - [Modifying a dictionary while iterating over it](#modifying-a-dictionary-while-iterating-over-it)
     - [Deleting a list item while iterating over it](#deleting-a-list-item-while-iterating-over-it)
@@ -165,7 +165,7 @@ def square(x):
 
 ---
 
-###  Time for some hash brownies!
+### 关于字典hash的奇怪结果
 
 ```py
 some_dict = {}
@@ -174,7 +174,7 @@ some_dict[5.0] = "JavaScript"
 some_dict[5] = "Python"
 ```
 
-**Output:**
+**输出：**
 ```py
 >>> some_dict[5.5]
 "Ruby"
@@ -184,20 +184,20 @@ some_dict[5] = "Python"
 "Python"
 ```
 
-"Python" destroyed the existence of "JavaScript"?
+「Python」把「JavaScript」覆盖了？
 
-#### Explanation
+#### 解释
 
-* `5` (an `int` type) is implicitly converted to `5.0` (a `float` type) before calculating the hash in Python.
+* `5`（`int` 类型） 在计算 hash 值之前被隐式转换为 `5.0`（`float` 类型）
   ```py
   >>> hash(5) == hash(5.0)
   True
   ```
-* This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains beautifully the rationale behind it.
+* 这个 StackOverflow [答案](https://stackoverflow.com/a/32211042/4354153) 优美的解释了它背后的理由。
 
 ---
 
-###  Evaluation time discrepancy
+###  赋值的时间差异导致的奇怪结果
 
 ```py
 array = [1, 8, 15]
@@ -213,8 +213,9 @@ array = [2, 8, 22]
 
 #### 💡 Explanation
 
-- In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at run time.
+- 在一个[生成器](https://wiki.python.org/moin/Generators)表达式中，`in` 表达式在声明时计算，但是条件表达式在运行时计算。
 - So before run time, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
+- 所以在运行之前，`array` 被重新赋值为列表 `[2, 8, 22]`，然后在条件表达式中分别计算 `1`，`8`，`15`的个数大于 0 的，显然只生成了 8。
 
 ---
 

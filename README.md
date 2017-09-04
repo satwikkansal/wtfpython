@@ -81,14 +81,16 @@ So, here ya go...
       - [💡 Explanation](#-explanation-10)
     - [Midnight time doesn't exist?](#midnight-time-doesnt-exist)
       - [💡 Explanation:](#-explanation-18)
-    - [Counting the booleans](#counting-the-booleans)
+    - [What's wrong with booleans?](#whats-wrong-with-booleans)
       - [💡 Explanation:](#-explanation-19)
     - [Needle in a Haystack](#needle-in-a-haystack)
       - [💡 Explanation:](#-explanation-20)
-    - [Loop variable resilient to changes](#loop-variable-resilient-to-changes)
+    - [not knot!](#not-knot)
       - [💡 Explanation:](#-explanation-21)
-    - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
+    - [Loop variable resilient to changes](#loop-variable-resilient-to-changes)
       - [💡 Explanation:](#-explanation-22)
+    - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
+      - [💡 Explanation:](#-explanation-23)
     - [Minor Ones](#minor-ones)
 - [TODO: Hell of an example!](#todo-hell-of-an-example)
 - [Contributing](#contributing)
@@ -220,6 +222,7 @@ Shouldn't that be 100?
 
 ###  Time for some hash brownies!
 
+1\.
 ```py
 some_dict = {}
 some_dict[5.5] = "Ruby"
@@ -1379,8 +1382,9 @@ Before Python 3.5, the boolean value for `datetime.time` object was considered t
 
 ---
 
-### Counting the booleans
+### What's wrong with booleans?
 
+1\.
 ```py
 # A simple example to count the number of boolean and
 # integers in an iterable of mixed data types.
@@ -1403,6 +1407,21 @@ for item in mixed_list:
 4
 ```
 
+2\.
+```py
+another_dict = {}
+another_dict[True] = "JavaScript"
+another_dict[1] = "Ruby"
+another_dict[1.0] = "Python"
+```
+
+**Output:**
+```py
+>>> another_dict[True]
+"Python"
+```
+
+
 #### 💡 Explanation:
 
 * Booleans are a subclass of `int`
@@ -1410,6 +1429,12 @@ for item in mixed_list:
   >>> isinstance(True, int)
   True
   >>> isinstance(False, int)
+  True
+  ```
+
+* The integer value of `True` is `1` and that of `False` is `0`.
+  ```py
+  >>> True == 1 == 1.0 and False == 0 == 0.0
   True
   ```
 

@@ -85,9 +85,9 @@ So, here ya go...
       - [💡 Explanation:](#-explanation-19)
     - [Needle in a Haystack](#needle-in-a-haystack)
       - [💡 Explanation:](#-explanation-20)
-    - [not knot!](#not-knot)
+    - [For what?](#for-what)
       - [💡 Explanation:](#-explanation-21)
-    - [Loop variable resilient to changes](#loop-variable-resilient-to-changes)
+    - [not knot!](#not-knot)
       - [💡 Explanation:](#-explanation-22)
     - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
       - [💡 Explanation:](#-explanation-23)
@@ -1481,6 +1481,61 @@ tuple()
 
 ---
 
+### For what?
+
+Suggested by @MittalAshok in [this](https://github.com/satwikkansal/wtfpython/issues/23) issue.
+
+```py
+some_string = "wtf"
+some_dict = {}
+for i, some_dict[i] in enumerate(some_string):
+    pass
+```
+
+**Outuput:**
+```py
+>>> some_dict # An indexed dict is created.
+{0: 'w', 1: 'f', 2: 'f'}
+```
+
+####  💡 Explanation:
+
+* A `for` statement is defined in the [Python grammar](https://docs.python.org/3/reference/grammar.html) as:
+  ```
+  for_stmt: 'for' exprlist 'in' testlist ':' suite ['else' ':' suite]
+  ```
+  Where `exprlist` is the assignment target. This means that the equivalent of `{exprlist} = {next_value}` is **executed for each item** in the iterable.
+  An interesting example suggested by @tukkek in [this](https://github.com/satwikkansal/wtfPython/issues/11) issue illustrates this:
+  ```py
+  for i in range(4):
+      print(i)
+      i = 10
+  ```
+
+  **Output:**
+  ```
+  0
+  1
+  2
+  3
+  ```
+
+  Did you expect the loop to run just once?
+
+  **💡 Explanation:**
+
+  - The assignment statement `i = 10` never affects the iterations of the loop because of the way for loops work in Python. Before the beginning of every iteration, the next item provided by the iterator (`range(4)` this case) is unpacked and assigned the target list variables (`i` in this case).
+
+* The `enumerate(some_string)` function yields a new value `i` (A counter going up) and a character from the `some_string` in each iteration. It then sets the (just assigned) `i` key of the dictionary `some_dict` to that character. The unrolling of the loop can be simplified as:
+  ```py
+  >>> i, some_dict[i] = (0, 'w')
+  >>> i, some_dict[i] = (1, 't')
+  >>> i, some_dict[i] = (2, 'f')
+  >>> some_dict
+  ```
+
+---
+
 ### not knot!
 
 Suggested by @MostAwesomeDude in [this](https://github.com/satwikkansal/wtfPython/issues/1) issue.
@@ -1507,36 +1562,6 @@ SyntaxError: invalid syntax
 * So `not x == y` is equivalent to `not (x == y)` which is equivalent to `not (True == False)` finally evaluating to `True`.
 * But `x == not y` raises a `SyntaxError` because it can be thought of being equivalent to `(x == not) y` and not `x == (not y)` which you might have expected at first sight.
 * The parser expected the `not` token to be a part of the `not in` operator (because both `==` and `not in` operators have same precedence), but after not being able to find a `in` token following the `not` token, it raises a `SyntaxError`.
-
----
-
-### Loop variable resilient to changes
-
-Suggested by @tukkek in [this](https://github.com/satwikkansal/wtfPython/issues/11) issue.
-
-```py
-for i in range(7):
-    print(i)
-    i = 10
-```
-
-**Output:**
-```
-0
-1
-2
-3
-4
-5
-6
-```
-
-Did you expect the loop to run just once?
-
-#### 💡 Explanation:
-
-- [Source](https://docs.python.org/3/reference/compound_stmts.html#the-for-statement)
-- The assignment statement `i = 10` never affects the iterations of the loop because of the way for loops work in Python. Before the beginning of every iteration, the next item provided by the iterator (`range(7)` this case) is unpacked and assigned the target list variables (`i` in this case).
 
 ---
 

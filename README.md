@@ -362,8 +362,8 @@ Can you guess why the output is `[2, 4]`?
 
 
 **Difference between `del`, `remove`, and `pop`:**
+* `del var_name` just removes the binding of the `var_name` from the local or global namespace (That's why the `list_1` is unaffected).
 * `remove` removes the first matching value, not a specific index, raises `ValueError` if the value is not found.
-* `del` removes a specific index (That's why first `list_1` was unaffected), raises `IndexError` if an invalid index is specified.
 * `pop` removes element at a specific index and returns it, raises `IndexError` if an invalid index is specified.
 
 **Why the output is `[2, 4]`?**

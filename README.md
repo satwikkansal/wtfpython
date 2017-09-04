@@ -244,11 +244,16 @@ some_dict[5] = "Python"
 
 #### 💡 Explanation
 
-* `5` (an `int` type) is implicitly converted to `5.0` (a `float` type) before calculating the hash in Python.
+* Python dictionaries check for equality and compare the hash value to determine if two keys are the same.
+* Immutable objects with same value always have a same hash in Python.
   ```py
+  >>> 5 == 5.0
+  True
   >>> hash(5) == hash(5.0)
   True
   ```
+  **Note:** Objects with different values may also have same hash (known as hash collision).
+* When the statement `some_dict[5] = "Python"` is executed, the existing value "JavaScript" is overwritten with "Python" because Python recongnizes `5` and `5.0` as the same keys of the dictionary `some_dict`.
 * This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains beautifully the rationale behind it.
 
 ---

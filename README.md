@@ -1495,7 +1495,7 @@ for i, some_dict[i] in enumerate(some_string):
 **Outuput:**
 ```py
 >>> some_dict # An indexed dict is created.
-{0: 'w', 1: 'f', 2: 'f'}
+{0: 'w', 1: 't', 2: 'f'}
 ```
 
 ####  💡 Explanation:

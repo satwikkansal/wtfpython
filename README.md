@@ -1630,7 +1630,7 @@ a, b = a[b] = {}, 5
 
 * Few weird looking but semantically correct statements:
   + `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
-  + `'a'[0][0][0][0][0]` is also a semantically correct statement as strings are iterable in Python.
+  + `'a'[0][0][0][0][0]` is also a semantically correct statement as strings are [sequences](https://docs.python.org/3/glossary.html#term-sequence)(iterables supporting element access using integer indices) in Python.
   + `3 --0-- 5 == 8` and `--5 == 5` are both semantically correct statements and evaluate to `True`.
 
 * Given that `a` is a number, `++a` and `--a` are both valid Python statements, but don't behave the same way as compared with similar statements in languages like C, C++ or Java.

@@ -1633,6 +1633,22 @@ a, b = a[b] = {}, 5
   + `'a'[0][0][0][0][0]` is also a semantically correct statement as strings are iterable in Python.
   + `3 --0-- 5 == 8` and `--5 == 5` are both semantically correct statements and evaluate to `True`.
 
+* Given that `a` is a number, `++a` and `--a` are both valid Python statements, but don't behave the same way as compared with similar statements in languages like C, C++ or Java.
+  ```py
+  >>> a = 5
+  >>> a
+  5
+  >>> ++a
+  5
+  >>> --a
+  5
+  ```
+
+  **💡 Explanation:**
+  + There is no `++` operator in Python grammar. It is actually two `+` operators.
+  + `++a` parses as `+(+a)` which translates to `a`. Similarly, the output of the statement `--a` can be justified.
+  + This StackOverflow [thread](https://stackoverflow.com/questions/3654830/why-are-there-no-and-operators-in-python) discusses the rationale behind the absence of increment and decrement operators in Python.
+
 * Python uses 2 bytes for local variable storage in functions. In theory, this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
      ```py
      import dis

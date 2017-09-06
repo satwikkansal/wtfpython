@@ -45,7 +45,7 @@ So, here ya go...
       - [💡 Explanation:](#-explanation-4)
     - [`is` is not what it is!](#is-is-not-what-it-is)
       - [💡 Explanation:](#-explanation-5)
-    - [`is not ...` is different from `is (not ...)`](#is-not--is-different-from-is-not-)
+    - [`is not ...` is not `is (not ...)`](#is-not--is-not-is-not-)
       - [💡 Explanation](#-explanation-6)
     - [The function inside loop sticks to the same output](#the-function-inside-loop-sticks-to-the-same-output)
       - [💡 Explanation](#-explanation-7)
@@ -598,7 +598,7 @@ Here the interpreter isn't smart enough while executing `y = 257` to recognize t
 
 ---
 
-###  `is not ...` is different from `is (not ...)`
+###  `is not ...` is not `is (not ...)`
 
 ```py
 >>> 'something' is not None

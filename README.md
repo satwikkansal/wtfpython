@@ -108,32 +108,32 @@ So, here ya go...
 
 All the examples are structured like below:
 
-### Some fancy Title
-
-```py
-# Setting up the code.
-# Preparation for the magic...
-```
-
-**Output (Python version):**
-```py
->>> triggering_statement
-Probably unexpected output
-```
-(Optional): One line describing the unexpected output.
-
-
-#### 💡 Explanation:
-
-* Brief explanation of what's happening and why is it happening.
-  ```py
-  Setting up examples for clarification (if necessary)
-  ```
-  **Output:**
-  ```py
-  >>> trigger # some example that makes it easy to unveil the magic
-  # some justified output
-  ```
+> ### Some fancy Title
+> 
+> ```py
+> # Setting up the code.
+> # Preparation for the magic...
+> ```
+> 
+> **Output (Python version):**
+> ```py
+> >>> triggering_statement
+> Probably unexpected output
+> ```
+> (Optional): One line describing the unexpected output.
+> 
+> 
+> #### 💡 Explanation:
+> 
+> * Brief explanation of what's happening and why is it happening.
+>   ```py
+>   Setting up examples for clarification (if necessary)
+>   ```
+>   **Output:**
+>   ```py
+>   >>> trigger # some example that makes it easy to unveil the magic
+>   # some justified output
+>   ```
 
 
 # Usage

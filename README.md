@@ -455,7 +455,7 @@ def convert_list_to_string(l, iters):
 
 ---
 
-### String concatenation interpreter optimizations.
+### String interning
 
 ```py
 >>> a = "some_string"
@@ -473,7 +473,7 @@ def convert_list_to_string(l, iters):
 
 #### 💡 Explanation:
 + `+=` is faster than `+` for concatenating more than two strings because the first string (example, `s1` for `s1 += s2 + s3`) is not destroyed while calculating the complete string.
-+ Both the strings refer to the same object because of CPython optimization hat tries to use existing immutable objects in some cases (implementation specific) rather than creating a new object every time. You can read more about this [here](https://stackoverflow.com/questions/24245324/about-the-changing-id-of-an-immutable-string)
++ Both the strings refer to the same object because of CPython optimization that tries to use existing immutable objects in some cases (implementation specific) rather than creating a new object every time. You can read more about this [here](https://stackoverflow.com/questions/24245324/about-the-changing-id-of-an-immutable-string).
 
 ---
 

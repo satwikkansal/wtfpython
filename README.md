@@ -172,14 +172,23 @@ Wut?
 
 #### 💡 Explanation
 
-Some Unicode characters look identical to ASCII ones, but are considered distinct by the interpreter.
+Some non-Western characters look identical to letters in the English alphabet, but are considered distinct by the interpreter.
 
 ```py
->>> value = 42 #ascii e
->>> valuе = 23 #cyrillic e, Python 2.x interpreter would raise a `SyntaxError` here
+>>> ord('е') # cyrillic 'e' (Ye)
+1077
+>>> ord('e') # latin 'e', as used in English and typed using standard keyboard
+101
+>>> 'е' == 'e'
+False
+
+>>> value = 42 # latin e
+>>> valuе = 23 # cyrillic 'e', Python 2.x interpreter would raise a `SyntaxError` here
 >>> value
 42
 ```
+
+The built-in `ord()` function returns a character's Unicode [code point](https://en.wikipedia.org/wiki/Code_point), and different code positions of cyrillic 'e' and latin 'e' justify the behavior of the above example.
 
 ---
 

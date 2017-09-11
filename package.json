@@ -1,6 +1,6 @@
 {
   "name": "wtfpython",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "A collection of subtle and tricky Python examples",
   "bin": "wtfpython",
   "scripts": {

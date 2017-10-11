@@ -35,10 +35,10 @@ So, here ya go...
       - [💡 Explanation:](#-explanation-1)
     - [Backslashes at the end of string](#backslashes-at-the-end-of-string)
       - [💡 Explanation](#-explanation-4)
-    - [Let's make a giant string!](#lets-make-a-giant-string)
-      - [💡 Explanation](#-explanation-5)
     - [String interning](#string-interning)
       - [💡 Explanation:](#-explanation-2)
+    - [Let's make a giant string!](#lets-make-a-giant-string)
+      - [💡 Explanation](#-explanation-5)
     - [Yes, it exists!](#yes-it-exists)
       - [💡 Explanation:](#-explanation-3)
     - [`is` is not what it is!](#is-is-not-what-it-is)
@@ -406,6 +406,28 @@ SyntaxError: EOL while scanning string literal
 
 ---
 
+### String interning
+
+```py
+>>> a = "some_string"
+>>> id(a)
+140420665652016
+>>> id("some" + "_" + "string") # Notice that both the ids are same.
+140420665652016
+# using "+", three strings:
+>>> timeit.timeit("s1 = s1 + s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
+0.25748300552368164
+# using "+=", three strings:
+>>> timeit.timeit("s1 += s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
+0.012188911437988281
+```
+
+#### 💡 Explanation:
++ `+=` is faster than `+` for concatenating more than two strings because the first string (example, `s1` for `s1 += s2 + s3`) is not destroyed while calculating the complete string.
++ Both the strings refer to the same object because of CPython optimization that tries to use existing immutable objects in some cases (implementation specific) rather than creating a new object every time. You can read more about this [here](https://stackoverflow.com/questions/24245324/about-the-changing-id-of-an-immutable-string).
+
+---
+
 ###  Let's make a giant string!
 
 This is not a WTF at all, just some nice things to be aware of :)
@@ -415,6 +437,12 @@ def add_string_with_plus(iters):
     s = ""
     for i in range(iters):
         s += "xyz"
+    assert len(s) == 3*iters
+
+def add_bytes_with_plus(iters):
+    s = b""
+    for i in range(iters):
+        s += b"xyz"
     assert len(s) == 3*iters
 
 def add_string_with_format(iters):
@@ -437,43 +465,52 @@ def convert_list_to_string(l, iters):
 **Output:**
 ```py
 >>> timeit(add_string_with_plus(10000))
-100 loops, best of 3: 9.73 ms per loop
+1000 loops, best of 3: 972 µs per loop
+>>> timeit(add_bytes_with_plus(10000))
+1000 loops, best of 3: 815 µs per loop
 >>> timeit(add_string_with_format(10000))
-100 loops, best of 3: 5.47 ms per loop
+1000 loops, best of 3: 508 µs per loop
 >>> timeit(add_string_with_join(10000))
-100 loops, best of 3: 10.1 ms per loop
+1000 loops, best of 3: 878 µs per loop
 >>> l = ["xyz"]*10000
 >>> timeit(convert_list_to_string(l, 10000))
-10000 loops, best of 3: 75.3 µs per loop
+10000 loops, best of 3: 80 µs per loop
+```
+
+Let's increase the number of iterations by a factor of 10.
+
+```py
+>>> timeit(add_string_with_plus(100000)) # Linear increase in execution time
+100 loops, best of 3: 9.75 ms per loop
+>>> timeit(add_bytes_with_plus(100000)) # Quadratic increase
+1000 loops, best of 3: 974 ms per loop
+>>> timeit(add_string_with_format(100000)) # Linear increase
+100 loops, best of 3: 5.25 ms per loop
+>>> timeit(add_string_with_join(100000)) # Linear increase
+100 loops, best of 3: 9.85 ms per loop
+>>> l = ["xyz"]*100000
+>>> timeit(convert_list_to_string(l, 100000)) # Linear increase
+1000 loops, best of 3: 723 µs per loop
 ```
 
 #### 💡 Explanation
 - You can read more about [timeit](https://docs.python.org/3/library/timeit.html) from here. It is generally used to measure the execution time of snippets.
-- Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases.
+- Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases (justified with the execution times of `add_bytes_with_plus` function)
 - Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for short strings).
 - Or better, if already you've contents available in the form of an iterable object, then use `''.join(iterable_object)` which is much faster.
+- `add_string_with_plus` didn't show a quadratic increase in execution time unlike `add_bytes_with_plus` becuase of the `+=` optimizations discussed in the previous example. Had the statement been `s = s + "x" + "y" + "z"` instead of `s += "xyz"`, the increase would have been quadratic.
+  ```py
+  def add_string_with_plus(iters):
+      s = ""
+      for i in range(iters):
+          s = s + "x" + "y" + "z"
+      assert len(s) == 3*iters
 
----
-
-### String interning
-
-```py
->>> a = "some_string"
->>> id(a)
-140420665652016
->>> id("some" + "_" + "string") # Notice that both the ids are same.
-140420665652016
-# using "+", three strings:
->>> timeit.timeit("s1 = s1 + s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
-0.25748300552368164
-# using "+=", three strings:
->>> timeit.timeit("s1 += s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
-0.012188911437988281
-```
-
-#### 💡 Explanation:
-+ `+=` is faster than `+` for concatenating more than two strings because the first string (example, `s1` for `s1 += s2 + s3`) is not destroyed while calculating the complete string.
-+ Both the strings refer to the same object because of CPython optimization that tries to use existing immutable objects in some cases (implementation specific) rather than creating a new object every time. You can read more about this [here](https://stackoverflow.com/questions/24245324/about-the-changing-id-of-an-immutable-string).
+  >>> timeit(add_string_with_plus(10000))
+  100 loops, best of 3: 9.87 ms per loop
+  >>> timeit(add_string_with_plus(100000)) # Quadratic increase in execution time
+  1 loops, best of 3: 1.09 s per loop
+  ```
 
 ---
 

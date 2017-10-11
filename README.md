@@ -83,14 +83,16 @@ So, here ya go...
       - [💡 Explanation:](#-explanation-18)
     - [Needle in a Haystack](#needle-in-a-haystack)
       - [💡 Explanation:](#-explanation-19)
-    - [The surprising comma](#the-surprising-comma)
+    - [yielding None](#yielding-none)
       - [💡 Explanation:](#-explanation-20)
-    - [For what?](#for-what)
+    - [The surprising comma](#the-surprising-comma)
       - [💡 Explanation:](#-explanation-21)
-    - [not knot!](#not-knot)
+    - [For what?](#for-what)
       - [💡 Explanation:](#-explanation-22)
-    - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
+    - [not knot!](#not-knot)
       - [💡 Explanation:](#-explanation-23)
+    - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
+      - [💡 Explanation:](#-explanation-24)
     - [Minor Ones](#minor-ones)
 - [TODO: Hell of an example!](#todo-hell-of-an-example)
 - [Contributing](#contributing)
@@ -1488,6 +1490,38 @@ tuple()
 #### 💡 Explanation:
 * The correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
+
+---
+
+### yielding None
+
+Suggested by @chris-rands in [this](https://github.com/satwikkansal/wtfpython/issues/32) issue.
+
+```py
+some_iterable = ('a', 'b')
+
+def some_func(val):
+    return "something"
+```
+
+
+**Output:**
+```py
+>>> [x for x in some_iterable]
+['a', 'b']
+>>> [(yield x) for x in some_iterable]
+<generator object <listcomp> at 0x7f70b0a4ad58>
+>>> list([(yield x) for x in some_iterable])
+['a', 'b']
+>>> list((yield x) for x in some_iterable)
+['a', None, 'b', None]
+>>> list(some_func((yield x)) for x in some_iterable)
+['a', 'something', 'b', 'something']
+```
+
+#### 💡 Explanation:
+- Source and explanation can be found here: https://stackoverflow.com/questions/32139885/yield-in-list-comprehensions-and-generator-expressions
+- Related bug report: http://bugs.python.org/issue10544
 
 ---
 

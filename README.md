@@ -1774,6 +1774,26 @@ a, b = a[b] = {}, 5
      print(dis.dis(f))
      ```
 
+* Half triple-quoted strings (suggested by @asottile in [this](https://github.com/satwikkansal/wtfpython/issues/40) issue).
+  ```py
+  >>> print('wtfpython''')
+  wtfpython
+  >>> print("wtfpython""")
+  wtfpython
+  >>> # The following statements raise `SyntaxError`
+  >>> # print('''wtfpython')
+  >>> # print("""wtfpython")
+  ```
+  **💡 Explanation:**
+  + Python support implicit [string literal concatenation](https://docs.python.org/2/reference/lexical_analysis.html#string-literal-concatenation), Example,
+    ```
+    >>> print("wtf" "python")
+    wtfpython
+    >>> print("wtf" "") # or "wtf"""
+    wtf
+    ```
+  + `'''` and `"""` are also string delimiters in Python which causes a SyntaxError because the Python interpreter was expecting a terminating triple quote as delimiter while scanning the currently encountered triple quoted string literal.
+
 * Multiple Python threads won't run your *Python code* concurrently (yes you heard it right!). It may seem intuitive to spawn several threads and let them execute your Python code concurrently, but, because of the [Global Interpreter Lock](https://wiki.python.org/moin/GlobalInterpreterLock) in Python, all you're doing is making your threads execute on the same core turn by turn. Python threads are good for IO-bound tasks, but to achieve actual parallelization in Python for CPU-bound tasks, you might want to use the Python [multiprocessing](https://docs.python.org/2/library/multiprocessing.html) module.
 
 * List slicing with out of the bounds indices throws no errors

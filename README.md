@@ -1453,7 +1453,7 @@ for item in mixed_list:
         booleans_found_so_far += 1
 ```
 
-**Outuput:**
+**Output:**
 ```py
 >>> booleans_found_so_far
 0
@@ -1605,7 +1605,7 @@ for i, some_dict[i] in enumerate(some_string):
     pass
 ```
 
-**Outuput:**
+**Output:**
 ```py
 >>> some_dict # An indexed dict is created.
 {0: 'w', 1: 't', 2: 'f'}

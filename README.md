@@ -1827,6 +1827,7 @@ The idea and design for this collection are inspired by Denys Dovhan's awesome p
 * https://stackoverflow.com/questions/530530/python-2-x-gotchas-and-landmines
 * https://stackoverflow.com/questions/1011431/common-pitfalls-in-python (This StackOverflow thread has some DOs and DONTs which are worth reading.)
 
+
 # 🎓 License
 
 [![CC 4.0][license-image]][license-url]
@@ -1835,4 +1836,11 @@ The idea and design for this collection are inspired by Denys Dovhan's awesome p
 
 [license-url]: http://www.wtfpl.net
 [license-image]: https://img.shields.io/badge/License-WTFPL%202.0-lightgrey.svg?style=flat-square
+
+# Donation
+
+This project costed me nothing and doesn't require anything to operate. However, I'm looking for full-time opportunities, I'd **highly appreciate** if you can let me know about open positions around you.
+
+And finally, Thanks for reading this project, I hope you enjoyed it and found it informative!
+
 

@@ -1710,7 +1710,6 @@ Suggested by @Lucas-C in [this](https://github.com/satwikkansal/wtfpython/issues
 
 
 ```py
-# Name mangling:
 class Yo(object):
     def __init__(self):
         self.__honey = True
@@ -1719,9 +1718,9 @@ class Yo(object):
 
 **Output:**
 ```py
->>> Yo().bitch()
+>>> Yo().bitch
 True
->>> Yo().__honey()
+>>> Yo().__honey
 AttributeError: 'Yo' object has no attribute '__honey'
 >>> Yo()._Yo__honey
 True

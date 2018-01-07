@@ -1736,6 +1736,52 @@ Why did `Yo()._Yo__honey` worked? Only Indian readers would understand.
 
 ---
 
+### Deep down, we're all the same.
+
+Suggested by @Lucas-C in [this](https://github.com/satwikkansal/wtfpython/issues/36) issue.
+
+
+```py
+class WTF:
+  pass
+```
+
+**Output:**
+```py
+>>> WTF() == WTF() # two different instances can't be equal
+False
+>>> WTF() is WTF() # identities are also different
+False
+>>> hash(WTF()) == hash(WTF()) # hashes _should_ be different as well
+True
+>>> id(WTF()) == id(WTF())
+True
+```
+
+
+#### 💡 Explanation:
+
+* When `id` was called, Python created a `WTF` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
+* When we do this twice in succession, Python allocates the same memory location to this second object as well. Since (in CPython) `id` uses the memory location as the object id, the id of the two objects is the same.
+* So, object's id is only unique for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
+* But why did the `is` operator evaluated to `False`? Let's see with this snippet.
+  ```py
+  class WTF(object):
+    def __init__(self): print("I ")
+    def __del__(self): print("D ")
+  ```
+
+  **Output:**
+  ```py
+  >>> WTF() is WTF()
+  I I D D
+  >>> id(WTF()) == id(WTF())
+  I D I D
+  ```
+  As you may observe, the order in which the objects are destroyed is what made all the difference here.
+
+---
+
 ### Let's see if you can guess this?
 
 Suggested by @PiaFraus in [this](https://github.com/satwikkansal/wtfPython/issues/9) issue.

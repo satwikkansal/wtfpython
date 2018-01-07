@@ -1704,6 +1704,39 @@ The Subclass relationships were expected to be transitive, right? (i.e. if `A` i
 
 ---
 
+### Mangling time!
+
+Suggested by @Lucas-C in [this](https://github.com/satwikkansal/wtfpython/issues/36) issue.
+
+
+```py
+# Name mangling:
+class Yo(object):
+    def __init__(self):
+        self.__honey = True
+        self.bitch = True
+```
+
+**Output:**
+```py
+>>> Yo().bitch()
+True
+>>> Yo().__honey()
+AttributeError: 'Yo' object has no attribute '__honey'
+>>> Yo()._Yo__honey
+True
+```
+
+Why did `Yo()._Yo__honey` worked? Only Indian readers would understand.
+
+#### 💡 Explanation:
+
+* [Name Mangling](https://en.wikipedia.org/wiki/Name_mangling) is used to avoid naming collisions between different namespaces.
+* In Python, the interpreter modifies (mangles) the class member names starting with `__` (double underscore) and not ending with more than one trailing underscore by addding `_NameOfTheClass` in frot.
+* So, to access `__honey` attribute, we are required to append `_Yo` to the front which would prevent conflicts with a same name attribute defined in any other class.
+
+---
+
 ### Let's see if you can guess this?
 
 Suggested by @PiaFraus in [this](https://github.com/satwikkansal/wtfPython/issues/9) issue.

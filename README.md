@@ -1530,6 +1530,36 @@ tuple()
 
 ---
 
+### Teleportation
+
+Suggested in [this](https://www.reddit.com/r/Python/comments/6x6upn/wtfpython_a_collection_of_interesting_and_tricky/dme96dq/) reddit thread.
+
+```py
+import numpy as np
+
+def energy_send(x):
+    np.array([float(x)])
+
+def energy_receive():
+    return np.empty((), dtype=np.float).tolist()
+```
+
+**Output:**
+```py
+>>> energy_send(123.456)
+>>> energy_receive()
+123.456
+```
+
+Does this deserve a Nobel prize?
+
+#### 💡 Explanation:
+
+* Notice that the numpy array created in the `energy_send` function is not returned, so that memory space is free to reallocate.
+* `numpy.empty()` returns the next free memory slot without reinitializing it. This memory spot just happens to be the same one that was just freed (usually, but not always).
+
+---
+
 ### yielding None
 
 Suggested by @chris-rands in [this](https://github.com/satwikkansal/wtfpython/issues/32) issue.

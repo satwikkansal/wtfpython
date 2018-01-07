@@ -1812,6 +1812,31 @@ True
 
 ---
 
+### Half triple-quoted strings
+
+Suggested by @asottile in [this](https://github.com/satwikkansal/wtfpython/issues/40) issue.
+
+**Output:**
+```py
+>>> print('wtfpython''')
+wtfpython
+>>> print("wtfpython""")
+wtfpython
+>>> # The following statements raise `SyntaxError`
+>>> # print('''wtfpython')
+>>> # print("""wtfpython")
+```
+
+#### 💡 Explanation:
++ Python support implicit [string literal concatenation](https://docs.python.org/2/reference/lexical_analysis.html#string-literal-concatenation), Example,
+  ```
+  >>> print("wtf" "python")
+  wtfpython
+  >>> print("wtf" "") # or "wtf"""
+  wtf
+  ```
++ `'''` and `"""` are also string delimiters in Python which causes a SyntaxError because the Python interpreter was expecting a terminating triple quote as delimiter while scanning the currently encountered triple quoted string literal.
+
 ### Let's see if you can guess this?
 
 Suggested by @PiaFraus in [this](https://github.com/satwikkansal/wtfPython/issues/9) issue.
@@ -1908,26 +1933,6 @@ a, b = a[b] = {}, 5
      print(dis.dis(f))
      ```
 
-* Half triple-quoted strings (suggested by @asottile in [this](https://github.com/satwikkansal/wtfpython/issues/40) issue).
-  ```py
-  >>> print('wtfpython''')
-  wtfpython
-  >>> print("wtfpython""")
-  wtfpython
-  >>> # The following statements raise `SyntaxError`
-  >>> # print('''wtfpython')
-  >>> # print("""wtfpython")
-  ```
-  **💡 Explanation:**
-  + Python support implicit [string literal concatenation](https://docs.python.org/2/reference/lexical_analysis.html#string-literal-concatenation), Example,
-    ```
-    >>> print("wtf" "python")
-    wtfpython
-    >>> print("wtf" "") # or "wtf"""
-    wtf
-    ```
-  + `'''` and `"""` are also string delimiters in Python which causes a SyntaxError because the Python interpreter was expecting a terminating triple quote as delimiter while scanning the currently encountered triple quoted string literal.
-
 * Multiple Python threads won't run your *Python code* concurrently (yes you heard it right!). It may seem intuitive to spawn several threads and let them execute your Python code concurrently, but, because of the [Global Interpreter Lock](https://wiki.python.org/moin/GlobalInterpreterLock) in Python, all you're doing is making your threads execute on the same core turn by turn. Python threads are good for IO-bound tasks, but to achieve actual parallelization in Python for CPU-bound tasks, you might want to use the Python [multiprocessing](https://docs.python.org/2/library/multiprocessing.html) module.
 
 * List slicing with out of the bounds indices throws no errors
@@ -1936,6 +1941,8 @@ a, b = a[b] = {}, 5
   >>> some_list[111:]
   []
   ```
+
+* `int('١٢٣٤٥٦٧٨٩')` returns `123456789` in Python 3. In Python, Decimal characters include digit characters, and all characters that can be used to form decimal-radix numbers, e.g. U+0660, ARABIC-INDIC DIGIT ZERO. Here's an [interesting story](http://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) related to this behavior of Python.
 
 ---
 

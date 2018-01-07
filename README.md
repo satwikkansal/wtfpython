@@ -253,6 +253,7 @@ some_dict[5] = "Python"
 
 "Python" destroyed the existence of "JavaScript"?
 
+
 #### 💡 Explanation
 
 * Python dictionaries check for equality and compare the hash value to determine if two keys are the same.
@@ -1114,10 +1115,20 @@ I've lost faith in truth!
 ###  Be careful with chained operations
 
 ```py
+>>> (False == False) in [False] # makes sense
+False
+>>> False == (False in [False]) # makes sense
+False
+>>> False == False in [False] # now what?
+True
+
+
 >>> True is False == False
 False
 >>> False is False is False
 True
+
+
 >>> 1 > 0 < 1
 True
 >>> (1 > 0) < 1
@@ -1498,8 +1509,19 @@ another_dict[1.0] = "Python"
 
 ### Needle in a Haystack
 
-Almost every Python programmer would have faced this situation.
+1\.
+```py
+x, y = (0, 1) if True else None, None
+```
 
+**Output:**
+```
+>>> x, y  # expected (0, 1)
+((0, 1), None)
+```
+
+Almost every Python programmer would have faced similar situation.
+2\.
 ```py
 t = ('one', 'two')
 for i in t:
@@ -1525,7 +1547,8 @@ tuple()
 
 
 #### 💡 Explanation:
-* The correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
+* For 1, the correct statement for expected behavior is `x, y = (0, 1) if True else (None, None)`.
+* For 2, the correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
 
 ---
@@ -1538,9 +1561,11 @@ Suggested in [this](https://www.reddit.com/r/Python/comments/6x6upn/wtfpython_a_
 import numpy as np
 
 def energy_send(x):
+    # Initializing a numpy array
     np.array([float(x)])
 
 def energy_receive():
+    # Return an empty numpy array
     return np.empty((), dtype=np.float).tolist()
 ```
 
@@ -1551,7 +1576,7 @@ def energy_receive():
 123.456
 ```
 
-Does this deserve a Nobel prize?
+Is it worth a Nobel Prize?
 
 #### 💡 Explanation:
 
@@ -1828,7 +1853,7 @@ wtfpython
 ```
 
 #### 💡 Explanation:
-+ Python support implicit [string literal concatenation](https://docs.python.org/2/reference/lexical_analysis.html#string-literal-concatenation), Example,
++ Python supports implicit [string literal concatenation](https://docs.python.org/2/reference/lexical_analysis.html#string-literal-concatenation), Example,
   ```
   >>> print("wtf" "python")
   wtfpython
@@ -1836,6 +1861,62 @@ wtfpython
   wtf
   ```
 + `'''` and `"""` are also string delimiters in Python which causes a SyntaxError because the Python interpreter was expecting a terminating triple quote as delimiter while scanning the currently encountered triple quoted string literal.
+
+---
+
+### Implicity key type conversion
+
+```py
+class SomeClass(str):
+    pass
+
+some_dict = {'s':42}
+```
+
+**Output:**
+```py
+>>> type(list(some_dict.keys())[0])
+str
+>>> s = SomeClass('s')
+>>> some_dict[s] = 40
+>>> some_dict # expected: Two different keys-value pairs
+{'s': 40}
+>>> type(list(some_dict.keys())[0])
+str
+```
+
+#### 💡 Explanation:
+
+* Both the object `s` and the string `"s"` hash to the same value because `SomeClass` inherits the `__hash__` method of `str` class.
+* `SomeClass("s") == "s"` evaluates to `True` because `SomeClass` also inherits `__eq__` method from `str` class.
+* Since both the objects hash to the same value and are equal, they are represented by the same key in the dictionary.
+* For the desired behavior, we can redefine the `__eq__` method in `SomeClass`
+  ```py
+  class SomeClass(str):
+    def __eq__(self, other):
+        return (
+            type(self) is SomeClass
+            and type(other) is SomeClass
+            and super().__eq__(other)
+        )
+    
+    # Whe we define a custon __eq__, Python stops automatically inheriting the
+    # __hash__ mehtod, so we need to define it as well
+    __hash__ = str.__hash__
+
+  some_dict = {'s':42}
+  ```
+
+  **Output:**
+  ```py
+  >>> s = SomeClass('s')
+  >>> some_dict[s] = 40
+  >>> some_dict
+  {'s': 40}
+  >>> keys = list(some_dict.keys())
+  >>> type(keys[0]), type(keys[1])
+  (__main__.SomeClass, str)
+  ```
 
 ### Let's see if you can guess this?
 
@@ -1943,6 +2024,16 @@ a, b = a[b] = {}, 5
   ```
 
 * `int('١٢٣٤٥٦٧٨٩')` returns `123456789` in Python 3. In Python, Decimal characters include digit characters, and all characters that can be used to form decimal-radix numbers, e.g. U+0660, ARABIC-INDIC DIGIT ZERO. Here's an [interesting story](http://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) related to this behavior of Python.
+
+* `'abc'.count('') == 4`. Here's an approximate implementation of `count` method, which would make the things more clear
+  ```py
+  def count(s, sub):
+      result = 0
+      for i in range(len(s) + 1 - len(sub)):
+          result += (s[i:i + len(sub)] == sub)
+      return result
+  ```
+  The behavior is due to the matching of empty substring(`''`) with slices of length 0 in the original string.
 
 ---
 

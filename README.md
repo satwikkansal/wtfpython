@@ -317,7 +317,7 @@ for i in x:
     print(i)
 ```
 
-**Output:**
+**Output (Python 2.7- Python 3.5):**
 
 ```
 0
@@ -336,7 +336,8 @@ Yes, it runs for exactly **eight** times and stops.
 
 * Iteration over a dictionary that you edit at the same time is not supported.
 * It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
-* Refer to this StackOverflow [thread](https://stackoverflow.com/questions/44763802/bug-in-python-dict) explaining a similar example.
+* How deleted keys are handled and when the resize occurs might be different for different Python implementations.
+* For more information, you may refer to this StackOverflow [thread](https://stackoverflow.com/questions/44763802/bug-in-python-dict) explaining a similar example in detail.
 
 ---
 

@@ -423,14 +423,52 @@ SyntaxError: EOL while scanning string literal
 
 ---
 
-### String interning
+### Strings can be tricky sometimes
 
+1\.
 ```py
 >>> a = "some_string"
 >>> id(a)
 140420665652016
 >>> id("some" + "_" + "string") # Notice that both the ids are same.
 140420665652016
+```
+
+2\.
+```py
+>>> a = "wtf"
+>>> b = "wtf"
+>>> a is b
+True
+
+>>> a = "wtf!"
+>>> b = "wtf!"
+>>> a is b
+False
+```
+
+3\.
+```py
+>>> 'a' * 20 is 'aaaaaaaaaaaaaaaaaaaa'
+True
+>>> 'a' * 21 is 'aaaaaaaaaaaaaaaaaaaaa'
+```
+
+Makes sense, right?
+
+#### 💡 Explanation:
++ Such behavior is due to CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
++ After being interned, many variables may point to the same string object in memory (thereby saving memory).
++ In the snippets above, strings are implicity interned. The decison of when to implicitly intern a string is implementation dependent. There are some facts that can be used to guess if a string will be interned or not:
+  * All length 0 and length 1 strings are interned.
+  * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
+  * Strings that are not composed of ascii letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`.
+
+---
+
+### `+=` is faster
+
+```py
 # using "+", three strings:
 >>> timeit.timeit("s1 = s1 + s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
 0.25748300552368164
@@ -441,7 +479,6 @@ SyntaxError: EOL while scanning string literal
 
 #### 💡 Explanation:
 + `+=` is faster than `+` for concatenating more than two strings because the first string (example, `s1` for `s1 += s2 + s3`) is not destroyed while calculating the complete string.
-+ Both the strings refer to the same object because of CPython optimization that tries to use existing immutable objects in some cases (implementation specific) rather than creating a new object every time. You can read more about this [here](https://stackoverflow.com/questions/24245324/about-the-changing-id-of-an-immutable-string).
 
 ---
 

@@ -103,8 +103,10 @@ So, here ya go...
       - [💡 Explanation:](#-explanation-28)
     - [Implicity key type conversion](#implicity-key-type-conversion)
       - [💡 Explanation:](#-explanation-29)
-    - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
+    - [Stubborn `del` operator](#stubborn-del-operator)
       - [💡 Explanation:](#-explanation-30)
+    - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
+      - [💡 Explanation:](#-explanation-31)
     - [Minor Ones](#minor-ones)
 - [TODO: Hell of an example!](#todo-hell-of-an-example)
 - [Contributing](#contributing)
@@ -1930,6 +1932,53 @@ str
   >>> type(keys[0]), type(keys[1])
   (__main__.SomeClass, str)
   ```
+
+---
+
+### Stubborn `del` operator
+
+Suggested by @tukkek in [this](https://github.com/satwikkansal/wtfpython/issues/26) issue.
+
+```py
+class SomeClass:
+    def __del__(self):
+        print("Deleted!")
+```
+
+**Output:**
+1\.
+```py
+>>> x = SomeClass()
+>>> y = x
+>>> del x # this should print "Deleted!"
+>>> del y
+Deleted!
+```
+
+Phew, deleted at last. You might have guessed what saved from `__del__` being called in our first attempt to delete `x`. Let's add more twist ro the example.
+
+2\.
+```py
+>>> x = SomeClass()
+>>> y = x
+>>> del x
+>>> y # check if y exists
+<__main__.SomeClass instance at 0x7f98a1a67fc8>
+>>> del y # Like previously, this should print "Deleted!"
+>>> globals() # oh, it didn't. Let's check all our global variables and confirm
+Deleted!
+{'__builtins__': <module '__builtin__' (built-in)>, 'SomeClass': <class __main__.SomeClass at 0x7f98a1a5f668>, '__package__': None, '__name__': '__main__', '__doc__': None}
+```
+
+Okay, now it's deleted :confused:
+
+#### 💡 Explanation:
++ `del x` doesn’t directly call `x.__del__()`.
++ Whenever `del x` is encountered, Python decrements the reference count for `x` by one, and `x.__del__()` when x’s reference count reaches zero.
++ In the second output snippet, `y.__del__()` was not called because the previous statement (`>>> y`) in the interactive interpreter created another reference to the same object, thus preventing the reference count to reach zero when `del y` was encountered.
++ Calling `globals` caused the existing reference to be destroyed and hence we can see "Deleted!" being printed (finally!).
+
+---
 
 ### Let's see if you can guess this?
 

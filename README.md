@@ -2178,10 +2178,13 @@ The idea and design for this collection are inspired by Denys Dovhan's awesome p
 
 # Help
 
-Hey, I'm looking for full-time opportunities, I'd highly appreciate if you could do me a small favor by letting me know about open positions around you.
+I'm looking for full-time opportunities, I'd highly appreciate if you could do me a small favor by letting me know about open positions around you.
 
-And finally, Thanks a ton for reading this project, I hope you enjoyed it and found it informative!
 
-Want to share What the f**k Python with friends?
+Thanks a ton for reading this project, I hope you enjoyed it and found it informative!
 
-[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython) | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What the f*ck Python!&summary=An interesting collection of subtle and tricky Python snippets.)
+**Want to share What the f*ck Python with friends?**
+
+[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython) | 
+[Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)
+

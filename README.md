@@ -1,5 +1,5 @@
 <h1 align="center"> What the f*ck Python? 🐍 </h1>
-<p align="center"> A collection of interesting and tricky Python examples. </p>
+<p align="center"> An interesting collection of subtle and tricky Python Snippets. </p>
 
 [![WTFPL 2.0][license-image]][license-url]
 
@@ -10,7 +10,7 @@ Here is a fun project attempting to collect such classic and tricky examples of 
 
 While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
 
-If you're an experienced Python programmer, you might be familiar with most of these examples, and I might be able to revive some sweet old memories of yours being bitten by these gotchas :sweat_smile:
+If you're an experienced Python programmer, you might be familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
 
 So, here ya go...
 
@@ -35,91 +35,91 @@ So, here ya go...
       - [💡 Explanation:](#-explanation-1)
     - [Backslashes at the end of string](#backslashes-at-the-end-of-string)
       - [💡 Explanation](#-explanation-4)
-    - [String interning](#string-interning)
+    - [Strings can be tricky sometimes](#strings-can-be-tricky-sometimes)
       - [💡 Explanation:](#-explanation-2)
+    - [`+=` is faster](#-is-faster)
+      - [💡 Explanation:](#-explanation-3)
     - [Let's make a giant string!](#lets-make-a-giant-string)
       - [💡 Explanation](#-explanation-5)
     - [Yes, it exists!](#yes-it-exists)
-      - [💡 Explanation:](#-explanation-3)
-    - [`is` is not what it is!](#is-is-not-what-it-is)
       - [💡 Explanation:](#-explanation-4)
+    - [`is` is not what it is!](#is-is-not-what-it-is)
+      - [💡 Explanation:](#-explanation-5)
     - [`is not ...` is not `is (not ...)`](#is-not--is-not-is-not-)
       - [💡 Explanation](#-explanation-6)
     - [The function inside loop sticks to the same output](#the-function-inside-loop-sticks-to-the-same-output)
       - [💡 Explanation](#-explanation-7)
     - [Loop variables leaking out of local scope!](#loop-variables-leaking-out-of-local-scope)
-      - [💡 Explanation:](#-explanation-5)
-    - [A tic-tac-toe where X wins in the first attempt!](#a-tic-tac-toe-where-x-wins-in-the-first-attempt)
       - [💡 Explanation:](#-explanation-6)
-    - [Beware of default mutable arguments!](#beware-of-default-mutable-arguments)
+    - [A tic-tac-toe where X wins in the first attempt!](#a-tic-tac-toe-where-x-wins-in-the-first-attempt)
       - [💡 Explanation:](#-explanation-7)
-    - [Same operands, different story!](#same-operands-different-story)
+    - [Beware of default mutable arguments!](#beware-of-default-mutable-arguments)
       - [💡 Explanation:](#-explanation-8)
-    - [Mutating the immutable!](#mutating-the-immutable)
+    - [Same operands, different story!](#same-operands-different-story)
       - [💡 Explanation:](#-explanation-9)
-    - [Using a variable not defined in scope](#using-a-variable-not-defined-in-scope)
+    - [Mutating the immutable!](#mutating-the-immutable)
       - [💡 Explanation:](#-explanation-10)
-    - [The disappearing variable from outer scope](#the-disappearing-variable-from-outer-scope)
+    - [Using a variable not defined in scope](#using-a-variable-not-defined-in-scope)
       - [💡 Explanation:](#-explanation-11)
-    - [Return return everywhere!](#return-return-everywhere)
+    - [The disappearing variable from outer scope](#the-disappearing-variable-from-outer-scope)
       - [💡 Explanation:](#-explanation-12)
-    - [When True is actually False](#when-true-is-actually-false)
+    - [Return return everywhere!](#return-return-everywhere)
       - [💡 Explanation:](#-explanation-13)
-    - [Be careful with chained operations](#be-careful-with-chained-operations)
+    - [When True is actually False](#when-true-is-actually-false)
       - [💡 Explanation:](#-explanation-14)
+    - [Be careful with chained operations](#be-careful-with-chained-operations)
+      - [💡 Explanation:](#-explanation-15)
     - [Name resolution ignoring class scope](#name-resolution-ignoring-class-scope)
       - [💡 Explanation](#-explanation-8)
     - [From filled to None in one instruction...](#from-filled-to-none-in-one-instruction)
       - [💡 Explanation](#-explanation-9)
     - [Explicit typecast of strings](#explicit-typecast-of-strings)
-      - [💡 Explanation:](#-explanation-15)
-    - [Class attributes and instance attributes](#class-attributes-and-instance-attributes)
       - [💡 Explanation:](#-explanation-16)
+    - [Class attributes and instance attributes](#class-attributes-and-instance-attributes)
+      - [💡 Explanation:](#-explanation-17)
     - [Catching the Exceptions!](#catching-the-exceptions)
       - [💡 Explanation](#-explanation-10)
     - [Midnight time doesn't exist?](#midnight-time-doesnt-exist)
-      - [💡 Explanation:](#-explanation-17)
-    - [What's wrong with booleans?](#whats-wrong-with-booleans)
       - [💡 Explanation:](#-explanation-18)
-    - [Needle in a Haystack](#needle-in-a-haystack)
+    - [What's wrong with booleans?](#whats-wrong-with-booleans)
       - [💡 Explanation:](#-explanation-19)
-    - [Teleportation](#teleportation)
+    - [Needle in a Haystack](#needle-in-a-haystack)
       - [💡 Explanation:](#-explanation-20)
-    - [yielding None](#yielding-none)
+    - [Teleportation](#teleportation)
       - [💡 Explanation:](#-explanation-21)
-    - [The surprising comma](#the-surprising-comma)
+    - [yielding None](#yielding-none)
       - [💡 Explanation:](#-explanation-22)
-    - [For what?](#for-what)
+    - [The surprising comma](#the-surprising-comma)
       - [💡 Explanation:](#-explanation-23)
-    - [not knot!](#not-knot)
+    - [For what?](#for-what)
       - [💡 Explanation:](#-explanation-24)
-    - [Subclass relationships](#subclass-relationships)
+    - [not knot!](#not-knot)
       - [💡 Explanation:](#-explanation-25)
-    - [Mangling time!](#mangling-time)
+    - [Subclass relationships](#subclass-relationships)
       - [💡 Explanation:](#-explanation-26)
-    - [Deep down, we're all the same.](#deep-down-were-all-the-same)
+    - [Mangling time!](#mangling-time)
       - [💡 Explanation:](#-explanation-27)
-    - [Half triple-quoted strings](#half-triple-quoted-strings)
+    - [Deep down, we're all the same.](#deep-down-were-all-the-same)
       - [💡 Explanation:](#-explanation-28)
-    - [Implicity key type conversion](#implicity-key-type-conversion)
+    - [Half triple-quoted strings](#half-triple-quoted-strings)
       - [💡 Explanation:](#-explanation-29)
-    - [Stubborn `del` operator](#stubborn-del-operator)
+    - [Implicity key type conversion](#implicity-key-type-conversion)
       - [💡 Explanation:](#-explanation-30)
-    - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
+    - [Stubborn `del` operator](#stubborn-del-operator)
       - [💡 Explanation:](#-explanation-31)
+    - [Let's see if you can guess this?](#lets-see-if-you-can-guess-this)
+      - [💡 Explanation:](#-explanation-32)
     - [Minor Ones](#minor-ones)
 - [TODO: Hell of an example!](#todo-hell-of-an-example)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
       - [Some nice Links!](#some-nice-links)
 - [🎓 License](#-license)
-- [Donation](#donation)
+- [Help](#help)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # Structure of the Examples
-
-**Note:** All the examples mentioned below are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified in the example description.
 
 All the examples are structured like below:
 
@@ -150,6 +150,7 @@ All the examples are structured like below:
 >   # some justified output
 >   ```
 
+**Note:** All the examples mentioned below are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified in the example description.
 
 # Usage
 
@@ -167,7 +168,7 @@ $ npm install -g wtfpython
 ```
 Now, just run `wtfpython` at the command line which will open this collection in your selected `$PAGER`.
 
-#TODO: Add pypi package for reading via command line
+#TODO: Add pypi package for reading via command line (yes, this is the real wtf for now!)
 
 # 👀 Examples
 
@@ -445,6 +446,10 @@ True
 >>> b = "wtf!"
 >>> a is b
 False
+
+>>> a, b = "wtf!", "wtf!"
+>>> a is b
+True
 ```
 
 3\.
@@ -452,6 +457,7 @@ False
 >>> 'a' * 20 is 'aaaaaaaaaaaaaaaaaaaa'
 True
 >>> 'a' * 21 is 'aaaaaaaaaaaaaaaaaaaaa'
+False
 ```
 
 Makes sense, right?
@@ -463,6 +469,7 @@ Makes sense, right?
   * All length 0 and length 1 strings are interned.
   * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
   * Strings that are not composed of ascii letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`.
++ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compiler optimization and specifically applies to the interactive environment.
 
 ---
 
@@ -2169,10 +2176,12 @@ The idea and design for this collection are inspired by Denys Dovhan's awesome p
 [license-url]: http://www.wtfpl.net
 [license-image]: https://img.shields.io/badge/License-WTFPL%202.0-lightgrey.svg?style=flat-square
 
-# Donation
+# Help
 
-This project costed me nothing and doesn't require anything to operate. However, I'm looking for full-time opportunities, I'd **highly appreciate** if you can let me know about open positions around you.
+Hey, I'm looking for full-time opportunities, I'd highly appreciate if you could do me a small favor by letting me know about open positions around you.
 
-And finally, Thanks for reading this project, I hope you enjoyed it and found it informative!
+And finally, Thanks a ton for reading this project, I hope you enjoyed it and found it informative!
 
+Want to share What the f**k Python with friends?
 
+[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython) | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What the f*ck Python!&summary=An interesting collection of subtle and tricky Python snippets.)

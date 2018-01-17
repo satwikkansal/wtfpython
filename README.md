@@ -430,6 +430,75 @@ SyntaxError: EOL while scanning string literal
 
 ---
 
+### Brace yourself!
+
+If you are one of the people who don't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
+
+```py
+from __future__ import braces
+```
+
+**Output:**
+```py
+  File "some_file.py", line 1
+    from __future__ import braces
+SyntaxError: not a chance
+```
+
+Braces? No way! You better use Javascript instead.
+
+#### 💡 Explanation:
++ The `__future__` module is normally used to provide features from future versions of Python. The "future" here is however ironic.
++ This is an easter egg concerned with the community's feelings on this issue.
+
+---
+
+### Okay Python, Can you alter gravity?
+
+Well, here you go
+
+```py
+import antigravity
+```
+
+**Output:**
+Sshh.. It's a super secret.
+
+#### 💡 Explanation:
++ `antigravity` module is another easter egg like `from __future__ import braces`, with a difference that it actually works.
++ `import antigravity` opens up a web browser pointing to the [classic XKCD comic](http://xkcd.com/353/) about Python.
++ Well, there's more to it. There's **another easter egg inside the easter egg**. If look at the [code](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17), there's a function defined that purports to implement the [XKCD's geohashing algorithm](https://xkcd.com/426/).
+
+---
+
+### `goto`, but why?
+
+```py
+from goto import goto, label
+for i in range(9):
+    for j in range(9):
+        for k in range(9):
+            print("I'm trapped, please rescue!")
+            if k == 2:
+                goto .breakout # breaking out from a deeply nested loop
+label .breakout
+print("Freedom!")
+```
+
+**Output (Python 2.3):**
+```py
+I'm trapped, please rescue!
+I'm trapped, please rescue!
+Freedom!
+```
+
+#### 💡 Explanation:
+- A working version of `goto` in Python was [announced](https://mail.python.org/pipermail/python-announce-list/2004-April/002982.html) as an April Fool's joke on 1st April 2004.
+- Current versions of Python do not have this module.
+- Although it works, but please don't use it. Here's the [reason](https://docs.python.org/3/faq/design.html#why-is-there-no-goto) to why `goto` is not present in Python.
+
+---
+
 ### Strings can be tricky sometimes
 
 1\.

@@ -407,19 +407,25 @@ Can you guess why the output is `[2, 4]`?
 
 **Output:**
 ```
->>> print("\\ some string \\")
->>> print(r"\ some string")
->>> print(r"\ some string \")
+>>> print("\\ C:\\")
+\ C:\
+>>> print(r"\ C:")
+\ C:
+>>> print(r"\ C:\")
 
     File "<stdin>", line 1
-      print(r"\ some string \")
-                             ^
+      print(r"\ C:\")
+                     ^
 SyntaxError: EOL while scanning string literal
 ```
 
 #### 💡 Explanation
 
 - In a raw string literal, as indicated by the prefix `r`, the backslash doesn't have the special meaning.
+  ```py
+  >>> print(repr(r"wt\"f"))
+  'wt\\"f'
+  ```
 - What the interpreter actually does, though, is simply change the behavior of backslashes, so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
 
 ---
@@ -1546,6 +1552,14 @@ another_dict[1.0] = "Python"
 "Python"
 ```
 
+3\.
+```py
+>>> some_bool = True
+>>> "wtf"*some_bool
+'wtf'
+>>> "wtf"*some_bool
+''
+```
 
 #### 💡 Explanation:
 

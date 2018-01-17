@@ -2065,6 +2065,8 @@ a, b = a[b] = {}, 5
   [[...]]
   >>> some_list is some_list[0]
   True
+  >>> some_list[0][0][0][0][0][0] == some_list
+  True
   ```
   Similar is the case in our example (`a[b][0]` is the same object as `a`)
 

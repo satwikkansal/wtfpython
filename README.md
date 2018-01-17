@@ -445,7 +445,7 @@ from __future__ import braces
 SyntaxError: not a chance
 ```
 
-Braces? No way! You better use Javascript instead.
+Braces? No way! If you think that's disappointing, use Java.
 
 #### 💡 Explanation:
 + The `__future__` module is normally used to provide features from future versions of Python. The "future" here is however ironic.
@@ -453,7 +453,64 @@ Braces? No way! You better use Javascript instead.
 
 ---
 
-### Okay Python, Can you alter gravity?
+### "this" is love :heart:
+
+```py
+import this
+```
+
+Wait, what's **this**?
+
+**Output:**
+```
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+```
+
+It's the Zen of Python!
+
+```py
+>>> love = this
+>>> this is love
+True
+>>> love is True
+False
+>>> love is False
+False
+>>> love is not True or False
+True
+>>> love is not True or False; love is love  # Love is complicated
+True
+```
+
+#### 💡 Explanation:
+
+* `this` module in Python is an easter egg for The Zen Of Python ([PEP 20](https://www.python.org/dev/peps/pep-0020)).
+* And if you think that's already interesting enough, check out the implementation of [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py). Interestingly, the code for the Zen violates itself (and that's probably the only place where this happens).
+* Regarding the statement `love is not True or False; love is love`, ironic, but it's self-explanatory.
+
+---
+
+### Okay Python, Can you make me fly?
 
 Well, here you go
 

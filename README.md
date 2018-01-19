@@ -2343,14 +2343,15 @@ For discussions, either create a new [issue](https://github.com/satwikkansal/wtf
 
 # Acknowledgements
 
-The idea and design for this collection are inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs).
+The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs). The overwhelming support by the community gave it the shape it is in right now.
 
 #### Some nice Links!
 * https://www.youtube.com/watch?v=sH4XF6pKKmk
 * https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python
 * https://sopython.com/wiki/Common_Gotchas_In_Python
 * https://stackoverflow.com/questions/530530/python-2-x-gotchas-and-landmines
-* https://stackoverflow.com/questions/1011431/common-pitfalls-in-python (This StackOverflow thread has some DOs and DONTs which are worth reading.)
+* https://stackoverflow.com/questions/1011431/common-pitfalls-in-python
+* https://www.python.org/doc/humor/
 
 
 # 🎓 License

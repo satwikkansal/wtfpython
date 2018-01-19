@@ -1799,8 +1799,6 @@ tuple()
 
 ### Teleportation
 
-Suggested in [this](https://www.reddit.com/r/Python/comments/6x6upn/wtfpython_a_collection_of_interesting_and_tricky/dme96dq/) reddit thread.
-
 ```py
 import numpy as np
 
@@ -1830,8 +1828,6 @@ Is it worth a Nobel Prize?
 ---
 
 ### yielding None
-
-Suggested by @chris-rands in [this](https://github.com/satwikkansal/wtfpython/issues/32) issue.
 
 ```py
 some_iterable = ('a', 'b')
@@ -1863,8 +1859,6 @@ def some_func(val):
 
 ### The surprising comma
 
-Suggested by @MostAwesomeDude in [this](https://github.com/satwikkansal/wtfPython/issues/1) issue.
-
 **Output:**
 ```py
 >>> def f(x, y,):
@@ -1895,8 +1889,6 @@ SyntaxError: invalid syntax
 
 ### For what?
 
-Suggested by @MittalAshok in [this](https://github.com/satwikkansal/wtfpython/issues/23) issue.
-
 ```py
 some_string = "wtf"
 some_dict = {}
@@ -1917,7 +1909,7 @@ for i, some_dict[i] in enumerate(some_string):
   for_stmt: 'for' exprlist 'in' testlist ':' suite ['else' ':' suite]
   ```
   Where `exprlist` is the assignment target. This means that the equivalent of `{exprlist} = {next_value}` is **executed for each item** in the iterable.
-  An interesting example suggested by @tukkek in [this](https://github.com/satwikkansal/wtfPython/issues/11) issue illustrates this:
+  An interesting example that illustrates this:
   ```py
   for i in range(4):
       print(i)
@@ -1950,8 +1942,6 @@ for i, some_dict[i] in enumerate(some_string):
 
 ### not knot!
 
-Suggested by @MostAwesomeDude in [this](https://github.com/satwikkansal/wtfPython/issues/1) issue.
-
 ```py
 x = True
 y = False
@@ -1979,8 +1969,6 @@ SyntaxError: invalid syntax
 
 ### Subclass relationships
 
-Suggested by @Lucas-C in [this](https://github.com/satwikkansal/wtfpython/issues/36) issue.
-
 **Output:**
 ```py
 >>> from collections import Hashable
@@ -2004,8 +1992,6 @@ The Subclass relationships were expected to be transitive, right? (i.e. if `A` i
 ---
 
 ### Mangling time!
-
-Suggested by @Lucas-C in [this](https://github.com/satwikkansal/wtfpython/issues/36) issue.
 
 
 ```py
@@ -2036,9 +2022,6 @@ Why did `Yo()._Yo__honey` worked? Only Indian readers would understand.
 ---
 
 ### Deep down, we're all the same.
-
-Suggested by @Lucas-C in [this](https://github.com/satwikkansal/wtfpython/issues/36) issue.
-
 
 ```py
 class WTF:
@@ -2082,8 +2065,6 @@ True
 ---
 
 ### Half triple-quoted strings
-
-Suggested by @asottile in [this](https://github.com/satwikkansal/wtfpython/issues/40) issue.
 
 **Output:**
 ```py
@@ -2166,8 +2147,6 @@ str
 
 ### Stubborn `del` operator
 
-Suggested by @tukkek in [this](https://github.com/satwikkansal/wtfpython/issues/26) issue.
-
 ```py
 class SomeClass:
     def __del__(self):
@@ -2210,8 +2189,6 @@ Okay, now it's deleted :confused:
 ---
 
 ### Let's see if you can guess this?
-
-Suggested by @PiaFraus in [this](https://github.com/satwikkansal/wtfPython/issues/9) issue.
 
 ```py
 a, b = a[b] = {}, 5

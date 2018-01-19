@@ -556,6 +556,50 @@ Freedom!
 
 ---
 
+### Let's meet Friendly Language Uncle For Life
+
+**Output (Python 3.x)**
+```py
+>>> from __future__ import barry_as_FLUFL
+>>> "Ruby" != "Python" # there's no doubt about it
+  File "some_file.py", line 1
+    "Ruby" != "Python"
+              ^
+SyntaxError: invalid syntax
+
+>>> "Ruby" <> "Python"
+True
+```
+
+There we go.
+
+#### 💡 Explanation:
+- This is relevant to [PEP-401](https://www.python.org/dev/peps/pep-0401/) released on April 1, 2009 (now you know, what it means).
+- Quoting from the PEP-401
+  Recognized that the != inequality operator in Python 3.0 was a horrible, finger pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
+- There's more that Uncle Barry had to share in the PEP, you can read it [here](https://www.python.org/dev/peps/pep-0401/).
+
+---
+
+### Inpinity
+
+The spelling is intended. Please, don't submit a patch for this.
+
+**Output (Python 3.x):**
+```py
+>>> infinity = float('infinity')
+>>> hash(infinity)
+314159
+>>> hash(float('-inf'))
+-314159
+```
+
+#### 💡 Explanation:
+- Hash of infinity is 10⁵ x π.
+- Interestingly, hash of `float('-inf')` is "-10⁵ x π" in Python 3, whereas "-10⁵ x e" in Python 2.
+
+---
+
 ### Strings can be tricky sometimes
 
 1\.
@@ -2320,12 +2364,12 @@ The idea and design for this collection are inspired by Denys Dovhan's awesome p
 
 # Help
 
-I'm looking for full-time opportunities, I'd highly appreciate if you could do me a small favor by letting me know about open positions around you.
-
-
 Thanks a ton for reading this project, I hope you enjoyed it and found it informative!
 
-**Want to share What the f*ck Python with friends?**
+I'm looking for full-time opportunities, I'd highly appreciate if you could do me a small favor by letting me know about open positions around you. You can find more about me [here](https://satwikkansal.xyz).
+
+
+## Want to share wtfPython with friends?
 
 [Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython) | 
 [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)

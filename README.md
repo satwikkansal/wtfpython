@@ -4,7 +4,7 @@
 [![WTFPL 2.0][license-image]][license-url]
 
 
-Python, being awesome by design high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
+Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
 
 Here is a fun project attempting to collect such classic and tricky examples of unexpected behaviors in Python and discuss what exactly is happening under the hood!
 
@@ -156,10 +156,10 @@ All the examples are structured like below:
 
 A good way to get the most out of these examples, in my opinion, will be just to read the examples chronologically, and for every example:
 - Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's gonna happen next.
-- Read the output snippets and
+- Read the output snippets and,
   + Check if the outputs are the same as you'd expect.
   + Make sure know the exact reason behind the output being the way it is.
-    - If no, read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
+    - If no, take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
 PS: You can also read these examples at the command line. First install the npm package `wtfpython`,

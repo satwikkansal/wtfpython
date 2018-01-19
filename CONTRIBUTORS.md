@@ -1,4 +1,4 @@
-I'm really greatful to all the contributors. Following are the awesome people (in no specific order) who have contributed their examples to wtfpython.
+I'm really greatful to all the contributors. Following are the wonderful people (in no specific order) who have contributed their examples to wtfpython.
 
 | Contributor | Github | Issues |
 |-------------|--------|--------|
@@ -10,5 +10,4 @@ I'm really greatful to all the contributors. Following are the awesome people (i
 | PiaFraus | [PiaFraus](https://github.com/PiaFraus) | [#9](https:/github.com/satwikkansal/wtfpython/issues/9) |
 | chris-rands | [chris-rands](https://github.com/chris-rands) | [#32](https:/github.com/satwikkansal/wtfpython/issues/32) |
 
-Thank you all for taking out time, and making this project better!
-
+Thank you all for taking out time, and helping to make this project awesome! :smile:

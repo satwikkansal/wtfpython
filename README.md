@@ -2349,6 +2349,11 @@ I'm looking for full-time opportunities, I'd highly appreciate if you could do m
 
 ## Want to share wtfPython with friends?
 
+You can use these quick links for Twitter and Linkedin.
+
 [Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython) | 
 [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)
 
+## Need a pdf version?
+
+I've recieved a few requests for the pdf version of wtfpython. You can add your details [here](https://satwikkansal.xyz/wtfpython-pdf/) to get the pdf as oon as it is finished.

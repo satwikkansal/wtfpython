@@ -506,7 +506,7 @@ True
 
 * `this` module in Python is an easter egg for The Zen Of Python ([PEP 20](https://www.python.org/dev/peps/pep-0020)).
 * And if you think that's already interesting enough, check out the implementation of [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py). Interestingly, the code for the Zen violates itself (and that's probably the only place where this happens).
-* Regarding the statement `love is not True or False; love is love`, ironic, but it's self-explanatory.
+* Regarding the statement `love is not True or False; love is love`, ironic but it's self-explanatory.
 
 ---
 
@@ -1438,6 +1438,7 @@ class SomeClass:
 - Starting from Python 3.X, list comprehensions also have their own scope.
 
 ---
+
 ###  From filled to None in one instruction...
 
 ```py

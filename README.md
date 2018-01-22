@@ -162,13 +162,20 @@ A good way to get the most out of these examples, in my opinion, will be just to
     - If no, take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
-PS: You can also read these examples at the command line. First install the npm package `wtfpython`,
+PS: You can also read WTFpython at the command line. There's a pypi package and an npm package (supports colored formatting) for the same.
+
+To install the npm package [`wtfpython`](https://www.npmjs.com/package/wtfpython)
 ```sh
 $ npm install -g wtfpython
 ```
+
+Alternatively, to install the pypi package [`wtfpython`](https://pypi.python.org/pypi/wtfpython)
+```sh
+$ pip install wtfpython -U
+```
+
 Now, just run `wtfpython` at the command line which will open this collection in your selected `$PAGER`.
 
-#TODO: Add pypi package for reading via command line (yes, this is the real wtf for now!)
 
 # 👀 Examples
 

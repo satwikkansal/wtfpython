@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+
+import sys
+
+from wtf_python.main import load_and_read
+
+if __name__ == "__main__":
+    sys.exit(load_and_read())

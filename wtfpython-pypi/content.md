@@ -4,7 +4,7 @@
 [![WTFPL 2.0][license-image]][license-url]
 
 
-Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
+Python, being awesome by design high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
 
 Here is a fun project attempting to collect such classic and tricky examples of unexpected behaviors in Python and discuss what exactly is happening under the hood!
 
@@ -156,10 +156,10 @@ All the examples are structured like below:
 
 A good way to get the most out of these examples, in my opinion, will be just to read the examples chronologically, and for every example:
 - Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's gonna happen next.
-- Read the output snippets and,
+- Read the output snippets and
   + Check if the outputs are the same as you'd expect.
   + Make sure know the exact reason behind the output being the way it is.
-    - If no, take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
+    - If no, read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
 PS: You can also read these examples at the command line. First install the npm package `wtfpython`,
@@ -407,196 +407,20 @@ Can you guess why the output is `[2, 4]`?
 
 **Output:**
 ```
->>> print("\\ C:\\")
-\ C:\
->>> print(r"\ C:")
-\ C:
->>> print(r"\ C:\")
+>>> print("\\ some string \\")
+>>> print(r"\ some string")
+>>> print(r"\ some string \")
 
     File "<stdin>", line 1
-      print(r"\ C:\")
-                     ^
+      print(r"\ some string \")
+                             ^
 SyntaxError: EOL while scanning string literal
 ```
 
 #### 💡 Explanation
 
 - In a raw string literal, as indicated by the prefix `r`, the backslash doesn't have the special meaning.
-  ```py
-  >>> print(repr(r"wt\"f"))
-  'wt\\"f'
-  ```
 - What the interpreter actually does, though, is simply change the behavior of backslashes, so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
-
----
-
-### Brace yourself!
-
-If you are one of the people who don't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
-
-```py
-from __future__ import braces
-```
-
-**Output:**
-```py
-  File "some_file.py", line 1
-    from __future__ import braces
-SyntaxError: not a chance
-```
-
-Braces? No way! If you think that's disappointing, use Java.
-
-#### 💡 Explanation:
-+ The `__future__` module is normally used to provide features from future versions of Python. The "future" here is however ironic.
-+ This is an easter egg concerned with the community's feelings on this issue.
-
----
-
-### "this" is love :heart:
-
-```py
-import this
-```
-
-Wait, what's **this**?
-
-**Output:**
-```
-The Zen of Python, by Tim Peters
-
-Beautiful is better than ugly.
-Explicit is better than implicit.
-Simple is better than complex.
-Complex is better than complicated.
-Flat is better than nested.
-Sparse is better than dense.
-Readability counts.
-Special cases aren't special enough to break the rules.
-Although practicality beats purity.
-Errors should never pass silently.
-Unless explicitly silenced.
-In the face of ambiguity, refuse the temptation to guess.
-There should be one-- and preferably only one --obvious way to do it.
-Although that way may not be obvious at first unless you're Dutch.
-Now is better than never.
-Although never is often better than *right* now.
-If the implementation is hard to explain, it's a bad idea.
-If the implementation is easy to explain, it may be a good idea.
-Namespaces are one honking great idea -- let's do more of those!
-```
-
-It's the Zen of Python!
-
-```py
->>> love = this
->>> this is love
-True
->>> love is True
-False
->>> love is False
-False
->>> love is not True or False
-True
->>> love is not True or False; love is love  # Love is complicated
-True
-```
-
-#### 💡 Explanation:
-
-* `this` module in Python is an easter egg for The Zen Of Python ([PEP 20](https://www.python.org/dev/peps/pep-0020)).
-* And if you think that's already interesting enough, check out the implementation of [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py). Interestingly, the code for the Zen violates itself (and that's probably the only place where this happens).
-* Regarding the statement `love is not True or False; love is love`, ironic but it's self-explanatory.
-
----
-
-### Okay Python, Can you make me fly?
-
-Well, here you go
-
-```py
-import antigravity
-```
-
-**Output:**
-Sshh.. It's a super secret.
-
-#### 💡 Explanation:
-+ `antigravity` module is another easter egg like `from __future__ import braces`, with a difference that it actually works.
-+ `import antigravity` opens up a web browser pointing to the [classic XKCD comic](http://xkcd.com/353/) about Python.
-+ Well, there's more to it. There's **another easter egg inside the easter egg**. If look at the [code](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17), there's a function defined that purports to implement the [XKCD's geohashing algorithm](https://xkcd.com/426/).
-
----
-
-### `goto`, but why?
-
-```py
-from goto import goto, label
-for i in range(9):
-    for j in range(9):
-        for k in range(9):
-            print("I'm trapped, please rescue!")
-            if k == 2:
-                goto .breakout # breaking out from a deeply nested loop
-label .breakout
-print("Freedom!")
-```
-
-**Output (Python 2.3):**
-```py
-I'm trapped, please rescue!
-I'm trapped, please rescue!
-Freedom!
-```
-
-#### 💡 Explanation:
-- A working version of `goto` in Python was [announced](https://mail.python.org/pipermail/python-announce-list/2004-April/002982.html) as an April Fool's joke on 1st April 2004.
-- Current versions of Python do not have this module.
-- Although it works, but please don't use it. Here's the [reason](https://docs.python.org/3/faq/design.html#why-is-there-no-goto) to why `goto` is not present in Python.
-
----
-
-### Let's meet Friendly Language Uncle For Life
-
-**Output (Python 3.x)**
-```py
->>> from __future__ import barry_as_FLUFL
->>> "Ruby" != "Python" # there's no doubt about it
-  File "some_file.py", line 1
-    "Ruby" != "Python"
-              ^
-SyntaxError: invalid syntax
-
->>> "Ruby" <> "Python"
-True
-```
-
-There we go.
-
-#### 💡 Explanation:
-- This is relevant to [PEP-401](https://www.python.org/dev/peps/pep-0401/) released on April 1, 2009 (now you know, what it means).
-- Quoting from the PEP-401
-  Recognized that the != inequality operator in Python 3.0 was a horrible, finger pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
-- There's more that Uncle Barry had to share in the PEP, you can read it [here](https://www.python.org/dev/peps/pep-0401/).
-
----
-
-### Inpinity
-
-The spelling is intended. Please, don't submit a patch for this.
-
-**Output (Python 3.x):**
-```py
->>> infinity = float('infinity')
->>> hash(infinity)
-314159
->>> hash(float('-inf'))
--314159
-```
-
-#### 💡 Explanation:
-- Hash of infinity is 10⁵ x π.
-- Interestingly, hash of `float('-inf')` is "-10⁵ x π" in Python 3, whereas "-10⁵ x e" in Python 2.
 
 ---
 
@@ -1438,7 +1262,6 @@ class SomeClass:
 - Starting from Python 3.X, list comprehensions also have their own scope.
 
 ---
-
 ###  From filled to None in one instruction...
 
 ```py
@@ -1723,14 +1546,6 @@ another_dict[1.0] = "Python"
 "Python"
 ```
 
-3\.
-```py
->>> some_bool = True
->>> "wtf"*some_bool
-'wtf'
->>> "wtf"*some_bool
-''
-```
 
 #### 💡 Explanation:
 
@@ -1800,6 +1615,8 @@ tuple()
 
 ### Teleportation
 
+Suggested in [this](https://www.reddit.com/r/Python/comments/6x6upn/wtfpython_a_collection_of_interesting_and_tricky/dme96dq/) reddit thread.
+
 ```py
 import numpy as np
 
@@ -1829,6 +1646,8 @@ Is it worth a Nobel Prize?
 ---
 
 ### yielding None
+
+Suggested by @chris-rands in [this](https://github.com/satwikkansal/wtfpython/issues/32) issue.
 
 ```py
 some_iterable = ('a', 'b')
@@ -1860,6 +1679,8 @@ def some_func(val):
 
 ### The surprising comma
 
+Suggested by @MostAwesomeDude in [this](https://github.com/satwikkansal/wtfPython/issues/1) issue.
+
 **Output:**
 ```py
 >>> def f(x, y,):
@@ -1890,6 +1711,8 @@ SyntaxError: invalid syntax
 
 ### For what?
 
+Suggested by @MittalAshok in [this](https://github.com/satwikkansal/wtfpython/issues/23) issue.
+
 ```py
 some_string = "wtf"
 some_dict = {}
@@ -1910,7 +1733,7 @@ for i, some_dict[i] in enumerate(some_string):
   for_stmt: 'for' exprlist 'in' testlist ':' suite ['else' ':' suite]
   ```
   Where `exprlist` is the assignment target. This means that the equivalent of `{exprlist} = {next_value}` is **executed for each item** in the iterable.
-  An interesting example that illustrates this:
+  An interesting example suggested by @tukkek in [this](https://github.com/satwikkansal/wtfPython/issues/11) issue illustrates this:
   ```py
   for i in range(4):
       print(i)
@@ -1943,6 +1766,8 @@ for i, some_dict[i] in enumerate(some_string):
 
 ### not knot!
 
+Suggested by @MostAwesomeDude in [this](https://github.com/satwikkansal/wtfPython/issues/1) issue.
+
 ```py
 x = True
 y = False
@@ -1970,6 +1795,8 @@ SyntaxError: invalid syntax
 
 ### Subclass relationships
 
+Suggested by @Lucas-C in [this](https://github.com/satwikkansal/wtfpython/issues/36) issue.
+
 **Output:**
 ```py
 >>> from collections import Hashable
@@ -1993,6 +1820,8 @@ The Subclass relationships were expected to be transitive, right? (i.e. if `A` i
 ---
 
 ### Mangling time!
+
+Suggested by @Lucas-C in [this](https://github.com/satwikkansal/wtfpython/issues/36) issue.
 
 
 ```py
@@ -2023,6 +1852,9 @@ Why did `Yo()._Yo__honey` worked? Only Indian readers would understand.
 ---
 
 ### Deep down, we're all the same.
+
+Suggested by @Lucas-C in [this](https://github.com/satwikkansal/wtfpython/issues/36) issue.
+
 
 ```py
 class WTF:
@@ -2066,6 +1898,8 @@ True
 ---
 
 ### Half triple-quoted strings
+
+Suggested by @asottile in [this](https://github.com/satwikkansal/wtfpython/issues/40) issue.
 
 **Output:**
 ```py
@@ -2148,6 +1982,8 @@ str
 
 ### Stubborn `del` operator
 
+Suggested by @tukkek in [this](https://github.com/satwikkansal/wtfpython/issues/26) issue.
+
 ```py
 class SomeClass:
     def __del__(self):
@@ -2191,6 +2027,8 @@ Okay, now it's deleted :confused:
 
 ### Let's see if you can guess this?
 
+Suggested by @PiaFraus in [this](https://github.com/satwikkansal/wtfPython/issues/9) issue.
+
 ```py
 a, b = a[b] = {}, 5
 ```
@@ -2226,8 +2064,6 @@ a, b = a[b] = {}, 5
   >>> some_list[0]
   [[...]]
   >>> some_list is some_list[0]
-  True
-  >>> some_list[0][0][0][0][0][0] == some_list
   True
   ```
   Similar is the case in our example (`a[b][0]` is the same object as `a`)
@@ -2321,15 +2157,14 @@ For discussions, either create a new [issue](https://github.com/satwikkansal/wtf
 
 # Acknowledgements
 
-The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs). The overwhelming support by the community gave it the shape it is in right now.
+The idea and design for this collection are inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs).
 
 #### Some nice Links!
 * https://www.youtube.com/watch?v=sH4XF6pKKmk
 * https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python
 * https://sopython.com/wiki/Common_Gotchas_In_Python
 * https://stackoverflow.com/questions/530530/python-2-x-gotchas-and-landmines
-* https://stackoverflow.com/questions/1011431/common-pitfalls-in-python
-* https://www.python.org/doc/humor/
+* https://stackoverflow.com/questions/1011431/common-pitfalls-in-python (This StackOverflow thread has some DOs and DONTs which are worth reading.)
 
 
 # 🎓 License
@@ -2343,18 +2178,13 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 
 # Help
 
+I'm looking for full-time opportunities, I'd highly appreciate if you could do me a small favor by letting me know about open positions around you.
+
+
 Thanks a ton for reading this project, I hope you enjoyed it and found it informative!
 
-I'm looking for full-time opportunities, I'd highly appreciate if you could do me a small favor by letting me know about open positions around you. You can find more about me [here](https://satwikkansal.xyz).
-
-
-## Want to share wtfPython with friends?
-
-You can use these quick links for Twitter and Linkedin.
+**Want to share What the f*ck Python with friends?**
 
 [Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython) | 
 [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)
 
-## Need a pdf version?
-
-I've recieved a few requests for the pdf version of wtfpython. You can add your details [here](https://satwikkansal.xyz/wtfpython-pdf/) to get the pdf as oon as it is finished.

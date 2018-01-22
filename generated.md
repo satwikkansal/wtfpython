@@ -60,17 +60,17 @@ So, here we go...
     - [▶ When True is actually False](#%E2%96%B6-when-true-is-actually-false)
     - [▶ From filled to None in one instruction...](#%E2%96%B6-from-filled-to-none-in-one-instruction)
     - [▶ Subclass relationships *](#%E2%96%B6-subclass-relationships-)
-    - [▶ Implicity key type conversion *](#%E2%96%B6-implicity-key-type-conversion-)
+    - [▶ The mysterious key type conversion *](#%E2%96%B6-the-mysterious-key-type-conversion-)
     - [▶ Let's see if you can guess this?](#%E2%96%B6-lets-see-if-you-can-guess-this)
   - [Section: Watchout for the landmines!](#section-watchout-for-the-landmines)
     - [▶ Modifying a dictionary while iterating over it](#%E2%96%B6-modifying-a-dictionary-while-iterating-over-it)
     - [▶ Stubborn `del` operator *](#%E2%96%B6-stubborn-del-operator-)
-    - [▶ Deleting a list item while iterating over it](#%E2%96%B6-deleting-a-list-item-while-iterating-over-it)
-    - [▶ Loop variables leaking out of local scope!](#%E2%96%B6-loop-variables-leaking-out-of-local-scope)
+    - [▶ Deleting a list item while iterating](#%E2%96%B6-deleting-a-list-item-while-iterating)
+    - [▶ Loop variables leaking out!](#%E2%96%B6-loop-variables-leaking-out)
     - [▶ Beware of default mutable arguments!](#%E2%96%B6-beware-of-default-mutable-arguments)
-    - [▶ Catching the Exceptions!](#%E2%96%B6-catching-the-exceptions)
+    - [▶ Catching the Exceptions](#%E2%96%B6-catching-the-exceptions)
     - [▶ Same operands, different story!](#%E2%96%B6-same-operands-different-story)
-    - [▶ Using a variable not defined in scope](#%E2%96%B6-using-a-variable-not-defined-in-scope)
+    - [▶ The out of scope variable](#%E2%96%B6-the-out-of-scope-variable)
     - [▶ Be careful with chained operations](#%E2%96%B6-be-careful-with-chained-operations)
     - [▶ Name resolution ignoring class scope](#%E2%96%B6-name-resolution-ignoring-class-scope)
     - [▶ Needle in a Haystack](#%E2%96%B6-needle-in-a-haystack)
@@ -1416,7 +1416,7 @@ The Subclass relationships were expected to be transitive, right? (i.e., if `A` 
 
 ---
 
-### ▶ Implicity key type conversion *
+### ▶ The mysterious key type conversion *
 
 ```py
 class SomeClass(str):
@@ -1611,7 +1611,7 @@ Okay, now it's deleted :confused:
 
 ---
 
-### ▶ Deleting a list item while iterating over it
+### ▶ Deleting a list item while iterating
 
 ```py
 list_1 = [1, 2, 3, 4]
@@ -1671,7 +1671,7 @@ Can you guess why the output is `[2, 4]`?
 
 ---
 
-### ▶ Loop variables leaking out of local scope!
+### ▶ Loop variables leaking out!
 
 1\.
 ```py
@@ -1791,7 +1791,7 @@ def some_func(default_arg=[]):
 
 ---
 
-### ▶ Catching the Exceptions!
+### ▶ Catching the Exceptions
 
 ```py
 some_list = [1, 2, 3]
@@ -1908,7 +1908,7 @@ a += [5, 6, 7, 8]
 
 ---
 
-### ▶ Using a variable not defined in scope
+### ▶ The out of scope variable
 
 ```py
 a = 1

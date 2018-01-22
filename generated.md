@@ -1,7 +1,82 @@
+<h1 align="center"> What the f*ck Python? 🐍 </h1>
+<p align="center"> An interesting collection of tricky Python Snippets and lesser known features.</p>
+
+[![WTFPL 2.0][license-image]][license-url]
+
+
+Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
+
+Here is a fun project attempting to collect such classic & tricky examples of unexpected behaviors and lesser known features in Python, and discuss what exactly is happening under the hood!
+
+While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
+
+If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
+
+So, here we go...
+
+# Structure of the Examples
+
+All the examples are structured like below:
+
+> ### ▶ Some fancy Title *
+> The asterisk at the end of the title indicates the example was not present in the first release and has been recently added.
+> 
+> ```py
+> # Setting up the code.
+> # Preparation for the magic...
+> ```
+> 
+> **Output (Python version):**
+> ```py
+> >>> triggering_statement
+> Probably unexpected output
+> ```
+> (Optional): One line describing the unexpected output.
+> 
+> 
+> #### 💡 Explanation:
+> 
+> * Brief explanation of what's happening and why is it happening.
+>   ```py
+>   Setting up examples for clarification (if necessary)
+>   ```
+>   **Output:**
+>   ```py
+>   >>> trigger # some example that makes it easy to unveil the magic
+>   # some justified output
+>   ```
+
+**Note:** All the examples are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified in the description.
+
+# Usage
+
+A nice way to get the most out of these examples, in my opinion, will be just to read the examples chronologically, and for every example:
+- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's going to happen next.
+- Read the output snippets and,
+  + Check if the outputs are the same as you'd expect.
+  + Make sure if you know the exact reason behind the output being the way it is.
+    - If no, take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
+    - If yes, give a gentle pat on your back, and you may skip to the next example.
+
+PS: You can also read WTFpython at the command line. There's a pypi package and an npm package (supports colored formatting) for the same.
+
+To install the npm package [`wtfpython`](https://www.npmjs.com/package/wtfpython)
+```sh
+$ npm install -g wtfpython
+```
+
+Alternatively, to install the pypi package [`wtfpython`](https://pypi.python.org/pypi/wtfpython)
+```sh
+$ pip install wtfpython -U
+```
+
+Now, just run `wtfpython` at the command line which will open this collection in your selected `$PAGER`.
 
 ---
 
-## Appearances are Deceptive!
+# 👀 Examples
+
+## Section: Appearances are Deceptive!
 
 ### ▶ Skipping lines?
 

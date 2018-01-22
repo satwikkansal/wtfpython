@@ -23,11 +23,11 @@ So, here we go...
 - [Structure of the Examples](#structure-of-the-examples)
 - [Usage](#usage)
 - [👀 Examples](#-examples)
-  - [Section: Appearances are Deceptive!](#section-appearances-are-deceptive)
+  - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
     - [▶ Skipping lines?](#-skipping-lines)
     - [▶ Teleportation *](#-teleportation-)
     - [▶ Well, something is fishy...](#-well-something-is-fishy)
-  - [Section: The Hidden treasures](#section-the-hidden-treasures)
+  - [Section: The Hidden treasures!](#section-the-hidden-treasures)
     - [▶ Okay Python, Can you make me fly? *](#-okay-python-can-you-make-me-fly-)
     - [▶ `goto`, but why? *](#-goto-but-why-)
     - [▶ Brace yourself! *](#-brace-yourself-)
@@ -36,7 +36,7 @@ So, here we go...
     - [▶ Yes, it exists!](#-yes-it-exists)
     - [▶ Inpinity *](#-inpinity-)
     - [▶ Mangling time! *](#-mangling-time-)
-  - [Section: Strain your Brain](#section-strain-your-brain)
+  - [Section: Strain your brain!](#section-strain-your-brain)
     - [▶ Strings can be tricky sometimes *](#-strings-can-be-tricky-sometimes-)
     - [▶ Time for some hash brownies!](#-time-for-some-hash-brownies)
     - [▶ Return return everywhere!](#-return-return-everywhere)
@@ -62,7 +62,7 @@ So, here we go...
     - [▶ Subclass relationships *](#-subclass-relationships-)
     - [▶ The mysterious key type conversion *](#-the-mysterious-key-type-conversion-)
     - [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
-  - [Section: Watchout for the landmines!](#section-watchout-for-the-landmines)
+  - [Section: Watch out for the landmines!](#section-watch-out-for-the-landmines)
     - [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
     - [▶ Stubborn `del` operator *](#-stubborn-del-operator-)
     - [▶ Deleting a list item while iterating](#-deleting-a-list-item-while-iterating)
@@ -83,7 +83,7 @@ So, here we go...
 - [Acknowledgements](#acknowledgements)
 - [🎓 License](#-license)
 - [Help](#help)
-  - [Want to share wtfPython with friends?](#want-to-share-wtfpython-with-friends)
+  - [Want to share WTFpython with friends?](#want-to-share-wtfpython-with-friends)
   - [Need a pdf version?](#need-a-pdf-version)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -150,7 +150,7 @@ Now, just run `wtfpython` at the command line which will open this collection in
 
 # 👀 Examples
 
-## Section: Appearances are Deceptive!
+## Section: Appearances are deceptive!
 
 This section is a gentle warm up before we focus on real Python concepts.
 
@@ -261,7 +261,7 @@ Shouldn't that be 100?
 
 ---
 
-## Section: The Hidden treasures
+## Section: The Hidden treasures!
 
 This section contains few of the lesser-known interesting things about Python that most beginners like me are unaware of (well, not anymore).
 
@@ -511,7 +511,7 @@ Why did `Yo()._Yo__honey` worked? Only Indian readers would understand.
 
 ---
 
-## Section: Strain your Brain
+## Section: Strain your brain!
 
 Alright, it's time to strain your brain and test your understanding of Python concepts. All the best!
 
@@ -1535,7 +1535,7 @@ a, b = a[b] = {}, 5
 
 ---
 
-## Section: Watchout for the landmines!
+## Section: Watch out for the landmines!
 
 
 ### ▶ Modifying a dictionary while iterating over it

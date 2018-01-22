@@ -1,0 +1,152 @@
+ Skipping lines?
+a
+
+ Well, something is fishy...
+a
+
+ Time for some hash brownies!
+f
+
+ Evaluation time discrepancy
+f
+
+ Modifying a dictionary while iterating over it
+c
+
+ Deleting a list item while iterating over it
+c
+
+ Backslashes at the end of string
+f
+
+Brace yourself!
+t*
+
+"this" is love :heart:
+t*
+
+Okay Python, Can you make me fly?
+t*
+
+`goto`, but why?
+t*
+
+Let's meet Friendly Language Uncle For Life
+t*
+
+Inpinity
+t*
+
+Strings can be tricky sometimes
+f*
+
+`+=` is faster
+m
+
+ Let's make a giant string!
+m
+
+Yes, it exists!
+t
+
+ `is` is not what it is!
+f
+
+ `is not ...` is not `is (not ...)`
+f
+
+ The function inside loop sticks to the same output
+f
+
+ Loop variables leaking out of local scope!
+c
+
+ A tic-tac-toe where X wins in the first attempt!
+f
+
+ Beware of default mutable arguments!
+c
+
+Same operands, different story!
+c
+
+ Mutating the immutable!
+f
+
+ Using a variable not defined in scope
+c
+
+ The disappearing variable from outer scope
+f
+
+ Return return everywhere!
+f
+
+ When True is actually False
+f
+
+ Be careful with chained operations
+c
+
+ Name resolution ignoring class scope
+c
+
+ From filled to None in one instruction...
+f
+
+ Explicit typecast of strings
+m
+
+ Class attributes and instance attributes
+f
+
+ Catching the Exceptions!
+f
+
+Midnight time doesn't exist?
+f
+
+What's wrong with booleans?
+f
+
+Needle in a Haystack
+c
+
+Teleportation
+a*
+
+yielding None
+f
+
+The surprising comma
+f
+
+For what?
+f
+
+not knot!
+f
+
+Subclass relationships
+f*
+
+Mangling time!
+t*
+
+Deep down, we're all the same.
+f*
+
+Half triple-quoted strings
+f
+
+Implicity key type conversion
+f*
+
+Stubborn `del` operator
+c*
+
+Let's see if you can guess this?
+f
+
+ Minor Ones
+m

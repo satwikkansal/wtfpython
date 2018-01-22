@@ -14,6 +14,80 @@ If you're an experienced Python programmer, you can take it as a challenge to ge
 
 So, here we go...
 
+# Table of Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Structure of the Examples](#structure-of-the-examples)
+- [Usage](#usage)
+- [👀 Examples](#-examples)
+  - [Section: Appearances are Deceptive!](#section-appearances-are-deceptive)
+    - [▶ Skipping lines?](#%E2%96%B6-skipping-lines)
+    - [▶ Teleportation *](#%E2%96%B6-teleportation-)
+    - [▶ Well, something is fishy...](#%E2%96%B6-well-something-is-fishy)
+  - [Section: The Hiddent treasures](#section-the-hiddent-treasures)
+    - [▶ Okay Python, Can you make me fly? *](#%E2%96%B6-okay-python-can-you-make-me-fly-)
+    - [▶ `goto`, but why? *](#%E2%96%B6-goto-but-why-)
+    - [▶ Brace yourself! *](#%E2%96%B6-brace-yourself-)
+    - [▶ Let's meet Friendly Language Uncle For Life *](#%E2%96%B6-lets-meet-friendly-language-uncle-for-life-)
+    - [▶ Even Python understands that love is complicated *](#%E2%96%B6-even-python-understands-that-love-is-complicated-)
+    - [▶ Yes, it exists!](#%E2%96%B6-yes-it-exists)
+    - [▶ Inpinity *](#%E2%96%B6-inpinity-)
+    - [▶ Mangling time! *](#%E2%96%B6-mangling-time-)
+  - [Section: Strain your Brain](#section-strain-your-brain)
+    - [▶ Strings can be tricky sometimes *](#%E2%96%B6-strings-can-be-tricky-sometimes-)
+    - [▶ Time for some hash brownies!](#%E2%96%B6-time-for-some-hash-brownies)
+    - [▶ Return return everywhere!](#%E2%96%B6-return-return-everywhere)
+    - [▶ Deep down, we're all the same. *](#%E2%96%B6-deep-down-were-all-the-same-)
+    - [▶ For what?](#%E2%96%B6-for-what)
+    - [▶ Evaluation time discrepancy](#%E2%96%B6-evaluation-time-discrepancy)
+    - [▶ `is` is not what it is!](#%E2%96%B6-is-is-not-what-it-is)
+    - [▶ A tic-tac-toe where X wins in the first attempt!](#%E2%96%B6-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
+    - [▶ The sticky output function](#%E2%96%B6-the-sticky-output-function)
+    - [▶ `is not ...` is not `is (not ...)`](#%E2%96%B6-is-not--is-not-is-not-)
+    - [▶ The surprising comma](#%E2%96%B6-the-surprising-comma)
+    - [▶ Backslashes at the end of string](#%E2%96%B6-backslashes-at-the-end-of-string)
+    - [▶ not knot!](#%E2%96%B6-not-knot)
+    - [▶ Half triple-quoted strings](#%E2%96%B6-half-triple-quoted-strings)
+    - [▶ Midnight time doesn't exist?](#%E2%96%B6-midnight-time-doesnt-exist)
+    - [▶ What's wrong with booleans?](#%E2%96%B6-whats-wrong-with-booleans)
+    - [▶ Class attributes and instance attributes](#%E2%96%B6-class-attributes-and-instance-attributes)
+    - [▶ yielding None](#%E2%96%B6-yielding-none)
+    - [▶ Mutating the immutable!](#%E2%96%B6-mutating-the-immutable)
+    - [▶ The disappearing variable from outer scope](#%E2%96%B6-the-disappearing-variable-from-outer-scope)
+    - [▶ When True is actually False](#%E2%96%B6-when-true-is-actually-false)
+    - [▶ From filled to None in one instruction...](#%E2%96%B6-from-filled-to-none-in-one-instruction)
+    - [▶ Subclass relationships *](#%E2%96%B6-subclass-relationships-)
+    - [▶ Implicity key type conversion *](#%E2%96%B6-implicity-key-type-conversion-)
+    - [▶ Let's see if you can guess this?](#%E2%96%B6-lets-see-if-you-can-guess-this)
+  - [Section: Watchout for the landmines!](#section-watchout-for-the-landmines)
+    - [▶ Modifying a dictionary while iterating over it](#%E2%96%B6-modifying-a-dictionary-while-iterating-over-it)
+    - [▶ Stubborn `del` operator *](#%E2%96%B6-stubborn-del-operator-)
+    - [▶ Deleting a list item while iterating over it](#%E2%96%B6-deleting-a-list-item-while-iterating-over-it)
+    - [▶ Loop variables leaking out of local scope!](#%E2%96%B6-loop-variables-leaking-out-of-local-scope)
+    - [▶ Beware of default mutable arguments!](#%E2%96%B6-beware-of-default-mutable-arguments)
+    - [▶ Catching the Exceptions!](#%E2%96%B6-catching-the-exceptions)
+    - [▶ Same operands, different story!](#%E2%96%B6-same-operands-different-story)
+    - [▶ Using a variable not defined in scope](#%E2%96%B6-using-a-variable-not-defined-in-scope)
+    - [▶ Be careful with chained operations](#%E2%96%B6-be-careful-with-chained-operations)
+    - [▶ Name resolution ignoring class scope](#%E2%96%B6-name-resolution-ignoring-class-scope)
+    - [▶ Needle in a Haystack](#%E2%96%B6-needle-in-a-haystack)
+  - [Section: Miscallaneous](#section-miscallaneous)
+    - [▶ `+=` is faster](#%E2%96%B6--is-faster)
+    - [▶ Let's make a giant string!](#%E2%96%B6-lets-make-a-giant-string)
+    - [▶ Explicit typecast of strings](#%E2%96%B6-explicit-typecast-of-strings)
+    - [▶ Minor Ones](#%E2%96%B6-minor-ones)
+- [Contributing](#contributing)
+- [Acknowledgements](#acknowledgements)
+- [🎓 License](#-license)
+- [Help](#help)
+  - [Want to share wtfPython with friends?](#want-to-share-wtfpython-with-friends)
+  - [Need a pdf version?](#need-a-pdf-version)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Structure of the Examples
 
 All the examples are structured like below:
@@ -185,7 +259,7 @@ Shouldn't that be 100?
 
 ---
 
-## The Hiddent treasures
+## Section: The Hiddent treasures
 
 
 ### ▶ Okay Python, Can you make me fly? *
@@ -434,7 +508,7 @@ Why did `Yo()._Yo__honey` worked? Only Indian readers would understand.
 
 ---
 
-## Strain your Brain
+## Section: Strain your Brain
 
 ### ▶ Strings can be tricky sometimes *
 
@@ -1456,7 +1530,7 @@ a, b = a[b] = {}, 5
 
 ---
 
-## Watchout for the landmines!
+## Section: Watchout for the landmines!
 
 
 ### ▶ Modifying a dictionary while iterating over it
@@ -2008,7 +2082,7 @@ tuple()
 
 ---
 
-## Miscallaneous
+## Section: Miscallaneous
 
 
 ### ▶ `+=` is faster
@@ -2212,10 +2286,6 @@ nan
   The behavior is due to the matching of empty substring(`''`) with slices of length 0 in the original string.
 
 ---
-
-# TODO: Hell of an example!
-
-Trying to come up with an example that combines multiple examples discussed above, making it difficult for the reader to guess the output correctly :sweat_smile:.
 
 # Contributing
 

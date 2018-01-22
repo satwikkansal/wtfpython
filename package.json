@@ -1,11 +1,11 @@
 {
   "name": "wtfpython",
-  "version": "1.2.6",
-  "description": "A collection of subtle and tricky Python examples",
+  "version": "2.0.0",
+  "description": "A collection of trick Python snippets and lesser known features",
   "bin": "wtfpython",
   "scripts": {
     "postpublish": "git push origin master",
-    "toc": "doctoc --github --title '# Table of Contents' --maxlevel 2 README.md"
+    "toc": "doctoc --github --title '# Table of Contents' --maxlevel 3 README.md"
   },
   "repository": {
     "type": "git",

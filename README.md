@@ -2318,9 +2318,9 @@ Trying to come up with an example that combines multiple examples discussed abov
 
 # Contributing
 
-All patches are Welcome! Filing an [issue](https://github.com/satwikkansal/wtfpython/issues/new) first before submitting a patch will be appreciated :) Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for further details.
+All patches are Welcome! Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for further details.
 
-For discussions, either create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new) or ping on the Gitter [channel](https://gitter.im/wtfpython/Lobby)
+For discussions, you can either create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new) or ping on the Gitter [channel](https://gitter.im/wtfpython/Lobby)
 
 # Acknowledgements
 

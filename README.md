@@ -152,6 +152,8 @@ Now, just run `wtfpython` at the command line which will open this collection in
 
 ## Section: Appearances are Deceptive!
 
+This section is a gentle warm up before we focus on real Python concepts.
+
 ### ▶ Skipping lines?
 
 **Output:**
@@ -261,6 +263,7 @@ Shouldn't that be 100?
 
 ## Section: The Hidden treasures
 
+This section contains few of the lesser-known interesting things about Python that most beginners like me are unaware of (well, not anymore).
 
 ### ▶ Okay Python, Can you make me fly? *
 
@@ -509,6 +512,8 @@ Why did `Yo()._Yo__honey` worked? Only Indian readers would understand.
 ---
 
 ## Section: Strain your Brain
+
+Alright, it's time to strain your brain and test your understanding of Python concepts. All the best!
 
 ### ▶ Strings can be tricky sometimes *
 

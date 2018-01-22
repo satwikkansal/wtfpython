@@ -7,7 +7,8 @@ If you're adding a new example, please do create an issue to discuss it before s
 You can use the following template for adding a new example:
 
 <pre>
-### ▶ Some fancy Title
+### ▶ Some fancy Title *
+The asterisk at the end of the title indicates the example was not present in the first release and has been recently added.
 
 ```py
 # Setting up the code.

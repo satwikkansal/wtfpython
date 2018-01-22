@@ -123,7 +123,8 @@ So, here ya go...
 
 All the examples are structured like below:
 
-> ### Some fancy Title
+> ### ▶ Some fancy Title *
+> The asterisk at the end of the title indicates the example was not present in the first release and has been recently added.
 > 
 > ```py
 > # Setting up the code.

@@ -154,11 +154,11 @@ All the examples are structured like below:
 
 # Usage
 
-A good way to get the most out of these examples, in my opinion, will be just to read the examples chronologically, and for every example:
-- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's gonna happen next.
+A nice way to get the most out of these examples, in my opinion, will be just to read the examples chronologically, and for every example:
+- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's going to happen next.
 - Read the output snippets and,
   + Check if the outputs are the same as you'd expect.
-  + Make sure know the exact reason behind the output being the way it is.
+  + Make sure if you know the exact reason behind the output being the way it is.
     - If no, take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
@@ -195,7 +195,7 @@ Wut?
 
 #### 💡 Explanation
 
-Some non-Western characters look identical to letters in the English alphabet, but are considered distinct by the interpreter.
+Some non-Western characters look identical to letters in the English alphabet but are considered distinct by the interpreter.
 
 ```py
 >>> ord('е') # cyrillic 'e' (Ye)
@@ -211,7 +211,7 @@ False
 42
 ```
 
-The built-in `ord()` function returns a character's Unicode [code point](https://en.wikipedia.org/wiki/Code_point), and different code positions of cyrillic 'e' and latin 'e' justify the behavior of the above example.
+The built-in `ord()` function returns a character's Unicode [code point](https://en.wikipedia.org/wiki/Code_point), and different code positions of Cyrillic 'e' and Latin 'e' justify the behavior of the above example.
 
 ---
 
@@ -220,7 +220,7 @@ The built-in `ord()` function returns a character's Unicode [code point](https:/
 ```py
 def square(x):
     """
-    A simple function to calculate square of a number by addition.
+    A simple function to calculate the square of a number by addition.
     """
     sum_so_far = 0
     for counter in range(x):
@@ -245,7 +245,7 @@ Shouldn't that be 100?
 * This is how Python handles tabs:
   > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
 * So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
-* Python 3 is nice enough to automatically throw an error for such cases.
+* Python 3 is kind enough to throw an error for such cases automatically.
     
     **Output (Python 3.x):**
     ```py
@@ -280,7 +280,7 @@ some_dict[5] = "Python"
 #### 💡 Explanation
 
 * Python dictionaries check for equality and compare the hash value to determine if two keys are the same.
-* Immutable objects with same value always have a same hash in Python.
+* Immutable objects with same value always have the same hash in Python.
   ```py
   >>> 5 == 5.0
   True
@@ -309,8 +309,8 @@ array = [2, 8, 22]
 
 #### 💡 Explanation
 
-- In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at run time.
-- So before run time, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
+- In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at runtime.
+- So before runtime, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
 
 ---
 
@@ -400,10 +400,10 @@ Can you guess why the output is `[2, 4]`?
 **Difference between `del`, `remove`, and `pop`:**
 * `del var_name` just removes the binding of the `var_name` from the local or global namespace (That's why the `list_1` is unaffected).
 * `remove` removes the first matching value, not a specific index, raises `ValueError` if the value is not found.
-* `pop` removes element at a specific index and returns it, raises `IndexError` if an invalid index is specified.
+* `pop` removes the element at a specific index and returns it, raises `IndexError` if an invalid index is specified.
 
 **Why the output is `[2, 4]`?**
-- The list iteration is done index by index, and when we remove `1` from `list_2` or `list_4`, the contents of the lists are now `[2, 3, 4]`. The remaining elements are shifted down, i.e. `2` is at index 0, and `3` is at index 1. Since the next iteration is going to look at index 1 (which is the `3`), the `2` gets skipped entirely. A similar thing will happen with every alternate element in the list sequence.
+- The list iteration is done index by index, and when we remove `1` from `list_2` or `list_4`, the contents of the lists are now `[2, 3, 4]`. The remaining elements are shifted down, i.e., `2` is at index 0, and `3` is at index 1. Since the next iteration is going to look at index 1 (which is the `3`), the `2` gets skipped entirely. A similar thing will happen with every alternate element in the list sequence.
 
 * Refer to this StackOverflow [thread](https://stackoverflow.com/questions/45946228/what-happens-when-you-try-to-delete-a-list-element-while-iterating-over-it) explaining the example
 * See also this nice StackOverflow [thread](https://stackoverflow.com/questions/45877614/how-to-change-all-the-dictionary-keys-in-a-for-loop-with-d-items) for a similar example related to dictionaries in Python.
@@ -439,7 +439,7 @@ SyntaxError: EOL while scanning string literal
 
 ### Brace yourself!
 
-If you are one of the people who don't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
+If you are one of the people who doesn't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
 
 ```py
 from __future__ import braces
@@ -529,7 +529,7 @@ import antigravity
 Sshh.. It's a super secret.
 
 #### 💡 Explanation:
-+ `antigravity` module is another easter egg like `from __future__ import braces`, with a difference that it actually works.
++ `antigravity` module is an easter egg.
 + `import antigravity` opens up a web browser pointing to the [classic XKCD comic](http://xkcd.com/353/) about Python.
 + Well, there's more to it. There's **another easter egg inside the easter egg**. If look at the [code](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17), there's a function defined that purports to implement the [XKCD's geohashing algorithm](https://xkcd.com/426/).
 
@@ -584,7 +584,7 @@ There we go.
 - This is relevant to [PEP-401](https://www.python.org/dev/peps/pep-0401/) released on April 1, 2009 (now you know, what it means).
 - Quoting from the PEP-401
   Recognized that the != inequality operator in Python 3.0 was a horrible, finger pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
-- There's more that Uncle Barry had to share in the PEP, you can read it [here](https://www.python.org/dev/peps/pep-0401/).
+- There were more things that Uncle Barry had to share in the PEP; you can read them [here](https://www.python.org/dev/peps/pep-0401/).
 
 ---
 
@@ -603,7 +603,7 @@ The spelling is intended. Please, don't submit a patch for this.
 
 #### 💡 Explanation:
 - Hash of infinity is 10⁵ x π.
-- Interestingly, hash of `float('-inf')` is "-10⁵ x π" in Python 3, whereas "-10⁵ x e" in Python 2.
+- Interestingly, the hash of `float('-inf')` is "-10⁵ x π" in Python 3, whereas "-10⁵ x e" in Python 2.
 
 ---
 
@@ -648,10 +648,10 @@ Makes sense, right?
 #### 💡 Explanation:
 + Such behavior is due to CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
 + After being interned, many variables may point to the same string object in memory (thereby saving memory).
-+ In the snippets above, strings are implicity interned. The decison of when to implicitly intern a string is implementation dependent. There are some facts that can be used to guess if a string will be interned or not:
++ In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation dependent. There are some facts that can be used to guess if a string will be interned or not:
   * All length 0 and length 1 strings are interned.
   * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
-  * Strings that are not composed of ascii letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`.
+  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`.
 + When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compiler optimization and specifically applies to the interactive environment.
 
 ---
@@ -673,8 +673,6 @@ Makes sense, right?
 ---
 
 ###  Let's make a giant string!
-
-This is not a WTF at all, just some nice things to be aware of :)
 
 ```py
 def add_string_with_plus(iters):
@@ -742,7 +740,7 @@ Let's increase the number of iterations by a factor of 10.
 - Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases (justified with the execution times of `add_bytes_with_plus` function)
 - Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for short strings).
 - Or better, if already you've contents available in the form of an iterable object, then use `''.join(iterable_object)` which is much faster.
-- `add_string_with_plus` didn't show a quadratic increase in execution time unlike `add_bytes_with_plus` becuase of the `+=` optimizations discussed in the previous example. Had the statement been `s = s + "x" + "y" + "z"` instead of `s += "xyz"`, the increase would have been quadratic.
+- `add_string_with_plus` didn't show a quadratic increase in execution time unlike `add_bytes_with_plus` because of the `+=` optimizations discussed in the previous example. Had the statement been `s = s + "x" + "y" + "z"` instead of `s += "xyz"`, the increase would have been quadratic.
   ```py
   def add_string_with_plus(iters):
       s = ""
@@ -828,7 +826,7 @@ True
 
 **The difference between `is` and `==`**
 
-* `is` operator checks if both the operands refer to the same object (i.e. it checks if the identity of the operands matches or not).
+* `is` operator checks if both the operands refer to the same object (i.e., it checks if the identity of the operands matches or not).
 * `==` operator compares the values of both the operands and checks if they are the same.
 * So `is` is for reference equality and `==` is for value equality. An example to clear things up,
   ```py
@@ -864,10 +862,10 @@ Quoting from https://docs.python.org/3/c-api/long.html
 140084850247344
 ```
 
-Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257` and so it goes on to create another object in the memory.
+Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257,` and so it goes on to create another object in the memory.
 
 
-**Both `a` and `b` refer to the same object, when initialized with same value in the same line.**
+**Both `a` and `b` refer to the same object when initialized with same value in the same line.**
 
 ```py
 >>> a, b = 257, 257
@@ -1046,7 +1044,7 @@ board = [row]*3
 [['X', '', ''], ['X', '', ''], ['X', '', '']]
 ```
 
-We didn't assigned 3 "X"s or did we?
+We didn't assign 3 "X"s or did we?
 
 #### 💡 Explanation:
 
@@ -1213,7 +1211,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
 ```
 
 #### 💡 Explanation:
-* When you make an assignment to a variable in a scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`,  but it has not been initialized previously in the same scope which throws an error.
+* When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`,  but it has not been initialized previously in the same scope which throws an error.
 * Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
 * To modify the outer scope variable `a` in `another_func`, use `global` keyword.
   ```py
@@ -1264,7 +1262,7 @@ NameError: name 'e' is not defined
       foo
   ```
 
-  was translated to
+  was translated into
 
   ```py
   except E as N:
@@ -1351,7 +1349,7 @@ I've lost faith in truth!
 #### 💡 Explanation:
 
 - Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true). Then they added `True`, `False`, and a `bool` type, but, for backward compatibility, they couldn't make `True` and `False` constants- they just were built-in variables.
-- Python 3 was backwards-incompatible, so it was now finally possible to fix that, and so this example won't work with Python 3.x!
+- Python 3 was backward-incompatible, so it was now finally possible to fix that, and so this example won't work with Python 3.x!
 
 ---
 
@@ -1476,8 +1474,6 @@ Most methods that modify the items of sequence/mapping objects like `list.append
 
 ###  Explicit typecast of strings
 
-This is not a WTF at all, but it took me so long to realize such things existed in Python. So sharing it here for the beginners.
-
 ```py
 a = float('inf')
 b = float('nan')
@@ -1511,7 +1507,7 @@ nan
 
 #### 💡 Explanation:
 
-`'inf'` and `'nan'` are special strings (case-insensitive), which when explicitly type casted to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
+`'inf'` and `'nan'` are special strings (case-insensitive), which when explicitly typecasted to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
 
 ---
 
@@ -1755,7 +1751,7 @@ another_dict[1.0] = "Python"
   True
   ```
 
-* See this StackOverflow [answer](https://stackoverflow.com/a/8169049/4354153) for rationale behind it.
+* See this StackOverflow [answer](https://stackoverflow.com/a/8169049/4354153) for the rationale behind it.
 
 ---
 
@@ -1772,7 +1768,7 @@ x, y = (0, 1) if True else None, None
 ((0, 1), None)
 ```
 
-Almost every Python programmer would have faced similar situation.
+Almost every Python programmer would have faced a similar situation.
 2\.
 ```py
 t = ('one', 'two')
@@ -1971,7 +1967,7 @@ SyntaxError: invalid syntax
 * Operator precedence affects how an expression is evaluated, and `==` operator has higher precedence than `not` operator in Python.
 * So `not x == y` is equivalent to `not (x == y)` which is equivalent to `not (True == False)` finally evaluating to `True`.
 * But `x == not y` raises a `SyntaxError` because it can be thought of being equivalent to `(x == not) y` and not `x == (not y)` which you might have expected at first sight.
-* The parser expected the `not` token to be a part of the `not in` operator (because both `==` and `not in` operators have same precedence), but after not being able to find a `in` token following the `not` token, it raises a `SyntaxError`.
+* The parser expected the `not` token to be a part of the `not in` operator (because both `==` and `not in` operators have the same precedence), but after not being able to find an `in` token following the `not` token, it raises a `SyntaxError`.
 
 ---
 
@@ -1988,7 +1984,7 @@ True
 False
 ```
 
-The Subclass relationships were expected to be transitive, right? (i.e. if `A` is a subclass of `B`, and `B` is a subclass of `C`, the `A` _should_ a subclass of `C`)
+The Subclass relationships were expected to be transitive, right? (i.e., if `A` is a subclass of `B`, and `B` is a subclass of `C`, the `A` _should_ a subclass of `C`)
 
 #### 💡 Explanation:
 
@@ -2024,8 +2020,8 @@ Why did `Yo()._Yo__honey` worked? Only Indian readers would understand.
 #### 💡 Explanation:
 
 * [Name Mangling](https://en.wikipedia.org/wiki/Name_mangling) is used to avoid naming collisions between different namespaces.
-* In Python, the interpreter modifies (mangles) the class member names starting with `__` (double underscore) and not ending with more than one trailing underscore by addding `_NameOfTheClass` in frot.
-* So, to access `__honey` attribute, we are required to append `_Yo` to the front which would prevent conflicts with a same name attribute defined in any other class.
+* In Python, the interpreter modifies (mangles) the class member names starting with `__` (double underscore) and not ending with more than one trailing underscore by adding `_NameOfTheClass` in front.
+* So, to access `__honey` attribute, we are required to append `_Yo` to the front which would prevent conflicts with the same name attribute defined in any other class.
 
 ---
 
@@ -2053,7 +2049,7 @@ True
 
 * When `id` was called, Python created a `WTF` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
 * When we do this twice in succession, Python allocates the same memory location to this second object as well. Since (in CPython) `id` uses the memory location as the object id, the id of the two objects is the same.
-* So, object's id is only unique for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
+* So, object's id is unique only for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
 * But why did the `is` operator evaluated to `False`? Let's see with this snippet.
   ```py
   class WTF(object):
@@ -2133,8 +2129,8 @@ str
             and super().__eq__(other)
         )
     
-    # Whe we define a custon __eq__, Python stops automatically inheriting the
-    # __hash__ mehtod, so we need to define it as well
+    # When we define a custom __eq__, Python stops automatically inheriting the
+    # __hash__ method, so we need to define it as well
     __hash__ = str.__hash__
 
   some_dict = {'s':42}
@@ -2171,7 +2167,7 @@ class SomeClass:
 Deleted!
 ```
 
-Phew, deleted at last. You might have guessed what saved from `__del__` being called in our first attempt to delete `x`. Let's add more twist ro the example.
+Phew, deleted at last. You might have guessed what saved from `__del__` being called in our first attempt to delete `x`. Let's add more twist to the example.
 
 2\.
 ```py
@@ -2264,7 +2260,7 @@ a, b = a[b] = {}, 5
   + `'a'[0][0][0][0][0]` is also a semantically correct statement as strings are [sequences](https://docs.python.org/3/glossary.html#term-sequence)(iterables supporting element access using integer indices) in Python.
   + `3 --0-- 5 == 8` and `--5 == 5` are both semantically correct statements and evaluate to `True`.
 
-* Given that `a` is a number, `++a` and `--a` are both valid Python statements, but don't behave the same way as compared with similar statements in languages like C, C++ or Java.
+* Given that `a` is a number, `++a` and `--a` are both valid Python statements but don't behave the same way as compared with similar statements in languages like C, C++ or Java.
   ```py
   >>> a = 5
   >>> a
@@ -2352,7 +2348,7 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 
 Thanks a ton for reading this project, I hope you enjoyed it and found it informative!
 
-I'm looking for full-time opportunities, I'd highly appreciate if you could do me a small favor by letting me know about open positions around you. You can find more about me [here](https://satwikkansal.xyz).
+I'm looking for full-time opportunities. I'd highly appreciate if you could do me a small favor by letting me know about open positions around you. You can find more about me [here](https://satwikkansal.xyz).
 
 
 ## Want to share wtfPython with friends?
@@ -2364,4 +2360,4 @@ You can use these quick links for Twitter and Linkedin.
 
 ## Need a pdf version?
 
-I've recieved a few requests for the pdf version of wtfpython. You can add your details [here](https://satwikkansal.xyz/wtfpython-pdf/) to get the pdf as oon as it is finished.
+I've received a few requests for the pdf version of wtfpython. You can add your details [here](https://satwikkansal.xyz/wtfpython-pdf/) to get the pdf as soon as it is finished.

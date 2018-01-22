@@ -1,2 +1,5 @@
 node_modules
 npm-debug.log
+wtfpython-pypi/build/
+wtfpython-pypi/dist/
+wtfpython-pypi/wtfpython.egg-info

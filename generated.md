@@ -27,7 +27,7 @@ So, here we go...
     - [▶ Skipping lines?](#%E2%96%B6-skipping-lines)
     - [▶ Teleportation *](#%E2%96%B6-teleportation-)
     - [▶ Well, something is fishy...](#%E2%96%B6-well-something-is-fishy)
-  - [Section: The Hiddent treasures](#section-the-hiddent-treasures)
+  - [Section: The Hidden treasures](#section-the-hidden-treasures)
     - [▶ Okay Python, Can you make me fly? *](#%E2%96%B6-okay-python-can-you-make-me-fly-)
     - [▶ `goto`, but why? *](#%E2%96%B6-goto-but-why-)
     - [▶ Brace yourself! *](#%E2%96%B6-brace-yourself-)
@@ -259,7 +259,7 @@ Shouldn't that be 100?
 
 ---
 
-## Section: The Hiddent treasures
+## Section: The Hidden treasures
 
 
 ### ▶ Okay Python, Can you make me fly? *

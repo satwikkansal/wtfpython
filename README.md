@@ -1,5 +1,5 @@
 <h1 align="center"> What the f*ck Python? 🐍 </h1>
-<p align="center"> An interesting collection of tricky Python Snippets and lesser known features.</p>
+<p align="center"> An interesting collection of tricky Python snippets and lesser known features.</p>
 
 [![WTFPL 2.0][license-image]][license-url]
 

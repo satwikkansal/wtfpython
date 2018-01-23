@@ -2328,7 +2328,7 @@ Thanks a ton for reading this project, I hope you enjoyed it and found it inform
 
 I'm looking for full-time opportunities. I'd highly appreciate if you could do me a small favor by letting me know about open positions around you. You can find more about me [here](https://satwikkansal.xyz).
 
-## Want to share WTFpython with friends?
+## Want to share wtfpython with friends?
 
 You can use these quick links for Twitter and Linkedin.
 

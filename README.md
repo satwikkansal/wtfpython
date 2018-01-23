@@ -1,3 +1,4 @@
+<p align="center"><img src="/images/logo.png" alt=""></p>
 <h1 align="center"> What the f*ck Python! 🐍 </h1>
 <p align="center"> An interesting collection of tricky Python snippets and lesser known features.</p>
 

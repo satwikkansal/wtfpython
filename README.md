@@ -1,17 +1,19 @@
 <p align="center"><img src="/images/logo.png" alt=""></p>
 <h1 align="center"> What the f*ck Python! 🐍 </h1>
-<p align="center"> An interesting collection of tricky Python snippets and lesser known features.</p>
+<p align="center"> An interesting collection of surprising snippets and lesser-known Python features.</p>
 
 [![WTFPL 2.0][license-image]][license-url]
 
 
 Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
 
-Here is a fun project attempting to collect such classic & tricky examples of unexpected behaviors and lesser known features in Python, and discuss what exactly is happening under the hood!
+Here is a fun project to collect such tricky & conter-intuitive examples and lesser-known features in Python, attempting to discuss what exactly is happening under the hood!
 
 While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
 
-If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile: And if you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
+If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
+
+If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
 
 So, here we go...
 

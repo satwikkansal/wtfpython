@@ -2324,11 +2324,6 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 [license-url]: http://www.wtfpl.net
 [license-image]: https://img.shields.io/badge/License-WTFPL%202.0-lightgrey.svg?style=flat-square
 
-# Help
-
-Thanks a ton for reading this project, I hope you enjoyed it and found it informative!
-
-I'm looking for full-time opportunities. I'd highly appreciate if you could do me a small favor by letting me know about open positions around you. You can find more about me [here](https://satwikkansal.xyz).
 
 ## Want to share wtfpython with friends?
 

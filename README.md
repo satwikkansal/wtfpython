@@ -755,6 +755,7 @@ another_dict[1.0] = "Python"
 >>> some_bool = True
 >>> "wtf"*some_bool
 'wtf'
+>>> some_bool = False
 >>> "wtf"*some_bool
 ''
 ```

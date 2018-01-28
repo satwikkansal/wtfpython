@@ -384,7 +384,6 @@ array = [2, 8, 22]
 
 ---
 
----
 ### ▶ Generator with Slice Assignment
 
 ```py
@@ -395,6 +394,7 @@ iter1 = [1,2,3,4,5]
 iter2 = [1,2,3,4]
 g2 = (x for x in x)
 iter2[:] = [1,2,3,4,5]
+```
 
 **Output:**
 ```py
@@ -403,6 +403,7 @@ iter2[:] = [1,2,3,4,5]
 
 >>> print(list(g2))
 [1,2,3,4,5]
+```
 
 #### 💡 Explanation
 
@@ -412,6 +413,7 @@ clause is evaluated at the time of generator declaration, hence generator expres
 
 - In the second example, list `iter1` is updated using slice assignment. Slice assignment, in contrast to normal assignment(which creates a new list), updates the same list. We can view this as the slice of list being replace by the iterable on right hand side of equality. Hence, the generator `g2` yields updated `iter2` elements.
 
+---
 
 ### ▶ `is` is not what it is!
 

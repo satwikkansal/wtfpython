@@ -388,11 +388,11 @@ array = [2, 8, 22]
 
 ```py
 iter1 = [1,2,3,4]
-g1 = (x for x in x)
+g1 = (x for x in iter1)
 iter1 = [1,2,3,4,5]
 
 iter2 = [1,2,3,4]
-g2 = (x for x in x)
+g2 = (x for x in iter2)
 iter2[:] = [1,2,3,4,5]
 ```
 

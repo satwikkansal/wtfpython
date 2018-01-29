@@ -1837,7 +1837,8 @@ x, y = (0, 1) if True else None, None
 ((0, 1), None)
 ```
 
-Almost every Python programmer would have faced a similar situation.
+Almost every Python programmer has faced a similar situation.
+
 2\.
 ```py
 t = ('one', 'two')
@@ -2296,7 +2297,8 @@ nan
      ```py
      import dis
      exec("""
-     def f():*     """ + """
+     def f():
+         """ + """
          """.join(["X"+str(x)+"=" + str(x) for x in range(65539)]))
 
      f()

@@ -1,4 +1,4 @@
-I'm really greatful to all the contributors. Following are the wonderful people (in no specific order) who have contributed their examples to wtfpython.
+I'm really grateful to all the contributors. Following are the wonderful people (in no specific order) who have contributed their examples to wtfpython.
 
 | Contributor | Github | Issues |
 |-------------|--------|--------|

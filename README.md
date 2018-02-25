@@ -33,6 +33,7 @@ So, here we go...
     - [▶ Deep down, we're all the same. *](#-deep-down-were-all-the-same-)
     - [▶ For what?](#-for-what)
     - [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
+    - [▶ Generator with Slice Assignment](#-generator-with-slice-assignment)
     - [▶ `is` is not what it is!](#-is-is-not-what-it-is)
     - [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
     - [▶ The sticky output function](#-the-sticky-output-function)
@@ -382,6 +383,37 @@ array = [2, 8, 22]
 
 - In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at runtime.
 - So before runtime, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
+
+---
+
+### ▶ Generator with Slice Assignment
+
+```py
+iter1 = [1,2,3,4]
+g1 = (x for x in iter1)
+iter1 = [1,2,3,4,5]
+
+iter2 = [1,2,3,4]
+g2 = (x for x in iter2)
+iter2[:] = [1,2,3,4,5]
+```
+
+**Output:**
+```py
+>>>print(list(g1))
+[1,2,3,4]
+
+>>> print(list(g2))
+[1,2,3,4,5]
+```
+
+#### 💡 Explanation
+
+- In the first expression `g1` yields the elements of original list `iter1`(instead of updated one). Since the `in`
+clause is evaluated at the time of generator declaration, hence generator expression `g1` still have reference of original list
+`iter1`
+
+- In the second example, list `iter1` is updated using slice assignment. Slice assignment, in contrast to normal assignment(which creates a new list), updates the same list. We can view this as the slice of list being replace by the iterable on right hand side of equality. Hence, the generator `g2` yields updated `iter2` elements.
 
 ---
 

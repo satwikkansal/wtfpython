@@ -367,6 +367,7 @@ for i, some_dict[i] in enumerate(some_string):
 
 ### ▶ Evaluation time discrepancy
 
+1\.
 ```py
 array = [1, 8, 15]
 g = (x for x in array if array.count(x) > 0)
@@ -379,28 +380,21 @@ array = [2, 8, 22]
 [8]
 ```
 
-#### 💡 Explanation
-
-- In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at runtime.
-- So before runtime, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
-
----
-
-### ▶ Generator with Slice Assignment
+2\.
 
 ```py
-iter1 = [1,2,3,4]
-g1 = (x for x in iter1)
-iter1 = [1,2,3,4,5]
+array_1 = [1,2,3,4]
+g1 = (x for x in array_1)
+array_1 = [1,2,3,4,5]
 
-iter2 = [1,2,3,4]
-g2 = (x for x in iter2)
-iter2[:] = [1,2,3,4,5]
+array_2 = [1,2,3,4]
+g2 = (x for x in array_2)
+array_2[:] = [1,2,3,4,5]
 ```
 
 **Output:**
 ```py
->>>print(list(g1))
+>>> print(list(g1))
 [1,2,3,4]
 
 >>> print(list(g2))
@@ -409,11 +403,11 @@ iter2[:] = [1,2,3,4,5]
 
 #### 💡 Explanation
 
-- In the first expression `g1` yields the elements of original list `iter1`(instead of updated one). Since the `in`
-clause is evaluated at the time of generator declaration, hence generator expression `g1` still have reference of original list
-`iter1`
-
-- In the second example, list `iter1` is updated using slice assignment. Slice assignment, in contrast to normal assignment(which creates a new list), updates the same list. We can view this as the slice of list being replace by the iterable on right hand side of equality. Hence, the generator `g2` yields updated `iter2` elements.
+- In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at runtime.
+- So before runtime, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
+- The differences in the output of `g1` and `g2` in the second part is due the way variables `array_1` and `array_2` are re-assigned values.
+- In the first case, `array_1` is binded to the new object `[1,2,3,4,5]` and since the `in` clause is evaluated at the declaration time it still refers to the old object `[1,2,3,4]` (which is not destroyed).
+- In the second case, the slice assignment to `array_2` updates the same old object `[1,2,3,4]` to `[1,2,3,4,5]`. Hence both the `g2` and `array_2` still have reference to the same object (which has now been updated to `[1,2,3,4,5]`).
 
 ---
 

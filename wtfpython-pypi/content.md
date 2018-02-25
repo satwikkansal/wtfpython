@@ -555,11 +555,12 @@ False
 Makes sense, right?
 
 #### 💡 Explanation:
-+ Such behavior is due to CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
++ Such behavior is due to CPython optimization (called **string interning**) that tries to use existing immutable objects in some cases rather than creating a new object every time.
++ Note that the keyword `is` is used for _reference_ equality (unlike `==` which is used for _value_ equality); this means that `a is b` is the same as `id(a) == id(b)`, and therefore it should not be used for string comparison. It is only used here to illustrate the effects of string interning.
 + After being interned, many variables may point to the same string object in memory (thereby saving memory).
 + In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation dependent. There are some facts that can be used to guess if a string will be interned or not:
   * All length 0 and length 1 strings are interned.
-  * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
+  * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned).
   * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`.
   <img src="/images/string-intern/string_intern.png" alt="">
 + When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compiler optimization and specifically applies to the interactive environment.

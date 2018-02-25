@@ -33,7 +33,6 @@ So, here we go...
     - [▶ Deep down, we're all the same. *](#-deep-down-were-all-the-same-)
     - [▶ For what?](#-for-what)
     - [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
-    - [▶ Generator with Slice Assignment](#-generator-with-slice-assignment)
     - [▶ `is` is not what it is!](#-is-is-not-what-it-is)
     - [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
     - [▶ The sticky output function](#-the-sticky-output-function)

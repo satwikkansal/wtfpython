@@ -1,17 +1,19 @@
 <p align="center"><img src="/images/logo.png" alt=""></p>
 <h1 align="center"> What the f*ck Python! 🐍 </h1>
-<p align="center"> An interesting collection of tricky Python snippets and lesser known features.</p>
+<p align="center"> An interesting collection of surprising snippets and lesser-known Python features.</p>
 
 [![WTFPL 2.0][license-image]][license-url]
 
 
 Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
 
-Here is a fun project attempting to collect such classic & tricky examples of unexpected behaviors and lesser known features in Python, and discuss what exactly is happening under the hood!
+Here is a fun project to collect such tricky & counter-intuitive examples and lesser-known features in Python, attempting to discuss what exactly is happening under the hood!
 
 While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
 
-If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile: And if you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
+If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
+
+If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
 
 So, here we go...
 
@@ -24,19 +26,6 @@ So, here we go...
 - [Structure of the Examples](#structure-of-the-examples)
 - [Usage](#usage)
 - [👀 Examples](#-examples)
-  - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
-    - [▶ Skipping lines?](#-skipping-lines)
-    - [▶ Teleportation *](#-teleportation-)
-    - [▶ Well, something is fishy...](#-well-something-is-fishy)
-  - [Section: The Hidden treasures!](#section-the-hidden-treasures)
-    - [▶ Okay Python, Can you make me fly? *](#-okay-python-can-you-make-me-fly-)
-    - [▶ `goto`, but why? *](#-goto-but-why-)
-    - [▶ Brace yourself! *](#-brace-yourself-)
-    - [▶ Let's meet Friendly Language Uncle For Life *](#-lets-meet-friendly-language-uncle-for-life-)
-    - [▶ Even Python understands that love is complicated *](#-even-python-understands-that-love-is-complicated-)
-    - [▶ Yes, it exists!](#-yes-it-exists)
-    - [▶ Inpinity *](#-inpinity-)
-    - [▶ Mangling time! *](#-mangling-time-)
   - [Section: Strain your brain!](#section-strain-your-brain)
     - [▶ Strings can be tricky sometimes *](#-strings-can-be-tricky-sometimes-)
     - [▶ Time for some hash brownies!](#-time-for-some-hash-brownies)
@@ -63,6 +52,10 @@ So, here we go...
     - [▶ Subclass relationships *](#-subclass-relationships-)
     - [▶ The mysterious key type conversion *](#-the-mysterious-key-type-conversion-)
     - [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
+  - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
+    - [▶ Skipping lines?](#-skipping-lines)
+    - [▶ Teleportation *](#-teleportation-)
+    - [▶ Well, something is fishy...](#-well-something-is-fishy)
   - [Section: Watch out for the landmines!](#section-watch-out-for-the-landmines)
     - [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
     - [▶ Stubborn `del` operator *](#-stubborn-del-operator-)
@@ -75,6 +68,15 @@ So, here we go...
     - [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
     - [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
     - [▶ Needle in a Haystack](#-needle-in-a-haystack)
+  - [Section: The Hidden treasures!](#section-the-hidden-treasures)
+    - [▶ Okay Python, Can you make me fly? *](#-okay-python-can-you-make-me-fly-)
+    - [▶ `goto`, but why? *](#-goto-but-why-)
+    - [▶ Brace yourself! *](#-brace-yourself-)
+    - [▶ Let's meet Friendly Language Uncle For Life *](#-lets-meet-friendly-language-uncle-for-life-)
+    - [▶ Even Python understands that love is complicated *](#-even-python-understands-that-love-is-complicated-)
+    - [▶ Yes, it exists!](#-yes-it-exists)
+    - [▶ Inpinity *](#-inpinity-)
+    - [▶ Mangling time! *](#-mangling-time-)
   - [Section: Miscallaneous](#section-miscallaneous)
     - [▶ `+=` is faster](#--is-faster)
     - [▶ Let's make a giant string!](#-lets-make-a-giant-string)
@@ -83,8 +85,8 @@ So, here we go...
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
 - [🎓 License](#-license)
-- [Help](#help)
-  - [Want to share WTFpython with friends?](#want-to-share-wtfpython-with-friends)
+  - [Help](#help)
+  - [Want to share wtfpython with friends?](#want-to-share-wtfpython-with-friends)
   - [Need a pdf version?](#need-a-pdf-version)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -151,370 +153,8 @@ Now, just run `wtfpython` at the command line which will open this collection in
 
 # 👀 Examples
 
-## Section: Appearances are deceptive!
-
-This section is a gentle warm up before we focus on real Python concepts.
-
-### ▶ Skipping lines?
-
-**Output:**
-```py
->>> value = 11
->>> valuе = 32
->>> value
-11
-```
-
-Wut?
-
-**Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shell.
-
-#### 💡 Explanation
-
-Some non-Western characters look identical to letters in the English alphabet but are considered distinct by the interpreter.
-
-```py
->>> ord('е') # cyrillic 'e' (Ye)
-1077
->>> ord('e') # latin 'e', as used in English and typed using standard keyboard
-101
->>> 'е' == 'e'
-False
-
->>> value = 42 # latin e
->>> valuе = 23 # cyrillic 'e', Python 2.x interpreter would raise a `SyntaxError` here
->>> value
-42
-```
-
-The built-in `ord()` function returns a character's Unicode [code point](https://en.wikipedia.org/wiki/Code_point), and different code positions of Cyrillic 'e' and Latin 'e' justify the behavior of the above example.
-
----
-
-### ▶ Teleportation *
-
-```py
-import numpy as np
-
-def energy_send(x):
-    # Initializing a numpy array
-    np.array([float(x)])
-
-def energy_receive():
-    # Return an empty numpy array
-    return np.empty((), dtype=np.float).tolist()
-```
-
-**Output:**
-```py
->>> energy_send(123.456)
->>> energy_receive()
-123.456
-```
-
-Where's the Nobel Prize?
-
-#### 💡 Explanation:
-
-* Notice that the numpy array created in the `energy_send` function is not returned, so that memory space is free to reallocate.
-* `numpy.empty()` returns the next free memory slot without reinitializing it. This memory spot just happens to be the same one that was just freed (usually, but not always).
-
----
-
-### ▶ Well, something is fishy...
-
-```py
-def square(x):
-    """
-    A simple function to calculate the square of a number by addition.
-    """
-    sum_so_far = 0
-    for counter in range(x):
-        sum_so_far = sum_so_far + x
-  return sum_so_far
-```
-
-**Output (Python 2.x):**
-
-```py
->>> square(10)
-10
-```
-
-Shouldn't that be 100?
-
-**Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
-
-#### 💡 Explanation
-
-* **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
-* This is how Python handles tabs:
-  > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
-* So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
-* Python 3 is kind enough to throw an error for such cases automatically.
-    
-    **Output (Python 3.x):**
-    ```py
-    TabError: inconsistent use of tabs and spaces in indentation
-    ```
-
----
-
----
-
-## Section: The Hidden treasures!
-
-This section contains few of the lesser-known interesting things about Python that most beginners like me are unaware of (well, not anymore).
-
-### ▶ Okay Python, Can you make me fly? *
-
-Well, here you go
-
-```py
-import antigravity
-```
-
-**Output:**
-Sshh.. It's a super secret.
-
-#### 💡 Explanation:
-+ `antigravity` module is one of the few easter eggs released by Python developers.
-+ `import antigravity` opens up a web browser pointing to the [classic XKCD comic](http://xkcd.com/353/) about Python.
-+ Well, there's more to it. There's **another easter egg inside the easter egg**. If look at the [code](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17), there's a function defined that purports to implement the [XKCD's geohashing algorithm](https://xkcd.com/426/).
-
----
-
-### ▶ `goto`, but why? *
-
-```py
-from goto import goto, label
-for i in range(9):
-    for j in range(9):
-        for k in range(9):
-            print("I'm trapped, please rescue!")
-            if k == 2:
-                goto .breakout # breaking out from a deeply nested loop
-label .breakout
-print("Freedom!")
-```
-
-**Output (Python 2.3):**
-```py
-I'm trapped, please rescue!
-I'm trapped, please rescue!
-Freedom!
-```
-
-#### 💡 Explanation:
-- A working version of `goto` in Python was [announced](https://mail.python.org/pipermail/python-announce-list/2004-April/002982.html) as an April Fool's joke on 1st April 2004.
-- Current versions of Python do not have this module.
-- Although it works, but please don't use it. Here's the [reason](https://docs.python.org/3/faq/design.html#why-is-there-no-goto) to why `goto` is not present in Python.
-
----
-
-### ▶ Brace yourself! *
-
-If you are one of the people who doesn't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
-
-```py
-from __future__ import braces
-```
-
-**Output:**
-```py
-  File "some_file.py", line 1
-    from __future__ import braces
-SyntaxError: not a chance
-```
-
-Braces? No way! If you think that's disappointing, use Java.
-
-#### 💡 Explanation:
-+ The `__future__` module is normally used to provide features from future versions of Python. The "future" here is however ironic.
-+ This is an easter egg concerned with the community's feelings on this issue.
-
----
-
-### ▶ Let's meet Friendly Language Uncle For Life *
-
-**Output (Python 3.x)**
-```py
->>> from __future__ import barry_as_FLUFL
->>> "Ruby" != "Python" # there's no doubt about it
-  File "some_file.py", line 1
-    "Ruby" != "Python"
-              ^
-SyntaxError: invalid syntax
-
->>> "Ruby" <> "Python"
-True
-```
-
-There we go.
-
-#### 💡 Explanation:
-- This is relevant to [PEP-401](https://www.python.org/dev/peps/pep-0401/) released on April 1, 2009 (now you know, what it means).
-- Quoting from the PEP-401
-  Recognized that the != inequality operator in Python 3.0 was a horrible, finger pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
-- There were more things that Uncle Barry had to share in the PEP; you can read them [here](https://www.python.org/dev/peps/pep-0401/).
-
----
-
-### ▶ Even Python understands that love is complicated *
-
-```py
-import this
-```
-
-Wait, what's **this**? `this` is love :heart:
-
-**Output:**
-```
-The Zen of Python, by Tim Peters
-
-Beautiful is better than ugly.
-Explicit is better than implicit.
-Simple is better than complex.
-Complex is better than complicated.
-Flat is better than nested.
-Sparse is better than dense.
-Readability counts.
-Special cases aren't special enough to break the rules.
-Although practicality beats purity.
-Errors should never pass silently.
-Unless explicitly silenced.
-In the face of ambiguity, refuse the temptation to guess.
-There should be one-- and preferably only one --obvious way to do it.
-Although that way may not be obvious at first unless you're Dutch.
-Now is better than never.
-Although never is often better than *right* now.
-If the implementation is hard to explain, it's a bad idea.
-If the implementation is easy to explain, it may be a good idea.
-Namespaces are one honking great idea -- let's do more of those!
-```
-
-It's the Zen of Python!
-
-```py
->>> love = this
->>> this is love
-True
->>> love is True
-False
->>> love is False
-False
->>> love is not True or False
-True
->>> love is not True or False; love is love  # Love is complicated
-True
-```
-
-#### 💡 Explanation:
-
-* `this` module in Python is an easter egg for The Zen Of Python ([PEP 20](https://www.python.org/dev/peps/pep-0020)).
-* And if you think that's already interesting enough, check out the implementation of [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py). Interestingly, the code for the Zen violates itself (and that's probably the only place where this happens).
-* Regarding the statement `love is not True or False; love is love`, ironic but it's self-explanatory.
-
----
-
-### ▶ Yes, it exists!
-
-**The `else` clause for loops.** One typical example might be:
-
-```py
-  def does_exists_num(l, to_find):
-      for num in l:
-          if num == to_find:
-              print("Exists!")
-              break
-      else:
-          print("Does not exist")
-```
-
-**Output:**
-```py
->>> some_list = [1, 2, 3, 4, 5]
->>> does_exists_num(some_list, 4)
-Exists!
->>> does_exists_num(some_list, -1)
-Does not exist
-```
-
-**The `else` clause in exception handling.** An example,
-
-```py
-try:
-    pass
-except:
-    print("Exception occurred!!!")
-else:
-    print("Try block executed successfully...")
-```
-
-**Output:**
-```py
-Try block executed successfully...
-```
-
-#### 💡 Explanation:
-- The `else` clause after a loop is executed only when there's no explicit `break` after all the iterations.
-- `else` clause after try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
-
----
-
-### ▶ Inpinity *
-
-The spelling is intended. Please, don't submit a patch for this.
-
-**Output (Python 3.x):**
-```py
->>> infinity = float('infinity')
->>> hash(infinity)
-314159
->>> hash(float('-inf'))
--314159
-```
-
-#### 💡 Explanation:
-- Hash of infinity is 10⁵ x π.
-- Interestingly, the hash of `float('-inf')` is "-10⁵ x π" in Python 3, whereas "-10⁵ x e" in Python 2.
-
----
-
-### ▶ Mangling time! *
-
-```py
-class Yo(object):
-    def __init__(self):
-        self.__honey = True
-        self.bitch = True
-```
-
-**Output:**
-```py
->>> Yo().bitch
-True
->>> Yo().__honey
-AttributeError: 'Yo' object has no attribute '__honey'
->>> Yo()._Yo__honey
-True
-```
-
-Why did `Yo()._Yo__honey` worked? Only Indian readers would understand.
-
-#### 💡 Explanation:
-
-* [Name Mangling](https://en.wikipedia.org/wiki/Name_mangling) is used to avoid naming collisions between different namespaces.
-* In Python, the interpreter modifies (mangles) the class member names starting with `__` (double underscore) and not ending with more than one trailing underscore by adding `_NameOfTheClass` in front.
-* So, to access `__honey` attribute, we are required to append `_Yo` to the front which would prevent conflicts with the same name attribute defined in any other class.
-
----
-
----
 
 ## Section: Strain your brain!
-
-Alright, it's time to strain your brain and test your understanding of Python concepts. All the best!
 
 ### ▶ Strings can be tricky sometimes *
 
@@ -563,6 +203,8 @@ Makes sense, right?
   * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`.
   <img src="/images/string-intern/string_intern.png" alt="">
 + When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compiler optimization and specifically applies to the interactive environment.
++ Constant folding is a technique for [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) in Python. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to reduce few clock cycles during runtime. But since the python bytecode generated after compilation is stored in `.pyc` files, the strings greater than length of 20 are discarded for peephole optimization (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`)
+
 
 ---
 
@@ -724,6 +366,7 @@ for i, some_dict[i] in enumerate(some_string):
 
 ### ▶ Evaluation time discrepancy
 
+1\.
 ```py
 array = [1, 8, 15]
 g = (x for x in array if array.count(x) > 0)
@@ -736,10 +379,34 @@ array = [2, 8, 22]
 [8]
 ```
 
+2\.
+
+```py
+array_1 = [1,2,3,4]
+g1 = (x for x in array_1)
+array_1 = [1,2,3,4,5]
+
+array_2 = [1,2,3,4]
+g2 = (x for x in array_2)
+array_2[:] = [1,2,3,4,5]
+```
+
+**Output:**
+```py
+>>> print(list(g1))
+[1,2,3,4]
+
+>>> print(list(g2))
+[1,2,3,4,5]
+```
+
 #### 💡 Explanation
 
 - In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at runtime.
 - So before runtime, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
+- The differences in the output of `g1` and `g2` in the second part is due the way variables `array_1` and `array_2` are re-assigned values.
+- In the first case, `array_1` is binded to the new object `[1,2,3,4,5]` and since the `in` clause is evaluated at the declaration time it still refers to the old object `[1,2,3,4]` (which is not destroyed).
+- In the second case, the slice assignment to `array_2` updates the same old object `[1,2,3,4]` to `[1,2,3,4,5]`. Hence both the `g2` and `array_2` still have reference to the same object (which has now been updated to `[1,2,3,4,5]`).
 
 ---
 
@@ -859,6 +526,15 @@ When we initialize `row` variable, this visualization explains what happens in t
 And when the `board` is initialized by multiplying the `row`, this is what happens inside the memory (each of the elements `board[0]`, `board[1]` and `board[2]` is a reference to the same list referred by `row`)
 
 ![image](/images/tic-tac-toe/after_board_initialized.png)
+
+We can avoid this scenario here by not using `row` variable to generate `board`. (Asked in [this](https://github.com/satwikkansal/wtfpython/issues/68) issue).
+
+```py
+>>> board = [(['']*3)*3] # board = = [['']*3 for _ in range(3)]
+>>> board[0][0] = "X"
+>>> board
+[['X', '', ''], ['', '', ''], ['', '', '']]
+```
 
 ---
 
@@ -1115,6 +791,7 @@ another_dict[1.0] = "Python"
 >>> some_bool = True
 >>> "wtf"*some_bool
 'wtf'
+>>> some_bool = False
 >>> "wtf"*some_bool
 ''
 ```
@@ -1532,6 +1209,115 @@ a, b = a[b] = {}, 5
   >>> a[b][0] is a
   True
   ```
+
+---
+
+---
+
+## Section: Appearances are deceptive!
+
+### ▶ Skipping lines?
+
+**Output:**
+```py
+>>> value = 11
+>>> valuе = 32
+>>> value
+11
+```
+
+Wut?
+
+**Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shell.
+
+#### 💡 Explanation
+
+Some non-Western characters look identical to letters in the English alphabet but are considered distinct by the interpreter.
+
+```py
+>>> ord('е') # cyrillic 'e' (Ye)
+1077
+>>> ord('e') # latin 'e', as used in English and typed using standard keyboard
+101
+>>> 'е' == 'e'
+False
+
+>>> value = 42 # latin e
+>>> valuе = 23 # cyrillic 'e', Python 2.x interpreter would raise a `SyntaxError` here
+>>> value
+42
+```
+
+The built-in `ord()` function returns a character's Unicode [code point](https://en.wikipedia.org/wiki/Code_point), and different code positions of Cyrillic 'e' and Latin 'e' justify the behavior of the above example.
+
+---
+
+### ▶ Teleportation *
+
+```py
+import numpy as np
+
+def energy_send(x):
+    # Initializing a numpy array
+    np.array([float(x)])
+
+def energy_receive():
+    # Return an empty numpy array
+    return np.empty((), dtype=np.float).tolist()
+```
+
+**Output:**
+```py
+>>> energy_send(123.456)
+>>> energy_receive()
+123.456
+```
+
+Where's the Nobel Prize?
+
+#### 💡 Explanation:
+
+* Notice that the numpy array created in the `energy_send` function is not returned, so that memory space is free to reallocate.
+* `numpy.empty()` returns the next free memory slot without reinitializing it. This memory spot just happens to be the same one that was just freed (usually, but not always).
+
+---
+
+### ▶ Well, something is fishy...
+
+```py
+def square(x):
+    """
+    A simple function to calculate the square of a number by addition.
+    """
+    sum_so_far = 0
+    for counter in range(x):
+        sum_so_far = sum_so_far + x
+  return sum_so_far
+```
+
+**Output (Python 2.x):**
+
+```py
+>>> square(10)
+10
+```
+
+Shouldn't that be 100?
+
+**Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
+
+#### 💡 Explanation
+
+* **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
+* This is how Python handles tabs:
+  > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
+* So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
+* Python 3 is kind enough to throw an error for such cases automatically.
+    
+    **Output (Python 3.x):**
+    ```py
+    TabError: inconsistent use of tabs and spaces in indentation
+    ```
 
 ---
 
@@ -2055,7 +1841,8 @@ x, y = (0, 1) if True else None, None
 ((0, 1), None)
 ```
 
-Almost every Python programmer would have faced a similar situation.
+Almost every Python programmer has faced a similar situation.
+
 2\.
 ```py
 t = ('one', 'two')
@@ -2084,6 +1871,257 @@ tuple()
 * For 1, the correct statement for expected behavior is `x, y = (0, 1) if True else (None, None)`.
 * For 2, the correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
+
+---
+
+---
+
+
+## Section: The Hidden treasures!
+
+This section contains few of the lesser-known interesting things about Python that most beginners like me are unaware of (well, not anymore).
+
+### ▶ Okay Python, Can you make me fly? *
+
+Well, here you go
+
+```py
+import antigravity
+```
+
+**Output:**
+Sshh.. It's a super secret.
+
+#### 💡 Explanation:
++ `antigravity` module is one of the few easter eggs released by Python developers.
++ `import antigravity` opens up a web browser pointing to the [classic XKCD comic](http://xkcd.com/353/) about Python.
++ Well, there's more to it. There's **another easter egg inside the easter egg**. If look at the [code](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17), there's a function defined that purports to implement the [XKCD's geohashing algorithm](https://xkcd.com/426/).
+
+---
+
+### ▶ `goto`, but why? *
+
+```py
+from goto import goto, label
+for i in range(9):
+    for j in range(9):
+        for k in range(9):
+            print("I'm trapped, please rescue!")
+            if k == 2:
+                goto .breakout # breaking out from a deeply nested loop
+label .breakout
+print("Freedom!")
+```
+
+**Output (Python 2.3):**
+```py
+I'm trapped, please rescue!
+I'm trapped, please rescue!
+Freedom!
+```
+
+#### 💡 Explanation:
+- A working version of `goto` in Python was [announced](https://mail.python.org/pipermail/python-announce-list/2004-April/002982.html) as an April Fool's joke on 1st April 2004.
+- Current versions of Python do not have this module.
+- Although it works, but please don't use it. Here's the [reason](https://docs.python.org/3/faq/design.html#why-is-there-no-goto) to why `goto` is not present in Python.
+
+---
+
+### ▶ Brace yourself! *
+
+If you are one of the people who doesn't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
+
+```py
+from __future__ import braces
+```
+
+**Output:**
+```py
+  File "some_file.py", line 1
+    from __future__ import braces
+SyntaxError: not a chance
+```
+
+Braces? No way! If you think that's disappointing, use Java.
+
+#### 💡 Explanation:
++ The `__future__` module is normally used to provide features from future versions of Python. The "future" here is however ironic.
++ This is an easter egg concerned with the community's feelings on this issue.
+
+---
+
+### ▶ Let's meet Friendly Language Uncle For Life *
+
+**Output (Python 3.x)**
+```py
+>>> from __future__ import barry_as_FLUFL
+>>> "Ruby" != "Python" # there's no doubt about it
+  File "some_file.py", line 1
+    "Ruby" != "Python"
+              ^
+SyntaxError: invalid syntax
+
+>>> "Ruby" <> "Python"
+True
+```
+
+There we go.
+
+#### 💡 Explanation:
+- This is relevant to [PEP-401](https://www.python.org/dev/peps/pep-0401/) released on April 1, 2009 (now you know, what it means).
+- Quoting from the PEP-401
+  > Recognized that the != inequality operator in Python 3.0 was a horrible, finger pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
+- There were more things that Uncle Barry had to share in the PEP; you can read them [here](https://www.python.org/dev/peps/pep-0401/).
+
+---
+
+### ▶ Even Python understands that love is complicated *
+
+```py
+import this
+```
+
+Wait, what's **this**? `this` is love :heart:
+
+**Output:**
+```
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+```
+
+It's the Zen of Python!
+
+```py
+>>> love = this
+>>> this is love
+True
+>>> love is True
+False
+>>> love is False
+False
+>>> love is not True or False
+True
+>>> love is not True or False; love is love  # Love is complicated
+True
+```
+
+#### 💡 Explanation:
+
+* `this` module in Python is an easter egg for The Zen Of Python ([PEP 20](https://www.python.org/dev/peps/pep-0020)).
+* And if you think that's already interesting enough, check out the implementation of [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py). Interestingly, the code for the Zen violates itself (and that's probably the only place where this happens).
+* Regarding the statement `love is not True or False; love is love`, ironic but it's self-explanatory.
+
+---
+
+### ▶ Yes, it exists!
+
+**The `else` clause for loops.** One typical example might be:
+
+```py
+  def does_exists_num(l, to_find):
+      for num in l:
+          if num == to_find:
+              print("Exists!")
+              break
+      else:
+          print("Does not exist")
+```
+
+**Output:**
+```py
+>>> some_list = [1, 2, 3, 4, 5]
+>>> does_exists_num(some_list, 4)
+Exists!
+>>> does_exists_num(some_list, -1)
+Does not exist
+```
+
+**The `else` clause in exception handling.** An example,
+
+```py
+try:
+    pass
+except:
+    print("Exception occurred!!!")
+else:
+    print("Try block executed successfully...")
+```
+
+**Output:**
+```py
+Try block executed successfully...
+```
+
+#### 💡 Explanation:
+- The `else` clause after a loop is executed only when there's no explicit `break` after all the iterations.
+- `else` clause after try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
+
+---
+
+### ▶ Inpinity *
+
+The spelling is intended. Please, don't submit a patch for this.
+
+**Output (Python 3.x):**
+```py
+>>> infinity = float('infinity')
+>>> hash(infinity)
+314159
+>>> hash(float('-inf'))
+-314159
+```
+
+#### 💡 Explanation:
+- Hash of infinity is 10⁵ x π.
+- Interestingly, the hash of `float('-inf')` is "-10⁵ x π" in Python 3, whereas "-10⁵ x e" in Python 2.
+
+---
+
+### ▶ Mangling time! *
+
+```py
+class Yo(object):
+    def __init__(self):
+        self.__honey = True
+        self.bitch = True
+```
+
+**Output:**
+```py
+>>> Yo().bitch
+True
+>>> Yo().__honey
+AttributeError: 'Yo' object has no attribute '__honey'
+>>> Yo()._Yo__honey
+True
+```
+
+Why did `Yo()._Yo__honey` worked? Only Indian readers would understand.
+
+#### 💡 Explanation:
+
+* [Name Mangling](https://en.wikipedia.org/wiki/Name_mangling) is used to avoid naming collisions between different namespaces.
+* In Python, the interpreter modifies (mangles) the class member names starting with `__` (double underscore) and not ending with more than one trailing underscore by adding `_NameOfTheClass` in front.
+* So, to access `__honey` attribute, we are required to append `_Yo` to the front which would prevent conflicts with the same name attribute defined in any other class.
 
 ---
 
@@ -2263,7 +2301,8 @@ nan
      ```py
      import dis
      exec("""
-     def f():*     """ + """
+     def f():
+         """ + """
          """.join(["X"+str(x)+"=" + str(x) for x in range(65539)]))
 
      f()
@@ -2322,11 +2361,9 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 [license-url]: http://www.wtfpl.net
 [license-image]: https://img.shields.io/badge/License-WTFPL%202.0-lightgrey.svg?style=flat-square
 
-# Help
+## Help
 
-Thanks a ton for reading this project, I hope you enjoyed it and found it informative!
-
-I'm looking for full-time opportunities. I'd highly appreciate if you could do me a small favor by letting me know about open positions around you. You can find more about me [here](https://satwikkansal.xyz).
+If you have any wtfs, ideas or suggestions, please share.
 
 ## Want to share wtfpython with friends?
 

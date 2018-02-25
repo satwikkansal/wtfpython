@@ -502,6 +502,15 @@ And when the `board` is initialized by multiplying the `row`, this is what happe
 
 ![image](/images/tic-tac-toe/after_board_initialized.png)
 
+We can avoid this scenario here by not using `row` variable to generate `board`. (Asked in [this](https://github.com/satwikkansal/wtfpython/issues/68) issue).
+
+```py
+>>> board = [(['']*3)*3] # board = = [['']*3 for _ in range(3)]
+>>> board[0][0] = "X"
+>>> board
+[['X', '', ''], ['', '', ''], ['', '', '']]
+```
+
 ---
 
 ### ▶ The sticky output function

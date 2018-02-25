@@ -195,7 +195,6 @@ False
 Makes sense, right?
 
 #### 💡 Explanatios:
-
 + Such behavior is due to CPython optimization (called **string interning**) that tries to use existing immutable objects in some cases rather than creating a new object every time.
 + Note that the keyword `is` is used for _reference_ equality (unlike `==` which is used for _value_ equality); this means that `a is b` is the same as `id(a) == id(b)`, and therefore it should not be used for string comparison. It is only used here to illustrate the effects of string interning.
 + After being interned, many variables may point to the same string object in memory (thereby saving memory).

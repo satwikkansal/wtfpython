@@ -1,6 +1,6 @@
 <p align="center"><img src="/images/logo.png" alt=""></p>
-<h1 align="center"> What the f*ck Python! 🐍 </h1>
-<p align="center"> An interesting collection of surprising snippets and lesser-known Python features.</p>
+<h1 align="center">What the f*ck Python! 🐍</h1>
+<p align="center">An interesting collection of surprising snippets and lesser-known Python features.</p>
 
 [![WTFPL 2.0][license-image]][license-url]
 
@@ -77,7 +77,7 @@ So, here we go...
     - [▶ Yes, it exists!](#-yes-it-exists)
     - [▶ Inpinity *](#-inpinity-)
     - [▶ Mangling time! *](#-mangling-time-)
-  - [Section: Miscallaneous](#section-miscallaneous)
+  - [Section: Miscellaneous](#section-miscellaneous)
     - [▶ `+=` is faster](#--is-faster)
     - [▶ Let's make a giant string!](#-lets-make-a-giant-string)
     - [▶ Explicit typecast of strings](#-explicit-typecast-of-strings)
@@ -97,22 +97,22 @@ All the examples are structured like below:
 
 > ### ▶ Some fancy Title *
 > The asterisk at the end of the title indicates the example was not present in the first release and has been recently added.
-> 
+>
 > ```py
 > # Setting up the code.
 > # Preparation for the magic...
 > ```
-> 
+>
 > **Output (Python version):**
 > ```py
 > >>> triggering_statement
 > Probably unexpected output
 > ```
 > (Optional): One line describing the unexpected output.
-> 
-> 
+>
+>
 > #### 💡 Explanation:
-> 
+>
 > * Brief explanation of what's happening and why is it happening.
 >   ```py
 >   Setting up examples for clarification (if necessary)
@@ -241,7 +241,7 @@ some_dict[5] = "Python"
   True
   ```
   **Note:** Objects with different values may also have same hash (known as hash collision).
-* When the statement `some_dict[5] = "Python"` is executed, the existing value "JavaScript" is overwritten with "Python" because Python recongnizes `5` and `5.0` as the same keys of the dictionary `some_dict`.
+* When the statement `some_dict[5] = "Python"` is executed, the existing value "JavaScript" is overwritten with "Python" because Python recognizes `5` and `5.0` as the same keys of the dictionary `some_dict`.
 * This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains beautifully the rationale behind it.
 
 ---
@@ -1135,7 +1135,7 @@ str
             and type(other) is SomeClass
             and super().__eq__(other)
         )
-    
+
     # When we define a custom __eq__, Python stops automatically inheriting the
     # __hash__ method, so we need to define it as well
     __hash__ = str.__hash__
@@ -1313,7 +1313,7 @@ Shouldn't that be 100?
   > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
 * So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
 * Python 3 is kind enough to throw an error for such cases automatically.
-    
+
     **Output (Python 3.x):**
     ```py
     TabError: inconsistent use of tabs and spaces in indentation
@@ -1697,7 +1697,7 @@ a += [5, 6, 7, 8]
 
 * The expression `a = a + [5,6,7,8]` generates a new list and sets `a`'s reference to that new list, leaving `b` unchanged.
 
-* The expression `a + =[5,6,7,8]` is actually mapped to an "extend" function that operates on the list such that `a` and `b` still point to the same list that has been modified in-place.
+* The expression `a += [5,6,7,8]` is actually mapped to an "extend" function that operates on the list such that `a` and `b` still point to the same list that has been modified in-place.
 
 ---
 
@@ -1731,7 +1731,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
       a += 1
       return a
   ```
-  
+
   **Output:**
   ```py
   >>> another_func()
@@ -2127,7 +2127,7 @@ Why did `Yo()._Yo__honey` worked? Only Indian readers would understand.
 
 ---
 
-## Section: Miscallaneous
+## Section: Miscellaneous
 
 
 ### ▶ `+=` is faster
@@ -2272,7 +2272,7 @@ nan
 ### ▶ Minor Ones
 
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
-  
+
   **💡 Explanation:**
   If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list, it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic `list` object API.
 
@@ -2369,8 +2369,8 @@ If you have any wtfs, ideas or suggestions, please share.
 
 You can use these quick links for Twitter and Linkedin.
 
-[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython) | 
-[Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)
+[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython)
+ | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)
 
 ## Need a pdf version?
 

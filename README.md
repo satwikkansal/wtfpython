@@ -2115,7 +2115,7 @@ AttributeError: 'Yo' object has no attribute '__honey'
 True
 ```
 
-Why did `Yo()._Yo__honey` worked? Only Indian readers would understand.
+Why did `Yo()._Yo__honey` work? Only Indian readers would understand.
 
 #### 💡 Explanation:
 

@@ -213,35 +213,49 @@ Makes sense, right?
 1\.
 ```py
 some_dict = {}
-some_dict[5.5] = "Ruby"
-some_dict[5.0] = "JavaScript"
-some_dict[5] = "Python"
+some_dict[0] = int
+some_dict[0.0] = float
+some_dict[False] = bool
 ```
 
 **Output:**
 ```py
->>> some_dict[5.5]
-"Ruby"
->>> some_dict[5.0]
-"Python"
->>> some_dict[5]
-"Python"
+>>> some_dict
+{0: bool}
 ```
 
-"Python" destroyed the existence of "JavaScript"?
+What happened to the other items?
 
 #### 💡 Explanation
 
-* Python dictionaries check for equality and compare the hash value to determine if two keys are the same.
-* Immutable objects with same value always have the same hash in Python.
+* ``0 == 0.0 == False`` in Python. (And similarly, ``1 == 1.0 == True == 1+0j``.)
+
+* Uniqueness of keys in a dict is by *equivalence*, not identity. So even though e.g. 0 and 0.0 are distinct objects (``0 is not 0.0``) and have different types (``type(0) is not type(0.0)``), since they're equal, they can't both be in the same dict (or set). As soon as you insert any one of them, attempting to look up any distinct but equivalent key will succeed with the original mapped value (rather than failing with a KeyError):
+
   ```py
-  >>> 5 == 5.0
+  >>> some_dict = {}
+  >>> some_dict[0] = int
+  >>> some_dict
+  {0: int}
+  >>> 0.0 in some_dict
   True
-  >>> hash(5) == hash(5.0)
+  >>> False in some_dict
+  True
+  >>> some_dict[False]
+  <class 'int'>
+  ```
+
+* This applies when setting an item as well. So when you do ``some_dict[0.0] = float``, Python finds the existing item with equivalent key ``0 -> int``, overwrites its value in place, and leaves the original key alone. So now ``some_dict == {0: float}``.
+
+* So how would you update the key to ``0.0``? You can't actually do this update in place, but Python's answer is actually that you shouldn't need to: You still have ``0.0 in some_dict == True`` and ``some_dict == {0.0: float}``, regardless of the technicality that when you print out ``some_dict`` you get ``{0: float}``. To actually update the key to ``0.0``, you'd first have to ``del some_dict[0]``, and then ``some_dict[0.0] = float`` will get you ``{0.0: float}``, but given the lookup semantics, it's not a meaningful distinction; doing this would be lying to yourself.
+
+* So under the hood, how does Python find ``0.0`` in a dict containing ``0`` in constant time, without having to scan through every item? When Python looks up a key ``foo`` in a dict, it first computes ``hash(foo)``, which should always run in constant-time. As [documented](https://docs.python.org/3/reference/datamodel.html#object.__hash__), the only requirement is that objects which compare equal have the same hash value:
+
+  ```py
+  >>> hash(0) == hash(0.0) == hash(False)
   True
   ```
-  **Note:** Objects with different values may also have same hash (known as hash collision).
-* When the statement `some_dict[5] = "Python"` is executed, the existing value "JavaScript" is overwritten with "Python" because Python recognizes `5` and `5.0` as the same keys of the dictionary `some_dict`.
+  **Note:** The inverse is not necessarily true: Objects with equal hash values may themselves be unequal. (This causes what's known as a hash collision, and degrades the constant-time performance that hashing usually provides.)
 * This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains beautifully the rationale behind it.
 
 ---

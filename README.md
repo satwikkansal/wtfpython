@@ -2365,9 +2365,9 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 
 If you have any wtfs, ideas or suggestions, please share.
 
-## Want to share wtfpython with friends?
+## Want to surprise your geeky pythonist friends?
 
-You can use these quick links for Twitter and Linkedin.
+You can recommend wtfpython to your friends on Twitter and Linkedin by using these quick links,
 
 [Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython)
  | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)

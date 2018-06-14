@@ -1148,7 +1148,7 @@ str
   >>> s = SomeClass('s')
   >>> some_dict[s] = 40
   >>> some_dict
-  {'s': 40}
+  {'s': 40, 's': 42}
   >>> keys = list(some_dict.keys())
   >>> type(keys[0]), type(keys[1])
   (__main__.SomeClass, str)

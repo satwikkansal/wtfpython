@@ -80,6 +80,7 @@ with open("add_categories", "r") as f:
             }
             content.next()
     except StopIteration:
+        pass
 
 for idx, snip in enumerate(snippets):
     snippets[idx]["category"] = snips_by_title[snip["title"]]["category"]

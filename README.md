@@ -662,7 +662,23 @@ SyntaxError: EOL while scanning string literal
   'wt\\"f'
   ```
 - What the interpreter actually does, though, is simply change the behavior of backslashes, so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
+- String quotes can be escaped with a backslash, but the backslash remains in the string; for example, r""" is a valid string literal consisting of two characters: a backslash and a double quote; r"" is not a valid string literal (even a raw string cannot end in an odd number of backslashes). Specifically, a raw string cannot end in a single backslash (since the backslash would escape the following quote character). Note also that a single backslash followed by a newline is interpreted as those two characters as part of the string, not as a line continuation.
+Few examples :
 
+>>> print(r"\"")
+\"
+>>> print(r"A\nB")
+A\nB
+>>> print(r"A\\nB")
+A\\nB
+>>> print("A\nB")
+A
+B
+>>> print("A\\nB")
+A\nB
+>>> print("A\\\nB")
+A\
+B
 ---
 
 ### ▶ not knot!

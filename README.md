@@ -850,7 +850,7 @@ class C(A):
 
 2\.
 ```py
-class SomeClass:
+class SomeClass(int):
     some_var = 15
     some_list = [5]
     another_list = [5]

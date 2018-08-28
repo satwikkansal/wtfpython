@@ -296,16 +296,24 @@ True
 * But why did the `is` operator evaluated to `False`? Let's see with this snippet.
   ```py
   class WTF(object):
-    def __init__(self): print("I ")
-    def __del__(self): print("D ")
+    def __init__(self): print("I")
+    def __del__(self): print("D")
   ```
 
   **Output:**
   ```py
   >>> WTF() is WTF()
-  I I D D
+  I
+  I
+  D
+  D
+  False
   >>> id(WTF()) == id(WTF())
-  I D I D
+  I
+  D
+  I
+  D
+  True
   ```
   As you may observe, the order in which the objects are destroyed is what made all the difference here.
 

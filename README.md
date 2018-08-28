@@ -2085,7 +2085,7 @@ Try block executed successfully...
 
 ---
 
-### ▶ Inpinity *
+### ▶ Infinity *
 
 The spelling is intended. Please, don't submit a patch for this.
 

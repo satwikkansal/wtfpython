@@ -1260,6 +1260,58 @@ The built-in `ord()` function returns a character's Unicode [code point](https:/
 
 ---
 
+ ### ▶ Sets discriminating values? *
+
+ ```py
+ >>> st = set()
+ >>> st.add(5)
+ >>> st.add(5)
+ >>> st.add(10)
+ >>> st.add(10)
+ >>> st.add(10)
+ >>> st.add(20)
+ >>> st.add(2)
+ >>> st.add(345678)
+ >>> st1 = set(sorted(st))
+ ```
+
+ **Output:**
+ ```py
+ >>> st
+ {2, 5, 10, 345678, 20}
+ >>> st1
+ {2, 5, 10, 345678, 20}
+ ```
+ Everything looks pretty sorted ... just why are sets messing up with 345678?
+
+
+ #### 💡 Explanation:
+
+ * This is because a set object is "an unordered collection" of distinct objects.
+ * So values in a set object are not in a sorted way. Even the values 2, 5, 10 and 20 aren't inserted in sorted manner.
+   
+   ```py
+   >>> st = set()
+   >>> st.add(5)
+   >>> st.add(10)
+   >>> print(st)
+   >>> st.add(20)
+   >>> print(st)
+   >>> st.add(2)
+   >>> print(st)
+   >>> st.add(345678)
+   >>> print(st)
+   ```
+   **Output:**
+   ```py
+   {10, 5}
+   {10, 20, 5}
+   {10, 2, 20, 5}
+   {2, 5, 10, 345678, 20}
+   ```
+   **Note:** This is why when we want to iterate on the distinct elements of a sequence in sorted way, we iterate on the list obtained from sorted(st), not on the set itself.
+---
+
 ### ▶ Teleportation *
 
 ```py

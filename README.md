@@ -77,6 +77,7 @@ So, here we go...
     - [▶ Yes, it exists!](#-yes-it-exists)
     - [▶ Inpinity *](#-inpinity-)
     - [▶ Mangling time! *](#-mangling-time-)
+    - [▶ Reverse all! *](#-reverse-all-)
   - [Section: Miscellaneous](#section-miscellaneous)
     - [▶ `+=` is faster](#--is-faster)
     - [▶ Let's make a giant string!](#-lets-make-a-giant-string)
@@ -2132,6 +2133,59 @@ Why did `Yo()._Yo__honey` work? Only Indian readers would understand.
 * So, to access `__honey` attribute, we are required to append `_Yo` to the front which would prevent conflicts with the same name attribute defined in any other class.
 
 ---
+
+### ▶ Reverse all! *
+
+```py
+>>> a = bytearry('1234567890')
+>>> b = a
+>>> a
+bytearray(b'1234567890')
+>>> b
+bytearray(b'1234567890')
+>>> b.reverse()
+>>> b
+bytearray(b'0987654321')
+>>> a
+bytearray(b'0987654321')
+```
+
+I just want to reverse `b`, but `a` is also reversed!
+
+```py
+>>> aList = ['a', 'b', 'c', 'd', 'e']
+>>> bList = aList
+>>> aList
+['a', 'b', 'c', 'd', 'e']
+>>> bList
+['a', 'b', 'c', 'd', 'e']
+>>> bList.reverse()
+>>> bList
+['e', 'd', 'c', 'b', 'a']
+>>> aList
+['e', 'd', 'c', 'b', 'a']
+```
+
+I just want to reverse `bList`, but `aList` is also reversed!
+
+#### 💡 Explanation:
+
+* In Python, Assignment statements in Python do not copy objects, they create bindings between a target and an object.
+* If we want apply an new memory for our new variable, we need to use `copy.copy(x)` to execute shallow copying or `copy.deepcopy(x)` to execute deep copying.
+
+```py
+>>> a = bytearray(b'1234567890')
+>>> b = a.copy()
+>>> a
+bytearray(b'1234567890')
+>>> b
+bytearray(b'1234567890')
+>>> b.reverse()
+>>> b
+bytearray(b'0987654321')
+>>> a
+bytearray(b'1234567890')
+```
 
 ---
 

@@ -700,7 +700,7 @@ SyntaxError: invalid syntax
 
 ---
 
-### ▶ Half triple-quoted strings
+### ▶ Half triple-quoted strings (which is wrong in orinial version)
 
 **Output:**
 ```py
@@ -712,7 +712,8 @@ wtfpython
 >>> # print('''wtfpython')
 >>> # print("""wtfpython")
 ```
-
+(by zc_):
+in fact, `print ‘’‘wtfpython'` will not raise Error, it will wait you to enter another `'''` as the end of multi-line string.
 #### 💡 Explanation:
 + Python supports implicit [string literal concatenation](https://docs.python.org/2/reference/lexical_analysis.html#string-literal-concatenation), Example,
   ```

@@ -13,7 +13,7 @@ While some of the examples you see below may not be WTFs in the truest sense, bu
 
 If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
 
-If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
+PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
 
 So, here we go...
 
@@ -2358,7 +2358,7 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 * https://stackoverflow.com/questions/530530/python-2-x-gotchas-and-landmines
 * https://stackoverflow.com/questions/1011431/common-pitfalls-in-python
 * https://www.python.org/doc/humor/
-* https://www.satwikkansal.xyz/archives/posts/python/My-Python-archives/
+* https://www.codementor.io/satwikkansal/python-practices-for-efficient-code-performance-memory-and-usability-aze6oiq65
 
 # 🎓 License
 
@@ -2373,9 +2373,9 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 
 If you have any wtfs, ideas or suggestions, please share.
 
-## Want to surprise your geeky pythonist friends?
+## Surprise your geeky pythonist friends?
 
-You can recommend wtfpython to your friends on Twitter and Linkedin by using these quick links,
+You can use these quick links to recommend wtfpython to your friends,
 
 [Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython)
  | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)

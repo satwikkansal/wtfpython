@@ -774,10 +774,10 @@ for item in mixed_list:
 
 **Output:**
 ```py
->>> booleans_found_so_far
-0
 >>> integers_found_so_far
 4
+>>> booleans_found_so_far
+0
 ```
 
 2\.

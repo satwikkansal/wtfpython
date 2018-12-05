@@ -555,7 +555,7 @@ for x in range(7):
     def some_func():
         return x
     funcs.append(some_func)
-    results.append(some_func())
+    results.append(some_func())  # note the function call here
 
 funcs_results = [func() for func in funcs]
 ```

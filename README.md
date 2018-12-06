@@ -838,7 +838,7 @@ class C(A):
     pass
 ```
 
-**Ouptut:**
+**Output:**
 ```py
 >>> A.x, B.x, C.x
 (1, 1, 1)

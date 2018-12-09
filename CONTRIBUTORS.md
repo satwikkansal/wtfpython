@@ -11,4 +11,4 @@ I'm really grateful to all the contributors. Following are the wonderful people 
 | chris-rands | [chris-rands](https://github.com/chris-rands) | [#32](https:/github.com/satwikkansal/wtfpython/issues/32) |
 | sohaibfarooqi | [sohaibfarooqi](https://github.com/sohaibfarooqi) | [#63](https:/github.com/satwikkansal/wtfpython/issues/63) |
 
-Thank you all for taking out time, and helping to make this project awesome! :smile:
+Thank you all for taking out the time to make this project more awesome! :smile:

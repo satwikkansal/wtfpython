@@ -4,6 +4,7 @@
 
 [![WTFPL 2.0][license-image]][license-url]
 
+Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn)
 
 Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
 

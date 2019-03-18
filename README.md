@@ -2137,7 +2137,7 @@ Why did `Yo()._Yo__honey` work? Only Indian readers would understand.
 ### ▶ Reverse all! *
 
 ```py
->>> a = bytearry('1234567890')
+>>> a = bytearray('1234567890')
 >>> b = a
 >>> a
 bytearray(b'1234567890')

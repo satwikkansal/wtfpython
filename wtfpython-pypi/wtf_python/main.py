@@ -4,7 +4,7 @@ try:
 except ImportError:
     from urllib import urlretrieve
 
-url = ("https://raw.githubusercontent.com/satwikkansal/"
+url = ("http://raw.githubusercontent.com/satwikkansal/"
        "wtfpython/master/README.md")
 file_name = "content.md"
 

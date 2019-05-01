@@ -1,3 +1,5 @@
+from os.path import dirname, join, realpath
+
 import pydoc
 try:
     from urllib.request import urlretrieve
@@ -6,13 +8,14 @@ except ImportError:
 
 url = ("http://raw.githubusercontent.com/satwikkansal/"
        "wtfpython/master/README.md")
-file_name = "content.md"
+
+file_path = join(dirname(dirname(realpath(__file__))), "content.md")
 
 
 def fetch_updated_doc():
     try:
         print("Fetching the latest version...")
-        urlretrieve(url, file_name)
+        urlretrieve(url, file_path)
         print("Done!")
     except Exception as e:
         print(e)
@@ -21,7 +24,7 @@ def fetch_updated_doc():
 
 
 def render_doc():
-    with open(file_name, 'r', encoding='utf-8') as f:
+    with open(file_path, 'r', encoding="utf-8") as f:
         content = f.read()
         pydoc.pager(content)
 

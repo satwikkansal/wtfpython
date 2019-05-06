@@ -1,3 +1,15 @@
+"""
+An inefficient monolithic piece of code that'll generate jupyter notebook
+from the projects main README.
+
+TODO
+
+- CLI arguments for running this thing.
+- Add it to prepush hook
+- Use templates?
+
+"""
+
 import json
 import pprint
 fname = "/Users/300041709/code/self/wtfpython/README.md"

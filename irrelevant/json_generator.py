@@ -1,52 +1,85 @@
+import json
 import pprint
 fname = "/Users/300041709/code/self/wtfpython/README.md"
 examples = []
 
 # The globals
 current_example = 1
+sequence_num = 1
 current_section_name = ""
 
 
-def parse_example_parts(lines):
+STATEMENT_PREFIXES = ["...", ">>> ", "$ "]
+
+
+def generate_code_block(statements, output):
+    global sequence_num
+    result = {
+        "type": "code",
+        "sequence_num": sequence_num,
+        "statements": statements,
+        "output": output
+    }
+    sequence_num += 1
+    return result
+
+
+def generate_markdown_block(lines):
+    global sequence_num
+    result = {
+        "type": "markdown",
+        "sequence_num": sequence_num,
+        "value": lines
+    }
+    sequence_num += 1
+    return result
+
+def is_interactive_statement(line):
+    for prefix in STATEMENT_PREFIXES:
+        if line.startswith(prefix):
+            return True
+    return False
+
+def parse_example_parts(lines, example_title_line):
     parts = {
         "build_up": [],
         "explanation": []
     }
-    next_line = next(lines)
-    sequence_num = 1
     content = []
+    statements_so_far = []
+    output_so_far = []
+    next_line = example_title_line
     # store build_up till an H4 (explanation) is encountered
     while not next_line.startswith("#### "):
         # Watching out for the snippets
         if next_line.startswith("```"):
             # It's a snippet, whatever found until now is text
+            is_interactive = False
             if content:
-                parts["build_up"].append(
-                    {
-                        "type": "text",
-                        "sequence_num": sequence_num,
-                        "value": content
-                    }
-                )
-                sequence_num += 1
+                parts["build_up"].append(generate_markdown_block(content))
                 content = []
 
             next_line = next(lines)
+
             while not next_line.startswith("```"):
-                content.append(next_line)
+                if is_interactive_statement(next_line):
+                    is_interactive = True
+                    if (output_so_far):
+                        parts["build_up"].append(generate_code_block(statements_so_far, output_so_far))
+                        statements_so_far, output_so_far = [], []
+                    statements_so_far.append(next_line)
+                else:
+                    # can be either output or normal code
+                    if is_interactive:
+                        output_so_far.append(next_line)
+                    else:
+                        statements_so_far.append(next_line)
                 next_line = next(lines)
+
             # Snippet is over
-            parts["build_up"].append(
-                {
-                    "type": "code",
-                    "sequence_num": sequence_num,
-                    "value": content
-                }
-            )
-            sequence_num += 1
-            content = []
+            parts["build_up"].append(generate_code_block(statements_so_far, output_so_far))
+            statements_so_far, output_so_far = [], []
             next_line = next(lines)
-            continue
         else:
             # It's a text, go on.
             content.append(next_line)
@@ -54,51 +87,43 @@ def parse_example_parts(lines):
 
     # Explanation encountered, save any content till now (if any)
     if content:
-        parts["build_up"].append(
-            {
-                "type": "text",
-                "sequence_num": sequence_num,
-                "value": content
-            }
-        )
+        parts["build_up"].append(generate_markdown_block(content))
 
     # Reset stuff
-    sequence_num = 1
     content = []
+    statements_so_far, output_so_far = [], []
 
     # store lines again until --- or another H3 is encountered
     while not (next_line.startswith("---") or
                next_line.startswith("### ")):
-
         if next_line.startswith("```"):
             # It's a snippet, whatever found until now is text
+            is_interactive = False
             if content:
-                parts["explanation"].append(
-                    {
-                        "type": "text",
-                        "sequence_num": sequence_num,
-                        "value": content
-                    }
-                )
-                sequence_num += 1
+                parts["build_up"].append(generate_markdown_block(content))
                 content = []
 
             next_line = next(lines)
+
             while not next_line.startswith("```"):
-                content.append(next_line)
+                if is_interactive_statement(next_line):
+                    is_interactive = True
+                    if (output_so_far):
+                        parts["build_up"].append(generate_code_block(statements_so_far, output_so_far))
+                        statements_so_far, output_so_far = [], []
+                    statements_so_far.append(next_line)
+                else:
+                    # can be either output or normal code
+                    if is_interactive:
+                        output_so_far.append(next_line)
+                    else:
+                        statements_so_far.append(next_line)
                 next_line = next(lines)
+
             # Snippet is over
-            parts["explanation"].append(
-                {
-                    "type": "code",
-                    "sequence_num": sequence_num,
-                    "value": content
-                }
-            )
-            sequence_num += 1
-            content = []
+            parts["build_up"].append(generate_code_block(statements_so_far, output_so_far))
+            statements_so_far, output_so_far = [], []
             next_line = next(lines)
-            continue
         else:
             # It's a text, go on.
             content.append(next_line)
@@ -106,15 +131,104 @@ def parse_example_parts(lines):
 
     # All done
     if content:
-        parts["explanation"].append(
-            {
-                "type": "text",
-                "sequence_num": sequence_num,
-                "value": content
-            }
-        )
+        parts["explanation"].append(generate_markdown_block(content))
 
     return next_line, parts
+
+def remove_from_beginning(tokens, line):
+    for token in tokens:
+        if line.startswith(token):
+            line = line.replace(token, "")
+    return line
+
+
+def inspect_and_sanitize_code_lines(lines):
+    tokens_to_remove = STATEMENT_PREFIXES
+    result = []
+    is_print_present = False
+    for line in lines:
+        line = remove_from_beginning(tokens_to_remove, line)
+        if line.startswith("print ") or line.startswith("print("):
+            is_print_present = True
+        result.append(line)
+    return is_print_present, result
+
+def convert_to_cells(cell_contents):
+    cells = []
+    for stuff in cell_contents:
+        if stuff["type"] == "markdown":
+            # todo add metadata later
+            cells.append(
+                {
+                    "cell_type": "markdown",
+                    "metadata": {},
+                    "source": stuff["value"]
+                }
+            )
+        elif stuff["type"] == "code":
+            is_print_present, sanitized_code = inspect_and_sanitize_code_lines(stuff["statements"])
+            if is_print_present:
+                cells.append(
+                    {
+                        "cell_type": "code",
+                        "metadata": {
+                            "collapsed": True
+                        },
+                        "execution_count": None,
+                        "outputs": [{
+                            "name": "stdout",
+                            "output_type": "stream",
+                            "text": stuff["output"]
+                        }],
+                        "source": sanitized_code
+                    }
+                )
+            else:
+                cells.append(
+                    {
+                        "cell_type": "code",
+                        "execution_count": None,
+                        "metadata": {
+                            "collapsed": True
+                        },
+                        "outputs": [{
+                            "data": {
+                                "text/plain": stuff["output"]
+                            },
+                            "output_type": "execute_result",
+                            "metadata": {},
+                            "execution_count": None
+                        }],
+                        "source": sanitized_code
+                    }
+                )
+
+    return cells
+
+
+def convert_to_notebook(parsed_json):
+    result = {
+        "cells": [],
+        "metadata": {},
+        "nbformat": 4,
+        "nbformat_minor": 2
+    }
+    for example in parsed_json:
+        parts = example["parts"]
+        build_up = parts.get("build_up")
+        explanation = parts.get("explanation")
+        notebook_path = "test.ipynb"
+
+        if(build_up):
+            result["cells"] += convert_to_cells(build_up)
+
+        if(explanation):
+            result["cells"] += convert_to_cells(explanation)
+
+    pprint.pprint(result, indent=2)
+    with open(notebook_path, "w") as f:
+        json.dump(result, f)
+
 
 
 with open(fname, 'r+', encoding="utf-8") as f:
@@ -126,6 +240,7 @@ with open(fname, 'r+', encoding="utf-8") as f:
             if line.startswith("## "):
                 # A section is encountered
                 current_section_name = line.replace("## ", "").strip()
+                section_text = []
                 line = next(lines)
                 # Until a new section is encountered
                 while not (line.startswith("## " )):
@@ -138,19 +253,15 @@ with open(fname, 'r+', encoding="utf-8") as f:
                             "title": line.replace("### ", ""),
                             "section": current_section_name
                         }
-                        line, example_details["parts"] = parse_example_parts(lines)
+                        line, example_details["parts"] = parse_example_parts(lines, line)
                         result.append(example_details)
                         current_example += 1
                     else:
-                        # todo catch section text
+                        section_text.append(line)
                         line = next(lines)
             else:
                 line = next(lines)
 
     except StopIteration:
         pprint.pprint(result, indent=2)
-        print(len(result))
-
-
-
-
+        convert_to_notebook(result)

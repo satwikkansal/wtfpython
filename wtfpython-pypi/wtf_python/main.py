@@ -21,7 +21,7 @@ def fetch_updated_doc():
 
 
 def render_doc():
-    with open(file_name, 'r') as f:
+    with open(file_name, 'r', encoding='utf-8') as f:
         content = f.read()
         pydoc.pager(content)
 

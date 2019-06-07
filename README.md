@@ -410,7 +410,7 @@ for i, some_dict[i] in enumerate(some_string):
 
 ---
 
-### ▶ Evaluation time discrepancy
+### ▶ Evaluation time discrepancy ^
 
 1\.
 ```py
@@ -446,6 +446,23 @@ array_2[:] = [1,2,3,4,5]
 [1,2,3,4,5]
 ```
 
+3\.
+
+```py
+array_3 = [1, 2, 3]
+array_4 = [10, 20, 30]
+g = (i + j for i in array_3 for j in array_4)
+
+array_3 = [4, 5, 6]
+array_4 = [400, 500, 600]
+```
+
+**Output:**
+```py
+>>> print(list(g))
+[401, 501, 601, 402, 502, 602, 403, 503, 603]
+```
+
 #### 💡 Explanation
 
 - In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at runtime.
@@ -453,6 +470,9 @@ array_2[:] = [1,2,3,4,5]
 - The differences in the output of `g1` and `g2` in the second part is due the way variables `array_1` and `array_2` are re-assigned values.
 - In the first case, `array_1` is binded to the new object `[1,2,3,4,5]` and since the `in` clause is evaluated at the declaration time it still refers to the old object `[1,2,3,4]` (which is not destroyed).
 - In the second case, the slice assignment to `array_2` updates the same old object `[1,2,3,4]` to `[1,2,3,4,5]`. Hence both the `g2` and `array_2` still have reference to the same object (which has now been updated to `[1,2,3,4,5]`).
+- Okay, going by the logic discussed so far, shouldn't be the value of `list(g)` in the third snippet be `[11, 21, 31, 12, 22, 32, 13, 23, 33]`? (because `array_3` and `array_4` are going to behave just like `array_1`). The reason why (only) `array_4` values got updated is explained in [PEP-289](https://www.python.org/dev/peps/pep-0289/#the-details)
+    > Only the outermost for-expression is evaluated immediately, the other expressions are deferred until the generator is run.
+ 
 
 ---
 
@@ -1223,7 +1243,7 @@ a, b = a[b] = {}, 5
   and
   
 > An assignment statement evaluates the expression list (remember that this can be a single expression or a comma-separated list, the latter yielding a tuple) and assigns the single resulting object to each of the target lists, from left to right.
-  
+
 * The `+` in `(target_list "=")+` means there can be **one or more** target lists. In this case, target lists are `a, b` and `a[b]` (note the expression list is exactly one, which in our case is `{}, 5`).
 
 * After the expression list is evaluated, it's value is unpacked to the target lists from **left to right**. So, in our case, first the `{}, 5` tuple is unpacked to `a, b` and we now have `a = {}` and `b = 5`.

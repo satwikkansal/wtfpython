@@ -469,7 +469,7 @@ array_4 = [400, 500, 600]
 - In the first case, `array_1` is binded to the new object `[1,2,3,4,5]` and since the `in` clause is evaluated at the declaration time it still refers to the old object `[1,2,3,4]` (which is not destroyed).
 - In the second case, the slice assignment to `array_2` updates the same old object `[1,2,3,4]` to `[1,2,3,4,5]`. Hence both the `g2` and `array_2` still have reference to the same object (which has now been updated to `[1,2,3,4,5]`).
 - Okay, going by the logic discussed so far, shouldn't be the value of `list(g)` in the third snippet be `[11, 21, 31, 12, 22, 32, 13, 23, 33]`? (because `array_3` and `array_4` are going to behave just like `array_1`). The reason why (only) `array_4` values got updated is explained in [PEP-289](https://www.python.org/dev/peps/pep-0289/#the-details)
-    
+  
     > Only the outermost for-expression is evaluated immediately, the other expressions are deferred until the generator is run.
 
 ---
@@ -702,30 +702,47 @@ SyntaxError: invalid syntax
 
 ---
 
-### ▶ Backslashes at the end of string
+### ▶ Strings and the backslashes\
 
 **Output:**
-```
->>> print("\\ C:\\")
-\ C:\
->>> print(r"\ C:")
-\ C:
->>> print(r"\ C:\")
+```py
+>>> print("\"")
+"
 
-    File "<stdin>", line 1
-      print(r"\ C:\")
-                     ^
+>>> print(r"\"")
+\"
+
+>>> print(r"\")
+File "<stdin>", line 1
+    print(r"\")
+              ^
 SyntaxError: EOL while scanning string literal
+
+>>> r'\'' == "\\'"
+True
 ```
 
 #### 💡 Explanation
 
-- In a raw string literal, as indicated by the prefix `r`, the backslash doesn't have the special meaning.
-  ```py
-  >>> print(repr(r"wt\"f"))
-  'wt\\"f'
-  ```
-- What the interpreter actually does, though, is simply change the behavior of backslashes, so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
+- In a normal python string, the backslash is used to escape characters that may have special meaning (like single-quote, double-quote and the backslash itself).
+    ```py
+    >>> 'wt\"f'
+    'wt"f'
+    ```
+- In a raw string literal (as indicated by the prefix `r`),  the backslashes pass themselves as is along with the behavior of escaping the following character.
+    ```py
+    >>> r'wt\"f' == 'wt\\"f'
+    True
+    >>> print(repr(r'wt\"f')
+    'wt\\"f'
+
+    >>> print("\n")
+
+
+    >>> print(r"\\n")
+    '\\\\n'
+    ```
+- This means when a parser encounters a backslash in a raw string, it expects another character following it. And in our case (`print(r"\")`), the backslash escaped the trailing quote, leaving the parser without a terminating quote (hence the `SyntaxError`). That's why backslashes don't work at the end of a raw string.
 
 ---
 

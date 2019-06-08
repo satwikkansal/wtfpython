@@ -2203,6 +2203,66 @@ Try block executed successfully...
 - `else` clause after try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
 
 ---
+### ▶ Ellipsis ^
+
+```py
+def some_func():
+    Ellipsis
+```
+
+**Output**
+```py
+>>> some_func()
+# No output, No Error
+
+>>> SomeRandomString
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'SomeRandomString' is not defined
+
+>>> Ellipsis
+Ellipsis
+```
+
+#### 💡 Explanation
+- In Python, `Ellipsis` is a globally available builtin object which is equivalent to `...`.
+    ```py
+    >>> ...
+    Ellipsis
+    ```
+- Eliipsis can be used for several purposes,
+    + As a placeholder for code that hasn't been written yet (just like `pass` statement)
+    + In slicing syntax to represent the full slices in remaining direction
+    ```py
+    >>> import numpy as np
+    >>> three_dimensional_array = np.arange(8).reshape(2, 2, 2)
+    array([
+        [
+            [0, 1],
+            [2, 3]
+        ],
+
+        [
+            [4, 5],
+            [6, 7]
+        ]
+    ])
+    ```
+    So our `three_dimensional_array` is an array of array of arrays. Let's say we want to print the second element (index `1`) of all the innermost arrays, we can use Ellipsis to bypass all the preceding dimensions
+    ```py
+    >>> three_dimensional_array[:,:,1]
+    array([[1, 3],
+       [5, 7]])
+    >>> three_dimensional_array[..., 1] # using Ellipsis.
+    array([[1, 3],
+       [5, 7]])
+    ```
+    Note: this will work for any number of dimensions. You can even select slice in first and last dimension and ignore the middle ones this way (`n_dimensional_array[firs_dim_slice, ..., last_dim_slice]`)
+    + In [type hinting](https://docs.python.org/3/library/typing.html) to indicate only a part of the type (like `(Callable[..., int]` or `Tuple[str, ...]`))
+    + You may also use Ellipsis as a default function argument (in the cases when you want to differentiate between the "no argument passed" and "None value passed" scenarios).
+
+
+--- 
 
 ### ▶ Inpinity *
 

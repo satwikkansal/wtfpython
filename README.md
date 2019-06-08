@@ -181,7 +181,7 @@ True
 >>> a is b
 False
 
->>> a, b = "wtf!", "wtf!"
+>>> a = "wtf!"; b = "wtf!";
 >>> a is b
 True
 ```
@@ -514,10 +514,11 @@ array_4 = [400, 500, 600]
 
 ---
 
-### ▶ `is` is not what it is!
+### ▶ Messing around with `is` operator^
 
 The following is a very famous example present all over the internet.
 
+1\.
 ```py
 >>> a = 256
 >>> b = 256
@@ -527,6 +528,37 @@ True
 >>> a = 257
 >>> b = 257
 >>> a is b
+False
+```
+
+2\.
+
+```py
+>>> a = []
+>>> b = []
+>>> a is b
+False
+
+>>> a = tuple()
+>>> b = tuple()
+>>> a is b
+True
+```
+
+3\.
+**Output (< Python 3.7)**
+```
+>>> a, b = 257, 257
+True
+
+>>> a = 257; b = 257
+>>> a is b
+True
+```
+
+**Output (Python 3.7)**
+```
+>>> a, b = 257, 257
 False
 
 >>> a = 257; b = 257
@@ -542,9 +574,8 @@ True
 * `==` operator compares the values of both the operands and checks if they are the same.
 * So `is` is for reference equality and `==` is for value equality. An example to clear things up,
   ```py
-  >>> [] == []
-  True
-  >>> [] is [] # These are two empty lists at two different memory locations.
+  >>> class A: pass
+  >>> A() is A() # These are two empty objects at two different memory locations.
   False
   ```
 
@@ -576,8 +607,11 @@ Quoting from https://docs.python.org/3/c-api/long.html
 
 Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257,` and so it goes on to create another object in the memory.
 
+Similar optimization applies to other **immutable** objects like empty tuples as well. Since lists are mutable, that's why `[] is []` will return `False` and `() is ()` will return `True`. This explains our second snippet. Let's move on to the third one, 
+
 **Both `a` and `b` refer to the same object when initialized with same value in the same line.**
 
+**Output (< Python 3.7)**
 ```py
 >>> a, b = 257, 257
 >>> id(a)
@@ -594,6 +628,7 @@ Here the interpreter isn't smart enough while executing `y = 257` to recognize t
 
 * When a and b are set to `257` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `257` as an object.
 * It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once.
+* Why didn't this work for Python 3.7? The abstract reason is because such compiler optimizations are implementation specific (i.e. may change with version, OS, etc). I'm still figuring out what exact implementation change cause the issue, you can check out this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for updates.
 
 ---
 
@@ -777,6 +812,7 @@ True
     'wt\\"f'
 
     >>> print("\n")
+    ```
 
 
     >>> print(r"\\n")
@@ -2324,8 +2360,7 @@ Ellipsis
     + In [type hinting](https://docs.python.org/3/library/typing.html) to indicate only a part of the type (like `(Callable[..., int]` or `Tuple[str, ...]`))
     + You may also use Ellipsis as a default function argument (in the cases when you want to differentiate between the "no argument passed" and "None value passed" scenarios).
 
-
---- 
+---
 
 ### ▶ Inpinity *
 

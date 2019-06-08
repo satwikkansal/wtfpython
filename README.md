@@ -4,6 +4,7 @@
 
 [![WTFPL 2.0][license-image]][license-url]
 
+Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn)
 
 Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
 
@@ -13,7 +14,7 @@ While some of the examples you see below may not be WTFs in the truest sense, bu
 
 If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
 
-If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
+PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
 
 So, here we go...
 
@@ -649,7 +650,7 @@ for x in range(7):
     def some_func():
         return x
     funcs.append(some_func)
-    results.append(some_func())
+    results.append(some_func())  # note the function call here
 
 funcs_results = [func() for func in funcs]
 ```
@@ -885,10 +886,10 @@ for item in mixed_list:
 
 **Output:**
 ```py
->>> booleans_found_so_far
-0
 >>> integers_found_so_far
 4
+>>> booleans_found_so_far
+0
 ```
 
 2\.
@@ -949,7 +950,7 @@ class C(A):
     pass
 ```
 
-**Ouptut:**
+**Output:**
 ```py
 >>> A.x, B.x, C.x
 (1, 1, 1)
@@ -2016,7 +2017,7 @@ Sshh.. It's a super secret.
 #### 💡 Explanation:
 + `antigravity` module is one of the few easter eggs released by Python developers.
 + `import antigravity` opens up a web browser pointing to the [classic XKCD comic](http://xkcd.com/353/) about Python.
-+ Well, there's more to it. There's **another easter egg inside the easter egg**. If look at the [code](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17), there's a function defined that purports to implement the [XKCD's geohashing algorithm](https://xkcd.com/426/).
++ Well, there's more to it. There's **another easter egg inside the easter egg**. If you look at the [code](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17), there's a function defined that purports to implement the [XKCD's geohashing algorithm](https://xkcd.com/426/).
 
 ---
 
@@ -2537,7 +2538,7 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 * https://stackoverflow.com/questions/530530/python-2-x-gotchas-and-landmines
 * https://stackoverflow.com/questions/1011431/common-pitfalls-in-python
 * https://www.python.org/doc/humor/
-* https://www.satwikkansal.xyz/archives/posts/python/My-Python-archives/
+* https://www.codementor.io/satwikkansal/python-practices-for-efficient-code-performance-memory-and-usability-aze6oiq65
 
 # 🎓 License
 
@@ -2552,9 +2553,9 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 
 If you have any wtfs, ideas or suggestions, please share.
 
-## Want to surprise your geeky pythonist friends?
+## Surprise your geeky pythonist friends?
 
-You can recommend wtfpython to your friends on Twitter and Linkedin by using these quick links,
+You can use these quick links to recommend wtfpython to your friends,
 
 [Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython)
  | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)

@@ -2134,7 +2134,7 @@ Braces? No way! If you think that's disappointing, use Java.
 
 ---
 
-### ▶ Let's meet Friendly Language Uncle For Life *
+### ▶ Let's meet Friendly Language Uncle For Life ^
 
 **Output (Python 3.x)**
 ```py
@@ -2157,6 +2157,11 @@ There we go.
   
   > Recognized that the != inequality operator in Python 3.0 was a horrible, finger pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
 - There were more things that Uncle Barry had to share in the PEP; you can read them [here](https://www.python.org/dev/peps/pep-0401/).
+- It works well on interactive environment, but it will raise a `SyntaxError` when you run via python file (see this [issue](https://github.com/satwikkansal/wtfpython/issues/94)). However, you can wrap the statement inside an `eval` or `compile` to get it working,
+    ```py
+    from __future__ import barry_as_FLUFL
+    print(eval('"Ruby" <> "Python"'))
+    ```
 
 ---
 

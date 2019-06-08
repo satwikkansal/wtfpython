@@ -2450,40 +2450,47 @@ def convert_list_to_string(l, iters):
 ```
 
 **Output:**
+
 ```py
->>> timeit(add_string_with_plus(10000))
-1000 loops, best of 3: 972 µs per loop
->>> timeit(add_bytes_with_plus(10000))
-1000 loops, best of 3: 815 µs per loop
->>> timeit(add_string_with_format(10000))
-1000 loops, best of 3: 508 µs per loop
->>> timeit(add_string_with_join(10000))
-1000 loops, best of 3: 878 µs per loop
->>> l = ["xyz"]*10000
->>> timeit(convert_list_to_string(l, 10000))
-10000 loops, best of 3: 80 µs per loop
+# Executed in ipython shell using %timeit for better readablity of results.
+# You can also use the timeit module in normal python shell/scriptm=, example usage below
+# timeit.timeit('add_string_with_plus(10000)', number=1000, globals=globals())
+
+>>> NUM_ITERS = 1000
+>>> %timeit -n1000 add_string_with_plus(NUM_ITERS)
+124 µs ± 4.73 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+>>> %timeit -n1000 add_bytes_with_plus(NUM_ITERS)
+211 µs ± 10.5 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> %timeit -n1000 add_string_with_format(NUM_ITERS)
+61 µs ± 2.18 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> %timeit -n1000 add_string_with_join(NUM_ITERS)
+117 µs ± 3.21 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> l = ["xyz"]*NUM_ITERS
+>>> %timeit -n1000 convert_list_to_string(l, NUM_ITERS)
+10.1 µs ± 1.06 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 
 Let's increase the number of iterations by a factor of 10.
 
 ```py
->>> timeit(add_string_with_plus(100000)) # Linear increase in execution time
-100 loops, best of 3: 9.75 ms per loop
->>> timeit(add_bytes_with_plus(100000)) # Quadratic increase
-1000 loops, best of 3: 974 ms per loop
->>> timeit(add_string_with_format(100000)) # Linear increase
-100 loops, best of 3: 5.25 ms per loop
->>> timeit(add_string_with_join(100000)) # Linear increase
-100 loops, best of 3: 9.85 ms per loop
->>> l = ["xyz"]*100000
->>> timeit(convert_list_to_string(l, 100000)) # Linear increase
-1000 loops, best of 3: 723 µs per loop
+>>> NUM_ITERS = 10000
+>>> %timeit -n1000 add_string_with_plus(NUM_ITERS) # Linear increase in execution time
+1.26 ms ± 76.8 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> %timeit -n1000 add_bytes_with_plus(NUM_ITERS) # Quadratic increase
+6.82 ms ± 134 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> %timeit -n1000 add_string_with_format(NUM_ITERS) # Linear increase
+645 µs ± 24.5 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> %timeit -n1000 add_string_with_join(NUM_ITERS) # Linear increase
+1.17 ms ± 7.25 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> l = ["xyz"]*NUM_ITERS
+>>> %timeit -n1000 convert_list_to_string(l, NUM_ITERS) # Linear increase
+86.3 µs ± 2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 
 #### 💡 Explanation
-- You can read more about [timeit](https://docs.python.org/3/library/timeit.html) from here. It is generally used to measure the execution time of snippets.
+- You can read more about [timeit](https://docs.python.org/3/library/timeit.html) or [%timeit](https://ipython.org/ipython-doc/dev/interactive/magics.html#magic-timeit) on these links. They are used to measure the execution time of code pieces.
 - Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases (justified with the execution times of `add_bytes_with_plus` function)
-- Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for short strings).
+- Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for very short strings).
 - Or better, if already you've contents available in the form of an iterable object, then use `''.join(iterable_object)` which is much faster.
 - `add_string_with_plus` didn't show a quadratic increase in execution time unlike `add_bytes_with_plus` because of the `+=` optimizations discussed in the previous example. Had the statement been `s = s + "x" + "y" + "z"` instead of `s += "xyz"`, the increase would have been quadratic.
   ```py
@@ -2493,10 +2500,10 @@ Let's increase the number of iterations by a factor of 10.
           s = s + "x" + "y" + "z"
       assert len(s) == 3*iters
 
-  >>> timeit(add_string_with_plus(10000))
-  100 loops, best of 3: 9.87 ms per loop
-  >>> timeit(add_string_with_plus(100000)) # Quadratic increase in execution time
-  1 loops, best of 3: 1.09 s per loop
+  >>> %timeit -n100 add_string_with_plus(1000)
+  388 µs ± 22.4 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+  >>> %timeit -n100 add_string_with_plus(10000) # Quadratic increase in execution time
+  9 ms ± 298 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
   ```
 
 ---

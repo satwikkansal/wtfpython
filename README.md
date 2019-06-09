@@ -263,25 +263,130 @@ some_dict[5] = "Python"
 "Ruby"
 >>> some_dict[5.0]
 "Python"
->>> some_dict[5]
+>>> some_dict[5] # "Python" destroyed the existence of "JavaScript"?
+"Python"
+
+>>> complex_five = 5 + 0j
+>>> type(complex_five)
+complex
+>>> some_dict[complex_five]
 "Python"
 ```
 
-"Python" destroyed the existence of "JavaScript"?
+So, why is Python all over the place?
+
 
 #### 💡 Explanation
 
 * Python dictionaries check for equality and compare the hash value to determine if two keys are the same.
 * Immutable objects with same value always have the same hash in Python.
   ```py
-  >>> 5 == 5.0
+  >>> 5 == 5.0 == 5 + 0j
   True
-  >>> hash(5) == hash(5.0)
+  >>> hash(5) == hash(5.0) == hash(5 + 0j)
   True
   ```
   **Note:** Objects with different values may also have same hash (known as hash collision).
 * When the statement `some_dict[5] = "Python"` is executed, the existing value "JavaScript" is overwritten with "Python" because Python recognizes `5` and `5.0` as the same keys of the dictionary `some_dict`.
 * This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains beautifully the rationale behind it.
+
+---
+
+### ▶ The disorder within order ^
+
+```py
+from collections import OrderedDict
+
+dictionary = dict()
+dictionary[1] = 'a'; dictionary[2] = 'b';
+
+ordered_dict = OrderedDict()
+ordered_dict[1] = 'a'; ordered_dict[2] = 'b';
+
+another_ordered_dict = OrderedDict()
+another_ordered_dict[2] = 'b'; another_ordered_dict[1] = 'a';
+
+class DictWithHash(dict):
+    """
+    A dict that also implements __hash__ magic.
+    """
+    __hash__ = lambda self: 0
+
+class OrderedDictWithHash(OrderedDict):
+    """
+    A dict that also implements __hash__ magic.
+    """
+    __hash__ = lambda self: 0
+```
+
+**Output**
+```py
+>>> dictionary == ordered_dict # If a == b
+True
+>>> dictionary == another_ordered_dict # and b == c
+True
+>>> ordered_dict == another_ordered_dict # the why isn't c == a ??
+False
+
+# We all know that a set consists of only unique elements,
+# let's try making a set of these dictionaries and see what happens...
+
+>>> len({dictionary, ordered_dict, another_ordered_dict})
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'dict'
+
+# Makes sense since dict don't have __hash__ implemented, let's use
+# our wrapper classes.
+>>> dictionary = DictWithHash()
+>>> dictionary[1] = 'a'; dictionary[2] = 'b';
+>>> ordered_dict = OrderedDictWithHash()
+>>> ordered_dict[1] = 'a'; ordered_dict[2] = 'b';
+>>> another_ordered_dict = OrderedDictWithHash()
+>>> another_ordered_dict[2] = 'b'; another_ordered_dict[1] = 'a';
+>>> len({dictionary, ordered_dict, another_ordered_dict})
+1
+>>> len({ordered_dict, another_ordered_dict, dictionary}) # changing the order
+2
+```
+
+What is going on here?
+
+#### 💡 Explanation:
+
+- The reason why intransitive equality didn't hold among `dictionary`, `ordered_dict` and `another_ordered_dict` is because of the way `__eq__` method is implemented in `OrderedDict` class. From the [docs](https://docs.python.org/3/library/collections.html#ordereddict-objects)
+    > Equality tests between OrderedDict objects are order-sensitive and are implemented as `list(od1.items())==list(od2.items())`. Equality tests between `OrderedDict` objects and other Mapping objects are order-insensitive like regular dictionaries.
+- The reason for this equality is behavior  is that it allows `OrderedDict` objects to be directly substituted anywhere a regular dictionary is used.
+- Okay, so why did changing the order affect the lenght of the generated `set` object? The answer is the lack of intransitive equality only. Since sets are "unordered" collections of unique elements, the order in which elements are inserted shouldn't matter. But in this case, it does matter. Let's break it down a bit,
+    ```py
+    >>> some_set = set()
+    >>> some_set.add(dictionary) # these are the mapping objects from the snippets above
+    >>> ordered_dict in some_set
+    True
+    >>> some_set.add(ordered_dict)
+    >>> len(some_set)
+    1
+    >>> another_ordered_dict in some_set
+    True
+    >>> some_set.add(another_ordered_dict)
+    >>> len(some_set)
+    1
+
+    >>> another_set = set()
+    >>> another_set.add(ordered_dict)
+    >>> another_ordered_dict in another_set
+    False
+    >>> another_set.add(another_ordered_dict)
+    >>> len(another_set)
+    2
+    >>> dictionary in another_set
+    True
+    >>> another_set.add(another_ordered_dict)
+    >>> len(another_set)
+    2
+    ```
+    So the inconsistency is due to `another_ordered_dict in another_set` being False because `ordered_dict` was already present in `another_set` and as observed before, `ordered_dict == another_ordered_dict` is `False`.
+
 
 ---
 
@@ -860,8 +965,6 @@ True
     'wt\\"f'
 
     >>> print("\n")
-    ```
-
 
     >>> print(r"\\n")
     '\\\\n'

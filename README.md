@@ -1253,6 +1253,55 @@ I've lost faith in truth!
 
 ---
 
+### ▶ Lossy zip of iterators
+
+```py
+>>> numbers = list(range(7))
+>>> numbers
+[0, 1, 2, 3, 4, 5, 6]
+>>> first_three, remaining = numbers[:3], numbers[3:]
+>>> first_three, remaining
+([0, 1, 2], [3, 4, 5, 6])
+>>> numbers_iter = iter(numbers)
+>>> list(zip(numbers_iter, first_three)) 
+[(0, 0), (1, 1), (2, 2)]
+# so far so good, let's zip the remaining
+>>> list(zip(numbers_iter, remaining))
+[(4, 3), (5, 4), (6, 5)]
+```
+Where did element `3` go from the `numbers` list?
+
+#### 💡 Explanation:
+
+- From Python [docs](https://docs.python.org/3.3/library/functions.html#zip), here's an approximate implementation of zip function,
+    ```py
+    def zip(*iterables):
+        sentinel = object()
+        iterators = [iter(it) for it in iterables]
+        while iterators:
+            result = []
+            for it in iterators:
+                elem = next(it, sentinel)
+                if elem is sentinel:
+                    return
+                result.append(elem)
+            yield tuple(result)
+    ```
+- So the function takes in arbitrary number of itreable objects, adds each of their items to the `result` list by calling the `next` function on them, and stops whenever any of the iterable is exhausted. 
+- The caveat here is when any iterable is exhausted, the existing elements in the `result` list are discarded. That's what happened with `3` in the `numbers_iter`.
+- The correct way to do the above using `zip` would be,
+    ```py
+    >>> numbers = list(range(7))
+    >>> numbers_iter = iter(numbers)
+    >>> list(zip(first_three, numbers_iter))
+    [(0, 0), (1, 1), (2, 2)]
+    >>> list(zip(remaining, numbers_iter))
+    [(3, 3), (4, 4), (5, 5), (6, 6)]
+    ```
+    The first argument of zip should be the one with fewest elements.
+
+---
+
 ### ▶ From filled to None in one instruction...
 
 ```py

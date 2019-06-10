@@ -1858,21 +1858,22 @@ print(x, ': x in global')
 ```
 
 3\.
-```
-x = 1
-print([x for x in range(5)])
-print(x, ': x in global')
-```
 
-**Output (on Python 2.x):**
+**Output (Python 2.x):**
 ```
+>>> x = 1
+>>> print([x for x in range(5)])
 [0, 1, 2, 3, 4]
+>>> print(x, ': x in global')
 (4, ': x in global')
 ```
 
-**Output (on Python 3.x):**
+**Output (Python 3.x):**
 ```
+>>> x = 1
+>>> print([x for x in range(5)])
 [0, 1, 2, 3, 4]
+>>> print(x, ': x in global')
 1 : x in global
 ```
 
@@ -2185,12 +2186,10 @@ class SomeClass:
 - A generator expression has its own scope.
 - Starting from Python 3.X, list comprehensions also have their own scope.
 
----
-
 
 ---
 
-### ▶ Needles in a Haystack
+### ▶ Needles in a Haystack ^
 
 1\.
 ```py
@@ -2229,7 +2228,31 @@ e
 tuple()
 ```
 
-3\. Not asserting strongly enough
+3\.
+
+```
+ten_words_list = [
+    "some",
+    "very",
+    "big",
+    "list",
+    "that"
+    "consists",
+    "of",
+    "exactly",
+    "ten",
+    "words"
+]
+```
+
+**Output**
+
+```py
+>>> len(ten_words_list)
+9
+```
+
+4\. Not asserting strongly enough
 
 ```py
 a = "python"
@@ -2246,7 +2269,12 @@ b = "javascript"
 * For 1, the correct statement for expected behavior is `x, y = (0, 1) if True else (None, None)`.
 * For 2, the correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
-* For 3, no `AssertionError` was raised because we're asserting entire tuple, instead of asserting the individual expression `a == b`. The following snippet will clear things up,
+* In 3, as you might have already figured out, there's a missing comma after 5th element (`"that"`) in the list. So by implicit string literal concatenation,
+    ```py
+    >>> ten_words_list
+    ['some', 'very', 'big', 'list', 'thatconsists', 'of', 'exactly', 'ten', 'words']
+    ```
+* No `AssertionError` was raised in 4th snippet because instead of asserting the individual expression `a == b`, we're asserting entire tuple. The following snippet will clear things up,
     ```py
     >>> a = "python"
     >>> b = "javascript"
@@ -2324,7 +2352,62 @@ Same result, that didn't work either.
   ["wtf"]
   ```
 
+---
 
+### ▶ Wild imports
+
+```py
+# File: module.py
+
+def some_weird_name_func_():
+    print("works!")
+
+def _another_weird_name_func():
+    print("works!")
+
+```
+
+**Output**
+
+```py
+>>> from module import *
+>>> some_weird_name_func_()
+"works!"
+>>> _another_weird_name_func()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name '_another_weird_name_func' is not defined
+```
+
+#### 💡 Explanation:
+
+- It if often adivsable to not use wildcard imports. In wildcard imports, the names with leading underscore are be imported. This may lead to errors in runtime.
+- Had we used `from ... import a, b, c` syntax, the above `NameError` won't have occurred.
+    ```py
+    >>> from module import some_weird_name_func_, _another_weird_name_func
+    >>> _another_weird_name_func()
+    works!
+    ```
+- If you really want to use wildcard imports, then you'd have to define the list `__all__` in your module that will contain a list of public objects that'll be available when we do wildcard imports.
+```py
+__all__ = ['_another_weird_name_func']
+
+def some_weird_name_func_():
+    print("works!")
+
+def _another_weird_name_func():
+    print("works!")
+```
+**Output**
+
+```py
+>>> _another_weird_name_func()
+"works!"
+>>> some_weird_name_func_()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'some_weird_name_func_' is not defined
+```
 ---
 
 ---
@@ -2622,12 +2705,12 @@ The spelling is intended. Please, don't submit a patch for this.
 class Yo(object):
     def __init__(self):
         self.__honey = True
-        self.bitch = True
+        self.bro = True
 ```
 
 **Output:**
 ```py
->>> Yo().bitch
+>>> Yo().bro
 True
 >>> Yo().__honey
 AttributeError: 'Yo' object has no attribute '__honey'
@@ -2635,7 +2718,7 @@ AttributeError: 'Yo' object has no attribute '__honey'
 True
 ```
 
-Why did `Yo()._Yo__honey` work? Only Indian readers would understand.
+Why did `Yo()._Yo__honey` work?
 
 #### 💡 Explanation:
 
@@ -2644,6 +2727,10 @@ Why did `Yo()._Yo__honey` work? Only Indian readers would understand.
 * So, to access `__honey` attribute, we are required to append `_Yo` to the front which would prevent conflicts with the same name attribute defined in any other class.
 
 ---
+
+
+
+
 
 ---
 

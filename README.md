@@ -10,7 +10,7 @@ Python, being a beautifully designed high-level and interpreter-based programmin
 
 Here is a fun project to collect such tricky & counter-intuitive examples and lesser-known features in Python, attempting to discuss what exactly is happening under the hood!
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
+While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
 
 If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
 
@@ -104,10 +104,10 @@ All the examples are structured like below:
 > # Preparation for the magic...
 > ```
 >
-> **Output (Python version):**
+> **Output (Python version(s)):**
 > ```py
 > >>> triggering_statement
-> Probably unexpected output
+> Some unexpected output
 > ```
 > (Optional): One line describing the unexpected output.
 >
@@ -118,7 +118,7 @@ All the examples are structured like below:
 >   ```py
 >   Setting up examples for clarification (if necessary)
 >   ```
->   **Output:**
+>   **Output Output (Python version(s)):**
 >   ```py
 >   >>> trigger # some example that makes it easy to unveil the magic
 >   # some justified output
@@ -128,15 +128,15 @@ All the examples are structured like below:
 
 # Usage
 
-A nice way to get the most out of these examples, in my opinion, will be just to read the examples chronologically, and for every example:
+A nice way to get the most out of these examples, in my opinion, will be to just read them chronologically, and for every example:
 - Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's going to happen next.
 - Read the output snippets and,
   + Check if the outputs are the same as you'd expect.
   + Make sure if you know the exact reason behind the output being the way it is.
-    - If no, take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
+    - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
-PS: You can also read WTFpython at the command line. There's a pypi package and an npm package (supports colored formatting) for the same.
+PS: You can also read WTFPython at the command line. There's a pypi package and an npm package (which supports colored formatting) for the same.
 
 To install the npm package [`wtfpython`](https://www.npmjs.com/package/wtfpython)
 ```sh
@@ -2185,7 +2185,10 @@ class SomeClass:
 
 ---
 
-### ▶ Needle in a Haystack
+
+---
+
+### ▶ Needles in a Haystack
 
 1\.
 ```py
@@ -2224,12 +2227,44 @@ e
 tuple()
 ```
 
+3\. Not asserting strongly enough
+
+```py
+a = "python"
+b = "javascript"
+```
+**Output:**
+```py
+# An assert statement with an assertion failure message.
+>>> assert(a == b, "Both languages are different")
+# No AssertionError is raised
+```
+
 #### 💡 Explanation:
 * For 1, the correct statement for expected behavior is `x, y = (0, 1) if True else (None, None)`.
 * For 2, the correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
+* For 3, no `AssertionError` was raised because we're asserting entire tuple, instead of asserting the individual expression `a == b`. The following snippet will clear things up,
+    ```py
+    >>> a = "python"
+    >>> b = "javascript"
+    >>> assert a == b
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in <module>
+    AssertionError
+
+    >>> assert (a == b, "Values are not equal")
+    <stdin>:1: SyntaxWarning: assertion is always true, perhaps remove parentheses?
+
+    >>> assert a == b, "Values are not equal"
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in <module>
+    AssertionError: Values aren not equal
+    ```
 
 ---
+
+
 
 ---
 
@@ -2658,6 +2693,8 @@ Let's increase the number of iterations by a factor of 10.
   >>> %timeit -n100 add_string_with_plus(10000) # Quadratic increase in execution time
   9 ms ± 298 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
   ```
+- So many ways to format and create a giant string are somewhat in contrast to the [Zen of Python](https://www.python.org/dev/peps/pep-0020/), according to which,
+    > There should be one-- and preferably only one --obvious way to do it.
 
 ---
 

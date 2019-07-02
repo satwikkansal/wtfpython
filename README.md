@@ -10,7 +10,7 @@ Python, being a beautifully designed high-level and interpreter-based programmin
 
 Here is a fun project to collect such tricky & counter-intuitive examples and lesser-known features in Python, attempting to discuss what exactly is happening under the hood!
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
+While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might not be aware of. I find this a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
 
 If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
 

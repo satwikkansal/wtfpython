@@ -39,7 +39,7 @@ for handle, issues in contribs.items():
     issue_string = ', '.join([issue_format.format(i, i) for i in issues])
     resp = requests.get(github_rest_api.format(handle))
     name = handle
-    if resp.status_code is 200:
+    if resp.status_code == 200:
         pprint.pprint(resp.json()['name'])
     else:
         print(handle, resp.content)

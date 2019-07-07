@@ -223,7 +223,7 @@ Now, just run `wtfpython` at the command line which will open this collection in
 ## Section: Strain your brain!
 
 ### ▶ Strings can be tricky sometimes *
-<!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --!>
+<!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->
 1\.
 ```py
 >>> a = "some_string"
@@ -274,7 +274,7 @@ Makes sense, right?
 ---
 
 ### ▶ Splitsies ^
-<!-- Example ID: ec3168ba-a81a-4482-afb0-691f1cc8d65a --!>
+<!-- Example ID: ec3168ba-a81a-4482-afb0-691f1cc8d65a --->
 ```py
 >>> 'a'.split()
 ['a']
@@ -312,7 +312,7 @@ Makes sense, right?
 
 
 ### ▶ Time for some hash brownies!
-<!-- Example ID: eb17db53-49fd-4b61-85d6-345c5ca213ff --!>
+<!-- Example ID: eb17db53-49fd-4b61-85d6-345c5ca213ff --->
 1\.
 ```py
 some_dict = {}
@@ -357,7 +357,7 @@ So, why is Python all over the place?
 ---
 
 ### ▶ The disorder within order ^
-<!-- Example ID: 91bff1f8-541d-455a-9de4-6cd8ff00ea66 --!>
+<!-- Example ID: 91bff1f8-541d-455a-9de4-6cd8ff00ea66 --->
 ```py
 from collections import OrderedDict
 
@@ -455,7 +455,7 @@ What is going on here?
 ---
 
 ### ▶ Keep trying? *
-<!-- Example ID: b4349443-e89f-4d25-a109-82616be9d41a --!>
+<!-- Example ID: b4349443-e89f-4d25-a109-82616be9d41a --->
 ```py
 def some_func():
     try:
@@ -515,7 +515,7 @@ Iteration 0
 ---
 
 ### ▶ Deep down, we're all the same. *
-<!-- Example ID: 8f99a35f-1736-43e2-920d-3b78ec35da9b --!>
+<!-- Example ID: 8f99a35f-1736-43e2-920d-3b78ec35da9b --->
 ```py
 class WTF:
   pass
@@ -565,7 +565,7 @@ True
 ---
 
 ### ▶ For what?
-<!-- Example ID: 64a9dccf-5083-4bc9-98aa-8aeecde4f210 --!>
+<!-- Example ID: 64a9dccf-5083-4bc9-98aa-8aeecde4f210 --->
 ```py
 some_string = "wtf"
 some_dict = {}
@@ -618,7 +618,7 @@ for i, some_dict[i] in enumerate(some_string):
 ---
 
 ### ▶ Evaluation time discrepancy ^
-<!-- Example ID: 6aa11a4b-4cf1-467a-b43a-810731517e98 --!>
+<!-- Example ID: 6aa11a4b-4cf1-467a-b43a-810731517e98 --->
 1\.
 ```py
 array = [1, 8, 15]
@@ -684,7 +684,7 @@ array_4 = [400, 500, 600]
 ---
 
 ### ▶ Messing around with `is` operator^
-<!-- Example ID: 230fa2ac-ab36-4ad1-b675-5f5a1c1a6217 --!>
+<!-- Example ID: 230fa2ac-ab36-4ad1-b675-5f5a1c1a6217 --->
 The following is a very famous example present all over the internet.
 
 1\.
@@ -802,7 +802,7 @@ Similar optimization applies to other **immutable** objects like empty tuples as
 ---
 
 ### ▶ A tic-tac-toe where X wins in the first attempt!
-<!-- Example ID: 69329249-bdcb-424f-bd09-cca2e6705a7a --!>
+<!-- Example ID: 69329249-bdcb-424f-bd09-cca2e6705a7a --->
 ```py
 # Let's initialize a row
 row = [""]*3 #row i['', '', '']
@@ -847,7 +847,7 @@ We can avoid this scenario here by not using `row` variable to generate `board`.
 ---
 
 ### ▶ The sticky output function
-<!-- Example ID: 4dc42f77-94cb-4eb5-a120-8203d3ed7604 --!>
+<!-- Example ID: 4dc42f77-94cb-4eb5-a120-8203d3ed7604 --->
 ```py
 funcs = []
 results = []
@@ -901,7 +901,7 @@ Even when the values of `x` were different in every iteration prior to appending
 ---
 
 ### ▶ The chicken-egg problem ^
-<!-- Example ID: 60730dc2-0d79-4416-8568-2a63323b3ce8 --!>
+<!-- Example ID: 60730dc2-0d79-4416-8568-2a63323b3ce8 --->
 1\.
 ```py
 >>> isinstance(3, int)
@@ -949,7 +949,7 @@ False
 ---
 
 ### ▶ `is not ...` is not `is (not ...)`
-<!-- Example ID: b26fb1ed-0c7d-4b9c-8c6d-94a58a055c0d --!>
+<!-- Example ID: b26fb1ed-0c7d-4b9c-8c6d-94a58a055c0d --->
 ```py
 >>> 'something' is not None
 True
@@ -965,7 +965,7 @@ False
 ---
 
 ### ▶ The surprising comma
-<!-- Example ID: 31a819c8-ed73-4dcc-84eb-91bedbb51e58 --!>
+<!-- Example ID: 31a819c8-ed73-4dcc-84eb-91bedbb51e58 --->
 **Output:**
 ```py
 >>> def f(x, y,):
@@ -995,7 +995,7 @@ SyntaxError: invalid syntax
 ---
 
 ### ▶ Strings and the backslashes\ ^
-<!-- Example ID: 6ae622c3-6d99-4041-9b33-507bd1a4407b --!>
+<!-- Example ID: 6ae622c3-6d99-4041-9b33-507bd1a4407b --->
 **Output:**
 ```py
 >>> print("\"")
@@ -1038,7 +1038,7 @@ True
 ---
 
 ### ▶ not knot!
-<!-- Example ID: 7034deb1-7443-417d-94ee-29a800524de8 --!>
+<!-- Example ID: 7034deb1-7443-417d-94ee-29a800524de8 --->
 ```py
 x = True
 y = False
@@ -1065,7 +1065,7 @@ SyntaxError: invalid syntax
 ---
 
 ### ▶ Half triple-quoted strings
-<!-- Example ID: c55da3e2-1034-43b9-abeb-a7a970a2ad9e --!>
+<!-- Example ID: c55da3e2-1034-43b9-abeb-a7a970a2ad9e --->
 **Output:**
 ```py
 >>> print('wtfpython''')
@@ -1090,7 +1090,7 @@ wtfpython
 ---
 
 ### ▶ Midnight time doesn't exist?
-<!-- Example ID: 1bce8294-5619-4d70-8ce3-fe0bade690d1 --!>
+<!-- Example ID: 1bce8294-5619-4d70-8ce3-fe0bade690d1 --->
 ```py
 from datetime import datetime
 
@@ -1120,7 +1120,7 @@ Before Python 3.5, the boolean value for `datetime.time` object was considered t
 ---
 
 ### ▶ What's wrong with booleans?
-<!-- Example ID: 0bba5fa7-9e6d-4cd2-8b94-952d061af5dd --!>
+<!-- Example ID: 0bba5fa7-9e6d-4cd2-8b94-952d061af5dd --->
 1\.
 ```py
 # A simple example to count the number of booleans and
@@ -1185,7 +1185,7 @@ for item in mixed_list:
 ---
 
 ### ▶ Class attributes and instance attributes
-<!-- Example ID: 6f332208-33bd-482d-8106-42863b739ed9 --!>
+<!-- Example ID: 6f332208-33bd-482d-8106-42863b739ed9 --->
 1\.
 ```py
 class A:
@@ -1255,7 +1255,7 @@ True
 ---
 
 ### ▶ yielding None
-<!-- Example ID: 5a40c241-2c30-40d0-8ba9-cf7e097b3b53 --!>
+<!-- Example ID: 5a40c241-2c30-40d0-8ba9-cf7e097b3b53 --->
 ```py
 some_iterable = ('a', 'b')
 
@@ -1284,7 +1284,7 @@ def some_func(val):
 ---
 
 ### ▶ Mutating the immutable!
-<!-- Example ID: 15a9e782-1695-43ea-817a-a9208f6bb33d --!>
+<!-- Example ID: 15a9e782-1695-43ea-817a-a9208f6bb33d --->
 ```py
 some_tuple = ("A", "tuple", "with", "values")
 another_tuple = ([1, 2], [3, 4], [5, 6])
@@ -1317,7 +1317,7 @@ But I thought tuples were immutable...
 ---
 
 ### ▶ The disappearing variable from outer scope
-<!-- Example ID: 7f1e71b6-cb3e-44fb-aa47-87ef1b7decc8 --!>
+<!-- Example ID: 7f1e71b6-cb3e-44fb-aa47-87ef1b7decc8 --->
 ```py
 e = 7
 try:
@@ -1397,7 +1397,7 @@ NameError: name 'e' is not defined
 ---
 
 ### ▶ When True is actually False
-<!-- Example ID: c8317047-48ae-4306-af5a-04c6d8b7c2b9 --!>
+<!-- Example ID: c8317047-48ae-4306-af5a-04c6d8b7c2b9 --->
 ```py
 True = False
 if True == False:
@@ -1417,7 +1417,7 @@ I've lost faith in truth!
 ---
 
 ### ▶ Lossy zip of iterators
-<!-- Example ID: c28ed154-e59f-4070-8eb6-8967a4acac6d --!>
+<!-- Example ID: c28ed154-e59f-4070-8eb6-8967a4acac6d --->
 ```py
 >>> numbers = list(range(7))
 >>> numbers
@@ -1466,7 +1466,7 @@ Where did element `3` go from the `numbers` list?
 ---
 
 ### ▶ From filled to None in one instruction...
-<!-- Example ID: 9a0d5335-efe5-4eae-af44-584d15233066 --!>
+<!-- Example ID: 9a0d5335-efe5-4eae-af44-584d15233066 --->
 ```py
 some_list = [1, 2, 3]
 some_dict = {
@@ -1494,7 +1494,7 @@ Most methods that modify the items of sequence/mapping objects like `list.append
 ---
 
 ### ▶ Subclass relationships *
-<!-- Example ID: 9f6d8cf0-e1b5-42d0-84a0-4cfab25a0bc0 --!>
+<!-- Example ID: 9f6d8cf0-e1b5-42d0-84a0-4cfab25a0bc0 --->
 **Output:**
 ```py
 >>> from collections import Hashable
@@ -1518,7 +1518,7 @@ The Subclass relationships were expected to be transitive, right? (i.e., if `A` 
 ---
 
 ### ▶ The mysterious key type conversion *
-<!-- Example ID: 00f42dd0-b9ef-408d-9e39-1bc209ce3f36 --!>
+<!-- Example ID: 00f42dd0-b9ef-408d-9e39-1bc209ce3f36 --->
 ```py
 class SomeClass(str):
     pass
@@ -1574,7 +1574,7 @@ str
 ---
 
 ### ▶ Let's see if you can guess this?
-<!-- Example ID: 81aa9fbe-bd63-4283-b56d-6fdd14c9105e --!>
+<!-- Example ID: 81aa9fbe-bd63-4283-b56d-6fdd14c9105e --->
 ```py
 a, b = a[b] = {}, 5
 ```
@@ -1635,7 +1635,7 @@ a, b = a[b] = {}, 5
 ## Section: Appearances are deceptive!
 
 ### ▶ Skipping lines?
-<!-- Example ID: d50bbde1-fb9d-4735-9633-3444b9d2f417 --!>
+<!-- Example ID: d50bbde1-fb9d-4735-9633-3444b9d2f417 --->
 **Output:**
 ```py
 >>> value = 11
@@ -1671,7 +1671,7 @@ The built-in `ord()` function returns a character's Unicode [code point](https:/
 ---
 
 ### ▶ Teleportation *
-<!-- Example ID: edafe923-0c20-4315-b6e1-0c31abfc38f5 --!>
+<!-- Example ID: edafe923-0c20-4315-b6e1-0c31abfc38f5 --->
 ```py
 import numpy as np
 
@@ -1701,7 +1701,7 @@ Where's the Nobel Prize?
 ---
 
 ### ▶ Well, something is fishy...
-<!-- Example ID: cb6a37c5-74f7-44ca-b58c-3b902419b362 --!>
+<!-- Example ID: cb6a37c5-74f7-44ca-b58c-3b902419b362 --->
 ```py
 def square(x):
     """
@@ -1746,7 +1746,7 @@ Shouldn't that be 100?
 
 
 ### ▶ Modifying a dictionary while iterating over it
-<!-- Example ID: b4e5cdfb-c3a8-4112-bd38-e2356d801c41 --!>
+<!-- Example ID: b4e5cdfb-c3a8-4112-bd38-e2356d801c41 --->
 ```py
 x = {0: None}
 
@@ -1781,7 +1781,7 @@ Yes, it runs for exactly **eight** times and stops.
 ---
 
 ### ▶ Stubborn `del` operation *
-<!-- Example ID: 777ed4fd-3a2d-466f-95e7-c4058e61d78e --!>
+<!-- Example ID: 777ed4fd-3a2d-466f-95e7-c4058e61d78e --->
 ```py
 class SomeClass:
     def __del__(self):
@@ -1824,7 +1824,7 @@ Okay, now it's deleted :confused:
 ---
 
 ### ▶ Deleting a list item while iterating
-<!-- Example ID: 4cc52d4e-d42b-4e09-b25f-fbf5699b7d4e --!>
+<!-- Example ID: 4cc52d4e-d42b-4e09-b25f-fbf5699b7d4e --->
 ```py
 list_1 = [1, 2, 3, 4]
 list_2 = [1, 2, 3, 4]
@@ -1884,7 +1884,7 @@ Can you guess why the output is `[2, 4]`?
 ---
 
 ### ▶ Loop variables leaking out!
-<!-- Example ID: ccec7bf6-7679-4963-907a-1cd8587be9ea --!>
+<!-- Example ID: ccec7bf6-7679-4963-907a-1cd8587be9ea --->
 1\.
 ```py
 for x in range(7):
@@ -1948,7 +1948,7 @@ print(x, ': x in global')
 ---
 
 ### ▶ Beware of default mutable arguments!
-<!-- Example ID: 7d42dade-e20d-4a7b-9ed7-16fb58505fe9 --!>
+<!-- Example ID: 7d42dade-e20d-4a7b-9ed7-16fb58505fe9 --->
 ```py
 def some_func(default_arg=[]):
     default_arg.append("some_string")
@@ -2005,7 +2005,7 @@ def some_func(default_arg=[]):
 ---
 
 ### ▶ Catching the Exceptions
-<!-- Example ID: b5ca5e6a-47b9-4f69-9375-cda0f8c6755d --!>
+<!-- Example ID: b5ca5e6a-47b9-4f69-9375-cda0f8c6755d --->
 ```py
 some_list = [1, 2, 3]
 try:
@@ -2080,7 +2080,7 @@ SyntaxError: invalid syntax
 ---
 
 ### ▶ Same operands, different story!
-<!-- Example ID: ca052cdf-dd2d-4105-b936-65c28adc18a0 --!>
+<!-- Example ID: ca052cdf-dd2d-4105-b936-65c28adc18a0 --->
 1\.
 ```py
 a = [1, 2, 3, 4]
@@ -2122,7 +2122,7 @@ a += [5, 6, 7, 8]
 ---
 
 ### ▶ The out of scope variable
-<!-- Example ID: 75c03015-7be9-4289-9e22-4f5fdda056f7 --!>
+<!-- Example ID: 75c03015-7be9-4289-9e22-4f5fdda056f7 --->
 ```py
 a = 1
 def some_func():
@@ -2161,7 +2161,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
 ---
 
 ### ▶ Be careful with chained operations
-<!-- Example ID: 07974979-9c86-4720-80bd-467aa19470d9 --!>
+<!-- Example ID: 07974979-9c86-4720-80bd-467aa19470d9 --->
 ```py
 >>> (False == False) in [False] # makes sense
 False
@@ -2206,7 +2206,7 @@ While such behavior might seem silly to you in the above examples, it's fantasti
 ---
 
 ### ▶ Name resolution ignoring class scope
-<!-- Example ID: 03f73d96-151c-4929-b0a8-f74430788324 --!>
+<!-- Example ID: 03f73d96-151c-4929-b0a8-f74430788324 --->
 1\.
 ```py
 x = 5
@@ -2250,7 +2250,7 @@ class SomeClass:
 ---
 
 ### ▶ Needles in a Haystack ^
-<!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --!>
+<!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --->
 1\.
 ```py
 x, y = (0, 1) if True else None, None
@@ -2415,7 +2415,7 @@ Same result, that didn't work either.
 ---
 
 ### ▶ Wild imports
-<!-- Example ID: 83deb561-bd55-4461-bb5e-77dd7f411e1c --!>
+<!-- Example ID: 83deb561-bd55-4461-bb5e-77dd7f411e1c --->
 ```py
 # File: module.py
 
@@ -2478,7 +2478,7 @@ NameError: name 'some_weird_name_func_' is not defined
 This section contains few of the lesser-known interesting things about Python that most beginners like me are unaware of (well, not anymore).
 
 ### ▶ Okay Python, Can you make me fly? *
-<!-- Example ID: a92f3645-1899-4d50-9721-0031be4aec3f --!>
+<!-- Example ID: a92f3645-1899-4d50-9721-0031be4aec3f --->
 Well, here you go
 
 ```py
@@ -2496,7 +2496,7 @@ Sshh.. It's a super secret.
 ---
 
 ### ▶ `goto`, but why? *
-<!-- Example ID: 2aff961e-7fa5-4986-a18a-9e5894bd89fe --!>
+<!-- Example ID: 2aff961e-7fa5-4986-a18a-9e5894bd89fe --->
 ```py
 from goto import goto, label
 for i in range(9):
@@ -2524,7 +2524,7 @@ Freedom!
 ---
 
 ### ▶ Brace yourself! *
-<!-- Example ID: 5c0c75f2-ddd9-4da3-ba49-c4be7ec39acf --!>
+<!-- Example ID: 5c0c75f2-ddd9-4da3-ba49-c4be7ec39acf --->
 If you are one of the people who doesn't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
 
 ```py
@@ -2549,7 +2549,7 @@ Braces? No way! If you think that's disappointing, use Java. Okay, another surpr
 ---
 
 ### ▶ Let's meet Friendly Language Uncle For Life ^
-<!-- Example ID: 6427fae6-e959-462d-85da-ce4c94ce41be --!>
+<!-- Example ID: 6427fae6-e959-462d-85da-ce4c94ce41be --->
 **Output (Python 3.x)**
 ```py
 >>> from __future__ import barry_as_FLUFL
@@ -2580,7 +2580,7 @@ There we go.
 ---
 
 ### ▶ Even Python understands that love is complicated *
-<!-- Example ID: b93cad9e-d341-45d1-999c-fcdce65bed25 --!>
+<!-- Example ID: b93cad9e-d341-45d1-999c-fcdce65bed25 --->
 ```py
 import this
 ```
@@ -2637,7 +2637,7 @@ True
 ---
 
 ### ▶ Yes, it exists!
-<!-- Example ID: 4286db3d-1ea7-47c9-8fb6-a9a04cac6e49 --!>
+<!-- Example ID: 4286db3d-1ea7-47c9-8fb6-a9a04cac6e49 --->
 **The `else` clause for loops.** One typical example might be:
 
 ```py
@@ -2681,7 +2681,7 @@ Try block executed successfully...
 
 ---
 ### ▶ Ellipsis ^
-<!-- Example ID: 969b7100-ab3d-4a7d-ad7d-a6be16181b2b --!>
+<!-- Example ID: 969b7100-ab3d-4a7d-ad7d-a6be16181b2b --->
 ```py
 def some_func():
     Ellipsis
@@ -2741,7 +2741,7 @@ Ellipsis
 ---
 
 ### ▶ Inpinity *
-<!-- Example ID: ff473ea8-a3b1-4876-a6f0-4378aff790c1 --!>
+<!-- Example ID: ff473ea8-a3b1-4876-a6f0-4378aff790c1 --->
 The spelling is intended. Please, don't submit a patch for this.
 
 **Output (Python 3.x):**
@@ -2760,7 +2760,7 @@ The spelling is intended. Please, don't submit a patch for this.
 ---
 
 ### ▶ Let's mangle ^
-<!-- Example ID: 37146d2d-9e67-43a9-8729-3c17934b910c --!>
+<!-- Example ID: 37146d2d-9e67-43a9-8729-3c17934b910c --->
 1\.
 ```py
 class Yo(object):
@@ -2848,7 +2848,7 @@ AttributeError: 'A' object has no attribute '__variable'
 
 
 ### ▶ `+=` is faster
-<!-- Example ID: bfd19c60-a807-4a26-9598-4912b86ddb36 --!>
+<!-- Example ID: bfd19c60-a807-4a26-9598-4912b86ddb36 --->
 ```py
 # using "+", three strings:
 >>> timeit.timeit("s1 = s1 + s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
@@ -2864,7 +2864,7 @@ AttributeError: 'A' object has no attribute '__variable'
 ---
 
 ### ▶ Let's make a giant string!
-<!-- Example ID: c7a07424-63fe-4504-9842-8f3d334f28fc --!>
+<!-- Example ID: c7a07424-63fe-4504-9842-8f3d334f28fc --->
 ```py
 def add_string_with_plus(iters):
     s = ""
@@ -2957,7 +2957,7 @@ Let's increase the number of iterations by a factor of 10.
 ---
 
 ### ▶ Explicit typecast of strings
-<!-- Example ID: 59bee91a-36e0-47a4-8c7d-aa89bf1d3976 --!>
+<!-- Example ID: 59bee91a-36e0-47a4-8c7d-aa89bf1d3976 --->
 ```py
 a = float('inf')
 b = float('nan')
@@ -2996,7 +2996,7 @@ nan
 ---
 
 ### ▶ Minor Ones
-<!-- Example ID: f885cb82-f1e4-4daa-9ff3-972b14cb1324 --!>
+<!-- Example ID: f885cb82-f1e4-4daa-9ff3-972b14cb1324 --->
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
 
   **💡 Explanation:**

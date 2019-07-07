@@ -1057,7 +1057,7 @@ Before Python 3.5, the boolean value for `datetime.time` object was considered t
 
 1\.
 ```py
-# A simple example to count the number of boolean and
+# A simple example to count the number of booleans and
 # integers in an iterable of mixed data types.
 mixed_list = [False, 1.0, "some_string", 3, True, [], False]
 integers_found_so_far = 0
@@ -1078,33 +1078,27 @@ for item in mixed_list:
 0
 ```
 
+
 2\.
 ```py
-another_dict = {}
-another_dict[True] = "JavaScript"
-another_dict[1] = "Ruby"
-another_dict[1.0] = "Python"
-```
-
-**Output:**
-```py
->>> another_dict[True]
-"Python"
-```
-
-3\.
-```py
 >>> some_bool = True
->>> "wtf"*some_bool
+>>> "wtf" * some_bool
 'wtf'
 >>> some_bool = False
->>> "wtf"*some_bool
+>>> "wtf" * some_bool
 ''
 ```
 
 #### 💡 Explanation:
 
-* Booleans are a subclass of `int`
+* `bool` is a subclass of `int` in Python
+    ```py
+    >>> issubclass(bool, int)
+    True
+    >>> issubclass(int, bool)
+    False
+    ```
+* And thus, `True` and `False` are instances of `int`
   ```py
   >>> isinstance(True, int)
   True
@@ -1114,8 +1108,10 @@ another_dict[1.0] = "Python"
 
 * The integer value of `True` is `1` and that of `False` is `0`.
   ```py
-  >>> True == 1 == 1.0 and False == 0 == 0.0
-  True
+  >>> int(True)
+  1
+  >>> int(False)
+  0
   ```
 
 * See this StackOverflow [answer](https://stackoverflow.com/a/8169049/4354153) for the rationale behind it.
@@ -1718,7 +1714,7 @@ Yes, it runs for exactly **eight** times and stops.
 
 ---
 
-### ▶ Stubborn `del` operator *
+### ▶ Stubborn `del` operation *
 
 ```py
 class SomeClass:
@@ -2319,7 +2315,7 @@ NameError: name '_another_weird_name_func' is not defined
 
 #### 💡 Explanation:
 
-- It if often adivsable to not use wildcard imports. In wildcard imports, the names with leading underscore are be imported. This may lead to errors in runtime.
+- It if often adivsable to not use wildcard imports. The first obvious reason for this is In wildcard imports, the names with leading underscore are be imported. This may lead to errors in runtime.
 - Had we used `from ... import a, b, c` syntax, the above `NameError` won't have occurred.
     ```py
     >>> from module import some_weird_name_func_, _another_weird_name_func
@@ -2636,8 +2632,9 @@ The spelling is intended. Please, don't submit a patch for this.
 
 ---
 
-### ▶ Mangling time! *
+### ▶ Let's mangle ^
 
+1\.
 ```py
 class Yo(object):
     def __init__(self):
@@ -2655,13 +2652,62 @@ AttributeError: 'Yo' object has no attribute '__honey'
 True
 ```
 
+2\.
+```py
+class Yo(object):
+    def __init__(self):
+        # Let's try something symmetrical this time
+        self.__honey__ = True
+        self.bro = True
+```
+
+**Output:**
+```py
+>>> Yo().bro
+True
+
+>>> Yo()._Yo__honey__
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'Yo' object has no attribute '_Yo__honey__'
+```
+
 Why did `Yo()._Yo__honey` work?
+
+2\.
+
+```py
+_A__variable = "Some value"
+
+class A(object):
+    def some_func(self):
+        return __variable # not initiatlized anywhere yet
+```
+
+**Output:**
+```py
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'A' object has no attribute '__variable'
+
+>>> >>> A().some_func()
+'Some value'
+```
+
+3\.
+
+```py
+
+```
+
 
 #### 💡 Explanation:
 
 * [Name Mangling](https://en.wikipedia.org/wiki/Name_mangling) is used to avoid naming collisions between different namespaces.
-* In Python, the interpreter modifies (mangles) the class member names starting with `__` (double underscore) and not ending with more than one trailing underscore by adding `_NameOfTheClass` in front.
-* So, to access `__honey` attribute, we are required to append `_Yo` to the front which would prevent conflicts with the same name attribute defined in any other class.
+* In Python, the interpreter modifies (mangles) the class member names starting with `__` (double underscore a.k.a "dunder") and not ending with more than one trailing underscore by adding `_NameOfTheClass` in front.
+* So, to access `__honey` attribute in first snippet, we had to append `_Yo` to the front which would prevent conflicts with the same name attribute defined in any other class.
+* But then why didn't it work in the second snippet? Because name mangling excludes the names ending with double underscores.
+* The third snippet was also a consequence of name mangling. The name `__variable` in the statement `return __variable` was mangled to `_A__variable` which also happens to be the name of the variable we declared in outer scope.
 
 ---
 

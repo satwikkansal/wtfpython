@@ -28,126 +28,71 @@ So, here we go...
 - [Usage](#usage)
 - [👀 Examples](#-examples)
   - [Section: Strain your brain!](#section-strain-your-brain)
-    - [▶ Strings can be tricky sometimes *](#%E2%96%B6-strings-can-be-tricky-sometimes-)
-      - [💡 Explanation:](#-explanation)
-    - [▶ Splitsies ^](#%E2%96%B6-splitsies-%5E)
-      - [💡 Explanation:](#-explanation-1)
+    - [▶ Strings can be tricky sometimes](#%E2%96%B6-strings-can-be-tricky-sometimes)
+    - [▶ Splitsies](#%E2%96%B6-splitsies)
+- [is same as](#is-same-as)
+- [but](#but)
+- [isn't the same as](#isnt-the-same-as)
     - [▶ Time for some hash brownies!](#%E2%96%B6-time-for-some-hash-brownies)
-      - [💡 Explanation](#-explanation)
-    - [▶ The disorder within order ^](#%E2%96%B6-the-disorder-within-order-%5E)
-      - [💡 Explanation:](#-explanation-2)
-    - [▶ Keep trying? *](#%E2%96%B6-keep-trying-)
-      - [💡 Explanation:](#-explanation-3)
-    - [▶ Deep down, we're all the same. *](#%E2%96%B6-deep-down-were-all-the-same-)
-      - [💡 Explanation:](#-explanation-4)
+    - [▶ The disorder within order](#%E2%96%B6-the-disorder-within-order)
+    - [▶ Keep trying?](#%E2%96%B6-keep-trying)
+    - [▶ Deep down, we're all the same](#%E2%96%B6-deep-down-were-all-the-same)
     - [▶ For what?](#%E2%96%B6-for-what)
-      - [💡 Explanation:](#-explanation-5)
-    - [▶ Evaluation time discrepancy ^](#%E2%96%B6-evaluation-time-discrepancy-%5E)
-      - [💡 Explanation](#-explanation-1)
+    - [▶ Evaluation time discrepancy](#%E2%96%B6-evaluation-time-discrepancy)
     - [▶ Messing around with `is` operator^](#%E2%96%B6-messing-around-with-is-operator%5E)
-      - [💡 Explanation:](#-explanation-6)
     - [▶ A tic-tac-toe where X wins in the first attempt!](#%E2%96%B6-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
-      - [💡 Explanation:](#-explanation-7)
     - [▶ The sticky output function](#%E2%96%B6-the-sticky-output-function)
-      - [💡 Explanation](#-explanation-2)
-    - [▶ The chicken-egg problem ^](#%E2%96%B6-the-chicken-egg-problem-%5E)
-      - [💡 Explanation](#-explanation-3)
+    - [▶ The chicken-egg problem](#%E2%96%B6-the-chicken-egg-problem)
     - [▶ `is not ...` is not `is (not ...)`](#%E2%96%B6-is-not--is-not-is-not-)
-      - [💡 Explanation](#-explanation-4)
     - [▶ The surprising comma](#%E2%96%B6-the-surprising-comma)
-      - [💡 Explanation:](#-explanation-8)
-    - [▶ Strings and the backslashes\ ^](#%E2%96%B6-strings-and-the-backslashes%5C-%5E)
-      - [💡 Explanation](#-explanation-5)
+    - [▶ Strings and the backslashes](#%E2%96%B6-strings-and-the-backslashes)
     - [▶ not knot!](#%E2%96%B6-not-knot)
-      - [💡 Explanation:](#-explanation-9)
     - [▶ Half triple-quoted strings](#%E2%96%B6-half-triple-quoted-strings)
-      - [💡 Explanation:](#-explanation-10)
     - [▶ Midnight time doesn't exist?](#%E2%96%B6-midnight-time-doesnt-exist)
-      - [💡 Explanation:](#-explanation-11)
     - [▶ What's wrong with booleans?](#%E2%96%B6-whats-wrong-with-booleans)
-      - [💡 Explanation:](#-explanation-12)
     - [▶ Class attributes and instance attributes](#%E2%96%B6-class-attributes-and-instance-attributes)
-      - [💡 Explanation:](#-explanation-13)
     - [▶ yielding None](#%E2%96%B6-yielding-none)
-      - [💡 Explanation:](#-explanation-14)
     - [▶ Mutating the immutable!](#%E2%96%B6-mutating-the-immutable)
-      - [💡 Explanation:](#-explanation-15)
     - [▶ The disappearing variable from outer scope](#%E2%96%B6-the-disappearing-variable-from-outer-scope)
-      - [💡 Explanation:](#-explanation-16)
     - [▶ When True is actually False](#%E2%96%B6-when-true-is-actually-false)
-      - [💡 Explanation:](#-explanation-17)
     - [▶ Lossy zip of iterators](#%E2%96%B6-lossy-zip-of-iterators)
-      - [💡 Explanation:](#-explanation-18)
     - [▶ From filled to None in one instruction...](#%E2%96%B6-from-filled-to-none-in-one-instruction)
-      - [💡 Explanation](#-explanation-6)
-    - [▶ Subclass relationships *](#%E2%96%B6-subclass-relationships-)
-      - [💡 Explanation:](#-explanation-19)
-    - [▶ The mysterious key type conversion *](#%E2%96%B6-the-mysterious-key-type-conversion-)
-      - [💡 Explanation:](#-explanation-20)
+    - [▶ Subclass relationships](#%E2%96%B6-subclass-relationships)
+    - [▶ The mysterious key type conversion](#%E2%96%B6-the-mysterious-key-type-conversion)
     - [▶ Let's see if you can guess this?](#%E2%96%B6-lets-see-if-you-can-guess-this)
-      - [💡 Explanation:](#-explanation-21)
   - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
     - [▶ Skipping lines?](#%E2%96%B6-skipping-lines)
-      - [💡 Explanation](#-explanation-7)
-    - [▶ Teleportation *](#%E2%96%B6-teleportation-)
-      - [💡 Explanation:](#-explanation-22)
+    - [▶ Teleportation](#%E2%96%B6-teleportation)
     - [▶ Well, something is fishy...](#%E2%96%B6-well-something-is-fishy)
-      - [💡 Explanation](#-explanation-8)
   - [Section: Watch out for the landmines!](#section-watch-out-for-the-landmines)
     - [▶ Modifying a dictionary while iterating over it](#%E2%96%B6-modifying-a-dictionary-while-iterating-over-it)
-      - [💡 Explanation:](#-explanation-23)
-    - [▶ Stubborn `del` operation *](#%E2%96%B6-stubborn-del-operation-)
-      - [💡 Explanation:](#-explanation-24)
     - [▶ Deleting a list item while iterating](#%E2%96%B6-deleting-a-list-item-while-iterating)
-      - [💡 Explanation:](#-explanation-25)
     - [▶ Loop variables leaking out!](#%E2%96%B6-loop-variables-leaking-out)
-      - [💡 Explanation:](#-explanation-26)
     - [▶ Beware of default mutable arguments!](#%E2%96%B6-beware-of-default-mutable-arguments)
-      - [💡 Explanation:](#-explanation-27)
     - [▶ Catching the Exceptions](#%E2%96%B6-catching-the-exceptions)
-      - [💡 Explanation](#-explanation-9)
     - [▶ Same operands, different story!](#%E2%96%B6-same-operands-different-story)
-      - [💡 Explanation:](#-explanation-28)
     - [▶ The out of scope variable](#%E2%96%B6-the-out-of-scope-variable)
-      - [💡 Explanation:](#-explanation-29)
     - [▶ Be careful with chained operations](#%E2%96%B6-be-careful-with-chained-operations)
-      - [💡 Explanation:](#-explanation-30)
     - [▶ Name resolution ignoring class scope](#%E2%96%B6-name-resolution-ignoring-class-scope)
-      - [💡 Explanation](#-explanation-10)
-    - [▶ Needles in a Haystack ^](#%E2%96%B6-needles-in-a-haystack-%5E)
-      - [💡 Explanation:](#-explanation-31)
+    - [▶ Needles in a Haystack](#%E2%96%B6-needles-in-a-haystack)
     - [▶ Wild imports](#%E2%96%B6-wild-imports)
-      - [💡 Explanation:](#-explanation-32)
   - [Section: The Hidden treasures!](#section-the-hidden-treasures)
-    - [▶ Okay Python, Can you make me fly? *](#%E2%96%B6-okay-python-can-you-make-me-fly-)
-      - [💡 Explanation:](#-explanation-33)
-    - [▶ `goto`, but why? *](#%E2%96%B6-goto-but-why-)
-      - [💡 Explanation:](#-explanation-34)
-    - [▶ Brace yourself! *](#%E2%96%B6-brace-yourself-)
-      - [💡 Explanation:](#-explanation-35)
-    - [▶ Let's meet Friendly Language Uncle For Life ^](#%E2%96%B6-lets-meet-friendly-language-uncle-for-life-%5E)
-      - [💡 Explanation:](#-explanation-36)
-    - [▶ Even Python understands that love is complicated *](#%E2%96%B6-even-python-understands-that-love-is-complicated-)
-      - [💡 Explanation:](#-explanation-37)
+    - [▶ Okay Python, Can you make me fly?](#%E2%96%B6-okay-python-can-you-make-me-fly)
+    - [▶ `goto`, but why?](#%E2%96%B6-goto-but-why)
+    - [▶ Brace yourself!](#%E2%96%B6-brace-yourself)
+    - [▶ Let's meet Friendly Language Uncle For Life](#%E2%96%B6-lets-meet-friendly-language-uncle-for-life)
+    - [▶ Even Python understands that love is complicated](#%E2%96%B6-even-python-understands-that-love-is-complicated)
     - [▶ Yes, it exists!](#%E2%96%B6-yes-it-exists)
-      - [💡 Explanation:](#-explanation-38)
-    - [▶ Ellipsis ^](#%E2%96%B6-ellipsis-%5E)
-      - [💡 Explanation](#-explanation-11)
-    - [▶ Inpinity *](#%E2%96%B6-inpinity-)
-      - [💡 Explanation:](#-explanation-39)
-    - [▶ Let's mangle ^](#%E2%96%B6-lets-mangle-%5E)
-      - [💡 Explanation:](#-explanation-40)
+    - [▶ Ellipsis](#%E2%96%B6-ellipsis)
+    - [▶ Inpinity](#%E2%96%B6-inpinity)
+    - [▶ Let's mangle](#%E2%96%B6-lets-mangle)
   - [Section: Miscellaneous](#section-miscellaneous)
     - [▶ `+=` is faster](#%E2%96%B6--is-faster)
-      - [💡 Explanation:](#-explanation-41)
     - [▶ Let's make a giant string!](#%E2%96%B6-lets-make-a-giant-string)
-      - [💡 Explanation](#-explanation-12)
     - [▶ Explicit typecast of strings](#%E2%96%B6-explicit-typecast-of-strings)
-      - [💡 Explanation:](#-explanation-42)
     - [▶ Minor Ones](#%E2%96%B6-minor-ones)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
-      - [Some nice Links!](#some-nice-links)
 - [🎓 License](#-license)
   - [Help](#help)
   - [Surprise your geeky pythonist friends?](#surprise-your-geeky-pythonist-friends)
@@ -159,8 +104,7 @@ So, here we go...
 
 All the examples are structured like below:
 
-> ### ▶ Some fancy Title *
-> The asterisk at the end of the title indicates the example was not present in the first release and has been recently added.
+> ### ▶ Some fancy Title
 >
 > ```py
 > # Setting up the code.
@@ -220,7 +164,7 @@ Now, just run `wtfpython` at the command line which will open this collection in
 
 ## Section: Strain your brain!
 
-### ▶ Strings can be tricky sometimes *
+### ▶ Strings can be tricky sometimes
 <!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->
 1\.
 ```py
@@ -270,7 +214,7 @@ Makes sense, right?
 
 ---
 
-### ▶ Splitsies ^
+### ▶ Splitsies
 <!-- Example ID: ec3168ba-a81a-4482-afb0-691f1cc8d65a --->
 ```py
 >>> 'a'.split()
@@ -352,7 +296,7 @@ So, why is Python all over the place?
 
 ---
 
-### ▶ The disorder within order ^
+### ▶ The disorder within order
 <!-- Example ID: 91bff1f8-541d-455a-9de4-6cd8ff00ea66 --->
 ```py
 from collections import OrderedDict
@@ -450,7 +394,7 @@ What is going on here?
 
 ---
 
-### ▶ Keep trying? *
+### ▶ Keep trying?
 <!-- Example ID: b4349443-e89f-4d25-a109-82616be9d41a --->
 ```py
 def some_func():
@@ -510,7 +454,7 @@ Iteration 0
 
 ---
 
-### ▶ Deep down, we're all the same. *
+### ▶ Deep down, we're all the same
 <!-- Example ID: 8f99a35f-1736-43e2-920d-3b78ec35da9b --->
 ```py
 class WTF:
@@ -613,7 +557,7 @@ for i, some_dict[i] in enumerate(some_string):
 
 ---
 
-### ▶ Evaluation time discrepancy ^
+### ▶ Evaluation time discrepancy
 <!-- Example ID: 6aa11a4b-4cf1-467a-b43a-810731517e98 --->
 1\.
 ```py
@@ -896,7 +840,7 @@ Even when the values of `x` were different in every iteration prior to appending
 
 ---
 
-### ▶ The chicken-egg problem ^
+### ▶ The chicken-egg problem
 <!-- Example ID: 60730dc2-0d79-4416-8568-2a63323b3ce8 --->
 1\.
 ```py
@@ -990,7 +934,7 @@ SyntaxError: invalid syntax
 
 ---
 
-### ▶ Strings and the backslashes\ ^
+### ▶ Strings and the backslashes
 <!-- Example ID: 6ae622c3-6d99-4041-9b33-507bd1a4407b --->
 **Output:**
 ```py
@@ -1489,7 +1433,7 @@ Most methods that modify the items of sequence/mapping objects like `list.append
 
 ---
 
-### ▶ Subclass relationships *
+### ▶ Subclass relationships
 <!-- Example ID: 9f6d8cf0-e1b5-42d0-84a0-4cfab25a0bc0 --->
 **Output:**
 ```py
@@ -1513,7 +1457,7 @@ The Subclass relationships were expected to be transitive, right? (i.e., if `A` 
 
 ---
 
-### ▶ The mysterious key type conversion *
+### ▶ The mysterious key type conversion
 <!-- Example ID: 00f42dd0-b9ef-408d-9e39-1bc209ce3f36 --->
 ```py
 class SomeClass(str):
@@ -1666,7 +1610,7 @@ The built-in `ord()` function returns a character's Unicode [code point](https:/
 
 ---
 
-### ▶ Teleportation *
+### ▶ Teleportation
 <!-- Example ID: edafe923-0c20-4315-b6e1-0c31abfc38f5 --->
 ```py
 import numpy as np
@@ -1776,7 +1720,7 @@ Yes, it runs for exactly **eight** times and stops.
 
 ---
 
-### ▶ Stubborn `del` operation *
+### ▶ Stubborn `del` operation
 <!-- Example ID: 777ed4fd-3a2d-466f-95e7-c4058e61d78e --->
 ```py
 class SomeClass:
@@ -2245,7 +2189,7 @@ class SomeClass:
 
 ---
 
-### ▶ Needles in a Haystack ^
+### ▶ Needles in a Haystack
 <!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --->
 1\.
 ```py
@@ -2412,7 +2356,7 @@ NameError: name 'some_weird_name_func_' is not defined
 
 This section contains few of the lesser-known interesting things about Python that most beginners like me are unaware of (well, not anymore).
 
-### ▶ Okay Python, Can you make me fly? *
+### ▶ Okay Python, Can you make me fly?
 <!-- Example ID: a92f3645-1899-4d50-9721-0031be4aec3f --->
 Well, here you go
 
@@ -2430,7 +2374,7 @@ Sshh.. It's a super secret.
 
 ---
 
-### ▶ `goto`, but why? *
+### ▶ `goto`, but why?
 <!-- Example ID: 2aff961e-7fa5-4986-a18a-9e5894bd89fe --->
 ```py
 from goto import goto, label
@@ -2458,7 +2402,7 @@ Freedom!
 
 ---
 
-### ▶ Brace yourself! *
+### ▶ Brace yourself!
 <!-- Example ID: 5c0c75f2-ddd9-4da3-ba49-c4be7ec39acf --->
 If you are one of the people who doesn't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
 
@@ -2483,7 +2427,7 @@ Braces? No way! If you think that's disappointing, use Java. Okay, another surpr
 
 ---
 
-### ▶ Let's meet Friendly Language Uncle For Life ^
+### ▶ Let's meet Friendly Language Uncle For Life
 <!-- Example ID: 6427fae6-e959-462d-85da-ce4c94ce41be --->
 **Output (Python 3.x)**
 ```py
@@ -2514,7 +2458,7 @@ There we go.
 
 ---
 
-### ▶ Even Python understands that love is complicated *
+### ▶ Even Python understands that love is complicated
 <!-- Example ID: b93cad9e-d341-45d1-999c-fcdce65bed25 --->
 ```py
 import this
@@ -2615,7 +2559,7 @@ Try block executed successfully...
 - `else` clause after try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
 
 ---
-### ▶ Ellipsis ^
+### ▶ Ellipsis
 <!-- Example ID: 969b7100-ab3d-4a7d-ad7d-a6be16181b2b --->
 ```py
 def some_func():
@@ -2675,7 +2619,7 @@ Ellipsis
 
 ---
 
-### ▶ Inpinity *
+### ▶ Inpinity
 <!-- Example ID: ff473ea8-a3b1-4876-a6f0-4378aff790c1 --->
 The spelling is intended. Please, don't submit a patch for this.
 
@@ -2694,7 +2638,7 @@ The spelling is intended. Please, don't submit a patch for this.
 
 ---
 
-### ▶ Let's mangle ^
+### ▶ Let's mangle
 <!-- Example ID: 37146d2d-9e67-43a9-8729-3c17934b910c --->
 1\.
 ```py

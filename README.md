@@ -20,19 +20,15 @@ So, here we go...
 
 # Table of Contents
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
+<!-- toc -->
 
 - [Structure of the Examples](#structure-of-the-examples)
+    + [▶ Some fancy Title](#-some-fancy-title)
 - [Usage](#usage)
 - [👀 Examples](#-examples)
   - [Section: Strain your brain!](#section-strain-your-brain)
     - [▶ Strings can be tricky sometimes](#%E2%96%B6-strings-can-be-tricky-sometimes)
     - [▶ Splitsies](#%E2%96%B6-splitsies)
-- [is same as](#is-same-as)
-- [but](#but)
-- [isn't the same as](#isnt-the-same-as)
     - [▶ Time for some hash brownies!](#%E2%96%B6-time-for-some-hash-brownies)
     - [▶ The disorder within order](#%E2%96%B6-the-disorder-within-order)
     - [▶ Keep trying?](#%E2%96%B6-keep-trying)
@@ -92,14 +88,76 @@ So, here we go...
     - [▶ Let's make a giant string!](#%E2%96%B6-lets-make-a-giant-string)
     - [▶ Explicit typecast of strings](#%E2%96%B6-explicit-typecast-of-strings)
     - [▶ Minor Ones](#%E2%96%B6-minor-ones)
+  * [Section: Strain your brain!](#section-strain-your-brain)
+    + [▶ Strings can be tricky sometimes](#-strings-can-be-tricky-sometimes)
+    + [▶ Splitsies](#-splitsies)
+    + [▶ Time for some hash brownies!](#-time-for-some-hash-brownies)
+    + [▶ The disorder within order](#-the-disorder-within-order)
+    + [▶ Keep trying?](#-keep-trying)
+    + [▶ Deep down, we're all the same](#-deep-down-were-all-the-same)
+    + [▶ For what?](#-for-what)
+    + [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
+    + [▶ Messing around with `is` operator](#-messing-around-with-is-operator)
+    + [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
+    + [▶ The sticky output function](#-the-sticky-output-function)
+    + [▶ The chicken-egg problem](#-the-chicken-egg-problem)
+    + [▶ `is not ...` is not `is (not ...)`](#-is-not--is-not-is-not-)
+    + [▶ The surprising comma](#-the-surprising-comma)
+    + [▶ Strings and the backslashes](#-strings-and-the-backslashes)
+    + [▶ not knot!](#-not-knot)
+    + [▶ Half triple-quoted strings](#-half-triple-quoted-strings)
+    + [▶ Midnight time doesn't exist?](#-midnight-time-doesnt-exist)
+    + [▶ What's wrong with booleans?](#-whats-wrong-with-booleans)
+    + [▶ Class attributes and instance attributes](#-class-attributes-and-instance-attributes)
+    + [▶ yielding None](#-yielding-none)
+    + [▶ Mutating the immutable!](#-mutating-the-immutable)
+    + [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
+    + [▶ When True is actually False](#-when-true-is-actually-false)
+    + [▶ Lossy zip of iterators](#-lossy-zip-of-iterators)
+    + [▶ From filled to None in one instruction...](#-from-filled-to-none-in-one-instruction)
+    + [▶ Subclass relationships](#-subclass-relationships)
+    + [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
+    + [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
+  * [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
+    + [▶ Skipping lines?](#-skipping-lines)
+    + [▶ Teleportation](#-teleportation)
+    + [▶ Well, something is fishy...](#-well-something-is-fishy)
+  * [Section: Watch out for the landmines!](#section-watch-out-for-the-landmines)
+    + [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
+    + [▶ Stubborn `del` operation](#-stubborn-del-operation)
+    + [▶ Deleting a list item while iterating](#-deleting-a-list-item-while-iterating)
+    + [▶ Loop variables leaking out!](#-loop-variables-leaking-out)
+    + [▶ Beware of default mutable arguments!](#-beware-of-default-mutable-arguments)
+    + [▶ Catching the Exceptions](#-catching-the-exceptions)
+    + [▶ Same operands, different story!](#-same-operands-different-story)
+    + [▶ The out of scope variable](#-the-out-of-scope-variable)
+    + [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
+    + [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
+    + [▶ Needles in a Haystack](#-needles-in-a-haystack)
+    + [▶ Wild imports](#-wild-imports)
+  * [Section: The Hidden treasures!](#section-the-hidden-treasures)
+    + [▶ Okay Python, Can you make me fly?](#-okay-python-can-you-make-me-fly)
+    + [▶ `goto`, but why?](#-goto-but-why)
+    + [▶ Brace yourself!](#-brace-yourself)
+    + [▶ Let's meet Friendly Language Uncle For Life](#-lets-meet-friendly-language-uncle-for-life)
+    + [▶ Even Python understands that love is complicated](#-even-python-understands-that-love-is-complicated)
+    + [▶ Yes, it exists!](#-yes-it-exists)
+    + [▶ Ellipsis](#-ellipsis)
+    + [▶ Inpinity](#-inpinity)
+    + [▶ Let's mangle](#-lets-mangle)
+  * [Section: Miscellaneous](#section-miscellaneous)
+    + [▶ `+=` is faster](#--is-faster)
+    + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
+    + [▶ Explicit typecast of strings](#-explicit-typecast-of-strings)
+    + [▶ Minor Ones](#-minor-ones)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
 - [🎓 License](#-license)
-  - [Help](#help)
-  - [Surprise your geeky pythonist friends?](#surprise-your-geeky-pythonist-friends)
-  - [Need a pdf version?](#need-a-pdf-version)
+  * [Help](#help)
+  * [Surprise your geeky pythonist friends?](#surprise-your-geeky-pythonist-friends)
+  * [Need a pdf version?](#need-a-pdf-version)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<!-- tocstop -->
 
 # Structure of the Examples
 
@@ -626,7 +684,7 @@ array_4 = [400, 500, 600]
 
 ---
 
-### ▶ Messing around with `is` operator^
+### ▶ Messing around with `is` operator
 <!-- Example ID: 230fa2ac-ab36-4ad1-b675-5f5a1c1a6217 --->
 The following is a very famous example present all over the internet.
 

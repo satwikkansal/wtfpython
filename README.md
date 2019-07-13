@@ -262,9 +262,9 @@ some_dict[5] = "Python"
 ```py
 >>> some_dict[5.5]
 "Ruby"
->>> some_dict[5.0]
+>>> some_dict[5.0] # "Python" destroyed the existence of "JavaScript"?
 "Python"
->>> some_dict[5] # "Python" destroyed the existence of "JavaScript"?
+>>> some_dict[5] 
 "Python"
 
 >>> complex_five = 5 + 0j

@@ -1845,7 +1845,7 @@ x, y = (0, 1) if True else None, None
 ```
 
 **Output:**
-```
+```py
 >>> x, y  # expected (0, 1)
 ((0, 1), None)
 ```

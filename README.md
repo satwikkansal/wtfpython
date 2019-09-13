@@ -69,6 +69,7 @@ So, here we go...
     - [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
     - [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
     - [▶ Needle in a Haystack](#-needle-in-a-haystack)
+    - [▶ Yielding from... return!](#-yielding-from-return)
   - [Section: The Hidden treasures!](#section-the-hidden-treasures)
     - [▶ Okay Python, Can you make me fly? *](#-okay-python-can-you-make-me-fly-)
     - [▶ `goto`, but why? *](#-goto-but-why-)
@@ -1880,6 +1881,64 @@ tuple()
 * For 1, the correct statement for expected behavior is `x, y = (0, 1) if True else (None, None)`.
 * For 2, the correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
+
+---
+
+### ▶ Yielding from... return!
+
+1\.
+```py
+def func(k):
+    if k == 3:
+        return ["A string..."]
+    else:
+        yield from range(k)
+```
+
+**Output:**
+```py
+>>> list(func(3))  # expected: ["A string..."]
+[]
+```
+
+The same behavior is true if we rewrite `yield from` as a for loop.
+
+2\.
+```py
+def func(k):
+    if k == 3:
+        return ["A string..."]
+    else:
+        for j in range(k):
+            yield j
+```
+
+**Output:**
+```py
+>>> list(func(3))  # expected: ["A string..."]
+[]
+```
+
+#### 💡 Explanation:
+
+Starting from Python 3.3+ it became possible to use return statement 
+with values inside generators ([PEP380](https://www.python.org/dev/peps/pep-0380/)). The [official doc](https://www.python.org/dev/peps/pep-0380/#enhancements-to-stopiteration) says that "... `return expr` in a generator causes `StopIteration(expr)` to be raised upon exit from the generator." 
+
+So, to get `["A string..."]` from the generator `func` we need to catch `StopIteration`, e.g.:
+
+```py
+try:
+    next(func(3))
+except StopIteration as e:
+    string = e.value
+```
+
+```py
+>>> string
+['A string...']
+```
+
+Note that `list(...)` automatically catches `StopIteration`. In case of `func(3)` `StopIteration` raises at the beginning because of `return` statement. Therefore, `list(func(3))` results in an empty list.
 
 ---
 

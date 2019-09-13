@@ -1888,57 +1888,60 @@ tuple()
 
 1\.
 ```py
-def func(k):
-    if k == 3:
-        return ["A string..."]
+def some_func(x):
+    if x == 3:
+        return ["wtf"]
     else:
-        yield from range(k)
+        yield from range(x)
 ```
 
 **Output:**
 ```py
->>> list(func(3))  # expected: ["A string..."]
+>>> list(some_func(3))
 []
 ```
 
-The same behavior is true if we rewrite `yield from` as a for loop.
+Where did the `"wtf"` go? Is it due to some special effect of `yield from`? Let's validate that,
 
 2\.
 ```py
-def func(k):
-    if k == 3:
-        return ["A string..."]
+def some_func(x):
+    if x == 3:
+        return ["wtf"]
     else:
-        for j in range(k):
-            yield j
+        for i in range(x):
+          yield i
 ```
 
 **Output:**
 ```py
->>> list(func(3))  # expected: ["A string..."]
+>>> list(some_func(3))
 []
 ```
 
+Same result, that didn't work either.
+
 #### 💡 Explanation:
 
-Starting from Python 3.3+ it became possible to use return statement 
-with values inside generators ([PEP380](https://www.python.org/dev/peps/pep-0380/)). The [official doc](https://www.python.org/dev/peps/pep-0380/#enhancements-to-stopiteration) says that "... `return expr` in a generator causes `StopIteration(expr)` to be raised upon exit from the generator." 
++ From Python 3.3 onwards, it became possible to use `return` statement with values inside generators (See [PEP380](https://www.python.org/dev/peps/pep-0380/)). The [official docs](https://www.python.org/dev/peps/pep-0380/#enhancements-to-stopiteration) say that,
 
-So, to get `["A string..."]` from the generator `func` we need to catch `StopIteration`, e.g.:
+> "... `return expr` in a generator causes `StopIteration(expr)` to be raised upon exit from the generator."
 
-```py
-try:
-    next(func(3))
-except StopIteration as e:
-    string = e.value
-```
++ In case of `some_func(3)`, `StopIteration` is raised at the beginning because of `return` statement. The `StopIteration` exception is automatically catched inside the `list(...)` wrapper and the `for` loop. Therefore, the above two snippets result in an empty list.
 
-```py
->>> string
-['A string...']
-```
++ To get `["wtf"]` from the generator `some_func` we need to catch the `StopIteration` exception,
+  ```py
+  try:
+      next(some_func(3))
+  except StopIteration as e:
+      some_string = e.value
+  ```
 
-Note that `list(...)` automatically catches `StopIteration`. In case of `func(3)` `StopIteration` raises at the beginning because of `return` statement. Therefore, `list(func(3))` results in an empty list.
+  ```py
+  >>> some_string
+  ["wtf"]
+  ```
+
 
 ---
 

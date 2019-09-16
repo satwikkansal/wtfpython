@@ -10,5 +10,6 @@ I'm really grateful to all the contributors. Following are the wonderful people 
 | PiaFraus | [PiaFraus](https://github.com/PiaFraus) | [#9](https://github.com/satwikkansal/wtfpython/issues/9) |
 | chris-rands | [chris-rands](https://github.com/chris-rands) | [#32](https://github.com/satwikkansal/wtfpython/issues/32) |
 | sohaibfarooqi | [sohaibfarooqi](https://github.com/sohaibfarooqi) | [#63](https://github.com/satwikkansal/wtfpython/issues/63) |
+| roshnet | [roshnet](https://github.com/roshnet) | [#140](https://github.com/satwikkansal/wtfpython/issues/140) |
 
 Thank you all for taking out the time to make this project more awesome! :smile:

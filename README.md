@@ -53,6 +53,7 @@ So, here we go...
     - [▶ Subclass relationships *](#-subclass-relationships-)
     - [▶ The mysterious key type conversion *](#-the-mysterious-key-type-conversion-)
     - [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
+    - [▶ You need to follow order, Python!](#-you-need-to-follow-order-python-)
   - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
     - [▶ Skipping lines?](#-skipping-lines)
     - [▶ Teleportation *](#-teleportation-)
@@ -1218,6 +1219,42 @@ a, b = a[b] = {}, 5
   >>> a[b][0] is a
   True
   ```
+
+---
+
+### ▶ You need to follow order, Python! *
+
+```py
+# wtf.py
+
+import time
+
+print('hello', end='')
+
+time.sleep(5)
+```
+
+**Output:**
+```sh
+$ python3 wtf.py
+```
+
+```py
+# 5-second delay
+hello
+```
+
+**Unexpected output**
+Ideally, `sleep` delay should start after the `print`. Here, just the opposite happens.
+
+#### 💡 Explanation:
+
+* The `end` argument in `print` accounts for all this difference.
+* When `end` is set to something other than the default `\n`,
+the print buffer does not flush, and nothing prints.
+* Until the buffer encounters a `\n`, all output is stored in the buffer.
+* When the delay stops, and the program comes to an end - the output is flushed,
+causing `hello` to print up on the screen. 
 
 ---
 

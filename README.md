@@ -700,7 +700,7 @@ SyntaxError: invalid syntax
 
 ---
 
-### ▶ Half triple-quoted strings (which is wrong in orinial version)
+### ▶ Half triple-quoted strings (which is wrong in original version)
 
 **Output:**
 ```py

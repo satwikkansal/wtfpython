@@ -2368,23 +2368,21 @@ nan
   + `++a` parses as `+(+a)` which translates to `a`. Similarly, the output of the statement `--a` can be justified.
   + This StackOverflow [thread](https://stackoverflow.com/questions/3654830/why-are-there-no-and-operators-in-python) discusses the rationale behind the absence of increment and decrement operators in Python.
 
-* There is a lack of incrementation operator known from different languages, but have you ever heard about _the space-invader operator_?
+* Have you ever heard about _the space-invader operator_ in Python?
   ```py
   >>> a = 42
   >>> a -=- 1
   >>> a
   43
   ```
-
-  + together with another:
-    ```py
-    >>> a +=+ 1
-    >>> a
-    >>> 44
-    ```
-
+  It is used as an alternative incrementation operator, together with another one
+  ```py
+  >>> a +=+ 1
+  >>> a
+  >>> 44
+  ```
   **💡 Explanation:**
-  This prank comes from [Raymond Hettinger's twit](https://twitter.com/raymondh/status/1131103570856632321?lang=en) and it is actually just malformatted `a -= (-1)`. Which is eqivalent to `a = a - (- 1)`. Similar for the `a += (+ 1)` case.
+  This prank comes from [Raymond Hettinger's tweet](https://twitter.com/raymondh/status/1131103570856632321?lang=en). The space invader operator is actually just a malformatted `a -= (-1)`. Which is eqivalent to `a = a - (- 1)`. Similar for the `a += (+ 1)` case.
 
 * Python uses 2 bytes for local variable storage in functions. In theory, this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
      ```py

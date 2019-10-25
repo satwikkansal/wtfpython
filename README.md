@@ -2336,7 +2336,7 @@ nan
 
 #### 💡 Explanation:
 
-`'inf'` and `'nan'` are special strings (case-insensitive), which when explicitly typecasted to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
+`'inf'` and `'nan'` are special strings (case-insensitive), which when explicitly typecast-ed to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
 
 ---
 
@@ -2382,7 +2382,7 @@ nan
   >>> 44
   ```
   **💡 Explanation:**
-  This prank comes from [Raymond Hettinger's tweet](https://twitter.com/raymondh/status/1131103570856632321?lang=en). The space invader operator is actually just a malformatted `a -= (-1)`. Which is eqivalent to `a = a - (- 1)`. Similar for the `a += (+ 1)` case.
+  This prank comes from [Raymond Hettinger's tweet](https://twitter.com/raymondh/status/1131103570856632321?lang=en). The space invader operator is actually just a malformatted `a -= (-1)`. Which is equivalent to `a = a - (- 1)`. Similar for the `a += (+ 1)` case.
 
 * Python uses 2 bytes for local variable storage in functions. In theory, this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
      ```py
@@ -2390,7 +2390,7 @@ nan
      exec("""
      def f():
          """ + """
-         """.join(["X"+str(x)+"=" + str(x) for x in range(65539)]))
+         """.join(["X" + str(x) + "=" + str(x) for x in range(65539)]))
 
      f()
 

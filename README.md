@@ -26,68 +26,6 @@ So, here we go...
     + [▶ Some fancy Title](#-some-fancy-title)
 - [Usage](#usage)
 - [👀 Examples](#-examples)
-  - [Section: Strain your brain!](#section-strain-your-brain)
-    - [▶ Strings can be tricky sometimes](#%E2%96%B6-strings-can-be-tricky-sometimes)
-    - [▶ Splitsies](#%E2%96%B6-splitsies)
-    - [▶ Time for some hash brownies!](#%E2%96%B6-time-for-some-hash-brownies)
-    - [▶ The disorder within order](#%E2%96%B6-the-disorder-within-order)
-    - [▶ Keep trying?](#%E2%96%B6-keep-trying)
-    - [▶ Deep down, we're all the same](#%E2%96%B6-deep-down-were-all-the-same)
-    - [▶ For what?](#%E2%96%B6-for-what)
-    - [▶ Evaluation time discrepancy](#%E2%96%B6-evaluation-time-discrepancy)
-    - [▶ Messing around with `is` operator^](#%E2%96%B6-messing-around-with-is-operator%5E)
-    - [▶ A tic-tac-toe where X wins in the first attempt!](#%E2%96%B6-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
-    - [▶ The sticky output function](#%E2%96%B6-the-sticky-output-function)
-    - [▶ The chicken-egg problem](#%E2%96%B6-the-chicken-egg-problem)
-    - [▶ `is not ...` is not `is (not ...)`](#%E2%96%B6-is-not--is-not-is-not-)
-    - [▶ The surprising comma](#%E2%96%B6-the-surprising-comma)
-    - [▶ Strings and the backslashes](#%E2%96%B6-strings-and-the-backslashes)
-    - [▶ not knot!](#%E2%96%B6-not-knot)
-    - [▶ Half triple-quoted strings](#%E2%96%B6-half-triple-quoted-strings)
-    - [▶ Midnight time doesn't exist?](#%E2%96%B6-midnight-time-doesnt-exist)
-    - [▶ What's wrong with booleans?](#%E2%96%B6-whats-wrong-with-booleans)
-    - [▶ Class attributes and instance attributes](#%E2%96%B6-class-attributes-and-instance-attributes)
-    - [▶ yielding None](#%E2%96%B6-yielding-none)
-    - [▶ Mutating the immutable!](#%E2%96%B6-mutating-the-immutable)
-    - [▶ The disappearing variable from outer scope](#%E2%96%B6-the-disappearing-variable-from-outer-scope)
-    - [▶ When True is actually False](#%E2%96%B6-when-true-is-actually-false)
-    - [▶ Lossy zip of iterators](#%E2%96%B6-lossy-zip-of-iterators)
-    - [▶ From filled to None in one instruction...](#%E2%96%B6-from-filled-to-none-in-one-instruction)
-    - [▶ Subclass relationships](#%E2%96%B6-subclass-relationships)
-    - [▶ The mysterious key type conversion](#%E2%96%B6-the-mysterious-key-type-conversion)
-    - [▶ Let's see if you can guess this?](#%E2%96%B6-lets-see-if-you-can-guess-this)
-  - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
-    - [▶ Skipping lines?](#%E2%96%B6-skipping-lines)
-    - [▶ Teleportation](#%E2%96%B6-teleportation)
-    - [▶ Well, something is fishy...](#%E2%96%B6-well-something-is-fishy)
-  - [Section: Watch out for the landmines!](#section-watch-out-for-the-landmines)
-    - [▶ Modifying a dictionary while iterating over it](#%E2%96%B6-modifying-a-dictionary-while-iterating-over-it)
-    - [▶ Deleting a list item while iterating](#%E2%96%B6-deleting-a-list-item-while-iterating)
-    - [▶ Loop variables leaking out!](#%E2%96%B6-loop-variables-leaking-out)
-    - [▶ Beware of default mutable arguments!](#%E2%96%B6-beware-of-default-mutable-arguments)
-    - [▶ Catching the Exceptions](#%E2%96%B6-catching-the-exceptions)
-    - [▶ Same operands, different story!](#%E2%96%B6-same-operands-different-story)
-    - [▶ The out of scope variable](#%E2%96%B6-the-out-of-scope-variable)
-    - [▶ Be careful with chained operations](#%E2%96%B6-be-careful-with-chained-operations)
-    - [▶ Name resolution ignoring class scope](#%E2%96%B6-name-resolution-ignoring-class-scope)
-    - [▶ Needles in a Haystack ^](#%E2%96%B6-needles-in-a-haystack-%5E)
-    - [▶ Yielding from... return!](#-yielding-from-return)
-    - [▶ Wild imports](#%E2%96%B6-wild-imports)
-  - [Section: The Hidden treasures!](#section-the-hidden-treasures)
-    - [▶ Okay Python, Can you make me fly?](#%E2%96%B6-okay-python-can-you-make-me-fly)
-    - [▶ `goto`, but why?](#%E2%96%B6-goto-but-why)
-    - [▶ Brace yourself!](#%E2%96%B6-brace-yourself)
-    - [▶ Let's meet Friendly Language Uncle For Life](#%E2%96%B6-lets-meet-friendly-language-uncle-for-life)
-    - [▶ Even Python understands that love is complicated](#%E2%96%B6-even-python-understands-that-love-is-complicated)
-    - [▶ Yes, it exists!](#%E2%96%B6-yes-it-exists)
-    - [▶ Ellipsis](#%E2%96%B6-ellipsis)
-    - [▶ Inpinity](#%E2%96%B6-inpinity)
-    - [▶ Let's mangle](#%E2%96%B6-lets-mangle)
-  - [Section: Miscellaneous](#section-miscellaneous)
-    - [▶ `+=` is faster](#%E2%96%B6--is-faster)
-    - [▶ Let's make a giant string!](#%E2%96%B6-lets-make-a-giant-string)
-    - [▶ Explicit typecast of strings](#%E2%96%B6-explicit-typecast-of-strings)
-    - [▶ Minor Ones](#%E2%96%B6-minor-ones)
   * [Section: Strain your brain!](#section-strain-your-brain)
     + [▶ Strings can be tricky sometimes](#-strings-can-be-tricky-sometimes)
     + [▶ Splitsies](#-splitsies)
@@ -270,7 +208,6 @@ Makes sense, right?
   <img src="images/string-intern/string_intern.png" alt="">
 + Constant folding is a technique for [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) in Python. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to reduce few clock cycles during runtime. Constant folding only occurs for strings having length less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
 + Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the third snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549). 
->>>>>>> String can be tricky: Remove outdated snippet
 
 ---
 
@@ -2354,6 +2291,9 @@ b = "javascript"
     ```
 
 ---
+
+```
+
 
 ### ▶ Yielding from... return!
 

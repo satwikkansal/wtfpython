@@ -160,12 +160,124 @@ Now, just run `wtfpython` at the command line which will open this collection in
 
 # 👀 Examples
 
-
 ## Section: Strain your brain!
 
+### ▶ First things first!
+
+<!-- Example ID: d3d73936-3cf1-4632-b5ab-817981338863 -->
+
+For some reasons, "Walrus" operator (`:=`) has become a very popular feature in the language. Let's check it out,
+
+1\.
+
+```py
+>>> a = "wtf_walrus"
+>>> a
+'wtf_walrus'
+>>> a := "wtf_walrus"
+File "<ipython-input-20-14e95425e0a2>", line 1
+    a := "wtf_walrus"
+      ^
+SyntaxError: invalid syntax
+
+>>> (a := "wtf_walrus") # This works though
+>>> a
+'wtf_walrus'
+```
+
+2 \.
+
+```py
+>>> a = 6, 9
+>>> a
+(6, 9)
+
+>>> (a := 6, 9)
+>>> a
+6
+
+>>> a, b = 6, 9 # Typcial unpacking
+>>> a, b
+(6, 9)
+>>> (a, b = 16, 19) # Oops
+  File "<ipython-input-67-f4339673d0d4>", line 1
+    (a, b = 6, 9)
+          ^
+SyntaxError: invalid syntax
+
+>>> (a, b := 16, 19) # This prints out a weird 3-tuple
+(6, 16, 19)
+
+>>> a # a is still unchanged?
+6
+16
+```
+
+
+
+💡 Explanation
+
+**Quick walrus operator refresher**
+
+The Walrus operator (`:=`) was introduced in Python 3.8, it can be useful in situatitions where you'd want to assing values to variables within an expression.
+
+```py
+def some_func():
+		# Assume some expensive computation here
+		# time.sleep(1000)
+		return 5
+
+# So instead of,
+if some_func():
+		print(some_func()) # Which is bad practice since computation is happening twice
+
+# or
+a = some_func()
+if a:
+	print(a)
+
+# Now you can concisely write
+if a := some_func():
+		print(a)
+```
+
+**Output (> 3.8):**
+
+```py
+5
+5
+5
+```
+
+This helped save one line of code, and implicitly prevented invoking `some_func` twice.
+
+- Unparenthesized "assignment expression" (use of walrus operator), is restricted at top level, hence the `SyntaxError` in the `a := "wtf_walrus"` statement of first snippet. Parenthesizing it worked as expected and assigned `a`.  
+
+- As usual, parenthesizing of expression containing `=` operator is not allowed. Hence the syntax error in `(a, b = 6, 9)`. 
+
+- The syntax of the Walrus operator is of the form `NAME: expr`, where `NAME` is a valid identifier and `expr` is a valid expression. Hence, iterable packing and unpacking are not supported which means, 
+
+  - `(a := 6, 9)` is equivalent to `((a := 6), 9)` and ultimately `(a, 9) ` (where `a`'s value is 6')
+
+    ```py
+    >>> (a := 6, 9) == ((a := 6), 9)
+    True
+    >>> x = (a := 696, 9)
+    >>> x
+    (696, 9)
+    >>> x[0] is a # Both reference same memory location
+    True
+    ```
+
+  - Similarly, `(a, b := 16, 19)` is equivalent to `(a, (b := 16), 19)` which is nothing but a 3-tuple. 
+
+---
+
 ### ▶ Strings can be tricky sometimes
+
 <!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->
 1\.
+
 ```py
 >>> a = "some_string"
 >>> id(a)
@@ -3066,7 +3178,7 @@ nan
 
 # Contributing
 
-All patches are welcome! Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for further details. For discussions, you can either create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new) or ping on the Gitter [channel](https://gitter.im/wtfpython/Lobby).
+All patches are welcome! Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for further details. For discussions, you can either create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new) or ping on the Gitter [channel](https://gitter.im/wtfpython/Lobby)
 
 # Acknowledgements
 
@@ -3092,7 +3204,7 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 
 ## Surprise your friends too?
 
-If you liked the project, you can use these quick links to recommend wtfpython to your friends,
+If you liked wtfpython, you can use these quick links to share it with your friends,
 
 [Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython) | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)
 

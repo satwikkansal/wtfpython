@@ -3060,7 +3060,8 @@ nan
 
 ---
 
-<center>~~~ That's all folks! ~~~</center>
+<p align="center">~~~ That's all folks! ~~~</p>
+
 ---
 
 # Contributing

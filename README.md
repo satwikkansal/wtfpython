@@ -1,7 +1,6 @@
 <p align="center"><img src="images/logo.png" alt=""></p>
 <h1 align="center">What the f*ck Python! 🐍</h1>
 <p align="center">An interesting collection of surprising snippets and lesser-known Python features.</p>
-
 [![WTFPL 2.0][license-image]][license-url]
 
 Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn)
@@ -20,22 +19,22 @@ So, here we go...
 
 # Table of Contents
 
-<!-- toc -->
+<!-- toc generated using "markdown-toc -i README.md --maxdepth 3"-->
 
 - [Structure of the Examples](#structure-of-the-examples)
     + [▶ Some fancy Title](#-some-fancy-title)
 - [Usage](#usage)
-- [👀 Examples](#-examples)
+- [👀 Examples](#%F0%9F%91%80-examples)
   * [Section: Strain your brain!](#section-strain-your-brain)
     + [▶ Strings can be tricky sometimes](#-strings-can-be-tricky-sometimes)
     + [▶ Splitsies](#-splitsies)
-    + [▶ Time for some hash brownies!](#-time-for-some-hash-brownies)
-    + [▶ The disorder within order](#-the-disorder-within-order)
-    + [▶ Keep trying?](#-keep-trying)
-    + [▶ Deep down, we're all the same](#-deep-down-were-all-the-same)
+    + [▶ Hash brownies](#-hash-brownies)
+    + [▶ Disorder within order](#-disorder-within-order)
+    + [▶ Keep trying...](#-keep-trying)
+    + [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same)
     + [▶ For what?](#-for-what)
     + [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
-    + [▶ Messing around with `is` operator](#-messing-around-with-is-operator)
+    + [▶ How not to use `is` operator](#-how-not-to-use-is-operator)
     + [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
     + [▶ The sticky output function](#-the-sticky-output-function)
     + [▶ The chicken-egg problem](#-the-chicken-egg-problem)
@@ -51,8 +50,8 @@ So, here we go...
     + [▶ Mutating the immutable!](#-mutating-the-immutable)
     + [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
     + [▶ When True is actually False](#-when-true-is-actually-false)
+    + [▶ Yielding from... return!](#-yielding-from-return)
     + [▶ Lossy zip of iterators](#-lossy-zip-of-iterators)
-    + [▶ From filled to None in one instruction...](#-from-filled-to-none-in-one-instruction)
     + [▶ Subclass relationships](#-subclass-relationships)
     + [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
     + [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
@@ -88,11 +87,11 @@ So, here we go...
     + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
     + [▶ Explicit typecast of strings](#-explicit-typecast-of-strings)
     + [▶ Minor Ones](#-minor-ones)
+  * [~~~ That's all folks! ~~~](#-thats-all-folks-)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
-- [🎓 License](#-license)
-  * [Help](#help)
-  * [Surprise your geeky pythonist friends?](#surprise-your-geeky-pythonist-friends)
+- [🎓 License](#%F0%9F%8E%93-license)
+  * [Surprise your friends too?](#surprise-your-friends-too)
   * [Need a pdf version?](#need-a-pdf-version)
 
 <!-- tocstop -->
@@ -361,7 +360,7 @@ What is going on here?
 #### 💡 Explanation:
 
 - The reason why intransitive equality didn't hold among `dictionary`, `ordered_dict` and `another_ordered_dict` is because of the way `__eq__` method is implemented in `OrderedDict` class. From the [docs](https://docs.python.org/3/library/collections.html#ordereddict-objects)
-    
+  
     > Equality tests between OrderedDict objects are order-sensitive and are implemented as `list(od1.items())==list(od2.items())`. Equality tests between `OrderedDict` objects and other Mapping objects are order-insensitive like regular dictionaries.
 - The reason for this equality is behavior  is that it allows `OrderedDict` objects to be directly substituted anywhere a regular dictionary is used.
 - Okay, so why did changing the order affect the lenght of the generated `set` object? The answer is the lack of intransitive equality only. Since sets are "unordered" collections of unique elements, the order in which elements are inserted shouldn't matter. But in this case, it does matter. Let's break it down a bit,
@@ -2937,7 +2936,7 @@ Let's increase the number of iterations by a factor of 10.
   9 ms ± 298 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
   ```
 - So many ways to format and create a giant string are somewhat in contrast to the [Zen of Python](https://www.python.org/dev/peps/pep-0020/), according to which,
-    
+  
     > There should be one-- and preferably only one --obvious way to do it.
 
 ---
@@ -3062,7 +3061,6 @@ nan
 ---
 
 <center>~~~ That's all folks! ~~~</center>
-
 ---
 
 # Contributing

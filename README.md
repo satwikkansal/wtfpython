@@ -1303,7 +1303,7 @@ NameError: name 'e' is not defined
 
 * Source: https://docs.python.org/3/reference/compound_stmts.html#except
 
-  When an exception has been assigned using `as` target, it is cleared at the end of the except clause. This is as if
+  When an exception has been assigned using `as` target, it is cleared at the end of the `except` clause. This is as if
 
   ```py
   except E as N:
@@ -1378,8 +1378,75 @@ I've lost faith in truth!
 
 ---
 
+### ▶ Yielding from... return!
+
+1\.
+
+```py
+def some_func(x):
+    if x == 3:
+        return ["wtf"]
+    else:
+        yield from range(x)
+```
+
+**Output:**
+
+```py
+>>> list(some_func(3))
+[]
+```
+
+Where did the `"wtf"` go? Is it due to some special effect of `yield from`? Let's validate that,
+
+2\.
+
+```py
+def some_func(x):
+    if x == 3:
+        return ["wtf"]
+    else:
+        for i in range(x):
+          yield i
+```
+
+**Output (> 3.3):**
+
+```py
+>>> list(some_func(3))
+[]
+```
+
+Same result, that didn't work either.
+
+#### 💡 Explanation:
+
++ From Python 3.3 onwards, it became possible to use `return` statement with values inside generators (See [PEP380](https://www.python.org/dev/peps/pep-0380/)). The [official docs](https://www.python.org/dev/peps/pep-0380/#enhancements-to-stopiteration) say that,
+
+> "... `return expr` in a generator causes `StopIteration(expr)` to be raised upon exit from the generator."
+
++ In case of `some_func(3)`, `StopIteration` is raised at the beginning because of `return` statement. The `StopIteration` exception is automatically catched inside the `list(...)` wrapper and the `for` loop. Therefore, the above two snippets result in an empty list.
+
++ To get `["wtf"]` from the generator `some_func` we need to catch the `StopIteration` exception,
+
+  ```py
+  try:
+      next(some_func(3))
+  except StopIteration as e:
+      some_string = e.value
+  ```
+
+  ```py
+  >>> some_string
+  ["wtf"]
+  ```
+
+---
+
 ### ▶ Lossy zip of iterators
+
 <!-- Example ID: c28ed154-e59f-4070-8eb6-8967a4acac6d --->
+
 ```py
 >>> numbers = list(range(7))
 >>> numbers
@@ -1407,8 +1474,7 @@ Where did element `3` go from the `numbers` list?
             result = []
             for it in iterators:
                 elem = next(it, sentinel)
-                if elem is sentinel:
-                    return
+                if elem is sentinel: return
                 result.append(elem)
             yield tuple(result)
     ```
@@ -1605,7 +1671,9 @@ The built-in `ord()` function returns a character's Unicode [code point](https:/
 ---
 
 ### ▶ Teleportation
+
 <!-- Example ID: edafe923-0c20-4315-b6e1-0c31abfc38f5 --->
+
 ```py
 import numpy as np
 
@@ -1858,8 +1926,8 @@ print(x, ': x in global')
 >>> x = 1
 >>> print([x for x in range(5)])
 [0, 1, 2, 3, 4]
->>> print(x, ': x in global')
-(4, ': x in global')
+>>> print(x)
+4
 ```
 
 **Output (Python 3.x):**
@@ -1867,15 +1935,15 @@ print(x, ': x in global')
 >>> x = 1
 >>> print([x for x in range(5)])
 [0, 1, 2, 3, 4]
->>> print(x, ': x in global')
-1 : x in global
+>>> print(x)
+1
 ```
 
 #### 💡 Explanation:
 
 - In Python, for-loops use the scope they exist in and leave their defined loop-variable behind. This also applies if we explicitly defined the for-loop variable in the global namespace before. In this case, it will rebind the existing variable.
 
-- The differences in the output of Python 2.x and Python 3.x interpreters for list comprehension example can be explained by following change documented in [What’s New In Python 3.0](https://docs.python.org/3/whatsnew/3.0.html) documentation:
+- The differences in the output of Python 2.x and Python 3.x interpreters for list comprehension example can be explained by following change documented in [What’s New In Python 3.0](https://docs.python.org/3/whatsnew/3.0.html) change log:
 
     > "List comprehensions no longer support the syntactic form `[... for var in item1, item2, ...]`. Use `[... for var in (item1, item2, ...)]` instead. Also, note that list comprehensions have different semantics: they are closer to syntactic sugar for a generator expression inside a `list()` constructor, and in particular the loop control variables are no longer leaked into the surrounding scope."
 
@@ -1883,6 +1951,7 @@ print(x, ': x in global')
 
 ### ▶ Beware of default mutable arguments!
 <!-- Example ID: 7d42dade-e20d-4a7b-9ed7-16fb58505fe9 --->
+
 ```py
 def some_func(default_arg=[]):
     default_arg.append("some_string")
@@ -2182,39 +2251,6 @@ class SomeClass:
 
 ---
 
-### ▶ From full to None in one instruction
-
-<!-- Example ID: 9a0d5335-efe5-4eae-af44-584d15233066 --->
-
-```py
-some_list = [1, 2, 3]
-some_dict = {
-  "key_1": 1,
-  "key_2": 2,
-  "key_3": 3
-}
-
-some_list = some_list.append(4)
-some_dict = some_dict.update({"key_4": 4})
-```
-
-**Output:**
-
-```py
->>> print(some_list)
-None
->>> print(some_dict)
-None
-```
-
-#### 💡 Explanation
-
-
-
----
-
-
-
 ### ▶ Needles in a Haystack
 
 <!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --->
@@ -2235,6 +2271,7 @@ x, y = (0, 1) if True else None, None
 ```
 
 2\.
+
 ```py
 t = ('one', 'two')
 for i in t:
@@ -2249,6 +2286,7 @@ print(t)
 ```
 
 **Output:**
+
 ```py
 one
 two
@@ -2288,7 +2326,9 @@ ten_words_list = [
 a = "python"
 b = "javascript"
 ```
+
 **Output:**
+
 ```py
 # An assert statement with an assertion failure message.
 >>> assert(a == b, "Both languages are different")
@@ -2329,96 +2369,34 @@ None
 * `()` is a special token and denotes empty `tuple`.
 
 * In 3, as you might have already figured out, there's a missing comma after 5th element (`"that"`) in the list. So by implicit string literal concatenation,
-    ```py
-    >>> ten_words_list
-    ['some', 'very', 'big', 'list', 'thatconsists', 'of', 'exactly', 'ten', 'words']
-    ```
-    
+
+  ```py
+  >>> ten_words_list
+  ['some', 'very', 'big', 'list', 'thatconsists', 'of', 'exactly', 'ten', 'words']
+  ```
+
 * No `AssertionError` was raised in 4th snippet because instead of asserting the individual expression `a == b`, we're asserting entire tuple. The following snippet will clear things up,
-    ```py
-    >>> a = "python"
-    >>> b = "javascript"
-    >>> assert a == b
-    Traceback (most recent call last):
-        File "<stdin>", line 1, in <module>
-    AssertionError
 
-    >>> assert (a == b, "Values are not equal")
-    <stdin>:1: SyntaxWarning: assertion is always true, perhaps remove parentheses?
+  ```py
+  >>> a = "python"
+  >>> b = "javascript"
+  >>> assert a == b
+  Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+  AssertionError
+  
+  >>> assert (a == b, "Values are not equal")
+  <stdin>:1: SyntaxWarning: assertion is always true, perhaps remove parentheses?
+  
+  >>> assert a == b, "Values are not equal"
+  Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+  AssertionError: Values aren not equal
+  ```
 
-    >>> assert a == b, "Values are not equal"
-    Traceback (most recent call last):
-        File "<stdin>", line 1, in <module>
-    AssertionError: Values aren not equal
-    ```
-    
 * As for the last snippet, most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list)).
 
 * Being aware of these knitpicks can save you hours of degugging effort in long run. 
-
----
-
-### ▶ Yielding from... return!
-
-1\.
-
-```py
-def some_func(x):
-    if x == 3:
-        return ["wtf"]
-    else:
-        yield from range(x)
-```
-
-**Output:**
-
-```py
->>> list(some_func(3))
-[]
-```
-
-Where did the `"wtf"` go? Is it due to some special effect of `yield from`? Let's validate that,
-
-2\.
-
-```py
-def some_func(x):
-    if x == 3:
-        return ["wtf"]
-    else:
-        for i in range(x):
-          yield i
-```
-
-**Output (> 3.3):**
-
-```py
->>> list(some_func(3))
-[]
-```
-
-Same result, that didn't work either.
-
-#### 💡 Explanation:
-
-+ From Python 3.3 onwards, it became possible to use `return` statement with values inside generators (See [PEP380](https://www.python.org/dev/peps/pep-0380/)). The [official docs](https://www.python.org/dev/peps/pep-0380/#enhancements-to-stopiteration) say that,
-
-> "... `return expr` in a generator causes `StopIteration(expr)` to be raised upon exit from the generator."
-
-+ In case of `some_func(3)`, `StopIteration` is raised at the beginning because of `return` statement. The `StopIteration` exception is automatically catched inside the `list(...)` wrapper and the `for` loop. Therefore, the above two snippets result in an empty list.
-
-+ To get `["wtf"]` from the generator `some_func` we need to catch the `StopIteration` exception,
-  ```py
-  try:
-      next(some_func(3))
-  except StopIteration as e:
-      some_string = e.value
-  ```
-
-  ```py
-  >>> some_string
-  ["wtf"]
-  ```
 
 ---
 

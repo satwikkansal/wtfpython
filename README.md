@@ -6,13 +6,13 @@
 
 Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn)
 
-Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
+Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious at first sight.
 
-Here is a fun project to collect such tricky & counter-intuitive examples and lesser-known features in Python, attempting to discuss what exactly is happening under the hood!
+Here is a fun project attempting to explain what exactly is happening under the hood for some counter-intuitive snippets and lesser-known features in Python.
 
 While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
 
-If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
+If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may have already experienced some of them before, and I might be able to revive sweet old memories of yours! :sweat_smile:
 
 PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
 
@@ -104,11 +104,12 @@ All the examples are structured like below:
 > ### ▶ Some fancy Title
 >
 > ```py
-> # Setting up the code.
+> # Set up the code.
 > # Preparation for the magic...
 > ```
 >
 > **Output (Python version(s)):**
+>
 > ```py
 > >>> triggering_statement
 > Some unexpected output
@@ -119,16 +120,18 @@ All the examples are structured like below:
 > #### 💡 Explanation:
 >
 > * Brief explanation of what's happening and why is it happening.
->   ```py
->   Setting up examples for clarification (if necessary)
->   ```
->   **Output Output (Python version(s)):**
->   ```py
->   >>> trigger # some example that makes it easy to unveil the magic
->   # some justified output
->   ```
+> ```py
+> # Set up code
+> # More examples for further clarification (if necessary)
+> ```
+> **Output (Python version(s)):**
+>
+> ```py
+> >>> trigger # some example that makes it easy to unveil the magic
+> # some justified output
+> ```
 
-**Note:** All the examples are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified in the description.
+**Note:** All the examples are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified before the output.
 
 # Usage
 
@@ -199,14 +202,14 @@ False
 Makes sense, right?
 
 #### 💡 Explanation:
-+ Such behavior is due to CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
-+ After being interned, many variables may point to the same string object in memory (thereby saving memory).
-+ In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation dependent. There are some facts that can be used to guess if a string will be interned or not:
++ The behavior in first and second snippets is due to a CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
++ After being "interned", many variables may reference the same string object in memory (saving memory thereby).
++ In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation dependent. There are some rules that can be used to guess if a string will be interned or not:
   * All length 0 and length 1 strings are interned.
   * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
   * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. Cpython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
   <img src="images/string-intern/string_intern.png" alt="">
-+ Constant folding is a technique for [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) in Python. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to reduce few clock cycles during runtime. Constant folding only occurs for strings having length less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
++ The abrupt change in output of the third snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a  few clock cycles during runtime. Constant folding only occurs for strings having length less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
 + Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the third snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549). 
 
 ---
@@ -232,8 +235,8 @@ Makes sense, right?
 
 #### 💡 Explanation:
 
-- It might appear at first that the default seperator for split is a single space `' '`, but as per the [docs](https://docs.python.org/2.7/library/stdtypes.html#str.split),
-    > If sep is not specified or is None, a different splitting algorithm is applied: runs of consecutive whitespace are regarded as a single separator, and the result will contain no empty strings at the start or end if the string has leading or trailing whitespace. Consequently, splitting an empty string or a string consisting of just whitespace with a None separator returns `[]`.
+- It might appear at first that the default seperator for split is a single space `' '`, but as per the [docs](https://docs.python.org/2.7/library/stdtypes.html#str.split)
+    >  If sep is not specified or is `None`, a different splitting algorithm is applied: runs of consecutive whitespace are regarded as a single separator, and the result will contain no empty strings at the start or end if the string has leading or trailing whitespace. Consequently, splitting an empty string or a string consisting of just whitespace with a None separator returns `[]`.
     > If sep is given, consecutive delimiters are not grouped together and are deemed to delimit empty strings (for example, `'1,,2'.split(',')` returns `['1', '', '2']`). Splitting an empty string with a specified separator returns `['']`.
 - Noticing how the leading and trailing whitespaces are handled in the following snippet will make things clear,
     ```py
@@ -249,21 +252,22 @@ Makes sense, right?
 
 
 
-### ▶ Time for some hash brownies!
+### ▶ Hash brownies
 <!-- Example ID: eb17db53-49fd-4b61-85d6-345c5ca213ff --->
 1\.
 ```py
 some_dict = {}
-some_dict[5.5] = "Ruby"
-some_dict[5.0] = "JavaScript"
+some_dict[5.5] = "JavaScript"
+some_dict[5.0] = "Ruby"
 some_dict[5] = "Python"
 ```
 
 **Output:**
+
 ```py
 >>> some_dict[5.5]
 "Ruby"
->>> some_dict[5.0] # "Python" destroyed the existence of "JavaScript"?
+>>> some_dict[5.0] # "Python" destroyed the existence of "Ruby"?
 "Python"
 >>> some_dict[5] 
 "Python"
@@ -288,13 +292,13 @@ So, why is Python all over the place?
   >>> hash(5) == hash(5.0) == hash(5 + 0j)
   True
   ```
-  **Note:** Objects with different values may also have same hash (known as hash collision).
-* When the statement `some_dict[5] = "Python"` is executed, the existing value "JavaScript" is overwritten with "Python" because Python recognizes `5` and `5.0` as the same keys of the dictionary `some_dict`.
-* This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains beautifully the rationale behind it.
+  **Note:** Objects with different values may also have same hash (known as [hash collision](https://en.wikipedia.org/wiki/Collision_(computer_science))).
+* When the statement `some_dict[5] = "Python"` is executed, the existing value "Ruby" is overwritten with "Python" because Python recognizes `5` and `5.0` as the same keys of the dictionary `some_dict`.
+* This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains the rationale behind it.
 
 ---
 
-### ▶ The disorder within order
+### ▶ Disorder within order
 <!-- Example ID: 91bff1f8-541d-455a-9de4-6cd8ff00ea66 --->
 ```py
 from collections import OrderedDict
@@ -316,7 +320,7 @@ class DictWithHash(dict):
 
 class OrderedDictWithHash(OrderedDict):
     """
-    A dict that also implements __hash__ magic.
+    An OrderedDict that also implements __hash__ magic.
     """
     __hash__ = lambda self: 0
 ```
@@ -357,6 +361,7 @@ What is going on here?
 #### 💡 Explanation:
 
 - The reason why intransitive equality didn't hold among `dictionary`, `ordered_dict` and `another_ordered_dict` is because of the way `__eq__` method is implemented in `OrderedDict` class. From the [docs](https://docs.python.org/3/library/collections.html#ordereddict-objects)
+    
     > Equality tests between OrderedDict objects are order-sensitive and are implemented as `list(od1.items())==list(od2.items())`. Equality tests between `OrderedDict` objects and other Mapping objects are order-insensitive like regular dictionaries.
 - The reason for this equality is behavior  is that it allows `OrderedDict` objects to be directly substituted anywhere a regular dictionary is used.
 - Okay, so why did changing the order affect the lenght of the generated `set` object? The answer is the lack of intransitive equality only. Since sets are "unordered" collections of unique elements, the order in which elements are inserted shouldn't matter. But in this case, it does matter. Let's break it down a bit,
@@ -387,12 +392,11 @@ What is going on here?
     >>> len(another_set)
     2
     ```
-    So the inconsistency is due to `another_ordered_dict in another_set` being False because `ordered_dict` was already present in `another_set` and as observed before, `ordered_dict == another_ordered_dict` is `False`.
-
+    So the inconsistency is due to `another_ordered_dict in another_set` being `False` because `ordered_dict` was already present in `another_set` and as observed before, `ordered_dict == another_ordered_dict` is `False`.
 
 ---
 
-### ▶ Keep trying?
+### ▶ Keep trying...
 <!-- Example ID: b4349443-e89f-4d25-a109-82616be9d41a --->
 ```py
 def some_func():
@@ -446,13 +450,13 @@ Iteration 0
 
 #### 💡 Explanation:
 
-- When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed ‘on the way out.
+- When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed on the way out.
 - The return value of a function is determined by the last `return` statement executed. Since the `finally` clause always executes, a `return` statement executed in the `finally` clause will always be the last one executed.
 - The caveat here is, if the finally clause executes a `return` or `break` statement, the temporarily saved exception is discarded.
 
 ---
 
-### ▶ Deep down, we're all the same
+### ▶ Deep down, we're all the same.
 <!-- Example ID: 8f99a35f-1736-43e2-920d-3b78ec35da9b --->
 ```py
 class WTF:
@@ -508,12 +512,12 @@ True
 some_string = "wtf"
 some_dict = {}
 for i, some_dict[i] in enumerate(some_string):
-    pass
+    i = 10
 ```
 
 **Output:**
 ```py
->>> some_dict # An indexed dict is created.
+>>> some_dict # An indexed dict appears.
 {0: 'w', 1: 't', 2: 'f'}
 ```
 
@@ -545,7 +549,7 @@ for i, some_dict[i] in enumerate(some_string):
 
   - The assignment statement `i = 10` never affects the iterations of the loop because of the way for loops work in Python. Before the beginning of every iteration, the next item provided by the iterator (`range(4)` this case) is unpacked and assigned the target list variables (`i` in this case).
 
-* The `enumerate(some_string)` function yields a new value `i` (A counter going up) and a character from the `some_string` in each iteration. It then sets the (just assigned) `i` key of the dictionary `some_dict` to that character. The unrolling of the loop can be simplified as:
+* The `enumerate(some_string)` function yields a new value `i` (a counter going up) and a character from the `some_string` in each iteration. It then sets the (just assigned) `i` key of the dictionary `some_dict` to that character. The unrolling of the loop can be simplified as:
   ```py
   >>> i, some_dict[i] = (0, 'w')
   >>> i, some_dict[i] = (1, 't')
@@ -560,13 +564,15 @@ for i, some_dict[i] in enumerate(some_string):
 1\.
 ```py
 array = [1, 8, 15]
-g = (x for x in array if array.count(x) > 0)
+# A typical generator expresion
+gen = (x for x in array if array.count(x) > 0)
 array = [2, 8, 22]
 ```
 
 **Output:**
+
 ```py
->>> print(list(g))
+>>> print(list(gen)) # Where did the other values go?
 [8]
 ```
 
@@ -574,20 +580,20 @@ array = [2, 8, 22]
 
 ```py
 array_1 = [1,2,3,4]
-g1 = (x for x in array_1)
+gen_1 = (x for x in array_1)
 array_1 = [1,2,3,4,5]
 
 array_2 = [1,2,3,4]
-g2 = (x for x in array_2)
+gen_2 = (x for x in array_2)
 array_2[:] = [1,2,3,4,5]
 ```
 
 **Output:**
 ```py
->>> print(list(g1))
+>>> print(list(gen_1))
 [1,2,3,4]
 
->>> print(list(g2))
+>>> print(list(gen_2))
 [1,2,3,4,5]
 ```
 
@@ -596,7 +602,7 @@ array_2[:] = [1,2,3,4,5]
 ```py
 array_3 = [1, 2, 3]
 array_4 = [10, 20, 30]
-g = (i + j for i in array_3 for j in array_4)
+gen = (i + j for i in array_3 for j in array_4)
 
 array_3 = [4, 5, 6]
 array_4 = [400, 500, 600]
@@ -604,7 +610,7 @@ array_4 = [400, 500, 600]
 
 **Output:**
 ```py
->>> print(list(g))
+>>> print(list(gen))
 [401, 501, 601, 402, 502, 602, 403, 503, 603]
 ```
 
@@ -621,11 +627,12 @@ array_4 = [400, 500, 600]
 
 ---
 
-### ▶ Messing around with `is` operator
+### ▶ How not to use `is` operator
 <!-- Example ID: 230fa2ac-ab36-4ad1-b675-5f5a1c1a6217 --->
 The following is a very famous example present all over the internet.
 
 1\.
+
 ```py
 >>> a = 256
 >>> b = 256
@@ -741,14 +748,16 @@ Similar optimization applies to other **immutable** objects like empty tuples as
 
 ### ▶ A tic-tac-toe where X wins in the first attempt!
 <!-- Example ID: 69329249-bdcb-424f-bd09-cca2e6705a7a --->
+
 ```py
 # Let's initialize a row
-row = [""]*3 #row i['', '', '']
+row = [""] * 3 #row i['', '', '']
 # Let's make a board
-board = [row]*3
+board = [row] * 3
 ```
 
 **Output:**
+
 ```py
 >>> board
 [['', '', ''], ['', '', ''], ['', '', '']]
@@ -761,7 +770,7 @@ board = [row]*3
 [['X', '', ''], ['X', '', ''], ['X', '', '']]
 ```
 
-We didn't assign 3 "X"s or did we?
+We didn't assign three `"X"`s, did we?
 
 #### 💡 Explanation:
 
@@ -786,6 +795,9 @@ We can avoid this scenario here by not using `row` variable to generate `board`.
 
 ### ▶ The sticky output function
 <!-- Example ID: 4dc42f77-94cb-4eb5-a120-8203d3ed7604 --->
+
+1\.
+
 ```py
 funcs = []
 results = []
@@ -799,6 +811,7 @@ funcs_results = [func() for func in funcs]
 ```
 
 **Output:**
+
 ```py
 >>> results
 [0, 1, 2, 3, 4, 5, 6]
@@ -807,7 +820,7 @@ funcs_results = [func() for func in funcs]
 ```
 Even when the values of `x` were different in every iteration prior to appending `some_func` to `funcs`, all the functions return 6.
 
-//OR
+2\.
 
 ```py
 >>> powers_of_x = [lambda x: x**i for i in range(10)]
@@ -850,7 +863,9 @@ True
 True
 ```
 
-2\. So which is the ultimate, base class? And wait, there's more to the confusion
+So which is the "ultimate" base class? There's more to the confusion by the way,
+
+2\. 
 
 ```py
 >>> class A: pass
@@ -904,7 +919,8 @@ False
 
 ### ▶ The surprising comma
 <!-- Example ID: 31a819c8-ed73-4dcc-84eb-91bedbb51e58 --->
-**Output:**
+**Output (< 3.6):**
+
 ```py
 >>> def f(x, y,):
 ...     print(x, y)
@@ -917,6 +933,7 @@ False
     def h(x, **kwargs,):
                      ^
 SyntaxError: invalid syntax
+
 >>> def h(*args,):
   File "<stdin>", line 1
     def h(*args,):
@@ -1045,7 +1062,8 @@ if noon_time:
     print("Time at noon is", noon_time)
 ```
 
-**Output:**
+**Output (< 3.5):**
+
 ```sh
 ('Time at noon is', datetime.time(12, 0))
 ```
@@ -1202,6 +1220,7 @@ def some_func(val):
 ```
 
 **Output:**
+
 ```py
 >>> [x for x in some_iterable]
 ['a', 'b']
@@ -1216,6 +1235,7 @@ def some_func(val):
 ```
 
 #### 💡 Explanation:
+- This is bug in CPython's handling of `yield` in generators and comprehensions.
 - Source and explanation can be found here: https://stackoverflow.com/questions/32139885/yield-in-list-comprehensions-and-generator-expressions
 - Related bug report: http://bugs.python.org/issue10544
 
@@ -1223,6 +1243,9 @@ def some_func(val):
 
 ### ▶ Mutating the immutable!
 <!-- Example ID: 15a9e782-1695-43ea-817a-a9208f6bb33d --->
+
+This might seem trivial if you know how references works in Python.
+
 ```py
 some_tuple = ("A", "tuple", "with", "values")
 another_tuple = ([1, 2], [3, 4], [5, 6])
@@ -1342,7 +1365,8 @@ if True == False:
     print("I've lost faith in truth!")
 ```
 
-**Output:**
+**Output (< 3.x):**
+
 ```
 I've lost faith in truth!
 ```
@@ -1400,34 +1424,6 @@ Where did element `3` go from the `numbers` list?
     [(3, 3), (4, 4), (5, 5), (6, 6)]
     ```
     The first argument of zip should be the one with fewest elements.
-
----
-
-### ▶ From filled to None in one instruction...
-<!-- Example ID: 9a0d5335-efe5-4eae-af44-584d15233066 --->
-```py
-some_list = [1, 2, 3]
-some_dict = {
-  "key_1": 1,
-  "key_2": 2,
-  "key_3": 3
-}
-
-some_list = some_list.append(4)
-some_dict = some_dict.update({"key_4": 4})
-```
-
-**Output:**
-```py
->>> print(some_list)
-None
->>> print(some_dict)
-None
-```
-
-#### 💡 Explanation
-
-Most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list))
 
 ---
 
@@ -2184,23 +2180,59 @@ class SomeClass:
 - A generator expression has its own scope.
 - Starting from Python 3.X, list comprehensions also have their own scope.
 
+---
+
+### ▶ From full to None in one instruction
+
+<!-- Example ID: 9a0d5335-efe5-4eae-af44-584d15233066 --->
+
+```py
+some_list = [1, 2, 3]
+some_dict = {
+  "key_1": 1,
+  "key_2": 2,
+  "key_3": 3
+}
+
+some_list = some_list.append(4)
+some_dict = some_dict.update({"key_4": 4})
+```
+
+**Output:**
+
+```py
+>>> print(some_list)
+None
+>>> print(some_dict)
+None
+```
+
+#### 💡 Explanation
+
+
 
 ---
 
+
+
 ### ▶ Needles in a Haystack
+
 <!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --->
+
+I haven't met even a single experience Pythonist till date who has not came across one or more of the following scenarios,
+
 1\.
+
 ```py
 x, y = (0, 1) if True else None, None
 ```
 
 **Output:**
+
 ```py
 >>> x, y  # expected (0, 1)
 ((0, 1), None)
 ```
-
-Almost every Python programmer has faced a similar situation.
 
 2\.
 ```py
@@ -2263,15 +2295,45 @@ b = "javascript"
 # No AssertionError is raised
 ```
 
+5\.
+
+```py
+some_list = [1, 2, 3]
+some_dict = {
+  "key_1": 1,
+  "key_2": 2,
+  "key_3": 3
+}
+
+some_list = some_list.append(4)
+some_dict = some_dict.update({"key_4": 4})
+```
+
+**Output:**
+
+```py
+>>> print(some_list)
+None
+>>> print(some_dict)
+None
+```
+
+
+
 #### 💡 Explanation:
+
 * For 1, the correct statement for expected behavior is `x, y = (0, 1) if True else (None, None)`.
+
 * For 2, the correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
+
 * `()` is a special token and denotes empty `tuple`.
+
 * In 3, as you might have already figured out, there's a missing comma after 5th element (`"that"`) in the list. So by implicit string literal concatenation,
     ```py
     >>> ten_words_list
     ['some', 'very', 'big', 'list', 'thatconsists', 'of', 'exactly', 'ten', 'words']
     ```
+    
 * No `AssertionError` was raised in 4th snippet because instead of asserting the individual expression `a == b`, we're asserting entire tuple. The following snippet will clear things up,
     ```py
     >>> a = "python"
@@ -2289,15 +2351,17 @@ b = "javascript"
         File "<stdin>", line 1, in <module>
     AssertionError: Values aren not equal
     ```
+    
+* As for the last snippet, most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list)).
+
+* Being aware of these knitpicks can save you hours of degugging effort in long run. 
 
 ---
-
-```
-
 
 ### ▶ Yielding from... return!
 
 1\.
+
 ```py
 def some_func(x):
     if x == 3:
@@ -2307,6 +2371,7 @@ def some_func(x):
 ```
 
 **Output:**
+
 ```py
 >>> list(some_func(3))
 []
@@ -2315,6 +2380,7 @@ def some_func(x):
 Where did the `"wtf"` go? Is it due to some special effect of `yield from`? Let's validate that,
 
 2\.
+
 ```py
 def some_func(x):
     if x == 3:
@@ -2324,7 +2390,8 @@ def some_func(x):
           yield i
 ```
 
-**Output:**
+**Output (> 3.3):**
+
 ```py
 >>> list(some_func(3))
 []
@@ -2573,7 +2640,7 @@ True
 
 * `this` module in Python is an easter egg for The Zen Of Python ([PEP 20](https://www.python.org/dev/peps/pep-0020)).
 * And if you think that's already interesting enough, check out the implementation of [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py). Interestingly, the code for the Zen violates itself (and that's probably the only place where this happens).
-* Regarding the statement `love is not True or False; love is love`, ironic but it's self-explanatory.
+* Regarding the statement `love is not True or False; love is love`, ironic but it's self-explanatory (if not, please see the examples related to `is` and `is not` operators).
 
 ---
 
@@ -2781,8 +2848,6 @@ AttributeError: 'A' object has no attribute '__variable'
 
 
 
-
-
 ---
 
 ## Section: Miscellaneous
@@ -2790,6 +2855,7 @@ AttributeError: 'A' object has no attribute '__variable'
 
 ### ▶ `+=` is faster
 <!-- Example ID: bfd19c60-a807-4a26-9598-4912b86ddb36 --->
+
 ```py
 # using "+", three strings:
 >>> timeit.timeit("s1 = s1 + s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
@@ -2893,6 +2959,7 @@ Let's increase the number of iterations by a factor of 10.
   9 ms ± 298 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
   ```
 - So many ways to format and create a giant string are somewhat in contrast to the [Zen of Python](https://www.python.org/dev/peps/pep-0020/), according to which,
+    
     > There should be one-- and preferably only one --obvious way to do it.
 
 ---
@@ -3016,11 +3083,13 @@ nan
 
 ---
 
+<center>~~~ That's all folks! ~~~</center>
+
+---
+
 # Contributing
 
-All patches are Welcome! Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for further details.
-
-For discussions, you can either create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new) or ping on the Gitter [channel](https://gitter.im/wtfpython/Lobby)
+All patches are welcome! Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for further details. For discussions, you can either create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new) or ping on the Gitter [channel](https://gitter.im/wtfpython/Lobby).
 
 # Acknowledgements
 
@@ -3044,16 +3113,11 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 [license-url]: http://www.wtfpl.net
 [license-image]: https://img.shields.io/badge/License-WTFPL%202.0-lightgrey.svg?style=flat-square
 
-## Help
+## Surprise your friends too?
 
-If you have any wtfs, ideas or suggestions, please share.
+If you liked the project, you can use these quick links to recommend wtfpython to your friends,
 
-## Surprise your geeky pythonist friends?
-
-You can use these quick links to recommend wtfpython to your friends,
-
-[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython)
- | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)
+[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython) | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)
 
 ## Need a pdf version?
 

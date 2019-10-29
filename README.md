@@ -3120,7 +3120,7 @@ nan
   + `++a` parses as `+(+a)` which translates to `a`. Similarly, the output of the statement `--a` can be justified.
   + This StackOverflow [thread](https://stackoverflow.com/questions/3654830/why-are-there-no-and-operators-in-python) discusses the rationale behind the absence of increment and decrement operators in Python.
 
-* Have you ever heard about _the space-invader operator_ in Python?
+* You must be aware of the Walrus operator in Python. But have you ever heard about _the space-invader operator_?
   ```py
   >>> a = 42
   >>> a -=- 1
@@ -3150,6 +3150,18 @@ nan
      ```
 
 * Multiple Python threads won't run your *Python code* concurrently (yes you heard it right!). It may seem intuitive to spawn several threads and let them execute your Python code concurrently, but, because of the [Global Interpreter Lock](https://wiki.python.org/moin/GlobalInterpreterLock) in Python, all you're doing is making your threads execute on the same core turn by turn. Python threads are good for IO-bound tasks, but to achieve actual parallelization in Python for CPU-bound tasks, you might want to use the Python [multiprocessing](https://docs.python.org/2/library/multiprocessing.html) module.
+
+* Sometimes the `print` method might not print values immediately. For example,
+
+     ```py
+     # File some_file.py
+     import time
+     
+     print("wtfpython", end="_")
+     time.sleep(3)
+     ```
+
+     This will print the `wtfpython` after 10 seconds due to the `end` argument because the output buffer is flushed either after encountering `\n` or when the program finishes execution. We can force the buffer to flush by passing `flush=True` argument.
 
 * List slicing with out of the bounds indices throws no errors
   ```py

@@ -2469,6 +2469,33 @@ None
 None
 ```
 
+6\.
+
+```py
+def some_recursive_func(a):
+    if a[0] == 0:
+        return 
+    a[0] -= 1
+    some_func(a)
+    return a
+
+def similar_recursive_func(a):
+		if a == 0:
+				return a
+		a -= 1
+		another_func()
+		return a
+```
+
+**Output:**
+
+```py
+>>> some_recursive_func([5, 0])
+[0, 0]
+>>> similar_recursive_func(5)
+4
+```
+
 
 
 #### 💡 Explanation:
@@ -2505,7 +2532,9 @@ None
   AssertionError: Values aren not equal
   ```
 
-* As for the last snippet, most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list)).
+* As for the fifth snippet, most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list)).
+
+* Last one should be fairly obvious, passing mutable object (like  `list` ) results in call by reference, whereas an immutable object (like `int`)  results in call by value.
 
 * Being aware of these knitpicks can save you hours of degugging effort in long run. 
 
@@ -2898,7 +2927,7 @@ AttributeError: 'Yo' object has no attribute '_Yo__honey__'
 
 Why did `Yo()._Yo__honey` work?
 
-2\.
+3\.
 
 ```py
 _A__variable = "Some value"
@@ -2916,12 +2945,6 @@ AttributeError: 'A' object has no attribute '__variable'
 
 >>> >>> A().some_func()
 'Some value'
-```
-
-3\.
-
-```py
-
 ```
 
 

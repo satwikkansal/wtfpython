@@ -2598,6 +2598,92 @@ NameError: name 'some_weird_name_func_' is not defined
 
 ---
 
+## Section: Read the docs
+
+### ▶ All sorted?
+
+<!-- Example ID: e5ff1eaf-8823-4738-b4ce-b73f7c9d5511 -->
+
+```py
+>>> x = 7, 8, 9
+>>> sorted(x) == x
+False
+>>> sorted(x) == sorted(x)
+True
+
+>>> y = reversed(x)
+>>> sorted(y) == sorted(y)
+False
+```
+
+#### 💡 Explanation:
+
+- The `sorted` method always returns a list, and comparing list and tuples always returns `False` in Python. 
+
+- ```py
+  >>> [] == tuple()
+  False
+  >>> x = 7, 8, 9
+  >>> type(x), type(sorted(x))
+  (tuple, list)
+  ```
+
+- Unlike `sorted`, the `reversed` method returns an iterator. Why? Because sorting requires the iterator to be either modified in-place or use extra container (a list), whereas reversing can simple work by iterating from the last index to the first.
+
+- So during comparison `sorted(y) == sorted(y)`, the first call to `sorted()` will consume the iterator `y`, and the next call will just return an empty list.
+
+  ```py
+  >>> x = 7, 8, 9
+  >>> y = reversed(x)
+  >>> sorted(y), sorted(y)
+  ([7, 8, 9], [])
+  ```
+
+  
+
+---
+
+### ▶ All-true-ation
+
+<!-- Example ID: dfe6d845-e452-48fe-a2da-0ed3869a8042 -->
+
+```py
+>>> all([True, True, True])
+True
+>>> all([True, True, False])
+False
+
+>>> all([])
+True
+>>> all([[]])
+False
+>>> all([[[]]])
+True
+```
+
+Why's this True-False alteration?
+
+#### 💡 Explanation:
+
+- The implementation of `all` function is equivalent to
+
+- ```py
+  def all(iterable):
+      for element in iterable:
+          if not element:
+              return False
+      return True
+  ```
+
+- `all([])` returns `True` since the iterable is empty. 
+- `all([[]])` returns `False` because `not []` is `True` is equivalent to `not False` as the list inside the iterable is empty.
+- `all([[[]]])` and higher recursive variants are always `True` since `not [[]]`, `not [[[]]]`, and so on are equivalent to `not True`.
+
+---
+
+---
+
+
 
 ## Section: The Hidden treasures!
 
@@ -3195,6 +3281,21 @@ nan
 
 * `int('١٢٣٤٥٦٧٨٩')` returns `123456789` in Python 3. In Python, Decimal characters include digit characters, and all characters that can be used to form decimal-radix numbers, e.g. U+0660, ARABIC-INDIC DIGIT ZERO. Here's an [interesting story](http://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) related to this behavior of Python.
 
+* Python has an undocumented [converse implication](https://en.wikipedia.org/wiki/Converse_implication) operator. 
+
+     ```py
+     >>> False ** False == True
+     True
+     >>> False ** True == False
+     True
+     >>> True ** False == True
+     True
+     >>> True ** True == True
+     True
+     ```
+
+     If you replace `False` and `True` by 0 and 1 and do the maths, the truth table is equivalent to converse implication operator. ([Source](https://github.com/cosmologicon/pywat/blob/master/explanation.md#the-undocumented-converse-implication-operator)).
+
 * `'abc'.count('') == 4`. Here's an approximate implementation of `count` method, which would make the things more clear
   ```py
   def count(s, sub):
@@ -3208,7 +3309,6 @@ nan
 ---
 
 <p align="center">~~~ That's all folks! ~~~</p>
-
 ---
 
 # Contributing
@@ -3226,6 +3326,7 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 * https://stackoverflow.com/questions/530530/python-2-x-gotchas-and-landmines
 * https://stackoverflow.com/questions/1011431/common-pitfalls-in-python
 * https://www.python.org/doc/humor/
+* https://github.com/cosmologicon/pywat#the-undocumented-converse-implication-operator
 * https://www.codementor.io/satwikkansal/python-practices-for-efficient-code-performance-memory-and-usability-aze6oiq65
 
 # 🎓 License

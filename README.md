@@ -1321,6 +1321,48 @@ True
 
 ---
 
+### ▶ Non-reflexive class methods
+
+<!-- Example ID: 3649771a-f733-413c-8060-3f9f167b83fd -->
+
+```py
+class SomeClass:
+		def instance_method(self):
+				pass
+		
+		@classmethod
+		def class_method(cls):
+				pass
+```
+
+**Output:**
+
+```py
+>>> SomeClass.instance_method is SomeClass.instance_method
+True
+>>> SomeClass.class_method is SomeClass.class_method
+False
+>>> id(SomeClass.class_method) == id(SomeClass.class_method)
+True
+```
+
+#### 💡 Explanation:
+
+- The reason `SomeClass.class_method is SomeClass.class_method` is `False` is due to the `@classmethod` decorator. 
+
+  ```py
+  >>> SomeClass.instance_method
+  <function __main__.SomeClass.instance_method(self)>
+  >>> SomeClass.class_method
+  <bound method SomeClass.class_method of <class '__main__.SomeClass'>
+  ```
+
+  A new bound method everytime `SomeClass.class_method` is accessed.
+
+-  `id(SomeClass.class_method) == id(SomeClass.class_method)` returned `True` because the second allocation of memory for `class_method` happened at the same location of first deallocation (See Deep Down, we're all the same example for more detailed explanation). 
+
+---
+
 ### ▶ yielding None
 <!-- Example ID: 5a40c241-2c30-40d0-8ba9-cf7e097b3b53 --->
 ```py
@@ -2843,7 +2885,7 @@ True
 #### 💡 Explanation:
 
 * `this` module in Python is an easter egg for The Zen Of Python ([PEP 20](https://www.python.org/dev/peps/pep-0020)).
-* And if you think that's already interesting enough, check out the implementation of [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py). Interestingly, the code for the Zen violates itself (and that's probably the only place where this happens).
+* And if you think that's already interesting enough, check out the implementation of [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py). Interestingly, **the code for the Zen violates itself** (and that's probably the only place where this happens).
 * Regarding the statement `love is not True or False; love is love`, ironic but it's self-explanatory (if not, please see the examples related to `is` and `is not` operators).
 
 ---
@@ -2888,7 +2930,7 @@ Try block executed successfully...
 ```
 
 #### 💡 Explanation:
-- The `else` clause after a loop is executed only when there's no explicit `break` after all the iterations.
+- The `else` clause after a loop is executed only when there's no explicit `break` after all the iterations. You can think of it as a "nobreak" clause.
 - `else` clause after try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
 
 ---
@@ -3041,10 +3083,9 @@ AttributeError: 'A' object has no attribute '__variable'
 * So, to access `__honey` attribute in first snippet, we had to append `_Yo` to the front which would prevent conflicts with the same name attribute defined in any other class.
 * But then why didn't it work in the second snippet? Because name mangling excludes the names ending with double underscores.
 * The third snippet was also a consequence of name mangling. The name `__variable` in the statement `return __variable` was mangled to `_A__variable` which also happens to be the name of the variable we declared in outer scope.
+* Also, if the mangled name is longer than 255 characters truncation will happen.
 
 ---
-
-
 
 ---
 
@@ -3205,9 +3246,8 @@ nan
 <!-- Example ID: f885cb82-f1e4-4daa-9ff3-972b14cb1324 --->
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
 
-  **💡 Explanation:**
-  If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list, it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic `list` object API.
-
+  **💡 Explanation:** If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list, it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic `list` object API.
+  
 * Few weird looking but semantically correct statements:
   + `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
   + `'a'[0][0][0][0][0]` is also a semantically correct statement as strings are [sequences](https://docs.python.org/3/glossary.html#term-sequence)(iterables supporting element access using integer indices) in Python.
@@ -3242,22 +3282,47 @@ nan
   >>> a
   >>> 44
   ```
-  **💡 Explanation:**
-  This prank comes from [Raymond Hettinger's tweet](https://twitter.com/raymondh/status/1131103570856632321?lang=en). The space invader operator is actually just a malformatted `a -= (-1)`. Which is equivalent to `a = a - (- 1)`. Similar for the `a += (+ 1)` case.
+  **💡 Explanation:** This prank comes from [Raymond Hettinger's tweet](https://twitter.com/raymondh/status/1131103570856632321?lang=en). The space invader operator is actually just a malformatted `a -= (-1)`. Which is equivalent to `a = a - (- 1)`. Similar for the `a += (+ 1)` case.
+  
+* Python has an undocumented [converse implication](https://en.wikipedia.org/wiki/Converse_implication) operator. 
+     
+     ```py
+     >>> False ** False == True
+     True
+     >>> False ** True == False
+     True
+>>> True ** False == True
+     True
+>>> True ** True == True
+     True
+     ```
+
+     **💡 Explanation:** If you replace `False` and `True` by 0 and 1 and do the maths, the truth table is equivalent to converse implication operator. ([Source](https://github.com/cosmologicon/pywat/blob/master/explanation.md#the-undocumented-converse-implication-operator))
+     
+* Since we are talking operators, there's also `@` operator for matrix multiplication (don't worry, this time it's for real).
+
+     ```py
+     >>> import numpy as np
+     >>> np.array([2, 2, 2]) @ np.array([7, 8, 8])
+     46
+     ```
+
+     **💡 Explanation:**  The `@` operator was added in Python 3.5 keeping scientific community in mind. Any object can overload `__matmul__` magic method to define behavior for this operator.
 
 * Python uses 2 bytes for local variable storage in functions. In theory, this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
+     
      ```py
      import dis
      exec("""
      def f():
          """ + """
-         """.join(["X" + str(x) + "=" + str(x) for x in range(65539)]))
-
-     f()
-
+    """.join(["X" + str(x) + "=" + str(x) for x in range(65539)]))
+     
+f()
+     
      print(dis.dis(f))
-     ```
-
+```
+     
 * Multiple Python threads won't run your *Python code* concurrently (yes you heard it right!). It may seem intuitive to spawn several threads and let them execute your Python code concurrently, but, because of the [Global Interpreter Lock](https://wiki.python.org/moin/GlobalInterpreterLock) in Python, all you're doing is making your threads execute on the same core turn by turn. Python threads are good for IO-bound tasks, but to achieve actual parallelization in Python for CPU-bound tasks, you might want to use the Python [multiprocessing](https://docs.python.org/2/library/multiprocessing.html) module.
 
 * Sometimes the `print` method might not print values immediately. For example,
@@ -3280,21 +3345,6 @@ nan
   ```
 
 * `int('١٢٣٤٥٦٧٨٩')` returns `123456789` in Python 3. In Python, Decimal characters include digit characters, and all characters that can be used to form decimal-radix numbers, e.g. U+0660, ARABIC-INDIC DIGIT ZERO. Here's an [interesting story](http://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) related to this behavior of Python.
-
-* Python has an undocumented [converse implication](https://en.wikipedia.org/wiki/Converse_implication) operator. 
-
-     ```py
-     >>> False ** False == True
-     True
-     >>> False ** True == False
-     True
-     >>> True ** False == True
-     True
-     >>> True ** True == True
-     True
-     ```
-
-     If you replace `False` and `True` by 0 and 1 and do the maths, the truth table is equivalent to converse implication operator. ([Source](https://github.com/cosmologicon/pywat/blob/master/explanation.md#the-undocumented-converse-implication-operator)).
 
 * `'abc'.count('') == 4`. Here's an approximate implementation of `count` method, which would make the things more clear
   ```py

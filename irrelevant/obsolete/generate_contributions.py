@@ -1,6 +1,8 @@
 """
-Parses the README.md and generated the table
+This script parses the README.md and generates the table
 `CONTRIBUTORS.md`.
+
+No longer works since we've moved on contributors to CONTRIBUTORS.md entirely.
 """
 
 import pprint

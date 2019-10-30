@@ -298,12 +298,30 @@ True
 >>> a is b
 False
 
->>> a, b = "wtf!", "wtf!"
->>> a is b
-True
 ```
 
 3\.
+
+```py
+>>> a, b = "wtf!", "wtf!"
+>>> a is b # All versions except 3.7.x
+True
+
+>>> a = "wtf!"; b = "wtf!"
+>>> a is b
+False
+```
+
+```py
+# This time in file some_file.py
+a = "wtf!"
+b = "wtf!"
+print(a is b)
+
+# prints True when the module is invoked!
+```
+
+4\.
 
 **Output (< Python3.7 )**
 
@@ -324,8 +342,9 @@ Makes sense, right?
   * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
   * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. Cpython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
   <img src="images/string-intern/string_intern.png" alt="">
-+ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then  references the second variable at the same time. If you do it on  separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a  compiler optimization and specifically applies to the interactive  environment. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
-+ The abrupt change in output of the third snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a  few clock cycles during runtime. Constant folding only occurs for strings having length less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
++ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then  references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's an compile time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
++ The compile unit in interactive environment consists of single statement, whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement, whereas `a = "wtf!"; b = "wtf!"` are 2 statements in single line. This explains why the identities are different in `a = "wtf!"; b = "wtf!"`, and also explain why they are same when invoked in `some_file.py`
++ The abrupt change in output of the fourth snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a  few clock cycles during runtime. Constant folding only occurs for strings having length less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
 + Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the third snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549). 
 
 ---
@@ -861,15 +880,13 @@ Similar optimization applies to other **immutable** objects like empty tuples as
 
 * When a and b are set to `257` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `257` as an object.
 
-* It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once. This optimization is not limited to integers, it works for other immutable data types like strings and floats as well.
+* It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once. This optimization is not limited to integers, it works for other immutable data types like strings (check the "Strings are tricky example") and floats as well,
 
   ```py
   >>> a, b = 257.0, 257.0
   >>> a is b
   True
   ```
-
-  
 
 * Why didn't this work for Python 3.7? The abstract reason is because such compiler optimizations are implementation specific (i.e. may change with version, OS, etc). I'm still figuring out what exact implementation change cause the issue, you can check out this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for updates.
 

@@ -2,12 +2,19 @@
 An inefficient monolithic piece of code that'll generate jupyter notebook
 from the projects main README.
 
-TODO
+PS: If you are a recruiter, please don't judge me by this piece of code. I wrote it
+in hurry. I know this is messy and can be simplified, but I don't want to change it
+much because it just works. 
 
-- CLI arguments for running this thing.
+Simplifictions and improvements through patches are more than welcome however :)
+
+
+#TODOs
+
+- CLI arguments for running this thing
 - Add it to prepush hook
+- Add support for skip comments, to skip examples that are not meant for notebook environment.
 - Use templates?
-
 """
 
 import json

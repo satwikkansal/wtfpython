@@ -1452,7 +1452,82 @@ def some_func(val):
 
 ---
 
+### ▶ Nan-reflexivity 
+
+<!-- Example ID: 59bee91a-36e0-47a4-8c7d-aa89bf1d3976 --->
+
+1\.
+
+```py
+a = float('inf')
+b = float('nan')
+c = float('-iNf')  # These strings are case-insensitive
+d = float('nan')
+```
+
+**Output:**
+
+```py
+>>> a
+inf
+>>> b
+nan
+>>> c
+-inf
+>>> float('some_other_string')
+ValueError: could not convert string to float: some_other_string
+>>> a == -c # inf==inf
+True
+>>> None == None # None == None
+True
+>>> b == d # but nan!=nan
+False
+>>> 50 / a
+0.0
+>>> a / a
+nan
+>>> 23 + b
+nan
+```
+
+2\.
+
+```py
+>>> x = float('nan')
+>>> y = x / x
+>>> y is y # identity holds
+True
+>>> y == y # equality fails of y
+False
+>>> [y] == [y] # but the equality succeeds for the list containing y
+True
+```
+
+
+
+#### 💡 Explanation:
+
+- `'inf'` and `'nan'` are special strings (case-insensitive), which when explicitly typecast-ed to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
+
+- Since according to standards ` NaN != NaN`, implementing this breaks the reflexivity assumption of a collection element in Python i.e if `x` is a part of collection like `list`, the implementations like comparison are based on the assumption that `x == x`.  Because of this assumption, the identity is compared first (since it's faster) whlie comparing two elements, and the values are compared only when the identities mismatch. Following snippet will make things clearer
+
+  ```py
+  >>> x = float('nan')
+  >>> x == x, [x] == [x]
+  (False, True)
+  >>> y = float('nan')
+  >>> y == y, [y] == [y]
+  (False, True)
+  >>> x == y, [x] == [y]
+  (False, False)
+  ```
+
+  Since the identities of `x` and `y` are different, the values are considered, which are also different, hence the comparison returns `False` this time.
+
+---
+
 ### ▶ Mutating the immutable!
+
 <!-- Example ID: 15a9e782-1695-43ea-817a-a9208f6bb33d --->
 
 This might seem trivial if you know how references works in Python.
@@ -1934,7 +2009,7 @@ Shouldn't that be 100?
 
 ---
 
-## Section: Watch out for the landmines!
+## Section: Slippery Slopes
 
 
 ### ▶ Modifying a dictionary while iterating over it
@@ -2574,8 +2649,6 @@ def similar_recursive_func(a):
 >>> similar_recursive_func(5)
 4
 ```
-
-
 
 #### 💡 Explanation:
 
@@ -3238,44 +3311,7 @@ Let's increase the number of iterations by a factor of 10.
   
     > There should be one-- and preferably only one --obvious way to do it.
 
----
 
-### ▶ Explicit typecast of strings
-<!-- Example ID: 59bee91a-36e0-47a4-8c7d-aa89bf1d3976 --->
-```py
-a = float('inf')
-b = float('nan')
-c = float('-iNf')  #These strings are case-insensitive
-d = float('nan')
-```
-
-**Output:**
-```py
->>> a
-inf
->>> b
-nan
->>> c
--inf
->>> float('some_other_string')
-ValueError: could not convert string to float: some_other_string
->>> a == -c #inf==inf
-True
->>> None == None # None==None
-True
->>> b == d #but nan!=nan
-False
->>> 50/a
-0.0
->>> a/a
-nan
->>> 23 + b
-nan
-```
-
-#### 💡 Explanation:
-
-`'inf'` and `'nan'` are special strings (case-insensitive), which when explicitly typecast-ed to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
 
 ---
 

@@ -297,6 +297,10 @@ True
 >>> b = "wtf!"
 >>> a is b
 False
+
+>>> a, b = "wtf!", "wtf!"
+>>> a is b
+True
 ```
 
 3\.
@@ -320,6 +324,7 @@ Makes sense, right?
   * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
   * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. Cpython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
   <img src="images/string-intern/string_intern.png" alt="">
++ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then  references the second variable at the same time. If you do it on  separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a  compiler optimization and specifically applies to the interactive  environment. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
 + The abrupt change in output of the third snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a  few clock cycles during runtime. Constant folding only occurs for strings having length less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
 + Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the third snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549). 
 
@@ -771,7 +776,8 @@ True
 ```
 
 3\.
-**Output (< Python 3.7)**
+**Output**
+
 ```
 >>> a, b = 257, 257
 True
@@ -781,7 +787,8 @@ True
 True
 ```
 
-**Output (Python 3.7)**
+**Output (Python 3.7.x specifically)**
+
 ```
 >>> a, b = 257, 257
 False
@@ -836,7 +843,8 @@ Similar optimization applies to other **immutable** objects like empty tuples as
 
 **Both `a` and `b` refer to the same object when initialized with same value in the same line.**
 
-**Output (< Python 3.7)**
+**Output**
+
 ```py
 >>> a, b = 257, 257
 >>> id(a)
@@ -852,7 +860,17 @@ Similar optimization applies to other **immutable** objects like empty tuples as
 ```
 
 * When a and b are set to `257` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `257` as an object.
-* It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once.
+
+* It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once. This optimization is not limited to integers, it works for other immutable data types like strings and floats as well.
+
+  ```py
+  >>> a, b = 257.0, 257.0
+  >>> a is b
+  True
+  ```
+
+  
+
 * Why didn't this work for Python 3.7? The abstract reason is because such compiler optimizations are implementation specific (i.e. may change with version, OS, etc). I'm still figuring out what exact implementation change cause the issue, you can check out this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for updates.
 
 ---
@@ -1189,6 +1207,7 @@ Before Python 3.5, the boolean value for `datetime.time` object was considered t
 ### ▶ What's wrong with booleans?
 <!-- Example ID: 0bba5fa7-9e6d-4cd2-8b94-952d061af5dd --->
 1\.
+
 ```py
 # A simple example to count the number of booleans and
 # integers in an iterable of mixed data types.
@@ -1222,15 +1241,33 @@ for item in mixed_list:
 ''
 ```
 
+3\.
+
+```py
+True = False
+if True == False:
+    print("I've lost faith in truth!")
+```
+
+**Output (< 3.x):**
+
+```
+I've lost faith in truth!
+```
+
+
+
 #### 💡 Explanation:
 
 * `bool` is a subclass of `int` in Python
+    
     ```py
     >>> issubclass(bool, int)
     True
     >>> issubclass(int, bool)
     False
     ```
+    
 * And thus, `True` and `False` are instances of `int`
   ```py
   >>> isinstance(True, int)
@@ -1248,6 +1285,10 @@ for item in mixed_list:
   ```
 
 * See this StackOverflow [answer](https://stackoverflow.com/a/8169049/4354153) for the rationale behind it.
+
+* Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true).  `True`, `False`, and a `bool` type was added in 2.x versions, but, for backward compatibility, `True` and `False` couldn't be made constants. They just were built-in variables, and it was possible to reassign them
+
+* Python 3 was backward-incompatible, the issue was finally fixed, and thus the last snippet won't work with Python 3.x!
 
 ---
 
@@ -1507,27 +1548,6 @@ NameError: name 'e' is not defined
     >>> print e
     # Nothing is printed!
     ```
-
----
-
-### ▶ When True is actually False
-<!-- Example ID: c8317047-48ae-4306-af5a-04c6d8b7c2b9 --->
-```py
-True = False
-if True == False:
-    print("I've lost faith in truth!")
-```
-
-**Output (< 3.x):**
-
-```
-I've lost faith in truth!
-```
-
-#### 💡 Explanation:
-
-- Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true). Then they added `True`, `False`, and a `bool` type, but, for backward compatibility, they couldn't make `True` and `False` constants- they just were built-in variables.
-- Python 3 was backward-incompatible, so it was now finally possible to fix that, and so this example won't work with Python 3.x!
 
 ---
 
@@ -3345,6 +3365,17 @@ f()
   ```
 
 * `int('١٢٣٤٥٦٧٨٩')` returns `123456789` in Python 3. In Python, Decimal characters include digit characters, and all characters that can be used to form decimal-radix numbers, e.g. U+0660, ARABIC-INDIC DIGIT ZERO. Here's an [interesting story](http://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) related to this behavior of Python.
+
+* You can seperate numeric literals with underscores (for better readablity) from Python 3 onwards.
+
+     ```py
+     >>> six_million = 6_000_000
+     >>> six_million
+     6000000
+     >>> hex_address = 0xF00D_CAFE
+     >>> hex_address
+     4027435774
+     ```
 
 * `'abc'.count('') == 4`. Here's an approximate implementation of `count` method, which would make the things more clear
   ```py

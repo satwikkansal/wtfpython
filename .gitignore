@@ -10,3 +10,7 @@ wtfpython-pypi/wtfpython.egg-info
 __pycache__/
 *.py[cod]
 *$py.class
+
+irrelevant/.ipynb_checkpoints/
+
+irrelevant/.python-version

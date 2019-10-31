@@ -18,8 +18,10 @@ Simplifictions and improvements through patches are more than welcome however :)
 """
 
 import json
+import os
 import pprint
-fname = "/Users/300041709/code/self/wtfpython/README.md"
+
+fpath = os.path.join(os.path.dirname( __file__ ), '..', 'README.md')
 examples = []
 
 # The globals
@@ -250,7 +252,7 @@ def convert_to_notebook(parsed_json):
 
 
 
-with open(fname, 'r+', encoding="utf-8") as f:
+with open(fpath, 'r+', encoding="utf-8") as f:
     lines = iter(f.readlines())
     line = next(lines)
     result = []

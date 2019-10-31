@@ -9,7 +9,7 @@ Python, being a beautifully designed high-level and interpreter-based programmin
 
 Here is a fun project attempting to explain what exactly is happening under the hood for some counter-intuitive snippets and lesser-known features in Python.
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
+While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I beliereve that you'll find it interesting too!
 
 If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may have already experienced some of them before, and I might be able to revive sweet old memories of yours! :sweat_smile:
 
@@ -175,7 +175,7 @@ For some reasons, "Walrus" operator (`:=`) has become a very popular feature in 
 >>> a
 'wtf_walrus'
 >>> a := "wtf_walrus"
-File "<ipython-input-20-14e95425e0a2>", line 1
+File "<stdin>", line 1
     a := "wtf_walrus"
       ^
 SyntaxError: invalid syntax
@@ -200,7 +200,7 @@ SyntaxError: invalid syntax
 >>> a, b
 (6, 9)
 >>> (a, b = 16, 19) # Oops
-  File "<ipython-input-67-f4339673d0d4>", line 1
+  File "<stdin>", line 1
     (a, b = 6, 9)
           ^
 SyntaxError: invalid syntax
@@ -210,6 +210,8 @@ SyntaxError: invalid syntax
 
 >>> a # a is still unchanged?
 6
+
+>>> b
 16
 ```
 
@@ -308,7 +310,7 @@ False
 True
 
 >>> a = "wtf!"; b = "wtf!"
->>> a is b
+>>> a is b # This will print True or False depending on where you're invoking it (python shell / ipython / as a script)
 False
 ```
 
@@ -343,7 +345,7 @@ Makes sense, right?
   * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. Cpython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
   <img src="images/string-intern/string_intern.png" alt="">
 + When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then  references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's an compile time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
-+ The compile unit in interactive environment consists of single statement, whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement, whereas `a = "wtf!"; b = "wtf!"` are 2 statements in single line. This explains why the identities are different in `a = "wtf!"; b = "wtf!"`, and also explain why they are same when invoked in `some_file.py`
++ The compile unit in interactive environment like ipython consists of single statement, whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement, whereas `a = "wtf!"; b = "wtf!"` are 2 statements in single line. This explains why the identities are different in `a = "wtf!"; b = "wtf!"`, and also explain why they are same when invoked in `some_file.py`
 + The abrupt change in output of the fourth snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a  few clock cycles during runtime. Constant folding only occurs for strings having length less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
 + Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the third snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549). 
 
@@ -401,7 +403,7 @@ some_dict[5] = "Python"
 
 ```py
 >>> some_dict[5.5]
-"Ruby"
+"JavaScript"
 >>> some_dict[5.0] # "Python" destroyed the existence of "Ruby"?
 "Python"
 >>> some_dict[5] 
@@ -726,10 +728,10 @@ array_2[:] = [1,2,3,4,5]
 **Output:**
 ```py
 >>> print(list(gen_1))
-[1,2,3,4]
+[1, 2, 3, 4]
 
 >>> print(list(gen_2))
-[1,2,3,4,5]
+[1, 2, 3, 4, 5]
 ```
 
 3\.
@@ -797,24 +799,18 @@ True
 3\.
 **Output**
 
-```
+```py
 >>> a, b = 257, 257
-True
-
->>> a = 257; b = 257
 >>> a is b
 True
 ```
 
 **Output (Python 3.7.x specifically)**
 
-```
+```py
 >>> a, b = 257, 257
+>> a is b
 False
-
->>> a = 257; b = 257
->>> a is b
-True
 ```
 
 #### 💡 Explanation:
@@ -1176,6 +1172,10 @@ wtfpython
 >>> # The following statements raise `SyntaxError`
 >>> # print('''wtfpython')
 >>> # print("""wtfpython")
+  File "<input>", line 3
+    print("""wtfpython")
+                        ^
+SyntaxError: EOF while scanning triple-quoted string literal
 ```
 
 #### 💡 Explanation:
@@ -1261,15 +1261,17 @@ for item in mixed_list:
 3\.
 
 ```py
-True = False
-if True == False:
-    print("I've lost faith in truth!")
+def tell_truth():
+    True = False
+    if True == False:
+        print("I have lost faith in truth!")
 ```
 
 **Output (< 3.x):**
 
-```
-I've lost faith in truth!
+```py
+>>> tell_truth()
+I have lost faith in truth!
 ```
 
 
@@ -1331,7 +1333,7 @@ class C(A):
 >>> A.x, B.x, C.x
 (1, 2, 1)
 >>> A.x = 3
->>> A.x, B.x, C.x
+>>> A.x, B.x, C.x # C.x changed, but B.x didn't
 (3, 2, 3)
 >>> a = A()
 >>> a.x, A.x
@@ -1379,7 +1381,7 @@ True
 
 ---
 
-### ▶ Non-reflexive class methods
+### ▶ Non-reflexive class method
 
 <!-- Example ID: 3649771a-f733-413c-8060-3f9f167b83fd -->
 
@@ -1430,7 +1432,7 @@ def some_func(val):
     return "something"
 ```
 
-**Output:**
+**Output (<= 3.7.x):**
 
 ```py
 >>> [x for x in some_iterable]
@@ -1449,6 +1451,7 @@ def some_func(val):
 - This is bug in CPython's handling of `yield` in generators and comprehensions.
 - Source and explanation can be found here: https://stackoverflow.com/questions/32139885/yield-in-list-comprehensions-and-generator-expressions
 - Related bug report: http://bugs.python.org/issue10544
+- Python 3.8+ no longer allows `yield` inside list comprehension and will throw a `SyntaxError`.
 
 ---
 
@@ -1509,7 +1512,7 @@ True
 
 - `'inf'` and `'nan'` are special strings (case-insensitive), which when explicitly typecast-ed to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
 
-- Since according to standards ` NaN != NaN`, implementing this breaks the reflexivity assumption of a collection element in Python i.e if `x` is a part of collection like `list`, the implementations like comparison are based on the assumption that `x == x`.  Because of this assumption, the identity is compared first (since it's faster) whlie comparing two elements, and the values are compared only when the identities mismatch. Following snippet will make things clearer
+- Since according to IEEE standards ` NaN != NaN`, obeying this rule breaks the reflexivity assumption of a collection element in Python i.e if `x` is a part of collection like `list`, the implementations like comparison are based on the assumption that `x == x`.  Because of this assumption, the identity is compared first (since it's faster) whlie comparing two elements, and the values are compared only when the identities mismatch. Following snippet will make things clearer
 
   ```py
   >>> x = float('nan')
@@ -1523,6 +1526,8 @@ True
   ```
 
   Since the identities of `x` and `y` are different, the values are considered, which are also different, hence the comparison returns `False` this time.
+
+- Interesting read: [Reflexivity, and other pilliars of civilization](https://bertrandmeyer.com/2010/02/06/reflexivity-and-other-pillars-of-civilization/)
 
 ---
 
@@ -1565,6 +1570,8 @@ But I thought tuples were immutable...
 
 ### ▶ The disappearing variable from outer scope
 <!-- Example ID: 7f1e71b6-cb3e-44fb-aa47-87ef1b7decc8 --->
+<!-- version-specific: True -->
+
 ```py
 e = 7
 try:
@@ -1788,7 +1795,7 @@ The Subclass relationships were expected to be transitive, right? (i.e., if `A` 
 class SomeClass(str):
     pass
 
-some_dict = {'s':42}
+some_dict = {'s': 42}
 ```
 
 **Output:**
@@ -2014,6 +2021,7 @@ Shouldn't that be 100?
 
 ### ▶ Modifying a dictionary while iterating over it
 <!-- Example ID: b4e5cdfb-c3a8-4112-bd38-e2356d801c41 --->
+<!-- version-specific: True -->
 ```py
 x = {0: None}
 
@@ -2044,11 +2052,14 @@ Yes, it runs for exactly **eight** times and stops.
 * It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
 * How deleted keys are handled and when the resize occurs might be different for different Python implementations.
 * So for Python versions other than Python 2.7 - Python 3.5 the count might be different from 8 (but whatever the count is, it's going to be the same every time you run it). You can find some discussion around this [here](https://github.com/satwikkansal/wtfpython/issues/53) or in [this](https://stackoverflow.com/questions/44763802/bug-in-python-dict) StackOverflow thread.
+* Python 3.8 onwards, you'll see `RuntimeError: dictionary keys changed during iteration` exception if you try to do this.
 
 ---
 
 ### ▶ Stubborn `del` operation
 <!-- Example ID: 777ed4fd-3a2d-466f-95e7-c4058e61d78e --->
+<!-- read-only: True -->
+
 ```py
 class SomeClass:
     def __del__(self):
@@ -2152,6 +2163,7 @@ Can you guess why the output is `[2, 4]`?
 
 ### ▶ Loop variables leaking out!
 <!-- Example ID: ccec7bf6-7679-4963-907a-1cd8587be9ea --->
+<!-- version-specific: True -->
 1\.
 ```py
 for x in range(7):
@@ -2630,14 +2642,14 @@ def some_recursive_func(a):
     if a[0] == 0:
         return 
     a[0] -= 1
-    some_func(a)
+    some_recursive_func(a)
     return a
 
 def similar_recursive_func(a):
 		if a == 0:
 				return a
 		a -= 1
-		another_func()
+		similar_recursive_func(a)
 		return a
 ```
 
@@ -2694,6 +2706,8 @@ def similar_recursive_func(a):
 
 ### ▶ Wild imports
 <!-- Example ID: 83deb561-bd55-4461-bb5e-77dd7f411e1c --->
+<!-- read-only: True -->
+
 ```py
 # File: module.py
 
@@ -2861,6 +2875,8 @@ Sshh.. It's a super secret.
 
 ### ▶ `goto`, but why?
 <!-- Example ID: 2aff961e-7fa5-4986-a18a-9e5894bd89fe --->
+<!-- version-specific: True -->
+
 ```py
 from goto import goto, label
 for i in range(9):

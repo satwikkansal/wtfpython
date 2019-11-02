@@ -19,74 +19,79 @@ So, here we go...
 
 # Table of Contents
 
-<!-- toc generated using "markdown-toc -i README.md --maxdepth 3"-->
+<!-- Generated using "markdown-toc -i README.md --maxdepth 3"-->
+<!-- toc -->
 
 - [Structure of the Examples](#structure-of-the-examples)
-    + [▶ Some fancy Title](#-some-fancy-title)
+    + [▶ Some fancy Title](#%E2%96%B6-some-fancy-title)
 - [Usage](#usage)
 - [👀 Examples](#%F0%9F%91%80-examples)
   * [Section: Strain your brain!](#section-strain-your-brain)
-    + [▶ Strings can be tricky sometimes](#-strings-can-be-tricky-sometimes)
-    + [▶ Splitsies](#-splitsies)
-    + [▶ Hash brownies](#-hash-brownies)
-    + [▶ Disorder within order](#-disorder-within-order)
-    + [▶ Keep trying...](#-keep-trying)
-    + [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same)
-    + [▶ For what?](#-for-what)
-    + [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
-    + [▶ How not to use `is` operator](#-how-not-to-use-is-operator)
-    + [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
-    + [▶ The sticky output function](#-the-sticky-output-function)
-    + [▶ The chicken-egg problem](#-the-chicken-egg-problem)
-    + [▶ `is not ...` is not `is (not ...)`](#-is-not--is-not-is-not-)
-    + [▶ The surprising comma](#-the-surprising-comma)
-    + [▶ Strings and the backslashes](#-strings-and-the-backslashes)
-    + [▶ not knot!](#-not-knot)
-    + [▶ Half triple-quoted strings](#-half-triple-quoted-strings)
-    + [▶ Midnight time doesn't exist?](#-midnight-time-doesnt-exist)
-    + [▶ What's wrong with booleans?](#-whats-wrong-with-booleans)
-    + [▶ Class attributes and instance attributes](#-class-attributes-and-instance-attributes)
-    + [▶ yielding None](#-yielding-none)
-    + [▶ Mutating the immutable!](#-mutating-the-immutable)
-    + [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
-    + [▶ When True is actually False](#-when-true-is-actually-false)
-    + [▶ Yielding from... return!](#-yielding-from-return)
-    + [▶ Lossy zip of iterators](#-lossy-zip-of-iterators)
-    + [▶ Subclass relationships](#-subclass-relationships)
-    + [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
-    + [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
+    + [▶ First things first!](#%E2%96%B6-first-things-first)
+    + [▶ Strings can be tricky sometimes](#%E2%96%B6-strings-can-be-tricky-sometimes)
+    + [▶ Splitsies](#%E2%96%B6-splitsies)
+    + [▶ Hash brownies](#%E2%96%B6-hash-brownies)
+    + [▶ Disorder within order](#%E2%96%B6-disorder-within-order)
+    + [▶ Keep trying...](#%E2%96%B6-keep-trying)
+    + [▶ Deep down, we're all the same.](#%E2%96%B6-deep-down-were-all-the-same)
+    + [▶ For what?](#%E2%96%B6-for-what)
+    + [▶ Evaluation time discrepancy](#%E2%96%B6-evaluation-time-discrepancy)
+    + [▶ How not to use `is` operator](#%E2%96%B6-how-not-to-use-is-operator)
+    + [▶ A tic-tac-toe where X wins in the first attempt!](#%E2%96%B6-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
+    + [▶ The sticky output function](#%E2%96%B6-the-sticky-output-function)
+    + [▶ The chicken-egg problem](#%E2%96%B6-the-chicken-egg-problem)
+    + [▶ `is not ...` is not `is (not ...)`](#%E2%96%B6-is-not--is-not-is-not-)
+    + [▶ The surprising comma](#%E2%96%B6-the-surprising-comma)
+    + [▶ Strings and the backslashes](#%E2%96%B6-strings-and-the-backslashes)
+    + [▶ not knot!](#%E2%96%B6-not-knot)
+    + [▶ Half triple-quoted strings](#%E2%96%B6-half-triple-quoted-strings)
+    + [▶ Midnight time doesn't exist?](#%E2%96%B6-midnight-time-doesnt-exist)
+    + [▶ What's wrong with booleans?](#%E2%96%B6-whats-wrong-with-booleans)
+    + [▶ Class attributes and instance attributes](#%E2%96%B6-class-attributes-and-instance-attributes)
+    + [▶ Non-reflexive class method](#%E2%96%B6-non-reflexive-class-method)
+    + [▶ yielding None](#%E2%96%B6-yielding-none)
+    + [▶ Nan-reflexivity](#%E2%96%B6-nan-reflexivity)
+    + [▶ Mutating the immutable!](#%E2%96%B6-mutating-the-immutable)
+    + [▶ The disappearing variable from outer scope](#%E2%96%B6-the-disappearing-variable-from-outer-scope)
+    + [▶ Yielding from... return!](#%E2%96%B6-yielding-from-return)
+    + [▶ Lossy zip of iterators](#%E2%96%B6-lossy-zip-of-iterators)
+    + [▶ Subclass relationships](#%E2%96%B6-subclass-relationships)
+    + [▶ The mysterious key type conversion](#%E2%96%B6-the-mysterious-key-type-conversion)
+    + [▶ Let's see if you can guess this?](#%E2%96%B6-lets-see-if-you-can-guess-this)
   * [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
-    + [▶ Skipping lines?](#-skipping-lines)
-    + [▶ Teleportation](#-teleportation)
-    + [▶ Well, something is fishy...](#-well-something-is-fishy)
-  * [Section: Watch out for the landmines!](#section-watch-out-for-the-landmines)
-    + [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
-    + [▶ Stubborn `del` operation](#-stubborn-del-operation)
-    + [▶ Deleting a list item while iterating](#-deleting-a-list-item-while-iterating)
-    + [▶ Loop variables leaking out!](#-loop-variables-leaking-out)
-    + [▶ Beware of default mutable arguments!](#-beware-of-default-mutable-arguments)
-    + [▶ Catching the Exceptions](#-catching-the-exceptions)
-    + [▶ Same operands, different story!](#-same-operands-different-story)
-    + [▶ The out of scope variable](#-the-out-of-scope-variable)
-    + [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
-    + [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
-    + [▶ Needles in a Haystack](#-needles-in-a-haystack)
-    + [▶ Wild imports](#-wild-imports)
+    + [▶ Skipping lines?](#%E2%96%B6-skipping-lines)
+    + [▶ Teleportation](#%E2%96%B6-teleportation)
+    + [▶ Well, something is fishy...](#%E2%96%B6-well-something-is-fishy)
+  * [Section: Slippery Slopes](#section-slippery-slopes)
+    + [▶ Modifying a dictionary while iterating over it](#%E2%96%B6-modifying-a-dictionary-while-iterating-over-it)
+    + [▶ Stubborn `del` operation](#%E2%96%B6-stubborn-del-operation)
+    + [▶ Deleting a list item while iterating](#%E2%96%B6-deleting-a-list-item-while-iterating)
+    + [▶ Loop variables leaking out!](#%E2%96%B6-loop-variables-leaking-out)
+    + [▶ Beware of default mutable arguments!](#%E2%96%B6-beware-of-default-mutable-arguments)
+    + [▶ Catching the Exceptions](#%E2%96%B6-catching-the-exceptions)
+    + [▶ Same operands, different story!](#%E2%96%B6-same-operands-different-story)
+    + [▶ The out of scope variable](#%E2%96%B6-the-out-of-scope-variable)
+    + [▶ Be careful with chained operations](#%E2%96%B6-be-careful-with-chained-operations)
+    + [▶ Name resolution ignoring class scope](#%E2%96%B6-name-resolution-ignoring-class-scope)
+    + [▶ Needles in a Haystack](#%E2%96%B6-needles-in-a-haystack)
+    + [▶ Wild imports](#%E2%96%B6-wild-imports)
+  * [Section: Read the docs](#section-read-the-docs)
+    + [▶ All sorted?](#%E2%96%B6-all-sorted)
+    + [▶ All-true-ation](#%E2%96%B6-all-true-ation)
   * [Section: The Hidden treasures!](#section-the-hidden-treasures)
-    + [▶ Okay Python, Can you make me fly?](#-okay-python-can-you-make-me-fly)
-    + [▶ `goto`, but why?](#-goto-but-why)
-    + [▶ Brace yourself!](#-brace-yourself)
-    + [▶ Let's meet Friendly Language Uncle For Life](#-lets-meet-friendly-language-uncle-for-life)
-    + [▶ Even Python understands that love is complicated](#-even-python-understands-that-love-is-complicated)
-    + [▶ Yes, it exists!](#-yes-it-exists)
-    + [▶ Ellipsis](#-ellipsis)
-    + [▶ Inpinity](#-inpinity)
-    + [▶ Let's mangle](#-lets-mangle)
+    + [▶ Okay Python, Can you make me fly?](#%E2%96%B6-okay-python-can-you-make-me-fly)
+    + [▶ `goto`, but why?](#%E2%96%B6-goto-but-why)
+    + [▶ Brace yourself!](#%E2%96%B6-brace-yourself)
+    + [▶ Let's meet Friendly Language Uncle For Life](#%E2%96%B6-lets-meet-friendly-language-uncle-for-life)
+    + [▶ Even Python understands that love is complicated](#%E2%96%B6-even-python-understands-that-love-is-complicated)
+    + [▶ Yes, it exists!](#%E2%96%B6-yes-it-exists)
+    + [▶ Ellipsis](#%E2%96%B6-ellipsis)
+    + [▶ Inpinity](#%E2%96%B6-inpinity)
+    + [▶ Let's mangle](#%E2%96%B6-lets-mangle)
   * [Section: Miscellaneous](#section-miscellaneous)
-    + [▶ `+=` is faster](#--is-faster)
-    + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
-    + [▶ Explicit typecast of strings](#-explicit-typecast-of-strings)
-    + [▶ Minor Ones](#-minor-ones)
+    + [▶ `+=` is faster](#%E2%96%B6--is-faster)
+    + [▶ Let's make a giant string!](#%E2%96%B6-lets-make-a-giant-string)
+    + [▶ Minor Ones](#%E2%96%B6-minor-ones)
   * [~~~ That's all folks! ~~~](#-thats-all-folks-)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
@@ -351,44 +356,6 @@ Makes sense, right?
 
 ---
 
-### ▶ Splitsies
-<!-- Example ID: ec3168ba-a81a-4482-afb0-691f1cc8d65a --->
-```py
->>> 'a'.split()
-['a']
-
-# is same as
->>> 'a'.split(' ')
-['a']
-
-# but
->>> len(''.split())
-0
-
-# isn't the same as
->>> len(''.split(' '))
-1
-```
-
-#### 💡 Explanation:
-
-- It might appear at first that the default seperator for split is a single space `' '`, but as per the [docs](https://docs.python.org/2.7/library/stdtypes.html#str.split)
-    >  If sep is not specified or is `None`, a different splitting algorithm is applied: runs of consecutive whitespace are regarded as a single separator, and the result will contain no empty strings at the start or end if the string has leading or trailing whitespace. Consequently, splitting an empty string or a string consisting of just whitespace with a None separator returns `[]`.
-    > If sep is given, consecutive delimiters are not grouped together and are deemed to delimit empty strings (for example, `'1,,2'.split(',')` returns `['1', '', '2']`). Splitting an empty string with a specified separator returns `['']`.
-- Noticing how the leading and trailing whitespaces are handled in the following snippet will make things clear,
-    ```py
-    >>> ' a '.split(' ')
-    ['', 'a', '']
-    >>> ' a '.split()
-    ['a']
-    >>> ''.split(' ')
-    ['']
-    ```
-
----
-
-
-
 ### ▶ Hash brownies
 <!-- Example ID: eb17db53-49fd-4b61-85d6-345c5ca213ff --->
 1\.
@@ -432,6 +399,56 @@ So, why is Python all over the place?
   **Note:** Objects with different values may also have same hash (known as [hash collision](https://en.wikipedia.org/wiki/Collision_(computer_science))).
 * When the statement `some_dict[5] = "Python"` is executed, the existing value "Ruby" is overwritten with "Python" because Python recognizes `5` and `5.0` as the same keys of the dictionary `some_dict`.
 * This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains the rationale behind it.
+
+---
+
+### ▶ Deep down, we're all the same.
+<!-- Example ID: 8f99a35f-1736-43e2-920d-3b78ec35da9b --->
+```py
+class WTF:
+  pass
+```
+
+**Output:**
+```py
+>>> WTF() == WTF() # two different instances can't be equal
+False
+>>> WTF() is WTF() # identities are also different
+False
+>>> hash(WTF()) == hash(WTF()) # hashes _should_ be different as well
+True
+>>> id(WTF()) == id(WTF())
+True
+```
+
+#### 💡 Explanation:
+
+* When `id` was called, Python created a `WTF` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
+* When we do this twice in succession, Python allocates the same memory location to this second object as well. Since (in CPython) `id` uses the memory location as the object id, the id of the two objects is the same.
+* So, object's id is unique only for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
+* But why did the `is` operator evaluated to `False`? Let's see with this snippet.
+  ```py
+  class WTF(object):
+    def __init__(self): print("I")
+    def __del__(self): print("D")
+  ```
+
+  **Output:**
+  ```py
+  >>> WTF() is WTF()
+  I
+  I
+  D
+  D
+  False
+  >>> id(WTF()) == id(WTF())
+  I
+  D
+  I
+  D
+  True
+  ```
+  As you may observe, the order in which the objects are destroyed is what made all the difference here.
 
 ---
 
@@ -500,7 +517,7 @@ What is going on here?
 - The reason why intransitive equality didn't hold among `dictionary`, `ordered_dict` and `another_ordered_dict` is because of the way `__eq__` method is implemented in `OrderedDict` class. From the [docs](https://docs.python.org/3/library/collections.html#ordereddict-objects)
   
     > Equality tests between OrderedDict objects are order-sensitive and are implemented as `list(od1.items())==list(od2.items())`. Equality tests between `OrderedDict` objects and other Mapping objects are order-insensitive like regular dictionaries.
-- The reason for this equality is behavior  is that it allows `OrderedDict` objects to be directly substituted anywhere a regular dictionary is used.
+- The reason for this equality is behavior is that it allows `OrderedDict` objects to be directly substituted anywhere a regular dictionary is used.
 - Okay, so why did changing the order affect the lenght of the generated `set` object? The answer is the lack of intransitive equality only. Since sets are "unordered" collections of unique elements, the order in which elements are inserted shouldn't matter. But in this case, it does matter. Let's break it down a bit,
     ```py
     >>> some_set = set()
@@ -593,55 +610,6 @@ Iteration 0
 
 ---
 
-### ▶ Deep down, we're all the same.
-<!-- Example ID: 8f99a35f-1736-43e2-920d-3b78ec35da9b --->
-```py
-class WTF:
-  pass
-```
-
-**Output:**
-```py
->>> WTF() == WTF() # two different instances can't be equal
-False
->>> WTF() is WTF() # identities are also different
-False
->>> hash(WTF()) == hash(WTF()) # hashes _should_ be different as well
-True
->>> id(WTF()) == id(WTF())
-True
-```
-
-#### 💡 Explanation:
-
-* When `id` was called, Python created a `WTF` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
-* When we do this twice in succession, Python allocates the same memory location to this second object as well. Since (in CPython) `id` uses the memory location as the object id, the id of the two objects is the same.
-* So, object's id is unique only for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
-* But why did the `is` operator evaluated to `False`? Let's see with this snippet.
-  ```py
-  class WTF(object):
-    def __init__(self): print("I")
-    def __del__(self): print("D")
-  ```
-
-  **Output:**
-  ```py
-  >>> WTF() is WTF()
-  I
-  I
-  D
-  D
-  False
-  >>> id(WTF()) == id(WTF())
-  I
-  D
-  I
-  D
-  True
-  ```
-  As you may observe, the order in which the objects are destroyed is what made all the difference here.
-
----
 
 ### ▶ For what?
 <!-- Example ID: 64a9dccf-5083-4bc9-98aa-8aeecde4f210 --->
@@ -888,6 +856,22 @@ Similar optimization applies to other **immutable** objects like empty tuples as
 
 ---
 
+### ▶ `is not ...` is not `is (not ...)`
+<!-- Example ID: b26fb1ed-0c7d-4b9c-8c6d-94a58a055c0d --->
+```py
+>>> 'something' is not None
+True
+>>> 'something' is (not None)
+False
+```
+
+#### 💡 Explanation
+
+- `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
+- `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise.
+
+---
+
 ### ▶ A tic-tac-toe where X wins in the first attempt!
 <!-- Example ID: 69329249-bdcb-424f-bd09-cca2e6705a7a --->
 
@@ -1043,19 +1027,65 @@ False
 
 ---
 
-### ▶ `is not ...` is not `is (not ...)`
-<!-- Example ID: b26fb1ed-0c7d-4b9c-8c6d-94a58a055c0d --->
+### ▶ Subclass relationships
+<!-- Example ID: 9f6d8cf0-e1b5-42d0-84a0-4cfab25a0bc0 --->
+**Output:**
 ```py
->>> 'something' is not None
+>>> from collections import Hashable
+>>> issubclass(list, object)
 True
->>> 'something' is (not None)
+>>> issubclass(object, Hashable)
+True
+>>> issubclass(list, Hashable)
 False
 ```
 
-#### 💡 Explanation
+The Subclass relationships were expected to be transitive, right? (i.e., if `A` is a subclass of `B`, and `B` is a subclass of `C`, the `A` _should_ a subclass of `C`)
 
-- `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
-- `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise.
+#### 💡 Explanation:
+
+* Subclass relationships are not necessarily transitive in Python. Anyone is allowed to define their own, arbitrary `__subclasscheck__` in a metaclass.
+* When `issubclass(cls, Hashable)` is called, it simply looks for non-Falsey "`__hash__`" method in `cls` or anything it inherits from.
+* Since `object` is hashable, but `list` is non-hashable, it breaks the transitivity relation.
+* More detailed explanation can be found [here](https://www.naftaliharris.com/blog/python-subclass-intransitivity/).
+
+---
+
+### ▶ All-true-ation
+
+<!-- Example ID: dfe6d845-e452-48fe-a2da-0ed3869a8042 -->
+
+```py
+>>> all([True, True, True])
+True
+>>> all([True, True, False])
+False
+
+>>> all([])
+True
+>>> all([[]])
+False
+>>> all([[[]]])
+True
+```
+
+Why's this True-False alteration?
+
+#### 💡 Explanation:
+
+- The implementation of `all` function is equivalent to
+
+- ```py
+  def all(iterable):
+      for element in iterable:
+          if not element:
+              return False
+      return True
+  ```
+
+- `all([])` returns `True` since the iterable is empty. 
+- `all([[]])` returns `False` because `not []` is `True` is equivalent to `not False` as the list inside the iterable is empty.
+- `all([[[]]])` and higher recursive variants are always `True` since `not [[]]`, `not [[[]]]`, and so on are equivalent to `not True`.
 
 ---
 
@@ -1187,37 +1217,6 @@ SyntaxError: EOF while scanning triple-quoted string literal
   wtf
   ```
 + `'''` and `"""` are also string delimiters in Python which causes a SyntaxError because the Python interpreter was expecting a terminating triple quote as delimiter while scanning the currently encountered triple quoted string literal.
-
----
-
-### ▶ Midnight time doesn't exist?
-<!-- Example ID: 1bce8294-5619-4d70-8ce3-fe0bade690d1 --->
-```py
-from datetime import datetime
-
-midnight = datetime(2018, 1, 1, 0, 0)
-midnight_time = midnight.time()
-
-noon = datetime(2018, 1, 1, 12, 0)
-noon_time = noon.time()
-
-if midnight_time:
-    print("Time at midnight is", midnight_time)
-
-if noon_time:
-    print("Time at noon is", noon_time)
-```
-
-**Output (< 3.5):**
-
-```sh
-('Time at noon is', datetime.time(12, 0))
-```
-The midnight time is not printed.
-
-#### 💡 Explanation:
-
-Before Python 3.5, the boolean value for `datetime.time` object was considered to be `False` if it represented midnight in UTC. It is error-prone when using the `if obj:` syntax to check if the `obj` is null or some equivalent of "empty."
 
 ---
 
@@ -1423,6 +1422,7 @@ True
 
 ---
 
+
 ### ▶ yielding None
 <!-- Example ID: 5a40c241-2c30-40d0-8ba9-cf7e097b3b53 --->
 ```py
@@ -1452,6 +1452,72 @@ def some_func(val):
 - Source and explanation can be found here: https://stackoverflow.com/questions/32139885/yield-in-list-comprehensions-and-generator-expressions
 - Related bug report: http://bugs.python.org/issue10544
 - Python 3.8+ no longer allows `yield` inside list comprehension and will throw a `SyntaxError`.
+
+---
+
+
+### ▶ Yielding from... return!
+
+1\.
+
+```py
+def some_func(x):
+    if x == 3:
+        return ["wtf"]
+    else:
+        yield from range(x)
+```
+
+**Output (> 3.3):**
+
+```py
+>>> list(some_func(3))
+[]
+```
+
+Where did the `"wtf"` go? Is it due to some special effect of `yield from`? Let's validate that,
+
+2\.
+
+```py
+def some_func(x):
+    if x == 3:
+        return ["wtf"]
+    else:
+        for i in range(x):
+          yield i
+```
+
+**Output:**
+
+```py
+>>> list(some_func(3))
+[]
+```
+
+Same result, that didn't work either.
+
+#### 💡 Explanation:
+
++ From Python 3.3 onwards, it became possible to use `return` statement with values inside generators (See [PEP380](https://www.python.org/dev/peps/pep-0380/)). The [official docs](https://www.python.org/dev/peps/pep-0380/#enhancements-to-stopiteration) say that,
+
+> "... `return expr` in a generator causes `StopIteration(expr)` to be raised upon exit from the generator."
+
++ In case of `some_func(3)`, `StopIteration` is raised at the beginning because of `return` statement. The `StopIteration` exception is automatically catched inside the `list(...)` wrapper and the `for` loop. Therefore, the above two snippets result in an empty list.
+
++ To get `["wtf"]` from the generator `some_func` we need to catch the `StopIteration` exception,
+
+  ```py
+  try:
+      next(some_func(3))
+  except StopIteration as e:
+      some_string = e.value
+  ```
+
+  ```py
+  >>> some_string
+  ["wtf"]
+  ```
 
 ---
 
@@ -1650,144 +1716,6 @@ NameError: name 'e' is not defined
 
 ---
 
-### ▶ Yielding from... return!
-
-1\.
-
-```py
-def some_func(x):
-    if x == 3:
-        return ["wtf"]
-    else:
-        yield from range(x)
-```
-
-**Output:**
-
-```py
->>> list(some_func(3))
-[]
-```
-
-Where did the `"wtf"` go? Is it due to some special effect of `yield from`? Let's validate that,
-
-2\.
-
-```py
-def some_func(x):
-    if x == 3:
-        return ["wtf"]
-    else:
-        for i in range(x):
-          yield i
-```
-
-**Output (> 3.3):**
-
-```py
->>> list(some_func(3))
-[]
-```
-
-Same result, that didn't work either.
-
-#### 💡 Explanation:
-
-+ From Python 3.3 onwards, it became possible to use `return` statement with values inside generators (See [PEP380](https://www.python.org/dev/peps/pep-0380/)). The [official docs](https://www.python.org/dev/peps/pep-0380/#enhancements-to-stopiteration) say that,
-
-> "... `return expr` in a generator causes `StopIteration(expr)` to be raised upon exit from the generator."
-
-+ In case of `some_func(3)`, `StopIteration` is raised at the beginning because of `return` statement. The `StopIteration` exception is automatically catched inside the `list(...)` wrapper and the `for` loop. Therefore, the above two snippets result in an empty list.
-
-+ To get `["wtf"]` from the generator `some_func` we need to catch the `StopIteration` exception,
-
-  ```py
-  try:
-      next(some_func(3))
-  except StopIteration as e:
-      some_string = e.value
-  ```
-
-  ```py
-  >>> some_string
-  ["wtf"]
-  ```
-
----
-
-### ▶ Lossy zip of iterators
-
-<!-- Example ID: c28ed154-e59f-4070-8eb6-8967a4acac6d --->
-
-```py
->>> numbers = list(range(7))
->>> numbers
-[0, 1, 2, 3, 4, 5, 6]
->>> first_three, remaining = numbers[:3], numbers[3:]
->>> first_three, remaining
-([0, 1, 2], [3, 4, 5, 6])
->>> numbers_iter = iter(numbers)
->>> list(zip(numbers_iter, first_three)) 
-[(0, 0), (1, 1), (2, 2)]
-# so far so good, let's zip the remaining
->>> list(zip(numbers_iter, remaining))
-[(4, 3), (5, 4), (6, 5)]
-```
-Where did element `3` go from the `numbers` list?
-
-#### 💡 Explanation:
-
-- From Python [docs](https://docs.python.org/3.3/library/functions.html#zip), here's an approximate implementation of zip function,
-    ```py
-    def zip(*iterables):
-        sentinel = object()
-        iterators = [iter(it) for it in iterables]
-        while iterators:
-            result = []
-            for it in iterators:
-                elem = next(it, sentinel)
-                if elem is sentinel: return
-                result.append(elem)
-            yield tuple(result)
-    ```
-- So the function takes in arbitrary number of itreable objects, adds each of their items to the `result` list by calling the `next` function on them, and stops whenever any of the iterable is exhausted. 
-- The caveat here is when any iterable is exhausted, the existing elements in the `result` list are discarded. That's what happened with `3` in the `numbers_iter`.
-- The correct way to do the above using `zip` would be,
-    ```py
-    >>> numbers = list(range(7))
-    >>> numbers_iter = iter(numbers)
-    >>> list(zip(first_three, numbers_iter))
-    [(0, 0), (1, 1), (2, 2)]
-    >>> list(zip(remaining, numbers_iter))
-    [(3, 3), (4, 4), (5, 5), (6, 6)]
-    ```
-    The first argument of zip should be the one with fewest elements.
-
----
-
-### ▶ Subclass relationships
-<!-- Example ID: 9f6d8cf0-e1b5-42d0-84a0-4cfab25a0bc0 --->
-**Output:**
-```py
->>> from collections import Hashable
->>> issubclass(list, object)
-True
->>> issubclass(object, Hashable)
-True
->>> issubclass(list, Hashable)
-False
-```
-
-The Subclass relationships were expected to be transitive, right? (i.e., if `A` is a subclass of `B`, and `B` is a subclass of `C`, the `A` _should_ a subclass of `C`)
-
-#### 💡 Explanation:
-
-* Subclass relationships are not necessarily transitive in Python. Anyone is allowed to define their own, arbitrary `__subclasscheck__` in a metaclass.
-* When `issubclass(cls, Hashable)` is called, it simply looks for non-Falsey "`__hash__`" method in `cls` or anything it inherits from.
-* Since `object` is hashable, but `list` is non-hashable, it breaks the transitivity relation.
-* More detailed explanation can be found [here](https://www.naftaliharris.com/blog/python-subclass-intransitivity/).
-
----
 
 ### ▶ The mysterious key type conversion
 <!-- Example ID: 00f42dd0-b9ef-408d-9e39-1bc209ce3f36 --->
@@ -1901,123 +1829,9 @@ a, b = a[b] = {}, 5
   ```
 
 ---
-
----
-
-## Section: Appearances are deceptive!
-
-### ▶ Skipping lines?
-<!-- Example ID: d50bbde1-fb9d-4735-9633-3444b9d2f417 --->
-**Output:**
-```py
->>> value = 11
->>> valuе = 32
->>> value
-11
-```
-
-Wut?
-
-**Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shell.
-
-#### 💡 Explanation
-
-Some non-Western characters look identical to letters in the English alphabet but are considered distinct by the interpreter.
-
-```py
->>> ord('е') # cyrillic 'e' (Ye)
-1077
->>> ord('e') # latin 'e', as used in English and typed using standard keyboard
-101
->>> 'е' == 'e'
-False
-
->>> value = 42 # latin e
->>> valuе = 23 # cyrillic 'e', Python 2.x interpreter would raise a `SyntaxError` here
->>> value
-42
-```
-
-The built-in `ord()` function returns a character's Unicode [code point](https://en.wikipedia.org/wiki/Code_point), and different code positions of Cyrillic 'e' and Latin 'e' justify the behavior of the above example.
-
----
-
-### ▶ Teleportation
-
-<!-- Example ID: edafe923-0c20-4315-b6e1-0c31abfc38f5 --->
-
-```py
-import numpy as np
-
-def energy_send(x):
-    # Initializing a numpy array
-    np.array([float(x)])
-
-def energy_receive():
-    # Return an empty numpy array
-    return np.empty((), dtype=np.float).tolist()
-```
-
-**Output:**
-```py
->>> energy_send(123.456)
->>> energy_receive()
-123.456
-```
-
-Where's the Nobel Prize?
-
-#### 💡 Explanation:
-
-* Notice that the numpy array created in the `energy_send` function is not returned, so that memory space is free to reallocate.
-* `numpy.empty()` returns the next free memory slot without reinitializing it. This memory spot just happens to be the same one that was just freed (usually, but not always).
-
----
-
-### ▶ Well, something is fishy...
-<!-- Example ID: cb6a37c5-74f7-44ca-b58c-3b902419b362 --->
-```py
-def square(x):
-    """
-    A simple function to calculate the square of a number by addition.
-    """
-    sum_so_far = 0
-    for counter in range(x):
-        sum_so_far = sum_so_far + x
-  return sum_so_far
-```
-
-**Output (Python 2.x):**
-
-```py
->>> square(10)
-10
-```
-
-Shouldn't that be 100?
-
-**Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
-
-#### 💡 Explanation
-
-* **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
-* This is how Python handles tabs:
-  
-  > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
-* So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
-* Python 3 is kind enough to throw an error for such cases automatically.
-
-    **Output (Python 3.x):**
-    ```py
-    TabError: inconsistent use of tabs and spaces in indentation
-    ```
-
----
-
 ---
 
 ## Section: Slippery Slopes
-
 
 ### ▶ Modifying a dictionary while iterating over it
 <!-- Example ID: b4e5cdfb-c3a8-4112-bd38-e2356d801c41 --->
@@ -2101,6 +1915,45 @@ Okay, now it's deleted :confused:
 
 ---
 
+### ▶ The out of scope variable
+<!-- Example ID: 75c03015-7be9-4289-9e22-4f5fdda056f7 --->
+```py
+a = 1
+def some_func():
+    return a
+
+def another_func():
+    a += 1
+    return a
+```
+
+**Output:**
+```py
+>>> some_func()
+1
+>>> another_func()
+UnboundLocalError: local variable 'a' referenced before assignment
+```
+
+#### 💡 Explanation:
+* When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`,  but it has not been initialized previously in the same scope which throws an error.
+* Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
+* To modify the outer scope variable `a` in `another_func`, use `global` keyword.
+  ```py
+  def another_func()
+      global a
+      a += 1
+      return a
+  ```
+
+  **Output:**
+  ```py
+  >>> another_func()
+  2
+  ```
+
+---
+
 ### ▶ Deleting a list item while iterating
 <!-- Example ID: 4cc52d4e-d42b-4e09-b25f-fbf5699b7d4e --->
 ```py
@@ -2161,6 +2014,57 @@ Can you guess why the output is `[2, 4]`?
 
 ---
 
+
+### ▶ Lossy zip of iterators
+
+<!-- Example ID: c28ed154-e59f-4070-8eb6-8967a4acac6d --->
+
+```py
+>>> numbers = list(range(7))
+>>> numbers
+[0, 1, 2, 3, 4, 5, 6]
+>>> first_three, remaining = numbers[:3], numbers[3:]
+>>> first_three, remaining
+([0, 1, 2], [3, 4, 5, 6])
+>>> numbers_iter = iter(numbers)
+>>> list(zip(numbers_iter, first_three)) 
+[(0, 0), (1, 1), (2, 2)]
+# so far so good, let's zip the remaining
+>>> list(zip(numbers_iter, remaining))
+[(4, 3), (5, 4), (6, 5)]
+```
+Where did element `3` go from the `numbers` list?
+
+#### 💡 Explanation:
+
+- From Python [docs](https://docs.python.org/3.3/library/functions.html#zip), here's an approximate implementation of zip function,
+    ```py
+    def zip(*iterables):
+        sentinel = object()
+        iterators = [iter(it) for it in iterables]
+        while iterators:
+            result = []
+            for it in iterators:
+                elem = next(it, sentinel)
+                if elem is sentinel: return
+                result.append(elem)
+            yield tuple(result)
+    ```
+- So the function takes in arbitrary number of itreable objects, adds each of their items to the `result` list by calling the `next` function on them, and stops whenever any of the iterable is exhausted. 
+- The caveat here is when any iterable is exhausted, the existing elements in the `result` list are discarded. That's what happened with `3` in the `numbers_iter`.
+- The correct way to do the above using `zip` would be,
+    ```py
+    >>> numbers = list(range(7))
+    >>> numbers_iter = iter(numbers)
+    >>> list(zip(first_three, numbers_iter))
+    [(0, 0), (1, 1), (2, 2)]
+    >>> list(zip(remaining, numbers_iter))
+    [(3, 3), (4, 4), (5, 5), (6, 6)]
+    ```
+    The first argument of zip should be the one with fewest elements.
+
+---
+
 ### ▶ Loop variables leaking out!
 <!-- Example ID: ccec7bf6-7679-4963-907a-1cd8587be9ea --->
 <!-- version-specific: True -->
@@ -2199,7 +2103,7 @@ print(x, ': x in global')
 3\.
 
 **Output (Python 2.x):**
-```
+```py
 >>> x = 1
 >>> print([x for x in range(5)])
 [0, 1, 2, 3, 4]
@@ -2208,7 +2112,7 @@ print(x, ': x in global')
 ```
 
 **Output (Python 3.x):**
-```
+```py
 >>> x = 1
 >>> print([x for x in range(5)])
 [0, 1, 2, 3, 4]
@@ -2401,44 +2305,6 @@ a += [5, 6, 7, 8]
 
 ---
 
-### ▶ The out of scope variable
-<!-- Example ID: 75c03015-7be9-4289-9e22-4f5fdda056f7 --->
-```py
-a = 1
-def some_func():
-    return a
-
-def another_func():
-    a += 1
-    return a
-```
-
-**Output:**
-```py
->>> some_func()
-1
->>> another_func()
-UnboundLocalError: local variable 'a' referenced before assignment
-```
-
-#### 💡 Explanation:
-* When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`,  but it has not been initialized previously in the same scope which throws an error.
-* Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
-* To modify the outer scope variable `a` in `another_func`, use `global` keyword.
-  ```py
-  def another_func()
-      global a
-      a += 1
-      return a
-  ```
-
-  **Output:**
-  ```py
-  >>> another_func()
-  2
-  ```
-
----
 
 ### ▶ Be careful with chained operations
 <!-- Example ID: 07974979-9c86-4720-80bd-467aa19470d9 --->
@@ -2622,7 +2488,7 @@ some_dict = {
   "key_3": 3
 }
 
-some_list = some_list.append(4)
+some_list = some_list.append(4) 
 some_dict = some_dict.update({"key_4": 4})
 ```
 
@@ -2704,6 +2570,43 @@ def similar_recursive_func(a):
 
 ---
 
+
+### ▶ Splitsies
+<!-- Example ID: ec3168ba-a81a-4482-afb0-691f1cc8d65a --->
+```py
+>>> 'a'.split()
+['a']
+
+# is same as
+>>> 'a'.split(' ')
+['a']
+
+# but
+>>> len(''.split())
+0
+
+# isn't the same as
+>>> len(''.split(' '))
+1
+```
+
+#### 💡 Explanation:
+
+- It might appear at first that the default seperator for split is a single space `' '`, but as per the [docs](https://docs.python.org/2.7/library/stdtypes.html#str.split)
+    >  If sep is not specified or is `None`, a different splitting algorithm is applied: runs of consecutive whitespace are regarded as a single separator, and the result will contain no empty strings at the start or end if the string has leading or trailing whitespace. Consequently, splitting an empty string or a string consisting of just whitespace with a None separator returns `[]`.
+    > If sep is given, consecutive delimiters are not grouped together and are deemed to delimit empty strings (for example, `'1,,2'.split(',')` returns `['1', '', '2']`). Splitting an empty string with a specified separator returns `['']`.
+- Noticing how the leading and trailing whitespaces are handled in the following snippet will make things clear,
+    ```py
+    >>> ' a '.split(' ')
+    ['', 'a', '']
+    >>> ' a '.split()
+    ['a']
+    >>> ''.split(' ')
+    ['']
+    ```
+
+---
+
 ### ▶ Wild imports
 <!-- Example ID: 83deb561-bd55-4461-bb5e-77dd7f411e1c --->
 <!-- read-only: True -->
@@ -2741,30 +2644,27 @@ NameError: name '_another_weird_name_func' is not defined
     works!
     ```
 - If you really want to use wildcard imports, then you'd have to define the list `__all__` in your module that will contain a list of public objects that'll be available when we do wildcard imports.
-```py
-__all__ = ['_another_weird_name_func']
+    ```py
+    __all__ = ['_another_weird_name_func']
 
-def some_weird_name_func_():
-    print("works!")
+    def some_weird_name_func_():
+        print("works!")
 
-def _another_weird_name_func():
-    print("works!")
-```
-**Output**
+    def _another_weird_name_func():
+        print("works!")
+    ```
+    **Output**
 
-```py
->>> _another_weird_name_func()
-"works!"
->>> some_weird_name_func_()
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'some_weird_name_func_' is not defined
-```
+    ```py
+    >>> _another_weird_name_func()
+    "works!"
+    >>> some_weird_name_func_()
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    NameError: name 'some_weird_name_func_' is not defined
+    ```
+
 ---
-
----
-
-## Section: Read the docs
 
 ### ▶ All sorted?
 
@@ -2805,48 +2705,38 @@ False
   ([7, 8, 9], [])
   ```
 
-  
-
 ---
 
-### ▶ All-true-ation
-
-<!-- Example ID: dfe6d845-e452-48fe-a2da-0ed3869a8042 -->
-
+### ▶ Midnight time doesn't exist?
+<!-- Example ID: 1bce8294-5619-4d70-8ce3-fe0bade690d1 --->
 ```py
->>> all([True, True, True])
-True
->>> all([True, True, False])
-False
+from datetime import datetime
 
->>> all([])
-True
->>> all([[]])
-False
->>> all([[[]]])
-True
+midnight = datetime(2018, 1, 1, 0, 0)
+midnight_time = midnight.time()
+
+noon = datetime(2018, 1, 1, 12, 0)
+noon_time = noon.time()
+
+if midnight_time:
+    print("Time at midnight is", midnight_time)
+
+if noon_time:
+    print("Time at noon is", noon_time)
 ```
 
-Why's this True-False alteration?
+**Output (< 3.5):**
+
+```sh
+('Time at noon is', datetime.time(12, 0))
+```
+The midnight time is not printed.
 
 #### 💡 Explanation:
 
-- The implementation of `all` function is equivalent to
-
-- ```py
-  def all(iterable):
-      for element in iterable:
-          if not element:
-              return False
-      return True
-  ```
-
-- `all([])` returns `True` since the iterable is empty. 
-- `all([[]])` returns `False` because `not []` is `True` is equivalent to `not False` as the list inside the iterable is empty.
-- `all([[[]]])` and higher recursive variants are always `True` since `not [[]]`, `not [[[]]]`, and so on are equivalent to `not True`.
+Before Python 3.5, the boolean value for `datetime.time` object was considered to be `False` if it represented midnight in UTC. It is error-prone when using the `if obj:` syntax to check if the `obj` is null or some equivalent of "empty."
 
 ---
-
 ---
 
 
@@ -3212,7 +3102,117 @@ AttributeError: 'A' object has no attribute '__variable'
 * Also, if the mangled name is longer than 255 characters truncation will happen.
 
 ---
+---
 
+## Section: Appearances are deceptive!
+
+### ▶ Skipping lines?
+<!-- Example ID: d50bbde1-fb9d-4735-9633-3444b9d2f417 --->
+**Output:**
+```py
+>>> value = 11
+>>> valuе = 32
+>>> value
+11
+```
+
+Wut?
+
+**Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shell.
+
+#### 💡 Explanation
+
+Some non-Western characters look identical to letters in the English alphabet but are considered distinct by the interpreter.
+
+```py
+>>> ord('е') # cyrillic 'e' (Ye)
+1077
+>>> ord('e') # latin 'e', as used in English and typed using standard keyboard
+101
+>>> 'е' == 'e'
+False
+
+>>> value = 42 # latin e
+>>> valuе = 23 # cyrillic 'e', Python 2.x interpreter would raise a `SyntaxError` here
+>>> value
+42
+```
+
+The built-in `ord()` function returns a character's Unicode [code point](https://en.wikipedia.org/wiki/Code_point), and different code positions of Cyrillic 'e' and Latin 'e' justify the behavior of the above example.
+
+---
+
+### ▶ Teleportation
+
+<!-- Example ID: edafe923-0c20-4315-b6e1-0c31abfc38f5 --->
+
+```py
+import numpy as np
+
+def energy_send(x):
+    # Initializing a numpy array
+    np.array([float(x)])
+
+def energy_receive():
+    # Return an empty numpy array
+    return np.empty((), dtype=np.float).tolist()
+```
+
+**Output:**
+```py
+>>> energy_send(123.456)
+>>> energy_receive()
+123.456
+```
+
+Where's the Nobel Prize?
+
+#### 💡 Explanation:
+
+* Notice that the numpy array created in the `energy_send` function is not returned, so that memory space is free to reallocate.
+* `numpy.empty()` returns the next free memory slot without reinitializing it. This memory spot just happens to be the same one that was just freed (usually, but not always).
+
+---
+
+### ▶ Well, something is fishy...
+<!-- Example ID: cb6a37c5-74f7-44ca-b58c-3b902419b362 --->
+```py
+def square(x):
+    """
+    A simple function to calculate the square of a number by addition.
+    """
+    sum_so_far = 0
+    for counter in range(x):
+        sum_so_far = sum_so_far + x
+  return sum_so_far
+```
+
+**Output (Python 2.x):**
+
+```py
+>>> square(10)
+10
+```
+
+Shouldn't that be 100?
+
+**Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
+
+#### 💡 Explanation
+
+* **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
+* This is how Python handles tabs:
+  
+  > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
+* So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
+* Python 3 is kind enough to throw an error for such cases automatically.
+
+    **Output (Python 3.x):**
+    ```py
+    TabError: inconsistent use of tabs and spaces in indentation
+    ```
+
+---
 ---
 
 ## Section: Miscellaneous
@@ -3326,8 +3326,6 @@ Let's increase the number of iterations by a factor of 10.
 - So many ways to format and create a giant string are somewhat in contrast to the [Zen of Python](https://www.python.org/dev/peps/pep-0020/), according to which,
   
     > There should be one-- and preferably only one --obvious way to do it.
-
-
 
 ---
 

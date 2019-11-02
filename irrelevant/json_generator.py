@@ -21,7 +21,7 @@ import json
 import os
 import pprint
 
-fpath = os.path.join(os.path.dirname( __file__ ), '..', 'README.md')
+fpath = os.path.join(os.path.dirname( __file__ ), '..', 'test_nb.md')
 examples = []
 
 # The globals
@@ -55,11 +55,13 @@ def generate_markdown_block(lines):
     sequence_num += 1
     return result
 
+
 def is_interactive_statement(line):
     for prefix in STATEMENT_PREFIXES:
-        if line.startswith(prefix):
+        if line.lstrip().startswith(prefix):
             return True
     return False
+
 
 def parse_example_parts(lines, example_title_line):
     parts = {
@@ -117,20 +119,20 @@ def parse_example_parts(lines, example_title_line):
     # store lines again until --- or another H3 is encountered
     while not (next_line.startswith("---") or
                next_line.startswith("### ")):
-        if next_line.startswith("```"):
+        if next_line.lstrip().startswith("```"):
             # It's a snippet, whatever found until now is text
             is_interactive = False
             if content:
-                parts["build_up"].append(generate_markdown_block(content))
+                parts["explanation"].append(generate_markdown_block(content))
                 content = []
 
             next_line = next(lines)
 
-            while not next_line.startswith("```"):
+            while not next_line.lstrip().startswith("```"):
                 if is_interactive_statement(next_line):
                     is_interactive = True
                     if (output_so_far):
-                        parts["build_up"].append(generate_code_block(statements_so_far, output_so_far))
+                        parts["explanation"].append(generate_code_block(statements_so_far, output_so_far))
                         statements_so_far, output_so_far = [], []
                     statements_so_far.append(next_line)
                 else:
@@ -142,7 +144,7 @@ def parse_example_parts(lines, example_title_line):
                 next_line = next(lines)
 
             # Snippet is over
-            parts["build_up"].append(generate_code_block(statements_so_far, output_so_far))
+            parts["explanation"].append(generate_code_block(statements_so_far, output_so_far))
             statements_so_far, output_so_far = [], []
             next_line = next(lines)
         else:
@@ -156,9 +158,10 @@ def parse_example_parts(lines, example_title_line):
 
     return next_line, parts
 
+
 def remove_from_beginning(tokens, line):
     for token in tokens:
-        if line.startswith(token):
+        if line.lstrip().startswith(token):
             line = line.replace(token, "")
     return line
 
@@ -173,6 +176,7 @@ def inspect_and_sanitize_code_lines(lines):
             is_print_present = True
         result.append(line)
     return is_print_present, result
+
 
 def convert_to_cells(cell_contents):
     cells = []
@@ -240,10 +244,10 @@ def convert_to_notebook(parsed_json):
         explanation = parts.get("explanation")
         notebook_path = "test.ipynb"
 
-        if(build_up):
+        if build_up:
             result["cells"] += convert_to_cells(build_up)
 
-        if(explanation):
+        if explanation:
             result["cells"] += convert_to_cells(explanation)
 
     pprint.pprint(result, indent=2)
@@ -251,14 +255,17 @@ def convert_to_notebook(parsed_json):
         json.dump(result, f)
 
 
-
 with open(fpath, 'r+', encoding="utf-8") as f:
     lines = iter(f.readlines())
     line = next(lines)
     result = []
+    pre_examples_phase = True
+    pre_stuff = []
+    post_stuff = []
     try:
         while True:
             if line.startswith("## "):
+                pre_examples_phase = False
                 # A section is encountered
                 current_section_name = line.replace("## ", "").strip()
                 section_text = []
@@ -281,8 +288,13 @@ with open(fpath, 'r+', encoding="utf-8") as f:
                         section_text.append(line)
                         line = next(lines)
             else:
+                if pre_examples_phase:
+                    pre_stuff.append(line)
+                else:
+                    post_stuff.append(line)
                 line = next(lines)
 
     except StopIteration:
         pprint.pprint(result, indent=2)
+        print("POST", post_stuff)
         convert_to_notebook(result)

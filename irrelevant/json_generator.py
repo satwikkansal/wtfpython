@@ -21,7 +21,7 @@ import json
 import os
 import pprint
 
-fpath = os.path.join(os.path.dirname( __file__ ), '..', 'test_nb.md')
+fpath = os.path.join(os.path.dirname( __file__ ), '..', 'README.md')
 examples = []
 
 # The globals
@@ -73,11 +73,12 @@ def parse_example_parts(lines, example_title_line):
     output_so_far = []
     next_line = example_title_line
     # store build_up till an H4 (explanation) is encountered
-    while not next_line.startswith("#### "):
+    while not (next_line.startswith("#### ")or next_line.startswith('---')):
         # Watching out for the snippets
-        if next_line.startswith("```"):
+        if next_line.startswith("```py"):
             # It's a snippet, whatever found until now is text
             is_interactive = False
+            output_encountered = False
             if content:
                 parts["build_up"].append(generate_markdown_block(content))
                 content = []
@@ -94,6 +95,8 @@ def parse_example_parts(lines, example_title_line):
                 else:
                     # can be either output or normal code
                     if is_interactive:
+                        output_so_far.append(next_line)
+                    elif output_encountered:
                         output_so_far.append(next_line)
                     else:
                         statements_so_far.append(next_line)
@@ -119,7 +122,7 @@ def parse_example_parts(lines, example_title_line):
     # store lines again until --- or another H3 is encountered
     while not (next_line.startswith("---") or
                next_line.startswith("### ")):
-        if next_line.lstrip().startswith("```"):
+        if next_line.lstrip().startswith("```py"):
             # It's a snippet, whatever found until now is text
             is_interactive = False
             if content:
@@ -231,24 +234,30 @@ def convert_to_cells(cell_contents):
     return cells
 
 
-def convert_to_notebook(parsed_json):
+def convert_to_notebook(pre_examples_content, parsed_json, post_examples_content):
     result = {
         "cells": [],
         "metadata": {},
         "nbformat": 4,
         "nbformat_minor": 2
     }
+
+    notebook_path = "test.ipynb"
+
+    result["cells"] += convert_to_cells([generate_markdown_block(pre_examples_content)])
+
     for example in parsed_json:
         parts = example["parts"]
         build_up = parts.get("build_up")
         explanation = parts.get("explanation")
-        notebook_path = "test.ipynb"
 
         if build_up:
             result["cells"] += convert_to_cells(build_up)
 
         if explanation:
             result["cells"] += convert_to_cells(explanation)
+
+    result["cells"] += convert_to_cells([generate_markdown_block(post_examples_content)])
 
     pprint.pprint(result, indent=2)
     with open(notebook_path, "w") as f:
@@ -271,7 +280,7 @@ with open(fpath, 'r+', encoding="utf-8") as f:
                 section_text = []
                 line = next(lines)
                 # Until a new section is encountered
-                while not (line.startswith("## " )):
+                while not (line.startswith("## ") or line.startswith("# ")):
                     # check if it's a H3
                     if line.startswith("### "):
                         # An example is encountered
@@ -294,7 +303,6 @@ with open(fpath, 'r+', encoding="utf-8") as f:
                     post_stuff.append(line)
                 line = next(lines)
 
-    except StopIteration:
+    except StopIteration as e:
         pprint.pprint(result, indent=2)
-        print("POST", post_stuff)
-        convert_to_notebook(result)
+        convert_to_notebook(pre_stuff, result, post_stuff)

@@ -3377,9 +3377,9 @@ Let's increase the number of iterations by a factor of 10.
      True
      >>> False ** True == False
      True
->>> True ** False == True
+     >>> True ** False == True
      True
->>> True ** True == True
+     >>> True ** True == True
      True
      ```
 
@@ -3394,6 +3394,13 @@ Let's increase the number of iterations by a factor of 10.
      ```
 
      **💡 Explanation:**  The `@` operator was added in Python 3.5 keeping scientific community in mind. Any object can overload `__matmul__` magic method to define behavior for this operator.
+
+* From Python 3.8 onwards you can use a typical f-string syntax like `f'{some_var=}` for quick debugging. Example,
+    ```py
+    >>> some_string = "wtfpython"
+    >>> f'{some_string=}'
+    "string='wtfpython'"
+    ``` 
 
 * Python uses 2 bytes for local variable storage in functions. In theory, this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
      
@@ -3454,17 +3461,25 @@ f()
   The behavior is due to the matching of empty substring(`''`) with slices of length 0 in the original string.
 
 ---
-
-<p align="center">~~~ That's all folks! ~~~</p>
 ---
 
 # Contributing
 
-All patches are welcome! Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for further details. For discussions, you can either create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new) or ping on the Gitter [channel](https://gitter.im/wtfpython/Lobby)
+Here are a few ways that you can contribute to wtfpython,
+
+- Suggesting new examples
+- Helping with translation (See issues labeled translation)
+- Minor corrections like pointing out outdated snippets, typos, formatting errors, etc
+- Identifying gaps (things inadequate explanation, redundancy, etc)
+- Suggestions in general for making this project more fun and useful
+
+Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for more details. Feel free to create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new).
+
+PS: Please don't reach out with backlinking requests, no links will be added unless they're highly relevant to the project.
 
 # Acknowledgements
 
-The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs). The overwhelming support by the community gave it the shape it is in right now.
+The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs). The overwhelming support by the community gave it the shape it is in right now. 
 
 #### Some nice Links!
 * https://www.youtube.com/watch?v=sH4XF6pKKmk

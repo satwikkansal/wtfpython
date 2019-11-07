@@ -3437,6 +3437,16 @@ f()
   []
   ```
 
+* Slicing an iterable not always creates a new object. For example,
+    ```py
+    >>> some_str = "wtfpython"
+    >>> some_list = ['w', 't', 'f', 'p', 'y', 't', 'h', 'o', 'n']
+    >>> some_list is some_list[:] # False expected because a new object is created.
+    False
+    >>> some_str is some_str[:] # True because strings are immutable, so making a new object is of not much use.
+    True
+    ```
+
 * `int('١٢٣٤٥٦٧٨٩')` returns `123456789` in Python 3. In Python, Decimal characters include digit characters, and all characters that can be used to form decimal-radix numbers, e.g. U+0660, ARABIC-INDIC DIGIT ZERO. Here's an [interesting story](http://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) related to this behavior of Python.
 
 * You can seperate numeric literals with underscores (for better readablity) from Python 3 onwards.

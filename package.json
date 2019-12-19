@@ -1,7 +1,7 @@
 {
   "name": "wtfpython",
-  "version": "2.1.0",
-  "description": "A collection of surprising Python snippets and lesser known features.",
+  "version": "2.2.0",
+  "description": "A collection of surprising Python snippets and lesser known features. [ARCHIVED]",
   "bin": "wtfpython",
   "scripts": {
     "postpublish": "git push origin master",

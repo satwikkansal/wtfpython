@@ -8,9 +8,9 @@ Python, being a beautifully designed high-level and interpreter-based programmin
 
 Here is a fun project attempting to explain what exactly is happening under the hood for some counter-intuitive snippets and lesser-known features in Python.
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I beliereve that you'll find it interesting too!
+While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
 
-If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may have already experienced some of them before, and I might be able to revive sweet old memories of yours! :sweat_smile:
+If you're an experienced Python programmer, you can take it as a challenge to get most of them right in the first attempt. You may have already experienced some of them before, and I might be able to revive sweet old memories of yours! :sweat_smile:
 
 PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
 
@@ -137,8 +137,8 @@ All the examples are structured like below:
 
 # Usage
 
-A nice way to get the most out of these examples, in my opinion, will be to just read them chronologically, and for every example:
-- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's going to happen next.
+A nice way to get the most out of these examples, in my opinion, is to read them chronologically, and for every example:
+- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, you'll successfully anticipate what's going to happen next most of the time.
 - Read the output snippets and,
   + Check if the outputs are the same as you'd expect.
   + Make sure if you know the exact reason behind the output being the way it is.
@@ -161,7 +161,7 @@ $ wtfpython
 <!-- Example ID: d3d73936-3cf1-4632-b5ab-817981338863 -->
 <!-- read-only -->
 
-For some reasons, "Walrus" operator (`:=`) has become a very popular feature in the language. Let's check it out,
+For some reason, the "Walrus" operator (`:=`) has become a popular feature in the language. Let's check it out,
 
 1\.
 
@@ -216,26 +216,26 @@ SyntaxError: invalid syntax
 
 **Quick walrus operator refresher**
 
-The Walrus operator (`:=`) was introduced in Python 3.8, it can be useful in situatitions where you'd want to assing values to variables within an expression.
+The Walrus operator (`:=`) was introduced in Python 3.8, it can be useful in situations where you'd want to assign values to variables within an expression.
 
 ```py
 def some_func():
-		# Assume some expensive computation here
-		# time.sleep(1000)
-		return 5
+        # Assume some expensive computation here
+        # time.sleep(1000)
+        return 5
 
 # So instead of,
 if some_func():
-		print(some_func()) # Which is bad practice since computation is happening twice
+        print(some_func()) # Which is bad practice since computation is happening twice
 
 # or
 a = some_func()
 if a:
-	print(a)
+    print(a)
 
 # Now you can concisely write
 if a := some_func():
-		print(a)
+        print(a)
 ```
 
 **Output (> 3.8):**
@@ -246,13 +246,13 @@ if a := some_func():
 5
 ```
 
-This helped save one line of code, and implicitly prevented invoking `some_func` twice.
+This saved one line of code, and implicitly prevented invoking `some_func` twice.
 
-- Unparenthesized "assignment expression" (use of walrus operator), is restricted at top level, hence the `SyntaxError` in the `a := "wtf_walrus"` statement of first snippet. Parenthesizing it worked as expected and assigned `a`.  
+- Unparenthesized "assignment expression" (use of walrus operator), is restricted at the top level, hence the `SyntaxError` in the `a := "wtf_walrus"` statement of the first snippet. Parenthesizing it worked as expected and assigned `a`.  
 
-- As usual, parenthesizing of expression containing `=` operator is not allowed. Hence the syntax error in `(a, b = 6, 9)`. 
+- As usual, parenthesizing of an expression containing `=` operator is not allowed. Hence the syntax error in `(a, b = 6, 9)`. 
 
-- The syntax of the Walrus operator is of the form `NAME: expr`, where `NAME` is a valid identifier and `expr` is a valid expression. Hence, iterable packing and unpacking are not supported which means, 
+- The syntax of the Walrus operator is of the form `NAME: expr`, where `NAME` is a valid identifier, and `expr` is a valid expression. Hence, iterable packing and unpacking are not supported which means, 
 
   - `(a := 6, 9)` is equivalent to `((a := 6), 9)` and ultimately `(a, 9) ` (where `a`'s value is 6')
 
@@ -333,15 +333,15 @@ Makes sense, right?
 
 #### 💡 Explanation:
 + The behavior in first and second snippets is due to a CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
-+ After being "interned", many variables may reference the same string object in memory (saving memory thereby).
-+ In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation dependent. There are some rules that can be used to guess if a string will be interned or not:
++ After being "interned," many variables may reference the same string object in memory (saving memory thereby).
++ In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation-dependent. There are some rules that can be used to guess if a string will be interned or not:
   * All length 0 and length 1 strings are interned.
   * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
-  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. Cpython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
+  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. CPython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
   <img src="images/string-intern/string_intern.png" alt="">
-+ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then  references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's an compile time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
-+ The compile unit in interactive environment like ipython consists of single statement, whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement, whereas `a = "wtf!"; b = "wtf!"` are 2 statements in single line. This explains why the identities are different in `a = "wtf!"; b = "wtf!"`, and also explain why they are same when invoked in `some_file.py`
-+ The abrupt change in output of the fourth snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a  few clock cycles during runtime. Constant folding only occurs for strings having length less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
++ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compile-time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
++ A compile unit in an interactive environment like IPython consists of a single statement, whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement, whereas `a = "wtf!"; b = "wtf!"` are two statements in a single line. This explains why the identities are different in `a = "wtf!"; b = "wtf!"`, and also explain why they are same when invoked in `some_file.py`
++ The abrupt change in the output of the fourth snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a  few clock cycles during runtime. Constant folding only occurs for strings having a length of less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
 + Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the third snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549). 
 
 ---
@@ -379,7 +379,7 @@ So, why is Python all over the place?
 #### 💡 Explanation
 
 * Python dictionaries check for equality and compare the hash value to determine if two keys are the same.
-* Immutable objects with same value always have the same hash in Python.
+* Immutable objects with the same value always have the same hash in Python.
   ```py
   >>> 5 == 5.0 == 5 + 0j
   True
@@ -415,7 +415,7 @@ True
 
 * When `id` was called, Python created a `WTF` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
 * When we do this twice in succession, Python allocates the same memory location to this second object as well. Since (in CPython) `id` uses the memory location as the object id, the id of the two objects is the same.
-* So, object's id is unique only for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
+* So, the object's id is unique only for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
 * But why did the `is` operator evaluated to `False`? Let's see with this snippet.
   ```py
   class WTF(object):
@@ -1010,10 +1010,10 @@ False
 - `type` is a [metaclass](https://realpython.com/python-metaclasses/) in Python.
 - **Everything** is an `object` in Python, which includes classes as well as their objects (instances).
 - class `type` is the metaclass of class `object`, and every class (including `type`) has inherited directly or indirectly from `object`.
-- There is no real base class among `object` and `type`. The confusion in the above snippets is arising because we're thinking these relationships (`issubclass` and `isinstance`) in terms of Python classes. The relationship between `object` and `type` can't be reproduced in pure python. To be more precise the following relationships can't be reproduced in pure Python,
-    + class A is instance of class B, and class B is an instance of class A.
+- There is no real base class among `object` and `type`. The confusion in the above snippets is arising because we're thinking about these relationships (`issubclass` and `isinstance`) in terms of Python classes. The relationship between `object` and `type` can't be reproduced in pure python. To be more precise the following relationships can't be reproduced in pure Python,
+    + class A is an instance of class B, and class B is an instance of class A.
     + class A is an instance of itself.
-- These relationships between `object` and `type` (both being instances of eachother as well as themselves) exist in Python because of "cheating" at implementation level.
+- These relationships between `object` and `type` (both being instances of each other as well as themselves) exist in Python because of "cheating" at the implementation level.
 
 ---
 
@@ -1133,7 +1133,7 @@ True
 
 #### 💡 Explanation
 
-- In a normal python string, the backslash is used to escape characters that may have special meaning (like single-quote, double-quote and the backslash itself).
+- In a usual python string, the backslash is used to escape characters that may have a special meaning (like single-quote, double-quote, and the backslash itself).
     ```py
     >>> 'wt\"f'
     'wt"f'
@@ -1376,12 +1376,12 @@ True
 
 ```py
 class SomeClass:
-		def instance_method(self):
-				pass
-		
-		@classmethod
-		def class_method(cls):
-				pass
+        def instance_method(self):
+                pass
+        
+        @classmethod
+        def class_method(cls):
+                pass
 ```
 
 **Output:**
@@ -1406,7 +1406,7 @@ True
   <bound method SomeClass.class_method of <class '__main__.SomeClass'>
   ```
 
-  A new bound method everytime `SomeClass.class_method` is accessed.
+  A new bound method every time `SomeClass.class_method` is accessed.
 
 -  `id(SomeClass.class_method) == id(SomeClass.class_method)` returned `True` because the second allocation of memory for `class_method` happened at the same location of first deallocation (See Deep Down, we're all the same example for more detailed explanation). 
 
@@ -1438,7 +1438,7 @@ def some_func(val):
 ```
 
 #### 💡 Explanation:
-- This is bug in CPython's handling of `yield` in generators and comprehensions.
+- This is a bug in CPython's handling of `yield` in generators and comprehensions.
 - Source and explanation can be found here: https://stackoverflow.com/questions/32139885/yield-in-list-comprehensions-and-generator-expressions
 - Related bug report: http://bugs.python.org/issue10544
 - Python 3.8+ no longer allows `yield` inside list comprehension and will throw a `SyntaxError`.
@@ -1485,7 +1485,7 @@ def some_func(x):
 []
 ```
 
-Same result, that didn't work either.
+The same result, this didn't work either.
 
 #### 💡 Explanation:
 
@@ -1493,7 +1493,7 @@ Same result, that didn't work either.
 
 > "... `return expr` in a generator causes `StopIteration(expr)` to be raised upon exit from the generator."
 
-+ In case of `some_func(3)`, `StopIteration` is raised at the beginning because of `return` statement. The `StopIteration` exception is automatically catched inside the `list(...)` wrapper and the `for` loop. Therefore, the above two snippets result in an empty list.
++ In the case of `some_func(3)`, `StopIteration` is raised at the beginning because of `return` statement. The `StopIteration` exception is automatically caught inside the `list(...)` wrapper and the `for` loop. Therefore, the above two snippets result in an empty list.
 
 + To get `["wtf"]` from the generator `some_func` we need to catch the `StopIteration` exception,
 
@@ -1566,9 +1566,9 @@ True
 
 #### 💡 Explanation:
 
-- `'inf'` and `'nan'` are special strings (case-insensitive), which when explicitly typecast-ed to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
+- `'inf'` and `'nan'` are special strings (case-insensitive), which, when explicitly typecast-ed to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
 
-- Since according to IEEE standards ` NaN != NaN`, obeying this rule breaks the reflexivity assumption of a collection element in Python i.e if `x` is a part of collection like `list`, the implementations like comparison are based on the assumption that `x == x`.  Because of this assumption, the identity is compared first (since it's faster) whlie comparing two elements, and the values are compared only when the identities mismatch. Following snippet will make things clearer
+- Since according to IEEE standards ` NaN != NaN`, obeying this rule breaks the reflexivity assumption of a collection element in Python i.e. if `x` is a part of a collection like `list`, the implementations like comparison are based on the assumption that `x == x`.  Because of this assumption, the identity is compared first (since it's faster) while comparing two elements, and the values are compared only when the identities mismatch. The following snippet will make things clearer,
 
   ```py
   >>> x = float('nan')
@@ -1581,9 +1581,9 @@ True
   (False, False)
   ```
 
-  Since the identities of `x` and `y` are different, the values are considered, which are also different, hence the comparison returns `False` this time.
+  Since the identities of `x` and `y` are different, the values are considered, which are also different; hence the comparison returns `False` this time.
 
-- Interesting read: [Reflexivity, and other pilliars of civilization](https://bertrandmeyer.com/2010/02/06/reflexivity-and-other-pillars-of-civilization/)
+- Interesting read: [Reflexivity, and other pillars of civilization](https://bertrandmeyer.com/2010/02/06/reflexivity-and-other-pillars-of-civilization/)
 
 ---
 
@@ -1591,7 +1591,7 @@ True
 
 <!-- Example ID: 15a9e782-1695-43ea-817a-a9208f6bb33d --->
 
-This might seem trivial if you know how references works in Python.
+This might seem trivial if you know how references work in Python.
 
 ```py
 some_tuple = ("A", "tuple", "with", "values")
@@ -1670,7 +1670,7 @@ NameError: name 'e' is not defined
 
   This means the exception must be assigned to a different name to be able to refer to it after the except clause. Exceptions are cleared because, with the traceback attached to them, they form a reference cycle with the stack frame, keeping all locals in that frame alive until the next garbage collection occurs.
 
-* The clauses are not scoped in Python. Everything in the example is present in the same scope, and the variable `e` got removed due to the execution of the `except` clause. The same is not the case with functions which have their separate inner-scopes. The example below illustrates this:
+* The clauses are not scoped in Python. Everything in the example is present in the same scope, and the variable `e` got removed due to the execution of the `except` clause. The same is not the case with functions that have their separate inner-scopes. The example below illustrates this:
 
      ```py
      def f(x):
@@ -1693,7 +1693,7 @@ NameError: name 'e' is not defined
      [5, 4, 3]
      ```
 
-* In Python 2.x the variable name `e` gets assigned to `Exception()` instance, so when you try to print, it prints nothing.
+* In Python 2.x, the variable name `e` gets assigned to `Exception()` instance, so when you try to print, it prints nothing.
 
     **Output (Python 2.x):**
     ```py
@@ -1786,9 +1786,9 @@ a, b = a[b] = {}, 5
 
 * The `+` in `(target_list "=")+` means there can be **one or more** target lists. In this case, target lists are `a, b` and `a[b]` (note the expression list is exactly one, which in our case is `{}, 5`).
 
-* After the expression list is evaluated, it's value is unpacked to the target lists from **left to right**. So, in our case, first the `{}, 5` tuple is unpacked to `a, b` and we now have `a = {}` and `b = 5`.
+* After the expression list is evaluated, its value is unpacked to the target lists from **left to right**. So, in our case, first the `{}, 5` tuple is unpacked to `a, b` and we now have `a = {}` and `b = 5`.
 
-* `a` is now assigned to `{}` which is a mutable object.
+* `a` is now assigned to `{}`, which is a mutable object.
 
 * The second target list is `a[b]` (you may expect this to throw an error because both `a` and `b` have not been defined in the statements before. But remember, we just assigned `a` to `{}` and `b` to `5`).
 
@@ -1853,7 +1853,7 @@ Yes, it runs for exactly **eight** times and stops.
 * Iteration over a dictionary that you edit at the same time is not supported.
 * It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
 * How deleted keys are handled and when the resize occurs might be different for different Python implementations.
-* So for Python versions other than Python 2.7 - Python 3.5 the count might be different from 8 (but whatever the count is, it's going to be the same every time you run it). You can find some discussion around this [here](https://github.com/satwikkansal/wtfpython/issues/53) or in [this](https://stackoverflow.com/questions/44763802/bug-in-python-dict) StackOverflow thread.
+* So for Python versions other than Python 2.7 - Python 3.5, the count might be different from 8 (but whatever the count is, it's going to be the same every time you run it). You can find some discussion around this [here](https://github.com/satwikkansal/wtfpython/issues/53) or in [this](https://stackoverflow.com/questions/44763802/bug-in-python-dict) StackOverflow thread.
 * Python 3.8 onwards, you'll see `RuntimeError: dictionary keys changed during iteration` exception if you try to do this.
 
 ---
@@ -1878,7 +1878,7 @@ class SomeClass:
 Deleted!
 ```
 
-Phew, deleted at last. You might have guessed what saved from `__del__` being called in our first attempt to delete `x`. Let's add more twist to the example.
+Phew, deleted at last. You might have guessed what saved from `__del__` being called in our first attempt to delete `x`. Let's add more twists to the example.
 
 2\.
 ```py
@@ -1898,8 +1898,8 @@ Okay, now it's deleted :confused:
 #### 💡 Explanation:
 + `del x` doesn’t directly call `x.__del__()`.
 + Whenever `del x` is encountered, Python decrements the reference count for `x` by one, and `x.__del__()` when x’s reference count reaches zero.
-+ In the second output snippet, `y.__del__()` was not called because the previous statement (`>>> y`) in the interactive interpreter created another reference to the same object, thus preventing the reference count to reach zero when `del y` was encountered.
-+ Calling `globals` caused the existing reference to be destroyed and hence we can see "Deleted!" being printed (finally!).
++ In the second output snippet, `y.__del__()` was not called because the previous statement (`>>> y`) in the interactive interpreter created another reference to the same object, thus preventing the reference count from reaching zero when `del y` was encountered.
++ Calling `globals` caused the existing reference to be destroyed, and hence we can see "Deleted!" being printed (finally!).
 
 ---
 
@@ -1924,7 +1924,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
 ```
 
 #### 💡 Explanation:
-* When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`,  but it has not been initialized previously in the same scope which throws an error.
+* When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`,  but it has not been initialized previously in the same scope, which throws an error.
 * Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
 * To modify the outer scope variable `a` in `another_func`, use `global` keyword.
   ```py
@@ -2110,9 +2110,9 @@ print(x, ': x in global')
 
 - In Python, for-loops use the scope they exist in and leave their defined loop-variable behind. This also applies if we explicitly defined the for-loop variable in the global namespace before. In this case, it will rebind the existing variable.
 
-- The differences in the output of Python 2.x and Python 3.x interpreters for list comprehension example can be explained by following change documented in [What’s New In Python 3.0](https://docs.python.org/3/whatsnew/3.0.html) change log:
+- The differences in the output of Python 2.x and Python 3.x interpreters for list comprehension example can be explained by following change documented in [What’s New In Python 3.0](https://docs.python.org/3/whatsnew/3.0.html) changelog:
 
-    > "List comprehensions no longer support the syntactic form `[... for var in item1, item2, ...]`. Use `[... for var in (item1, item2, ...)]` instead. Also, note that list comprehensions have different semantics: they are closer to syntactic sugar for a generator expression inside a `list()` constructor, and in particular the loop control variables are no longer leaked into the surrounding scope."
+    > "List comprehensions no longer support the syntactic form `[... for var in item1, item2, ...]`. Use `[... for var in (item1, item2, ...)]` instead. Also, note that list comprehensions have different semantics: they are closer to syntactic sugar for a generator expression inside a `list()` constructor, and in particular, the loop control variables are no longer leaked into the surrounding scope."
 
 ---
 
@@ -2384,7 +2384,7 @@ class SomeClass:
 
 <!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --->
 
-I haven't met even a single experience Pythonist till date who has not came across one or more of the following scenarios,
+I haven't met even a single experience Pythonist till date who has not come across one or more of the following scenarios,
 
 1\.
 
@@ -2498,11 +2498,11 @@ def some_recursive_func(a):
     return a
 
 def similar_recursive_func(a):
-		if a == 0:
-				return a
-		a -= 1
-		similar_recursive_func(a)
-		return a
+        if a == 0:
+                return a
+        a -= 1
+        similar_recursive_func(a)
+        return a
 ```
 
 **Output:**
@@ -2550,9 +2550,9 @@ def similar_recursive_func(a):
 
 * As for the fifth snippet, most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list)).
 
-* Last one should be fairly obvious, passing mutable object (like  `list` ) results in call by reference, whereas an immutable object (like `int`)  results in call by value.
+* Last one should be fairly obvious, passing mutable object (like  `list` ) results in a call by reference, whereas an immutable object (like `int`)  results in a call by value.
 
-* Being aware of these knitpicks can save you hours of degugging effort in long run. 
+* Being aware of these nitpicks can save you hours of debugging effort in the long run. 
 
 ---
 
@@ -2578,7 +2578,7 @@ def similar_recursive_func(a):
 
 #### 💡 Explanation:
 
-- It might appear at first that the default seperator for split is a single space `' '`, but as per the [docs](https://docs.python.org/2.7/library/stdtypes.html#str.split)
+- It might appear at first that the default separator for split is a single space `' '`, but as per the [docs](https://docs.python.org/2.7/library/stdtypes.html#str.split)
     >  If sep is not specified or is `None`, a different splitting algorithm is applied: runs of consecutive whitespace are regarded as a single separator, and the result will contain no empty strings at the start or end if the string has leading or trailing whitespace. Consequently, splitting an empty string or a string consisting of just whitespace with a None separator returns `[]`.
     > If sep is given, consecutive delimiters are not grouped together and are deemed to delimit empty strings (for example, `'1,,2'.split(',')` returns `['1', '', '2']`). Splitting an empty string with a specified separator returns `['']`.
 - Noticing how the leading and trailing whitespaces are handled in the following snippet will make things clear,
@@ -2622,8 +2622,8 @@ NameError: name '_another_weird_name_func' is not defined
 
 #### 💡 Explanation:
 
-- It if often adivsable to not use wildcard imports. The first obvious reason for this is In wildcard imports, the names with leading underscore are be imported. This may lead to errors in runtime.
-- Had we used `from ... import a, b, c` syntax, the above `NameError` won't have occurred.
+- It is often advisable to not use wildcard imports. The first obvious reason for this is, in wildcard imports, the names with a leading underscore get imported. This may lead to errors during runtime.
+- Had we used `from ... import a, b, c` syntax, the above `NameError` wouldn't have occurred.
     ```py
     >>> from module import some_weird_name_func_, _another_weird_name_func
     >>> _another_weird_name_func()
@@ -2670,7 +2670,7 @@ False
 
 #### 💡 Explanation:
 
-- The `sorted` method always returns a list, and comparing list and tuples always returns `False` in Python. 
+- The `sorted` method always returns a list, and comparing lists and tuples always returns `False` in Python. 
 
 - ```py
   >>> [] == tuple()
@@ -2680,7 +2680,7 @@ False
   (tuple, list)
   ```
 
-- Unlike `sorted`, the `reversed` method returns an iterator. Why? Because sorting requires the iterator to be either modified in-place or use extra container (a list), whereas reversing can simple work by iterating from the last index to the first.
+- Unlike `sorted`, the `reversed` method returns an iterator. Why? Because sorting requires the iterator to be either modified in-place or use an extra container (a list), whereas reversing can simply work by iterating from the last index to the first.
 
 - So during comparison `sorted(y) == sorted(y)`, the first call to `sorted()` will consume the iterator `y`, and the next call will just return an empty list.
 
@@ -2729,7 +2729,7 @@ Before Python 3.5, the boolean value for `datetime.time` object was considered t
 
 ## Section: The Hidden treasures!
 
-This section contains few of the lesser-known interesting things about Python that most beginners like me are unaware of (well, not anymore).
+This section contains a few lesser-known and interesting things about Python that most beginners like me are unaware of (well, not anymore).
 
 ### ▶ Okay Python, Can you make me fly?
 <!-- Example ID: a92f3645-1899-4d50-9721-0031be4aec3f --->
@@ -2740,7 +2740,7 @@ import antigravity
 ```
 
 **Output:**
-Sshh.. It's a super secret.
+Sshh... It's a super-secret.
 
 #### 💡 Explanation:
 + `antigravity` module is one of the few easter eggs released by Python developers.
@@ -2796,7 +2796,7 @@ SyntaxError: not a chance
 Braces? No way! If you think that's disappointing, use Java. Okay, another surprising thing, can you find where's the `SyntaxError` raised in `__future__` module [code](https://github.com/python/cpython/blob/master/Lib/__future__.py)?
 
 #### 💡 Explanation:
-+ The `__future__` module is normally used to provide features from future versions of Python. The "future" in this specific context is however ironic.
++ The `__future__` module is normally used to provide features from future versions of Python. The "future" in this specific context is however, ironic.
 + This is an easter egg concerned with the community's feelings on this issue.
 + The code is actually present [here](https://github.com/python/cpython/blob/025eb98dc0c1dc27404df6c544fc2944e0fa9f3a/Python/future.c#L49) in `future.c` file.
 + When the CPython compiler encounters a [future statement](https://docs.python.org/3.3/reference/simple_stmts.html#future-statements), it first runs the appropriate code in `future.c` before treating it as a normal import statement.
@@ -2824,9 +2824,9 @@ There we go.
 - This is relevant to [PEP-401](https://www.python.org/dev/peps/pep-0401/) released on April 1, 2009 (now you know, what it means).
 - Quoting from the PEP-401
   
-  > Recognized that the != inequality operator in Python 3.0 was a horrible, finger pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
+  > Recognized that the != inequality operator in Python 3.0 was a horrible, finger-pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
 - There were more things that Uncle Barry had to share in the PEP; you can read them [here](https://www.python.org/dev/peps/pep-0401/).
-- It works well on interactive environment, but it will raise a `SyntaxError` when you run via python file (see this [issue](https://github.com/satwikkansal/wtfpython/issues/94)). However, you can wrap the statement inside an `eval` or `compile` to get it working,
+- It works well in an interactive environment, but it will raise a `SyntaxError` when you run via python file (see this [issue](https://github.com/satwikkansal/wtfpython/issues/94)). However, you can wrap the statement inside an `eval` or `compile` to get it working,
     ```py
     from __future__ import barry_as_FLUFL
     print(eval('"Ruby" <> "Python"'))
@@ -2932,7 +2932,7 @@ Try block executed successfully...
 
 #### 💡 Explanation:
 - The `else` clause after a loop is executed only when there's no explicit `break` after all the iterations. You can think of it as a "nobreak" clause.
-- `else` clause after try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
+- `else` clause after a try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
 
 ---
 ### ▶ Ellipsis *
@@ -2957,7 +2957,7 @@ Ellipsis
 ```
 
 #### 💡 Explanation
-- In Python, `Ellipsis` is a globally available builtin object which is equivalent to `...`.
+- In Python, `Ellipsis` is a globally available built-in object which is equivalent to `...`.
     ```py
     >>> ...
     Ellipsis
@@ -3081,10 +3081,10 @@ AttributeError: 'A' object has no attribute '__variable'
 
 * [Name Mangling](https://en.wikipedia.org/wiki/Name_mangling) is used to avoid naming collisions between different namespaces.
 * In Python, the interpreter modifies (mangles) the class member names starting with `__` (double underscore a.k.a "dunder") and not ending with more than one trailing underscore by adding `_NameOfTheClass` in front.
-* So, to access `__honey` attribute in first snippet, we had to append `_Yo` to the front which would prevent conflicts with the same name attribute defined in any other class.
+* So, to access `__honey` attribute in the first snippet, we had to append `_Yo` to the front, which would prevent conflicts with the same name attribute defined in any other class.
 * But then why didn't it work in the second snippet? Because name mangling excludes the names ending with double underscores.
-* The third snippet was also a consequence of name mangling. The name `__variable` in the statement `return __variable` was mangled to `_A__variable` which also happens to be the name of the variable we declared in outer scope.
-* Also, if the mangled name is longer than 255 characters truncation will happen.
+* The third snippet was also a consequence of name mangling. The name `__variable` in the statement `return __variable` was mangled to `_A__variable`, which also happens to be the name of the variable we declared in the outer scope.
+* Also, if the mangled name is longer than 255 characters, truncation will happen.
 
 ---
 ---
@@ -3295,7 +3295,7 @@ Let's increase the number of iterations by a factor of 10.
 - Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases (justified with the execution times of `add_bytes_with_plus` function)
 - Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for very short strings).
 - Or better, if already you've contents available in the form of an iterable object, then use `''.join(iterable_object)` which is much faster.
-- `add_string_with_plus` didn't show a quadratic increase in execution time unlike `add_bytes_with_plus` because of the `+=` optimizations discussed in the previous example. Had the statement been `s = s + "x" + "y" + "z"` instead of `s += "xyz"`, the increase would have been quadratic.
+- Unlike `add_bytes_with_plus` because of the `+=` optimizations discussed in the previous example, `add_string_with_plus` didn't show a quadratic increase in execution time. Had the statement been `s = s + "x" + "y" + "z"` instead of `s += "xyz"`, the increase would have been quadratic.
   ```py
   def add_string_with_plus(iters):
       s = ""
@@ -3318,14 +3318,14 @@ Let's increase the number of iterations by a factor of 10.
 <!-- Example ID: f885cb82-f1e4-4daa-9ff3-972b14cb1324 --->
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
 
-  **💡 Explanation:** If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list, it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic `list` object API.
+  **💡 Explanation:** If `join()` is a method on a string, then it can operate on any iterable (list, tuple, iterators). If it were a method on a list, it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic `list` object API.
   
 * Few weird looking but semantically correct statements:
   + `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
   + `'a'[0][0][0][0][0]` is also a semantically correct statement as strings are [sequences](https://docs.python.org/3/glossary.html#term-sequence)(iterables supporting element access using integer indices) in Python.
   + `3 --0-- 5 == 8` and `--5 == 5` are both semantically correct statements and evaluate to `True`.
 
-* Given that `a` is a number, `++a` and `--a` are both valid Python statements but don't behave the same way as compared with similar statements in languages like C, C++ or Java.
+* Given that `a` is a number, `++a` and `--a` are both valid Python statements but don't behave the same way as compared with similar statements in languages like C, C++, or Java.
   ```py
   >>> a = 5
   >>> a
@@ -3369,7 +3369,7 @@ Let's increase the number of iterations by a factor of 10.
      True
      ```
 
-     **💡 Explanation:** If you replace `False` and `True` by 0 and 1 and do the maths, the truth table is equivalent to converse implication operator. ([Source](https://github.com/cosmologicon/pywat/blob/master/explanation.md#the-undocumented-converse-implication-operator))
+     **💡 Explanation:** If you replace `False` and `True` by 0 and 1 and do the maths, the truth table is equivalent to a converse implication operator. ([Source](https://github.com/cosmologicon/pywat/blob/master/explanation.md#the-undocumented-converse-implication-operator))
      
 * Since we are talking operators, there's also `@` operator for matrix multiplication (don't worry, this time it's for real).
 
@@ -3379,7 +3379,7 @@ Let's increase the number of iterations by a factor of 10.
      46
      ```
 
-     **💡 Explanation:**  The `@` operator was added in Python 3.5 keeping scientific community in mind. Any object can overload `__matmul__` magic method to define behavior for this operator.
+     **💡 Explanation:**  The `@` operator was added in Python 3.5 keeping sthe cientific community in mind. Any object can overload `__matmul__` magic method to define behavior for this operator.
 
 * From Python 3.8 onwards you can use a typical f-string syntax like `f'{some_var=}` for quick debugging. Example,
     ```py
@@ -3402,9 +3402,9 @@ f()
      print(dis.dis(f))
 ```
      
-* Multiple Python threads won't run your *Python code* concurrently (yes you heard it right!). It may seem intuitive to spawn several threads and let them execute your Python code concurrently, but, because of the [Global Interpreter Lock](https://wiki.python.org/moin/GlobalInterpreterLock) in Python, all you're doing is making your threads execute on the same core turn by turn. Python threads are good for IO-bound tasks, but to achieve actual parallelization in Python for CPU-bound tasks, you might want to use the Python [multiprocessing](https://docs.python.org/2/library/multiprocessing.html) module.
+* Multiple Python threads won't run your *Python code* concurrently (yes, you heard it right!). It may seem intuitive to spawn several threads and let them execute your Python code concurrently, but, because of the [Global Interpreter Lock](https://wiki.python.org/moin/GlobalInterpreterLock) in Python, all you're doing is making your threads execute on the same core turn by turn. Python threads are good for IO-bound tasks, but to achieve actual parallelization in Python for CPU-bound tasks, you might want to use the Python [multiprocessing](https://docs.python.org/2/library/multiprocessing.html) module.
 
-* Sometimes the `print` method might not print values immediately. For example,
+* Sometimes, the `print` method might not print values immediately. For example,
 
      ```py
      # File some_file.py
@@ -3477,7 +3477,7 @@ PS: Please don't reach out with backlinking requests, no links will be added unl
 
 # Acknowledgements
 
-The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs). The overwhelming support by pythonistas gave it the shape it is in right now.
+The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs). The overwhelming support by Pythonistas gave it the shape it is in right now.
 
 #### Some nice Links!
 * https://www.youtube.com/watch?v=sH4XF6pKKmk
@@ -3501,10 +3501,10 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 
 ## Surprise your friends as well!
 
-If you liked wtfpython, you can use these quick links to share it with your friends,
+If you like wtfpython, you can use these quick links to share it with your friends,
 
 [Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&text=If%20you%20really%20think%20you%20know%20Python,%20think%20once%20more!%20Check%20out%20wtfpython&hastags=python,wtfpython) | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=If%20you%20really%20thing%20you%20know%20Python,%20think%20once%20more!) | [Facebook](https://www.facebook.com/dialog/share?app_id=536779657179021&display=page&href=https%3A%2F%2Fgithub.com%2Fsatwikkansal%2Fwtfpython&quote=If%20you%20really%20think%20you%20know%20Python%2C%20think%20once%20more!)
 
-## Need a pdf version?
+## More content like this?
 
-I've received a few requests for the pdf version of wtfpython. You can add your details [here](https://satwikkansal.xyz/wtfpython-pdf/) to get the pdf as soon as it is finished.
+If you're interested in more content like this, you can share your email [here](https://satwikkansal.xyz/wtfpython-pdf/).

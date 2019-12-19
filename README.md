@@ -3497,6 +3497,7 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 * https://www.python.org/doc/humor/
 * https://github.com/cosmologicon/pywat#the-undocumented-converse-implication-operator
 * https://www.codementor.io/satwikkansal/python-practices-for-efficient-code-performance-memory-and-usability-aze6oiq65
+* https://github.com/wemake-services/wemake-python-styleguide
 
 # 🎓 License
 

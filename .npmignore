@@ -1,1 +1,9 @@
 irrelevant/
+wtfpython-pypi/build/
+wtfpython-pypi/dist/
+wtfpython-pypi/wtfpython.egg-info
+
+# Python-specific byte-compiled files should be ignored
+__pycache__/
+*.py[cod]
+*$py.class

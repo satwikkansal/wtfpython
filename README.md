@@ -2,7 +2,7 @@
 <h1 align="center">What the f*ck Python! 🐍</h1>
 <p align="center">An interesting collection of surprising snippets and lesser-known Python features.</p>
 
-Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn)
+Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn) | [Add translation](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
 
 Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious at first sight.
 
@@ -24,7 +24,7 @@ So, here we go...
 - [Structure of the Examples](#structure-of-the-examples)
     + [▶ Some fancy Title](#-some-fancy-title)
 - [Usage](#usage)
-- [👀 Examples](#%F0%9F%91%80-examples)
+- [👀 Examples](#-examples)
   * [Section: Strain your brain!](#section-strain-your-brain)
     + [▶ First things first!](#-first-things-first)
     + [▶ Strings can be tricky sometimes](#-strings-can-be-tricky-sometimes)
@@ -91,7 +91,6 @@ So, here we go...
     + [▶ `+=` is faster](#--is-faster)
     + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
     + [▶ Minor Ones](#-minor-ones)
-  * [~~~ That's all folks! ~~~](#-thats-all-folks-)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
 - [🎓 License](#%F0%9F%8E%93-license)
@@ -221,7 +220,7 @@ SyntaxError: invalid syntax
 
 
 
-💡 Explanation
+####💡 Explanation
 
 **Quick walrus operator refresher**
 
@@ -3355,7 +3354,7 @@ Let's increase the number of iterations by a factor of 10.
   + `++a` parses as `+(+a)` which translates to `a`. Similarly, the output of the statement `--a` can be justified.
   + This StackOverflow [thread](https://stackoverflow.com/questions/3654830/why-are-there-no-and-operators-in-python) discusses the rationale behind the absence of increment and decrement operators in Python.
 
-* You must be aware of the Walrus operator in Python. But have you ever heard about _the space-invader operator_?
+* You must be aware of the Walrus operator in Python. But have you ever heard about *the space-invader operator*?
   ```py
   >>> a = 42
   >>> a -=- 1
@@ -3470,26 +3469,28 @@ f()
   ```
   The behavior is due to the matching of empty substring(`''`) with slices of length 0 in the original string.
 
+**That's all folks!**
+
 ---
 ---
 
 # Contributing
 
-Here are a few ways that you can contribute to wtfpython,
+A few ways that you can contribute to wtfpython,
 
 - Suggesting new examples
-- Helping with translation (See issues labeled translation)
-- Minor corrections like pointing out outdated snippets, typos, formatting errors, etc
-- Identifying gaps (things inadequate explanation, redundancy, etc)
-- Suggestions in general for making this project more fun and useful
+- Helping with translation (See [issues labeled translation](https://github.com/satwikkansal/wtfpython/issues?q=is%3Aissue+is%3Aopen+label%3Atranslation))
+- Minor corrections like pointing out outdated snippets, typos, formatting errors, etc.
+- Identifying gaps (things like inadequate explanation, redundant examples, etc.)
+- Any creative suggestions to make this project more fun and useful
 
-Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for more details. Feel free to create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new).
+Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for more details. Feel free to create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new) to discuss things.
 
 PS: Please don't reach out with backlinking requests, no links will be added unless they're highly relevant to the project.
 
 # Acknowledgements
 
-The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs). The overwhelming support by the community gave it the shape it is in right now. 
+The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs). The overwhelming support by pythonistas gave it the shape it is in right now.
 
 #### Some nice Links!
 * https://www.youtube.com/watch?v=sH4XF6pKKmk
@@ -3510,7 +3511,7 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 [license-url]: http://www.wtfpl.net
 [license-image]: https://img.shields.io/badge/License-WTFPL%202.0-lightgrey.svg?style=flat-square
 
-## Surprise your friends too?
+## Surprise your friends as well!
 
 If you liked wtfpython, you can use these quick links to share it with your friends,
 

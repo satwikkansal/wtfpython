@@ -168,6 +168,7 @@ Now, just run `wtfpython` at the command line which will open this collection in
 ### ▶ First things first!
 
 <!-- Example ID: d3d73936-3cf1-4632-b5ab-817981338863 -->
+<!-- read-only -->
 
 For some reasons, "Walrus" operator (`:=`) has become a very popular feature in the language. Let's check it out,
 
@@ -220,7 +221,7 @@ SyntaxError: invalid syntax
 
 
 
-####💡 Explanation
+#### 💡 Explanation
 
 **Quick walrus operator refresher**
 
@@ -1455,7 +1456,7 @@ def some_func(val):
 
 
 ### ▶ Yielding from... return!
-
+<!-- Example ID: 5626d8ef-8802-49c2-adbc-7cda5c550816 --->
 1\.
 
 ```py
@@ -1634,7 +1635,6 @@ But I thought tuples were immutable...
 
 ### ▶ The disappearing variable from outer scope
 <!-- Example ID: 7f1e71b6-cb3e-44fb-aa47-87ef1b7decc8 --->
-<!-- version-specific: True -->
 
 ```py
 e = 7
@@ -1833,7 +1833,6 @@ a, b = a[b] = {}, 5
 
 ### ▶ Modifying a dictionary while iterating over it
 <!-- Example ID: b4e5cdfb-c3a8-4112-bd38-e2356d801c41 --->
-<!-- version-specific: True -->
 ```py
 x = {0: None}
 
@@ -1870,7 +1869,7 @@ Yes, it runs for exactly **eight** times and stops.
 
 ### ▶ Stubborn `del` operation
 <!-- Example ID: 777ed4fd-3a2d-466f-95e7-c4058e61d78e --->
-<!-- read-only: True -->
+<!-- read-only -->
 
 ```py
 class SomeClass:
@@ -2065,7 +2064,6 @@ Where did element `3` go from the `numbers` list?
 
 ### ▶ Loop variables leaking out!
 <!-- Example ID: ccec7bf6-7679-4963-907a-1cd8587be9ea --->
-<!-- version-specific: True -->
 1\.
 ```py
 for x in range(7):
@@ -2607,7 +2605,7 @@ def similar_recursive_func(a):
 
 ### ▶ Wild imports
 <!-- Example ID: 83deb561-bd55-4461-bb5e-77dd7f411e1c --->
-<!-- read-only: True -->
+<!-- read-only -->
 
 ```py
 # File: module.py
@@ -2725,7 +2723,7 @@ if noon_time:
 
 **Output (< 3.5):**
 
-```sh
+```py
 ('Time at noon is', datetime.time(12, 0))
 ```
 The midnight time is not printed.
@@ -2763,7 +2761,6 @@ Sshh.. It's a super secret.
 
 ### ▶ `goto`, but why?
 <!-- Example ID: 2aff961e-7fa5-4986-a18a-9e5894bd89fe --->
-<!-- version-specific: True -->
 
 ```py
 from goto import goto, label

@@ -14,3 +14,5 @@ __pycache__/
 irrelevant/.ipynb_checkpoints/
 
 irrelevant/.python-version
+
+.idea/

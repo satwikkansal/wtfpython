@@ -145,20 +145,11 @@ A nice way to get the most out of these examples, in my opinion, will be to just
     - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
-PS: You can also read WTFPython at the command line. There's a pypi package and an npm package (which supports colored formatting) for the same.
-
-To install the npm package [`wtfpython`](https://www.npmjs.com/package/wtfpython)
-```sh
-$ npm install -g wtfpython
-```
-
-Alternatively, to install the pypi package [`wtfpython`](https://pypi.python.org/pypi/wtfpython)
+PS: You can also read WTFPython at the command line using the [pypi package](https://pypi.python.org/pypi/wtfpython),
 ```sh
 $ pip install wtfpython -U
+$ wtfpython
 ```
-
-Now, just run `wtfpython` at the command line which will open this collection in your selected `$PAGER`.
-
 ---
 
 # 👀 Examples
@@ -3497,7 +3488,7 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 * https://www.python.org/doc/humor/
 * https://github.com/cosmologicon/pywat#the-undocumented-converse-implication-operator
 * https://www.codementor.io/satwikkansal/python-practices-for-efficient-code-performance-memory-and-usability-aze6oiq65
-* https://github.com/wemake-services/wemake-python-styleguide
+* https://github.com/wemake-services/wemake-python-styleguide/search?q=wtfpython&type=Issues
 
 # 🎓 License
 

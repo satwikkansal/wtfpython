@@ -1,6 +1,6 @@
 {
   "name": "wtfpython",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "A collection of surprising Python snippets and lesser known features. [ARCHIVED]",
   "bin": "wtfpython",
   "scripts": {

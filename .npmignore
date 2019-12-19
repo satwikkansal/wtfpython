@@ -1,9 +1,8 @@
+.DS_Store
 .idea/
 
 irrelevant/
-wtfpython-pypi/build/
-wtfpython-pypi/dist/
-wtfpython-pypi/wtfpython.egg-info
+wtfpython-pypi/**
 
 # Python-specific byte-compiled files should be ignored
 __pycache__/

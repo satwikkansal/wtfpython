@@ -63,15 +63,15 @@ def is_interactive_statement(line):
     return False
 
 
-def parse_example_parts(lines, example_title_line):
+def parse_example_parts(lines, title, current_line):
     parts = {
         "build_up": [],
         "explanation": []
     }
-    content = []
+    content = [title]
     statements_so_far = []
     output_so_far = []
-    next_line = example_title_line
+    next_line = current_line
     # store build_up till an H4 (explanation) is encountered
     while not (next_line.startswith("#### ")or next_line.startswith('---')):
         # Watching out for the snippets
@@ -181,7 +181,7 @@ def inspect_and_sanitize_code_lines(lines):
     return is_print_present, result
 
 
-def convert_to_cells(cell_contents):
+def convert_to_cells(cell_contents, read_only):
     cells = []
     for stuff in cell_contents:
         if stuff["type"] == "markdown":
@@ -194,13 +194,26 @@ def convert_to_cells(cell_contents):
                 }
             )
         elif stuff["type"] == "code":
+            if read_only:
+                # Skip read only
+                # TODO: Fix
+                cells.append(
+                {
+                    "cell_type": "markdown",
+                    "metadata": {},
+                    "source": ["```py\n"] + stuff["statements"] + ["```\n"] + ["```py\n"] + stuff['output'] + ["```\n"]
+                    }
+                )
+                continue
+
             is_print_present, sanitized_code = inspect_and_sanitize_code_lines(stuff["statements"])
             if is_print_present:
                 cells.append(
                     {
                         "cell_type": "code",
                         "metadata": {
-                            "collapsed": True
+                            "collapsed": True,
+
                         },
                         "execution_count": None,
                         "outputs": [{
@@ -244,22 +257,23 @@ def convert_to_notebook(pre_examples_content, parsed_json, post_examples_content
 
     notebook_path = "test.ipynb"
 
-    result["cells"] += convert_to_cells([generate_markdown_block(pre_examples_content)])
+    result["cells"] += convert_to_cells([generate_markdown_block(pre_examples_content)], False)
 
     for example in parsed_json:
         parts = example["parts"]
         build_up = parts.get("build_up")
         explanation = parts.get("explanation")
+        read_only = example.get("read_only")
 
         if build_up:
-            result["cells"] += convert_to_cells(build_up)
+            result["cells"] += convert_to_cells(build_up, read_only)
 
         if explanation:
-            result["cells"] += convert_to_cells(explanation)
+            result["cells"] += convert_to_cells(explanation, read_only)
 
-    result["cells"] += convert_to_cells([generate_markdown_block(post_examples_content)])
+    result["cells"] += convert_to_cells([generate_markdown_block(post_examples_content)], False)
 
-    pprint.pprint(result, indent=2)
+    #pprint.pprint(result, indent=2)
     with open(notebook_path, "w") as f:
         json.dump(result, f)
 
@@ -284,13 +298,22 @@ with open(fpath, 'r+', encoding="utf-8") as f:
                     # check if it's a H3
                     if line.startswith("### "):
                         # An example is encountered
-                        title = line.replace("### ", "")
+                        title_line = line
+                        line = next(lines)
+                        read_only = False
+                        while line.strip() == "" or line.startswith('<!--'):
+                            #TODO: Capture example ID here using regex.
+                            if '<!-- read-only -->' in line:
+                                read_only = True
+                            line = next(lines)
+
                         example_details = {
                             "id": current_example,
-                            "title": line.replace("### ", ""),
-                            "section": current_section_name
+                            "title": title_line.replace("### ", ""),
+                            "section": current_section_name,
+                            "read_only": read_only
                         }
-                        line, example_details["parts"] = parse_example_parts(lines, line)
+                        line, example_details["parts"] = parse_example_parts(lines, title_line, line)
                         result.append(example_details)
                         current_example += 1
                     else:
@@ -304,5 +327,5 @@ with open(fpath, 'r+', encoding="utf-8") as f:
                 line = next(lines)
 
     except StopIteration as e:
-        pprint.pprint(result, indent=2)
+        #pprint.pprint(result, indent=2)
         convert_to_notebook(pre_stuff, result, post_stuff)

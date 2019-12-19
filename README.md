@@ -165,7 +165,7 @@ Now, just run `wtfpython` at the command line which will open this collection in
 
 ## Section: Strain your brain!
 
-### ▶ First things first!
+### ▶ First things first! *
 
 <!-- Example ID: d3d73936-3cf1-4632-b5ab-817981338863 -->
 <!-- read-only -->
@@ -451,7 +451,7 @@ True
 
 ---
 
-### ▶ Disorder within order
+### ▶ Disorder within order *
 <!-- Example ID: 91bff1f8-541d-455a-9de4-6cd8ff00ea66 --->
 ```py
 from collections import OrderedDict
@@ -549,7 +549,7 @@ What is going on here?
 
 ---
 
-### ▶ Keep trying...
+### ▶ Keep trying... *
 <!-- Example ID: b4349443-e89f-4d25-a109-82616be9d41a --->
 ```py
 def some_func():
@@ -976,7 +976,7 @@ Even when the values of `x` were different in every iteration prior to appending
 
 ---
 
-### ▶ The chicken-egg problem
+### ▶ The chicken-egg problem *
 <!-- Example ID: 60730dc2-0d79-4416-8568-2a63323b3ce8 --->
 1\.
 ```py
@@ -1050,7 +1050,7 @@ The Subclass relationships were expected to be transitive, right? (i.e., if `A` 
 
 ---
 
-### ▶ All-true-ation
+### ▶ All-true-ation *
 
 <!-- Example ID: dfe6d845-e452-48fe-a2da-0ed3869a8042 -->
 
@@ -1379,7 +1379,7 @@ True
 
 ---
 
-### ▶ Non-reflexive class method
+### ▶ Non-reflexive class method *
 
 <!-- Example ID: 3649771a-f733-413c-8060-3f9f167b83fd -->
 
@@ -1455,7 +1455,7 @@ def some_func(val):
 ---
 
 
-### ▶ Yielding from... return!
+### ▶ Yielding from... return! *
 <!-- Example ID: 5626d8ef-8802-49c2-adbc-7cda5c550816 --->
 1\.
 
@@ -1520,7 +1520,7 @@ Same result, that didn't work either.
 
 ---
 
-### ▶ Nan-reflexivity 
+### ▶ Nan-reflexivity *
 
 <!-- Example ID: 59bee91a-36e0-47a4-8c7d-aa89bf1d3976 --->
 
@@ -2012,8 +2012,7 @@ Can you guess why the output is `[2, 4]`?
 ---
 
 
-### ▶ Lossy zip of iterators
-
+### ▶ Lossy zip of iterators *
 <!-- Example ID: c28ed154-e59f-4070-8eb6-8967a4acac6d --->
 
 ```py
@@ -2390,7 +2389,7 @@ class SomeClass:
 
 ---
 
-### ▶ Needles in a Haystack
+### ▶ Needles in a Haystack *
 
 <!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --->
 
@@ -2567,7 +2566,7 @@ def similar_recursive_func(a):
 ---
 
 
-### ▶ Splitsies
+### ▶ Splitsies *
 <!-- Example ID: ec3168ba-a81a-4482-afb0-691f1cc8d65a --->
 ```py
 >>> 'a'.split()
@@ -2603,7 +2602,7 @@ def similar_recursive_func(a):
 
 ---
 
-### ▶ Wild imports
+### ▶ Wild imports *
 <!-- Example ID: 83deb561-bd55-4461-bb5e-77dd7f411e1c --->
 <!-- read-only -->
 
@@ -2662,7 +2661,7 @@ NameError: name '_another_weird_name_func' is not defined
 
 ---
 
-### ▶ All sorted?
+### ▶ All sorted? *
 
 <!-- Example ID: e5ff1eaf-8823-4738-b4ce-b73f7c9d5511 -->
 
@@ -2767,7 +2766,7 @@ from goto import goto, label
 for i in range(9):
     for j in range(9):
         for k in range(9):
-            print("I'm trapped, please rescue!")
+            print("I am trapped, please rescue!")
             if k == 2:
                 goto .breakout # breaking out from a deeply nested loop
 label .breakout
@@ -2776,8 +2775,8 @@ print("Freedom!")
 
 **Output (Python 2.3):**
 ```py
-I'm trapped, please rescue!
-I'm trapped, please rescue!
+I am trapped, please rescue!
+I am trapped, please rescue!
 Freedom!
 ```
 
@@ -2945,7 +2944,7 @@ Try block executed successfully...
 - `else` clause after try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
 
 ---
-### ▶ Ellipsis
+### ▶ Ellipsis *
 <!-- Example ID: 969b7100-ab3d-4a7d-ad7d-a6be16181b2b --->
 ```py
 def some_func():
@@ -3324,7 +3323,7 @@ Let's increase the number of iterations by a factor of 10.
 
 ---
 
-### ▶ Minor Ones
+### ▶ Minor Ones *
 <!-- Example ID: f885cb82-f1e4-4daa-9ff3-972b14cb1324 --->
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
 
@@ -3512,7 +3511,7 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 
 If you liked wtfpython, you can use these quick links to share it with your friends,
 
-[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython) | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)
+[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&text=If%20you%20really%20think%20you%20know%20Python,%20think%20once%20more!%20Check%20out%20wtfpython&hastags=python,wtfpython) | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=If%20you%20really%20thing%20you%20know%20Python,%20think%20once%20more!) | [Facebook](https://www.facebook.com/dialog/share?app_id=536779657179021&display=page&href=https%3A%2F%2Fgithub.com%2Fsatwikkansal%2Fwtfpython&quote=If%20you%20really%20think%20you%20know%20Python%2C%20think%20once%20more!)
 
 ## Need a pdf version?
 

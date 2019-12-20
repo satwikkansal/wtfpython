@@ -161,14 +161,17 @@ $ wtfpython
 <!-- Example ID: d3d73936-3cf1-4632-b5ab-817981338863 -->
 <!-- read-only -->
 
-For some reason, the "Walrus" operator (`:=`) has become a popular feature in the language. Let's check it out,
+For some reason, the Python 3.8's "Walrus" operator (`:=`) has become quite popular. Let's check it out,
 
 1\.
 
 ```py
+# Python version 3.8+
+
 >>> a = "wtf_walrus"
 >>> a
 'wtf_walrus'
+
 >>> a := "wtf_walrus"
 File "<stdin>", line 1
     a := "wtf_walrus"
@@ -183,6 +186,8 @@ SyntaxError: invalid syntax
 2 \.
 
 ```py
+# Python version 3.8+
+
 >>> a = 6, 9
 >>> a
 (6, 9)

@@ -1,12 +1,12 @@
 <p align="center"><img src="/images/logo.png" alt=""></p>
-<h1 align="center">What the f*ck Python! 🐍</h1>
-<p align="center">An interesting collection of surprising snippets and lesser-known Python features.</p>
+<h1 align="center">What the f*ck Python! 😱</h1>
+<p align="center">Exploring and understanding Python through surprising snippets.</p>
 
 Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn) | [Add translation](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
 
 Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious at first sight.
 
-Here is a fun project attempting to explain what exactly is happening under the hood for some counter-intuitive snippets and lesser-known features in Python.
+Here's a fun project attempting to explain what exactly is happening under the hood for some counter-intuitive snippets and lesser-known features in Python.
 
 While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
 
@@ -3137,6 +3137,7 @@ The built-in `ord()` function returns a character's Unicode [code point](https:/
 <!-- Example ID: edafe923-0c20-4315-b6e1-0c31abfc38f5 --->
 
 ```py
+# `pip install nump` first.
 import numpy as np
 
 def energy_send(x):
@@ -3384,7 +3385,7 @@ Let's increase the number of iterations by a factor of 10.
      46
      ```
 
-     **💡 Explanation:**  The `@` operator was added in Python 3.5 keeping sthe cientific community in mind. Any object can overload `__matmul__` magic method to define behavior for this operator.
+     **💡 Explanation:** The `@` operator was added in Python 3.5 keeping sthe cientific community in mind. Any object can overload `__matmul__` magic method to define behavior for this operator.
 
 * From Python 3.8 onwards you can use a typical f-string syntax like `f'{some_var=}` for quick debugging. Example,
     ```py
@@ -3397,15 +3398,15 @@ Let's increase the number of iterations by a factor of 10.
      
      ```py
      import dis
-     exec("""
-     def f():
-         """ + """
-    """.join(["X" + str(x) + "=" + str(x) for x in range(65539)]))
-     
-f()
-     
-     print(dis.dis(f))
-```
+    exec("""
+    def f():
+        """ + """
+        """.join(["X" + str(x) + "=" + str(x) for x in range(65539)]))
+
+    f()
+
+    print(dis.dis(f))
+    ```
      
 * Multiple Python threads won't run your *Python code* concurrently (yes, you heard it right!). It may seem intuitive to spawn several threads and let them execute your Python code concurrently, but, because of the [Global Interpreter Lock](https://wiki.python.org/moin/GlobalInterpreterLock) in Python, all you're doing is making your threads execute on the same core turn by turn. Python threads are good for IO-bound tasks, but to achieve actual parallelization in Python for CPU-bound tasks, you might want to use the Python [multiprocessing](https://docs.python.org/2/library/multiprocessing.html) module.
 
@@ -3468,7 +3469,7 @@ f()
 
 # Contributing
 
-A few ways that you can contribute to wtfpython,
+A few ways in which you can contribute to wtfpython,
 
 - Suggesting new examples
 - Helping with translation (See [issues labeled translation](https://github.com/satwikkansal/wtfpython/issues?q=is%3Aissue+is%3Aopen+label%3Atranslation))

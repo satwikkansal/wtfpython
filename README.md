@@ -3513,7 +3513,9 @@ If you like wtfpython, you can use these quick links to share it with your frien
 
 [Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&text=If%20you%20really%20think%20you%20know%20Python,%20think%20once%20more!%20Check%20out%20wtfpython&hashtags=python,wtfpython) | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=If%20you%20really%20thing%20you%20know%20Python,%20think%20once%20more!) | [Facebook](https://www.facebook.com/dialog/share?app_id=536779657179021&display=page&href=https%3A%2F%2Fgithub.com%2Fsatwikkansal%2Fwtfpython&quote=If%20you%20really%20think%20you%20know%20Python%2C%20think%20once%20more!)  
 
-## More content like this?
+## Need a pdf version?
 
-If you're interested in more content like this, you can share your email [here](https://satwikkansal.xyz/content-like-wtfpython/).
-*PS: On a sidenote, consider [planting a tree](https://teamtrees.org/).*
+I've received a few requests for the pdf (and epub) version of wtfpython. You can add your details [here](https://satwikkansal.xyz/wtfpython-pdf/) to get them as soon as they are finished.
+
+
+*PS: On a sidenote, consider donating a dollar to [plant a tree](https://teamtrees.org/).*

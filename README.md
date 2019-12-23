@@ -198,7 +198,7 @@ SyntaxError: invalid syntax
 >>> a
 6
 
->>> a, b = 6, 9 # Typcial unpacking
+>>> a, b = 6, 9 # Typical unpacking
 >>> a, b
 (6, 9)
 >>> (a, b = 16, 19) # Oops
@@ -666,7 +666,7 @@ for i, some_dict[i] in enumerate(some_string):
 1\.
 ```py
 array = [1, 8, 15]
-# A typical generator expresion
+# A typical generator expression
 gen = (x for x in array if array.count(x) > 0)
 array = [2, 8, 22]
 ```
@@ -3070,7 +3070,7 @@ _A__variable = "Some value"
 
 class A(object):
     def some_func(self):
-        return __variable # not initiatlized anywhere yet
+        return __variable # not initialized anywhere yet
 ```
 
 **Output:**
@@ -3263,7 +3263,7 @@ def convert_list_to_string(l, iters):
 **Output:**
 
 ```py
-# Executed in ipython shell using %timeit for better readablity of results.
+# Executed in ipython shell using %timeit for better readability of results.
 # You can also use the timeit module in normal python shell/scriptm=, example usage below
 # timeit.timeit('add_string_with_plus(10000)', number=1000, globals=globals())
 
@@ -3387,7 +3387,7 @@ Let's increase the number of iterations by a factor of 10.
      46
      ```
 
-     **💡 Explanation:** The `@` operator was added in Python 3.5 keeping sthe cientific community in mind. Any object can overload `__matmul__` magic method to define behavior for this operator.
+     **💡 Explanation:** The `@` operator was added in Python 3.5 keeping the scientific community in mind. Any object can overload `__matmul__` magic method to define behavior for this operator.
 
 * From Python 3.8 onwards you can use a typical f-string syntax like `f'{some_var=}` for quick debugging. Example,
     ```py
@@ -3443,7 +3443,7 @@ Let's increase the number of iterations by a factor of 10.
 
 * `int('١٢٣٤٥٦٧٨٩')` returns `123456789` in Python 3. In Python, Decimal characters include digit characters, and all characters that can be used to form decimal-radix numbers, e.g. U+0660, ARABIC-INDIC DIGIT ZERO. Here's an [interesting story](http://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) related to this behavior of Python.
 
-* You can seperate numeric literals with underscores (for better readablity) from Python 3 onwards.
+* You can separate numeric literals with underscores (for better readability) from Python 3 onwards.
 
      ```py
      >>> six_million = 6_000_000

@@ -296,7 +296,7 @@ def convert_to_notebook(pre_examples_content, parsed_json, post_examples_content
 
     #pprint.pprint(result, indent=2)
     with open(notebook_path, "w") as f:
-        json.dump(result, f)
+        json.dump(result, f, indent=2)
 
 
 with open(fpath, 'r+', encoding="utf-8") as f:

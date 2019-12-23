@@ -3516,4 +3516,4 @@ If you like wtfpython, you can use these quick links to share it with your frien
 ## More content like this?
 
 If you're interested in more content like this, you can share your email [here](https://satwikkansal.xyz/content-like-wtfpython/).
-*PS: On a sidenote, consider [buying me a meal](https://ko-fi.com/satwikkansal) or [planting a tree](https://teamtrees.org/).*
+*PS: On a sidenote, consider [planting a tree](https://teamtrees.org/).*

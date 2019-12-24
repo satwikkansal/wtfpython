@@ -6,8 +6,6 @@ Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn) | [
 
 Other modes: [Interactive](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb) | [CLI](https://pypi.python.org/pypi/wtfpython)
 
-Discussions: [Hacker News](https://news.ycombinator.com/item?id=21862073) | [Reddit](https://www.reddit.com/r/programming/comments/edsh3q/what_the_fck_python_30_exploring_and/)
-
 Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious at first sight.
 
 Here's a fun project attempting to explain what exactly is happening under the hood for some counter-intuitive snippets and lesser-known features in Python.
@@ -3497,6 +3495,7 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 * https://github.com/cosmologicon/pywat#the-undocumented-converse-implication-operator
 * https://www.codementor.io/satwikkansal/python-practices-for-efficient-code-performance-memory-and-usability-aze6oiq65
 * https://github.com/wemake-services/wemake-python-styleguide/search?q=wtfpython&type=Issues
+* WFTPython discussion threads on [Hacker News](https://news.ycombinator.com/item?id=21862073) and [Reddit](https://www.reddit.com/r/programming/comments/edsh3q/what_the_fck_python_30_exploring_and/).
 
 # 🎓 License
 

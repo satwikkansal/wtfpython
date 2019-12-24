@@ -3464,8 +3464,6 @@ Let's increase the number of iterations by a factor of 10.
   ```
   The behavior is due to the matching of empty substring(`''`) with slices of length 0 in the original string.
 
-**That's all folks!**
-
 ---
 ---
 
@@ -3518,4 +3516,5 @@ If you like wtfpython, you can use these quick links to share it with your frien
 I've received a few requests for the pdf (and epub) version of wtfpython. You can add your details [here](https://satwikkansal.xyz/wtfpython-pdf/) to get them as soon as they are finished.
 
 
+**That's all folks!** For upcoming content like this, you can add your email [here](https://www.satwikkansal.xyz/content-like-wtfpython/).
 *PS: On a sidenote, consider donating a dollar to [plant a tree](https://teamtrees.org/).*

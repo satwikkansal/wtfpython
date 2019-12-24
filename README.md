@@ -3393,7 +3393,7 @@ Let's increase the number of iterations by a factor of 10.
     ```py
     >>> some_string = "wtfpython"
     >>> f'{some_string=}'
-    "string='wtfpython'"
+    "some_string='wtfpython'"
     ``` 
 
 * Python uses 2 bytes for local variable storage in functions. In theory, this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):

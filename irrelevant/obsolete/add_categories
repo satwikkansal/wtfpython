@@ -139,7 +139,7 @@ f*
 Half triple-quoted strings
 f
 
-Implicity key type conversion
+Implicit key type conversion
 f*
 
 Stubborn `del` operator

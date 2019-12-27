@@ -575,7 +575,7 @@ def one_more_func(): # A gotcha!
                 print("Iteration", i)
                 break
     except ZeroDivisionError as e:
-        print("Zero division error ocurred", e)
+        print("Zero division error occurred", e)
 ```
 
 **Output:**

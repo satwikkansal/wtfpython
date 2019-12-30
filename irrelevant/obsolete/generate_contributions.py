@@ -1,6 +1,8 @@
 """
-Parses the README.md and generated the table
+This script parses the README.md and generates the table
 `CONTRIBUTORS.md`.
+
+No longer works since we've moved on contributors to CONTRIBUTORS.md entirely.
 """
 
 import pprint
@@ -39,7 +41,7 @@ for handle, issues in contribs.items():
     issue_string = ', '.join([issue_format.format(i, i) for i in issues])
     resp = requests.get(github_rest_api.format(handle))
     name = handle
-    if resp.status_code is 200:
+    if resp.status_code == 200:
         pprint.pprint(resp.json()['name'])
     else:
         print(handle, resp.content)

@@ -31,13 +31,14 @@ So, here we go...
   * [Section: Strain your brain!](#section-strain-your-brain)
     + [▶ First things first! *](#-first-things-first-)
     + [▶ Strings can be tricky sometimes](#-strings-can-be-tricky-sometimes)
+    + [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
+    + [▶ How not to use `is` operator](#-how-not-to-use-is-operator)
     + [▶ Hash brownies](#-hash-brownies)
     + [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same)
     + [▶ Disorder within order *](#-disorder-within-order-)
     + [▶ Keep trying... *](#-keep-trying-)
     + [▶ For what?](#-for-what)
     + [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
-    + [▶ How not to use `is` operator](#-how-not-to-use-is-operator)
     + [▶ `is not ...` is not `is (not ...)`](#-is-not--is-not-is-not-)
     + [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
     + [▶ The sticky output function](#-the-sticky-output-function)
@@ -68,7 +69,6 @@ So, here we go...
     + [▶ Beware of default mutable arguments!](#-beware-of-default-mutable-arguments)
     + [▶ Catching the Exceptions](#-catching-the-exceptions)
     + [▶ Same operands, different story!](#-same-operands-different-story)
-    + [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
     + [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
     + [▶ Needles in a Haystack *](#-needles-in-a-haystack-)
     + [▶ Splitsies *](#-splitsies-)
@@ -353,6 +353,177 @@ Makes sense, right?
 
 ---
 
+
+### ▶ Be careful with chained operations
+<!-- Example ID: 07974979-9c86-4720-80bd-467aa19470d9 --->
+```py
+>>> (False == False) in [False] # makes sense
+False
+>>> False == (False in [False]) # makes sense
+False
+>>> False == False in [False] # now what?
+True
+
+>>> True is False == False
+False
+>>> False is False is False
+True
+
+>>> 1 > 0 < 1
+True
+>>> (1 > 0) < 1
+False
+>>> 1 > (0 < 1)
+False
+```
+
+#### 💡 Explanation:
+
+As per https://docs.python.org/2/reference/expressions.html#not-in
+
+> Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.
+
+While such behavior might seem silly to you in the above examples, it's fantastic with stuff like `a == b == c` and `0 <= x <= 100`.
+
+* `False is False is False` is equivalent to `(False is False) and (False is False)`
+* `True is False == False` is equivalent to `True is False and False == False` and since the first part of the statement (`True is False`) evaluates to `False`, the overall expression evaluates to `False`.
+* `1 > 0 < 1` is equivalent to `1 > 0 and 0 < 1` which evaluates to `True`.
+* The expression `(1 > 0) < 1` is equivalent to `True < 1` and
+  ```py
+  >>> int(True)
+  1
+  >>> True + 1 #not relevant for this example, but just for fun
+  2
+  ```
+  So, `1 < 1` evaluates to `False`
+
+---
+
+### ▶ How not to use `is` operator
+<!-- Example ID: 230fa2ac-ab36-4ad1-b675-5f5a1c1a6217 --->
+The following is a very famous example present all over the internet.
+
+1\.
+
+```py
+>>> a = 256
+>>> b = 256
+>>> a is b
+True
+
+>>> a = 257
+>>> b = 257
+>>> a is b
+False
+```
+
+2\.
+
+```py
+>>> a = []
+>>> b = []
+>>> a is b
+False
+
+>>> a = tuple()
+>>> b = tuple()
+>>> a is b
+True
+```
+
+3\.
+**Output**
+
+```py
+>>> a, b = 257, 257
+>>> a is b
+True
+```
+
+**Output (Python 3.7.x specifically)**
+
+```py
+>>> a, b = 257, 257
+>> a is b
+False
+```
+
+#### 💡 Explanation:
+
+**The difference between `is` and `==`**
+
+* `is` operator checks if both the operands refer to the same object (i.e., it checks if the identity of the operands matches or not).
+* `==` operator compares the values of both the operands and checks if they are the same.
+* So `is` is for reference equality and `==` is for value equality. An example to clear things up,
+  ```py
+  >>> class A: pass
+  >>> A() is A() # These are two empty objects at two different memory locations.
+  False
+  ```
+
+**`256` is an existing object but `257` isn't**
+
+When you start up python the numbers from `-5` to `256` will be allocated. These numbers are used a lot, so it makes sense just to have them ready.
+
+Quoting from https://docs.python.org/3/c-api/long.html
+> The current implementation keeps an array of integer objects for all integers between -5 and 256, when you create an int in that range you just get back a reference to the existing object. So it should be possible to change the value of 1. I suspect the behavior of Python, in this case, is undefined. :-)
+
+```py
+>>> id(256)
+10922528
+>>> a = 256
+>>> b = 256
+>>> id(a)
+10922528
+>>> id(b)
+10922528
+>>> id(257)
+140084850247312
+>>> x = 257
+>>> y = 257
+>>> id(x)
+140084850247440
+>>> id(y)
+140084850247344
+```
+
+Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257,` and so it goes on to create another object in the memory.
+
+Similar optimization applies to other **immutable** objects like empty tuples as well. Since lists are mutable, that's why `[] is []` will return `False` and `() is ()` will return `True`. This explains our second snippet. Let's move on to the third one, 
+
+**Both `a` and `b` refer to the same object when initialized with same value in the same line.**
+
+**Output**
+
+```py
+>>> a, b = 257, 257
+>>> id(a)
+140640774013296
+>>> id(b)
+140640774013296
+>>> a = 257
+>>> b = 257
+>>> id(a)
+140640774013392
+>>> id(b)
+140640774013488
+```
+
+* When a and b are set to `257` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `257` as an object.
+
+* It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once. This optimization is not limited to integers, it works for other immutable data types like strings (check the "Strings are tricky example") and floats as well,
+
+  ```py
+  >>> a, b = 257.0, 257.0
+  >>> a is b
+  True
+  ```
+
+* Why didn't this work for Python 3.7? The abstract reason is because such compiler optimizations are implementation specific (i.e. may change with version, OS, etc). I'm still figuring out what exact implementation change cause the issue, you can check out this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for updates.
+
+---
+
+
 ### ▶ Hash brownies
 <!-- Example ID: eb17db53-49fd-4b61-85d6-345c5ca213ff --->
 1\.
@@ -385,17 +556,37 @@ So, why is Python all over the place?
 
 #### 💡 Explanation
 
-* Python dictionaries check for equality and compare the hash value to determine if two keys are the same.
-* Immutable objects with the same value always have the same hash in Python.
+* Uniqueness of keys in a Python dictionary is by *equivalence*, not identity. So even though `5`, `5.0`, and `5 + 0j` are distinct objects of different types, since they're equal, they can't both be in the same `dict` (or `set`). As soon as you insert any one of them, attempting to look up any distinct but equivalent key will succeed with the original mapped value (rather than failing with a `KeyError`):
+  ```py
+  >>> 5 == 5.0 == 5 + 0j
+  True
+  >>> 5 is not 5.0 is not 5 + 0j
+  True
+  >>> some_dict = {}
+  >>> some_dict[5.0] = "Ruby"
+  >>> 5.0 in some_dict
+  True
+  >>> (5 in some_dict) and (5 + 0j in some_dict)
+  True
+  ```
+* This applies when setting an item as well. So when you do `some_dict[5] = "Python"`, Python finds the existing item with equivalent key `5.0 -> "Ruby"`, overwrites its value in place, and leaves the original key alone.
+  ```py
+  >>> some_dict
+  {5.0: 'Ruby'}
+  >>> some_dict[5] = "Python"
+  >>> some_dict
+  {5.0: 'Python'}
+  ```
+* So how can we update the key to `5` (instead of `5.0`)? We can't actually do this update in place, but what we can do is first delete the key (`del some_dict[5.0]`), and then set it (`some_dict[5]`) to get the integer `5` as the key instead of floating `5.0`, though this should be needed in rare cases.
+
+* How did Python found `5` in a dictionary containing `5.0`? Python does this in constant time without having to scan through every item by using hash functions. When Python looks up a key `foo` in a dict, it first computes `hash(foo)` (which runs in constant-time). Since in Python it is required that objects that compare equal also have the same hash value ([docs](https://docs.python.org/3/reference/datamodel.html#object.__hash__) here), `5`, `5.0`, and `5 + 0j` have the same hash value.
   ```py
   >>> 5 == 5.0 == 5 + 0j
   True
   >>> hash(5) == hash(5.0) == hash(5 + 0j)
   True
   ```
-  **Note:** Objects with different values may also have same hash (known as [hash collision](https://en.wikipedia.org/wiki/Collision_(computer_science))).
-* When the statement `some_dict[5] = "Python"` is executed, the existing value "Ruby" is overwritten with "Python" because Python recognizes `5` and `5.0` as the same keys of the dictionary `some_dict`.
-* This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains the rationale behind it.
+  **Note:** The inverse is not necessarily true: Objects with equal hash values may themselves be unequal. (This causes what's known as a [hash collision](https://en.wikipedia.org/wiki/Collision_(computer_science)), and degrades the constant-time performance that hashing usually provides.)
 
 ---
 
@@ -729,129 +920,6 @@ array_4 = [400, 500, 600]
 
 ---
 
-### ▶ How not to use `is` operator
-<!-- Example ID: 230fa2ac-ab36-4ad1-b675-5f5a1c1a6217 --->
-The following is a very famous example present all over the internet.
-
-1\.
-
-```py
->>> a = 256
->>> b = 256
->>> a is b
-True
-
->>> a = 257
->>> b = 257
->>> a is b
-False
-```
-
-2\.
-
-```py
->>> a = []
->>> b = []
->>> a is b
-False
-
->>> a = tuple()
->>> b = tuple()
->>> a is b
-True
-```
-
-3\.
-**Output**
-
-```py
->>> a, b = 257, 257
->>> a is b
-True
-```
-
-**Output (Python 3.7.x specifically)**
-
-```py
->>> a, b = 257, 257
->> a is b
-False
-```
-
-#### 💡 Explanation:
-
-**The difference between `is` and `==`**
-
-* `is` operator checks if both the operands refer to the same object (i.e., it checks if the identity of the operands matches or not).
-* `==` operator compares the values of both the operands and checks if they are the same.
-* So `is` is for reference equality and `==` is for value equality. An example to clear things up,
-  ```py
-  >>> class A: pass
-  >>> A() is A() # These are two empty objects at two different memory locations.
-  False
-  ```
-
-**`256` is an existing object but `257` isn't**
-
-When you start up python the numbers from `-5` to `256` will be allocated. These numbers are used a lot, so it makes sense just to have them ready.
-
-Quoting from https://docs.python.org/3/c-api/long.html
-> The current implementation keeps an array of integer objects for all integers between -5 and 256, when you create an int in that range you just get back a reference to the existing object. So it should be possible to change the value of 1. I suspect the behavior of Python, in this case, is undefined. :-)
-
-```py
->>> id(256)
-10922528
->>> a = 256
->>> b = 256
->>> id(a)
-10922528
->>> id(b)
-10922528
->>> id(257)
-140084850247312
->>> x = 257
->>> y = 257
->>> id(x)
-140084850247440
->>> id(y)
-140084850247344
-```
-
-Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257,` and so it goes on to create another object in the memory.
-
-Similar optimization applies to other **immutable** objects like empty tuples as well. Since lists are mutable, that's why `[] is []` will return `False` and `() is ()` will return `True`. This explains our second snippet. Let's move on to the third one, 
-
-**Both `a` and `b` refer to the same object when initialized with same value in the same line.**
-
-**Output**
-
-```py
->>> a, b = 257, 257
->>> id(a)
-140640774013296
->>> id(b)
-140640774013296
->>> a = 257
->>> b = 257
->>> id(a)
-140640774013392
->>> id(b)
-140640774013488
-```
-
-* When a and b are set to `257` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `257` as an object.
-
-* It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once. This optimization is not limited to integers, it works for other immutable data types like strings (check the "Strings are tricky example") and floats as well,
-
-  ```py
-  >>> a, b = 257.0, 257.0
-  >>> a is b
-  True
-  ```
-
-* Why didn't this work for Python 3.7? The abstract reason is because such compiler optimizations are implementation specific (i.e. may change with version, OS, etc). I'm still figuring out what exact implementation change cause the issue, you can check out this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for updates.
-
----
 
 ### ▶ `is not ...` is not `is (not ...)`
 <!-- Example ID: b26fb1ed-0c7d-4b9c-8c6d-94a58a055c0d --->
@@ -2295,52 +2363,6 @@ a += [5, 6, 7, 8]
 * The expression `a = a + [5,6,7,8]` generates a new list and sets `a`'s reference to that new list, leaving `b` unchanged.
 
 * The expression `a += [5,6,7,8]` is actually mapped to an "extend" function that operates on the list such that `a` and `b` still point to the same list that has been modified in-place.
-
----
-
-
-### ▶ Be careful with chained operations
-<!-- Example ID: 07974979-9c86-4720-80bd-467aa19470d9 --->
-```py
->>> (False == False) in [False] # makes sense
-False
->>> False == (False in [False]) # makes sense
-False
->>> False == False in [False] # now what?
-True
-
->>> True is False == False
-False
->>> False is False is False
-True
-
->>> 1 > 0 < 1
-True
->>> (1 > 0) < 1
-False
->>> 1 > (0 < 1)
-False
-```
-
-#### 💡 Explanation:
-
-As per https://docs.python.org/2/reference/expressions.html#not-in
-
-> Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.
-
-While such behavior might seem silly to you in the above examples, it's fantastic with stuff like `a == b == c` and `0 <= x <= 100`.
-
-* `False is False is False` is equivalent to `(False is False) and (False is False)`
-* `True is False == False` is equivalent to `True is False and False == False` and since the first part of the statement (`True is False`) evaluates to `False`, the overall expression evaluates to `False`.
-* `1 > 0 < 1` is equivalent to `1 > 0 and 0 < 1` which evaluates to `True`.
-* The expression `(1 > 0) < 1` is equivalent to `True < 1` and
-  ```py
-  >>> int(True)
-  1
-  >>> True + 1 #not relevant for this example, but just for fun
-  2
-  ```
-  So, `1 < 1` evaluates to `False`
 
 ---
 

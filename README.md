@@ -3161,7 +3161,7 @@ The built-in `ord()` function returns a character's Unicode [code point](https:/
 <!-- Example ID: edafe923-0c20-4315-b6e1-0c31abfc38f5 --->
 
 ```py
-# `pip install nump` first.
+# `pip install numpy` first.
 import numpy as np
 
 def energy_send(x):

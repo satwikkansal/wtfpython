@@ -3097,11 +3097,12 @@ class A(object):
 
 **Output:**
 ```py
+>>> A().__variable
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AttributeError: 'A' object has no attribute '__variable'
 
->>> >>> A().some_func()
+>>> A().some_func()
 'Some value'
 ```
 

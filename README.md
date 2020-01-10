@@ -144,7 +144,7 @@ A nice way to get the most out of these examples, in my opinion, is to read them
 - Read the output snippets and,
   + Check if the outputs are the same as you'd expect.
   + Make sure if you know the exact reason behind the output being the way it is.
-    - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
+    - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfpython/issues/new)).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
 PS: You can also read WTFPython at the command line using the [pypi package](https://pypi.python.org/pypi/wtfpython),

@@ -2651,7 +2651,7 @@ NameError: name '_another_weird_name_func' is not defined
 
 #### 💡 Explanation:
 
-- It is often advisable to not use wildcard imports. The first obvious reason for this is, in wildcard imports, the names with a leading underscore get imported. This may lead to errors during runtime.
+- It is often advisable to not use wildcard imports. The first obvious reason for this is, in wildcard imports, the names with a leading underscore don't get imported. This may lead to errors during runtime.
 - Had we used `from ... import a, b, c` syntax, the above `NameError` wouldn't have occurred.
     ```py
     >>> from module import some_weird_name_func_, _another_weird_name_func

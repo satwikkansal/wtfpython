@@ -2241,7 +2241,7 @@ def some_func(default_arg=[]):
 
     ```py
     def some_func(default_arg=None):
-        if default_arg is not None:
+        if default_arg is None:
             default_arg = []
         default_arg.append("some_string")
         return default_arg

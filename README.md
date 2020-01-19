@@ -1210,7 +1210,7 @@ True
 
 - In a usual python string, the backslash is used to escape characters that may have a special meaning (like single-quote, double-quote, and the backslash itself).
     ```py
-    >>> 'wt\"f'
+    >>> "wt\"f"
     'wt"f'
     ```
 - In a raw string literal (as indicated by the prefix `r`),  the backslashes pass themselves as is along with the behavior of escaping the following character.

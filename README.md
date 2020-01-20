@@ -1023,7 +1023,7 @@ Even when the values of `x` were different in every iteration prior to appending
 
 - When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the variable, not its value. So all of the functions use the latest value assigned to the variable for computation.
 
-- To get the desired behavior you can pass in the loop variable as a named variable to the function. **Why this works?** Because this will define the variable again within the function's scope.
+- To get the desired behavior you can pass in the loop variable as a named variable to the function. **Why does this work?** Because this will define the variable again within the function's scope.
 
     ```py
     funcs = []

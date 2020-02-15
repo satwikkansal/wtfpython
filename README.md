@@ -1930,7 +1930,7 @@ Yes, it runs for exactly **eight** times and stops.
 * It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
 * How deleted keys are handled and when the resize occurs might be different for different Python implementations.
 * So for Python versions other than Python 2.7 - Python 3.5, the count might be different from 8 (but whatever the count is, it's going to be the same every time you run it). You can find some discussion around this [here](https://github.com/satwikkansal/wtfpython/issues/53) or in [this](https://stackoverflow.com/questions/44763802/bug-in-python-dict) StackOverflow thread.
-* Python 3.8 onwards, you'll see `RuntimeError: dictionary keys changed during iteration` exception if you try to do this.
+* Python 3.7.6 onwards, you'll see `RuntimeError: dictionary keys changed during iteration` exception if you try to do this.
 
 ---
 

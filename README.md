@@ -673,7 +673,7 @@ class OrderedDictWithHash(OrderedDict):
 True
 >>> dictionary == another_ordered_dict # and b == c
 True
->>> ordered_dict == another_ordered_dict # the why isn't c == a ??
+>>> ordered_dict == another_ordered_dict # then why isn't c == a ??
 False
 
 # We all know that a set consists of only unique elements,
@@ -705,7 +705,7 @@ What is going on here?
 - The reason why intransitive equality didn't hold among `dictionary`, `ordered_dict` and `another_ordered_dict` is because of the way `__eq__` method is implemented in `OrderedDict` class. From the [docs](https://docs.python.org/3/library/collections.html#ordereddict-objects)
   
     > Equality tests between OrderedDict objects are order-sensitive and are implemented as `list(od1.items())==list(od2.items())`. Equality tests between `OrderedDict` objects and other Mapping objects are order-insensitive like regular dictionaries.
-- The reason for this equality is behavior is that it allows `OrderedDict` objects to be directly substituted anywhere a regular dictionary is used.
+- The reason for this equality in behavior is that it allows `OrderedDict` objects to be directly substituted anywhere a regular dictionary is used.
 - Okay, so why did changing the order affect the length of the generated `set` object? The answer is the lack of intransitive equality only. Since sets are "unordered" collections of unique elements, the order in which elements are inserted shouldn't matter. But in this case, it does matter. Let's break it down a bit,
     ```py
     >>> some_set = set()
@@ -840,7 +840,7 @@ for i, some_dict[i] in enumerate(some_string):
 
   **💡 Explanation:**
 
-  - The assignment statement `i = 10` never affects the iterations of the loop because of the way for loops work in Python. Before the beginning of every iteration, the next item provided by the iterator (`range(4)` this case) is unpacked and assigned the target list variables (`i` in this case).
+  - The assignment statement `i = 10` never affects the iterations of the loop because of the way for loops work in Python. Before the beginning of every iteration, the next item provided by the iterator (`range(4)` in this case) is unpacked and assigned the target list variables (`i` in this case).
 
 * The `enumerate(some_string)` function yields a new value `i` (a counter going up) and a character from the `some_string` in each iteration. It then sets the (just assigned) `i` key of the dictionary `some_dict` to that character. The unrolling of the loop can be simplified as:
   ```py
@@ -2113,7 +2113,7 @@ Where did element `3` go from the `numbers` list?
                 result.append(elem)
             yield tuple(result)
     ```
-- So the function takes in arbitrary number of itreable objects, adds each of their items to the `result` list by calling the `next` function on them, and stops whenever any of the iterable is exhausted. 
+- So the function takes in arbitrary number of utterable objects, adds each of their items to the `result` list by calling the `next` function on them, and stops whenever any of the iterable is exhausted. 
 - The caveat here is when any iterable is exhausted, the existing elements in the `result` list are discarded. That's what happened with `3` in the `numbers_iter`.
 - The correct way to do the above using `zip` would be,
     ```py
@@ -2575,7 +2575,7 @@ def similar_recursive_func(a):
   >>> assert a == b, "Values are not equal"
   Traceback (most recent call last):
       File "<stdin>", line 1, in <module>
-  AssertionError: Values aren not equal
+  AssertionError: Values are not equal
   ```
 
 * As for the fifth snippet, most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list)).
@@ -3446,7 +3446,7 @@ Let's increase the number of iterations by a factor of 10.
      time.sleep(3)
      ```
 
-     This will print the `wtfpython` after 10 seconds due to the `end` argument because the output buffer is flushed either after encountering `\n` or when the program finishes execution. We can force the buffer to flush by passing `flush=True` argument.
+     This will print the `wtfpython` after 3 seconds due to the `end` argument because the output buffer is flushed either after encountering `\n` or when the program finishes execution. We can force the buffer to flush by passing `flush=True` argument.
 
 * List slicing with out of the bounds indices throws no errors
   ```py

@@ -2113,7 +2113,7 @@ Where did element `3` go from the `numbers` list?
                 result.append(elem)
             yield tuple(result)
     ```
-- So the function takes in arbitrary number of utterable objects, adds each of their items to the `result` list by calling the `next` function on them, and stops whenever any of the iterable is exhausted. 
+- So the function takes in arbitrary number of iterable objects, adds each of their items to the `result` list by calling the `next` function on them, and stops whenever any of the iterable is exhausted. 
 - The caveat here is when any iterable is exhausted, the existing elements in the `result` list are discarded. That's what happened with `3` in the `numbers_iter`.
 - The correct way to do the above using `zip` would be,
     ```py

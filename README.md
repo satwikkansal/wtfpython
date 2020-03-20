@@ -181,6 +181,7 @@ File "<stdin>", line 1
 SyntaxError: invalid syntax
 
 >>> (a := "wtf_walrus") # This works though
+'wtf_walrus'
 >>> a
 'wtf_walrus'
 ```
@@ -195,6 +196,7 @@ SyntaxError: invalid syntax
 (6, 9)
 
 >>> (a := 6, 9)
+(6, 9)
 >>> a
 6
 

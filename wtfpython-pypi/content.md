@@ -1732,7 +1732,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
 
 #### 💡 Explanation:
 * When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`,  but it has not been initialized previously in the same scope which throws an error.
-* Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
+* Read [this](https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
 * To modify the outer scope variable `a` in `another_func`, use `global` keyword.
   ```py
   def another_func()

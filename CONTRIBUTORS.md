@@ -22,6 +22,15 @@ Following are the wonderful people (in no specific order) who have contributed t
 | koddo | [koddo](https://github.com/koddo) | [#80](https://github.com/satwikkansal/wtfpython/issues/80), [#73](https://github.com/satwikkansal/wtfpython/issues/73) |
 | jab | [jab](https://github.com/jab) | [#77](https://github.com/satwikkansal/wtfpython/issues/77) |
 
+---
+
+**Translations**
+
+| Translator | Github | Language |
+|-------------|--------|--------|
+| leisurelicht | [leisurelicht](https://github.com/leisurelicht) | [Chinese](https://github.com/leisurelicht/wtfpython-cn) |
+| vuduclyunitn | [vuduclyunitn](https://github.com/vuduclyunitn) | [Vietnamese](https://github.com/vuduclyunitn/wtfptyhon-vi) |
+
 
 Thank you all for your time and making wtfpython more awesome! :smile:
 

@@ -92,6 +92,7 @@ So, here we go...
   * [Section: Miscellaneous](#section-miscellaneous)
     + [▶ `+=` is faster](#--is-faster)
     + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
+    + [▶ `dict` lookup performance](#-dict-lookup-performance)
     + [▶ Minor Ones *](#-minor-ones-)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
@@ -3345,6 +3346,37 @@ Let's increase the number of iterations by a factor of 10.
 - So many ways to format and create a giant string are somewhat in contrast to the [Zen of Python](https://www.python.org/dev/peps/pep-0020/), according to which,
   
     > There should be one-- and preferably only one --obvious way to do it.
+
+---
+
+### ▶ `dict` lookup performance
+
+```py
+>>> some_dict = {str(i): 1 for i in range(1_000_000)}
+>>> %timeit some_dict['5']
+28.6 ns ± 0.115 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
+>>> some_dict[1] = 1
+>>> %timeit some_dict['5']
+37.2 ns ± 0.265 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
+# why did it become much slower?
+```
+
+#### 💡 Explanation:
++ CPython has a generic dictionary lookup function that handles all types of keys (`str`, `int`, any object ...), and a specialized one for the common case of dictionaries composed of `str`-only keys.
++ The specialized function (named `lookdict_unicode` in CPython's sources) knows all existing keys (including the looked-up key) are strings, and uses the faster & simpler string comparison to compare keys, instead of calling the `__eq__` method.
++ The first time a `dict` instance is accessed with a non-`str` key, it's modified so future lookups use the generic function.
++ This process is not reversible for the particular `dict` instance, and the key doesn't even have to exist in the dictionary - attempting a failed lookup has the same effect:
+```py
+>>> some_dict = {str(i): 1 for i in range(1_000_000)}
+>>> %timeit some_dict['5']
+28.5 ns ± 0.142 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
+>>> some_dict[1]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 1
+>>> %timeit some_dict['5']
+38.5 ns ± 0.0913 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
+```
 
 ---
 

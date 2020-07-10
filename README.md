@@ -92,7 +92,7 @@ So, here we go...
   * [Section: Miscellaneous](#section-miscellaneous)
     + [▶ `+=` is faster](#--is-faster)
     + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
-    + [▶ `dict` lookup performance](#-dict-lookup-performance)
+    + [▶ `dict` lookup performance](#-slowing-down-dict-lookups)
     + [▶ Minor Ones *](#-minor-ones-)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
@@ -3349,36 +3349,38 @@ Let's increase the number of iterations by a factor of 10.
 
 ---
 
-### ▶ `dict` lookup performance
+### ▶ Slowing down `dict` lookups
 
 ```py
->>> some_dict = {str(i): 1 for i in range(1_000_000)}
+some_dict = {str(i): 1 for i in range(1_000_000)}
+another_dict = {str(i): 1 for i in range(1_000_000)}
+```
+
+**Output:**
+```py
 >>> %timeit some_dict['5']
 28.6 ns ± 0.115 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
 >>> some_dict[1] = 1
 >>> %timeit some_dict['5']
 37.2 ns ± 0.265 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
-# why did it become much slower?
-```
 
-#### 💡 Explanation:
-+ CPython has a generic dictionary lookup function that handles all types of keys (`str`, `int`, any object ...), and a specialized one for the common case of dictionaries composed of `str`-only keys.
-+ The specialized function (named `lookdict_unicode` in CPython's sources) knows all existing keys (including the looked-up key) are strings, and uses the faster & simpler string comparison to compare keys, instead of calling the `__eq__` method.
-+ The first time a `dict` instance is accessed with a non-`str` key, it's modified so future lookups use the generic function.
-+ This process is not reversible for the particular `dict` instance, and the key doesn't even have to exist in the dictionary - attempting a failed lookup has the same effect:
-```py
->>> some_dict = {str(i): 1 for i in range(1_000_000)}
->>> %timeit some_dict['5']
+>>> %timeit another_dict['5']
 28.5 ns ± 0.142 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
->>> some_dict[1]
+>>> another_dict[1]  # Trying to access a key that doesn't exist
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 KeyError: 1
->>> %timeit some_dict['5']
+>>> %timeit another_dict['5']
 38.5 ns ± 0.0913 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
 ```
+Why are same lookups becoming slower?
 
----
+#### 💡 Explanation:
++ CPython has a generic dictionary lookup function that handles all types of keys (`str`, `int`, any object ...), and a specialized one for the common case of dictionaries composed of `str`-only keys.
++ The specialized function (named `lookdict_unicode` in CPython's [source](https://github.com/python/cpython/blob/522691c46e2ae51faaad5bbbce7d959dd61770df/Objects/dictobject.c#L841)) knows all existing keys (including the looked-up key) are strings, and uses the faster & simpler string comparison to compare keys, instead of calling the `__eq__` method.
++ The first time a `dict` instance is accessed with a non-`str` key, it's modified so future lookups use the generic function.
++ This process is not reversible for the particular `dict` instance, and the key doesn't even have to exist in the dictionary. That's why attempting a failed lookup has the same effect.
+
 
 ### ▶ Minor Ones *
 <!-- Example ID: f885cb82-f1e4-4daa-9ff3-972b14cb1324 --->

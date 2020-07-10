@@ -92,7 +92,7 @@ So, here we go...
   * [Section: Miscellaneous](#section-miscellaneous)
     + [▶ `+=` is faster](#--is-faster)
     + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
-    + [▶ `dict` lookup performance](#-slowing-down-dict-lookups)
+    + [▶ Slowing down `dict` lookups *](#-slowing-down-dict-lookups)
     + [▶ Minor Ones *](#-minor-ones-)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
@@ -3349,8 +3349,8 @@ Let's increase the number of iterations by a factor of 10.
 
 ---
 
-### ▶ Slowing down `dict` lookups
-
+### ▶ Slowing down `dict` lookups *
+<!-- Example ID: c9c26ce6-df0c-47f7-af0b-966b9386d4c3 --->
 ```py
 some_dict = {str(i): 1 for i in range(1_000_000)}
 another_dict = {str(i): 1 for i in range(1_000_000)}

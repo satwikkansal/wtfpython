@@ -92,7 +92,7 @@ So, here we go...
   * [Section: Miscellaneous](#section-miscellaneous)
     + [▶ `+=` is faster](#--is-faster)
     + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
-    + [▶ Slowing down `dict` lookups *](#-slowing-down-dict-lookups)
+    + [▶ Slowing down `dict` lookups *](#-slowing-down-dict-lookups-)
     + [▶ Bloating instance `dict`s *](#-bloating-instance-dicts-)
     + [▶ Minor Ones *](#-minor-ones-)
 - [Contributing](#contributing)

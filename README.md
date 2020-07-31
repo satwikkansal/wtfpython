@@ -93,6 +93,7 @@ So, here we go...
     + [▶ `+=` is faster](#--is-faster)
     + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
     + [▶ Slowing down `dict` lookups *](#-slowing-down-dict-lookups)
+    + [▶ Bloating instance `dict`s *](#-bloating-instance-dicts-)
     + [▶ Minor Ones *](#-minor-ones-)
 - [Contributing](#contributing)
 - [Acknowledgements](#acknowledgements)
@@ -3380,6 +3381,68 @@ Why are same lookups becoming slower?
 + The specialized function (named `lookdict_unicode` in CPython's [source](https://github.com/python/cpython/blob/522691c46e2ae51faaad5bbbce7d959dd61770df/Objects/dictobject.c#L841)) knows all existing keys (including the looked-up key) are strings, and uses the faster & simpler string comparison to compare keys, instead of calling the `__eq__` method.
 + The first time a `dict` instance is accessed with a non-`str` key, it's modified so future lookups use the generic function.
 + This process is not reversible for the particular `dict` instance, and the key doesn't even have to exist in the dictionary. That's why attempting a failed lookup has the same effect.
+
+
+### ▶ Bloating instance `dict`s *
+<!-- Example ID: fe706ab4-1615-c0ba-a078-76c98cbe3f48 --->
+```py
+import sys
+
+class SomeClass:
+    def __init__(self):
+        self.some_attr1 = 1
+        self.some_attr2 = 2
+        self.some_attr3 = 3
+        self.some_attr4 = 4
+
+
+def dict_size(o):
+    return sys.getsizeof(o.__dict__)
+
+```
+
+**Output:** (Python 3.8, other Python 3 versions may vary a little)
+```py
+>>> o1 = SomeClass()
+>>> o2 = SomeClass()
+>>> dict_size(o1)
+104
+>>> dict_size(o2)
+104
+>>> del o1.some_attr1
+>>> o3 = SomeClass()
+>>> dict_size(o3)
+232
+>>> dict_size(o1)
+232
+```
+
+Let's try again... In a new interpreter:
+
+```py
+>>> o1 = SomeClass()
+>>> o2 = SomeClass()
+>>> dict_size(o1)
+104  # as expected
+>>> o1.some_attr5 = 5
+>>> o1.some_attr6 = 6
+>>> dict_size(o1)
+360
+>>> dict_size(o2)
+272
+>>> o3 = SomeClass()
+>>> dict_size(o3)
+232
+```
+
+What makes those dictionaries become bloated? And why are newly created objects bloated as well?
+
+#### 💡 Explanation:
++ CPython is able to reuse the same "keys" object in multiple dictionaries. This was added in [PEP 412](https://www.python.org/dev/peps/pep-0412/) with the motivation to reduce memory usage, specifically in dictionaries of instances - where keys (instance attributes) tend to be common to all instances.
++ This optimization is entirely seamless for instance dictionaries, but it is disabled if certain assumptions are broken.
++ Key-sharing dictionaries do not support deletion; if an instance attribute is deleted, the dictionary is "unshared", and key-sharing is disabled for all future instances of the same class.
++ Additionaly, if the dictionary keys have be resized (because new keys are inserted), they are kept shared *only* if they are used by a exactly single dictionary (this allows adding many attributes in the `__init__` of the very first created instance, without causing an "unshare"). If multiple instances exist when a resize happens, key-sharing is disabled for all future instances of the same class: CPython can't tell if your instances are using the same set of attributes anymore, and decides to bail out on attempting to share their keys.
++ A small tip, if you aim to lower your program's memory footprint: don't delete instance attributes, and make sure to initialize all attributes in your `__init__`!
 
 
 ### ▶ Minor Ones *

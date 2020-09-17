@@ -40,6 +40,6 @@ Probably unexpected output
 
 Few things that you can consider while writing an example, 
 
-- Try to be consistent with the namings and the values you use with the variables. For instance, most variable names in the project are along the lines of `some_string`, `some_list`, `some_dict`, etc. You'd see a lot of `x`s for single letter variable names, and `"wtf"` as values for strings. There's strictly enforced scheme in the project, but you can take a glance at other examples to get a gist.
+- Try to be consistent with the namings and the values you use with the variables. For instance, most variable names in the project are along the lines of `some_string`, `some_list`, `some_dict`, etc. You'd see a lot of `x`s for single letter variable names, and `"wtf"` as values for strings. There's no strictly enforced scheme in the project as such, but you can take a glance at other examples to get a gist.
 - Try to be as creative as possible to add that element of "surprise" in the setting up part of an example. Sometimes this may mean writing a snippet a sane programmer would never write.
-- Also, please don't forget to add your name to the [contributors list](/CONTRIBUTING.md).
+- Also, feel free to add your name to the [contributors list](/CONTRIBUTING.md).

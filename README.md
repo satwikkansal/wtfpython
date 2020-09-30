@@ -59,6 +59,7 @@ So, here we go...
     + [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
     + [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
     + [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
+    + [▶ Copy DEEP without deep copy](#-copy-deep-without-deep-copy)
   * [Section: Slippery Slopes](#section-slippery-slopes)
     + [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
     + [▶ Stubborn `del` operation](#-stubborn-del-operation)
@@ -1897,6 +1898,49 @@ a, b = a[b] = {}, 5
   >>> a[b][0] is a
   True
   ```
+
+---
+### ▶ Copy DEEP without deep copy
+
+```py
+>>> new_list = [1,2,4,5,6]
+>>> new_list_copy = new_list
+>>> new_list_copy.append(10)
+```
+
+**Output:**
+```py
+>>> new_list
+[1, 2, 4, 5, 6, 10]
+>>> new_list_copy
+[1, 2, 4, 5, 6, 10]
+```
+***But....***
+
+```py
+>>> new_list = [1,2,4,5,6]
+>>> new_list_dcopy = new_list[:]
+>>> new_list_dcopy.append(20)
+```
+
+**Output:**
+```py
+>>> new_list
+[1, 2, 4, 5, 6]
+>>> new_list_dcopy
+[1, 2, 4, 5, 6, 20]
+```
+
+_What did just happen then?_
+
+#### 💡 Explanation:
+
+In Python, we have concept of [deep copy](https://docs.python.org/3/library/copy.html) and  [shallow copy](https://docs.python.org/3/library/copy.html).
+In the first example, `new_list`  is the original list and  `new_list_copy` is the shallow copy of the original list. As a result changes made to the copied list has reflected back to the original list.
+
+The second example shows that `new_list_dcopy` is a deep copy of the original list `new_list`, where changes made in the deep copied list doesn't reflect back to the original list.  
+
+One can easily deep copy a list without using the  *copy.deepcopy(new_list)*  just by using  `slicing` , where any changes made to the copied list won't reflect back to the original list. Trick!!
 
 ---
 ---

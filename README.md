@@ -172,9 +172,9 @@ For some reason, the Python 3.8's "Walrus" operator (`:=`) has become quite popu
 ```py
 # Python version 3.8+
 
->>> a = "wtf_walrus"
->>> a
-'wtf_walrus'
+>>> a = "wtf_walrus"    # a is a variablein python and can store any value
+>>> a                   # After running this command we will get the contents of the variable A
+'wtf_walrus'  
 
 >>> a := "wtf_walrus"
 File "<stdin>", line 1

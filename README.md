@@ -1228,7 +1228,7 @@ True
     >>> print("\n")
 
     >>> print(r"\\n")
-    '\\\\n'
+    '\\n'
     ```
 - This means when a parser encounters a backslash in a raw string, it expects another character following it. And in our case (`print(r"\")`), the backslash escaped the trailing quote, leaving the parser without a terminating quote (hence the `SyntaxError`). That's why backslashes don't work at the end of a raw string.
 

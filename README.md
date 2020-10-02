@@ -63,6 +63,7 @@ So, here we go...
     + [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
     + [▶ Stubborn `del` operation](#-stubborn-del-operation)
     + [▶ The out of scope variable](#-the-out-of-scope-variable)
+    + [▶ The out of scope variable (again?)](#-the-out-of-scope-variable-again)
     + [▶ Deleting a list item while iterating](#-deleting-a-list-item-while-iterating)
     + [▶ Lossy zip of iterators *](#-lossy-zip-of-iterators-)
     + [▶ Loop variables leaking out!](#-loop-variables-leaking-out)

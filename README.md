@@ -2023,6 +2023,53 @@ UnboundLocalError: local variable 'a' referenced before assignment
 
 ---
 
+### ▶ The out of scope variable (again?)
+<!-- Example ID: TODO: WHAT IS THIS? --->
+```py
+def some_func():
+    a = 1
+    def some_inner_func():
+        return a
+    return some_inner_func()
+
+def another_func():
+    a = 1
+    def another_inner_func():
+        a += 1
+        return a
+    return another_inner_func()
+```
+
+**Output:**
+```py
+>>> some_func()
+1
+>>> another_func()
+UnboundLocalError: local variable 'a' referenced before assignment
+```
+
+#### 💡 Explanation:
+* When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_inner_func` inside `another_func`,  but it has not been initialized previously in the same scope, which throws an error.
+* Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
+* To modify the outer scope variable `a` in `another_inner_func`, use the `nonlocal` keyword.
+```py
+def another_func():
+    a = 1
+    def another_inner_func():
+        nonlocal a
+        a += 1
+        return a
+    return another_inner_func()
+```
+
+**Output:**
+```py
+>>> another_func()
+2
+```
+
+---
+
 ### ▶ Deleting a list item while iterating
 <!-- Example ID: 4cc52d4e-d42b-4e09-b25f-fbf5699b7d4e --->
 ```py

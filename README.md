@@ -63,7 +63,6 @@ So, here we go...
     + [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
     + [▶ Stubborn `del` operation](#-stubborn-del-operation)
     + [▶ The out of scope variable](#-the-out-of-scope-variable)
-    + [▶ The out of scope variable (again?)](#-the-out-of-scope-variable-again)
     + [▶ Deleting a list item while iterating](#-deleting-a-list-item-while-iterating)
     + [▶ Lossy zip of iterators *](#-lossy-zip-of-iterators-)
     + [▶ Loop variables leaking out!](#-loop-variables-leaking-out)
@@ -1029,7 +1028,8 @@ Even when the values of `x` were different in every iteration prior to appending
 
 - When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the variable, not its value. So all of the functions use the latest value assigned to the variable for computation.
 
-- To get the desired behavior you can pass in the loop variable as a named variable to the function. **Why does this work?** Because this will define the variable again within the function's scope.
+- To get the desired behavior you can pass in the loop variable as a named variable to the function. **Why does this work?** Because this will define the variable 
+within the function's scope.
 
     ```py
     funcs = []
@@ -1995,6 +1995,20 @@ def some_func():
 def another_func():
     a += 1
     return a
+
+
+def some_closure_func():
+    a = 1
+    def some_inner_func():
+        return a
+    return some_inner_func()
+
+def another_closure_func():
+    a = 1
+    def another_inner_func():
+        a += 1
+        return a
+    return another_inner_func()
 ```
 
 **Output:**
@@ -2003,11 +2017,15 @@ def another_func():
 1
 >>> another_func()
 UnboundLocalError: local variable 'a' referenced before assignment
+
+>>> some_closure_func()
+1
+>>> another_closure_func()
+UnboundLocalError: local variable 'a' referenced before assignment
 ```
 
 #### 💡 Explanation:
-* When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`,  but it has not been initialized previously in the same scope, which throws an error.
-* Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
+* When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`, but it has not been initialized previously in the same scope, which throws an error.
 * To modify the outer scope variable `a` in `another_func`, use `global` keyword.
   ```py
   def another_func()
@@ -2021,53 +2039,25 @@ UnboundLocalError: local variable 'a' referenced before assignment
   >>> another_func()
   2
   ```
-
----
-
-### ▶ The out of scope variable (again?)
-<!-- Example ID: TODO: WHAT IS THIS? --->
-```py
-def some_func():
-    a = 1
-    def some_inner_func():
-        return a
-    return some_inner_func()
-
-def another_func():
-    a = 1
-    def another_inner_func():
-        a += 1
-        return a
-    return another_inner_func()
-```
-
-**Output:**
-```py
->>> some_func()
-1
->>> another_func()
-UnboundLocalError: local variable 'a' referenced before assignment
-```
-
-#### 💡 Explanation:
-* When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_inner_func` inside `another_func`,  but it has not been initialized previously in the same scope, which throws an error.
-* Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
+* In `another_closure_func`, `a` becomes local to the scope of `another_inner_func`, but it has not been initialized previously in the same scope, which is why it throws an error.
 * To modify the outer scope variable `a` in `another_inner_func`, use the `nonlocal` keyword.
-```py
-def another_func():
-    a = 1
-    def another_inner_func():
-        nonlocal a
-        a += 1
-        return a
-    return another_inner_func()
-```
+  ```py
+  def another_func():
+      a = 1
+      def another_inner_func():
+          nonlocal a
+          a += 1
+          return a
+      return another_inner_func()
+  ```
 
-**Output:**
-```py
->>> another_func()
-2
-```
+  **Output:**
+  ```py
+  >>> another_func()
+  2
+  ```
+* The keywords `global` and `nonlocal` are ways to simply tell the python interpreter to not delcare new variables, but to just look them up from the corresponding scope.
+* Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
 
 ---
 

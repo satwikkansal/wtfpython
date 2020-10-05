@@ -1987,6 +1987,8 @@ Okay, now it's deleted :confused:
 
 ### ▶ The out of scope variable
 <!-- Example ID: 75c03015-7be9-4289-9e22-4f5fdda056f7 --->
+
+1\.
 ```py
 a = 1
 def some_func():
@@ -1995,8 +1997,10 @@ def some_func():
 def another_func():
     a += 1
     return a
+```
 
-
+2\.
+```py
 def some_closure_func():
     a = 1
     def some_inner_func():
@@ -2026,7 +2030,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
 
 #### 💡 Explanation:
 * When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`, but it has not been initialized previously in the same scope, which throws an error.
-* To modify the outer scope variable `a` in `another_func`, use `global` keyword.
+* To modify the outer scope variable `a` in `another_func`, we have to use the `global` keyword.
   ```py
   def another_func()
       global a
@@ -2039,8 +2043,8 @@ UnboundLocalError: local variable 'a' referenced before assignment
   >>> another_func()
   2
   ```
-* In `another_closure_func`, `a` becomes local to the scope of `another_inner_func`, but it has not been initialized previously in the same scope, which is why it throws an error.
-* To modify the outer scope variable `a` in `another_inner_func`, use the `nonlocal` keyword.
+* In `another_closure_func`, `a` becomes local to the scope of `another_inner_func`, but it has not been initialized previously in the same scope, which is why it throws an error. 
+* To modify the outer scope variable `a` in `another_inner_func`, use the `nonlocal` keyword. The nonlocal statement is used to refer to variables defined in the nearest outer (excluding the global) scope.
   ```py
   def another_func():
       a = 1
@@ -2056,7 +2060,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
   >>> another_func()
   2
   ```
-* The keywords `global` and `nonlocal` are ways to simply tell the python interpreter to not delcare new variables, but to just look them up from the corresponding scope.
+* The keywords `global` and `nonlocal` tell the python interpreter to not delcare new variables and look them up in the corresponding outer scopes.
 * Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
 
 ---

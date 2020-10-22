@@ -3609,6 +3609,16 @@ What makes those dictionaries become bloated? And why are newly created objects 
 
 * `int('١٢٣٤٥٦٧٨٩')` returns `123456789` in Python 3. In Python, Decimal characters include digit characters, and all characters that can be used to form decimal-radix numbers, e.g. U+0660, ARABIC-INDIC DIGIT ZERO. Here's an [interesting story](http://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) related to this behavior of Python.
 
+* when one grapheme becomes two unicodepoints, thus len(string) is two:
+    ```py
+    len('g̈')
+    'U+', hex(ord('g̈'[0])) #returns the first
+    ```
+* despite added support for ordered dicts, the order does not matter when comparing:
+    ```py
+    {'a': 20, 'b': 2} == {'b':2, 'a':20}
+    ```
+    
 * You can separate numeric literals with underscores (for better readability) from Python 3 onwards.
 
      ```py

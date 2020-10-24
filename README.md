@@ -3684,5 +3684,3 @@ I've received a few requests for the pdf (and epub) version of wtfpython. You ca
 
 
 **That's all folks!** For upcoming content like this, you can add your email [here](https://www.satwikkansal.xyz/content-like-wtfpython/).
-
-*PS: For consulting, you can reach out to me via Codementor (use [this link](https://www.codementor.io/satwikkansal?partner=satwikkansal) for free 10$ credits).*

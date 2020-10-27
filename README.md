@@ -2625,7 +2625,7 @@ def similar_recursive_func(a):
   AssertionError: Values are not equal
   ```
 
-* As for the fifth snippet, most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/3/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list)).
+* As for the fifth snippet, most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](https://docs.python.org/3/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list)).
 
 * Last one should be fairly obvious, mutable object (like `list`) can be altered in the function, and the reassignation of an immutable (`a -= 1`) is not an alteration of the value.
 

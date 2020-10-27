@@ -1521,7 +1521,7 @@ def some_func(val):
 #### 💡 Explanation:
 - This is a bug in CPython's handling of `yield` in generators and comprehensions.
 - Source and explanation can be found here: https://stackoverflow.com/questions/32139885/yield-in-list-comprehensions-and-generator-expressions
-- Related bug report: http://bugs.python.org/issue10544
+- Related bug report: https://bugs.python.org/issue10544
 - Python 3.8+ no longer allows `yield` inside list comprehension and will throw a `SyntaxError`.
 
 ---
@@ -2061,7 +2061,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
   2
   ```
 * The keywords `global` and `nonlocal` tell the python interpreter to not delcare new variables and look them up in the corresponding outer scopes.
-* Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
+* Read [this](https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
 
 ---
 
@@ -2821,7 +2821,7 @@ Sshh... It's a super-secret.
 
 #### 💡 Explanation:
 + `antigravity` module is one of the few easter eggs released by Python developers.
-+ `import antigravity` opens up a web browser pointing to the [classic XKCD comic](http://xkcd.com/353/) about Python.
++ `import antigravity` opens up a web browser pointing to the [classic XKCD comic](https://xkcd.com/353/) about Python.
 + Well, there's more to it. There's **another easter egg inside the easter egg**. If you look at the [code](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17), there's a function defined that purports to implement the [XKCD's geohashing algorithm](https://xkcd.com/426/).
 
 ---
@@ -3607,7 +3607,7 @@ What makes those dictionaries become bloated? And why are newly created objects 
     True
     ```
 
-* `int('١٢٣٤٥٦٧٨٩')` returns `123456789` in Python 3. In Python, Decimal characters include digit characters, and all characters that can be used to form decimal-radix numbers, e.g. U+0660, ARABIC-INDIC DIGIT ZERO. Here's an [interesting story](http://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) related to this behavior of Python.
+* `int('١٢٣٤٥٦٧٨٩')` returns `123456789` in Python 3. In Python, Decimal characters include digit characters, and all characters that can be used to form decimal-radix numbers, e.g. U+0660, ARABIC-INDIC DIGIT ZERO. Here's an [interesting story](https://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) related to this behavior of Python.
 
 * You can separate numeric literals with underscores (for better readability) from Python 3 onwards.
 

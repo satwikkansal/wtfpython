@@ -2569,17 +2569,17 @@ None
 ```py
 def some_recursive_func(a):
     if a[0] == 0:
-        return 
+        return
     a[0] -= 1
     some_recursive_func(a)
     return a
 
 def similar_recursive_func(a):
-        if a == 0:
-                return a
-        a -= 1
-        similar_recursive_func(a)
+    if a == 0:
         return a
+    a -= 1
+    similar_recursive_func(a)
+    return a
 ```
 
 **Output:**

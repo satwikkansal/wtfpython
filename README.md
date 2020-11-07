@@ -52,7 +52,6 @@ So, here we go...
     + [▶ Half triple-quoted strings](#-half-triple-quoted-strings)
     + [▶ What's wrong with booleans?](#-whats-wrong-with-booleans)
     + [▶ Class attributes and instance attributes](#-class-attributes-and-instance-attributes)
-    + [▶ Non-reflexive class method *](#-non-reflexive-class-method-)
     + [▶ yielding None](#-yielding-none)
     + [▶ Yielding from... return! *](#-yielding-from-return-)
     + [▶ Nan-reflexivity *](#-nan-reflexivity-)
@@ -1185,18 +1184,41 @@ Accessing` classm` or `method` twice, creates equal but not *same* objects for t
 attribute, the descriptor is invoked, creating a method object which "binds" the function with the object owning the
 attribute. If called, the method calls the function, implicitly passing the bound object as the first argument
 (this is how we get `self` as the first argument, despite not passing it explicitly).
-* Accessing the attribute multiple times creates multiple method objects! Therefore `o1.method is o2.method` is
+```py
+>>> o1.method
+<bound method SomeClass.method of <__main__.SomeClass object at ...>>
+```
+* Accessing the attribute multiple times creates a method object every time! Therefore `o1.method is o1.method` is
 never truthy. Accessing functions as class attributes (as opposed to instance) does not create methods, however; so
 `SomeClass.method is SomeClass.method` is truthy.
+```py
+>>> SomeClass.method
+<function SomeClass.method at ...>
+```
 * `classmethod` transforms functions into class methods. Class methods are descriptors that, when accessed, create
 a method object which binds the *class* (type) of the object, instead of the object itself.
+```py
+>>> o1.classm
+<bound method SomeClass.classm of <class '__main__.SomeClass'>>
+```
 * Unlike functions, `classmethod`s will create a method also when accessed as class attributes (in which case they
 bind the class, not to the type of it). So `SomeClass.classm is SomeClass.classm` is falsy.
+```py
+>>> SomeClass.classm
+<bound method SomeClass.classm of <class '__main__.SomeClass'>>
+```
 * A method object compares equal when both the functions are equal, and the bound objects are the same. So
 `o1.method == o1.method` is truthy, although not the same object in memory.
 * `staticmethod` transforms functions into a "no-op" descriptor, which returns the function as-is. No method
 objects are ever created, so comparison with `is` is truthy.
-* Having to create new "method" objects every time Python calls instance methods affected performance badly.
+```py
+>>> o1.staticm
+<function SomeClass.staticm at ...>
+>>> SomeClass.staticm
+<function SomeClass.staticm at ...>
+```
+* Having to create new "method" objects every time Python calls instance methods and having to modify the arguments
+every time in order to insert `self` affected performance badly.
 CPython 3.7 [solved it](https://bugs.python.org/issue26110) by introducing new opcodes that deal with calling methods
 without creating the temporary method objects. This is used only when the accessed function is actually called, so the
 snippets here are not affected, and still generate methods :)
@@ -1529,49 +1551,6 @@ True
 * The `+=` operator modifies the mutable object in-place without creating a new object. So changing the attribute of one instance affects the other instances and the class attribute as well.
 
 ---
-
-### ▶ Non-reflexive class method *
-
-<!-- Example ID: 3649771a-f733-413c-8060-3f9f167b83fd -->
-
-```py
-class SomeClass:
-        def instance_method(self):
-                pass
-        
-        @classmethod
-        def class_method(cls):
-                pass
-```
-
-**Output:**
-
-```py
->>> SomeClass.instance_method is SomeClass.instance_method
-True
->>> SomeClass.class_method is SomeClass.class_method
-False
->>> id(SomeClass.class_method) == id(SomeClass.class_method)
-True
-```
-
-#### 💡 Explanation:
-
-- The reason `SomeClass.class_method is SomeClass.class_method` is `False` is due to the `@classmethod` decorator. 
-
-  ```py
-  >>> SomeClass.instance_method
-  <function __main__.SomeClass.instance_method(self)>
-  >>> SomeClass.class_method
-  <bound method SomeClass.class_method of <class '__main__.SomeClass'>
-  ```
-
-  A new bound method every time `SomeClass.class_method` is accessed.
-
--  `id(SomeClass.class_method) == id(SomeClass.class_method)` returned `True` because the second allocation of memory for `class_method` happened at the same location of first deallocation (See Deep Down, we're all the same example for more detailed explanation). 
-
----
-
 
 ### ▶ yielding None
 <!-- Example ID: 5a40c241-2c30-40d0-8ba9-cf7e097b3b53 --->

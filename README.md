@@ -734,7 +734,7 @@ What is going on here?
     2
     >>> dictionary in another_set
     True
-    >>> another_set.add(another_ordered_dict)
+    >>> another_set.add(dictionary)
     >>> len(another_set)
     2
     ```

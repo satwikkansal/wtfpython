@@ -23,6 +23,7 @@ Following are the wonderful people (in no specific order) who have contributed t
 | jab | [jab](https://github.com/jab) | [#77](https://github.com/satwikkansal/wtfpython/issues/77) |
 | Jongy | [Jongy](https://github.com/Jongy) | [#208](https://github.com/satwikkansal/wtfpython/issues/208), [#210](https://github.com/satwikkansal/wtfpython/issues/210), [#233](https://github.com/satwikkansal/wtfpython/issues/233) |
 | Diptangsu Goswami | [diptangsu](https://github.com/diptangsu) | [#193](https://github.com/satwikkansal/wtfpython/issues/193) |
+| Charles | [charles-l](https://github.com/charles-l)  | [#245](https://github.com/satwikkansal/wtfpython/issues/245)
 
 ---
 

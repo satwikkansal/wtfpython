@@ -41,7 +41,7 @@ So, here we go...
     + [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
     + [▶ `is not ...` is not `is (not ...)`](#-is-not--is-not-is-not-)
     + [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
-    + [▶ The sticky output function](#-the-sticky-output-function)
+    + [▶ Schrödinger's variable](#-schrödingers-variable-)
     + [▶ The chicken-egg problem *](#-the-chicken-egg-problem-)
     + [▶ Subclass relationships](#-subclass-relationships)
     + [▶ Methods equality and identity](#-methods-equality-and-identity)
@@ -989,10 +989,9 @@ We can avoid this scenario here by not using `row` variable to generate `board`.
 
 ---
 
-### ▶ The sticky output function
+### ▶ Schrödinger's variable *
 <!-- Example ID: 4dc42f77-94cb-4eb5-a120-8203d3ed7604 --->
 
-1\.
 
 ```py
 funcs = []
@@ -1006,17 +1005,17 @@ for x in range(7):
 funcs_results = [func() for func in funcs]
 ```
 
-**Output:**
-
+**Output (Python version):**
 ```py
 >>> results
 [0, 1, 2, 3, 4, 5, 6]
 >>> funcs_results
 [6, 6, 6, 6, 6, 6, 6]
 ```
-Even when the values of `x` were different in every iteration prior to appending `some_func` to `funcs`, all the functions return 6.
 
-2\.
+The values of `x` were different in every iteration prior to appending `some_func` to `funcs`, but all the functions return 6 when they're evaluated after the loop completes.
+
+2.
 
 ```py
 >>> powers_of_x = [lambda x: x**i for i in range(10)]
@@ -1024,27 +1023,45 @@ Even when the values of `x` were different in every iteration prior to appending
 [512, 512, 512, 512, 512, 512, 512, 512, 512, 512]
 ```
 
-#### 💡 Explanation
+#### 💡 Explanation:
+* When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the *variable*, not its *value*. The function looks up `x` in the surrounding context, rather than using the value of `x` at the time the function is created. So all of the functions use the latest value assigned to the variable for computation. We can see that it's using the `x` from the surrounding context (i.e. *not* a local variable) with:
+```py
+>>> import inspect
+>>> inspect.getclosurevals(funcs[0])
+ClosureVars(nonlocals={}, globals={'x': 6}, builtins={}, unbound=set())
+```
+Since `x` is a global value, we can change the value that the `funcs` will lookup and return by updating `x`:
 
-- When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the variable, not its value. So all of the functions use the latest value assigned to the variable for computation.
+```py
+>>> x = 42
+>>> [func() for func in funcs]
+[42, 42, 42, 42, 42, 42, 42]
+```
 
-- To get the desired behavior you can pass in the loop variable as a named variable to the function. **Why does this work?** Because this will define the variable 
-within the function's scope.
+* To get the desired behavior you can pass in the loop variable as a named variable to the function. **Why does this work?** Because this will define the variable *inside* the function's scope. It will no longer go to the surrounding (global) scope to look up the variables value but will create a local variable that stores the value of `x` at that point in time.
 
-    ```py
-    funcs = []
-    for x in range(7):
-        def some_func(x=x):
-            return x
-        funcs.append(some_func)
-    ```
+```py
+funcs = []
+for x in range(7):
+    def some_func(x=x):
+        return x
+    funcs.append(some_func)
+```
 
-    **Output:**
-    ```py
-    >>> funcs_results = [func() for func in funcs]
-    >>> funcs_results
-    [0, 1, 2, 3, 4, 5, 6]
-    ```
+**Output:**
+
+```py
+>>> funcs_results = [func() for func in funcs]
+>>> funcs_results
+[0, 1, 2, 3, 4, 5, 6]
+```
+
+It is not longer using the `x` in the global scope:
+
+```py
+>>> inspect.getclosurevars(funcs[0])
+ClosureVars(nonlocals={}, globals={}, builtins={}, unbound=set())
+```
 
 ---
 

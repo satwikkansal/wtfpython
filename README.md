@@ -1027,7 +1027,7 @@ The values of `x` were different in every iteration prior to appending `some_fun
 * When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the *variable*, not its *value*. The function looks up `x` in the surrounding context, rather than using the value of `x` at the time the function is created. So all of the functions use the latest value assigned to the variable for computation. We can see that it's using the `x` from the surrounding context (i.e. *not* a local variable) with:
 ```py
 >>> import inspect
->>> inspect.getclosurevals(funcs[0])
+>>> inspect.getclosurevars(funcs[0])
 ClosureVars(nonlocals={}, globals={'x': 6}, builtins={}, unbound=set())
 ```
 Since `x` is a global value, we can change the value that the `funcs` will lookup and return by updating `x`:

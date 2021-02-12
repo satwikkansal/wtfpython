@@ -48,6 +48,7 @@ So, here we go...
     + [▶ All-true-ation *](#-all-true-ation-)
     + [▶ The surprising comma](#-the-surprising-comma)
     + [▶ Strings and the backslashes](#-strings-and-the-backslashes)
+    + [▶ Blurred boundaries](#-blurred-boundaries)
     + [▶ not knot!](#-not-knot)
     + [▶ Half triple-quoted strings](#-half-triple-quoted-strings)
     + [▶ What's wrong with booleans?](#-whats-wrong-with-booleans)
@@ -1350,6 +1351,42 @@ True
     '\\n'
     ```
 - This means when a parser encounters a backslash in a raw string, it expects another character following it. And in our case (`print(r"\")`), the backslash escaped the trailing quote, leaving the parser without a terminating quote (hence the `SyntaxError`). That's why backslashes don't work at the end of a raw string.
+
+---
+### ▶ Blurred boundaries
+```py
+>>> re.match('wtf', 'wtfwtf')
+<re.Match object; span=(0, 3), match='wtf'>
+>>> re.match('wtf', 'wtf')
+<re.Match object; span=(0, 3), match='wtf'>
+```
+
+- `\B` matches the empty string, but only when it **_is not_** at the beginning or end of a word.
+```py
+>>> re.match('wtf\B', 'wtfwtf')
+<re.Match object; span=(0, 3), match='wtf'>
+>>> re.match('wtf\B', 'wtf')
+None
+```
+
+- `\b` matches the empty string, but only when it **_is_** at the beginning or end of a word.
+
+```py
+>>> re.match('wtf\b', 'wtfwtf')
+None
+>>> re.match('wtf\b', 'wtf')
+None
+```
+
+#### 💡 Explanation
+- `\b` and `\B` are anchor symbols of the regular expression syntax. But, unlike `\B`, `\b` is also a valid escape as a string literal (the backspace character). Thus in order for the `re` lexer to interpret the word boundary, it has to be escaped when is not used within raw literals.
+```py
+>>> re.match('wtf\\b', 'wtf')
+<re.Match object; span=(0, 3), match='wtf'>
+>>> re.match(r'wtf\b', 'wtf')
+<re.Match object; span=(0, 3), match='wtf'>
+```
+
 
 ---
 

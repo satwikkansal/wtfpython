@@ -2135,7 +2135,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
   >>> another_func()
   2
   ```
-* The keywords `global` and `nonlocal` tell the python interpreter to not delcare new variables and look them up in the corresponding outer scopes.
+* The keywords `global` and `nonlocal` tell the python interpreter to not declare new variables and look them up in the corresponding outer scopes.
 * Read [this](https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
 
 ---
@@ -3114,7 +3114,7 @@ Ellipsis
     >>> ...
     Ellipsis
     ```
-- Eliipsis can be used for several purposes,
+- Ellipsis can be used for several purposes,
     + As a placeholder for code that hasn't been written yet (just like `pass` statement)
     + In slicing syntax to represent the full slices in remaining direction
     ```py

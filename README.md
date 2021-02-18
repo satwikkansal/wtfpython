@@ -1273,8 +1273,8 @@ Why's this True-False alteration?
   ```
 
 - `all([])` returns `True` since the iterable is empty. 
-- `all([[]])` returns `False` because `not []` is `True` is equivalent to `not False` as the list inside the iterable is empty.
-- `all([[[]]])` and higher recursive variants are always `True` since `not [[]]`, `not [[[]]]`, and so on are equivalent to `not True`.
+- `all([[]])` returns `False` because the passed array has one element, `[]`, and in python, an empty list is falsy.
+- `all([[[]]])` and higher recursive variants are always `True`. This is because the passed array's single element (`[[...]]`) is no longer empty, and lists with values are truthy.
 
 ---
 

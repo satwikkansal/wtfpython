@@ -78,7 +78,7 @@ with open("add_categories", "r") as f:
         while True:
             title = content.next()
             cat = content.next().strip()
-            is_new = True if cat[-1]=="*" else False
+            is_new = cat[-1]=="*"
             cat = cat.replace('*','')
             snips_by_title[title] = {
                 "category": cat,

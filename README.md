@@ -207,7 +207,7 @@ SyntaxError: invalid syntax
 (6, 9)
 >>> (a, b = 16, 19) # Oops
   File "<stdin>", line 1
-    (a, b = 6, 9)
+    (a, b = 16, 19)
           ^
 SyntaxError: invalid syntax
 

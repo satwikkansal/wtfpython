@@ -89,6 +89,7 @@ So, here we go...
   * [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
     + [▶ Skipping lines?](#-skipping-lines)
     + [▶ Teleportation](#-teleportation)
+    + [▶ Calling the function without calling it](#-calling-the-function-without-calling-it)
     + [▶ Well, something is fishy...](#-well-something-is-fishy)
   * [Section: Miscellaneous](#section-miscellaneous)
     + [▶ `+=` is faster](#--is-faster)
@@ -3363,7 +3364,52 @@ Where's the Nobel Prize?
 * `numpy.empty()` returns the next free memory slot without reinitializing it. This memory spot just happens to be the same one that was just freed (usually, but not always).
 
 ---
+### ▶ Calling the function without calling it 
 
+Make a file test.py
+Add the following code
+```py
+def print_HelloWorld():
+    print("Hello World")
+print_HelloWorld()
+print("Hello")
+```
+
+Make another file called try.py
+Add the following code and then run this file
+```py
+import test
+```
+**Output**
+```py
+>>> Hello World
+>>> Hello
+```
+See without even calling the function we get the ouput.
+
+#### 💡 Explanation:
+This is the magic of import statement in python. Whenever we import a file all the code that is outside of main runs. This is why whatever we write in test.py it will run in when we are importing the file to any other program.
+To overcome this, we use:
+```py
+if __name__=='_main__':
+```
+and then write everything in the main function. This will stop running the code that is in the imported file.
+
+We can change the test.py file to 
+  ```py
+def print_HelloWorld():
+    print("Hello World")
+if __name__=="__main__":
+    print_HelloWorld()
+    print("Hello")
+  ```
+**Output**
+ ```py
+>>>
+  ```
+Now we get the desired result and nothing is called when we import the test.py file.
+
+---
 ### ▶ Well, something is fishy...
 <!-- Example ID: cb6a37c5-74f7-44ca-b58c-3b902419b362 --->
 ```py

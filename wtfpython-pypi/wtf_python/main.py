@@ -13,6 +13,10 @@ file_path = join(dirname(dirname(realpath(__file__))), "content.md")
 
 
 def fetch_updated_doc():
+    """
+    Fetch the latest version of the file at `url` and save it to `file_path`.
+    If anything goes wrong, do nothing.
+    """
     try:
         print("Fetching the latest version...")
         urlretrieve(url, file_path)

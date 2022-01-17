@@ -142,7 +142,7 @@ All the examples are structured like below:
 
 # Usage
 
-A nice way to get the most out of these examples, in my opinion, is to read them chronologically, and for every example:
+A nice way to get the most out of these examples, in my opinion, is to read them in sequential order, and for every example:
 - Carefully read the initial code for setting up the example. If you're an experienced Python programmer, you'll successfully anticipate what's going to happen next most of the time.
 - Read the output snippets and,
   + Check if the outputs are the same as you'd expect.

@@ -59,6 +59,7 @@ So, here we go...
     + [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
     + [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
     + [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
+    + [▶ Exceeds the limit for integer string conversion](#-exceeds-the-limit-for-integer-string-conversion)
   * [Section: Slippery Slopes](#section-slippery-slopes)
     + [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
     + [▶ Stubborn `del` operation](#-stubborn-del-operation)
@@ -1975,8 +1976,44 @@ a, b = a[b] = {}, 5
   True
   ```
 
+
 ---
+
+### ▶ Exceeds the limit for integer string conversion
+```py
+>>> # Python 3.10.6
+>>> int("2" * 5432)
+
+>>> # Python 3.10.8
+>>> int("2" * 5432)
+```
+
+**Output:**
+```py
+>>> # Python 3.10.6
+222222222222222222222222222222222222222222222222222222222222222...
+
+>>> # Python 3.10.8
+Traceback (most recent call last):
+   ...
+ValueError: Exceeds the limit (4300) for integer string conversion:
+   value has 5432 digits; use sys.set_int_max_str_digits()
+   to increase the limit.
+```
+
+#### 💡 Explanation:
+This call to `int()` works fine in Python 3.10.6 and raises a ValueError in Python 3.10.8. Note that Python can still work with large integers. The error is only raised when converting between integers and strings.
+
+Fortunately, you can increase the limit for the allowed number of digits when you expect an operation to exceed it. To do this, you can use one of the following:
+- The -X int_max_str_digits command-line flag
+- The set_int_max_str_digits() function from the sys module
+- The PYTHONINTMAXSTRDIGITS environment variable
+
+[Check the documentation](https://docs.python.org/3/library/stdtypes.html#int-max-str-digits) for more details on changing the default limit if you expect your code to exceed this value.
+
+
 ---
+
 
 ## Section: Slippery Slopes
 

@@ -3843,7 +3843,7 @@ If you like wtfpython, you can use these quick links to share it with your frien
 
 ## Need a pdf version?
 
-I've received a few requests for the pdf (and epub) version of wtfpython. You can add your details [here](https://satwikkansal.xyz/wtfpython-pdf/) to get them as soon as they are finished.
+I've received a few requests for the pdf (and epub) version of wtfpython. You can add your details [here](https://form.jotform.com/221593245656057) to get them as soon as they are finished.
 
 
-**That's all folks!** For upcoming content like this, you can add your email [here](https://www.satwikkansal.xyz/content-like-wtfpython/).
+**That's all folks!** For upcoming content like this, you can add your email [here](https://form.jotform.com/221593598380062).

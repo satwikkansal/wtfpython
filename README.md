@@ -1196,7 +1196,7 @@ True
 True
 ```
 
-Accessing` classm` or `method` twice, creates equal but not *same* objects for the same instance of `SomeClass`.
+Accessing `classm` or `method` twice, creates equal but not *same* objects for the same instance of `SomeClass`.
 
 #### 💡 Explanation
 * Functions are [descriptors](https://docs.python.org/3/howto/descriptor.html). Whenever a function is accessed as an

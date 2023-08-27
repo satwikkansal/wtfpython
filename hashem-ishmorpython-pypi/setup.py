@@ -1,21 +1,21 @@
 from setuptools import setup, find_packages
 
 if __name__ == "__main__":
-    setup(name='wtfpython',
+    setup(name='hasem-ishmorpython',
           version='0.2',
-          description='What the f*ck Python!',
+          description='What the hasem-ishmor Python!',
           author="Satwik Kansal",
           maintainer="Satwik Kansal",
           maintainer_email='satwikkansal@gmail.com',
-          url='https://github.com/satwikkansal/wtfpython',
+          url='https://github.com/satwikkansal/hasem-ishmorpython',
           platforms='any',
-          license="WTFPL 2.0",
+          license="hasem-ishmorPL 2.0",
           long_description="An interesting collection of subtle & tricky Python Snippets"
                            " and features.",
-          keywords="wtfpython gotchas snippets tricky",
+          keywords="hasem-ishmorpython gotchas snippets tricky",
           packages=find_packages(),
           entry_points = {
-              'console_scripts': ['wtfpython = wtf_python.main:load_and_read']
+              'console_scripts': ['hasem-ishmorpython = hasem-ishmor_python.main:load_and_read']
           },
           classifiers=[
               'Development Status :: 4 - Beta',

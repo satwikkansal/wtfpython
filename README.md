@@ -1,20 +1,14 @@
 <p align="center"><img src="/images/logo.png" alt=""></p>
-<h1 align="center">What the f*ck Python! 😱</h1>
+<h1 align="center">What the hasem-ishmor Python! 😱</h1>
 <p align="center">Exploring and understanding Python through surprising snippets.</p>
-
-Translations: [Chinese 中文](https://github.com/robertparley/wtfpython-cn) | [Vietnamese Tiếng Việt](https://github.com/vuduclyunitn/wtfptyhon-vi) | [Spanish Español](https://web.archive.org/web/20220511161045/https://github.com/JoseDeFreitas/wtfpython-es) | [Korean 한국어](https://github.com/buttercrab/wtfpython-ko) | [Russian Русский](https://github.com/frontdevops/wtfpython) | [Add translation](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
-
-Other modes: [Interactive Website](https://wtfpython-interactive.vercel.app) | [Interactive Notebook](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb) | [CLI](https://pypi.python.org/pypi/wtfpython)
 
 Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious at first sight.
 
 Here's a fun project attempting to explain what exactly is happening under the hood for some counter-intuitive snippets and lesser-known features in Python.
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
+While some of the examples you see below may not be hasem-ishmors in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
 
 If you're an experienced Python programmer, you can take it as a challenge to get most of them right in the first attempt. You may have already experienced some of them before, and I might be able to revive sweet old memories of yours! :sweat_smile:
-
-PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/) (the examples marked with asterisk are the ones added in the latest major revision). 
 
 So, here we go...
 
@@ -148,13 +142,13 @@ A nice way to get the most out of these examples, in my opinion, is to read them
 - Read the output snippets and,
   + Check if the outputs are the same as you'd expect.
   + Make sure if you know the exact reason behind the output being the way it is.
-    - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfpython/issues/new)).
+    - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/hasem-ishmorpython/issues/new)).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
-PS: You can also read WTFPython at the command line using the [pypi package](https://pypi.python.org/pypi/wtfpython),
+PS: You can also read hasem-ishmorPython at the command line using the [pypi package](https://pypi.python.org/pypi/hasem-ishmorpython),
 ```sh
-$ pip install wtfpython -U
-$ wtfpython
+$ pip install hasem-ishmorpython -U
+$ hasem-ishmorpython
 ```
 ---
 
@@ -174,20 +168,20 @@ For some reason, the Python 3.8's "Walrus" operator (`:=`) has become quite popu
 ```py
 # Python version 3.8+
 
->>> a = "wtf_walrus"
+>>> a = "hasem-ishmor_walrus"
 >>> a
-'wtf_walrus'
+'hasem-ishmor_walrus'
 
->>> a := "wtf_walrus"
+>>> a := "hasem-ishmor_walrus"
 File "<stdin>", line 1
-    a := "wtf_walrus"
+    a := "hasem-ishmor_walrus"
       ^
 SyntaxError: invalid syntax
 
->>> (a := "wtf_walrus") # This works though
-'wtf_walrus'
+>>> (a := "hasem-ishmor_walrus") # This works though
+'hasem-ishmor_walrus'
 >>> a
-'wtf_walrus'
+'hasem-ishmor_walrus'
 ```
 
 2 \.
@@ -261,7 +255,7 @@ if a := some_func():
 
 This saved one line of code, and implicitly prevented invoking `some_func` twice.
 
-- Unparenthesized "assignment expression" (use of walrus operator), is restricted at the top level, hence the `SyntaxError` in the `a := "wtf_walrus"` statement of the first snippet. Parenthesizing it worked as expected and assigned `a`.  
+- Unparenthesized "assignment expression" (use of walrus operator), is restricted at the top level, hence the `SyntaxError` in the `a := "hasem-ishmor_walrus"` statement of the first snippet. Parenthesizing it worked as expected and assigned `a`.  
 
 - As usual, parenthesizing of an expression containing `=` operator is not allowed. Hence the syntax error in `(a, b = 6, 9)`. 
 
@@ -298,13 +292,13 @@ This saved one line of code, and implicitly prevented invoking `some_func` twice
 
 2\.
 ```py
->>> a = "wtf"
->>> b = "wtf"
+>>> a = "hasem-ishmor"
+>>> b = "hasem-ishmor"
 >>> a is b
 True
 
->>> a = "wtf!"
->>> b = "wtf!"
+>>> a = "hasem-ishmor!"
+>>> b = "hasem-ishmor!"
 >>> a is b
 False
 
@@ -313,19 +307,19 @@ False
 3\.
 
 ```py
->>> a, b = "wtf!", "wtf!"
+>>> a, b = "hasem-ishmor!", "hasem-ishmor!"
 >>> a is b # All versions except 3.7.x
 True
 
->>> a = "wtf!"; b = "wtf!"
+>>> a = "hasem-ishmor!"; b = "hasem-ishmor!"
 >>> a is b # This will print True or False depending on where you're invoking it (python shell / ipython / as a script)
 False
 ```
 
 ```py
 # This time in file some_file.py
-a = "wtf!"
-b = "wtf!"
+a = "hasem-ishmor!"
+b = "hasem-ishmor!"
 print(a is b)
 
 # prints True when the module is invoked!
@@ -349,11 +343,11 @@ Makes sense, right?
 + After being "interned," many variables may reference the same string object in memory (saving memory thereby).
 + In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation-dependent. There are some rules that can be used to guess if a string will be interned or not:
   * All length 0 and length 1 strings are interned.
-  * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f'])` will not be interned)
-  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. CPython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
+  * Strings are interned at compile time (`'hasem-ishmor'` will be interned but `''.join(['w', 't', 'f'])` will not be interned)
+  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'hasem-ishmor!'` was not interned due to `!`. CPython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
   ![image](/images/string-intern/string_intern.png)
-+ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `"wtf!"` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compile-time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
-+ A compile unit in an interactive environment like IPython consists of a single statement, whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement, whereas `a = "wtf!"; b = "wtf!"` are two statements in a single line. This explains why the identities are different in `a = "wtf!"; b = "wtf!"`, and also explain why they are same when invoked in `some_file.py`
++ When `a` and `b` are set to `"hasem-ishmor!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `"hasem-ishmor!"` as an object (because `"hasem-ishmor!"` is not implicitly interned as per the facts mentioned above). It's a compile-time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/hasem-ishmorpython/issues/100) for more discussion).
++ A compile unit in an interactive environment like IPython consists of a single statement, whereas it consists of the entire module in case of modules. `a, b = "hasem-ishmor!", "hasem-ishmor!"` is single statement, whereas `a = "hasem-ishmor!"; b = "hasem-ishmor!"` are two statements in a single line. This explains why the identities are different in `a = "hasem-ishmor!"; b = "hasem-ishmor!"`, and also explain why they are same when invoked in `some_file.py`
 + The abrupt change in the output of the fourth snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a  few clock cycles during runtime. Constant folding only occurs for strings having a length of less than 21. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
 + Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the fourth snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549). 
 
@@ -525,7 +519,7 @@ Similar optimization applies to other **immutable** objects like empty tuples as
   True
   ```
 
-* Why didn't this work for Python 3.7? The abstract reason is because such compiler optimizations are implementation specific (i.e. may change with version, OS, etc). I'm still figuring out what exact implementation change cause the issue, you can check out this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for updates.
+* Why didn't this work for Python 3.7? The abstract reason is because such compiler optimizations are implementation specific (i.e. may change with version, OS, etc). I'm still figuring out what exact implementation change cause the issue, you can check out this [issue](https://github.com/satwikkansal/hasem-ishmorpython/issues/100) for updates.
 
 ---
 
@@ -599,43 +593,43 @@ So, why is Python all over the place?
 ### ▶ Deep down, we're all the same.
 <!-- Example ID: 8f99a35f-1736-43e2-920d-3b78ec35da9b --->
 ```py
-class WTF:
+class hasem-ishmor:
   pass
 ```
 
 **Output:**
 ```py
->>> WTF() == WTF() # two different instances can't be equal
+>>> hasem-ishmor() == hasem-ishmor() # two different instances can't be equal
 False
->>> WTF() is WTF() # identities are also different
+>>> hasem-ishmor() is hasem-ishmor() # identities are also different
 False
->>> hash(WTF()) == hash(WTF()) # hashes _should_ be different as well
+>>> hash(hasem-ishmor()) == hash(hasem-ishmor()) # hashes _should_ be different as well
 True
->>> id(WTF()) == id(WTF())
+>>> id(hasem-ishmor()) == id(hasem-ishmor())
 True
 ```
 
 #### 💡 Explanation:
 
-* When `id` was called, Python created a `WTF` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
+* When `id` was called, Python created a `hasem-ishmor` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
 * When we do this twice in succession, Python allocates the same memory location to this second object as well. Since (in CPython) `id` uses the memory location as the object id, the id of the two objects is the same.
 * So, the object's id is unique only for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
 * But why did the `is` operator evaluate to `False`? Let's see with this snippet.
   ```py
-  class WTF(object):
+  class hasem-ishmor(object):
     def __init__(self): print("I")
     def __del__(self): print("D")
   ```
 
   **Output:**
   ```py
-  >>> WTF() is WTF()
+  >>> hasem-ishmor() is hasem-ishmor()
   I
   I
   D
   D
   False
-  >>> id(WTF()) == id(WTF())
+  >>> id(hasem-ishmor()) == id(hasem-ishmor())
   I
   D
   I
@@ -808,7 +802,7 @@ Iteration 0
 ### ▶ For what?
 <!-- Example ID: 64a9dccf-5083-4bc9-98aa-8aeecde4f210 --->
 ```py
-some_string = "wtf"
+some_string = "hasem-ishmor"
 some_dict = {}
 for i, some_dict[i] in enumerate(some_string):
     i = 10
@@ -980,7 +974,7 @@ And when the `board` is initialized by multiplying the `row`, this is what happe
 
 ![image](/images/tic-tac-toe/after_board_initialized.png)
 
-We can avoid this scenario here by not using `row` variable to generate `board`. (Asked in [this](https://github.com/satwikkansal/wtfpython/issues/68) issue).
+We can avoid this scenario here by not using `row` variable to generate `board`. (Asked in [this](https://github.com/satwikkansal/hasem-ishmorpython/issues/68) issue).
 
 ```py
 >>> board = [['']*3 for _ in range(3)]
@@ -1386,15 +1380,15 @@ SyntaxError: invalid syntax
 <!-- Example ID: c55da3e2-1034-43b9-abeb-a7a970a2ad9e --->
 **Output:**
 ```py
->>> print('wtfpython''')
-wtfpython
->>> print("wtfpython""")
-wtfpython
+>>> print('hasem-ishmorpython''')
+hasem-ishmorpython
+>>> print("hasem-ishmorpython""")
+hasem-ishmorpython
 >>> # The following statements raise `SyntaxError`
->>> # print('''wtfpython')
->>> # print("""wtfpython")
+>>> # print('''hasem-ishmorpython')
+>>> # print("""hasem-ishmorpython")
   File "<input>", line 3
-    print("""wtfpython")
+    print("""hasem-ishmorpython")
                         ^
 SyntaxError: EOF while scanning triple-quoted string literal
 ```
@@ -1402,10 +1396,10 @@ SyntaxError: EOF while scanning triple-quoted string literal
 #### 💡 Explanation:
 + Python supports implicit [string literal concatenation](https://docs.python.org/3/reference/lexical_analysis.html#string-literal-concatenation), Example,
   ```
-  >>> print("wtf" "python")
-  wtfpython
-  >>> print("wtf" "") # or "wtf"""
-  wtf
+  >>> print("hasem-ishmor" "python")
+  hasem-ishmorpython
+  >>> print("hasem-ishmor" "") # or "hasem-ishmor"""
+  hasem-ishmor
   ```
 + `'''` and `"""` are also string delimiters in Python which causes a SyntaxError because the Python interpreter was expecting a terminating triple quote as delimiter while scanning the currently encountered triple quoted string literal.
 
@@ -1441,10 +1435,10 @@ for item in mixed_list:
 2\.
 ```py
 >>> some_bool = True
->>> "wtf" * some_bool
-'wtf'
+>>> "hasem-ishmor" * some_bool
+'hasem-ishmor'
 >>> some_bool = False
->>> "wtf" * some_bool
+>>> "hasem-ishmor" * some_bool
 ''
 ```
 
@@ -1611,7 +1605,7 @@ def some_func(val):
 ```py
 def some_func(x):
     if x == 3:
-        return ["wtf"]
+        return ["hasem-ishmor"]
     else:
         yield from range(x)
 ```
@@ -1623,14 +1617,14 @@ def some_func(x):
 []
 ```
 
-Where did the `"wtf"` go? Is it due to some special effect of `yield from`? Let's validate that,
+Where did the `"hasem-ishmor"` go? Is it due to some special effect of `yield from`? Let's validate that,
 
 2\.
 
 ```py
 def some_func(x):
     if x == 3:
-        return ["wtf"]
+        return ["hasem-ishmor"]
     else:
         for i in range(x):
           yield i
@@ -1653,7 +1647,7 @@ The same result, this didn't work either.
 
 + In the case of `some_func(3)`, `StopIteration` is raised at the beginning because of `return` statement. The `StopIteration` exception is automatically caught inside the `list(...)` wrapper and the `for` loop. Therefore, the above two snippets result in an empty list.
 
-+ To get `["wtf"]` from the generator `some_func` we need to catch the `StopIteration` exception,
++ To get `["hasem-ishmor"]` from the generator `some_func` we need to catch the `StopIteration` exception,
 
   ```py
   try:
@@ -1664,7 +1658,7 @@ The same result, this didn't work either.
 
   ```py
   >>> some_string
-  ["wtf"]
+  ["hasem-ishmor"]
   ```
 
 ---
@@ -2048,7 +2042,7 @@ Yes, it runs for exactly **eight** times and stops.
 * Iteration over a dictionary that you edit at the same time is not supported.
 * It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
 * How deleted keys are handled and when the resize occurs might be different for different Python implementations.
-* So for Python versions other than Python 2.7 - Python 3.5, the count might be different from 8 (but whatever the count is, it's going to be the same every time you run it). You can find some discussion around this [here](https://github.com/satwikkansal/wtfpython/issues/53) or in [this](https://stackoverflow.com/questions/44763802/bug-in-python-dict) StackOverflow thread.
+* So for Python versions other than Python 2.7 - Python 3.5, the count might be different from 8 (but whatever the count is, it's going to be the same every time you run it). You can find some discussion around this [here](https://github.com/satwikkansal/hasem-ishmorpython/issues/53) or in [this](https://stackoverflow.com/questions/44763802/bug-in-python-dict) StackOverflow thread.
 * Python 3.7.6 onwards, you'll see `RuntimeError: dictionary keys changed during iteration` exception if you try to do this.
 
 ---
@@ -3066,7 +3060,7 @@ There we go.
   
   > Recognized that the != inequality operator in Python 3.0 was a horrible, finger-pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
 - There were more things that Uncle Barry had to share in the PEP; you can read them [here](https://www.python.org/dev/peps/pep-0401/).
-- It works well in an interactive environment, but it will raise a `SyntaxError` when you run via python file (see this [issue](https://github.com/satwikkansal/wtfpython/issues/94)). However, you can wrap the statement inside an `eval` or `compile` to get it working,
+- It works well in an interactive environment, but it will raise a `SyntaxError` when you run via python file (see this [issue](https://github.com/satwikkansal/hasem-ishmorpython/issues/94)). However, you can wrap the statement inside an `eval` or `compile` to get it working,
     ```py
     from __future__ import barry_as_FLUFL
     print(eval('"Ruby" <> "Python"'))
@@ -3720,9 +3714,9 @@ What makes those dictionaries become bloated? And why are newly created objects 
 
 * From Python 3.8 onwards you can use a typical f-string syntax like `f'{some_var=}` for quick debugging. Example,
     ```py
-    >>> some_string = "wtfpython"
+    >>> some_string = "hasem-ishmorpython"
     >>> f'{some_string=}'
-    "some_string='wtfpython'"
+    "some_string='hasem-ishmorpython'"
     ``` 
 
 * Python uses 2 bytes for local variable storage in functions. In theory, this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
@@ -3747,11 +3741,11 @@ What makes those dictionaries become bloated? And why are newly created objects 
      # File some_file.py
      import time
      
-     print("wtfpython", end="_")
+     print("hasem-ishmorpython", end="_")
      time.sleep(3)
      ```
 
-     This will print the `wtfpython` after 3 seconds due to the `end` argument because the output buffer is flushed either after encountering `\n` or when the program finishes execution. We can force the buffer to flush by passing `flush=True` argument.
+     This will print the `hasem-ishmorpython` after 3 seconds due to the `end` argument because the output buffer is flushed either after encountering `\n` or when the program finishes execution. We can force the buffer to flush by passing `flush=True` argument.
 
 * List slicing with out of the bounds indices throws no errors
   ```py
@@ -3762,7 +3756,7 @@ What makes those dictionaries become bloated? And why are newly created objects 
 
 * Slicing an iterable not always creates a new object. For example,
     ```py
-    >>> some_str = "wtfpython"
+    >>> some_str = "hasem-ishmorpython"
     >>> some_list = ['w', 't', 'f', 'p', 'y', 't', 'h', 'o', 'n']
     >>> some_list is some_list[:] # False expected because a new object is created.
     False
@@ -3798,52 +3792,52 @@ What makes those dictionaries become bloated? And why are newly created objects 
 
 # Contributing
 
-A few ways in which you can contribute to wtfpython,
+A few ways in which you can contribute to hasem-ishmorpython,
 
 - Suggesting new examples
-- Helping with translation (See [issues labeled translation](https://github.com/satwikkansal/wtfpython/issues?q=is%3Aissue+is%3Aopen+label%3Atranslation))
+- Helping with translation (See [issues labeled translation](https://github.com/satwikkansal/hasem-ishmorpython/issues?q=is%3Aissue+is%3Aopen+label%3Atranslation))
 - Minor corrections like pointing out outdated snippets, typos, formatting errors, etc.
 - Identifying gaps (things like inadequate explanation, redundant examples, etc.)
 - Any creative suggestions to make this project more fun and useful
 
-Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for more details. Feel free to create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new) to discuss things.
+Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for more details. Feel free to create a new [issue](https://github.com/satwikkansal/hasem-ishmorpython/issues/new) to discuss things.
 
 PS: Please don't reach out with backlinking requests, no links will be added unless they're highly relevant to the project.
 
 # Acknowledgements
 
-The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs). The overwhelming support by Pythonistas gave it the shape it is in right now.
+The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [hasem-ishmorjs](https://github.com/denysdovhan/hasem-ishmorjs). The overwhelming support by Pythonistas gave it the shape it is in right now.
 
 #### Some nice Links!
 * https://www.youtube.com/watch?v=sH4XF6pKKmk
-* https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python
+* https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_hasem-ishmor_things_about_python
 * https://sopython.com/wiki/Common_Gotchas_In_Python
 * https://stackoverflow.com/questions/530530/python-2-x-gotchas-and-landmines
 * https://stackoverflow.com/questions/1011431/common-pitfalls-in-python
 * https://www.python.org/doc/humor/
 * https://github.com/cosmologicon/pywat#the-undocumented-converse-implication-operator
 * https://www.codementor.io/satwikkansal/python-practices-for-efficient-code-performance-memory-and-usability-aze6oiq65
-* https://github.com/wemake-services/wemake-python-styleguide/search?q=wtfpython&type=Issues
+* https://github.com/wemake-services/wemake-python-styleguide/search?q=hasem-ishmorpython&type=Issues
 * WFTPython discussion threads on [Hacker News](https://news.ycombinator.com/item?id=21862073) and [Reddit](https://www.reddit.com/r/programming/comments/edsh3q/what_the_fck_python_30_exploring_and/).
 
 # 🎓 License
 
-[![WTFPL 2.0][license-image]][license-url]
+[![hasem-ishmorPL 2.0][license-image]][license-url]
 
 &copy; [Satwik Kansal](https://satwikkansal.xyz)
 
-[license-url]: http://www.wtfpl.net
-[license-image]: https://img.shields.io/badge/License-WTFPL%202.0-lightgrey.svg?style=flat-square
+[license-url]: http://www.hasem-ishmorpl.net
+[license-image]: https://img.shields.io/badge/License-hasem-ishmorPL%202.0-lightgrey.svg?style=flat-square
 
 ## Surprise your friends as well!
 
-If you like wtfpython, you can use these quick links to share it with your friends,
+If you like hasem-ishmorpython, you can use these quick links to share it with your friends,
 
-[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&text=If%20you%20really%20think%20you%20know%20Python,%20think%20once%20more!%20Check%20out%20wtfpython&hashtags=python,wtfpython) | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=If%20you%20really%20thing%20you%20know%20Python,%20think%20once%20more!) | [Facebook](https://www.facebook.com/dialog/share?app_id=536779657179021&display=page&href=https%3A%2F%2Fgithub.com%2Fsatwikkansal%2Fwtfpython&quote=If%20you%20really%20think%20you%20know%20Python%2C%20think%20once%20more!)  
+[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/hasem-ishmorpython&text=If%20you%20really%20think%20you%20know%20Python,%20think%20once%20more!%20Check%20out%20hasem-ishmorpython&hashtags=python,hasem-ishmorpython) | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20hasem-ishmor%20Python!&summary=If%20you%20really%20thing%20you%20know%20Python,%20think%20once%20more!) | [Facebook](https://www.facebook.com/dialog/share?app_id=536779657179021&display=page&href=https%3A%2F%2Fgithub.com%2Fsatwikkansal%2Fhasem-ishmorpython&quote=If%20you%20really%20think%20you%20know%20Python%2C%20think%20once%20more!)  
 
 ## Need a pdf version?
 
-I've received a few requests for the pdf (and epub) version of wtfpython. You can add your details [here](https://form.jotform.com/221593245656057) to get them as soon as they are finished.
+I've received a few requests for the pdf (and epub) version of hasem-ishmorpython. You can add your details [here](https://form.jotform.com/221593245656057) to get them as soon as they are finished.
 
 
 **That's all folks!** For upcoming content like this, you can add your email [here](https://form.jotform.com/221593598380062).

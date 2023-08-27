@@ -7,7 +7,7 @@ except ImportError:
     from urllib import urlretrieve
 
 url = ("http://raw.githubusercontent.com/satwikkansal/"
-       "wtfpython/master/README.md")
+       "hasem-ishmorpython/master/README.md")
 
 file_path = join(dirname(dirname(realpath(__file__))), "content.md")
 

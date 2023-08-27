@@ -2,7 +2,7 @@
 
 import sys
 
-from wtf_python.main import load_and_read
+from hasem-ishmor_python.main import load_and_read
 
 if __name__ == "__main__":
     sys.exit(load_and_read())

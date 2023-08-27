@@ -1,20 +1,20 @@
 <p align="center"><img src="/images/logo.png" alt=""></p>
-<h1 align="center">What the f*ck Python! 🐍</h1>
+<h1 align="center">What the hasem-ishmor Python! 🐍</h1>
 <p align="center">An interesting collection of surprising snippets and lesser-known Python features.</p>
 
-[![WTFPL 2.0][license-image]][license-url]
+[![hasem-ishmorPL 2.0][license-image]][license-url]
 
-Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn)
+Translations: [Chinese 中文](https://github.com/leisurelicht/hasem-ishmorpython-cn)
 
 Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
 
 Here is a fun project to collect such tricky & counter-intuitive examples and lesser-known features in Python, attempting to discuss what exactly is happening under the hood!
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
+While some of the examples you see below may not be hasem-ishmors in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
 
 If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
 
-PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
+PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/hasem-ishmorpython/releases/).
 
 So, here we go...
 
@@ -87,7 +87,7 @@ So, here we go...
 - [Acknowledgements](#acknowledgements)
 - [🎓 License](#-license)
   - [Help](#help)
-  - [Want to share wtfpython with friends?](#want-to-share-wtfpython-with-friends)
+  - [Want to share hasem-ishmorpython with friends?](#want-to-share-hasem-ishmorpython-with-friends)
   - [Need a pdf version?](#need-a-pdf-version)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -133,22 +133,22 @@ A nice way to get the most out of these examples, in my opinion, will be just to
 - Read the output snippets and,
   + Check if the outputs are the same as you'd expect.
   + Make sure if you know the exact reason behind the output being the way it is.
-    - If no, take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
+    - If no, take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/hasem-ishmorPython)).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
-PS: You can also read WTFpython at the command line. There's a pypi package and an npm package (supports colored formatting) for the same.
+PS: You can also read hasem-ishmorpython at the command line. There's a pypi package and an npm package (supports colored formatting) for the same.
 
-To install the npm package [`wtfpython`](https://www.npmjs.com/package/wtfpython)
+To install the npm package [`hasem-ishmorpython`](https://www.npmjs.com/package/hasem-ishmorpython)
 ```sh
-$ npm install -g wtfpython
+$ npm install -g hasem-ishmorpython
 ```
 
-Alternatively, to install the pypi package [`wtfpython`](https://pypi.python.org/pypi/wtfpython)
+Alternatively, to install the pypi package [`hasem-ishmorpython`](https://pypi.python.org/pypi/hasem-ishmorpython)
 ```sh
-$ pip install wtfpython -U
+$ pip install hasem-ishmorpython -U
 ```
 
-Now, just run `wtfpython` at the command line which will open this collection in your selected `$PAGER`.
+Now, just run `hasem-ishmorpython` at the command line which will open this collection in your selected `$PAGER`.
 
 ---
 
@@ -170,17 +170,17 @@ Now, just run `wtfpython` at the command line which will open this collection in
 
 2\.
 ```py
->>> a = "wtf"
->>> b = "wtf"
+>>> a = "hasem-ishmor"
+>>> b = "hasem-ishmor"
 >>> a is b
 True
 
->>> a = "wtf!"
->>> b = "wtf!"
+>>> a = "hasem-ishmor!"
+>>> b = "hasem-ishmor!"
 >>> a is b
 False
 
->>> a, b = "wtf!", "wtf!"
+>>> a, b = "hasem-ishmor!", "hasem-ishmor!"
 >>> a is b
 True
 ```
@@ -200,10 +200,10 @@ Makes sense, right?
 + After being interned, many variables may point to the same string object in memory (thereby saving memory).
 + In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation dependent. There are some facts that can be used to guess if a string will be interned or not:
   * All length 0 and length 1 strings are interned.
-  * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
-  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. Cpython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
+  * Strings are interned at compile time (`'hasem-ishmor'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
+  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'hasem-ishmor!'` was not interned due to `!`. Cpython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
   <img src="/images/string-intern/string_intern.png" alt="">
-+ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compiler optimization and specifically applies to the interactive environment.
++ When `a` and `b` are set to `"hasem-ishmor!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `hasem-ishmor!` as an object (because `"hasem-ishmor!"` is not implicitly interned as per the facts mentioned above). It's a compiler optimization and specifically applies to the interactive environment.
 + Constant folding is a technique for [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) in Python. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to reduce few clock cycles during runtime. Constant folding only occurs for strings having length less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
 
 
@@ -273,43 +273,43 @@ def some_func():
 ### ▶ Deep down, we're all the same. *
 
 ```py
-class WTF:
+class hasem-ishmor:
   pass
 ```
 
 **Output:**
 ```py
->>> WTF() == WTF() # two different instances can't be equal
+>>> hasem-ishmor() == hasem-ishmor() # two different instances can't be equal
 False
->>> WTF() is WTF() # identities are also different
+>>> hasem-ishmor() is hasem-ishmor() # identities are also different
 False
->>> hash(WTF()) == hash(WTF()) # hashes _should_ be different as well
+>>> hash(hasem-ishmor()) == hash(hasem-ishmor()) # hashes _should_ be different as well
 True
->>> id(WTF()) == id(WTF())
+>>> id(hasem-ishmor()) == id(hasem-ishmor())
 True
 ```
 
 #### 💡 Explanation:
 
-* When `id` was called, Python created a `WTF` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
+* When `id` was called, Python created a `hasem-ishmor` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
 * When we do this twice in succession, Python allocates the same memory location to this second object as well. Since (in CPython) `id` uses the memory location as the object id, the id of the two objects is the same.
 * So, object's id is unique only for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
 * But why did the `is` operator evaluated to `False`? Let's see with this snippet.
   ```py
-  class WTF(object):
+  class hasem-ishmor(object):
     def __init__(self): print("I")
     def __del__(self): print("D")
   ```
 
   **Output:**
   ```py
-  >>> WTF() is WTF()
+  >>> hasem-ishmor() is hasem-ishmor()
   I
   I
   D
   D
   False
-  >>> id(WTF()) == id(WTF())
+  >>> id(hasem-ishmor()) == id(hasem-ishmor())
   I
   D
   I
@@ -323,7 +323,7 @@ True
 ### ▶ For what?
 
 ```py
-some_string = "wtf"
+some_string = "hasem-ishmor"
 some_dict = {}
 for i, some_dict[i] in enumerate(some_string):
     pass
@@ -536,7 +536,7 @@ And when the `board` is initialized by multiplying the `row`, this is what happe
 
 ![image](/images/tic-tac-toe/after_board_initialized.png)
 
-We can avoid this scenario here by not using `row` variable to generate `board`. (Asked in [this](https://github.com/satwikkansal/wtfpython/issues/68) issue).
+We can avoid this scenario here by not using `row` variable to generate `board`. (Asked in [this](https://github.com/satwikkansal/hasem-ishmorpython/issues/68) issue).
 
 ```py
 >>> board = [['']*3 for _ in range(3)]
@@ -705,22 +705,22 @@ SyntaxError: invalid syntax
 
 **Output:**
 ```py
->>> print('wtfpython''')
-wtfpython
->>> print("wtfpython""")
-wtfpython
+>>> print('hasem-ishmorpython''')
+hasem-ishmorpython
+>>> print("hasem-ishmorpython""")
+hasem-ishmorpython
 >>> # The following statements raise `SyntaxError`
->>> # print('''wtfpython')
->>> # print("""wtfpython")
+>>> # print('''hasem-ishmorpython')
+>>> # print("""hasem-ishmorpython")
 ```
 
 #### 💡 Explanation:
 + Python supports implicit [string literal concatenation](https://docs.python.org/2/reference/lexical_analysis.html#string-literal-concatenation), Example,
   ```
-  >>> print("wtf" "python")
-  wtfpython
-  >>> print("wtf" "") # or "wtf"""
-  wtf
+  >>> print("hasem-ishmor" "python")
+  hasem-ishmorpython
+  >>> print("hasem-ishmor" "") # or "hasem-ishmor"""
+  hasem-ishmor
   ```
 + `'''` and `"""` are also string delimiters in Python which causes a SyntaxError because the Python interpreter was expecting a terminating triple quote as delimiter while scanning the currently encountered triple quoted string literal.
 
@@ -798,10 +798,10 @@ another_dict[1.0] = "Python"
 3\.
 ```py
 >>> some_bool = True
->>> "wtf"*some_bool
-'wtf'
+>>> "hasem-ishmor"*some_bool
+'hasem-ishmor'
 >>> some_bool = False
->>> "wtf"*some_bool
+>>> "hasem-ishmor"*some_bool
 ''
 ```
 
@@ -2346,15 +2346,15 @@ nan
 
 All patches are Welcome! Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for further details.
 
-For discussions, you can either create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new) or ping on the Gitter [channel](https://gitter.im/wtfpython/Lobby)
+For discussions, you can either create a new [issue](https://github.com/satwikkansal/hasem-ishmorpython/issues/new) or ping on the Gitter [channel](https://gitter.im/hasem-ishmorpython/Lobby)
 
 # Acknowledgements
 
-The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs). The overwhelming support by the community gave it the shape it is in right now.
+The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [hasem-ishmorjs](https://github.com/denysdovhan/hasem-ishmorjs). The overwhelming support by the community gave it the shape it is in right now.
 
 #### Some nice Links!
 * https://www.youtube.com/watch?v=sH4XF6pKKmk
-* https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python
+* https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_hasem-ishmor_things_about_python
 * https://sopython.com/wiki/Common_Gotchas_In_Python
 * https://stackoverflow.com/questions/530530/python-2-x-gotchas-and-landmines
 * https://stackoverflow.com/questions/1011431/common-pitfalls-in-python
@@ -2367,20 +2367,20 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 
 &copy; [Satwik Kansal](https://satwikkansal.xyz)
 
-[license-url]: http://www.wtfpl.net
-[license-image]: https://img.shields.io/badge/License-WTFPL%202.0-lightgrey.svg?style=flat-square
+[license-url]: http://www.hasem-ishmorpl.net
+[license-image]: https://img.shields.io/badge/License-hasem-ishmorPL%202.0-lightgrey.svg?style=flat-square
 
 ## Help
 
-If you have any wtfs, ideas or suggestions, please share.
+If you have any hasem-ishmors, ideas or suggestions, please share.
 
 ## Surprise your geeky pythonist friends?
 
-You can use these quick links to recommend wtfpython to your friends,
+You can use these quick links to recommend hasem-ishmorpython to your friends,
 
-[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&hastags=python,wtfpython)
- | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)
+[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/hasem-ishmorpython&hastags=python,hasem-ishmorpython)
+ | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20hasem-ishmor%20Python!&summary=An%20interesting%20collection%20of%20subtle%20and%20tricky%20Python%20snippets.)
 
 ## Need a pdf version?
 
-I've received a few requests for the pdf version of wtfpython. You can add your details [here](https://satwikkansal.xyz/wtfpython-pdf/) to get the pdf as soon as it is finished.
+I've received a few requests for the pdf version of hasem-ishmorpython. You can add your details [here](https://satwikkansal.xyz/hasem-ishmorpython-pdf/) to get the pdf as soon as it is finished.

@@ -2,9 +2,9 @@
 
 node_modules
 npm-debug.log
-wtfpython-pypi/build/
-wtfpython-pypi/dist/
-wtfpython-pypi/wtfpython.egg-info
+hasem-ishmorpython-pypi/build/
+hasem-ishmorpython-pypi/dist/
+hasem-ishmorpython-pypi/hasem-ishmorpython.egg-info
 
 # Python-specific byte-compiled files should be ignored
 __pycache__/

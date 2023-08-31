@@ -1121,7 +1121,7 @@ False
 <!-- Example ID: 9f6d8cf0-e1b5-42d0-84a0-4cfab25a0bc0 --->
 **Output:**
 ```py
->>> from collections import Hashable
+>>> from collections.abc import Hashable
 >>> issubclass(list, object)
 True
 >>> issubclass(object, Hashable)

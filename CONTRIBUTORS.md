@@ -25,6 +25,7 @@ Following are the wonderful people (in no specific order) who have contributed t
 | Diptangsu Goswami | [diptangsu](https://github.com/diptangsu) | [#193](https://github.com/satwikkansal/wtfpython/issues/193) |
 | Charles | [charles-l](https://github.com/charles-l)  | [#245](https://github.com/satwikkansal/wtfpython/issues/245)
 | LiquidFun | [LiquidFun](https://github.com/LiquidFun)  | [#267](https://github.com/satwikkansal/wtfpython/issues/267)
+| Sparsh-Verencar | [Sparsh-Verencar](https://github.com/Sparsh-Verencar)  | [#311](https://github.com/satwikkansal/wtfpython/issues/311)
 
 ---
 

@@ -91,6 +91,7 @@ So, here we go...
     + [▶ Skipping lines?](#-skipping-lines)
     + [▶ Teleportation](#-teleportation)
     + [▶ Well, something is fishy...](#-well-something-is-fishy)
+    + [▶ Reverse all! *](#-reverse-all-)
   * [Section: Miscellaneous](#section-miscellaneous)
     + [▶ `+=` is faster](#--is-faster)
     + [▶ Let's make a giant string!](#-lets-make-a-giant-string)
@@ -3401,6 +3402,59 @@ Where's the Nobel Prize?
 
 ---
 
+### ▶ Reverse all! *
+
+```py
+>>> a = bytearray('1234567890')
+>>> b = a
+>>> a
+bytearray(b'1234567890')
+>>> b
+bytearray(b'1234567890')
+>>> b.reverse()
+>>> b
+bytearray(b'0987654321')
+>>> a
+bytearray(b'0987654321')
+```
+
+I just want to reverse `b`, but `a` is also reversed!
+
+```py
+>>> aList = ['a', 'b', 'c', 'd', 'e']
+>>> bList = aList
+>>> aList
+['a', 'b', 'c', 'd', 'e']
+>>> bList
+['a', 'b', 'c', 'd', 'e']
+>>> bList.reverse()
+>>> bList
+['e', 'd', 'c', 'b', 'a']
+>>> aList
+['e', 'd', 'c', 'b', 'a']
+```
+
+I just want to reverse `bList`, but `aList` is also reversed!
+
+#### 💡 Explanation:
+
+* In Python, Assignment statements in Python do not copy objects, they create bindings between a target and an object.
+* If we want apply an new memory for our new variable, we need to use `copy.copy(x)` to execute shallow copying or `copy.deepcopy(x)` to execute deep copying.
+
+```py
+>>> a = bytearray(b'1234567890')
+>>> b = a.copy()
+>>> a
+bytearray(b'1234567890')
+>>> b
+bytearray(b'1234567890')
+>>> b.reverse()
+>>> b
+bytearray(b'0987654321')
+>>> a
+bytearray(b'1234567890')
+```
+
 ### ▶ Well, something is fishy...
 <!-- Example ID: cb6a37c5-74f7-44ca-b58c-3b902419b362 --->
 ```py
@@ -3438,9 +3492,6 @@ Shouldn't that be 100?
     ```py
     TabError: inconsistent use of tabs and spaces in indentation
     ```
-
----
----
 
 ## Section: Miscellaneous
 

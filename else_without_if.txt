@@ -1,0 +1,12 @@
+i = 0
+while i<=5:
+print(i,end=' ')
+i += 1
+else:
+print(i,end=' ')
+
+OUTPUT:
+0 1 2 3 4 5 6
+
+Most languages do not allow an else statement without an if.
+However, python allows the else statement to be executed without the if provided the loop before it has not been terminated by a break statement.

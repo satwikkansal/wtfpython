@@ -672,3 +672,64 @@ TypeError: unhashable type: 'dict'
     Таким образом, выражение `another_ordered_dict` в `another_set` равно `False`, потому что `ordered_dict` уже присутствовал в `another_set` и, как было замечено ранее, `ordered_dict == another_ordered_dict` равно `False`.
 
 ---
+
+
+### ▶ Продолжай пытаться... *
+<!-- Example ID: b4349443-e89f-4d25-a109-82616be9d41a --->
+```py
+def some_func():
+    try:
+        return 'from_try'
+    finally:
+        return 'from_finally'
+
+def another_func():
+    for _ in range(3):
+        try:
+            continue
+        finally:
+            print("Finally!")
+
+def one_more_func(): # Попался!
+    try:
+        for i in range(3):
+            try:
+                1 / i
+            except ZeroDivisionError:
+                # Вызовем исключение и обработаем его за пределами цикла
+                raise ZeroDivisionError("A trivial divide by zero error")
+            finally:
+                print("Iteration", i)
+                break
+    except ZeroDivisionError as e:
+        print("Zero division error occurred", e)
+```
+
+**Результат:**
+
+```py
+>>> some_func()
+'from_finally'
+
+>>> another_func()
+Finally!
+Finally!
+Finally!
+
+>>> 1 / 0
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ZeroDivisionError: division by zero
+
+>>> one_more_func()
+Iteration 0
+
+```
+
+#### 💡 Объяснение:
+
+- Когда один из операторов `return`, `break` или `continue` выполняется в блоке `try` оператора "try...finally", на выходе также выполняется пункт `finally`.
+- Возвращаемое значение функции определяется последним выполненным оператором `return`. Поскольку блок `finally` выполняется всегда, оператор `return`, выполненный в блоке `finally`, всегда будет последним.
+- Предостережение - если в блоке `finally` выполняется оператор `return` или `break`, то временно сохраненное исключение отбрасывается.
+
+---

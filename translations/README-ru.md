@@ -573,3 +573,102 @@ True
   Как вы можете заметить, все дело в порядке уничтожения объектов.
 
 ---
+
+
+### ▶ Беспорядок внутри порядка  *
+<!-- Example ID: 91bff1f8-541d-455a-9de4-6cd8ff00ea66 --->
+```py
+from collections import OrderedDict
+
+dictionary = dict()
+dictionary[1] = 'a'; dictionary[2] = 'b';
+
+ordered_dict = OrderedDict()
+ordered_dict[1] = 'a'; ordered_dict[2] = 'b';
+
+another_ordered_dict = OrderedDict()
+another_ordered_dict[2] = 'b'; another_ordered_dict[1] = 'a';
+
+class DictWithHash(dict):
+    """
+    A dict that also implements __hash__ magic.
+    """
+    __hash__ = lambda self: 0
+
+class OrderedDictWithHash(OrderedDict):
+    """
+    An OrderedDict that also implements __hash__ magic.
+    """
+    __hash__ = lambda self: 0
+```
+
+**Вывод**
+```py
+>>> dictionary == ordered_dict # a == b
+True
+>>> dictionary == another_ordered_dict # b == c
+True
+>>> ordered_dict == another_ordered_dict # почему же c != a ??
+False
+
+# Мы все знаем, что множество состоит только из уникальных элементов,
+# давайте попробуем составить множество из этих словарей и посмотрим, что получится...
+
+>>> len({dictionary, ordered_dict, another_ordered_dict})
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'dict'
+
+# Логично, поскольку в словаре не реализовано магический метод __hash__, попробуем использовать
+# наши классы-обертки.
+>>> dictionary = DictWithHash()
+>>> dictionary[1] = 'a'; dictionary[2] = 'b';
+>>> ordered_dict = OrderedDictWithHash()
+>>> ordered_dict[1] = 'a'; ordered_dict[2] = 'b';
+>>> another_ordered_dict = OrderedDictWithHash()
+>>> another_ordered_dict[2] = 'b'; another_ordered_dict[1] = 'a';
+>>> len({dictionary, ordered_dict, another_ordered_dict})
+1
+>>> len({ordered_dict, another_ordered_dict, dictionary}) # changing the order
+2
+```
+
+Что здесь происходит?
+
+#### 💡 Объяснение:
+
+- Переходное (интрантизивное) равенство между `dictionary`, `ordered_dict` и `another_ordered_dict` не выполняется из-за реализации магического метода `__eq__` в классе `OrderedDict`. Перевод цитаты из [документации](https://docs.python.org/3/library/collections.html#ordereddict-objects)
+
+    > Тесты равенства между объектами OrderedDict чувствительны к порядку и реализуются как `list(od1.items())==list(od2.items())`. Тесты на равенство между объектами `OrderedDict` и другими объектами Mapping нечувствительны к порядку, как обычные словари.
+- Причина такого поведения равенства в том, что оно позволяет напрямую подставлять объекты `OrderedDict` везде, где используется обычный словарь.
+- Итак, почему изменение порядка влияет на длину генерируемого объекта `set`? Ответ заключается только в отсутствии переходного равенства. Поскольку множества являются "неупорядоченными" коллекциями уникальных элементов, порядок вставки элементов не должен иметь значения. Но в данном случае он имеет значение. Давайте немного разберемся в этом,
+    ```py
+    >>> some_set = set()
+    >>> some_set.add(dictionary) # используем объекты из фрагмента кода выше
+    >>> ordered_dict in some_set
+    True
+    >>> some_set.add(ordered_dict)
+    >>> len(some_set)
+    1
+    >>> another_ordered_dict in some_set
+    True
+    >>> some_set.add(another_ordered_dict)
+    >>> len(some_set)
+    1
+
+    >>> another_set = set()
+    >>> another_set.add(ordered_dict)
+    >>> another_ordered_dict in another_set
+    False
+    >>> another_set.add(another_ordered_dict)
+    >>> len(another_set)
+    2
+    >>> dictionary in another_set
+    True
+    >>> another_set.add(another_ordered_dict)
+    >>> len(another_set)
+    2
+    ```
+    Таким образом, выражение `another_ordered_dict` в `another_set` равно `False`, потому что `ordered_dict` уже присутствовал в `another_set` и, как было замечено ранее, `ordered_dict == another_ordered_dict` равно `False`.
+
+---

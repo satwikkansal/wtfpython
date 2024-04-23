@@ -2354,3 +2354,79 @@ def some_func(default_arg=[]):
     ```
 
 ---
+
+
+### ▶ Ловля исключений
+<!-- Example ID: b5ca5e6a-47b9-4f69-9375-cda0f8c6755d --->
+```py
+some_list = [1, 2, 3]
+try:
+    # Должно вернуться ``IndexError``
+    print(some_list[4])
+except IndexError, ValueError:
+    print("Caught!")
+
+try:
+    # Должно вернуться ``ValueError``
+    some_list.remove(4)
+except IndexError, ValueError:
+    print("Caught again!")
+```
+
+**Результат (Python 2.x):**
+```py
+Caught!
+
+ValueError: list.remove(x): x not in list
+```
+
+**Результат (Python 3.x):**
+```py
+  File "<input>", line 3
+    except IndexError, ValueError:
+                     ^
+SyntaxError: invalid syntax
+```
+
+#### 💡 Объяснение
+
+* Чтобы добавить несколько Исключений в блок `except`, необходимо передать их в виде кортежа с круглыми скобками в качестве первого аргумента. Второй аргумент - это необязательное имя, которое при передаче свяжет экземпляр исключения, который был пойман. Пример,
+  ```py
+  some_list = [1, 2, 3]
+  try:
+     # Должно возникнуть ``ValueError``
+     some_list.remove(4)
+  except (IndexError, ValueError), e:
+     print("Caught again!")
+     print(e)
+  ```
+  **Результат (Python 2.x):**
+  ```
+  Caught again!
+  list.remove(x): x not in list
+  ```
+  **Результат (Python 3.x):**
+  ```py
+    File "<input>", line 4
+      except (IndexError, ValueError), e:
+                                       ^
+  IndentationError: unindent does not match any outer indentation level
+  ```
+
+* Отделение исключения от переменной запятой является устаревшим и не работает в Python 3; правильнее использовать `as`. Пример,
+  ```py
+  some_list = [1, 2, 3]
+  try:
+      some_list.remove(4)
+
+  except (IndexError, ValueError) as e:
+      print("Caught again!")
+      print(e)
+  ```
+  **Результат:**
+  ```
+  Caught again!
+  list.remove(x): x not in list
+  ```
+
+---

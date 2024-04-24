@@ -2782,3 +2782,64 @@ def similar_recursive_func(a):
     ```
 
 ---
+
+
+### ▶ Подстановочное импортирование (wild imports) *
+<!-- Example ID: 83deb561-bd55-4461-bb5e-77dd7f411e1c --->
+<!-- read-only -->
+
+```py
+# File: module.py
+
+def some_weird_name_func_():
+    print("works!")
+
+def _another_weird_name_func():
+    print("works!")
+
+```
+
+**Результат**
+
+```py
+>>> from module import *
+>>> some_weird_name_func_()
+"works!"
+>>> _another_weird_name_func()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name '_another_weird_name_func' is not defined
+```
+
+#### 💡 Объяснение:
+
+- Часто рекомендуется не использовать импорт с подстановочными знаками (wildcard import). Первая очевидная причина заключается в том, что при импорте с подстановочным знаком имена с ведущим подчеркиванием не импортируются. Это может привести к ошибкам во время выполнения.
+
+- Если бы мы использовали синтаксис `from ... import a, b, c`, приведенная выше `NameError` не возникла бы.
+    ```py
+    >>> from module import some_weird_name_func_, _another_weird_name_func
+    >>> _another_weird_name_func()
+    works!
+    ```
+- Если вы действительно хотите использовать импорт с подстановочными знаками, то нужно определить список `__all__` в вашем модуле, который будет содержать публичные объекты, доступные при wildcard импортировании.
+    ```py
+    __all__ = ['_another_weird_name_func']
+
+    def some_weird_name_func_():
+        print("works!")
+
+    def _another_weird_name_func():
+        print("works!")
+    ```
+    **Результат**
+
+    ```py
+    >>> _another_weird_name_func()
+    "works!"
+    >>> some_weird_name_func_()
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    NameError: name 'some_weird_name_func_' is not defined
+    ```
+
+---

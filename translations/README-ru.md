@@ -3801,3 +3801,24 @@ PS: Пожалуйста, не обращайтесь к нам с просьб�
 * https://www.codementor.io/satwikkansal/python-practices-for-efficient-code-performance-memory-and-usability-aze6oiq65
 * https://github.com/wemake-services/wemake-python-styleguide/search?q=wtfpython&type=Issues
 * Ветки обсуждения WFTPython на [Hacker News](https://news.ycombinator.com/item?id=21862073) и [Reddit](https://www.reddit.com/r/programming/comments/edsh3q/what_the_fck_python_30_exploring_and/).
+
+# 🎓 Лицензия
+
+[![WTFPL 2.0][license-image]][license-url]
+
+&copy; [Satwik Kansal](https://satwikkansal.xyz)
+
+[license-url]: http://www.wtfpl.net
+[license-image]: https://img.shields.io/badge/License-WTFPL%202.0-lightgrey.svg?style=flat-square
+
+## Удиви своих друзей!
+
+Если вам нравится `wtfpython`, вы можете поделиться проектом, используя быстрые ссылки,
+
+[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&text=If%20you%20really%20think%20you%20know%20Python,%20think%20once%20more!%20Check%20out%20wtfpython&hashtags=python,wtfpython) | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=If%20you%20really%20thing%20you%20know%20Python,%20think%20once%20more!) | [Facebook](https://www.facebook.com/dialog/share?app_id=536779657179021&display=page&href=https%3A%2F%2Fgithub.com%2Fsatwikkansal%2Fwtfpython&quote=If%20you%20really%20think%20you%20know%20Python%2C%20think%20once%20more!)
+
+### Нужна PDF версия?
+
+Я получил несколько запросов на pdf (и epub) версию wtfpython. Вы можете добавить свои данные [здесь](https://form.jotform.com/221593245656057), чтобы получить их, как только они будут готовы.
+
+**Вот и все, друзья!** Для получения новых материалов, подобных этому, вы можете добавить свой email [сюда](https://form.jotform.com/221593598380062).

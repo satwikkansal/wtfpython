@@ -3785,3 +3785,19 @@ def dict_size(o):
 Пожалуйста, смотрите [CONTRIBUTING.md](/CONTRIBUTING.md) для более подробной информации. Не стесняйтесь создать новый [issue](https://github.com/satwikkansal/wtfpython/issues/new) для обсуждения.
 
 PS: Пожалуйста, не обращайтесь к нам с просьбами об обратной ссылке, ссылки не будут добавлены, если они не имеют отношения к проекту.
+
+# Благодарности
+
+Идея и дизайн этой коллекции были изначально вдохновлены потрясающим проектом Дениса Дована [wtfjs](https://github.com/denysdovhan/wtfjs). Подавляющая поддержка со стороны питонистов придала проекту ту форму, в которой он находится сейчас.
+
+#### Несколько хороших ссылок!
+* https://www.youtube.com/watch?v=sH4XF6pKKmk
+* https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python
+* https://sopython.com/wiki/Common_Gotchas_In_Python
+* https://stackoverflow.com/questions/530530/python-2-x-gotchas-and-landmines
+* https://stackoverflow.com/questions/1011431/common-pitfalls-in-python
+* https://www.python.org/doc/humor/
+* https://github.com/cosmologicon/pywat#the-undocumented-converse-implication-operator
+* https://www.codementor.io/satwikkansal/python-practices-for-efficient-code-performance-memory-and-usability-aze6oiq65
+* https://github.com/wemake-services/wemake-python-styleguide/search?q=wtfpython&type=Issues
+* Ветки обсуждения WFTPython на [Hacker News](https://news.ycombinator.com/item?id=21862073) и [Reddit](https://www.reddit.com/r/programming/comments/edsh3q/what_the_fck_python_30_exploring_and/).

@@ -1,63 +1,63 @@
-Приветствуются все виды изменений. Не стесняйтесь предлагать броские и смешные названия для существующих примеров. Цель - сделать эту коллекцию как можно более интересной для чтения. Вот несколько способов, с помощью которых вы можете внести свой вклад,
+All kinds of patches are welcome. Feel free to even suggest some catchy and funny titles for the existing Examples. The goal is to make this collection as interesting to read as possible. Here are a few ways through which you can contribute,
 
-- Если вы заинтересованы в переводе проекта на другой язык (некоторые люди уже делали это в прошлом), пожалуйста, не стесняйтесь открыть тему и дайте мне знать, если вам нужна какая-либо помощь.
-- Если изменения, которые вы предлагаете, значительны, то создание issue перед внесением изменений будет оценено по достоинству. Если вы хотите поработать над issue (это очень рекомендуется), выразите свою заинтересованность и вы будете назначены исполнителем.
-- Если вы добавляете новый пример, настоятельно рекомендуется создать issue, чтобы обсудить ее перед отправкой изменений. Для добавления нового примера вы можете использовать следующий шаблон:
+- If you are interested in translating the project to another language (some people have done that in the past), please feel free to open up an issue, and let me know if you need any kind of help.
+- If the changes you suggest are significant, filing an issue before submitting the actual patch will be appreciated. If you'd like to work on the issue (highly encouraged), you can mention that you're interested in working on it while creating the issue and get assigned to it.
+- If you're adding a new example, it is highly recommended to create an issue to discuss it before submitting a patch. You can use the following template for adding a new example:
 
 <pre>
-### ▶ Какое-то причудливое название. *
-* в конце названия означает, что пример был добавлен недавно.
+### ▶ Some fancy Title *
+The asterisk at the end of the title indicates the example was not present in the first release and has been recently added.
 
 ```py
-# Подготовка кода.
-# Подготовка к волшебству...
+# Setting up the code.
+# Preparation for the magic...
 ```
 
-**Вывод (версия Python):**
+**Output (Python version):**
 ```py
 >>> triggering_statement
-Вероятно, неожиданный вывод
-
+Probably unexpected output
 ```
-(Необязательно): Одна строка, описывающая неожиданный вывод.
+(Optional): One line describing the unexpected output.
 
-#### 💡 Объяснение:
-* Краткое объяснение того, что происходит и почему это происходит.
+#### 💡 Explanation:
+* Brief explanation of what's happening and why is it happening.
   ```py
-  Подготовка примеров для пояснения (при необходимости)
+  Setting up examples for clarification (if necessary)
   ```
-
-  **Вывод:**
+  **Output:**
   ```py
-  >>> trigger # пример, облегчающий понимание магии
-  # обоснованный вывод
+  >>> trigger # some example that makes it easy to unveil the magic
+  # some justified output
   ```
+```
 </pre>
 
-Несколько моментов, которые стоит учитывать при написании примера,
 
-- Если вы решили отправить новый пример без создания issue и обсуждения, пожалуйста, проверьте проект, чтобы убедиться, что в нем уже нет похожих примеров.
-- Старайтесь быть последовательными в именах и значениях, которые вы используете для переменных. Например, большинство имен переменных в проекте имеют вид `some_string`, `some_list`, `some_dict` и т.д. Вы увидите много `x` для однобуквенных имен переменных, и `"wtf"` в качестве значений для строк. В проекте нет строгой схемы, как таковой, но вы можете взглянуть на другие примеры, чтобы понять суть.
-- Старайтесь быть как можно более креативными, чтобы добавить элемент "сюрприза" во время подготовки примеров. Иногда это может означать написание фрагмента, который здравомыслящий программист никогда бы не написал.
-- Также не стесняйтесь добавлять свое имя в список [контрибьюторов](/CONTRIBUTORS.md).
+Few things that you can consider while writing an example, 
 
-**Некоторые часто задаваемые вопросы**
+- If you are choosing to submit a new example without creating an issue and discussing, please check the project to make sure there aren't similar examples already.
+- Try to be consistent with the namings and the values you use with the variables. For instance, most variable names in the project are along the lines of `some_string`, `some_list`, `some_dict`, etc. You'd see a lot of `x`s for single letter variable names, and `"wtf"` as values for strings. There's no strictly enforced scheme in the project as such, but you can take a glance at other examples to get a gist.
+- Try to be as creative as possible to add that element of "surprise" in the setting up part of an example. Sometimes this may mean writing a snippet a sane programmer would never write.
+- Also, feel free to add your name to the [contributors list](/CONTRIBUTORS.md).
 
-    Что это такое после каждого заголовка сниппета (###) в README: <!-- ID примера: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->? Нужно ли его добавлять вручную или можно игнорировать при создании новых сниппетов?
+**Some FAQs**
 
-Это случайный UUID, он используется для идентификации примеров в нескольких переводах проекта. Как контрибьютор, вы не должны беспокоиться о том, как он используется, вы просто должны добавлять новый случайный UUID к новым примерам в этом формате.
+    What is is this after every snippet title (###) in the README: <!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->? Should it be added manually or can it be ignored when creating new snippets?
 
-    Куда следует добавлять новые сниппеты? В начало/в конец раздела?
+That's a random UUID, it is used to keep identify the examples across multiple translations of the project. As a contributor, you don't have to worry about behind the scenes of how it is used, you just have to add a new random UUID to new examples in that format.
 
-При определении порядка учитывается множество факторов (зависимость от других примеров, уровень сложности, категория и т.д.). Я бы предложил просто добавить новый пример в конец раздела, который вы считаете более подходящим (или просто добавить его в раздел "Разное"). О его порядке можно будет позаботиться в будущих редакциях.
+    Where should new snippets be added? Top/bottom of the section, doesn't ?
 
-    В чем разница между разделами (первые два очень похожи)?
+There are multiple things that are considered to decide the order (the dependency on the other examples, difficulty level, category, etc). I'd suggest simply adding the new example at the bottom of a section you find more fitting (or just add it to the Miscellaneous section). Its order will be taken care of in future revisions.
 
-Раздел "Напрягите мозг" содержит более надуманные примеры, с которыми вы не столкнетесь в реальной жизни, в то время как раздел "Скользкие склоны" содержит примеры, с которыми можно чаще сталкиваться при программировании.
+    What's the difference between the sections (the first two feel very similar)?
 
-    Перед оглавлением написано, что для его создания использовался markdown-toc -i README.md --maxdepth 3. Пакет pip markdown-toc не содержит ни флагов -i, ни --maxdepth. Какой пакет имеется в виду, или какая версия этого пакета?
-    Должна ли новая запись в оглавлении для фрагмента быть создана с помощью вышеуказанной команды или вручную (в случае, если вышеуказанная команда делает больше, чем просто добавляет запись)?
+The section "Strain your brain" contains more contrived examples that you may not really encounter in real life, whereas the section "Slippery Slopes" contains examples that have the potential to be encountered more frequently while programming.
 
-Мы используем пакет [markdown-toc](https://www.npmjs.com/package/markdown-toc) npm для создания ToC (содержание). Однако у него есть некоторые проблемы со специальными символами (не уверен, что они уже исправлены). Чаще всего я просто вставляю ссылку toc вручную в нужное место. Инструмент удобен, когда мне нужно сделать большую перестановку, в остальных случаях просто обновлять toc вручную удобнее.
+    Before the table of contents it says that markdown-toc -i README.md --maxdepth 3 was used to create it. The pip package markdown-toc does not contain either -i or --maxdepth flags. Which package is meant, or what version of that package?
+    Should the new table of contents entry for the snippet be created with the above command or created manually (in case the above command does more than only add the entry)?
 
-Если у вас есть вопросы, не стесняйтесь спрашивать в [issue](https://github.com/satwikkansal/wtfpython/issues/269) (спасибо [@LiquidFun](https://github.com/LiquidFun) за ее создание).
+We use the [markdown-toc](https://www.npmjs.com/package/markdown-toc) npm package to generate ToC. It has some issues with special characters though (I'm not sure if it's fixed yet). More often than not, I just end up inserting the toc link manually at the right place. The tool is handy when I have to big reordering, otherwise just updating toc manually is more convenient imo.
+
+If you have any questions feel free to ask on [this issue](https://github.com/satwikkansal/wtfpython/issues/269) (thanks to [@LiquidFun](https://github.com/LiquidFun) for starting it).

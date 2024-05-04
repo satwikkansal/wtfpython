@@ -1,6 +1,6 @@
-Following are the wonderful people (in no specific order) who have contributed their examples to wtfpython.
+Ниже перечислены (без определенного порядка) замечательные люди, которые внесли вклад в развитие wtfpython.
 
-| Contributor | Github | Issues |
+| Автор | Github | Issues |
 |-------------|--------|--------|
 | Lucas-C | [Lucas-C](https://github.com/Lucas-C) | [#36](https://github.com/satwikkansal/wtfpython/issues/36) |
 | MittalAshok | [MittalAshok](https://github.com/MittalAshok) | [#23](https://github.com/satwikkansal/wtfpython/issues/23) |
@@ -28,15 +28,15 @@ Following are the wonderful people (in no specific order) who have contributed t
 
 ---
 
-**Translations**
+**Переводчики**
 
-| Translator | Github | Language |
+| Переводчик | Github | Язык |
 |-------------|--------|--------|
 | leisurelicht | [leisurelicht](https://github.com/leisurelicht) | [Chinese](https://github.com/leisurelicht/wtfpython-cn) |
 | vuduclyunitn | [vuduclyunitn](https://github.com/vuduclyunitn) | [Vietnamese](https://github.com/vuduclyunitn/wtfptyhon-vi) |
 | José De Freitas | [JoseDeFreitas](https://github.com/JoseDeFreitas) | [Spanish](https://github.com/JoseDeFreitas/wtfpython-es) |
 | Vadim Nifadev | [nifadyev](https://github.com/nifadyev) | [Russian](https://github.com/satwikkansal/wtfpython/tree/main/translations/README-ru.md) |
 
-Thank you all for your time and making wtfpython more awesome! :smile:
+Спасибо всем за ваше время и за то, что делаете wtfpython еще более потрясающим! :smile:
 
-PS: This list is updated after every major release, if I forgot to add your contribution here, please feel free to raise a Pull request.
+PS: Этот список обновляется после каждого крупного релиза, если я забыл добавить сюда ваш вклад, пожалуйста, не стесняйтесь сделать Pull request.

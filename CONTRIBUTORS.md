@@ -35,7 +35,7 @@ Following are the wonderful people (in no specific order) who have contributed t
 | leisurelicht | [leisurelicht](https://github.com/leisurelicht) | [Chinese](https://github.com/leisurelicht/wtfpython-cn) |
 | vuduclyunitn | [vuduclyunitn](https://github.com/vuduclyunitn) | [Vietnamese](https://github.com/vuduclyunitn/wtfptyhon-vi) |
 | José De Freitas | [JoseDeFreitas](https://github.com/JoseDeFreitas) | [Spanish](https://github.com/JoseDeFreitas/wtfpython-es) |
-| Vadim Nifadev | [nifadyev](https://github.com/nifadyev) | [Russian](https://github.com/satwikkansal/wtfpython/tree/main/translations/README-ru.md) |
+| Vadim Nifadev | [nifadyev](https://github.com/nifadyev) | [Russian](https://github.com/satwikkansal/wtfpython/tree/master/translations/ru-russian) |
 
 Thank you all for your time and making wtfpython more awesome! :smile:
 

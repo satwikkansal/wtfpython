@@ -1,0 +1,28 @@
+name: GitHub Actions
+on: [push]
+jobs:
+  Pages:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.10.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: pip install poetry
+      - name: Activate venv
+        run: poetry install
+      - name: Build the book
+        run: poetry run mkdocs build --site-dir public
+      - name: GitHub Pages action
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          
+
+

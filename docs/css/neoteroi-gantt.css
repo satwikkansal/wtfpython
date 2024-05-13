@@ -1,0 +1,328 @@
+/**
+ *  Extra CSS for the neoteroi.projects.gantt extension.
+ *
+ *  https://github.com/Neoteroi/mkdocs-plugins
+**/
+:root {
+  --nt-scrollbar-color: #2751b0;
+  --nt-plan-actions-height: 24px;
+  --nt-units-background: #ff9800;
+  --nt-months-background: #2751b0;
+  --nt-plan-vertical-line-color: #a3a3a3ad;
+}
+
+.nt-pastello {
+  --nt-scrollbar-color: #9fb8f4;
+  --nt-units-background: #f5dc82;
+  --nt-months-background: #5b7fd1;
+}
+
+[data-md-color-scheme=slate] {
+  --nt-units-background: #003773;
+}
+[data-md-color-scheme=slate] .nt-pastello {
+  --nt-units-background: #3f4997;
+}
+
+.nt-plan-root {
+  min-height: 200px;
+  scrollbar-width: 20px;
+  scrollbar-color: var(--nt-scrollbar-color);
+  display: flex;
+}
+.nt-plan-root ::-webkit-scrollbar {
+  width: 20px;
+}
+.nt-plan-root ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+.nt-plan-root ::-webkit-scrollbar-thumb {
+  background: var(--nt-scrollbar-color);
+  border-radius: 10px;
+}
+.nt-plan-root .nt-plan {
+  flex: 80%;
+}
+.nt-plan-root.no-groups .nt-plan-periods {
+  padding-left: 0;
+}
+.nt-plan-root.no-groups .nt-plan-group-summary {
+  display: none;
+}
+.nt-plan-root .nt-timeline-dot.bigger {
+  top: -10px;
+}
+.nt-plan-root .nt-timeline-dot.bigger[title] {
+  cursor: help;
+}
+
+.nt-plan {
+  white-space: nowrap;
+  overflow-x: auto;
+  display: flex;
+}
+.nt-plan .ug-timeline-dot {
+  left: 368px;
+  top: -8px;
+  cursor: help;
+}
+
+.months {
+  display: flex;
+}
+
+.month {
+  flex: auto;
+  display: inline-block;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px inset;
+  background-color: var(--nt-months-background);
+  color: white;
+  text-transform: uppercase;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  padding: 2px 5px;
+  font-size: 12px;
+  border: 1px solid #000;
+  width: 150px;
+  border-radius: 8px;
+}
+
+.nt-plan-group-activities {
+  flex: auto;
+  position: relative;
+}
+
+.nt-vline {
+  border-left: 1px dashed var(--nt-plan-vertical-line-color);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  margin-left: -0.5px;
+  top: 0;
+  -webkit-transition: all 0.5s linear !important;
+  -moz-transition: all 0.5s linear !important;
+  -ms-transition: all 0.5s linear !important;
+  -o-transition: all 0.5s linear !important;
+  transition: all 0.5s linear !important;
+  z-index: -2;
+}
+
+.nt-plan-activity {
+  display: flex;
+  margin: 2px 0;
+  background-color: rgba(187, 187, 187, 0.2509803922);
+}
+
+.actions {
+  height: var(--nt-plan-actions-height);
+}
+
+.actions {
+  position: relative;
+}
+
+.period {
+  display: inline-block;
+  height: var(--nt-plan-actions-height);
+  width: 120px;
+  position: absolute;
+  left: 0px;
+  background: #1da1f2;
+  border-radius: 5px;
+  transition: all 0.5s;
+  cursor: help;
+  -webkit-transition: width 1s ease-in-out;
+  -moz-transition: width 1s ease-in-out;
+  -o-transition: width 1s ease-in-out;
+  transition: width 1s ease-in-out;
+}
+.period .nt-tooltip {
+  display: none;
+  top: 30px;
+  position: relative;
+  padding: 1rem;
+  text-align: center;
+  font-size: 12px;
+}
+.period:hover .nt-tooltip {
+  display: inline-block;
+}
+
+.period-0 {
+  left: 340px;
+  visibility: visible;
+  background-color: rgb(69, 97, 101);
+}
+
+.period-1 {
+  left: 40px;
+  visibility: visible;
+  background-color: green;
+}
+
+.period-2 {
+  left: 120px;
+  visibility: visible;
+  background-color: pink;
+  width: 80px;
+}
+
+.period-3 {
+  left: 190px;
+  visibility: visible;
+  background-color: darkred;
+  width: 150px;
+}
+
+.weeks > span,
+.days > span {
+  height: 25px;
+}
+
+.weeks > span {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+.weeks > span .week-text {
+  font-size: 10px;
+  position: absolute;
+  display: inline-block;
+  padding: 3px 4px;
+}
+
+.days {
+  z-index: -2;
+  position: relative;
+}
+
+.day-text {
+  font-size: 10px;
+  position: absolute;
+  display: inline-block;
+  padding: 3px 4px;
+}
+
+.period span {
+  font-size: 12px;
+  vertical-align: top;
+  margin-left: 4px;
+  color: black;
+  background: rgba(255, 255, 255, 0.6588235294);
+  border-radius: 6px;
+  padding: 0 4px;
+}
+
+.weeks,
+.days {
+  height: 20px;
+  display: flex;
+  box-sizing: content-box;
+}
+
+.months {
+  display: flex;
+}
+
+.week,
+.day {
+  height: 20px;
+  position: relative;
+  border: 1;
+  flex: auto;
+  border: 2px solid white;
+  border-radius: 4px;
+  background-color: var(--nt-units-background);
+  cursor: help;
+}
+
+.years {
+  display: flex;
+}
+
+.year {
+  text-align: center;
+  border-right: 1px solid var(--nt-plan-vertical-line-color);
+  font-weight: bold;
+}
+.year:first-child {
+  border-left: 1px solid var(--nt-plan-vertical-line-color);
+}
+.year:first-child:last-child {
+  width: 100%;
+}
+
+.quarters {
+  display: flex;
+}
+
+.quarter {
+  width: 12.5%;
+  text-align: center;
+  border-right: 1px solid var(--nt-plan-vertical-line-color);
+  font-weight: bold;
+}
+.quarter:first-child {
+  border-left: 1px solid var(--nt-plan-vertical-line-color);
+}
+
+.nt-plan-group {
+  margin: 20px 0;
+  position: relative;
+}
+
+.nt-plan-group {
+  display: flex;
+}
+
+.nt-plan-group-summary {
+  background: #2751b0;
+  width: 150px;
+  white-space: normal;
+  padding: 0.1rem 0.5rem;
+  border-radius: 5px;
+  color: #fff;
+  z-index: 3;
+}
+.nt-plan-group-summary p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.6rem;
+  color: #fff;
+}
+
+.nt-plan-group-summary,
+.month,
+.period,
+.week,
+.day,
+.nt-tooltip {
+  border: 3px solid white;
+  box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.2), 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.nt-plan-periods {
+  padding-left: 150px;
+}
+
+.months {
+  z-index: 2;
+  position: relative;
+}
+
+.weeks {
+  position: relative;
+  top: -2px;
+  z-index: 0;
+}
+
+.month,
+.quarter,
+.year,
+.week,
+.day,
+.nt-tooltip {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}

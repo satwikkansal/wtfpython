@@ -7,7 +7,7 @@ hide:
 >
 > 번역에 참여하고 싶으시면 [Github Discussion](https://github.com/buttercrab/wtfpython-ko/discussions)을 방문하세요!
 
-<p align="center"><img src="../images/logo.png" alt=""></p>
+<p align="center"><img src="../images/logo.png#gh-light-mode-only" alt=""><img src="../images/logo-dark.png#gh-dark-mode-only" alt=""></p>
 <h1 align="center">What the f*ck Python! 😱</h1>
 <p align="center">놀라운 예제들을 통해서 파이썬 탐험하고 이해하기</p>
 

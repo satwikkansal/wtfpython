@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-<p align="center"><img src="../images/logo.png" alt=""></p>
+<p align="center"><img src="../images/logo.png#gh-light-mode-only" alt=""><img src="../images/logo-dark.png#gh-dark-mode-only" alt=""></p>
 <h1 align="center">What the f*ck Python! 🐍</h1>
 <p align="center">一些有趣且鲜为人知的 Python 特性.</p>
 

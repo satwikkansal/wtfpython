@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-<p align="center"><img src="../images/logo.png" alt=""></p>
+<p align="center"><img src="../images/logo.png#gh-light-mode-only" alt=""><img src="../images/logo-dark.png#gh-dark-mode-only" alt=""></p>
 <h1 align="center">What the f*ck Python! 😱</h1>
 <p align="center">
 <a href="https://github.com/satwikkansal/wtfpython">English</a>

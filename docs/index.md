@@ -16,12 +16,12 @@ hide:
 - title: English
   content: Original language
   image: images/usa.png
-  url: usa
+  url: USA/
 
 - title: Translations
   content: Other languages
   image: images/world.png
-  url: cn
+  url: CN/
 
 - title: Website
   content: Interactive Website

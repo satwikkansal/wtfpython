@@ -1344,7 +1344,7 @@ True
     ```py
     >>> r'wt\"f' == 'wt\\"f'
     True
-    >>> print(repr(r'wt\"f')
+    >>> print(repr(r'wt\"f'))
     'wt\\"f'
 
     >>> print("\n")

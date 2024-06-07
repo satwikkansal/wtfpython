@@ -19,7 +19,6 @@ Simplifictions and improvements through patches are more than welcome however :)
 
 import json
 import os
-import pprint
 
 fpath = os.path.join(os.path.dirname( __file__ ), '..', 'README.md')
 examples = []

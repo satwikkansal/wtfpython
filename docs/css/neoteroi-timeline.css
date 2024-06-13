@@ -1,0 +1,341 @@
+/**
+ *  Extra CSS file for MkDocs and the neoteroi.timeline extension.
+ *
+ *  https://github.com/Neoteroi/mkdocs-plugins
+**/
+.nt-error {
+  border: 2px dashed darkred;
+  padding: 0 1rem;
+  background: #faf9ba;
+  color: darkred;
+}
+
+.nt-timeline {
+  margin-top: 30px;
+}
+.nt-timeline .nt-timeline-title {
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+.nt-timeline .nt-timeline-sub-title {
+  margin-top: 0;
+}
+.nt-timeline .nt-timeline-content {
+  font-size: 0.8rem;
+  border-bottom: 2px dashed #ccc;
+  padding-bottom: 1.2rem;
+}
+.nt-timeline.horizontal .nt-timeline-items {
+  flex-direction: row;
+  overflow-x: scroll;
+}
+.nt-timeline.horizontal .nt-timeline-items > div {
+  min-width: 400px;
+  margin-right: 50px;
+}
+.nt-timeline.horizontal.reverse .nt-timeline-items {
+  flex-direction: row-reverse;
+}
+.nt-timeline.horizontal.center .nt-timeline-before {
+  background-image: linear-gradient(rgba(252, 70, 107, 0) 0%, rgb(252, 70, 107) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: 0 center;
+}
+.nt-timeline.horizontal.center .nt-timeline-after {
+  background-image: linear-gradient(180deg, rgb(252, 70, 107) 0%, rgba(252, 70, 107, 0) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: 0 center;
+}
+.nt-timeline.horizontal.center .nt-timeline-items {
+  background-image: radial-gradient(circle, rgb(63, 94, 251) 0%, rgb(252, 70, 107) 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 2px;
+  background-position: 0 center;
+}
+.nt-timeline.horizontal .nt-timeline-dot {
+  left: 50%;
+}
+.nt-timeline.horizontal .nt-timeline-dot:not(.bigger) {
+  top: calc(50% - 4px);
+}
+.nt-timeline.horizontal .nt-timeline-dot.bigger {
+  top: calc(50% - 15px);
+}
+.nt-timeline.vertical .nt-timeline-items {
+  flex-direction: column;
+}
+.nt-timeline.vertical.reverse .nt-timeline-items {
+  flex-direction: column-reverse;
+}
+.nt-timeline.vertical.center .nt-timeline-before {
+  background: linear-gradient(rgba(252, 70, 107, 0) 0%, rgb(252, 70, 107) 100%) no-repeat center/2px 100%;
+}
+.nt-timeline.vertical.center .nt-timeline-after {
+  background: linear-gradient(rgb(252, 70, 107) 0%, rgba(252, 70, 107, 0) 100%) no-repeat center/2px 100%;
+}
+.nt-timeline.vertical.center .nt-timeline-items {
+  background: radial-gradient(circle, rgb(63, 94, 251) 0%, rgb(252, 70, 107) 100%) no-repeat center/2px 100%;
+}
+.nt-timeline.vertical.center .nt-timeline-dot {
+  left: calc(50% - 10px);
+}
+.nt-timeline.vertical.center .nt-timeline-dot:not(.bigger) {
+  top: 10px;
+}
+.nt-timeline.vertical.center .nt-timeline-dot.bigger {
+  left: calc(50% - 20px);
+}
+.nt-timeline.vertical.left {
+  padding-left: 100px;
+}
+.nt-timeline.vertical.left .nt-timeline-item {
+  padding-left: 70px;
+}
+.nt-timeline.vertical.left .nt-timeline-sub-title {
+  left: -100px;
+  width: 100px;
+}
+.nt-timeline.vertical.left .nt-timeline-before {
+  background: linear-gradient(rgba(252, 70, 107, 0) 0%, rgb(252, 70, 107) 100%) no-repeat 30px/2px 100%;
+}
+.nt-timeline.vertical.left .nt-timeline-after {
+  background: linear-gradient(rgb(252, 70, 107) 0%, rgba(252, 70, 107, 0) 100%) no-repeat 30px/2px 100%;
+}
+.nt-timeline.vertical.left .nt-timeline-items {
+  background: radial-gradient(circle, rgb(63, 94, 251) 0%, rgb(252, 70, 107) 100%) no-repeat 30px/2px 100%;
+}
+.nt-timeline.vertical.left .nt-timeline-dot {
+  left: 21px;
+  top: 8px;
+}
+.nt-timeline.vertical.left .nt-timeline-dot.bigger {
+  top: 0px;
+  left: 10px;
+}
+.nt-timeline.vertical.right {
+  padding-right: 100px;
+}
+.nt-timeline.vertical.right .nt-timeline-sub-title {
+  right: -100px;
+  text-align: left;
+  width: 100px;
+}
+.nt-timeline.vertical.right .nt-timeline-item {
+  padding-right: 70px;
+}
+.nt-timeline.vertical.right .nt-timeline-before {
+  background: linear-gradient(rgba(252, 70, 107, 0) 0%, rgb(252, 70, 107) 100%) no-repeat calc(100% - 30px)/2px 100%;
+}
+.nt-timeline.vertical.right .nt-timeline-after {
+  background: linear-gradient(rgb(252, 70, 107) 0%, rgba(252, 70, 107, 0) 100%) no-repeat calc(100% - 30px)/2px 100%;
+}
+.nt-timeline.vertical.right .nt-timeline-items {
+  background: radial-gradient(circle, rgb(63, 94, 251) 0%, rgb(252, 70, 107) 100%) no-repeat calc(100% - 30px)/2px 100%;
+}
+.nt-timeline.vertical.right .nt-timeline-dot {
+  right: 21px;
+  top: 8px;
+}
+.nt-timeline.vertical.right .nt-timeline-dot.bigger {
+  top: 10px;
+  right: 10px;
+}
+
+.nt-timeline-items {
+  display: flex;
+  position: relative;
+}
+.nt-timeline-items > div {
+  min-height: 100px;
+  padding-top: 2px;
+  padding-bottom: 20px;
+}
+
+.nt-timeline-before {
+  content: "";
+  height: 15px;
+}
+
+.nt-timeline-after {
+  content: "";
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.nt-timeline-sub-title {
+  position: absolute;
+  width: 50%;
+  top: 4px;
+  font-size: 18px;
+  color: var(--nt-color-50);
+}
+
+[data-md-color-scheme=slate] .nt-timeline-sub-title {
+  color: var(--nt-color-51);
+}
+
+.nt-timeline-item {
+  position: relative;
+}
+
+.nt-timeline.vertical.center:not(.alternate) .nt-timeline-item {
+  padding-left: calc(50% + 40px);
+}
+.nt-timeline.vertical.center:not(.alternate) .nt-timeline-item .nt-timeline-sub-title {
+  left: 0;
+  padding-right: 40px;
+  text-align: right;
+}
+.nt-timeline.vertical.center.alternate .nt-timeline-item:nth-child(odd) {
+  padding-left: calc(50% + 40px);
+}
+.nt-timeline.vertical.center.alternate .nt-timeline-item:nth-child(odd) .nt-timeline-sub-title {
+  left: 0;
+  padding-right: 40px;
+  text-align: right;
+}
+.nt-timeline.vertical.center.alternate .nt-timeline-item:nth-child(even) {
+  text-align: right;
+  padding-right: calc(50% + 40px);
+}
+.nt-timeline.vertical.center.alternate .nt-timeline-item:nth-child(even) .nt-timeline-sub-title {
+  right: 0;
+  padding-left: 40px;
+  text-align: left;
+}
+
+.nt-timeline-dot {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: #fc5b5b;
+  position: absolute;
+  top: 0px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  border: 3px solid white;
+}
+.nt-timeline-dot:not(.bigger) .icon {
+  font-size: 10px;
+}
+.nt-timeline-dot.bigger {
+  width: 40px;
+  height: 40px;
+  padding: 3px;
+}
+.nt-timeline-dot .icon {
+  color: white;
+}
+
+/* Fix for webkit (Chrome, Safari) */
+@supports not (-moz-appearance: none) {
+  /*
+  This fix is necessary, for some reason, to render the timeline properly
+  inside `details` elements used by pymdownx. Firefox doesn't need this fix,
+  it renders elements properly.
+  */
+  details .nt-timeline.vertical.center.alternate .nt-timeline-item:nth-child(odd) .nt-timeline-sub-title,
+details .nt-timeline.vertical.center:not(.alternate) .nt-timeline-item .nt-timeline-sub-title {
+    left: -40px;
+  }
+  details .nt-timeline.vertical.center.alternate .nt-timeline-item:nth-child(even) .nt-timeline-sub-title {
+    right: -40px;
+  }
+  details .nt-timeline.vertical.center .nt-timeline-dot {
+    left: calc(50% - 12px);
+  }
+  details .nt-timeline-dot.bigger {
+    font-size: 1rem !important;
+  }
+}
+/* default colors */
+.nt-timeline-item:nth-child(0) .nt-timeline-dot {
+  background-color: var(--nt-color-0);
+}
+
+.nt-timeline-item:nth-child(1) .nt-timeline-dot {
+  background-color: var(--nt-color-1);
+}
+
+.nt-timeline-item:nth-child(2) .nt-timeline-dot {
+  background-color: var(--nt-color-2);
+}
+
+.nt-timeline-item:nth-child(3) .nt-timeline-dot {
+  background-color: var(--nt-color-3);
+}
+
+.nt-timeline-item:nth-child(4) .nt-timeline-dot {
+  background-color: var(--nt-color-4);
+}
+
+.nt-timeline-item:nth-child(5) .nt-timeline-dot {
+  background-color: var(--nt-color-5);
+}
+
+.nt-timeline-item:nth-child(6) .nt-timeline-dot {
+  background-color: var(--nt-color-6);
+}
+
+.nt-timeline-item:nth-child(7) .nt-timeline-dot {
+  background-color: var(--nt-color-7);
+}
+
+.nt-timeline-item:nth-child(8) .nt-timeline-dot {
+  background-color: var(--nt-color-8);
+}
+
+.nt-timeline-item:nth-child(9) .nt-timeline-dot {
+  background-color: var(--nt-color-9);
+}
+
+.nt-timeline-item:nth-child(10) .nt-timeline-dot {
+  background-color: var(--nt-color-10);
+}
+
+.nt-timeline-item:nth-child(11) .nt-timeline-dot {
+  background-color: var(--nt-color-11);
+}
+
+.nt-timeline-item:nth-child(12) .nt-timeline-dot {
+  background-color: var(--nt-color-12);
+}
+
+.nt-timeline-item:nth-child(13) .nt-timeline-dot {
+  background-color: var(--nt-color-13);
+}
+
+.nt-timeline-item:nth-child(14) .nt-timeline-dot {
+  background-color: var(--nt-color-14);
+}
+
+.nt-timeline-item:nth-child(15) .nt-timeline-dot {
+  background-color: var(--nt-color-15);
+}
+
+.nt-timeline-item:nth-child(16) .nt-timeline-dot {
+  background-color: var(--nt-color-16);
+}
+
+.nt-timeline-item:nth-child(17) .nt-timeline-dot {
+  background-color: var(--nt-color-17);
+}
+
+.nt-timeline-item:nth-child(18) .nt-timeline-dot {
+  background-color: var(--nt-color-18);
+}
+
+.nt-timeline-item:nth-child(19) .nt-timeline-dot {
+  background-color: var(--nt-color-19);
+}
+
+.nt-timeline-item:nth-child(20) .nt-timeline-dot {
+  background-color: var(--nt-color-20);
+}
+

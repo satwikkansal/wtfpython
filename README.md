@@ -78,6 +78,7 @@ So, here we go...
     + [▶ Wild imports *](#-wild-imports-)
     + [▶ All sorted? *](#-all-sorted-)
     + [▶ Midnight time doesn't exist?](#-midnight-time-doesnt-exist)
+    + [▶ Swap items or not *](#-swap-items-or-not-)
   * [Section: The Hidden treasures!](#section-the-hidden-treasures)
     + [▶ Okay Python, Can you make me fly?](#-okay-python-can-you-make-me-fly)
     + [▶ `goto`, but why?](#-goto-but-why)
@@ -2964,6 +2965,73 @@ The midnight time is not printed.
 Before Python 3.5, the boolean value for `datetime.time` object was considered to be `False` if it represented midnight in UTC. It is error-prone when using the `if obj:` syntax to check if the `obj` is null or some equivalent of "empty."
 
 ---
+
+### ▶ Swap items or not *
+Given a permutation as array `a` where `sorted(a)==list(range(len(a)))`. One can swap two elements by `a[x],a[y]=a[y],a[x]` via unpacking.
+Consider a simple case with `a[x]==y` and `a[y]==x`. Then `a[a[x]],a[y]=x,a[y]` should do the swap, right? Let us have `x,y==0,1`:
+
+```py
+>>> a=[1,0]
+>>> a=[1,0]; a[0],a[a[0]]=0,a[0]; print(a)
+[1, 0]
+>>> a=[1,0]; y=a[0]; a[0],a[y]=0,a[0]; print(a)
+[0, 1]
+```
+
+#### 💡 Explanation:
+To understand what is happening, let us [disassemble](https://docs.python.org/3.5/library/dis.html) the code.
+```py
+>>> a=[1,0]
+>>> import dis
+>>> def varianta():
+    a[0],a[a[0]]=0,a[0]
+>>> dis.dis(varianta)
+  2           0 LOAD_CONST               1 (0)
+              3 LOAD_GLOBAL              0 (a)
+              6 LOAD_CONST               1 (0)
+              9 BINARY_SUBSCR
+             10 ROT_TWO
+             11 LOAD_GLOBAL              0 (a)
+             14 LOAD_CONST               1 (0)
+             17 STORE_SUBSCR
+             18 LOAD_GLOBAL              0 (a)
+             21 LOAD_GLOBAL              0 (a)
+             24 LOAD_CONST               1 (0)
+             27 BINARY_SUBSCR
+             28 STORE_SUBSCR
+             29 LOAD_CONST               0 (None)
+             32 RETURN_VALUE
+```
+Before instruction 17, the stack looks like `[α,0,a,0]` where `α==0` is just used to denote the initial value of `a[0]`.
+Then `a[0]` is set to `0` and the stack contains only `α`.
+After instruction 24, the stack is `[α,a,β]` where `β==0` is the new value of `a[0]` instead of initial one.
+Hence instruction 28 sets `a[β]=α`.
+
+In contrast to the second STORE_SUBSCR above, the stack is `[α,a,y]` before the second STORE_SUBSCR in
+```
+>>> def variantb():
+    y=a[0]; a[0],a[y]=0,a[0]
+>>> dis.dis(variantb)
+  2           0 LOAD_GLOBAL              0 (a)
+              3 LOAD_CONST               1 (0)
+              6 BINARY_SUBSCR
+              7 STORE_FAST               0 (y)
+             10 LOAD_CONST               1 (0)
+             13 LOAD_GLOBAL              0 (a)
+             16 LOAD_CONST               1 (0)
+             19 BINARY_SUBSCR
+             20 ROT_TWO
+             21 LOAD_GLOBAL              0 (a)
+             24 LOAD_CONST               1 (0)
+             27 STORE_SUBSCR
+             28 LOAD_GLOBAL              0 (a)
+             31 LOAD_FAST                0 (y)
+             34 STORE_SUBSCR
+             35 LOAD_CONST               0 (None)
+             38 RETURN_VALUE
+```
+
+---
 ---
 
 
@@ -3793,6 +3861,7 @@ What makes those dictionaries become bloated? And why are newly created objects 
       return result
   ```
   The behavior is due to the matching of empty substring(`''`) with slices of length 0 in the original string.
+
 
 ---
 ---

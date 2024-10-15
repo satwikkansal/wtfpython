@@ -990,8 +990,8 @@ When we initialize `row` variable, this visualization explains what happens in t
 
 <p align="center">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="/images/tic-tac-toe/after_row_initializedlogo_dark_theme.svg">
-      <source media="(prefers-color-scheme: light)" srcset="/images/tic-tac-toe/after_row_initializedlogo.svg">
+      <source media="(prefers-color-scheme: dark)" srcset="/images/tic-tac-toe/after_row_initialized_dark_theme.svg">
+      <source media="(prefers-color-scheme: light)" srcset="/images/tic-tac-toe/after_row_initialized.svg">
       <img alt="Shows a memory segment after row is initialized." src="/images/tic-tac-toe/after_row_initialized.svg">
     </picture>
 </p>

@@ -1,4 +1,10 @@
-<p align="center"><img src="/images/logo.png#gh-light-mode-only" alt=""><img src="/images/logo-dark.png#gh-dark-mode-only" alt=""></p>
+<p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="/images/logo_dark_theme.svg">
+      <source media="(prefers-color-scheme: light)" srcset="/images/logo.svg">
+      <img alt="Shows a wtfpython logo." src="/images/logo.svg">
+    </picture>
+</p>
 <h1 align="center">What the f*ck Python! 😱</h1>
 <p align="center">Exploring and understanding Python through surprising snippets.</p>
 
@@ -352,11 +358,13 @@ Makes sense, right?
   * All length 0 and length 1 strings are interned.
   * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f'])` will not be interned)
   * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. CPython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="/images/string-intern/string_interning_dark_theme.svg">
-  <source media="(prefers-color-scheme: light)" srcset="/images/string-intern/string_interning.svg">
-  <img alt="Shows a string interning process." src="/images/string-intern/string_interning.svg">
-</picture>
+<p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="/images/string-intern/string_interning_dark_theme.svg">
+      <source media="(prefers-color-scheme: light)" srcset="/images/string-intern/string_interning.svg">
+      <img alt="Shows a string interning process." src="/images/string-intern/string_interning.svg">
+    </picture>
+</p>
 
 + When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `"wtf!"` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compile-time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
 + A compile unit in an interactive environment like IPython consists of a single statement, whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement, whereas `a = "wtf!"; b = "wtf!"` are two statements in a single line. This explains why the identities are different in `a = "wtf!"; b = "wtf!"`, and also explain why they are same when invoked in `some_file.py`
@@ -980,11 +988,23 @@ We didn't assign three `"X"`s, did we?
 
 When we initialize `row` variable, this visualization explains what happens in the memory
 
-![image](/images/tic-tac-toe/after_row_initialized.png)
+<p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="/images/tic-tac-toe/after_row_initializedlogo_dark_theme.svg">
+      <source media="(prefers-color-scheme: light)" srcset="/images/tic-tac-toe/after_row_initializedlogo.svg">
+      <img alt="Shows a memory segment after row is initialized." src="/images/tic-tac-toe/after_row_initialized.svg">
+    </picture>
+</p>
 
 And when the `board` is initialized by multiplying the `row`, this is what happens inside the memory (each of the elements `board[0]`, `board[1]` and `board[2]` is a reference to the same list referred by `row`)
 
-![image](/images/tic-tac-toe/after_board_initialized.png)
+<p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="/images/tic-tac-toe/after_board_initialized_dark_theme.svg">
+      <source media="(prefers-color-scheme: light)" srcset="/images/tic-tac-toe/after_board_initialized.svg">
+      <img alt="Shows a memory segment after board is initialized." src="/images/tic-tac-toe/after_board_initialized.svg">
+    </picture>
+</p>
 
 We can avoid this scenario here by not using `row` variable to generate `board`. (Asked in [this](https://github.com/satwikkansal/wtfpython/issues/68) issue).
 

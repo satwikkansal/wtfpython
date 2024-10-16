@@ -16,3 +16,8 @@ irrelevant/.ipynb_checkpoints/
 irrelevant/.python-version
 
 .idea/
+.vscode/
+
+# Virtual envitonments
+venv/
+.venv/

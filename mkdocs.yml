@@ -1,0 +1,91 @@
+# Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+
+# Project information
+site_name: What the f*ck Python!
+site_url: https://github.com/satwikkansal/wtfpython
+site_author: Francisco Alfaro
+site_description:
+
+# Repository
+repo_name: satwikkansal/wtfpython
+repo_url: https://github.com/satwikkansal/wtfpython
+edit_uri: ''
+
+# Markdown extensions
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - neoteroi.cards
+  - neoteroi.timeline
+  - neoteroi.projects
+  - admonition
+  - pymdownx.details
+
+extra_css:
+  - css/neoteroi-mkdocs.css
+
+# Theme
+theme:
+  name: material
+  language: es
+  logo: https://www.svgrepo.com/show/405305/face-screaming-in-fear.svg
+  favicon: https://www.svgrepo.com/show/405305/face-screaming-in-fear.svg
+  palette:
+  - media: '(prefers-color-scheme: light)'
+    scheme: default
+    primary: deep purple
+    accent: deep purple
+    toggle:
+      icon: material/lightbulb
+      name: Switch to dark mode
+  - media: '(prefers-color-scheme: dark)'
+    scheme: slate
+    primary: deep purple
+    accent: deep purple
+    toggle:
+      icon: material/lightbulb-outline
+      name: Switch to light mode
+  features:
+  - search.suggest
+  - search.highlight
+  - content.tabs.link
+  - navigation.indexes
+  - content.tooltips
+  - navigation.path
+  - content.code.annotate
+  - content.code.copy
+  - content.code.select
+  - navigation.tabs
+
+# Customization
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/satwikkansal
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/satwikkansal
+    - icon: fontawesome/solid/globe
+      link: https://satwikkansal.xyz/
+
+# Plugins
+plugins:
+  - search
+
+# Extra javascript
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+#TOC
+nav:
+    - 🏠 Home: index.md
+    - 🐍 Original: USA.md
+    - 🌎 World:
+        - Chinese: CN.md
+        - Vietnamese: VI.md
+        - Korean: KO.md
+        - Russian: RU.md
+        - German: GE.md
+

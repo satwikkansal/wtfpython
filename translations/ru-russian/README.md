@@ -10,7 +10,7 @@
 
 Переводы: [English Original](https://github.com/satwikkansal/wtfpython) [Chinese 中文](https://github.com/robertparley/wtfpython-cn) | [Vietnamese Tiếng Việt](https://github.com/vuduclyunitn/wtfptyhon-vi) | [Spanish Español](https://web.archive.org/web/20220511161045/https://github.com/JoseDeFreitas/wtfpython-es) | [Korean 한국어](https://github.com/buttercrab/wtfpython-ko) | [Russian Русский](https://github.com/satwikkansal/wtfpython/tree/master/translations/ru-russian) | [German Deutsch](https://github.com/BenSt099/wtfpython) | [Add translation](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
 
-Альтернативные способы: [Интерактивный сайт](https://wtfpython-interactive.vercel.app) | [Интерактивный Jupiter notebook](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb) | [CLI](https://pypi.python.org/pypi/wtfpython)
+Альтернативные способы: [Интерактивный сайт](https://wtfpython-interactive.vercel.app) | [Интерактивный Jupiter notebook](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb)
 
 Python, будучи прекрасно спроектированным высокоуровневым языком программирования, предоставляет множество возможностей для удобства программиста. Но иногда поведение Python кода могут показаться запутывающим на первый взгляд.
 
@@ -214,13 +214,6 @@ PS: Если вы уже читали **wtfpython** раньше, с измен�
   - Убедиться, что вы знаете точную причину, по которой вывод получился именно таким.
     - Если ответ отрицательный (что совершенно нормально), сделать глубокий вдох и прочитать объяснение (а если пример все еще непонятен, и создайте [issue](https://github.com/satwikkansal/wtfpython/issues/new)).
     - Если "да", ощутите мощь своих познаний в Python и переходите к следующему примеру.
-
-PS: Вы также можете читать WTFPython в командной строке, используя [pypi package](https://pypi.python.org/pypi/wtfpython),
-
-```sh
-pip install wtfpython -U
-wtfpython
-```
 
 # 👀 Примеры
 

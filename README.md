@@ -1,10 +1,17 @@
-<p align="center"><img src="/images/logo.png" alt=""></p>
+<p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="/images/logo_dark_theme.svg">
+      <source media="(prefers-color-scheme: light)" srcset="/images/logo.svg">
+      <img alt="Shows a wtfpython logo." src="/images/logo.svg">
+    </picture>
+</p>
 <h1 align="center">What the f*ck Python! 😱</h1>
 <p align="center">Exploring and understanding Python through surprising snippets.</p>
 
-Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn) | [Vietnamese Tiếng Việt](https://github.com/vuduclyunitn/wtfptyhon-vi) | [Add translation](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
 
-Other modes: [Interactive](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb) | [CLI](https://pypi.python.org/pypi/wtfpython)
+Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn) | [Vietnamese Tiếng Việt](https://github.com/vuduclyunitn/wtfptyhon-vi) | [Spanish Español](https://web.archive.org/web/20220511161045/https://github.com/JoseDeFreitas/wtfpython-es) | [Korean 한국어](https://github.com/buttercrab/wtfpython-ko) | [Russian Русский](https://github.com/satwikkansal/wtfpython/tree/master/translations/ru-russian) | [German Deutsch](https://github.com/BenSt099/wtfpython) | [Add translation](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
+
+Other modes: [Interactive Website](https://wtfpython-interactive.vercel.app) | [Interactive Notebook](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb)
 
 Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious at first sight.
 
@@ -41,7 +48,7 @@ So, here we go...
     + [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
     + [▶ `is not ...` is not `is (not ...)`](#-is-not--is-not-is-not-)
     + [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
-    + [▶ The sticky output function](#-the-sticky-output-function)
+    + [▶ Schrödinger's variable](#-schrödingers-variable-)
     + [▶ The chicken-egg problem *](#-the-chicken-egg-problem-)
     + [▶ Subclass relationships](#-subclass-relationships)
     + [▶ Methods equality and identity](#-methods-equality-and-identity)
@@ -59,6 +66,7 @@ So, here we go...
     + [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
     + [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
     + [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
+    + [▶ Exceeds the limit for integer string conversion](#-exceeds-the-limit-for-integer-string-conversion)
   * [Section: Slippery Slopes](#section-slippery-slopes)
     + [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
     + [▶ Stubborn `del` operation](#-stubborn-del-operation)
@@ -70,6 +78,7 @@ So, here we go...
     + [▶ Catching the Exceptions](#-catching-the-exceptions)
     + [▶ Same operands, different story!](#-same-operands-different-story)
     + [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
+    + [▶ Rounding like a banker *](#-rounding-like-a-banker-)
     + [▶ Needles in a Haystack *](#-needles-in-a-haystack-)
     + [▶ Splitsies *](#-splitsies-)
     + [▶ Wild imports *](#-wild-imports-)
@@ -141,7 +150,7 @@ All the examples are structured like below:
 
 # Usage
 
-A nice way to get the most out of these examples, in my opinion, is to read them chronologically, and for every example:
+A nice way to get the most out of these examples, in my opinion, is to read them in sequential order, and for every example:
 - Carefully read the initial code for setting up the example. If you're an experienced Python programmer, you'll successfully anticipate what's going to happen next most of the time.
 - Read the output snippets and,
   + Check if the outputs are the same as you'd expect.
@@ -149,11 +158,6 @@ A nice way to get the most out of these examples, in my opinion, is to read them
     - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfpython/issues/new)).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
-PS: You can also read WTFPython at the command line using the [pypi package](https://pypi.python.org/pypi/wtfpython),
-```sh
-$ pip install wtfpython -U
-$ wtfpython
-```
 ---
 
 # 👀 Examples
@@ -207,7 +211,7 @@ SyntaxError: invalid syntax
 (6, 9)
 >>> (a, b = 16, 19) # Oops
   File "<stdin>", line 1
-    (a, b = 6, 9)
+    (a, b = 16, 19)
           ^
 SyntaxError: invalid syntax
 
@@ -349,7 +353,14 @@ Makes sense, right?
   * All length 0 and length 1 strings are interned.
   * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f'])` will not be interned)
   * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. CPython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
-  ![image](/images/string-intern/string_intern.png)
+<p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="/images/string-intern/string_interning_dark_theme.svg">
+      <source media="(prefers-color-scheme: light)" srcset="/images/string-intern/string_interning.svg">
+      <img alt="Shows a string interning process." src="/images/string-intern/string_interning.svg">
+    </picture>
+</p>
+
 + When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `"wtf!"` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compile-time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
 + A compile unit in an interactive environment like IPython consists of a single statement, whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement, whereas `a = "wtf!"; b = "wtf!"` are two statements in a single line. This explains why the identities are different in `a = "wtf!"; b = "wtf!"`, and also explain why they are same when invoked in `some_file.py`
 + The abrupt change in the output of the fourth snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a  few clock cycles during runtime. Constant folding only occurs for strings having a length of less than 21. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
@@ -383,15 +394,15 @@ False
 
 #### 💡 Explanation:
 
-As per https://docs.python.org/3/reference/expressions.html#membership-test-operations
+As per https://docs.python.org/3/reference/expressions.html#comparisons
 
 > Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.
 
 While such behavior might seem silly to you in the above examples, it's fantastic with stuff like `a == b == c` and `0 <= x <= 100`.
 
 * `False is False is False` is equivalent to `(False is False) and (False is False)`
-* `True is False == False` is equivalent to `True is False and False == False` and since the first part of the statement (`True is False`) evaluates to `False`, the overall expression evaluates to `False`.
-* `1 > 0 < 1` is equivalent to `1 > 0 and 0 < 1` which evaluates to `True`.
+* `True is False == False` is equivalent to `(True is False) and (False == False)` and since the first part of the statement (`True is False`) evaluates to `False`, the overall expression evaluates to `False`.
+* `1 > 0 < 1` is equivalent to `(1 > 0) and (0 < 1)` which evaluates to `True`.
 * The expression `(1 > 0) < 1` is equivalent to `True < 1` and
   ```py
   >>> int(True)
@@ -448,7 +459,7 @@ True
 
 ```py
 >>> a, b = 257, 257
->> a is b
+>>> a is b
 False
 ```
 
@@ -618,7 +629,7 @@ True
 * When `id` was called, Python created a `WTF` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
 * When we do this twice in succession, Python allocates the same memory location to this second object as well. Since (in CPython) `id` uses the memory location as the object id, the id of the two objects is the same.
 * So, the object's id is unique only for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
-* But why did the `is` operator evaluated to `False`? Let's see with this snippet.
+* But why did the `is` operator evaluate to `False`? Let's see with this snippet.
   ```py
   class WTF(object):
     def __init__(self): print("I")
@@ -916,9 +927,9 @@ array_4 = [400, 500, 600]
 - In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at runtime.
 - So before runtime, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
 - The differences in the output of `g1` and `g2` in the second part is due the way variables `array_1` and `array_2` are re-assigned values.
-- In the first case, `array_1` is binded to the new object `[1,2,3,4,5]` and since the `in` clause is evaluated at the declaration time it still refers to the old object `[1,2,3,4]` (which is not destroyed).
+- In the first case, `array_1` is bound to the new object `[1,2,3,4,5]` and since the `in` clause is evaluated at the declaration time it still refers to the old object `[1,2,3,4]` (which is not destroyed).
 - In the second case, the slice assignment to `array_2` updates the same old object `[1,2,3,4]` to `[1,2,3,4,5]`. Hence both the `g2` and `array_2` still have reference to the same object (which has now been updated to `[1,2,3,4,5]`).
-- Okay, going by the logic discussed so far, shouldn't be the value of `list(g)` in the third snippet be `[11, 21, 31, 12, 22, 32, 13, 23, 33]`? (because `array_3` and `array_4` are going to behave just like `array_1`). The reason why (only) `array_4` values got updated is explained in [PEP-289](https://www.python.org/dev/peps/pep-0289/#the-details)
+- Okay, going by the logic discussed so far, shouldn't be the value of `list(gen)` in the third snippet be `[11, 21, 31, 12, 22, 32, 13, 23, 33]`? (because `array_3` and `array_4` are going to behave just like `array_1`). The reason why (only) `array_4` values got updated is explained in [PEP-289](https://www.python.org/dev/peps/pep-0289/#the-details)
   
     > Only the outermost for-expression is evaluated immediately, the other expressions are deferred until the generator is run.
 
@@ -972,11 +983,23 @@ We didn't assign three `"X"`s, did we?
 
 When we initialize `row` variable, this visualization explains what happens in the memory
 
-![image](/images/tic-tac-toe/after_row_initialized.png)
+<p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="/images/tic-tac-toe/after_row_initialized_dark_theme.svg">
+      <source media="(prefers-color-scheme: light)" srcset="/images/tic-tac-toe/after_row_initialized.svg">
+      <img alt="Shows a memory segment after row is initialized." src="/images/tic-tac-toe/after_row_initialized.svg">
+    </picture>
+</p>
 
 And when the `board` is initialized by multiplying the `row`, this is what happens inside the memory (each of the elements `board[0]`, `board[1]` and `board[2]` is a reference to the same list referred by `row`)
 
-![image](/images/tic-tac-toe/after_board_initialized.png)
+<p align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="/images/tic-tac-toe/after_board_initialized_dark_theme.svg">
+      <source media="(prefers-color-scheme: light)" srcset="/images/tic-tac-toe/after_board_initialized.svg">
+      <img alt="Shows a memory segment after board is initialized." src="/images/tic-tac-toe/after_board_initialized.svg">
+    </picture>
+</p>
 
 We can avoid this scenario here by not using `row` variable to generate `board`. (Asked in [this](https://github.com/satwikkansal/wtfpython/issues/68) issue).
 
@@ -989,10 +1012,9 @@ We can avoid this scenario here by not using `row` variable to generate `board`.
 
 ---
 
-### ▶ The sticky output function
+### ▶ Schrödinger's variable *
 <!-- Example ID: 4dc42f77-94cb-4eb5-a120-8203d3ed7604 --->
 
-1\.
 
 ```py
 funcs = []
@@ -1006,17 +1028,17 @@ for x in range(7):
 funcs_results = [func() for func in funcs]
 ```
 
-**Output:**
-
+**Output (Python version):**
 ```py
 >>> results
 [0, 1, 2, 3, 4, 5, 6]
 >>> funcs_results
 [6, 6, 6, 6, 6, 6, 6]
 ```
-Even when the values of `x` were different in every iteration prior to appending `some_func` to `funcs`, all the functions return 6.
 
-2\.
+The values of `x` were different in every iteration prior to appending `some_func` to `funcs`, but all the functions return 6 when they're evaluated after the loop completes.
+
+2.
 
 ```py
 >>> powers_of_x = [lambda x: x**i for i in range(10)]
@@ -1024,27 +1046,45 @@ Even when the values of `x` were different in every iteration prior to appending
 [512, 512, 512, 512, 512, 512, 512, 512, 512, 512]
 ```
 
-#### 💡 Explanation
+#### 💡 Explanation:
+* When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the *variable*, not its *value*. The function looks up `x` in the surrounding context, rather than using the value of `x` at the time the function is created. So all of the functions use the latest value assigned to the variable for computation. We can see that it's using the `x` from the surrounding context (i.e. *not* a local variable) with:
+```py
+>>> import inspect
+>>> inspect.getclosurevars(funcs[0])
+ClosureVars(nonlocals={}, globals={'x': 6}, builtins={}, unbound=set())
+```
+Since `x` is a global value, we can change the value that the `funcs` will lookup and return by updating `x`:
 
-- When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the variable, not its value. So all of the functions use the latest value assigned to the variable for computation.
+```py
+>>> x = 42
+>>> [func() for func in funcs]
+[42, 42, 42, 42, 42, 42, 42]
+```
 
-- To get the desired behavior you can pass in the loop variable as a named variable to the function. **Why does this work?** Because this will define the variable 
-within the function's scope.
+* To get the desired behavior you can pass in the loop variable as a named variable to the function. **Why does this work?** Because this will define the variable *inside* the function's scope. It will no longer go to the surrounding (global) scope to look up the variables value but will create a local variable that stores the value of `x` at that point in time.
 
-    ```py
-    funcs = []
-    for x in range(7):
-        def some_func(x=x):
-            return x
-        funcs.append(some_func)
-    ```
+```py
+funcs = []
+for x in range(7):
+    def some_func(x=x):
+        return x
+    funcs.append(some_func)
+```
 
-    **Output:**
-    ```py
-    >>> funcs_results = [func() for func in funcs]
-    >>> funcs_results
-    [0, 1, 2, 3, 4, 5, 6]
-    ```
+**Output:**
+
+```py
+>>> funcs_results = [func() for func in funcs]
+>>> funcs_results
+[0, 1, 2, 3, 4, 5, 6]
+```
+
+It is not longer using the `x` in the global scope:
+
+```py
+>>> inspect.getclosurevars(funcs[0])
+ClosureVars(nonlocals={}, globals={}, builtins={}, unbound=set())
+```
 
 ---
 
@@ -1102,7 +1142,7 @@ False
 <!-- Example ID: 9f6d8cf0-e1b5-42d0-84a0-4cfab25a0bc0 --->
 **Output:**
 ```py
->>> from collections import Hashable
+>>> from collections.abc import Hashable
 >>> issubclass(list, object)
 True
 >>> issubclass(object, Hashable)
@@ -1177,7 +1217,7 @@ True
 True
 ```
 
-Accessing` classm` or `method` twice, creates equal but not *same* objects for the same instance of `SomeClass`.
+Accessing `classm` or `method` twice, creates equal but not *same* objects for the same instance of `SomeClass`.
 
 #### 💡 Explanation
 * Functions are [descriptors](https://docs.python.org/3/howto/descriptor.html). Whenever a function is accessed as an
@@ -1256,8 +1296,8 @@ Why's this True-False alteration?
   ```
 
 - `all([])` returns `True` since the iterable is empty. 
-- `all([[]])` returns `False` because `not []` is `True` is equivalent to `not False` as the list inside the iterable is empty.
-- `all([[[]]])` and higher recursive variants are always `True` since `not [[]]`, `not [[[]]]`, and so on are equivalent to `not True`.
+- `all([[]])` returns `False` because the passed array has one element, `[]`, and in python, an empty list is falsy.
+- `all([[[]]])` and higher recursive variants are always `True`. This is because the passed array's single element (`[[...]]`) is no longer empty, and lists with values are truthy.
 
 ---
 
@@ -1324,7 +1364,7 @@ True
     ```py
     >>> r'wt\"f' == 'wt\\"f'
     True
-    >>> print(repr(r'wt\"f')
+    >>> print(repr(r'wt\"f'))
     'wt\\"f'
 
     >>> print("\n")
@@ -1823,9 +1863,9 @@ NameError: name 'e' is not defined
 
      **Output:**
      ```py
-     >>>f(x)
+     >>> f(x)
      UnboundLocalError: local variable 'x' referenced before assignment
-     >>>f(y)
+     >>> f(y)
      UnboundLocalError: local variable 'x' referenced before assignment
      >>> x
      5
@@ -1957,8 +1997,44 @@ a, b = a[b] = {}, 5
   True
   ```
 
+
 ---
+
+### ▶ Exceeds the limit for integer string conversion
+```py
+>>> # Python 3.10.6
+>>> int("2" * 5432)
+
+>>> # Python 3.10.8
+>>> int("2" * 5432)
+```
+
+**Output:**
+```py
+>>> # Python 3.10.6
+222222222222222222222222222222222222222222222222222222222222222...
+
+>>> # Python 3.10.8
+Traceback (most recent call last):
+   ...
+ValueError: Exceeds the limit (4300) for integer string conversion:
+   value has 5432 digits; use sys.set_int_max_str_digits()
+   to increase the limit.
+```
+
+#### 💡 Explanation:
+This call to `int()` works fine in Python 3.10.6 and raises a ValueError in Python 3.10.8. Note that Python can still work with large integers. The error is only raised when converting between integers and strings.
+
+Fortunately, you can increase the limit for the allowed number of digits when you expect an operation to exceed it. To do this, you can use one of the following:
+- The -X int_max_str_digits command-line flag
+- The set_int_max_str_digits() function from the sys module
+- The PYTHONINTMAXSTRDIGITS environment variable
+
+[Check the documentation](https://docs.python.org/3/library/stdtypes.html#int-max-str-digits) for more details on changing the default limit if you expect your code to exceed this value.
+
+
 ---
+
 
 ## Section: Slippery Slopes
 
@@ -2118,7 +2194,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
   >>> another_func()
   2
   ```
-* The keywords `global` and `nonlocal` tell the python interpreter to not delcare new variables and look them up in the corresponding outer scopes.
+* The keywords `global` and `nonlocal` tell the python interpreter to not declare new variables and look them up in the corresponding outer scopes.
 * Read [this](https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
 
 ---
@@ -2515,6 +2591,56 @@ class SomeClass:
 
 ---
 
+### ▶ Rounding like a banker *
+
+Let's implement a naive function to get the middle element of a list:
+```py
+def get_middle(some_list):
+    mid_index = round(len(some_list) / 2)
+    return some_list[mid_index - 1]
+```
+
+**Python 3.x:**
+```py
+>>> get_middle([1])  # looks good
+1
+>>> get_middle([1,2,3])  # looks good
+2
+>>> get_middle([1,2,3,4,5])  # huh?
+2
+>>> len([1,2,3,4,5]) / 2  # good
+2.5
+>>> round(len([1,2,3,4,5]) / 2)  # why?
+2
+```
+It seems as though Python rounded 2.5 to 2.
+
+#### 💡 Explanation:
+
+- This is not a float precision error, in fact, this behavior is intentional. Since Python 3.0, `round()` uses [banker's rounding](https://en.wikipedia.org/wiki/Rounding#Rounding_half_to_even) where .5 fractions are rounded to the nearest **even** number:
+
+```py
+>>> round(0.5)
+0
+>>> round(1.5)
+2
+>>> round(2.5)
+2
+>>> import numpy  # numpy does the same
+>>> numpy.round(0.5)
+0.0
+>>> numpy.round(1.5)
+2.0
+>>> numpy.round(2.5)
+2.0
+```
+
+- This is the recommended way to round .5 fractions as described in [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754#Rounding_rules). However, the other way (round away from zero) is taught in school most of the time, so banker's rounding is likely not that well known. Furthermore, some of the most popular programming languages (for example: JavaScript, Java, C/C++, Ruby, Rust) do not use banker's rounding either. Therefore, this is still quite special to Python and may result in confusion when rounding fractions. 
+- See the [round() docs](https://docs.python.org/3/library/functions.html#round) or [this stackoverflow thread](https://stackoverflow.com/questions/10825926/python-3-x-rounding-behavior) for more information.
+- Note that `get_middle([1])` only returned 1 because the index was `round(0.5) - 1 = 0 - 1 = -1`, returning the last element in the list.
+
+---
+
 ### ▶ Needles in a Haystack *
 
 <!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --->
@@ -2685,7 +2811,7 @@ def similar_recursive_func(a):
 
 * As for the fifth snippet, most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](https://docs.python.org/3/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list)).
 
-* Last one should be fairly obvious, mutable object (like `list`) can be altered in the function, and the reassignation of an immutable (`a -= 1`) is not an alteration of the value.
+* Last one should be fairly obvious, mutable object (like `list`) can be altered in the function, and the reassignment of an immutable (`a -= 1`) is not an alteration of the value.
 
 * Being aware of these nitpicks can save you hours of debugging effort in the long run. 
 
@@ -3097,7 +3223,7 @@ Ellipsis
     >>> ...
     Ellipsis
     ```
-- Eliipsis can be used for several purposes,
+- Ellipsis can be used for several purposes,
     + As a placeholder for code that hasn't been written yet (just like `pass` statement)
     + In slicing syntax to represent the full slices in remaining direction
     ```py
@@ -3542,7 +3668,7 @@ What makes those dictionaries become bloated? And why are newly created objects 
 + CPython is able to reuse the same "keys" object in multiple dictionaries. This was added in [PEP 412](https://www.python.org/dev/peps/pep-0412/) with the motivation to reduce memory usage, specifically in dictionaries of instances - where keys (instance attributes) tend to be common to all instances.
 + This optimization is entirely seamless for instance dictionaries, but it is disabled if certain assumptions are broken.
 + Key-sharing dictionaries do not support deletion; if an instance attribute is deleted, the dictionary is "unshared", and key-sharing is disabled for all future instances of the same class.
-+ Additionaly, if the dictionary keys have be resized (because new keys are inserted), they are kept shared *only* if they are used by a exactly single dictionary (this allows adding many attributes in the `__init__` of the very first created instance, without causing an "unshare"). If multiple instances exist when a resize happens, key-sharing is disabled for all future instances of the same class: CPython can't tell if your instances are using the same set of attributes anymore, and decides to bail out on attempting to share their keys.
++ Additionally, if the dictionary keys have been resized (because new keys are inserted), they are kept shared *only* if they are used by a exactly single dictionary (this allows adding many attributes in the `__init__` of the very first created instance, without causing an "unshare"). If multiple instances exist when a resize happens, key-sharing is disabled for all future instances of the same class: CPython can't tell if your instances are using the same set of attributes anymore, and decides to bail out on attempting to share their keys.
 + A small tip, if you aim to lower your program's memory footprint: don't delete instance attributes, and make sure to initialize all attributes in your `__init__`!
 
 
@@ -3554,7 +3680,7 @@ What makes those dictionaries become bloated? And why are newly created objects 
   
 * Few weird looking but semantically correct statements:
   + `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
-  + `'a'[0][0][0][0][0]` is also a semantically correct statement as strings are [sequences](https://docs.python.org/3/glossary.html#term-sequence)(iterables supporting element access using integer indices) in Python.
+  + `'a'[0][0][0][0][0]` is also semantically correct, because Python doesn't have a character data type like other languages branched from C. So selecting a single character from a string returns a single-character string.
   + `3 --0-- 5 == 8` and `--5 == 5` are both semantically correct statements and evaluate to `True`.
 
 * Given that `a` is a number, `++a` and `--a` are both valid Python statements but don't behave the same way as compared with similar statements in languages like C, C++, or Java.
@@ -3717,7 +3843,6 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 * https://stackoverflow.com/questions/1011431/common-pitfalls-in-python
 * https://www.python.org/doc/humor/
 * https://github.com/cosmologicon/pywat#the-undocumented-converse-implication-operator
-* https://www.codementor.io/satwikkansal/python-practices-for-efficient-code-performance-memory-and-usability-aze6oiq65
 * https://github.com/wemake-services/wemake-python-styleguide/search?q=wtfpython&type=Issues
 * WFTPython discussion threads on [Hacker News](https://news.ycombinator.com/item?id=21862073) and [Reddit](https://www.reddit.com/r/programming/comments/edsh3q/what_the_fck_python_30_exploring_and/).
 
@@ -3738,7 +3863,7 @@ If you like wtfpython, you can use these quick links to share it with your frien
 
 ## Need a pdf version?
 
-I've received a few requests for the pdf (and epub) version of wtfpython. You can add your details [here](https://satwikkansal.xyz/wtfpython-pdf/) to get them as soon as they are finished.
+I've received a few requests for the pdf (and epub) version of wtfpython. You can add your details [here](https://form.jotform.com/221593245656057) to get them as soon as they are finished.
 
 
-**That's all folks!** For upcoming content like this, you can add your email [here](https://www.satwikkansal.xyz/content-like-wtfpython/).
+**That's all folks!** For upcoming content like this, you can add your email [here](https://form.jotform.com/221593598380062).

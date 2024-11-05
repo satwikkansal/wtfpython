@@ -289,53 +289,37 @@ This saved one line of code, and implicitly prevented invoking `some_func` twice
 ### ▶ Strings can be tricky sometimes
 
 <!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->
-1\.
 
-```py
->>> a = "some_string"
->>> id(a)
-140420665652016
->>> id("some" + "_" + "string") # Notice that both the ids are same.
-140420665652016
+1\. Notice that both the ids are same.
+
+```python:snippets/2_tricky_strings.py -s 2 -e 3
+assert id("some_string") == id("some" + "_" + "string")
+assert id("some_string") == id("some_string")
 ```
 
-2\.
+2\. `True` because it is invoked in script. Might be `False` in `python shell` or `ipython`
 
-```py
->>> a = "wtf"
->>> b = "wtf"
->>> a is b
-True
+```python:snippets/2_tricky_strings.py -s 6 -e 12
+a = "wtf"
+b = "wtf"
+assert a is b
 
->>> a = "wtf!"
->>> b = "wtf!"
->>> a is b
-False
-
-```
-
-3\.
-
-```py
->>> a, b = "wtf!", "wtf!"
->>> a is b # All versions except 3.7.x
-True
-
->>> a = "wtf!"; b = "wtf!"
->>> a is b # This will print True or False depending on where you're invoking it (python shell / ipython / as a script)
-False
-```
-
-```py
-# This time in file some_file.py
 a = "wtf!"
 b = "wtf!"
-print(a is b)
-
-# prints True when the module is invoked!
+assert a is b
 ```
 
-4\.
+3\. `True` because it is invoked in script. Might be `False` in `python shell` or `ipython`
+
+```python:snippets/2_tricky_strings.py -s 15 -e 19
+a, b = "wtf!", "wtf!"
+assert a is b
+
+a = "wtf!"; b = "wtf!"
+assert a is b
+```
+
+4\. __Disclaimer - snippet is not relavant in modern Python versions__
 
 **Output (< Python3.7 )**
 

@@ -1,0 +1,7 @@
+default_language_version:
+    python: python3.12
+repos:
+-   repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.14.0
+    hooks:
+    -   id: markdownlint-cli2

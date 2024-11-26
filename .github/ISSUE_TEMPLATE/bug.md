@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Bug template
+about: Report a problem and provide necessary context
 title: 'Fix ...'
 labels: 'bug'
 
@@ -21,5 +21,5 @@ But, we will need some information about what's wrong to help you.
 
 ## Checklist before calling for maintainers
 
-* [ ] Have you checked to ensure there aren't other open [Issues](../../../issues) for the same problem?
+* [ ] Have you checked to ensure there aren't other open [Issues](../../issues) for the same problem?
 

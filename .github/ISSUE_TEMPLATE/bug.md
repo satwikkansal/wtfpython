@@ -21,5 +21,5 @@ But, we will need some information about what's wrong to help you.
 
 ## Checklist before calling for maintainers
 
-* [ ] Have you checked to ensure there aren't other open [Issues](../../issues) for the same problem?
+* [ ] Have you checked to ensure there aren't other open [Issues](../issues) for the same problem?
 

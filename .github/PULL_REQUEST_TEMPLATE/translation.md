@@ -8,6 +8,6 @@ Closes # (issue number)
 
 - [ ] Have you fetched the latest `master` branch?
 - [ ] Have you translated all snippets?
-- [ ] Have you followed the guidelines in [CONTRIBUTING.md](../../CONTRIBUTING.md)?
+- [ ] Have you followed the guidelines in [CONTRIBUTING.md](../CONTRIBUTING.md)?
 - [ ] Have you performed a self-review?
-- [ ] Have you added yourself into [CONTRIBUTORS.md](../../CONTRIBUTORS.md)?
+- [ ] Have you added yourself into [CONTRIBUTORS.md](../CONTRIBUTORS.md)?

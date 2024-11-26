@@ -7,7 +7,7 @@ Closes # (issue number)
 
 ## Checklist before requesting a review
 
-- [ ] Have you followed the guidelines in [CONTRIBUTING.md](../../CONTRIBUTING.md)?
+- [ ] Have you followed the guidelines in [CONTRIBUTING.md](../CONTRIBUTING.md)?
 - [ ] Have you performed a self-review?
-- [ ] Have you added yourself into [CONTRIBUTORS.md](../../CONTRIBUTORS.md)?
+- [ ] Have you added yourself into [CONTRIBUTORS.md](../CONTRIBUTORS.md)?
 

@@ -10,6 +10,6 @@ Closes # (issue number)
 - [ ] Have you written simple and understandable explanation?
 - [ ] Have you added new snippet into `snippets/` with suitable name and number?
 - [ ] Have you updated Table of content? (later will be done by pre-commit)
-- [ ] Have you followed the guidelines in [CONTRIBUTING.md](../../CONTRIBUTING.md)?
+- [ ] Have you followed the guidelines in [CONTRIBUTING.md](../CONTRIBUTING.md)?
 - [ ] Have you performed a self-review?
-- [ ] Have you added yourself into [CONTRIBUTORS.md](../../CONTRIBUTORS.md)?
+- [ ] Have you added yourself into [CONTRIBUTORS.md](../CONTRIBUTORS.md)?

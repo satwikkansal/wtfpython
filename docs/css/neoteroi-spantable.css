@@ -1,0 +1,56 @@
+/**
+ *   Extra CSS file recommended for MkDocs and neoteroi.spantable extension.
+ *
+ *   https://github.com/Neoteroi/mkdocs-plugins
+**/
+.span-table-wrapper table {
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  border-radius: 0.1rem;
+}
+
+.span-table td,
+.span-table th {
+  padding: 0.2rem;
+  background-color: var(--md-default-bg-color);
+  font-size: 0.64rem;
+  max-width: 100%;
+  overflow: auto;
+  touch-action: auto;
+  border-top: 0.05rem solid var(--md-typeset-table-color);
+  padding: 0.9375em 1.25em;
+  vertical-align: top;
+}
+
+.span-table tr:first-child td {
+  font-weight: 700;
+  min-width: 5rem;
+  padding: 0.9375em 1.25em;
+  vertical-align: top;
+}
+
+.span-table td:first-child {
+  border-left: 0.05rem solid var(--md-typeset-table-color);
+}
+
+.span-table td:last-child {
+  border-right: 0.05rem solid var(--md-typeset-table-color);
+}
+
+.span-table tr:last-child {
+  border-bottom: 0.05rem solid var(--md-typeset-table-color);
+}
+
+.span-table [colspan],
+.span-table [rowspan] {
+  font-weight: bold;
+  border: 0.05rem solid var(--md-typeset-table-color);
+}
+
+.span-table tr:not(:first-child):hover td:not([colspan]):not([rowspan]),
+.span-table td[colspan]:hover,
+.span-table td[rowspan]:hover {
+  background-color: rgba(0, 0, 0, 0.035);
+  box-shadow: 0 0.05rem 0 var(--md-default-bg-color) inset;
+  transition: background-color 125ms;
+}

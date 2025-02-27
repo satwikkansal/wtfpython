@@ -23,6 +23,7 @@ If you're an experienced Python programmer, you can take it as a challenge to ge
 PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/) (the examples marked with asterisk are the ones added in the latest major revision).
 
 So, here we go...
+[invalid link]()
 
 # Table of Contents
 

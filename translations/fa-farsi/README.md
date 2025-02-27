@@ -42,10 +42,10 @@
 - [فهرست مطالب](#فهرست-مطالب)
 - [ساختار مثال‌ها](#structure-of-the-examples)
 - [استفاده](#استفاده)
-- [👀 Examples](#-examples)
-  - [Section: Strain your brain!](#section-strain-your-brain)
-    - [▶ First things first! \*](#-first-things-first-)
-      - [💡 Explanation](#-explanation)
+- [👀 مثال‌ها](#-مثال‌ها)
+  - [بخش: ذهن خود را به چالش بکشید!](#بخش-ذهن-خود-را-به-چالش-بکشید)
+    - [▶ اول از همه! \*](#-اول-از-همه-)
+      - [💡 توضیحات](#-توضیحات)
     - [▶ بعضی وقت‌ها رشته‌ها می‌توانند دردسرساز شوند](#-بعضی-وقتها-رشتهها-میتوانند-دردسرساز-شوند)
       - [💡 Explanation:](#-explanation-1)
     - [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
@@ -234,16 +234,16 @@
     - اگه می‌دونید، به افتخار خودتون یه دست محکم بزنید و برید سراغ مثال بعدی.
 ---
 
-# 👀 Examples
+# 👀 مثال‌ها
 
-## Section: Strain your brain!
+## بخش: ذهن خود را به چالش بکشید!
 
-### ▶ First things first! *
+### ▶ اول از همه! *
 
 <!-- Example ID: d3d73936-3cf1-4632-b5ab-817981338863 -->
 <!-- read-only -->
 
-For some reason, the Python 3.8's "Walrus" operator (`:=`) has become quite popular. Let's check it out,
+به دلایلی، عملگر "Walrus" (`:=`) که در نسخه ۳.۸ پایتون معرفی شد، خیلی محبوب شده. بیاید بررسیش کنیم.
 
 1\.
 
@@ -260,7 +260,7 @@ File "<stdin>", line 1
       ^
 SyntaxError: invalid syntax
 
->>> (a := "wtf_walrus") # This works though
+>>> (a := "wtf_walrus") # ولی این کار می‌کنه
 'wtf_walrus'
 >>> a
 'wtf_walrus'
@@ -280,19 +280,19 @@ SyntaxError: invalid syntax
 >>> a
 6
 
->>> a, b = 6, 9 # Typical unpacking
+>>> a, b = 6, 9 # باز کردن معمولی
 >>> a, b
 (6, 9)
->>> (a, b = 16, 19) # Oops
+>>> (a, b = 16, 19) # آخ آخ
   File "<stdin>", line 1
     (a, b = 16, 19)
           ^
 SyntaxError: invalid syntax
 
->>> (a, b := 16, 19) # This prints out a weird 3-tuple
+>>> (a, b := 16, 19) # این یه تاپل ۳تایی چاپ می‌کنه رو صفحه
 (6, 16, 19)
 
->>> a # a is still unchanged?
+>>> a # هنوز تغییر نکرده؟
 6
 
 >>> b
@@ -301,33 +301,35 @@ SyntaxError: invalid syntax
 
 
 
-#### 💡 Explanation
+#### 💡 توضیحات
 
-**Quick walrus operator refresher**
+**مرور سریع بر عملگر Walrus**
 
-The Walrus operator (`:=`) was introduced in Python 3.8, it can be useful in situations where you'd want to assign values to variables within an expression.
+عملگر Walrus همونطور که اشاره شد، در نسخه ۳.۸ پایتون معرفی
+شد. این عملگر می‌تونه تو مقعیت‌هایی کاربردی باشه که شما می‌خواید داخل یه عبارت، مقادیری رو به متغیرها اختصاص بدید
 
 ```py
 def some_func():
-        # Assume some expensive computation here
+        # فرض کنید اینجا یک سری محاسبه سنگین انجام میشه
         # time.sleep(1000)
         return 5
 
-# So instead of,
+# پس به جای اینکه این کارو بکنید:
 if some_func():
-        print(some_func()) # Which is bad practice since computation is happening twice
+        print(some_func()) # که خیلی راه نادرستیه چون محاسبه دوبار انجام میشه
 
-# or
+# یا حتی این کارو کنید (که کار بدی هم نیست)
 a = some_func()
 if a:
     print(a)
 
-# Now you can concisely write
+# می‌تونید از این به بعد به طور مختصر بنویسید:
 if a := some_func():
         print(a)
+
 ```
 
-**Output (> 3.8):**
+**خروجی (+۳.۸):**
 
 ```py
 5
@@ -335,15 +337,15 @@ if a := some_func():
 5
 ```
 
-This saved one line of code, and implicitly prevented invoking `some_func` twice.
+این باعث میشه که یک خط کمتر کد بزنیم و از دوبار فراخوندن `some_func` جلوگیری کرد.
 
-- Unparenthesized "assignment expression" (use of walrus operator), is restricted at the top level, hence the `SyntaxError` in the `a := "wtf_walrus"` statement of the first snippet. Parenthesizing it worked as expected and assigned `a`.  
+- "عبارت اختصاص‌دادن مقدار" بدون پرانتز (نحوه استفاده عملگر Walrus)، در سطح بالا محدود است، `SyntaxError` در عبارت `a := "wtf_walrus"` در قطعه‌کد اول به همین دلیل است. قرار دادن آن داخل پرانتز، همانطور که می‌خواستیم کار کرد و مقدار را به `a` اختصاص داد.
 
-- As usual, parenthesizing of an expression containing `=` operator is not allowed. Hence the syntax error in `(a, b = 6, 9)`. 
+- به طور معمول، قرار دادن عبارتی که دارای `=` است داخل پرانتز مجاز نیست. به همین دلیل ‍عبارت `(a, b = 6, 9)` به ما خطای سینتکس داد.
 
-- The syntax of the Walrus operator is of the form `NAME:= expr`, where `NAME` is a valid identifier, and `expr` is a valid expression. Hence, iterable packing and unpacking are not supported which means, 
+- قائده استفاده از عملگر Walrus به صورت `NAME:= expr` است، به طوری که `NAME` یک شناسه صحیح و `expr` یک عبارت صحیح است. به همین دلیل باز و بسته کردن با تکرار (iterable) پشتیبانی نمی‌شوند. پس،
 
-  - `(a := 6, 9)` is equivalent to `((a := 6), 9)` and ultimately `(a, 9) ` (where `a`'s value is 6')
+  - عبارت `(a := 6, 9)` معادل عبارت `((a := 6), 9)` و در نهایت `(a, 9)` است. (که مقدار `a` عدد 6 است)
 
     ```py
     >>> (a := 6, 9) == ((a := 6), 9)
@@ -351,11 +353,11 @@ This saved one line of code, and implicitly prevented invoking `some_func` twice
     >>> x = (a := 696, 9)
     >>> x
     (696, 9)
-    >>> x[0] is a # Both reference same memory location
+    >>> x[0] is a # هر دو به یک مکان در حافظه دستگاه اشاره می‌کنند
     True
     ```
 
-  - Similarly, `(a, b := 16, 19)` is equivalent to `(a, (b := 16), 19)` which is nothing but a 3-tuple. 
+  - به طور مشابه، عبارت `(a, b := 16, 19)` معادل عبارت `(a, (b := 16), 19)` است که چیزی جز یک تاپل ۳تایی نیست.
 
 ---
 

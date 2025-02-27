@@ -9,31 +9,39 @@
 <p align="center">کاوش و درک پایتون از طریق تکه‌های کد شگفت‌انگیز.</p>
 
 
-ترجمه‌ها: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn) | [Vietnamese Tiếng Việt](https://github.com/vuduclyunitn/wtfptyhon-vi) | [Spanish Español](https://web.archive.org/web/20220511161045/https://github.com/JoseDeFreitas/wtfpython-es) | [Korean 한국어](https://github.com/buttercrab/wtfpython-ko) | [Russian Русский](https://github.com/satwikkansal/wtfpython/tree/master/translations/ru-russian) | [German Deutsch](https://github.com/BenSt099/wtfpython) | [Add translation](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
+ترجمه‌ها: [انگلیسی English](https://github.com/satwikkansal/wtfpython) | [چینی 中文](https://github.com/leisurelicht/wtfpython-cn) | [ویتنامی Tiếng Việt](https://github.com/vuduclyunitn/wtfptyhon-vi) | [اسپانیایی Español](https://web.archive.org/web/20220511161045/https://github.com/JoseDeFreitas/wtfpython-es) | [کره‌ای 한국어](https://github.com/buttercrab/wtfpython-ko) | [روسی Русский](https://github.com/satwikkansal/wtfpython/tree/master/translations/ru-russian) | [آلمانی Deutsch](https://github.com/BenSt099/wtfpython) | [اضافه کردن ترجمه](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
 
-Other modes: [Interactive Website](https://wtfpython-interactive.vercel.app) | [Interactive Notebook](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb)
+حالت‌های دیگر: [وبسایت تعاملی](https://wtfpython-interactive.vercel.app) | [دفترچه تعاملی](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb)
 
-Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious at first sight.
 
-Here's a fun project attempting to explain what exactly is happening under the hood for some counter-intuitive snippets and lesser-known features in Python.
+پایتون، یه زبان زیبا طراحی شده، سطح بالا و مبتنی بر مفسره که قابلیت‌های بسیاری برای راحتی ما برنامه‌نویس‌ها فراهم می‌کنه.
+ولی گاهی اوقات قطعه‌کدهایی رو می‌بینیم که تو نگاه اول خروجی‌هاشون واضح نیست.
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
+این یه پروژه باحاله که سعی داریم توش توضیح بدیم که پشت پرده یه سری قطعه‌کدهای غیرشهودی و فابلیت‌های کمتر شناخته شده پایتون
+چه خبره.
 
-If you're an experienced Python programmer, you can take it as a challenge to get most of them right in the first attempt. You may have already experienced some of them before, and I might be able to revive sweet old memories of yours! :sweat_smile:
+درحالی که بعضی از مثال‌هایی که قراره تو این سند ببینید واقعا پشم‌ریزون نیستند ولی بخش‌های جالبی از پایتون رو ظاهر می‌کنند که
+ممکنه شما از وجودشون بی‌خبر باشید. به نظرم این شیوه جالبیه برای یادگیری جزئیات داخلی یه زبان برنامه نویسی و باور دارم که
+برای شما هم جالب خواهد بود.
 
-PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/) (the examples marked with asterisk are the ones added in the latest major revision). 
+اگه شما یه پایتون کار سابقه‌دار هستید، می‌تونید از این فرصت به عنوان یه چالش برای خودتون استفاده کنید تا بیشتر مثال‌ها رو
+تو تلاش اول حدس بزنید. ممکنه شما بعضی از این مثال‌ها رو قبلا تجربه کرده باشید و من خاطراتشون رو در این سند براتون زنده
+کرده باشم! :sweat_smile:
 
-So, here we go...
+پ.ن: اگه شما قبلا این سند رو خوندید، می‌تونید تغییرات جدید رو در بخش انتشار (فعلا در [اینجا](https://github.com/satwikkansal/wtfpython/)) مطالعه کنید
+(مثال‌هایی که کنارشون علامت ستاره دارند، در آخرین ویرایش اضافه شده‌اند).
 
-# Table of Contents
+پس، بزن بریم...
+
+# فهرست مطالب
 
 <!-- Generated using "markdown-toc -i README.md --maxdepth 3"-->
 
 <!-- toc -->
 
-- [Table of Contents](#table-of-contents)
-- [Structure of the Examples](#structure-of-the-examples)
-- [Usage](#usage)
+- [فهرست مطالب](#فهرست-مطالب)
+- [ساختار مثال‌ها](#structure-of-the-examples)
+- [استفاده](#استفاده)
 - [👀 Examples](#-examples)
   - [Section: Strain your brain!](#section-strain-your-brain)
     - [▶ First things first! \*](#-first-things-first-)
@@ -175,52 +183,55 @@ So, here we go...
 
 <!-- tocstop -->
 
-# Structure of the Examples
+# ساختار مثال‌ها
 
-All the examples are structured like below:
+همه مثال‌ها به صورت زیر ساخته می‌شوند:
 
-> ### ▶ Some fancy Title
+> ### ▶ یه اسم خوشگل
 >
 > ```py
-> # Set up the code.
-> # Preparation for the magic...
+> # راه اندازی کد
+> # آماده سازی برای جادو...
 > ```
 >
-> **Output (Python version(s)):**
+> **خروجی (نسخه(های) پایتون):**
 >
 > ```py
 > >>> triggering_statement
-> Some unexpected output
+> یه خروجی غیرمنتظره
 > ```
-> (Optional): One line describing the unexpected output.
+> (دلخواه): توضیح یک‌خطی خروجی غیرمنتظره
 >
 >
-> #### 💡 Explanation:
+> #### 💡 توضیح:
 >
-> * Brief explanation of what's happening and why is it happening.
+> * توضیح کوتاه درمورد این‌که چی داره اتفاق میافته و چرا.
 > ```py
-> # Set up code
-> # More examples for further clarification (if necessary)
+> # راه اندازی کد
+> # مثال‌های بیشتر برای شفاف سازی (در صورت نیاز)
 > ```
-> **Output (Python version(s)):**
+> **خروجی (نسخه(های) پایتون):**
 >
 > ```py
-> >>> trigger # some example that makes it easy to unveil the magic
-> # some justified output
+> >>> trigger # یک مثال که رونمایی از جادو رو راحت‌تر می‌کنه
+> # یک خروجی توجیه شده و واضح
 > ```
 
-**Note:** All the examples are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified before the output.
+**توجه:** همه مثال‌ها در برنامه مفسر تعاملی پایتون نسخه
+۳.۵.۲ آزمایش شده‌اند و باید در همه نسخه‌های پایتون کار
+کنند مگراینکه به صورت جداگانه و به طور واضح نسخه مخصوص
+پایتون قبل از خروجی ذکر شده باشد.
 
-# Usage
 
-A nice way to get the most out of these examples, in my opinion, is to read them in sequential order, and for every example:
-- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, you'll successfully anticipate what's going to happen next most of the time.
-- Read the output snippets and,
-  + Check if the outputs are the same as you'd expect.
-  + Make sure if you know the exact reason behind the output being the way it is.
-    - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfpython/issues/new)).
-    - If yes, give a gentle pat on your back, and you may skip to the next example.
+# استفاده
 
+یه راه خوب برای بیشتر بهره بردن، به نظرم، اینه که مثال‌ها رو به ترتیب متوالی بخونید و برای هر مثال:
+- کد ابتدایی برای راه اندازی مثال رو با دقت بخونید. اگه شما یه پایتون کار سابقه‌دار باشید، با موفقیت بیشتر اوقات اتفاق بعدی رو پیش‌بینی می‌کنید.
+- قطعه خروجی رو بخونید و
+  + بررسی کنید که آیا خروجی‌ها همونطور که انتظار دارید هستند.
+  + مطمئین بشید که دقیقا دلیل اینکه خروجی اون طوری هست رو می‌دونید.
+    - اگه نمی‌دونید (که کاملا عادیه و اصلا بد نیست)، یک نفس عمیق بکشید و توضیحات رو بخونید (و اگه نفهمیدید، داد بزنید! و [اینجا](https://github.com/emargi/wtfpython/issues/new) درموردش حرف بزنید).
+    - اگه می‌دونید، به افتخار خودتون یه دست محکم بزنید و برید سراغ مثال بعدی.
 ---
 
 # 👀 Examples

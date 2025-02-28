@@ -14,4 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Write git diff to temp file
+      run: |
+        git fetch origin
+        git diff origin/${{ github.base_ref }} --unified=0 *.md translations/*/*.md \
+        > ${{ runner.temp }}/diff.md
     - uses: DavidAnson/markdownlint-cli2-action@v17
+      with:
+        globs: "${{ runner.temp }}/diff.md"

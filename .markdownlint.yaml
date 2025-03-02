@@ -1,4 +1,3 @@
-# MD013/line-length
 MD013:
   line_length: 120
 
@@ -13,3 +12,6 @@ MD033: false
 
 # no-inline-html : Bare URL used (site should be attributed transparently, because otherwise we have to un-necesarily explain where the link directs)
 MD034: false
+
+# first-line-h1 : First line in a file should be a top-level heading (Ignore because diff file will never have valid heading)
+MD041: false

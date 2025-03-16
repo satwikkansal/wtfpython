@@ -40,146 +40,146 @@
 <!-- toc -->
 
 - [فهرست مطالب](#فهرست-مطالب)
-- [ساختار مثال‌ها](#structure-of-the-examples)
+- [ساختار مثال‌ها](#ساختار-مثالها)
 - [استفاده](#استفاده)
-- [👀 مثال‌ها](#-مثال‌ها)
+- [👀 مثال‌ها](#-مثالها)
   - [بخش: ذهن خود را به چالش بکشید!](#بخش-ذهن-خود-را-به-چالش-بکشید)
     - [▶ اول از همه! \*](#-اول-از-همه-)
       - [💡 توضیحات](#-توضیحات)
     - [▶ بعضی وقت‌ها رشته‌ها می‌توانند دردسرساز شوند](#-بعضی-وقتها-رشتهها-میتوانند-دردسرساز-شوند)
-      - [💡 Explanation:](#-explanation-1)
+      - [💡 Explanation:](#-explanation)
     - [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
-      - [💡 Explanation:](#-explanation-2)
+      - [💡 Explanation:](#-explanation-1)
     - [▶ How not to use `is` operator](#-how-not-to-use-is-operator)
-      - [💡 Explanation:](#-explanation-3)
+      - [💡 Explanation:](#-explanation-2)
     - [▶ Hash brownies](#-hash-brownies)
-      - [💡 Explanation](#-explanation-4)
+      - [💡 Explanation](#-explanation-3)
     - [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same)
-      - [💡 Explanation:](#-explanation-5)
+      - [💡 Explanation:](#-explanation-4)
     - [▶ Disorder within order \*](#-disorder-within-order-)
-      - [💡 Explanation:](#-explanation-6)
+      - [💡 Explanation:](#-explanation-5)
     - [▶ Keep trying... \*](#-keep-trying-)
-      - [💡 Explanation:](#-explanation-7)
+      - [💡 Explanation:](#-explanation-6)
     - [▶ For what?](#-for-what)
-      - [💡 Explanation:](#-explanation-8)
+      - [💡 Explanation:](#-explanation-7)
     - [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
-      - [💡 Explanation](#-explanation-9)
+      - [💡 Explanation](#-explanation-8)
     - [▶ `is not ...` is not `is (not ...)`](#-is-not--is-not-is-not-)
-      - [💡 Explanation](#-explanation-10)
+      - [💡 Explanation](#-explanation-9)
     - [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
-      - [💡 Explanation:](#-explanation-11)
+      - [💡 Explanation:](#-explanation-10)
     - [▶ Schrödinger's variable \*](#-schrödingers-variable-)
-      - [💡 Explanation:](#-explanation-12)
+      - [💡 Explanation:](#-explanation-11)
     - [▶ The chicken-egg problem \*](#-the-chicken-egg-problem-)
-      - [💡 Explanation](#-explanation-13)
+      - [💡 Explanation](#-explanation-12)
     - [▶ Subclass relationships](#-subclass-relationships)
-      - [💡 Explanation:](#-explanation-14)
+      - [💡 Explanation:](#-explanation-13)
     - [▶ Methods equality and identity](#-methods-equality-and-identity)
-      - [💡 Explanation](#-explanation-15)
+      - [💡 Explanation](#-explanation-14)
     - [▶ All-true-ation \*](#-all-true-ation-)
+      - [💡 Explanation:](#-explanation-15)
       - [💡 Explanation:](#-explanation-16)
-      - [💡 Explanation:](#-explanation-17)
     - [▶ Strings and the backslashes](#-strings-and-the-backslashes)
-      - [💡 Explanation](#-explanation-18)
+      - [💡 Explanation](#-explanation-17)
     - [▶ not knot!](#-not-knot)
-      - [💡 Explanation:](#-explanation-19)
+      - [💡 Explanation:](#-explanation-18)
     - [▶ Half triple-quoted strings](#-half-triple-quoted-strings)
-      - [💡 Explanation:](#-explanation-20)
+      - [💡 Explanation:](#-explanation-19)
     - [▶ What's wrong with booleans?](#-whats-wrong-with-booleans)
-      - [💡 Explanation:](#-explanation-21)
+      - [💡 Explanation:](#-explanation-20)
     - [▶ Class attributes and instance attributes](#-class-attributes-and-instance-attributes)
-      - [💡 Explanation:](#-explanation-22)
+      - [💡 Explanation:](#-explanation-21)
     - [▶ yielding None](#-yielding-none)
-      - [💡 Explanation:](#-explanation-23)
+      - [💡 Explanation:](#-explanation-22)
     - [▶ Yielding from... return! \*](#-yielding-from-return-)
-      - [💡 Explanation:](#-explanation-24)
+      - [💡 Explanation:](#-explanation-23)
     - [▶ Nan-reflexivity \*](#-nan-reflexivity-)
-      - [💡 Explanation:](#-explanation-25)
+      - [💡 Explanation:](#-explanation-24)
     - [▶ Mutating the immutable!](#-mutating-the-immutable)
-      - [💡 Explanation:](#-explanation-26)
+      - [💡 Explanation:](#-explanation-25)
     - [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
-      - [💡 Explanation:](#-explanation-27)
+      - [💡 Explanation:](#-explanation-26)
     - [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
-      - [💡 Explanation:](#-explanation-28)
+      - [💡 Explanation:](#-explanation-27)
     - [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
-      - [💡 Explanation:](#-explanation-29)
+      - [💡 Explanation:](#-explanation-28)
     - [▶ Exceeds the limit for integer string conversion](#-exceeds-the-limit-for-integer-string-conversion)
-      - [💡 Explanation:](#-explanation-30)
+      - [💡 Explanation:](#-explanation-29)
   - [Section: Slippery Slopes](#section-slippery-slopes)
     - [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
-      - [💡 Explanation:](#-explanation-31)
+      - [💡 Explanation:](#-explanation-30)
     - [▶ Stubborn `del` operation](#-stubborn-del-operation)
-      - [💡 Explanation:](#-explanation-32)
+      - [💡 Explanation:](#-explanation-31)
     - [▶ The out of scope variable](#-the-out-of-scope-variable)
-      - [💡 Explanation:](#-explanation-33)
+      - [💡 Explanation:](#-explanation-32)
     - [▶ Deleting a list item while iterating](#-deleting-a-list-item-while-iterating)
-      - [💡 Explanation:](#-explanation-34)
+      - [💡 Explanation:](#-explanation-33)
     - [▶ Lossy zip of iterators \*](#-lossy-zip-of-iterators-)
-      - [💡 Explanation:](#-explanation-35)
+      - [💡 Explanation:](#-explanation-34)
     - [▶ Loop variables leaking out!](#-loop-variables-leaking-out)
-      - [💡 Explanation:](#-explanation-36)
+      - [💡 Explanation:](#-explanation-35)
     - [▶ Beware of default mutable arguments!](#-beware-of-default-mutable-arguments)
-      - [💡 Explanation:](#-explanation-37)
+      - [💡 Explanation:](#-explanation-36)
     - [▶ Catching the Exceptions](#-catching-the-exceptions)
-      - [💡 Explanation](#-explanation-38)
+      - [💡 Explanation](#-explanation-37)
     - [▶ Same operands, different story!](#-same-operands-different-story)
-      - [💡 Explanation:](#-explanation-39)
+      - [💡 Explanation:](#-explanation-38)
     - [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
-      - [💡 Explanation](#-explanation-40)
+      - [💡 Explanation](#-explanation-39)
     - [▶ Rounding like a banker \*](#-rounding-like-a-banker-)
-      - [💡 Explanation:](#-explanation-41)
+      - [💡 Explanation:](#-explanation-40)
     - [▶ Needles in a Haystack \*](#-needles-in-a-haystack-)
-      - [💡 Explanation:](#-explanation-42)
+      - [💡 Explanation:](#-explanation-41)
     - [▶ Splitsies \*](#-splitsies-)
-      - [💡 Explanation:](#-explanation-43)
+      - [💡 Explanation:](#-explanation-42)
     - [▶ Wild imports \*](#-wild-imports-)
-      - [💡 Explanation:](#-explanation-44)
+      - [💡 Explanation:](#-explanation-43)
     - [▶ All sorted? \*](#-all-sorted-)
-      - [💡 Explanation:](#-explanation-45)
+      - [💡 Explanation:](#-explanation-44)
     - [▶ Midnight time doesn't exist?](#-midnight-time-doesnt-exist)
-      - [💡 Explanation:](#-explanation-46)
+      - [💡 Explanation:](#-explanation-45)
   - [Section: The Hidden treasures!](#section-the-hidden-treasures)
     - [▶ Okay Python, Can you make me fly?](#-okay-python-can-you-make-me-fly)
-      - [💡 Explanation:](#-explanation-47)
+      - [💡 Explanation:](#-explanation-46)
     - [▶ `goto`, but why?](#-goto-but-why)
-      - [💡 Explanation:](#-explanation-48)
+      - [💡 Explanation:](#-explanation-47)
     - [▶ Brace yourself!](#-brace-yourself)
-      - [💡 Explanation:](#-explanation-49)
+      - [💡 Explanation:](#-explanation-48)
     - [▶ Let's meet Friendly Language Uncle For Life](#-lets-meet-friendly-language-uncle-for-life)
-      - [💡 Explanation:](#-explanation-50)
+      - [💡 Explanation:](#-explanation-49)
     - [▶ Even Python understands that love is complicated](#-even-python-understands-that-love-is-complicated)
-      - [💡 Explanation:](#-explanation-51)
+      - [💡 Explanation:](#-explanation-50)
     - [▶ Yes, it exists!](#-yes-it-exists)
-      - [💡 Explanation:](#-explanation-52)
+      - [💡 Explanation:](#-explanation-51)
     - [▶ Ellipsis \*](#-ellipsis-)
-      - [💡 Explanation](#-explanation-53)
+      - [💡 Explanation](#-explanation-52)
     - [▶ Inpinity](#-inpinity)
-      - [💡 Explanation:](#-explanation-54)
+      - [💡 Explanation:](#-explanation-53)
     - [▶ Let's mangle](#-lets-mangle)
-      - [💡 Explanation:](#-explanation-55)
+      - [💡 Explanation:](#-explanation-54)
   - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
     - [▶ Skipping lines?](#-skipping-lines)
-      - [💡 Explanation](#-explanation-56)
+      - [💡 Explanation](#-explanation-55)
     - [▶ Teleportation](#-teleportation)
-      - [💡 Explanation:](#-explanation-57)
+      - [💡 Explanation:](#-explanation-56)
     - [▶ Well, something is fishy...](#-well-something-is-fishy)
-      - [💡 Explanation](#-explanation-58)
+      - [💡 Explanation](#-explanation-57)
   - [Section: Miscellaneous](#section-miscellaneous)
     - [▶ `+=` is faster](#--is-faster)
-      - [💡 Explanation:](#-explanation-59)
+      - [💡 Explanation:](#-explanation-58)
     - [▶ Let's make a giant string!](#-lets-make-a-giant-string)
-      - [💡 Explanation](#-explanation-60)
+      - [💡 Explanation](#-explanation-59)
     - [▶ Slowing down `dict` lookups \*](#-slowing-down-dict-lookups-)
-      - [💡 Explanation:](#-explanation-61)
+      - [💡 Explanation:](#-explanation-60)
     - [▶ Bloating instance `dict`s \*](#-bloating-instance-dicts-)
-      - [💡 Explanation:](#-explanation-62)
+      - [💡 Explanation:](#-explanation-61)
     - [▶ Minor Ones \*](#-minor-ones-)
-- [Contributing](#contributing)
-- [Acknowledgements](#acknowledgements)
-      - [Some nice Links!](#some-nice-links)
-- [🎓 License](#-license)
-  - [Surprise your friends as well!](#surprise-your-friends-as-well)
-  - [Need a pdf version?](#need-a-pdf-version)
+- [‫ مشارکت](#-مشارکت)
+- [‫ تقدیر و تشکر](#-تقدیر-و-تشکر)
+      - [‫ چند لینک جالب!](#-چند-لینک-جالب)
+- [‫ 🎓 مجوز](#--مجوز)
+  - [‫ دوستانتان را هم شگفت‌زده کنید!](#-دوستانتان-را-هم-شگفتزده-کنید)
+  - [‫ آیا به یک نسخه pdf نیاز دارید؟](#-آیا-به-یک-نسخه-pdf-نیاز-دارید)
 
 <!-- tocstop -->
 
@@ -3893,25 +3893,26 @@ What makes those dictionaries become bloated? And why are newly created objects 
 ---
 ---
 
-# Contributing
+# &#x202b; مشارکت
 
-A few ways in which you can contribute to wtfpython,
+&#x202b;چند روشی که می‌توانید در wtfpython مشارکت داشته باشید:
 
-- Suggesting new examples
-- Helping with translation (See [issues labeled translation](https://github.com/satwikkansal/wtfpython/issues?q=is%3Aissue+is%3Aopen+label%3Atranslation))
-- Minor corrections like pointing out outdated snippets, typos, formatting errors, etc.
-- Identifying gaps (things like inadequate explanation, redundant examples, etc.)
-- Any creative suggestions to make this project more fun and useful
+- &#x202b; پیشنهاد مثال‌های جدید
+- &#x202b; کمک به ترجمه (به [مشکلات برچسب ترجمه](https://github.com/satwikkansal/wtfpython/issues?q=is%3Aissue+is%3Aopen+label%3Atranslation) مراجعه کنید)
+- &#x202b; اصلاحات جزئی مثل اشاره به تکه‌کدهای قدیمی، اشتباهات تایپی، خطاهای قالب‌بندی و غیره.
+- &#x202b; شناسایی نواقص (مانند توضیحات ناکافی، مثال‌های تکراری و ...)
+- &#x202b; هر پیشنهاد خلاقانه‌ای برای مفیدتر و جذاب‌تر شدن این پروژه
 
-Please see [CONTRIBUTING.md](/CONTRIBUTING.md) for more details. Feel free to create a new [issue](https://github.com/satwikkansal/wtfpython/issues/new) to discuss things.
+&#x202b; برای اطلاعات بیشتر [CONTRIBUTING.md](/CONTRIBUTING.md) را مشاهده کنید. برای بحث درباره موارد مختلف می‌توانید یک [مشکل جدید](https://github.com/satwikkansal/wtfpython/issues/new) ایجاد کنید.
 
-PS: Please don't reach out with backlinking requests, no links will be added unless they're highly relevant to the project.
+&#x202b; نکته: لطفاً برای درخواست بک‌لینک (backlink) تماس نگیرید. هیچ لینکی اضافه نمی‌شود مگر اینکه ارتباط بسیار زیادی با پروژه داشته باشد.
 
-# Acknowledgements
+# &#x202b; تقدیر و تشکر
 
-The idea and design for this collection were initially inspired by Denys Dovhan's awesome project [wtfjs](https://github.com/denysdovhan/wtfjs). The overwhelming support by Pythonistas gave it the shape it is in right now.
+&#x202b; ایده و طراحی این مجموعه ابتدا از پروژه عالی [wtfjs](https://github.com/denysdovhan/wtfjs) توسط Denys Dovhan الهام گرفته شد. حمایت فوق‌العاده‌ جامعه پایتون باعث شد پروژه به شکل امروزی خود درآید.
 
-#### Some nice Links!
+
+#### &#x202b; چند لینک جالب!
 * https://www.youtube.com/watch?v=sH4XF6pKKmk
 * https://www.reddit.com/r/Python/comments/3cu6ej/what_are_some_wtf_things_about_python
 * https://sopython.com/wiki/Common_Gotchas_In_Python
@@ -3922,7 +3923,7 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 * https://github.com/wemake-services/wemake-python-styleguide/search?q=wtfpython&type=Issues
 * WFTPython discussion threads on [Hacker News](https://news.ycombinator.com/item?id=21862073) and [Reddit](https://www.reddit.com/r/programming/comments/edsh3q/what_the_fck_python_30_exploring_and/).
 
-# 🎓 License
+# &#x202b; 🎓 مجوز
 
 [![WTFPL 2.0][license-image]][license-url]
 
@@ -3931,15 +3932,16 @@ The idea and design for this collection were initially inspired by Denys Dovhan'
 [license-url]: http://www.wtfpl.net
 [license-image]: https://img.shields.io/badge/License-WTFPL%202.0-lightgrey.svg?style=flat-square
 
-## Surprise your friends as well!
+## &#x202b; دوستانتان را هم شگفت‌زده کنید!
 
-If you like wtfpython, you can use these quick links to share it with your friends,
+&#x202b; اگر از wtfpython خوشتان آمد، می‌توانید با این لینک‌های سریع آن را با دوستانتان به اشتراک بگذارید:
 
-[Twitter](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&text=If%20you%20really%20think%20you%20know%20Python,%20think%20once%20more!%20Check%20out%20wtfpython&hashtags=python,wtfpython) | [Linkedin](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=If%20you%20really%20thing%20you%20know%20Python,%20think%20once%20more!) | [Facebook](https://www.facebook.com/dialog/share?app_id=536779657179021&display=page&href=https%3A%2F%2Fgithub.com%2Fsatwikkansal%2Fwtfpython&quote=If%20you%20really%20think%20you%20know%20Python%2C%20think%20once%20more!)  
-
-## Need a pdf version?
-
-I've received a few requests for the pdf (and epub) version of wtfpython. You can add your details [here](https://form.jotform.com/221593245656057) to get them as soon as they are finished.
+&#x202b; [توییتر](https://twitter.com/intent/tweet?url=https://github.com/satwikkansal/wtfpython&text=If%20you%20really%20think%20you%20know%20Python,%20think%20once%20more!%20Check%20out%20wtfpython&hashtags=python,wtfpython) | [لینکدین](https://www.linkedin.com/shareArticle?url=https://github.com/satwikkansal&title=What%20the%20f*ck%20Python!&summary=If%20you%20really%20thing%20you%20know%20Python,%20think%20once%20more!) | [فیسبوک](https://www.facebook.com/dialog/share?app_id=536779657179021&display=page&href=https%3A%2F%2Fgithub.com%2Fsatwikkansal%2Fwtfpython&quote=If%20you%20really%20think%20you%20know%20Python%2C%20think%20once%20more!)
 
 
-**That's all folks!** For upcoming content like this, you can add your email [here](https://form.jotform.com/221593598380062).
+## &#x202b; آیا به یک نسخه pdf نیاز دارید؟
+
+
+&#x202b; من چند درخواست برای نسخه PDF (و epub) کتاب wtfpython دریافت کرده‌ام. برای دریافت این نسخه‌ها به محض آماده شدن، می‌توانید اطلاعات خود را [اینجا](https://form.jotform.com/221593245656057) وارد کنید.
+
+&#x202b; **همین بود دوستان!**  برای دریافت مطالب آینده مشابه این، می‌توانید ایمیل خود را [اینجا](https://form.jotform.com/221593598380062) اضافه کنید.

@@ -157,15 +157,15 @@
       - [💡 Explanation:](#-explanation-53)
     - [▶ Let's mangle](#-lets-mangle)
       - [💡 Explanation:](#-explanation-54)
-  - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
-    - [▶ Skipping lines?](#-skipping-lines)
-      - [💡 Explanation](#-explanation-55)
-    - [▶ Teleportation](#-teleportation)
-      - [💡 Explanation:](#-explanation-56)
-    - [▶ Well, something is fishy...](#-well-something-is-fishy)
-      - [💡 Explanation](#-explanation-57)
+  - [‫ بخش: ظاهرها فریبنده‌اند!](#-بخش-ظاهرها-فریبندهاند)
+    - [▶ ‫ خطوط را رد می‌کند؟](#--خطوط-را-رد-میکند)
+      - [‫ 💡 توضیح](#--توضیح)
+    - [▶ ‫ تله‌پورت کردن](#--تلهپورت-کردن)
+      - [‫ 💡 توضیح:](#--توضیح-1)
+    - [▶ ‫ خب، یک جای کار مشکوک است...](#--خب-یک-جای-کار-مشکوک-است)
+      - [‫ 💡 توضیح](#--توضیح-2)
   - [بخش: متفرقه](#بخش-متفرقه)
-    - [▶ `+=` سریع‌تر است](#--سریعتر-است)
+    - [‫ ▶ `+=` سریع‌تر است](#---سریعتر-است)
       - [‫  💡 توضیح:](#---توضیح)
     - [‫ ▶ بیایید یک رشته‌ی بزرگ بسازیم!](#--بیایید-یک-رشتهی-بزرگ-بسازیم)
       - [💡 توضیحات](#-توضیحات-1)
@@ -3427,9 +3427,9 @@ AttributeError: 'A' object has no attribute '__variable'
 ---
 ---
 
-## Section: Appearances are deceptive!
+## &#x202b; بخش: ظاهرها فریبنده‌اند!
 
-### ▶ Skipping lines?
+### ▶ &#x202b; خطوط را رد می‌کند؟
 <!-- Example ID: d50bbde1-fb9d-4735-9633-3444b9d2f417 --->
 **Output:**
 ```py
@@ -3439,33 +3439,33 @@ AttributeError: 'A' object has no attribute '__variable'
 11
 ```
 
-Wut?
+&#x202b; چی?
 
-**Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shell.
+&#x202b; **نکته:** ساده‌ترین روش برای بازتولید این رفتار، کپی کردن دستورات از کد بالا و جایگذاری (paste) آن‌ها در فایل یا محیط تعاملی (shell) خودتان است.
 
-#### 💡 Explanation
+#### &#x202b; 💡 توضیح
 
-Some non-Western characters look identical to letters in the English alphabet but are considered distinct by the interpreter.
+&#x202b; برخی از حروف غیرغربی کاملاً مشابه حروف الفبای انگلیسی به نظر می‌رسند، اما مفسر پایتون آن‌ها را متفاوت در نظر می‌گیرد.
 
 ```py
->>> ord('е') # cyrillic 'e' (Ye)
+>>> ord('е') # حرف سیریلیک «е» (Ye)
 1077
->>> ord('e') # latin 'e', as used in English and typed using standard keyboard
+>>> ord('e') # حرف لاتین «e»، که در انگلیسی استفاده می‌شود و با صفحه‌کلید استاندارد تایپ می‌گردد
 101
 >>> 'е' == 'e'
 False
 
->>> value = 42 # latin e
->>> valuе = 23 # cyrillic 'e', Python 2.x interpreter would raise a `SyntaxError` here
+>>> value = 42 # حرف لاتین e
+>>> valuе = 23 # حرف سیریلیک «е»؛ مفسر پایتون نسخه ۲ در اینجا خطای `SyntaxError` ایجاد می‌کند
 >>> value
 42
 ```
 
-The built-in `ord()` function returns a character's Unicode [code point](https://en.wikipedia.org/wiki/Code_point), and different code positions of Cyrillic 'e' and Latin 'e' justify the behavior of the above example.
+&#x202b; تابع داخلی `ord()`، [کدپوینت](https://fa.wikipedia.org/wiki/کدپوینت) یونیکد مربوط به یک نویسه را برمی‌گرداند. موقعیت‌های کدی متفاوت برای حرف سیریلیک «е» و حرف لاتین «e»، علت رفتار مثال بالا را توجیه می‌کنند.
 
 ---
 
-### ▶ Teleportation
+### ▶ &#x202b; تله‌پورت کردن
 
 <!-- Example ID: edafe923-0c20-4315-b6e1-0c31abfc38f5 --->
 
@@ -3474,36 +3474,36 @@ The built-in `ord()` function returns a character's Unicode [code point](https:/
 import numpy as np
 
 def energy_send(x):
-    # Initializing a numpy array
+    # مقداردهی اولیه یک آرایه numpy
     np.array([float(x)])
 
 def energy_receive():
-    # Return an empty numpy array
+    # بازگرداندن یک آرایه‌ی خالی numpy
     return np.empty((), dtype=np.float).tolist()
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> energy_send(123.456)
 >>> energy_receive()
 123.456
 ```
 
-Where's the Nobel Prize?
+&#x202b; جایزه نوبل کجاست؟
 
-#### 💡 Explanation:
+#### &#x202b; 💡 توضیح:
 
-* Notice that the numpy array created in the `energy_send` function is not returned, so that memory space is free to reallocate.
-* `numpy.empty()` returns the next free memory slot without reinitializing it. This memory spot just happens to be the same one that was just freed (usually, but not always).
+* &#x202b; توجه کنید که آرایه‌ی numpy ایجادشده در تابع `energy_send` برگردانده نشده است، بنابراین فضای حافظه‌ی آن آزاد شده و مجدداً قابل استفاده است.
+* &#x202b; تابع `numpy.empty()` نزدیک‌ترین فضای حافظه‌ی آزاد را بدون مقداردهی مجدد برمی‌گرداند. این فضای حافظه معمولاً همان فضایی است که به‌تازگی آزاد شده است (البته معمولاً این اتفاق می‌افتد و نه همیشه).
 
 ---
 
-### ▶ Well, something is fishy...
+### ▶ &#x202b; خب، یک جای کار مشکوک است...
 <!-- Example ID: cb6a37c5-74f7-44ca-b58c-3b902419b362 --->
 ```py
 def square(x):
     """
-    A simple function to calculate the square of a number by addition.
+    یک تابع ساده برای محاسبه‌ی مربع یک عدد با استفاده از جمع.
     """
     sum_so_far = 0
     for counter in range(x):
@@ -3511,27 +3511,28 @@ def square(x):
   return sum_so_far
 ```
 
-**Output (Python 2.x):**
+&#x202b; **خروجی (پایتون 2.X):**
 
 ```py
 >>> square(10)
 10
 ```
 
-Shouldn't that be 100?
+&#x202b; آیا این نباید ۱۰۰ باشد؟
 
-**Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
+&#x202b; **نکته:** اگر نمی‌توانید این مشکل را بازتولید کنید، سعی کنید فایل [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) را از طریق شِل اجرا کنید.
 
-#### 💡 Explanation
+#### &#x202b; 💡 توضیح
 
-* **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
-* This is how Python handles tabs:
-  
-  > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
-* So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
-* Python 3 is kind enough to throw an error for such cases automatically.
+* &#x202b; **تب‌ها و فاصله‌ها (space) را با هم ترکیب نکنید!** کاراکتری که دقیقاً قبل از دستور return آمده یک «تب» است، در حالی که در بقیۀ مثال، کد با مضربی از «۴ فاصله» تورفتگی دارد.
+* &#x202b; نحوۀ برخورد پایتون با تب‌ها به این صورت است:
 
-    **Output (Python 3.x):**
+  > &#x202b; ابتدا تب‌ها (از چپ به راست) با یک تا هشت فاصله جایگزین می‌شوند به‌طوری که تعداد کل کاراکترها تا انتهای آن جایگزینی، مضربی از هشت باشد <...>
+* &#x202b; بنابراین «تب» در آخرین خط تابع `square` با هشت فاصله جایگزین شده و به همین دلیل داخل حلقه قرار می‌گیرد.
+* &#x202b; پایتون ۳ آنقدر هوشمند هست که چنین مواردی را به‌صورت خودکار با خطا اعلام کند.
+
+    &#x202b; **خروجی (Python 3.x):**
+
     ```py
     TabError: inconsistent use of tabs and spaces in indentation
     ```
@@ -3542,7 +3543,7 @@ Shouldn't that be 100?
 ## بخش: متفرقه
 
 
-### ▶ `+=` سریع‌تر است
+### &#x202b; ▶ `+=` سریع‌تر است
 <!-- Example ID: bfd19c60-a807-4a26-9598-4912b86ddb36 --->
 
 ```py

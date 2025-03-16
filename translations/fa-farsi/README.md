@@ -164,16 +164,16 @@
       - [💡 Explanation:](#-explanation-56)
     - [▶ Well, something is fishy...](#-well-something-is-fishy)
       - [💡 Explanation](#-explanation-57)
-  - [Section: Miscellaneous](#section-miscellaneous)
-    - [▶ `+=` is faster](#--is-faster)
-      - [💡 Explanation:](#-explanation-58)
-    - [▶ Let's make a giant string!](#-lets-make-a-giant-string)
-      - [💡 Explanation](#-explanation-59)
-    - [▶ Slowing down `dict` lookups \*](#-slowing-down-dict-lookups-)
-      - [💡 Explanation:](#-explanation-60)
-    - [▶ Bloating instance `dict`s \*](#-bloating-instance-dicts-)
-      - [💡 Explanation:](#-explanation-61)
-    - [▶ Minor Ones \*](#-minor-ones-)
+  - [بخش: متفرقه](#بخش-متفرقه)
+    - [▶ `+=` سریع‌تر است](#--سریعتر-است)
+      - [‫  💡 توضیح:](#---توضیح)
+    - [‫ ▶ بیایید یک رشته‌ی بزرگ بسازیم!](#--بیایید-یک-رشتهی-بزرگ-بسازیم)
+      - [💡 توضیحات](#-توضیحات-1)
+    - [▶ ‫  کُند کردن جستجوها در `dict` \*](#---کُند-کردن-جستجوها-در-dict-)
+      - [‫  💡 توضیح:](#---توضیح-1)
+    - [‫ ▶ حجیم کردن دیکشنری نمونه‌ها (`instance dicts`) \*](#--حجیم-کردن-دیکشنری-نمونهها-instance-dicts-)
+      - [💡 توضیح:](#-توضیح)
+    - [‫  ▶ موارد جزئی \*](#---موارد-جزئی-)
 - [‫ مشارکت](#-مشارکت)
 - [‫ تقدیر و تشکر](#-تقدیر-و-تشکر)
       - [‫ چند لینک جالب!](#-چند-لینک-جالب)
@@ -3539,27 +3539,27 @@ Shouldn't that be 100?
 ---
 ---
 
-## Section: Miscellaneous
+## بخش: متفرقه
 
 
-### ▶ `+=` is faster
+### ▶ `+=` سریع‌تر است
 <!-- Example ID: bfd19c60-a807-4a26-9598-4912b86ddb36 --->
 
 ```py
-# using "+", three strings:
+# استفاده از "+"، سه رشته:
 >>> timeit.timeit("s1 = s1 + s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
 0.25748300552368164
-# using "+=", three strings:
+# استفاده از "+="، سه رشته:
 >>> timeit.timeit("s1 += s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
 0.012188911437988281
 ```
 
-#### 💡 Explanation:
-+ `+=` is faster than `+` for concatenating more than two strings because the first string (example, `s1` for `s1 += s2 + s3`) is not destroyed while calculating the complete string.
+#### &#x202b;  💡 توضیح:
++ &#x202b;  استفاده از `+=` برای اتصال بیش از دو رشته سریع‌تر از `+` است، زیرا هنگام محاسبه رشته‌ی نهایی، رشته‌ی اول (به‌عنوان مثال `s1` در عبارت `s1 += s2 + s3`) از بین نمی‌رود.
 
 ---
 
-### ▶ Let's make a giant string!
+### &#x202b; ▶ بیایید یک رشته‌ی بزرگ بسازیم!
 <!-- Example ID: c7a07424-63fe-4504-9842-8f3d334f28fc --->
 ```py
 def add_string_with_plus(iters):
@@ -3593,10 +3593,11 @@ def convert_list_to_string(l, iters):
 
 **Output:**
 
+&#x202b; اجرا شده در پوسته‌ی ipython با استفاده از `%timeit` برای خوانایی بهتر نتایج.
+&#x202b; همچنین می‌توانید از ماژول `timeit` در پوسته یا اسکریپت عادی پایتون استفاده کنید؛ نمونه‌ی استفاده در زیر آمده است:
+timeit.timeit('add_string_with_plus(10000)', number=1000, globals=globals())
+
 ```py
-# Executed in ipython shell using %timeit for better readability of results.
-# You can also use the timeit module in normal python shell/scriptm=, example usage below
-# timeit.timeit('add_string_with_plus(10000)', number=1000, globals=globals())
 
 >>> NUM_ITERS = 1000
 >>> %timeit -n1000 add_string_with_plus(NUM_ITERS)
@@ -3612,29 +3613,30 @@ def convert_list_to_string(l, iters):
 10.1 µs ± 1.06 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 
-Let's increase the number of iterations by a factor of 10.
+&#x202b; بیایید تعداد تکرارها را ۱۰ برابر افزایش دهیم.
 
 ```py
 >>> NUM_ITERS = 10000
->>> %timeit -n1000 add_string_with_plus(NUM_ITERS) # Linear increase in execution time
+>>> %timeit -n1000 add_string_with_plus(NUM_ITERS) # افزایش خطی در زمان اجرا
 1.26 ms ± 76.8 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
->>> %timeit -n1000 add_bytes_with_plus(NUM_ITERS) # Quadratic increase
+>>> %timeit -n1000 add_bytes_with_plus(NUM_ITERS) # افزایش درجه دو (افزایش مربعی)
 6.82 ms ± 134 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
->>> %timeit -n1000 add_string_with_format(NUM_ITERS) # Linear increase
+>>> %timeit -n1000 add_string_with_format(NUM_ITERS) # افزایش خطی
 645 µs ± 24.5 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
->>> %timeit -n1000 add_string_with_join(NUM_ITERS) # Linear increase
+>>> %timeit -n1000 add_string_with_join(NUM_ITERS) # افزایش خطی
 1.17 ms ± 7.25 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 >>> l = ["xyz"]*NUM_ITERS
->>> %timeit -n1000 convert_list_to_string(l, NUM_ITERS) # Linear increase
+>>> %timeit -n1000 convert_list_to_string(l, NUM_ITERS) # افزایش خطی
 86.3 µs ± 2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 
-#### 💡 Explanation
-- You can read more about [timeit](https://docs.python.org/3/library/timeit.html) or [%timeit](https://ipython.org/ipython-doc/dev/interactive/magics.html#magic-timeit) on these links. They are used to measure the execution time of code pieces.
-- Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases (justified with the execution times of `add_bytes_with_plus` function)
-- Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for very short strings).
-- Or better, if already you've contents available in the form of an iterable object, then use `''.join(iterable_object)` which is much faster.
-- Unlike `add_bytes_with_plus` because of the `+=` optimizations discussed in the previous example, `add_string_with_plus` didn't show a quadratic increase in execution time. Had the statement been `s = s + "x" + "y" + "z"` instead of `s += "xyz"`, the increase would have been quadratic.
+#### 💡 توضیحات
+توضیحات
+- &#x202b;  برای اطلاعات بیشتر درباره‌ی [timeit](https://docs.python.org/3/library/timeit.html) یا [%timeit](https://ipython.org/ipython-doc/dev/interactive/magics.html#magic-timeit)، می‌توانید به این لینک‌ها مراجعه کنید. این توابع برای اندازه‌گیری زمان اجرای قطعه‌کدها استفاده می‌شوند.
+- &#x202b;  برای تولید رشته‌های طولانی از `+` استفاده نکنید — در پایتون، نوع داده‌ی `str` تغییرناپذیر (immutable) است؛ بنابراین برای هر الحاق (concatenation)، رشته‌ی چپ و راست باید در رشته‌ی جدید کپی شوند. اگر چهار رشته‌ی ۱۰ حرفی را متصل کنید، به‌جای کپی ۴۰ کاراکتر، باید `(10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90` کاراکتر کپی کنید. این وضعیت با افزایش تعداد و طول رشته‌ها به‌صورت درجه دو (مربعی) بدتر می‌شود (که توسط زمان اجرای تابع `add_bytes_with_plus` تأیید شده است).
+- &#x202b;  بنابراین توصیه می‌شود از `.format` یا سینتکس `%` استفاده کنید (البته این روش‌ها برای رشته‌های بسیار کوتاه کمی کندتر از `+` هستند).
+- &#x202b;  اما بهتر از آن، اگر محتوای شما از قبل به‌شکل یک شیء قابل تکرار (iterable) موجود است، از دستور `''.join(iterable_object)` استفاده کنید که بسیار سریع‌تر است.
+- &#x202b;  برخلاف تابع `add_bytes_with_plus` و به‌دلیل بهینه‌سازی‌های انجام‌شده برای عملگر `+=` (که در مثال قبلی توضیح داده شد)، تابع `add_string_with_plus` افزایشی درجه دو در زمان اجرا نشان نداد. اگر دستور به‌صورت `s = s + "x" + "y" + "z"` بود (به‌جای `s += "xyz"`)، افزایش زمان اجرا درجه دو می‌شد.
   ```py
   def add_string_with_plus(iters):
       s = ""
@@ -3644,23 +3646,24 @@ Let's increase the number of iterations by a factor of 10.
 
   >>> %timeit -n100 add_string_with_plus(1000)
   388 µs ± 22.4 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
-  >>> %timeit -n100 add_string_with_plus(10000) # Quadratic increase in execution time
+  >>> %timeit -n100 add_string_with_plus(10000) # افزایش درجه دو در زمان اجرا
   9 ms ± 298 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
   ```
-- So many ways to format and create a giant string are somewhat in contrast to the [Zen of Python](https://www.python.org/dev/peps/pep-0020/), according to which,
+- &#x202b; وجود راه‌های متعدد برای قالب‌بندی و ایجاد رشته‌های بزرگ تا حدودی در تضاد با [ذِن پایتون](https://www.python.org/dev/peps/pep-0020/) است که می‌گوید:
+
   
-    > There should be one-- and preferably only one --obvious way to do it.
+    > &#x202b;  «باید یک راه — و ترجیحاً فقط یک راه — واضح برای انجام آن وجود داشته باشد.»
 
 ---
 
-### ▶ Slowing down `dict` lookups *
+### ▶ &#x202b;  کُند کردن جستجوها در `dict` *
 <!-- Example ID: c9c26ce6-df0c-47f7-af0b-966b9386d4c3 --->
 ```py
 some_dict = {str(i): 1 for i in range(1_000_000)}
 another_dict = {str(i): 1 for i in range(1_000_000)}
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> %timeit some_dict['5']
 28.6 ns ± 0.115 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
@@ -3670,23 +3673,23 @@ another_dict = {str(i): 1 for i in range(1_000_000)}
 
 >>> %timeit another_dict['5']
 28.5 ns ± 0.142 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
->>> another_dict[1]  # Trying to access a key that doesn't exist
+>>> another_dict[1]  # تلاش برای دسترسی به کلیدی که وجود ندارد
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 KeyError: 1
 >>> %timeit another_dict['5']
 38.5 ns ± 0.0913 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
 ```
-Why are same lookups becoming slower?
+چرا جستجوهای یکسان کندتر می‌شوند؟
 
-#### 💡 Explanation:
-+ CPython has a generic dictionary lookup function that handles all types of keys (`str`, `int`, any object ...), and a specialized one for the common case of dictionaries composed of `str`-only keys.
-+ The specialized function (named `lookdict_unicode` in CPython's [source](https://github.com/python/cpython/blob/522691c46e2ae51faaad5bbbce7d959dd61770df/Objects/dictobject.c#L841)) knows all existing keys (including the looked-up key) are strings, and uses the faster & simpler string comparison to compare keys, instead of calling the `__eq__` method.
-+ The first time a `dict` instance is accessed with a non-`str` key, it's modified so future lookups use the generic function.
-+ This process is not reversible for the particular `dict` instance, and the key doesn't even have to exist in the dictionary. That's why attempting a failed lookup has the same effect.
+#### &#x202b;  💡 توضیح:
++ &#x202b; در CPython یک تابع عمومی برای جستجوی کلید در دیکشنری‌ها وجود دارد که از تمام انواع کلیدها (`str`، `int` و هر شیء دیگر) پشتیبانی می‌کند؛ اما برای حالت متداولی که تمام کلیدها از نوع `str` هستند، یک تابع بهینه‌شده‌ی اختصاصی نیز وجود دارد.
++ &#x202b; تابع اختصاصی (که در کد منبع CPython با نام [`lookdict_unicode`](https://github.com/python/cpython/blob/522691c46e2ae51faaad5bbbce7d959dd61770df/Objects/dictobject.c#L841) شناخته می‌شود) فرض می‌کند که تمام کلیدهای موجود در دیکشنری (از جمله کلیدی که در حال جستجوی آن هستید) رشته (`str`) هستند و برای مقایسه‌ی کلیدها، به‌جای فراخوانی متد `__eq__`، از مقایسه‌ی سریع‌تر و ساده‌تر رشته‌ای استفاده می‌کند.
++ &#x202b; اولین باری که یک دیکشنری (`dict`) با کلیدی غیر از `str` فراخوانی شود، این حالت تغییر می‌کند و جستجوهای بعدی از تابع عمومی استفاده خواهند کرد.
++ &#x202b; این فرایند برای آن نمونه‌ی خاص از دیکشنری غیرقابل بازگشت است و حتی لازم نیست کلید موردنظر در دیکشنری موجود باشد. به همین دلیل است که حتی تلاش ناموفق برای دسترسی به کلیدی ناموجود نیز باعث ایجاد همین تأثیر (کند شدن جستجو) می‌شود.
 
 
-### ▶ Bloating instance `dict`s *
+### &#x202b; ▶ حجیم کردن دیکشنری نمونه‌ها (`instance dicts`) *
 <!-- Example ID: fe706ab4-1615-c0ba-a078-76c98cbe3f48 --->
 ```py
 import sys
@@ -3704,7 +3707,7 @@ def dict_size(o):
 
 ```
 
-**Output:** (Python 3.8, other Python 3 versions may vary a little)
+&#x202b; **خروجی:** (پایتون ۳.۸؛ سایر نسخه‌های پایتون ۳ ممکن است کمی متفاوت باشند)
 ```py
 >>> o1 = SomeClass()
 >>> o2 = SomeClass()
@@ -3720,13 +3723,13 @@ def dict_size(o):
 232
 ```
 
-Let's try again... In a new interpreter:
+&#x202b; بیایید دوباره امتحان کنیم... در یک مفسر (interpreter) جدید:
 
 ```py
 >>> o1 = SomeClass()
 >>> o2 = SomeClass()
 >>> dict_size(o1)
-104  # as expected
+104  # همان‌طور که انتظار می‌رفت
 >>> o1.some_attr5 = 5
 >>> o1.some_attr6 = 6
 >>> dict_size(o1)
@@ -3738,28 +3741,29 @@ Let's try again... In a new interpreter:
 232
 ```
 
-What makes those dictionaries become bloated? And why are newly created objects bloated as well?
+&#x202b; چه چیزی باعث حجیم‌شدن این دیکشنری‌ها می‌شود؟ و چرا اشیاء تازه ساخته‌شده نیز حجیم هستند؟
 
-#### 💡 Explanation:
-+ CPython is able to reuse the same "keys" object in multiple dictionaries. This was added in [PEP 412](https://www.python.org/dev/peps/pep-0412/) with the motivation to reduce memory usage, specifically in dictionaries of instances - where keys (instance attributes) tend to be common to all instances.
-+ This optimization is entirely seamless for instance dictionaries, but it is disabled if certain assumptions are broken.
-+ Key-sharing dictionaries do not support deletion; if an instance attribute is deleted, the dictionary is "unshared", and key-sharing is disabled for all future instances of the same class.
-+ Additionally, if the dictionary keys have been resized (because new keys are inserted), they are kept shared *only* if they are used by a exactly single dictionary (this allows adding many attributes in the `__init__` of the very first created instance, without causing an "unshare"). If multiple instances exist when a resize happens, key-sharing is disabled for all future instances of the same class: CPython can't tell if your instances are using the same set of attributes anymore, and decides to bail out on attempting to share their keys.
-+ A small tip, if you aim to lower your program's memory footprint: don't delete instance attributes, and make sure to initialize all attributes in your `__init__`!
+#### 💡 توضیح:
++ &#x202b; در CPython، امکان استفاده‌ی مجدد از یک شیء «کلیدها» (`keys`) در چندین دیکشنری وجود دارد. این ویژگی در [PEP 412](https://www.python.org/dev/peps/pep-0412/) معرفی شد تا مصرف حافظه کاهش یابد، به‌ویژه برای دیکشنری‌هایی که به نمونه‌ها (instances) تعلق دارند و معمولاً کلیدها (نام صفات نمونه‌ها) بین آن‌ها مشترک است.
++ &#x202b; این بهینه‌سازی برای دیکشنری‌های نمونه‌ها کاملاً شفاف و خودکار است؛ اما اگر بعضی فرضیات نقض شوند، غیرفعال می‌شود.
++ &#x202b; دیکشنری‌هایی که کلیدهایشان به اشتراک گذاشته شده باشد، از حذف کلید پشتیبانی نمی‌کنند؛ بنابراین اگر صفتی از یک نمونه حذف شود، دیکشنریِ آن نمونه «غیر مشترک» (`unshared`) شده و این قابلیت اشتراک‌گذاری کلیدها برای تمام نمونه‌هایی که در آینده از آن کلاس ساخته می‌شوند، غیرفعال می‌گردد.
++ &#x202b; همچنین اگر اندازه‌ی دیکشنری به‌علت اضافه‌شدن کلیدهای جدید تغییر کند (`resize` شود)، اشتراک‌گذاری کلیدها تنها زمانی ادامه می‌یابد که فقط یک دیکشنری در حال استفاده از آن‌ها باشد (این اجازه می‌دهد در متد `__init__` برای اولین نمونه‌ی ساخته‌شده، صفات متعددی تعریف کنید بدون آن‌که اشتراک‌گذاری کلیدها از بین برود). اما اگر چند نمونه همزمان وجود داشته باشند و تغییر اندازه‌ی دیکشنری رخ دهد، قابلیت اشتراک‌گذاری کلیدها برای نمونه‌های بعدی همان کلاس غیرفعال خواهد شد. زیرا CPython دیگر نمی‌تواند مطمئن باشد که آیا نمونه‌های بعدی دقیقاً از مجموعه‌ی یکسانی از صفات استفاده خواهند کرد یا خیر.
++ &#x202b; نکته‌ای کوچک برای کاهش مصرف حافظه‌ی برنامه: هرگز صفات نمونه‌ها را حذف نکنید و حتماً تمام صفات را در متد `__init__` تعریف و مقداردهی اولیه کنید!
 
 
-### ▶ Minor Ones *
+### &#x202b;  ▶ موارد جزئی *
 <!-- Example ID: f885cb82-f1e4-4daa-9ff3-972b14cb1324 --->
-* `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
+* &#x202b;  متد `join()` عملیاتی مربوط به رشته (`str`) است، نه لیست (`list`). (در نگاه اول کمی برخلاف انتظار است.)
 
-  **💡 Explanation:** If `join()` is a method on a string, then it can operate on any iterable (list, tuple, iterators). If it were a method on a list, it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic `list` object API.
-  
-* Few weird looking but semantically correct statements:
-  + `[] = ()` is a semantically correct statement (unpacking an empty `tuple` into an empty `list`)
-  + `'a'[0][0][0][0][0]` is also semantically correct, because Python doesn't have a character data type like other languages branched from C. So selecting a single character from a string returns a single-character string.
-  + `3 --0-- 5 == 8` and `--5 == 5` are both semantically correct statements and evaluate to `True`.
+  ** &#x202b;💡 توضیح:** اگر `join()` به‌عنوان متدی روی رشته پیاده‌سازی شود، می‌تواند روی هر شیء قابل پیمایش (`iterable`) از جمله لیست، تاپل و هر نوع تکرارشونده‌ی دیگر کار کند. اگر به‌جای آن روی لیست تعریف می‌شد، باید به‌طور جداگانه برای هر نوع دیگری نیز پیاده‌سازی می‌شد. همچنین منطقی نیست که یک متد مختص رشته روی یک شیء عمومی مانند `list` پیاده شود.
 
-* Given that `a` is a number, `++a` and `--a` are both valid Python statements but don't behave the same way as compared with similar statements in languages like C, C++, or Java.
+* &#x202b; تعدادی عبارت با ظاهری عجیب اما از نظر معنا صحیح:
+  + &#x202b; عبارت `[] = ()` از نظر معنایی صحیح است (باز کردن یا `unpack` کردن یک تاپل خالی درون یک لیست خالی).
+  + &#x202b; عبارت `'a'[0][0][0][0][0]` نیز از نظر معنایی صحیح است، زیرا پایتون برخلاف زبان‌هایی که از C منشعب شده‌اند، نوع داده‌ای جداگانه‌ای برای کاراکتر ندارد. بنابراین انتخاب یک کاراکتر از یک رشته، منجر به بازگشت یک رشته‌ی تک‌کاراکتری می‌شود.
+  + &#x202b;  عبارات `3 --0-- 5 == 8` و `--5 == 5` هر دو از لحاظ معنایی درست بوده و مقدارشان برابر `True` است.
+
+* &#x202b;  با فرض اینکه `a` یک عدد باشد، عبارات `++a` و `--a` هر دو در پایتون معتبر هستند؛ اما رفتاری مشابه با عبارات مشابه در زبان‌هایی مانند C، ++C یا جاوا ندارند.
+
   ```py
   >>> a = 5
   >>> a
@@ -3770,27 +3774,28 @@ What makes those dictionaries become bloated? And why are newly created objects 
   5
   ```
 
-  **💡 Explanation:**
-  + There is no `++` operator in Python grammar. It is actually two `+` operators.
-  + `++a` parses as `+(+a)` which translates to `a`. Similarly, the output of the statement `--a` can be justified.
-  + This StackOverflow [thread](https://stackoverflow.com/questions/3654830/why-are-there-no-and-operators-in-python) discusses the rationale behind the absence of increment and decrement operators in Python.
+  ** &#x202b; 💡 توضیح:**
+  + &#x202b; در گرامر پایتون عملگری به‌نام `++` وجود ندارد. در واقع `++` دو عملگر `+` جداگانه است.
+  + &#x202b; عبارت `++a` به‌شکل `+(+a)` تفسیر می‌شود که معادل `a` است. به‌همین ترتیب، خروجی عبارت `--a` نیز قابل توجیه است.
+  + &#x202b;  این [تاپیک در StackOverflow](https://stackoverflow.com/questions/3654830/why-are-there-no-and-operators-in-python) دلایل نبودن عملگرهای افزایش (`++`) و کاهش (`--`) در پایتون را بررسی می‌کند.
 
-* You must be aware of the Walrus operator in Python. But have you ever heard about *the space-invader operator*?
+* &#x202b; احتمالاً با عملگر Walrus (گراز دریایی) در پایتون آشنا هستید؛ اما تا به حال در مورد *عملگر Space-invader (مهاجم فضایی)* شنیده‌اید؟
+
   ```py
   >>> a = 42
   >>> a -=- 1
   >>> a
   43
   ```
-  It is used as an alternative incrementation operator, together with another one
+&#x202b; از آن به‌عنوان جایگزینی برای عملگر افزایش (increment)، در ترکیب با یک عملگر دیگر استفاده می‌شود.
   ```py
   >>> a +=+ 1
   >>> a
   >>> 44
   ```
-  **💡 Explanation:** This prank comes from [Raymond Hettinger's tweet](https://twitter.com/raymondh/status/1131103570856632321?lang=en). The space invader operator is actually just a malformatted `a -= (-1)`. Which is equivalent to `a = a - (- 1)`. Similar for the `a += (+ 1)` case.
-  
-* Python has an undocumented [converse implication](https://en.wikipedia.org/wiki/Converse_implication) operator. 
+  **&#x202b; 💡 توضیح:** این شوخی از [توییت Raymond Hettinger](https://twitter.com/raymondh/status/1131103570856632321?lang=en) برگرفته شده است. عملگر «مهاجم فضایی» در واقع همان عبارت بدفرمت‌شده‌ی `a -= (-1)` است که معادل با `a = a - (- 1)` می‌باشد. حالت مشابهی برای عبارت `a += (+ 1)` نیز وجود دارد.
+
+* &#x202b; پایتون یک عملگر مستندنشده برای [استلزام معکوس (converse implication)](https://en.wikipedia.org/wiki/Converse_implication) دارد.
      
      ```py
      >>> False ** False == True
@@ -3803,9 +3808,9 @@ What makes those dictionaries become bloated? And why are newly created objects 
      True
      ```
 
-     **💡 Explanation:** If you replace `False` and `True` by 0 and 1 and do the maths, the truth table is equivalent to a converse implication operator. ([Source](https://github.com/cosmologicon/pywat/blob/master/explanation.md#the-undocumented-converse-implication-operator))
-     
-* Since we are talking operators, there's also `@` operator for matrix multiplication (don't worry, this time it's for real).
+     &#x202b; **💡 توضیح:** اگر مقادیر `False` و `True` را به‌ترتیب با اعداد ۰ و ۱ جایگزین کرده و محاسبات را انجام دهید، جدول درستی حاصل، معادل یک عملگر استلزام معکوس خواهد بود. ([منبع](https://github.com/cosmologicon/pywat/blob/master/explanation.md#the-undocumented-converse-implication-operator))
+
+* &#x202b; حالا که صحبت از عملگرها شد، عملگر `@` نیز برای ضرب ماتریسی در پایتون وجود دارد (نگران نباشید، این بار واقعی است).
 
      ```py
      >>> import numpy as np
@@ -3813,16 +3818,16 @@ What makes those dictionaries become bloated? And why are newly created objects 
      46
      ```
 
-     **💡 Explanation:** The `@` operator was added in Python 3.5 keeping the scientific community in mind. Any object can overload `__matmul__` magic method to define behavior for this operator.
+     &#x202b; **💡 توضیح:** عملگر `@` در پایتون ۳٫۵ با در نظر گرفتن نیازهای جامعه علمی اضافه شد. هر شی‌ای می‌تواند متد جادویی `__matmul__` را بازنویسی کند تا رفتار این عملگر را مشخص نماید.
 
-* From Python 3.8 onwards you can use a typical f-string syntax like `f'{some_var=}` for quick debugging. Example,
+* &#x202b; از پایتون ۳٫۸ به بعد می‌توانید از نحو متداول f-string مانند `f'{some_var=}'` برای اشکال‌زدایی سریع استفاده کنید. مثال,
     ```py
     >>> some_string = "wtfpython"
     >>> f'{some_string=}'
     "some_string='wtfpython'"
     ``` 
 
-* Python uses 2 bytes for local variable storage in functions. In theory, this means that only 65536 variables can be defined in a function. However, python has a handy solution built in that can be used to store more than 2^16 variable names. The following code demonstrates what happens in the stack when more than 65536 local variables are defined (Warning: This code prints around 2^18 lines of text, so be prepared!):
+* &#x202b; پایتون برای ذخیره‌سازی متغیرهای محلی در توابع از ۲ بایت استفاده می‌کند. از نظر تئوری، این به معنای امکان تعریف حداکثر ۶۵۵۳۶ متغیر در یک تابع است. با این حال، پایتون راهکار مفیدی ارائه می‌کند که می‌توان با استفاده از آن بیش از ۲^۱۶ نام متغیر را ذخیره کرد. کد زیر نشان می‌دهد وقتی بیش از ۶۵۵۳۶ متغیر محلی تعریف شود، در پشته (stack) چه اتفاقی رخ می‌دهد (هشدار: این کد تقریباً ۲^۱۸ خط متن چاپ می‌کند، بنابراین آماده باشید!):
      
      ```py
      import dis
@@ -3836,9 +3841,9 @@ What makes those dictionaries become bloated? And why are newly created objects 
     print(dis.dis(f))
     ```
      
-* Multiple Python threads won't run your *Python code* concurrently (yes, you heard it right!). It may seem intuitive to spawn several threads and let them execute your Python code concurrently, but, because of the [Global Interpreter Lock](https://wiki.python.org/moin/GlobalInterpreterLock) in Python, all you're doing is making your threads execute on the same core turn by turn. Python threads are good for IO-bound tasks, but to achieve actual parallelization in Python for CPU-bound tasks, you might want to use the Python [multiprocessing](https://docs.python.org/3/library/multiprocessing.html) module.
+* &#x202b; چندین رشته (Thread) در پایتون، کدِ *پایتونی* شما را به‌صورت همزمان اجرا نمی‌کنند (بله، درست شنیدید!). شاید به نظر برسد که ایجاد چندین رشته و اجرای همزمان آن‌ها منطقی است، اما به دلیل وجود [قفل مفسر سراسری (GIL)](https://wiki.python.org/moin/GlobalInterpreterLock) در پایتون، تمام کاری که انجام می‌دهید این است که رشته‌هایتان به‌نوبت روی یک هسته اجرا می‌شوند. رشته‌ها در پایتون برای وظایفی مناسب هستند که عملیات I/O دارند، اما برای رسیدن به موازی‌سازی واقعی در وظایف پردازشی سنگین (CPU-bound)، بهتر است از ماژول [multiprocessing](https://docs.python.org/3/library/multiprocessing.html) در پایتون استفاده کنید.
 
-* Sometimes, the `print` method might not print values immediately. For example,
+* &#x202b; گاهی اوقات، متد `print` ممکن است مقادیر را فوراً چاپ نکند. برای مثال،
 
      ```py
      # File some_file.py
@@ -3848,16 +3853,16 @@ What makes those dictionaries become bloated? And why are newly created objects 
      time.sleep(3)
      ```
 
-     This will print the `wtfpython` after 3 seconds due to the `end` argument because the output buffer is flushed either after encountering `\n` or when the program finishes execution. We can force the buffer to flush by passing `flush=True` argument.
+     &#x202b; این کد عبارت `wtfpython` را به دلیل آرگومان `end` پس از ۳ ثانیه چاپ می‌کند؛ چرا که بافر خروجی تنها پس از رسیدن به کاراکتر `\n` یا در زمان اتمام اجرای برنامه تخلیه می‌شود. برای تخلیه‌ی اجباری بافر می‌توانید از آرگومان `flush=True` استفاده کنید.
 
-* List slicing with out of the bounds indices throws no errors
+* &#x202b; برش لیست‌ها (List slicing) با اندیس‌های خارج از محدوده، خطایی ایجاد نمی‌کند.
   ```py
   >>> some_list = [1, 2, 3, 4, 5]
   >>> some_list[111:]
   []
   ```
 
-* Slicing an iterable not always creates a new object. For example,
+* &#x202b; برش زدن (slicing) یک شئ قابل پیمایش (iterable) همیشه یک شئ جدید ایجاد نمی‌کند. به‌عنوان مثال،
     ```py
     >>> some_str = "wtfpython"
     >>> some_list = ['w', 't', 'f', 'p', 'y', 't', 'h', 'o', 'n']
@@ -3867,9 +3872,9 @@ What makes those dictionaries become bloated? And why are newly created objects 
     True
     ```
 
-* `int('١٢٣٤٥٦٧٨٩')` returns `123456789` in Python 3. In Python, Decimal characters include digit characters, and all characters that can be used to form decimal-radix numbers, e.g. U+0660, ARABIC-INDIC DIGIT ZERO. Here's an [interesting story](https://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) related to this behavior of Python.
+* &#x202b; در پایتون ۳، فراخوانی `int('١٢٣٤٥٦٧٨٩')` مقدار `123456789` را برمی‌گرداند. در پایتون، نویسه‌های ده‌دهی (Decimal characters) شامل تمام ارقامی هستند که می‌توانند برای تشکیل اعداد در مبنای ده استفاده شوند؛ به‌عنوان مثال نویسه‌ی U+0660 که همان رقم صفر عربی-هندی است. [اینجا](https://chris.improbable.org/2014/8/25/adventures-in-unicode-digits/) داستان جالبی درباره این رفتار پایتون آمده است.
 
-* You can separate numeric literals with underscores (for better readability) from Python 3 onwards.
+* &#x202b; از پایتون ۳ به بعد، می‌توانید برای افزایش خوانایی، اعداد را با استفاده از زیرخط (`_`) جدا کنید.
 
      ```py
      >>> six_million = 6_000_000
@@ -3880,7 +3885,7 @@ What makes those dictionaries become bloated? And why are newly created objects 
      4027435774
      ```
 
-* `'abc'.count('') == 4`. Here's an approximate implementation of `count` method, which would make the things more clear
+* &#x202b; عبارت `'abc'.count('') == 4` مقدار `True` برمی‌گرداند. در اینجا یک پیاده‌سازی تقریبی از متد `count` آورده شده که این موضوع را شفاف‌تر می‌کند:
   ```py
   def count(s, sub):
       result = 0
@@ -3888,7 +3893,7 @@ What makes those dictionaries become bloated? And why are newly created objects 
           result += (s[i:i + len(sub)] == sub)
       return result
   ```
-  The behavior is due to the matching of empty substring(`''`) with slices of length 0 in the original string.
+&#x202b;  این رفتار به این دلیل است که زیررشته‌ی خالی (`''`) با برش‌هایی (slices) به طول صفر در رشته‌ی اصلی مطابقت پیدا می‌کند.
 
 ---
 ---

@@ -138,32 +138,32 @@
       - [💡 Explanation:](#-explanation-44)
     - [▶ Midnight time doesn't exist?](#-midnight-time-doesnt-exist)
       - [💡 Explanation:](#-explanation-45)
-  - [Section: The Hidden treasures!](#section-the-hidden-treasures)
-    - [▶ Okay Python, Can you make me fly?](#-okay-python-can-you-make-me-fly)
-      - [💡 Explanation:](#-explanation-46)
-    - [▶ `goto`, but why?](#-goto-but-why)
-      - [💡 Explanation:](#-explanation-47)
-    - [▶ Brace yourself!](#-brace-yourself)
-      - [💡 Explanation:](#-explanation-48)
-    - [▶ Let's meet Friendly Language Uncle For Life](#-lets-meet-friendly-language-uncle-for-life)
-      - [💡 Explanation:](#-explanation-49)
-    - [▶ Even Python understands that love is complicated](#-even-python-understands-that-love-is-complicated)
-      - [💡 Explanation:](#-explanation-50)
-    - [▶ Yes, it exists!](#-yes-it-exists)
-      - [💡 Explanation:](#-explanation-51)
+  - [‫ بخش: گنجینه‌های پنهان!](#-بخش-گنجینههای-پنهان)
+    - [▶ ‫ خب پایتون، می‌توانی کاری کنی پرواز کنم؟](#--خب-پایتون-میتوانی-کاری-کنی-پرواز-کنم)
+      - [‫ 💡 توضیح:](#--توضیح)
+    - [▶ ‫ `goto`، ولی چرا؟](#--goto-ولی-چرا)
+      - [‫ 💡 توضیح:](#--توضیح-1)
+    - [▶ ‫ خودتان را آماده کنید!](#--خودتان-را-آماده-کنید)
+      - [‫ 💡 توضیح:](#--توضیح-2)
+    - [▶ ‫ بیایید با «عمو زبان مهربان برای همیشه» آشنا شویم](#--بیایید-با-عمو-زبان-مهربان-برای-همیشه-آشنا-شویم)
+      - [‫ 💡 توضیح:](#--توضیح-3)
+    - [▶ ‫ حتی پایتون هم می‌داند که عشق پیچیده است](#--حتی-پایتون-هم-میداند-که-عشق-پیچیده-است)
+      - [‫ 💡 توضیح:](#--توضیح-4)
+    - [▶ ‫ بله، این واقعاً وجود دارد!](#--بله-این-واقعاً-وجود-دارد)
+      - [‫ 💡 توضیح:](#--توضیح-5)
     - [▶ Ellipsis \*](#-ellipsis-)
-      - [💡 Explanation](#-explanation-52)
-    - [▶ Inpinity](#-inpinity)
-      - [💡 Explanation:](#-explanation-53)
-    - [▶ Let's mangle](#-lets-mangle)
-      - [💡 Explanation:](#-explanation-54)
+      - [‫ 💡توضیح](#-توضیح)
+    - [▶ ‫ بی‌نهایت (`Inpinity`)](#--بینهایت-inpinity)
+      - [‫ 💡 توضیح:](#--توضیح-6)
+    - [▶ ‫ بیایید خرابکاری کنیم](#--بیایید-خرابکاری-کنیم)
+      - [‫ 💡 توضیح:](#--توضیح-7)
   - [‫ بخش: ظاهرها فریبنده‌اند!](#-بخش-ظاهرها-فریبندهاند)
     - [▶ ‫ خطوط را رد می‌کند؟](#--خطوط-را-رد-میکند)
-      - [‫ 💡 توضیح](#--توضیح)
+      - [‫ 💡 توضیح](#--توضیح-8)
     - [▶ ‫ تله‌پورت کردن](#--تلهپورت-کردن)
-      - [‫ 💡 توضیح:](#--توضیح-1)
+      - [‫ 💡 توضیح:](#--توضیح-9)
     - [▶ ‫ خب، یک جای کار مشکوک است...](#--خب-یک-جای-کار-مشکوک-است)
-      - [‫ 💡 توضیح](#--توضیح-2)
+      - [‫ 💡 توضیح](#--توضیح-10)
   - [بخش: متفرقه](#بخش-متفرقه)
     - [‫ ▶ `+=` سریع‌تر است](#---سریعتر-است)
       - [‫  💡 توضیح:](#---توضیح)
@@ -172,7 +172,7 @@
     - [▶ ‫  کُند کردن جستجوها در `dict` \*](#---کُند-کردن-جستجوها-در-dict-)
       - [‫  💡 توضیح:](#---توضیح-1)
     - [‫ ▶ حجیم کردن دیکشنری نمونه‌ها (`instance dicts`) \*](#--حجیم-کردن-دیکشنری-نمونهها-instance-dicts-)
-      - [💡 توضیح:](#-توضیح)
+      - [💡 توضیح:](#-توضیح-1)
     - [‫  ▶ موارد جزئی \*](#---موارد-جزئی-)
 - [‫ مشارکت](#-مشارکت)
 - [‫ تقدیر و تشکر](#-تقدیر-و-تشکر)
@@ -3064,29 +3064,29 @@ Before Python 3.5, the boolean value for `datetime.time` object was considered t
 
 
 
-## Section: The Hidden treasures!
+## &#x202b; بخش: گنجینه‌های پنهان!
 
-This section contains a few lesser-known and interesting things about Python that most beginners like me are unaware of (well, not anymore).
+&#x202b; این بخش شامل چند مورد جالب و کمتر شناخته‌شده درباره‌ی پایتون است که بیشتر مبتدی‌هایی مثل من از آن بی‌خبرند (البته دیگر اینطور نیست).
 
-### ▶ Okay Python, Can you make me fly?
+### ▶ &#x202b; خب پایتون، می‌توانی کاری کنی پرواز کنم؟
 <!-- Example ID: a92f3645-1899-4d50-9721-0031be4aec3f --->
-Well, here you go
+&#x202b; خب، بفرمایید
 
 ```py
 import antigravity
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 Sshh... It's a super-secret.
 
-#### 💡 Explanation:
-+ `antigravity` module is one of the few easter eggs released by Python developers.
-+ `import antigravity` opens up a web browser pointing to the [classic XKCD comic](https://xkcd.com/353/) about Python.
-+ Well, there's more to it. There's **another easter egg inside the easter egg**. If you look at the [code](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17), there's a function defined that purports to implement the [XKCD's geohashing algorithm](https://xkcd.com/426/).
+#### &#x202b; 💡 توضیح:
++ &#x202b; ماژول `antigravity` یکی از معدود ایستر اِگ‌هایی است که توسط توسعه‌دهندگان پایتون ارائه شده است.
++ &#x202b; دستور `import antigravity` باعث می‌شود مرورگر وب به سمت [کمیک کلاسیک XKCD](https://xkcd.com/353/) در مورد پایتون باز شود.
++ &#x202b; البته موضوع عمیق‌تر است؛ در واقع یک **ایستر اگ دیگر داخل این ایستر اگ** وجود دارد. اگر به [کد منبع](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17) نگاه کنید، یک تابع تعریف شده که ادعا می‌کند [الگوریتم جئوهشینگ XKCD](https://xkcd.com/426/) را پیاده‌سازی کرده است.
 
 ---
 
-### ▶ `goto`, but why?
+### ▶ &#x202b; `goto`، ولی چرا؟
 <!-- Example ID: 2aff961e-7fa5-4986-a18a-9e5894bd89fe --->
 
 ```py
@@ -3096,56 +3096,56 @@ for i in range(9):
         for k in range(9):
             print("I am trapped, please rescue!")
             if k == 2:
-                goto .breakout # breaking out from a deeply nested loop
+                goto .breakout # خروج از یک حلقه‌ی تودرتوی عمیق
 label .breakout
 print("Freedom!")
 ```
 
-**Output (Python 2.3):**
+&#x202b; **خروجی (پایتون ۲.۳):**
 ```py
 I am trapped, please rescue!
 I am trapped, please rescue!
 Freedom!
 ```
 
-#### 💡 Explanation:
-- A working version of `goto` in Python was [announced](https://mail.python.org/pipermail/python-announce-list/2004-April/002982.html) as an April Fool's joke on 1st April 2004.
-- Current versions of Python do not have this module.
-- Although it works, but please don't use it. Here's the [reason](https://docs.python.org/3/faq/design.html#why-is-there-no-goto) to why `goto` is not present in Python.
+#### &#x202b; 💡 توضیح:
+- &#x202b; نسخه‌ی قابل استفاده‌ای از `goto` در پایتون به عنوان یک شوخی [در اول آوریل ۲۰۰۴ معرفی شد](https://mail.python.org/pipermail/python-announce-list/2004-April/002982.html).
+- &#x202b; نسخه‌های فعلی پایتون فاقد این ماژول هستند.
+- &#x202b; اگرچه این ماژول واقعاً کار می‌کند، ولی لطفاً از آن استفاده نکنید. در [این صفحه](https://docs.python.org/3/faq/design.html#why-is-there-no-goto) می‌توانید دلیل عدم حضور دستور `goto` در پایتون را مطالعه کنید.
 
 ---
 
-### ▶ Brace yourself!
+### ▶ &#x202b; خودتان را آماده کنید!
 <!-- Example ID: 5c0c75f2-ddd9-4da3-ba49-c4be7ec39acf --->
-If you are one of the people who doesn't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
+&#x202b; اگر جزو افرادی هستید که دوست ندارند در پایتون برای مشخص کردن محدوده‌ها از فضای خالی (whitespace) استفاده کنند، می‌توانید با ایمپورت کردن ماژول زیر از آکولاد `{}` به سبک زبان C استفاده کنید:
 
 ```py
 from __future__ import braces
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
   File "some_file.py", line 1
     from __future__ import braces
 SyntaxError: not a chance
 ```
 
-Braces? No way! If you think that's disappointing, use Java. Okay, another surprising thing, can you find where's the `SyntaxError` raised in `__future__` module [code](https://github.com/python/cpython/blob/master/Lib/__future__.py)?
+&#x202b; آکولاد؟ هرگز! اگر از این بابت ناامید شدید، بهتر است از جاوا استفاده کنید. خب، یک چیز شگفت‌آور دیگر؛ آیا می‌توانید تشخیص دهید که ارور `SyntaxError` در کجای کد ماژول `__future__` [اینجا](https://github.com/python/cpython/blob/master/Lib/__future__.py) ایجاد می‌شود؟
 
-#### 💡 Explanation:
-+ The `__future__` module is normally used to provide features from future versions of Python. The "future" in this specific context is however, ironic.
-+ This is an easter egg concerned with the community's feelings on this issue.
-+ The code is actually present [here](https://github.com/python/cpython/blob/025eb98dc0c1dc27404df6c544fc2944e0fa9f3a/Python/future.c#L49) in `future.c` file.
-+ When the CPython compiler encounters a [future statement](https://docs.python.org/3.3/reference/simple_stmts.html#future-statements), it first runs the appropriate code in `future.c` before treating it as a normal import statement.
+#### &#x202b; 💡 توضیح:
++ &#x202b; ماژول `__future__` معمولاً برای ارائه قابلیت‌هایی از نسخه‌های آینده پایتون به کار می‌رود. اما کلمه «future» (آینده) در این زمینه خاص، حالت طنز و کنایه دارد.
++ &#x202b; این مورد یک «ایستر اگ» (easter egg) است که به احساسات جامعه برنامه‌نویسان پایتون در این خصوص اشاره دارد.
++ &#x202b; کد مربوط به این موضوع در واقع [اینجا](https://github.com/python/cpython/blob/025eb98dc0c1dc27404df6c544fc2944e0fa9f3a/Python/future.c#L49) در فایل `future.c` قرار دارد.
++ &#x202b; زمانی که کامپایلر CPython با یک [عبارت future](https://docs.python.org/3.3/reference/simple_stmts.html#future-statements) مواجه می‌شود، ابتدا کد مرتبط در `future.c` را اجرا کرده و سپس آن را همانند یک دستور ایمپورت عادی در نظر می‌گیرد.
 
 ---
 
-### ▶ Let's meet Friendly Language Uncle For Life
+### ▶ &#x202b; بیایید با «عمو زبان مهربان برای همیشه» آشنا شویم
 <!-- Example ID: 6427fae6-e959-462d-85da-ce4c94ce41be --->
 **Output (Python 3.x)**
 ```py
 >>> from __future__ import barry_as_FLUFL
->>> "Ruby" != "Python" # there's no doubt about it
+>>> "Ruby" != "Python" # شکی در این نیست.
   File "some_file.py", line 1
     "Ruby" != "Python"
               ^
@@ -3155,15 +3155,17 @@ SyntaxError: invalid syntax
 True
 ```
 
-There we go.
+&#x202b; حالا می‌رسیم به اصل ماجرا.
 
-#### 💡 Explanation:
-- This is relevant to [PEP-401](https://www.python.org/dev/peps/pep-0401/) released on April 1, 2009 (now you know, what it means).
-- Quoting from the PEP-401
+#### &#x202b; 💡 توضیح:
+- &#x202b; این مورد مربوط به [PEP-401](https://www.python.org/dev/peps/pep-0401/) است که در تاریخ ۱ آوریل ۲۰۰۹ منتشر شد (اکنون می‌دانید این یعنی چه!).
+- &#x202b; نقل قولی از PEP-401:
+
+  > &#x202b; با توجه به اینکه عملگر نابرابری `!=` در پایتون ۳.۰ یک اشتباه وحشتناک و انگشت‌سوز (!) بوده است، عمو زبان مهربان برای همیشه (FLUFL) عملگر الماسی‌شکل `<>` را مجدداً به‌عنوان تنها روش درست برای این منظور بازگردانده است.
   
-  > Recognized that the != inequality operator in Python 3.0 was a horrible, finger-pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
-- There were more things that Uncle Barry had to share in the PEP; you can read them [here](https://www.python.org/dev/peps/pep-0401/).
-- It works well in an interactive environment, but it will raise a `SyntaxError` when you run via python file (see this [issue](https://github.com/satwikkansal/wtfpython/issues/94)). However, you can wrap the statement inside an `eval` or `compile` to get it working,
+- &#x202b; البته «عمو بَری» چیزهای بیشتری برای گفتن در این PEP داشت؛ می‌توانید آن‌ها را [اینجا](https://www.python.org/dev/peps/pep-0401/) مطالعه کنید.
+- &#x202b; این قابلیت در محیط تعاملی به خوبی عمل می‌کند، اما در زمان اجرای کد از طریق فایل پایتون، با خطای `SyntaxError` روبرو خواهید شد (برای اطلاعات بیشتر به این [issue](https://github.com/satwikkansal/wtfpython/issues/94) مراجعه کنید). با این حال، می‌توانید کد خود را درون یک `eval` یا `compile` قرار دهید تا این قابلیت فعال شود.
+
     ```py
     from __future__ import barry_as_FLUFL
     print(eval('"Ruby" <> "Python"'))
@@ -3171,7 +3173,7 @@ There we go.
 
 ---
 
-### ▶ Even Python understands that love is complicated
+### ▶ &#x202b; حتی پایتون هم می‌داند که عشق پیچیده است
 <!-- Example ID: b93cad9e-d341-45d1-999c-fcdce65bed25 --->
 ```py
 import this
@@ -3179,7 +3181,7 @@ import this
 
 Wait, what's **this**? `this` is love :heart:
 
-**Output:**
+&#x202b; **خروجی:**
 ```
 The Zen of Python, by Tim Peters
 
@@ -3204,7 +3206,7 @@ If the implementation is easy to explain, it may be a good idea.
 Namespaces are one honking great idea -- let's do more of those!
 ```
 
-It's the Zen of Python!
+&#x202b; این ذنِ پایتون است!
 
 ```py
 >>> love = this
@@ -3216,21 +3218,21 @@ False
 False
 >>> love is not True or False
 True
->>> love is not True or False; love is love  # Love is complicated
+>>> love is not True or False; love is love  # عشق پیجیده است
 True
 ```
 
-#### 💡 Explanation:
+#### &#x202b; 💡 توضیح:
 
-* `this` module in Python is an easter egg for The Zen Of Python ([PEP 20](https://www.python.org/dev/peps/pep-0020)).
-* And if you think that's already interesting enough, check out the implementation of [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py). Interestingly, **the code for the Zen violates itself** (and that's probably the only place where this happens).
-* Regarding the statement `love is not True or False; love is love`, ironic but it's self-explanatory (if not, please see the examples related to `is` and `is not` operators).
+* &#x202b; ماژول `this` در پایتون، یک ایستر اگ برای «ذنِ پایتون» ([PEP 20](https://www.python.org/dev/peps/pep-0020)) است.
+* &#x202b; اگر این موضوع به‌اندازه کافی جالب است، حتماً پیاده‌سازی [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py) را ببینید. نکته جالب این است که **کد مربوط به ذنِ پایتون، خودش اصول ذن را نقض کرده است** (و احتمالاً این تنها جایی است که چنین اتفاقی می‌افتد).
+* &#x202b; درباره جمله `love is not True or False; love is love`، اگرچه طعنه‌آمیز است، اما خود گویاست. (اگر واضح نیست، لطفاً مثال‌های مربوط به عملگرهای `is` و `is not` را مشاهده کنید.)
 
 ---
 
-### ▶ Yes, it exists!
+### ▶ &#x202b; بله، این واقعاً وجود دارد!
 <!-- Example ID: 4286db3d-1ea7-47c9-8fb6-a9a04cac6e49 --->
-**The `else` clause for loops.** One typical example might be:
+&#x202b; **عبارت `else` برای حلقه‌ها.** یک مثال معمول آن می‌تواند چنین باشد:
 
 ```py
   def does_exists_num(l, to_find):
@@ -3242,7 +3244,7 @@ True
           print("Does not exist")
 ```
 
-**Output:**
+**خروجی:**
 ```py
 >>> some_list = [1, 2, 3, 4, 5]
 >>> does_exists_num(some_list, 4)
@@ -3251,7 +3253,7 @@ Exists!
 Does not exist
 ```
 
-**The `else` clause in exception handling.** An example,
+**عبارت `else` در مدیریت استثناها.** مثالی از آن:
 
 ```py
 try:
@@ -3262,14 +3264,14 @@ else:
     print("Try block executed successfully...")
 ```
 
-**Output:**
+**خروجی:**
 ```py
 Try block executed successfully...
 ```
 
-#### 💡 Explanation:
-- The `else` clause after a loop is executed only when there's no explicit `break` after all the iterations. You can think of it as a "nobreak" clause.
-- `else` clause after a try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
+#### &#x202b; 💡 توضیح:
+- عبارت `else` بعد از حلقه‌ها تنها زمانی اجرا می‌شود که در هیچ‌کدام از تکرارها (`iterations`) از دستور `break` استفاده نشده باشد. می‌توانید آن را به عنوان یک شرط «بدون شکست» (nobreak) در نظر بگیرید.
+- عبارت `else` پس از بلاک `try` به عنوان «عبارت تکمیل» (`completion clause`) نیز شناخته می‌شود؛ چراکه رسیدن به عبارت `else` در ساختار `try` به این معنی است که بلاک `try` بدون رخ دادن استثنا با موفقیت تکمیل شده است.
 
 ---
 ### ▶ Ellipsis *
@@ -3279,10 +3281,10 @@ def some_func():
     Ellipsis
 ```
 
-**Output**
+**خروجی**
 ```py
 >>> some_func()
-# No output, No Error
+# بدون خروجی و بدون خطا
 
 >>> SomeRandomString
 Traceback (most recent call last):
@@ -3293,15 +3295,16 @@ NameError: name 'SomeRandomString' is not defined
 Ellipsis
 ```
 
-#### 💡 Explanation
-- In Python, `Ellipsis` is a globally available built-in object which is equivalent to `...`.
+#### &#x202b; 💡توضیح
+- &#x202b; در پایتون، `Ellipsis` یک شیء درونی (`built-in`) است که به صورت سراسری (`global`) در دسترس است و معادل `...` است.
     ```py
     >>> ...
     Ellipsis
     ```
-- Ellipsis can be used for several purposes,
-    + As a placeholder for code that hasn't been written yet (just like `pass` statement)
-    + In slicing syntax to represent the full slices in remaining direction
+- &#x202b; `Ellipsis` می‌تواند برای چندین منظور استفاده شود:
+    + &#x202b; به عنوان یک نگه‌دارنده برای کدی که هنوز نوشته نشده است (مانند دستور `pass`)
+    + &#x202b; در سینتکس برش (`slicing`) برای نمایش برش کامل در ابعاد باقی‌مانده
+
     ```py
     >>> import numpy as np
     >>> three_dimensional_array = np.arange(8).reshape(2, 2, 2)
@@ -3317,26 +3320,27 @@ Ellipsis
         ]
     ])
     ```
-    So our `three_dimensional_array` is an array of array of arrays. Let's say we want to print the second element (index `1`) of all the innermost arrays, we can use Ellipsis to bypass all the preceding dimensions
+    &#x202b; بنابراین، آرایه‌ی `three_dimensional_array` ما، آرایه‌ای از آرایه‌ها از آرایه‌ها است. فرض کنیم می‌خواهیم عنصر دوم (اندیس `1`) از تمامی آرایه‌های درونی را چاپ کنیم؛ در این حالت می‌توانیم از `Ellipsis` برای عبور از تمامی ابعاد قبلی استفاده کنیم:
     ```py
     >>> three_dimensional_array[:,:,1]
     array([[1, 3],
        [5, 7]])
-    >>> three_dimensional_array[..., 1] # using Ellipsis.
+    >>> three_dimensional_array[..., 1] # با استفاده از Ellipsis.
     array([[1, 3],
        [5, 7]])
     ```
-    Note: this will work for any number of dimensions. You can even select slice in first and last dimension and ignore the middle ones this way (`n_dimensional_array[firs_dim_slice, ..., last_dim_slice]`)
-    + In [type hinting](https://docs.python.org/3/library/typing.html) to indicate only a part of the type (like `(Callable[..., int]` or `Tuple[str, ...]`))
-    + You may also use Ellipsis as a default function argument (in the cases when you want to differentiate between the "no argument passed" and "None value passed" scenarios).
+    &#x202b; نکته: این روش برای آرایه‌هایی با هر تعداد بُعد کار می‌کند. حتی می‌توانید از برش (`slice`) در بُعد اول و آخر استفاده کرده و ابعاد میانی را نادیده بگیرید (به صورت `n_dimensional_array[first_dim_slice, ..., last_dim_slice]`).
+    + &#x202b; در [نوع‌دهی (`type hinting`)](https://docs.python.org/3/library/typing.html) برای اشاره به بخشی از نوع (مانند `Callable[..., int]` یا `Tuple[str, ...]`) استفاده می‌شود.
+    + &#x202b; همچنین می‌توانید از `Ellipsis` به عنوان آرگومان پیش‌فرض تابع استفاده کنید (برای مواردی که می‌خواهید میان «آرگومانی ارسال نشده است» و «مقدار `None` ارسال شده است» تمایز قائل شوید).
+
 
 ---
 
-### ▶ Inpinity
+### ▶ &#x202b; بی‌نهایت (`Inpinity`)
 <!-- Example ID: ff473ea8-a3b1-4876-a6f0-4378aff790c1 --->
-The spelling is intended. Please, don't submit a patch for this.
+&#x202b; این املای کلمه تعمداً به همین شکل نوشته شده است. لطفاً برای اصلاح آن درخواست (`patch`) ارسال نکنید.
 
-**Output (Python 3.x):**
+&#x202b; **خروجی (پایتون 3.x):**
 ```py
 >>> infinity = float('infinity')
 >>> hash(infinity)
@@ -3345,13 +3349,13 @@ The spelling is intended. Please, don't submit a patch for this.
 -314159
 ```
 
-#### 💡 Explanation:
-- Hash of infinity is 10⁵ x π.
-- Interestingly, the hash of `float('-inf')` is "-10⁵ x π" in Python 3, whereas "-10⁵ x e" in Python 2.
+#### &#x202b; 💡 توضیح:
+- &#x202b; هش (`hash`) مقدار بی‌نهایت برابر با 10⁵ × π است.
+- &#x202b; نکته جالب اینکه در پایتون ۳ هشِ مقدار `float('-inf')` برابر با «-10⁵ × π» است، در حالی که در پایتون ۲ برابر با «-10⁵ × e» است.
 
 ---
 
-### ▶ Let's mangle
+### ▶ &#x202b; بیایید خرابکاری کنیم
 <!-- Example ID: 37146d2d-9e67-43a9-8729-3c17934b910c --->
 1\.
 ```py
@@ -3361,7 +3365,7 @@ class Yo(object):
         self.bro = True
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> Yo().bro
 True
@@ -3375,12 +3379,12 @@ True
 ```py
 class Yo(object):
     def __init__(self):
-        # Let's try something symmetrical this time
+        # این بار بیایید چیزی متقارن را امتحان کنیم
         self.__honey__ = True
         self.bro = True
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> Yo().bro
 True
@@ -3391,7 +3395,7 @@ Traceback (most recent call last):
 AttributeError: 'Yo' object has no attribute '_Yo__honey__'
 ```
 
-Why did `Yo()._Yo__honey` work?
+چرا کد `Yo()._Yo__honey` کار کرد؟
 
 3\.
 
@@ -3400,10 +3404,10 @@ _A__variable = "Some value"
 
 class A(object):
     def some_func(self):
-        return __variable # not initialized anywhere yet
+        return __variable # هنوز در هیچ جا مقداردهی اولیه نشده است
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> A().__variable
 Traceback (most recent call last):
@@ -3415,14 +3419,14 @@ AttributeError: 'A' object has no attribute '__variable'
 ```
 
 
-#### 💡 Explanation:
+#### &#x202b; 💡 توضیح:
 
-* [Name Mangling](https://en.wikipedia.org/wiki/Name_mangling) is used to avoid naming collisions between different namespaces.
-* In Python, the interpreter modifies (mangles) the class member names starting with `__` (double underscore a.k.a "dunder") and not ending with more than one trailing underscore by adding `_NameOfTheClass` in front.
-* So, to access `__honey` attribute in the first snippet, we had to append `_Yo` to the front, which would prevent conflicts with the same name attribute defined in any other class.
-* But then why didn't it work in the second snippet? Because name mangling excludes the names ending with double underscores.
-* The third snippet was also a consequence of name mangling. The name `__variable` in the statement `return __variable` was mangled to `_A__variable`, which also happens to be the name of the variable we declared in the outer scope.
-* Also, if the mangled name is longer than 255 characters, truncation will happen.
+* &#x202b; [تغییر نام](https://en.wikipedia.org/wiki/Name_mangling) برای جلوگیری از برخورد نام‌ها بین فضاهای نام مختلف استفاده می‌شود.
+* &#x202b; در پایتون، مفسر نام‌های اعضای کلاس که با `__` (دو آندرلاین که به عنوان "دندر" شناخته می‌شود) شروع می‌شوند و بیش از یک آندرلاین انتهایی ندارند را با اضافه کردن `_NameOfTheClass` در ابتدای آنها تغییر می‌دهد.
+* &#x202b; بنابراین، برای دسترسی به ویژگی `__honey` در اولین قطعه کد، مجبور بودیم `_Yo` را به ابتدای آن اضافه کنیم، که از بروز تعارض با ویژگی با همان نام تعریف‌شده در هر کلاس دیگری جلوگیری می‌کند.
+* &#x202b; اما چرا در دومین قطعه کد کار نکرد؟ زیرا تغییر نام، نام‌هایی که با دو آندرلاین خاتمه می‌یابند را شامل نمی‌شود.
+* &#x202b; قطعه سوم نیز نتیجه تغییر نام بود. نام `__variable` در عبارت `return __variable` به `_A__variable` تغییر یافت، که همچنین همان نام متغیری است که در محدوده بیرونی تعریف کرده بودیم.
+* &#x202b; همچنین، اگر نام تغییر یافته بیش از ۲۵۵ کاراکتر باشد، برش داده می‌شود.
 
 ---
 ---

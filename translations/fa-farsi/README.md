@@ -105,65 +105,65 @@
       - [💡 Explanation:](#-explanation-28)
     - [▶ Exceeds the limit for integer string conversion](#-exceeds-the-limit-for-integer-string-conversion)
       - [💡 Explanation:](#-explanation-29)
-  - [Section: Slippery Slopes](#section-slippery-slopes)
-    - [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
+  - [‫ بخش: شیب‌های لغزنده](#-بخش-شیبهای-لغزنده)
+    - [▶ ‫ تغییر یک دیکشنری هنگام پیمایش روی آن](#--تغییر-یک-دیکشنری-هنگام-پیمایش-روی-آن)
+      - [‫ 💡 توضیح:](#--توضیح)
+    - [▶ عملیات سرسختانه‌ی `del`](#-عملیات-سرسختانهی-del)
+      - [‫ 💡 توضیح:](#--توضیح-1)
+    - [▶ ‫ متغیری که از حوزه خارج است](#--متغیری-که-از-حوزه-خارج-است)
+      - [‫ 💡 توضیح:](#--توضیح-2)
+    - [▶ ‫ حذف المان‌های لیست در حین پیمایش](#--حذف-المانهای-لیست-در-حین-پیمایش)
       - [💡 Explanation:](#-explanation-30)
-    - [▶ Stubborn `del` operation](#-stubborn-del-operation)
-      - [💡 Explanation:](#-explanation-31)
-    - [▶ The out of scope variable](#-the-out-of-scope-variable)
-      - [💡 Explanation:](#-explanation-32)
-    - [▶ Deleting a list item while iterating](#-deleting-a-list-item-while-iterating)
-      - [💡 Explanation:](#-explanation-33)
-    - [▶ Lossy zip of iterators \*](#-lossy-zip-of-iterators-)
-      - [💡 Explanation:](#-explanation-34)
-    - [▶ Loop variables leaking out!](#-loop-variables-leaking-out)
-      - [💡 Explanation:](#-explanation-35)
-    - [▶ Beware of default mutable arguments!](#-beware-of-default-mutable-arguments)
-      - [💡 Explanation:](#-explanation-36)
-    - [▶ Catching the Exceptions](#-catching-the-exceptions)
-      - [💡 Explanation](#-explanation-37)
-    - [▶ Same operands, different story!](#-same-operands-different-story)
-      - [💡 Explanation:](#-explanation-38)
-    - [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
-      - [💡 Explanation](#-explanation-39)
-    - [▶ Rounding like a banker \*](#-rounding-like-a-banker-)
-      - [💡 Explanation:](#-explanation-40)
-    - [▶ Needles in a Haystack \*](#-needles-in-a-haystack-)
-      - [💡 Explanation:](#-explanation-41)
-    - [▶ Splitsies \*](#-splitsies-)
-      - [💡 Explanation:](#-explanation-42)
-    - [▶ Wild imports \*](#-wild-imports-)
-      - [💡 Explanation:](#-explanation-43)
-    - [▶ All sorted? \*](#-all-sorted-)
-      - [💡 Explanation:](#-explanation-44)
-    - [▶ Midnight time doesn't exist?](#-midnight-time-doesnt-exist)
-      - [💡 Explanation:](#-explanation-45)
+    - [▶ ‫ زیپِ دارای اتلاف برای پیمایشگرها \*](#--زیپِ-دارای-اتلاف-برای-پیمایشگرها-)
+      - [‫ 💡 توضیحات:](#--توضیحات)
+    - [▶ ‫ نشت کردن متغیرهای حلقه!](#--نشت-کردن-متغیرهای-حلقه)
+      - [💡 ‫ توضیحات:](#--توضیحات-1)
+    - [▶ ‫ مراقب آرگومان‌های تغییرپذیر پیش‌فرض باشید!](#--مراقب-آرگومانهای-تغییرپذیر-پیشفرض-باشید)
+      - [💡 ‫ توضیحات:](#--توضیحات-2)
+    - [▶ ‫ گرفتن استثناها (Exceptions)](#--گرفتن-استثناها-exceptions)
+      - [💡 ‫ توضیحات](#--توضیحات-3)
+    - [▶ ‫ عملوندهای یکسان، داستانی متفاوت!](#--عملوندهای-یکسان-داستانی-متفاوت)
+      - [💡 ‫ توضیحات:](#--توضیحات-4)
+    - [▶ ‫ تفکیک نام‌ها با نادیده گرفتن حوزه‌ی کلاس](#--تفکیک-نامها-با-نادیده-گرفتن-حوزهی-کلاس)
+      - [💡 ‫ توضیحات](#--توضیحات-5)
+    - [▶ ‫ گرد کردن به روش بانکدار \*](#--گرد-کردن-به-روش-بانکدار-)
+      - [💡 ‫ توضیحات:](#--توضیحات-6)
+    - [▶ ‫ سوزن‌هایی در انبار کاه \*](#--سوزنهایی-در-انبار-کاه-)
+      - [💡 ‫ توضیحات:](#--توضیحات-7)
+    - [▶ ‫ تقسیم‌ها \*](#--تقسیمها-)
+      - [💡 ‫ توضیحات:](#--توضیحات-8)
+    - [▶ واردسازی‌های عمومی \*](#-واردسازیهای-عمومی-)
+      - [💡 ‫ توضیحات:](#--توضیحات-9)
+    - [▶ ‫ همه چیز مرتب شده؟ \*](#--همه-چیز-مرتب-شده-)
+      - [💡 ‫ توضیحات:](#--توضیحات-10)
+    - [▶ ‫ زمان نیمه‌شب وجود ندارد؟](#--زمان-نیمهشب-وجود-ندارد)
+      - [💡 ‫ توضیحات:](#--توضیحات-11)
   - [‫ بخش: گنجینه‌های پنهان!](#-بخش-گنجینههای-پنهان)
     - [▶ ‫ خب پایتون، می‌توانی کاری کنی پرواز کنم؟](#--خب-پایتون-میتوانی-کاری-کنی-پرواز-کنم)
-      - [‫ 💡 توضیح:](#--توضیح)
-    - [▶ ‫ `goto`، ولی چرا؟](#--goto-ولی-چرا)
-      - [‫ 💡 توضیح:](#--توضیح-1)
-    - [▶ ‫ خودتان را آماده کنید!](#--خودتان-را-آماده-کنید)
-      - [‫ 💡 توضیح:](#--توضیح-2)
-    - [▶ ‫ بیایید با «عمو زبان مهربان برای همیشه» آشنا شویم](#--بیایید-با-عمو-زبان-مهربان-برای-همیشه-آشنا-شویم)
       - [‫ 💡 توضیح:](#--توضیح-3)
-    - [▶ ‫ حتی پایتون هم می‌داند که عشق پیچیده است](#--حتی-پایتون-هم-میداند-که-عشق-پیچیده-است)
+    - [▶ ‫ `goto`، ولی چرا؟](#--goto-ولی-چرا)
       - [‫ 💡 توضیح:](#--توضیح-4)
-    - [▶ ‫ بله، این واقعاً وجود دارد!](#--بله-این-واقعاً-وجود-دارد)
+    - [▶ ‫ خودتان را آماده کنید!](#--خودتان-را-آماده-کنید)
       - [‫ 💡 توضیح:](#--توضیح-5)
+    - [▶ ‫ بیایید با «عمو زبان مهربان برای همیشه» آشنا شویم](#--بیایید-با-عمو-زبان-مهربان-برای-همیشه-آشنا-شویم)
+      - [‫ 💡 توضیح:](#--توضیح-6)
+    - [▶ ‫ حتی پایتون هم می‌داند که عشق پیچیده است](#--حتی-پایتون-هم-میداند-که-عشق-پیچیده-است)
+      - [‫ 💡 توضیح:](#--توضیح-7)
+    - [▶ ‫ بله، این واقعاً وجود دارد!](#--بله-این-واقعاً-وجود-دارد)
+      - [‫ 💡 توضیح:](#--توضیح-8)
     - [▶ Ellipsis \*](#-ellipsis-)
       - [‫ 💡توضیح](#-توضیح)
     - [▶ ‫ بی‌نهایت (`Inpinity`)](#--بینهایت-inpinity)
-      - [‫ 💡 توضیح:](#--توضیح-6)
+      - [‫ 💡 توضیح:](#--توضیح-9)
     - [▶ ‫ بیایید خرابکاری کنیم](#--بیایید-خرابکاری-کنیم)
-      - [‫ 💡 توضیح:](#--توضیح-7)
+      - [‫ 💡 توضیح:](#--توضیح-10)
   - [‫ بخش: ظاهرها فریبنده‌اند!](#-بخش-ظاهرها-فریبندهاند)
     - [▶ ‫ خطوط را رد می‌کند؟](#--خطوط-را-رد-میکند)
-      - [‫ 💡 توضیح](#--توضیح-8)
+      - [‫ 💡 توضیح](#--توضیح-11)
     - [▶ ‫ تله‌پورت کردن](#--تلهپورت-کردن)
-      - [‫ 💡 توضیح:](#--توضیح-9)
+      - [‫ 💡 توضیح:](#--توضیح-12)
     - [▶ ‫ خب، یک جای کار مشکوک است...](#--خب-یک-جای-کار-مشکوک-است)
-      - [‫ 💡 توضیح](#--توضیح-10)
+      - [‫ 💡 توضیح](#--توضیح-13)
   - [بخش: متفرقه](#بخش-متفرقه)
     - [‫ ▶ `+=` سریع‌تر است](#---سریعتر-است)
       - [‫  💡 توضیح:](#---توضیح)
@@ -2112,9 +2112,9 @@ Fortunately, you can increase the limit for the allowed number of digits when yo
 ---
 
 
-## Section: Slippery Slopes
+## &#x202b; بخش: شیب‌های لغزنده
 
-### ▶ Modifying a dictionary while iterating over it
+### ▶ &#x202b; تغییر یک دیکشنری هنگام پیمایش روی آن
 <!-- Example ID: b4e5cdfb-c3a8-4112-bd38-e2356d801c41 --->
 ```py
 x = {0: None}
@@ -2125,7 +2125,7 @@ for i in x:
     print(i)
 ```
 
-**Output (Python 2.7- Python 3.5):**
+&#x202b; **خروجی (پایتون 2.7تا پایتون 3.5):**
 
 ```
 0
@@ -2138,19 +2138,19 @@ for i in x:
 7
 ```
 
-Yes, it runs for exactly **eight** times and stops.
+&#x202b; بله، دقیقاً **هشت** مرتبه اجرا می‌شود و سپس متوقف می‌شود.
 
-#### 💡 Explanation:
+#### &#x202b; 💡 توضیح:
 
-* Iteration over a dictionary that you edit at the same time is not supported.
-* It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
-* How deleted keys are handled and when the resize occurs might be different for different Python implementations.
-* So for Python versions other than Python 2.7 - Python 3.5, the count might be different from 8 (but whatever the count is, it's going to be the same every time you run it). You can find some discussion around this [here](https://github.com/satwikkansal/wtfpython/issues/53) or in [this](https://stackoverflow.com/questions/44763802/bug-in-python-dict) StackOverflow thread.
-* Python 3.7.6 onwards, you'll see `RuntimeError: dictionary keys changed during iteration` exception if you try to do this.
+- &#x202b; پیمایش روی یک دیکشنری در حالی که همزمان آن را ویرایش می‌کنید پشتیبانی نمی‌شود.
+- &#x202b; هشت بار اجرا می‌شود چون در آن لحظه دیکشنری برای نگهداری کلیدهای بیشتر تغییر اندازه می‌دهد (ما هشت ورودی حذف داریم، بنابراین تغییر اندازه لازم است). این در واقع یک جزئیات پیاده‌سازی است.
+- &#x202b; اینکه کلیدهای حذف‌شده چگونه مدیریت می‌شوند و چه زمانی تغییر اندازه اتفاق می‌افتد ممکن است در پیاده‌سازی‌های مختلف پایتون متفاوت باشد.
+- &#x202b; بنابراین در نسخه‌های دیگر پایتون (به جز Python 2.7 - Python 3.5)، تعداد ممکن است متفاوت از ۸ باشد (اما هر چه که باشد، در هر بار اجرا یکسان خواهد بود). می‌توانید برخی مباحث پیرامون این موضوع را [اینجا](https://github.com/satwikkansal/wtfpython/issues/53) یا در این [رشته‌ی StackOverflow](https://stackoverflow.com/questions/44763802/bug-in-python-dict) مشاهده کنید.
+- &#x202b; از نسخه‌ی Python 3.7.6 به بعد، در صورت تلاش برای انجام این کار، خطای `RuntimeError: dictionary keys changed during iteration` را دریافت خواهید کرد.
 
 ---
 
-### ▶ Stubborn `del` operation
+### ▶ عملیات سرسختانه‌ی `del`
 <!-- Example ID: 777ed4fd-3a2d-466f-95e7-c4058e61d78e --->
 <!-- read-only -->
 
@@ -2160,42 +2160,42 @@ class SomeClass:
         print("Deleted!")
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 1\.
 ```py
 >>> x = SomeClass()
 >>> y = x
->>> del x # this should print "Deleted!"
+>>> del x # باید این عبارت را چاپ کند "Deleted!"
 >>> del y
 Deleted!
 ```
 
-Phew, deleted at last. You might have guessed what saved `__del__` from being called in our first attempt to delete `x`. Let's add more twists to the example.
+&#x202b; «خُب، بالاخره حذف شد.» احتمالاً حدس زده‌اید چه چیزی جلوی فراخوانی `__del__` را در اولین تلاشی که برای حذف `x` داشتیم، گرفته بود. بیایید مثال را پیچیده‌تر کنیم.
 
 2\.
 ```py
 >>> x = SomeClass()
 >>> y = x
 >>> del x
->>> y # check if y exists
+>>> y # بررسی وجود y
 <__main__.SomeClass instance at 0x7f98a1a67fc8>
->>> del y # Like previously, this should print "Deleted!"
->>> globals() # oh, it didn't. Let's check all our global variables and confirm
+>>> del y # مثل قبل، باید این عبارت را چاپ کند "Deleted!"
+>>> globals() # اوه، چاپ نکرد. بیایید مقادیر گلوبال را بررسی کنیم.
 Deleted!
 {'__builtins__': <module '__builtin__' (built-in)>, 'SomeClass': <class __main__.SomeClass at 0x7f98a1a5f668>, '__package__': None, '__name__': '__main__', '__doc__': None}
 ```
 
-Okay, now it's deleted :confused:
+&#x202b; «باشه، حالا حذف شد» :confused:
 
-#### 💡 Explanation:
-+ `del x` doesn’t directly call `x.__del__()`.
-+ When `del x` is encountered, Python deletes the name `x` from current scope and decrements by 1 the reference count of the object `x` referenced. `__del__()` is called only when the object's reference count reaches zero.
-+ In the second output snippet, `__del__()` was not called because the previous statement (`>>> y`) in the interactive interpreter created another reference to the same object (specifically, the `_` magic variable which references the result value of the last non `None` expression on the REPL), thus preventing the reference count from reaching zero when `del y` was encountered.
-+ Calling `globals` (or really, executing anything that will have a non `None` result) caused `_` to reference the new result, dropping the existing reference. Now the reference count reached 0 and we can see "Deleted!" being printed (finally!).
+#### &#x202b; 💡 توضیح:
+- &#x202b; عبارت `del x` مستقیماً باعث فراخوانی `x.__del__()` نمی‌شود.
+- &#x202b; وقتی به دستور `del x` می‌رسیم، پایتون نام `x` را از حوزه‌ی فعلی حذف کرده و شمارنده‌ی مراجع شیٔ‌ای که `x` به آن اشاره می‌کرد را یک واحد کاهش می‌دهد. فقط وقتی شمارنده‌ی مراجع شیٔ به صفر برسد، تابع `__del__()` فراخوانی می‌شود.
+- &#x202b; در خروجی دوم، متد `__del__()` فراخوانی نشد چون دستور قبلی (`>>> y`) در مفسر تعاملی یک ارجاع دیگر به شیٔ ایجاد کرده بود (به صورت خاص، متغیر جادویی `_` به مقدار آخرین عبارت غیر `None` در REPL اشاره می‌کند). بنابراین مانع از رسیدن شمارنده‌ی مراجع به صفر در هنگام اجرای `del y` شد.
+- &#x202b; فراخوانی `globals` (یا هر چیزی که نتیجه‌اش `None` نباشد) باعث می‌شود که `_` به نتیجه‌ی جدید اشاره کند و ارجاع قبلی از بین برود. حالا شمارنده‌ی مراجع به صفر می‌رسد و عبارت «Deleted!» (حذف شد!) نمایش داده می‌شود.
 
 ---
 
-### ▶ The out of scope variable
+### ▶ &#x202b; متغیری که از حوزه خارج است
 <!-- Example ID: 75c03015-7be9-4289-9e22-4f5fdda056f7 --->
 
 1\.
@@ -2225,7 +2225,7 @@ def another_closure_func():
     return another_inner_func()
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> some_func()
 1
@@ -2238,9 +2238,9 @@ UnboundLocalError: local variable 'a' referenced before assignment
 UnboundLocalError: local variable 'a' referenced before assignment
 ```
 
-#### 💡 Explanation:
-* When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`, but it has not been initialized previously in the same scope, which throws an error.
-* To modify the outer scope variable `a` in `another_func`, we have to use the `global` keyword.
+#### &#x202b; 💡 توضیح:
+* &#x202b; وقتی در محدوده (Scope) یک تابع به متغیری مقداردهی می‌کنید، آن متغیر در همان حوزه محلی تعریف می‌شود. بنابراین `a` در تابع `another_func` تبدیل به متغیر محلی می‌شود، اما پیش‌تر در همان حوزه مقداردهی نشده است، و این باعث خطا می‌شود.
+* &#x202b; برای تغییر متغیر سراسری `a` در تابع `another_func`، باید از کلیدواژه‌ی `global` استفاده کنیم.
   ```py
   def another_func()
       global a
@@ -2248,13 +2248,13 @@ UnboundLocalError: local variable 'a' referenced before assignment
       return a
   ```
 
-  **Output:**
+  **خروجی:**
   ```py
   >>> another_func()
   2
   ```
-* In `another_closure_func`, `a` becomes local to the scope of `another_inner_func`, but it has not been initialized previously in the same scope, which is why it throws an error. 
-* To modify the outer scope variable `a` in `another_inner_func`, use the `nonlocal` keyword. The nonlocal statement is used to refer to variables defined in the nearest outer (excluding the global) scope.
+* &#x202b; در تابع `another_closure_func`، متغیر `a` در حوزه‌ی `another_inner_func` محلی می‌شود ولی پیش‌تر در آن حوزه مقداردهی نشده است. به همین دلیل خطا می‌دهد.
+* &#x202b; برای تغییر متغیر حوزه‌ی بیرونی `a` در `another_inner_func`، باید از کلیدواژه‌ی `nonlocal` استفاده کنیم. دستور `nonlocal` به مفسر می‌گوید که متغیر را در نزدیک‌ترین حوزه‌ی بیرونی (به‌جز حوزه‌ی global) جستجو کند.
   ```py
   def another_func():
       a = 1
@@ -2265,17 +2265,17 @@ UnboundLocalError: local variable 'a' referenced before assignment
       return another_inner_func()
   ```
 
-  **Output:**
+  &#x202b; **خروجی:**
   ```py
   >>> another_func()
   2
   ```
-* The keywords `global` and `nonlocal` tell the python interpreter to not declare new variables and look them up in the corresponding outer scopes.
-* Read [this](https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
+* &#x202b; کلیدواژه‌های `global` و `nonlocal` به مفسر پایتون می‌گویند که متغیر جدیدی را تعریف نکند و به جای آن در حوزه‌های بیرونی (سراسری یا میانجی) آن را بیابد.
+* &#x202b; برای مطالعه‌ی بیشتر در مورد نحوه‌ی کار فضای نام‌ها و مکانیزم تعیین حوزه‌ها در پایتون، می‌توانید این [مقاله کوتاه ولی عالی](https://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) را بخوانید.
 
 ---
 
-### ▶ Deleting a list item while iterating
+### ▶ &#x202b; حذف المان‌های لیست در حین پیمایش
 <!-- Example ID: 4cc52d4e-d42b-4e09-b25f-fbf5699b7d4e --->
 ```py
 list_1 = [1, 2, 3, 4]
@@ -2296,7 +2296,7 @@ for idx, item in enumerate(list_4):
     list_4.pop(idx)
 ```
 
-**Output:**
+&#x202b;**خروجی:**
 ```py
 >>> list_1
 [1, 2, 3, 4]
@@ -2308,35 +2308,35 @@ for idx, item in enumerate(list_4):
 [2, 4]
 ```
 
-Can you guess why the output is `[2, 4]`?
+&#x202b; می‌توانید حدس بزنید چرا خروجی `[2, 4]` است؟
 
 #### 💡 Explanation:
 
-* It's never a good idea to change the object you're iterating over. The correct way to do so is to iterate over a copy of the object instead, and `list_3[:]` does just that.
+* &#x202b; هیچ‌وقت ایده‌ی خوبی نیست که شیئی را که روی آن پیمایش می‌کنید تغییر دهید. روش درست این است که روی یک کپی از آن شیء پیمایش کنید؛ در این‌جا `list_3[:]` دقیقاً همین کار را می‌کند.
 
      ```py
      >>> some_list = [1, 2, 3, 4]
      >>> id(some_list)
      139798789457608
-     >>> id(some_list[:]) # Notice that python creates new object for sliced list.
+     >>> id(some_list[:]) # دقت کنید که پایتون برای اسلایس کردن، یک شی جدید میسازد
      139798779601192
      ```
 
-**Difference between `del`, `remove`, and `pop`:**
-* `del var_name` just removes the binding of the `var_name` from the local or global namespace (That's why the `list_1` is unaffected).
-* `remove` removes the first matching value, not a specific index, raises `ValueError` if the value is not found.
-* `pop` removes the element at a specific index and returns it, raises `IndexError` if an invalid index is specified.
+&#x202b; **تفاوت بین `del`، `remove` و `pop`:**
+* &#x202b; `del var_name` فقط اتصال `var_name` را از فضای نام محلی یا سراسری حذف می‌کند (به همین دلیل است که `list_1` تحت تأثیر قرار نمی‌گیرد).
+* &#x202b; متد `remove` اولین مقدار مطابق را حذف می‌کند، نه یک اندیس خاص را؛ اگر مقدار مورد نظر پیدا نشود، خطای `ValueError` ایجاد می‌شود.
+* &#x202b; متد `pop` عنصری را در یک اندیس مشخص حذف کرده و آن را برمی‌گرداند؛ اگر اندیس نامعتبری مشخص شود، خطای `IndexError` ایجاد می‌شود.
 
-**Why the output is `[2, 4]`?**
-- The list iteration is done index by index, and when we remove `1` from `list_2` or `list_4`, the contents of the lists are now `[2, 3, 4]`. The remaining elements are shifted down, i.e., `2` is at index 0, and `3` is at index 1. Since the next iteration is going to look at index 1 (which is the `3`), the `2` gets skipped entirely. A similar thing will happen with every alternate element in the list sequence.
+&#x202b; **چرا خروجی `[2, 4]` است؟**
+- &#x202b; پیمایش لیست به صورت اندیس به اندیس انجام می‌شود، و هنگامی که عدد `1` را از `list_2` یا `list_4` حذف می‌کنیم، محتوای لیست به `[2, 3, 4]` تغییر می‌کند. در این حالت عناصر باقی‌مانده به سمت چپ جابه‌جا شده و جایگاهشان تغییر می‌کند؛ یعنی عدد `2` در اندیس 0 و عدد `3` در اندیس 1 قرار می‌گیرد. از آنجا که در مرحله بعدی حلقه به سراغ اندیس 1 می‌رود (که اکنون مقدار آن `3` است)، عدد `2` به طور کامل نادیده گرفته می‌شود. این اتفاق مشابه برای هر عنصر یک‌درمیان در طول پیمایش لیست رخ خواهد داد.
 
-* Refer to this StackOverflow [thread](https://stackoverflow.com/questions/45946228/what-happens-when-you-try-to-delete-a-list-element-while-iterating-over-it) explaining the example
-* See also this nice StackOverflow [thread](https://stackoverflow.com/questions/45877614/how-to-change-all-the-dictionary-keys-in-a-for-loop-with-d-items) for a similar example related to dictionaries in Python.
+* &#x202b; برای توضیح بیشتر این مثال، این [تاپیک StackOverflow](https://stackoverflow.com/questions/45946228/what-happens-when-you-try-to-delete-a-list-element-while-iterating-over-it) را ببینید.
+* &#x202b; همچنین برای نمونه مشابهی مربوط به دیکشنری‌ها در پایتون، این [تاپیک مفید StackOverflow](https://stackoverflow.com/questions/45877614/how-to-change-all-the-dictionary-keys-in-a-for-loop-with-d-items) را ببینید.
 
 ---
 
 
-### ▶ Lossy zip of iterators *
+### ▶ &#x202b; زیپِ دارای اتلاف برای پیمایشگرها *
 <!-- Example ID: c28ed154-e59f-4070-8eb6-8967a4acac6d --->
 
 ```py
@@ -2353,11 +2353,11 @@ Can you guess why the output is `[2, 4]`?
 >>> list(zip(numbers_iter, remaining))
 [(4, 3), (5, 4), (6, 5)]
 ```
-Where did element `3` go from the `numbers` list?
+&#x202b; عنصر `3` از لیست `numbers` چه شد؟
 
-#### 💡 Explanation:
+#### &#x202b; 💡 توضیحات:
 
-- From Python [docs](https://docs.python.org/3.3/library/functions.html#zip), here's an approximate implementation of zip function,
+- &#x202b; بر اساس [مستندات](https://docs.python.org/3.3/library/functions.html#zip) پایتون، پیاده‌سازی تقریبی تابع `zip` به شکل زیر است:
     ```py
     def zip(*iterables):
         sentinel = object()
@@ -2370,9 +2370,9 @@ Where did element `3` go from the `numbers` list?
                 result.append(elem)
             yield tuple(result)
     ```
-- So the function takes in arbitrary number of iterable objects, adds each of their items to the `result` list by calling the `next` function on them, and stops whenever any of the iterable is exhausted. 
-- The caveat here is when any iterable is exhausted, the existing elements in the `result` list are discarded. That's what happened with `3` in the `numbers_iter`.
-- The correct way to do the above using `zip` would be,
+- &#x202b; بنابراین این تابع تعداد دلخواهی از اشیای قابل پیمایش (*iterable*) را دریافت می‌کند، و با فراخوانی تابع `next` روی آن‌ها، هر یک از عناصرشان را به لیست `result` اضافه می‌کند. این فرایند زمانی متوقف می‌شود که اولین پیمایشگر به انتها برسد.
+- &#x202b; نکته مهم اینجاست که هر زمان یکی از پیمایشگرها به پایان برسد، عناصر موجود در لیست `result` نیز دور ریخته می‌شوند. این دقیقاً همان اتفاقی است که برای عدد `3` در `numbers_iter` رخ داد.
+- &#x202b; روش صحیح برای انجام عملیات بالا با استفاده از تابع `zip` چنین است:
     ```py
     >>> numbers = list(range(7))
     >>> numbers_iter = iter(numbers)
@@ -2381,11 +2381,11 @@ Where did element `3` go from the `numbers` list?
     >>> list(zip(remaining, numbers_iter))
     [(3, 3), (4, 4), (5, 5), (6, 6)]
     ```
-    The first argument of zip should be the one with fewest elements.
+    &#x202b; اولین آرگومانِ تابع `zip` باید پیمایشگری باشد که کمترین تعداد عنصر را دارد.
 
 ---
 
-### ▶ Loop variables leaking out!
+### ▶ &#x202b; نشت کردن متغیرهای حلقه!
 <!-- Example ID: ccec7bf6-7679-4963-907a-1cd8587be9ea --->
 1\.
 ```py
@@ -2395,17 +2395,17 @@ for x in range(7):
 print(x, ': x in global')
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 6 : for x inside loop
 6 : x in global
 ```
 
-But `x` was never defined outside the scope of for loop...
+&#x202b; اما متغیر `x` هرگز خارج از محدوده (scope) حلقه `for` تعریف نشده بود...
 
 2\.
 ```py
-# This time let's initialize x first
+# این دفعه، مقدار ایکس را در ابتدا مقداردهی اولیه میکنیم.
 x = -1
 for x in range(7):
     if x == 6:
@@ -2413,7 +2413,7 @@ for x in range(7):
 print(x, ': x in global')
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 6 : for x inside loop
 6 : x in global
@@ -2421,7 +2421,7 @@ print(x, ': x in global')
 
 3\.
 
-**Output (Python 2.x):**
+&#x202b; **خروجی (Python 2.x):**
 ```py
 >>> x = 1
 >>> print([x for x in range(5)])
@@ -2430,7 +2430,7 @@ print(x, ': x in global')
 4
 ```
 
-**Output (Python 3.x):**
+&#x202b; **خروجی (Python 3.x):**
 ```py
 >>> x = 1
 >>> print([x for x in range(5)])
@@ -2439,17 +2439,17 @@ print(x, ': x in global')
 1
 ```
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
 
-- In Python, for-loops use the scope they exist in and leave their defined loop-variable behind. This also applies if we explicitly defined the for-loop variable in the global namespace before. In this case, it will rebind the existing variable.
+- &#x202b; در پایتون، حلقه‌های `for` از حوزه (*scope*) فعلی که در آن قرار دارند استفاده می‌کنند و متغیرهای تعریف‌شده در حلقه حتی بعد از اتمام حلقه نیز باقی می‌مانند. این قاعده حتی در مواردی که متغیر حلقه پیش‌تر در فضای نام سراسری (*global namespace*) تعریف شده باشد نیز صدق می‌کند؛ در چنین حالتی، متغیر موجود مجدداً به مقدار جدید متصل می‌شود.
 
-- The differences in the output of Python 2.x and Python 3.x interpreters for list comprehension example can be explained by following change documented in [What’s New In Python 3.0](https://docs.python.org/3/whatsnew/3.0.html) changelog:
+- &#x202b; تفاوت‌های موجود در خروجی مفسرهای Python 2.x و Python 3.x در مثال مربوط به «لیست‌های ادراکی» (*list comprehension*) به دلیل تغییراتی است که در مستند [«تغییرات جدید در Python 3.0»](https://docs.python.org/3/whatsnew/3.0.html) آمده است:
 
-    > "List comprehensions no longer support the syntactic form `[... for var in item1, item2, ...]`. Use `[... for var in (item1, item2, ...)]` instead. Also, note that list comprehensions have different semantics: they are closer to syntactic sugar for a generator expression inside a `list()` constructor, and in particular, the loop control variables are no longer leaked into the surrounding scope."
+    > &#x202b; «لیست‌های ادراکی دیگر فرم نحوی `[... for var in item1, item2, ...]` را پشتیبانی نمی‌کنند و به جای آن باید از `[... for var in (item1, item2, ...)]` استفاده شود. همچنین توجه داشته باشید که لیست‌های ادراکی در Python 3.x معنای متفاوتی دارند: آن‌ها از لحاظ معنایی به بیان ساده‌تر، مشابه یک عبارت تولیدکننده (*generator expression*) درون تابع `list()` هستند و در نتیجه، متغیرهای کنترل حلقه دیگر به فضای نام بیرونی نشت نمی‌کنند.»
 
 ---
 
-### ▶ Beware of default mutable arguments!
+### ▶ &#x202b; مراقب آرگومان‌های تغییرپذیر پیش‌فرض باشید!
 <!-- Example ID: 7d42dade-e20d-4a7b-9ed7-16fb58505fe9 --->
 
 ```py
@@ -2458,7 +2458,7 @@ def some_func(default_arg=[]):
     return default_arg
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> some_func()
 ['some_string']
@@ -2470,9 +2470,9 @@ def some_func(default_arg=[]):
 ['some_string', 'some_string', 'some_string']
 ```
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
 
-- The default mutable arguments of functions in Python aren't really initialized every time you call the function. Instead, the recently assigned value to them is used as the default value. When we explicitly passed `[]` to `some_func` as the argument, the default value of the `default_arg` variable was not used, so the function returned as expected.
+- &#x202b; آرگومان‌های تغییرپذیر پیش‌فرض در توابع پایتون، هر بار که تابع فراخوانی می‌شود مقداردهی نمی‌شوند؛ بلکه مقداردهی آنها تنها یک بار در زمان تعریف تابع انجام می‌شود و مقدار اختصاص‌یافته به آن‌ها به عنوان مقدار پیش‌فرض برای فراخوانی‌های بعدی استفاده خواهد شد. هنگامی که به صراحت مقدار `[]` را به عنوان آرگومان به `some_func` ارسال کردیم، مقدار پیش‌فرض برای متغیر `default_arg` مورد استفاده قرار نگرفت، بنابراین تابع همان‌طور که انتظار داشتیم عمل کرد.
 
     ```py
     def some_func(default_arg=[]):
@@ -2480,9 +2480,9 @@ def some_func(default_arg=[]):
         return default_arg
     ```
 
-    **Output:**
+    &#x202b; **خروجی:**
     ```py
-    >>> some_func.__defaults__ #This will show the default argument values for the function
+    >>> some_func.__defaults__ # مقادیر پیشفرض این تابع را نمایش می دهد.
     ([],)
     >>> some_func()
     >>> some_func.__defaults__
@@ -2495,7 +2495,7 @@ def some_func(default_arg=[]):
     (['some_string', 'some_string'],)
     ```
 
-- A common practice to avoid bugs due to mutable arguments is to assign `None` as the default value and later check if any value is passed to the function corresponding to that argument. Example:
+- &#x202b; یک روش رایج برای جلوگیری از باگ‌هایی که به دلیل آرگومان‌های تغییرپذیر رخ می‌دهند، این است که مقدار پیش‌فرض را `None` قرار داده و سپس درون تابع بررسی کنیم که آیا مقداری به آن آرگومان ارسال شده است یا خیر. مثال:
 
     ```py
     def some_func(default_arg=None):
@@ -2507,31 +2507,31 @@ def some_func(default_arg=[]):
 
 ---
 
-### ▶ Catching the Exceptions
+### ▶ &#x202b; گرفتن استثناها (Exceptions)
 <!-- Example ID: b5ca5e6a-47b9-4f69-9375-cda0f8c6755d --->
 ```py
 some_list = [1, 2, 3]
 try:
-    # This should raise an ``IndexError``
+    # &#x202b; این باید یک `IndexError` ایجاد کند
     print(some_list[4])
 except IndexError, ValueError:
     print("Caught!")
 
 try:
-    # This should raise a ``ValueError``
+    # &#x202b; این باید یک `ValueError` ایجاد کند
     some_list.remove(4)
 except IndexError, ValueError:
     print("Caught again!")
 ```
 
-**Output (Python 2.x):**
+&#x202b; **خروجی (Python 2.x):**
 ```py
 Caught!
 
 ValueError: list.remove(x): x not in list
 ```
 
-**Output (Python 3.x):**
+&#x202b; **خروجی (Python 3.x):**
 ```py
   File "<input>", line 3
     except IndexError, ValueError:
@@ -2539,7 +2539,7 @@ ValueError: list.remove(x): x not in list
 SyntaxError: invalid syntax
 ```
 
-#### 💡 Explanation
+#### 💡 &#x202b; توضیحات
 
 * To add multiple Exceptions to the except clause, you need to pass them as parenthesized tuple as the first argument. The second argument is an optional name, which when supplied will bind the Exception instance that has been raised. Example,
   ```py
@@ -2551,12 +2551,12 @@ SyntaxError: invalid syntax
      print("Caught again!")
      print(e)
   ```
-  **Output (Python 2.x):**
+  &#x202b; **خروجی (Python 2.x):**
   ```
   Caught again!
   list.remove(x): x not in list
   ```
-  **Output (Python 3.x):**
+  &#x202b; **خروجی (Python 3.x):**
   ```py
     File "<input>", line 4
       except (IndexError, ValueError), e:
@@ -2574,7 +2574,7 @@ SyntaxError: invalid syntax
       print("Caught again!")
       print(e)
   ```
-  **Output:**
+  &#x202b; **خروجی:**
   ```
   Caught again!
   list.remove(x): x not in list
@@ -2582,7 +2582,7 @@ SyntaxError: invalid syntax
 
 ---
 
-### ▶ Same operands, different story!
+### ▶ &#x202b; عملوندهای یکسان، داستانی متفاوت!
 <!-- Example ID: ca052cdf-dd2d-4105-b936-65c28adc18a0 --->
 1\.
 ```py
@@ -2591,7 +2591,7 @@ b = a
 a = a + [5, 6, 7, 8]
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> a
 [1, 2, 3, 4, 5, 6, 7, 8]
@@ -2606,7 +2606,7 @@ b = a
 a += [5, 6, 7, 8]
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> a
 [1, 2, 3, 4, 5, 6, 7, 8]
@@ -2614,17 +2614,16 @@ a += [5, 6, 7, 8]
 [1, 2, 3, 4, 5, 6, 7, 8]
 ```
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
+* &#x202b; عملگر `a += b` همیشه همانند `a = a + b` رفتار نمی‌کند. کلاس‌ها *ممکن است* عملگرهای *`op=`* را به گونه‌ای متفاوت پیاده‌سازی کنند، و لیست‌ها نیز چنین می‌کنند.
 
-*  `a += b` doesn't always behave the same way as `a = a + b`.  Classes *may* implement the *`op=`* operators differently, and lists do this.
+* &#x202b; عبارت `a = a + [5,6,7,8]` یک لیست جدید ایجاد می‌کند و مرجع `a` را به این لیست جدید اختصاص می‌دهد، بدون آنکه `b` را تغییر دهد.
 
-* The expression `a = a + [5,6,7,8]` generates a new list and sets `a`'s reference to that new list, leaving `b` unchanged.
-
-* The expression `a += [5,6,7,8]` is actually mapped to an "extend" function that operates on the list such that `a` and `b` still point to the same list that has been modified in-place.
+* &#x202b; عبارت `a += [5,6,7,8]` در واقع به تابعی معادل «extend» ترجمه می‌شود که روی لیست اصلی عمل می‌کند؛ بنابراین `a` و `b` همچنان به همان لیست اشاره می‌کنند که به‌صورت درجا (in-place) تغییر کرده است.
 
 ---
 
-### ▶ Name resolution ignoring class scope
+### ▶ &#x202b; تفکیک نام‌ها با نادیده گرفتن حوزه‌ی کلاس
 <!-- Example ID: 03f73d96-151c-4929-b0a8-f74430788324 --->
 1\.
 ```py
@@ -2634,7 +2633,7 @@ class SomeClass:
     y = (x for i in range(10))
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> list(SomeClass.y)[0]
 5
@@ -2648,28 +2647,28 @@ class SomeClass:
     y = [x for i in range(10)]
 ```
 
-**Output (Python 2.x):**
+&#x202b; **خروجی (Python 2.x):**
 ```py
 >>> SomeClass.y[0]
 17
 ```
 
-**Output (Python 3.x):**
+&#x202b; **خروجی (Python 3.x):**
 ```py
 >>> SomeClass.y[0]
 5
 ```
 
-#### 💡 Explanation
-- Scopes nested inside class definition ignore names bound at the class level.
-- A generator expression has its own scope.
-- Starting from Python 3.X, list comprehensions also have their own scope.
+#### 💡 &#x202b; توضیحات
+- &#x202b; حوزه‌هایی که درون تعریف کلاس تو در تو هستند، نام‌های تعریف‌شده در سطح کلاس را نادیده می‌گیرند.
+- &#x202b; عبارت‌های جنراتور (generator expressions) حوزه‌ی مختص به خود دارند.
+- &#x202b; از پایتون نسخه‌ی ۳ به بعد، لیست‌های فشرده (list comprehensions) نیز حوزه‌ی مختص به خود دارند.
 
 ---
 
-### ▶ Rounding like a banker *
+### ▶ &#x202b; گرد کردن به روش بانکدار *
 
-Let's implement a naive function to get the middle element of a list:
+&#x202b; بیایید یک تابع ساده برای به‌دست‌آوردن عنصر میانی یک لیست پیاده‌سازی کنیم:
 ```py
 def get_middle(some_list):
     mid_index = round(len(some_list) / 2)
@@ -2678,22 +2677,22 @@ def get_middle(some_list):
 
 **Python 3.x:**
 ```py
->>> get_middle([1])  # looks good
+>>> get_middle([1])  # خوب به نظر می رسد.
 1
->>> get_middle([1,2,3])  # looks good
+>>> get_middle([1,2,3])  # خوب به نظر می رسد.
 2
->>> get_middle([1,2,3,4,5])  # huh?
+>>> get_middle([1,2,3,4,5])  # چی?
 2
->>> len([1,2,3,4,5]) / 2  # good
+>>> len([1,2,3,4,5]) / 2  # خوبه
 2.5
->>> round(len([1,2,3,4,5]) / 2)  # why?
+>>> round(len([1,2,3,4,5]) / 2)  # چرا?
 2
 ```
-It seems as though Python rounded 2.5 to 2.
+&#x202b; به نظر می‌رسد که پایتون عدد ۲٫۵ را به ۲ گرد کرده است.
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
 
-- This is not a float precision error, in fact, this behavior is intentional. Since Python 3.0, `round()` uses [banker's rounding](https://en.wikipedia.org/wiki/Rounding#Rounding_half_to_even) where .5 fractions are rounded to the nearest **even** number:
+- &#x202b; این یک خطای مربوط به دقت اعداد اعشاری نیست؛ بلکه این رفتار عمدی است. از پایتون نسخه 3.0 به بعد، تابع `round()` از [گرد کردن بانکی](https://en.wikipedia.org/wiki/Rounding#Rounding_half_to_even) استفاده می‌کند که در آن کسرهای `.5` به نزدیک‌ترین عدد **زوج** گرد می‌شوند:
 
 ```py
 >>> round(0.5)
@@ -2702,7 +2701,7 @@ It seems as though Python rounded 2.5 to 2.
 2
 >>> round(2.5)
 2
->>> import numpy  # numpy does the same
+>>> import numpy  # numpy هم همینکار را می کند.
 >>> numpy.round(0.5)
 0.0
 >>> numpy.round(1.5)
@@ -2711,17 +2710,17 @@ It seems as though Python rounded 2.5 to 2.
 2.0
 ```
 
-- This is the recommended way to round .5 fractions as described in [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754#Rounding_rules). However, the other way (round away from zero) is taught in school most of the time, so banker's rounding is likely not that well known. Furthermore, some of the most popular programming languages (for example: JavaScript, Java, C/C++, Ruby, Rust) do not use banker's rounding either. Therefore, this is still quite special to Python and may result in confusion when rounding fractions. 
-- See the [round() docs](https://docs.python.org/3/library/functions.html#round) or [this stackoverflow thread](https://stackoverflow.com/questions/10825926/python-3-x-rounding-behavior) for more information.
-- Note that `get_middle([1])` only returned 1 because the index was `round(0.5) - 1 = 0 - 1 = -1`, returning the last element in the list.
+- &#x202b; این روشِ پیشنهادی برای گرد کردن کسرهای `.5` مطابق با استاندارد [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754#Rounding_rules) است. با این حال، روش دیگر (گرد کردن به سمت دور از صفر) اغلب در مدارس آموزش داده می‌شود؛ بنابراین، «گرد کردن بانکی» احتمالا چندان شناخته‌شده نیست. همچنین، برخی از رایج‌ترین زبان‌های برنامه‌نویسی (مانند جاوااسکریپت، جاوا، C/C++‎، روبی و راست) نیز از گرد کردن بانکی استفاده نمی‌کنند. به همین دلیل این موضوع همچنان مختص پایتون بوده و ممکن است باعث سردرگمی هنگام گرد کردن کسرها شود.
+- &#x202b; برای اطلاعات بیشتر به [مستندات تابع `round()`](https://docs.python.org/3/library/functions.html#round) یا [این بحث در Stack Overflow](https://stackoverflow.com/questions/10825926/python-3-x-rounding-behavior) مراجعه کنید.
+- &#x202b; توجه داشته باشید که `get_middle([1])` فقط به این دلیل مقدار 1 را بازگرداند که اندیس آن `round(0.5) - 1 = 0 - 1 = -1` بود و در نتیجه آخرین عنصر لیست را برمی‌گرداند.
 
 ---
 
-### ▶ Needles in a Haystack *
+### ▶ &#x202b; سوزن‌هایی در انبار کاه *
 
 <!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --->
 
-I haven't met even a single experience Pythonist till date who has not come across one or more of the following scenarios,
+&#x202b; من تا به امروز حتی یک برنامه‌نویس باتجربهٔ پایتون را ندیده‌ام که حداقل با یکی از سناریوهای زیر مواجه نشده باشد:
 
 1\.
 
@@ -2729,10 +2728,10 @@ I haven't met even a single experience Pythonist till date who has not come acro
 x, y = (0, 1) if True else None, None
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 
 ```py
->>> x, y  # expected (0, 1)
+>>> x, y  # چیزی که توقع داریم. (0, 1)
 ((0, 1), None)
 ```
 
@@ -2751,7 +2750,7 @@ t = ()
 print(t)
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 
 ```py
 one
@@ -2779,26 +2778,26 @@ ten_words_list = [
 ]
 ```
 
-**Output**
+&#x202b; **خروجی**
 
 ```py
 >>> len(ten_words_list)
 9
 ```
 
-4\. Not asserting strongly enough
+4\. &#x202b; عدم تأکید کافی
 
 ```py
 a = "python"
 b = "javascript"
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 
 ```py
-# An assert statement with an assertion failure message.
+# &#x202b; دستور assert همراه با پیام خطای assertion
 >>> assert(a == b, "Both languages are different")
-# No AssertionError is raised
+# &#x202b; هیچ AssertionError ای رخ نمی‌دهد
 ```
 
 5\.
@@ -2815,7 +2814,7 @@ some_list = some_list.append(4)
 some_dict = some_dict.update({"key_4": 4})
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 
 ```py
 >>> print(some_list)
@@ -2842,7 +2841,7 @@ def similar_recursive_func(a):
     return a
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 
 ```py
 >>> some_recursive_func([5, 0])
@@ -2851,22 +2850,22 @@ def similar_recursive_func(a):
 4
 ```
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
+* &#x202b; برای مورد ۱، عبارت صحیح برای رفتار مورد انتظار این است:  
+`x, y = (0, 1) if True else (None, None)`
 
-* For 1, the correct statement for expected behavior is `x, y = (0, 1) if True else (None, None)`.
+* &#x202b; برای مورد ۲، عبارت صحیح برای رفتار مورد انتظار این است:  
+&#x202b;`t = ('one',)` یا `t = 'one',` (ویرگول از قلم افتاده است). در غیر این صورت مفسر `t` را به عنوان یک `str` در نظر گرفته و به صورت کاراکتر به کاراکتر روی آن پیمایش می‌کند.
 
-* For 2, the correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
+* &#x202b; علامت `()` یک توکن خاص است و نشان‌دهنده‌ی یک `tuple` خالی است.
 
-* `()` is a special token and denotes empty `tuple`.
-
-* In 3, as you might have already figured out, there's a missing comma after 5th element (`"that"`) in the list. So by implicit string literal concatenation,
-
+* &#x202b; در مورد ۳، همان‌طور که احتمالاً متوجه شدید، بعد از عنصر پنجم (`"that"`) یک ویرگول از قلم افتاده است. بنابراین با الحاق ضمنی رشته‌ها،
   ```py
   >>> ten_words_list
   ['some', 'very', 'big', 'list', 'thatconsists', 'of', 'exactly', 'ten', 'words']
   ```
 
-* No `AssertionError` was raised in 4th snippet because instead of asserting the individual expression `a == b`, we're asserting entire tuple. The following snippet will clear things up,
+* &#x202b; در قطعه‌ی چهارم هیچ `AssertionError`ای رخ نداد؛ زیرا به جای ارزیابی عبارت تکی `a == b`، کل یک تاپل ارزیابی شده است. قطعه‌ی کد زیر این موضوع را روشن‌تر می‌کند:
 
   ```py
   >>> a = "python"
@@ -2885,16 +2884,16 @@ def similar_recursive_func(a):
   AssertionError: Values are not equal
   ```
 
-* As for the fifth snippet, most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](https://docs.python.org/3/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list)).
+* &#x202b; در قطعه‌ی پنجم، بیشتر متدهایی که اشیای ترتیبی (Sequence) یا نگاشت‌ها (Mapping) را تغییر می‌دهند (مانند `list.append`، `dict.update`، `list.sort` و غیره)، شیء اصلی را به‌صورت درجا (in-place) تغییر داده و مقدار `None` برمی‌گردانند. منطق پشت این تصمیم، بهبود عملکرد با جلوگیری از کپی کردن شیء است (به این [منبع](https://docs.python.org/3/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list) مراجعه کنید).
 
-* Last one should be fairly obvious, mutable object (like `list`) can be altered in the function, and the reassignment of an immutable (`a -= 1`) is not an alteration of the value.
+* &#x202b; قطعه‌ی آخر نیز نسبتاً واضح است؛ شیء تغییرپذیر (mutable)، مثل `list`، می‌تواند در داخل تابع تغییر کند، درحالی‌که انتساب دوباره‌ی یک شیء تغییرناپذیر (مانند `a -= 1`) باعث تغییر مقدار اصلی آن نخواهد شد.
 
-* Being aware of these nitpicks can save you hours of debugging effort in the long run. 
+* &#x202b; آگاهی از این نکات ظریف در بلندمدت می‌تواند ساعت‌ها از زمان شما برای رفع اشکال را صرفه‌جویی کند.
 
 ---
 
 
-### ▶ Splitsies *
+### ▶ &#x202b; تقسیم‌ها *
 <!-- Example ID: ec3168ba-a81a-4482-afb0-691f1cc8d65a --->
 ```py
 >>> 'a'.split()
@@ -2913,12 +2912,12 @@ def similar_recursive_func(a):
 1
 ```
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
 
-- It might appear at first that the default separator for split is a single space `' '`, but as per the [docs](https://docs.python.org/3/library/stdtypes.html#str.split)
-    >  If sep is not specified or is `None`, a different splitting algorithm is applied: runs of consecutive whitespace are regarded as a single separator, and the result will contain no empty strings at the start or end if the string has leading or trailing whitespace. Consequently, splitting an empty string or a string consisting of just whitespace with a None separator returns `[]`.
-    > If sep is given, consecutive delimiters are not grouped together and are deemed to delimit empty strings (for example, `'1,,2'.split(',')` returns `['1', '', '2']`). Splitting an empty string with a specified separator returns `['']`.
-- Noticing how the leading and trailing whitespaces are handled in the following snippet will make things clear,
+- &#x202b; در نگاه اول ممکن است به نظر برسد جداکننده‌ی پیش‌فرض متد `split` یک فاصله‌ی تکی (`' '`) است؛ اما مطابق با [مستندات رسمی](https://docs.python.org/3/library/stdtypes.html#str.split):
+    > &#x202b; اگر `sep` مشخص نشده یا برابر با `None` باشد، یک الگوریتم متفاوت برای جدا کردن اعمال می‌شود: رشته‌هایی از فاصله‌های متوالی به عنوان یک جداکننده‌ی واحد در نظر گرفته شده و در نتیجه، هیچ رشته‌ی خالی‌ای در ابتدا یا انتهای لیست خروجی قرار نمی‌گیرد، حتی اگر رشته‌ی اولیه دارای فاصله‌های اضافی در ابتدا یا انتها باشد. به همین دلیل، تقسیم یک رشته‌ی خالی یا رشته‌ای که فقط شامل فضای خالی است با جداکننده‌ی `None` باعث بازگشت یک لیست خالی `[]` می‌شود.
+    > &#x202b; اگر `sep` مشخص شود، جداکننده‌های متوالی در کنار هم قرار نمی‌گیرند و هر جداکننده، یک رشته‌ی خالی جدید ایجاد می‌کند. (مثلاً `'1,,2'.split(',')` مقدار `['1', '', '2']` را برمی‌گرداند.) تقسیم یک رشته‌ی خالی با یک جداکننده‌ی مشخص‌شده نیز باعث بازگشت `['']` می‌شود.
+- &#x202b; توجه به اینکه چگونه فضای خالی در ابتدا و انتهای رشته در قطعه‌ی کد زیر مدیریت شده است، این مفهوم را روشن‌تر می‌کند:
     ```py
     >>> ' a '.split(' ')
     ['', 'a', '']
@@ -2930,7 +2929,7 @@ def similar_recursive_func(a):
 
 ---
 
-### ▶ Wild imports *
+### ▶ واردسازی‌های عمومی *
 <!-- Example ID: 83deb561-bd55-4461-bb5e-77dd7f411e1c --->
 <!-- read-only -->
 
@@ -2945,7 +2944,7 @@ def _another_weird_name_func():
 
 ```
 
-**Output**
+&#x202b; **خروجی**
 
 ```py
 >>> from module import *
@@ -2957,16 +2956,16 @@ Traceback (most recent call last):
 NameError: name '_another_weird_name_func' is not defined
 ```
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
 
-- It is often advisable to not use wildcard imports. The first obvious reason for this is, in wildcard imports, the names with a leading underscore don't get imported. This may lead to errors during runtime.
-- Had we used `from ... import a, b, c` syntax, the above `NameError` wouldn't have occurred.
+- &#x202b; اغلب توصیه می‌شود از واردسازی عمومی (wildcard imports) استفاده نکنید. اولین دلیل واضح آن این است که در این نوع واردسازی‌ها، اسامی که با زیرخط (`_`) شروع شوند، وارد نمی‌شوند. این مسئله ممکن است در زمان اجرا به خطا منجر شود.
+- &#x202b; اگر از ساختار `from ... import a, b, c` استفاده کنیم، خطای `NameError` فوق اتفاق نمی‌افتاد.
     ```py
     >>> from module import some_weird_name_func_, _another_weird_name_func
     >>> _another_weird_name_func()
     works!
     ```
-- If you really want to use wildcard imports, then you'd have to define the list `__all__` in your module that will contain a list of public objects that'll be available when we do wildcard imports.
+- &#x202b; اگر واقعاً تمایل دارید از واردسازی عمومی استفاده کنید، لازم است فهرستی به نام `__all__` را در ماژول خود تعریف کنید که شامل نام اشیاء عمومی (public) قابل‌دسترس هنگام واردسازی عمومی است.
     ```py
     __all__ = ['_another_weird_name_func']
 
@@ -2976,7 +2975,7 @@ NameError: name '_another_weird_name_func' is not defined
     def _another_weird_name_func():
         print("works!")
     ```
-    **Output**
+    &#x202b; **خروجی**
 
     ```py
     >>> _another_weird_name_func()
@@ -2989,7 +2988,7 @@ NameError: name '_another_weird_name_func' is not defined
 
 ---
 
-### ▶ All sorted? *
+### ▶ &#x202b; همه چیز مرتب شده؟ *
 
 <!-- Example ID: e5ff1eaf-8823-4738-b4ce-b73f7c9d5511 -->
 
@@ -3005,9 +3004,9 @@ True
 False
 ```
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
 
-- The `sorted` method always returns a list, and comparing lists and tuples always returns `False` in Python. 
+- &#x202b; متد `sorted` همیشه یک لیست (`list`) برمی‌گرداند، و در پایتون مقایسه‌ی لیست‌ها و تاپل‌ها (`tuple`) همیشه مقدار `False` را برمی‌گرداند.
 
 - ```py
   >>> [] == tuple()
@@ -3016,10 +3015,9 @@ False
   >>> type(x), type(sorted(x))
   (tuple, list)
   ```
+- &#x202b; برخلاف متد `sorted`، متد `reversed` یک تکرارکننده (iterator) برمی‌گرداند. چرا؟ زیرا مرتب‌سازی نیاز به تغییر درجا (in-place) یا استفاده از ظرف جانبی (مانند یک لیست اضافی) دارد، در حالی که معکوس کردن می‌تواند به‌سادگی با پیمایش از اندیس آخر به اول انجام شود.
 
-- Unlike `sorted`, the `reversed` method returns an iterator. Why? Because sorting requires the iterator to be either modified in-place or use an extra container (a list), whereas reversing can simply work by iterating from the last index to the first.
-
-- So during comparison `sorted(y) == sorted(y)`, the first call to `sorted()` will consume the iterator `y`, and the next call will just return an empty list.
+- &#x202b; بنابراین در مقایسه‌ی `sorted(y) == sorted(y)`، فراخوانی اولِ `sorted()` تمام عناصرِ تکرارکننده‌ی `y` را مصرف می‌کند، و فراخوانی بعدی یک لیست خالی برمی‌گرداند.
 
   ```py
   >>> x = 7, 8, 9
@@ -3030,7 +3028,7 @@ False
 
 ---
 
-### ▶ Midnight time doesn't exist?
+### ▶ &#x202b; زمان نیمه‌شب وجود ندارد؟
 <!-- Example ID: 1bce8294-5619-4d70-8ce3-fe0bade690d1 --->
 ```py
 from datetime import datetime
@@ -3048,14 +3046,14 @@ if noon_time:
     print("Time at noon is", noon_time)
 ```
 
-**Output (< 3.5):**
+&#x202b; **خروجی (< 3.5):**
 
 ```py
 ('Time at noon is', datetime.time(12, 0))
 ```
 The midnight time is not printed.
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
 
 Before Python 3.5, the boolean value for `datetime.time` object was considered to be `False` if it represented midnight in UTC. It is error-prone when using the `if obj:` syntax to check if the `obj` is null or some equivalent of "empty."
 
@@ -3142,7 +3140,7 @@ SyntaxError: not a chance
 
 ### ▶ &#x202b; بیایید با «عمو زبان مهربان برای همیشه» آشنا شویم
 <!-- Example ID: 6427fae6-e959-462d-85da-ce4c94ce41be --->
-**Output (Python 3.x)**
+&#x202b; **خروجی (Python 3.x)**
 ```py
 >>> from __future__ import barry_as_FLUFL
 >>> "Ruby" != "Python" # شکی در این نیست.
@@ -3435,7 +3433,7 @@ AttributeError: 'A' object has no attribute '__variable'
 
 ### ▶ &#x202b; خطوط را رد می‌کند؟
 <!-- Example ID: d50bbde1-fb9d-4735-9633-3444b9d2f417 --->
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> value = 11
 >>> valuе = 32
@@ -3596,7 +3594,7 @@ def convert_list_to_string(l, iters):
     assert len(s) == 3*iters
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 
 &#x202b; اجرا شده در پوسته‌ی ipython با استفاده از `%timeit` برای خوانایی بهتر نتایج.
 &#x202b; همچنین می‌توانید از ماژول `timeit` در پوسته یا اسکریپت عادی پایتون استفاده کنید؛ نمونه‌ی استفاده در زیر آمده است:

@@ -74,101 +74,101 @@
       - [💡 Explanation](#-explanation-12)
     - [▶ Subclass relationships](#-subclass-relationships)
       - [💡 Explanation:](#-explanation-13)
-    - [▶ Methods equality and identity](#-methods-equality-and-identity)
-      - [💡 Explanation](#-explanation-14)
-    - [▶ All-true-ation \*](#-all-true-ation-)
+    - [▶ ‫ برابری و هویت متدها](#--برابری-و-هویت-متدها)
+      - [💡 ‫ توضیحات](#--توضیحات)
+    - [▶ ‫ آل-ترو-یشن \*](#--آل-ترو-یشن-)
+      - [💡 Explanation:](#-explanation-14)
+      - [💡 ‫ توضیح:](#--توضیح)
+    - [▶ ‫ رشته‌ها و بک‌اسلش‌ها](#--رشتهها-و-بکاسلشها)
+      - [💡 ‫ توضیح:](#--توضیح-1)
+    - [▶ ‫ گره نیست، نَه!](#--گره-نیست-نَه)
       - [💡 Explanation:](#-explanation-15)
-      - [💡 Explanation:](#-explanation-16)
-    - [▶ Strings and the backslashes](#-strings-and-the-backslashes)
-      - [💡 Explanation](#-explanation-17)
-    - [▶ not knot!](#-not-knot)
-      - [💡 Explanation:](#-explanation-18)
-    - [▶ Half triple-quoted strings](#-half-triple-quoted-strings)
-      - [💡 Explanation:](#-explanation-19)
-    - [▶ What's wrong with booleans?](#-whats-wrong-with-booleans)
-      - [💡 Explanation:](#-explanation-20)
-    - [▶ Class attributes and instance attributes](#-class-attributes-and-instance-attributes)
-      - [💡 Explanation:](#-explanation-21)
+    - [▶ رشته‌های نیمه سه‌نقل‌قولی](#-رشتههای-نیمه-سهنقلقولی)
+      - [💡 ‫ توضیح:](#--توضیح-2)
+    - [▶ ‫ مشکل بولین ها چیست؟](#--مشکل-بولین-ها-چیست)
+      - [💡 ‫ توضیحات:](#--توضیحات-1)
+    - [▶ ‫ ویژگی‌های کلاس و ویژگی‌های نمونه](#--ویژگیهای-کلاس-و-ویژگیهای-نمونه)
+      - [💡 ‫ توضیح:](#--توضیح-3)
     - [▶ yielding None](#-yielding-none)
-      - [💡 Explanation:](#-explanation-22)
+      - [💡 Explanation:](#-explanation-16)
     - [▶ Yielding from... return! \*](#-yielding-from-return-)
-      - [💡 Explanation:](#-explanation-23)
-    - [▶ Nan-reflexivity \*](#-nan-reflexivity-)
-      - [💡 Explanation:](#-explanation-24)
-    - [▶ Mutating the immutable!](#-mutating-the-immutable)
-      - [💡 Explanation:](#-explanation-25)
-    - [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
-      - [💡 Explanation:](#-explanation-26)
-    - [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion)
-      - [💡 Explanation:](#-explanation-27)
-    - [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
-      - [💡 Explanation:](#-explanation-28)
-    - [▶ Exceeds the limit for integer string conversion](#-exceeds-the-limit-for-integer-string-conversion)
-      - [💡 Explanation:](#-explanation-29)
+      - [💡 ‫ توضیح:](#--توضیح-4)
+    - [▶ ‫ بازتاب‌ناپذیری \*](#--بازتابناپذیری-)
+      - [💡 توضیحات:](#-توضیحات-1)
+    - [▶ ‫ تغییر دادن اشیای تغییرناپذیر!](#--تغییر-دادن-اشیای-تغییرناپذیر)
+      - [💡 ‫ توضیحات:](#--توضیحات-2)
+    - [▶ ‫ متغیری که از اسکوپ بیرونی ناپدید می‌شود](#--متغیری-که-از-اسکوپ-بیرونی-ناپدید-میشود)
+      - [💡 ‫ توضیحات:](#--توضیحات-3)
+    - [▶ ‫ تبدیل اسرارآمیز نوع کلید](#--تبدیل-اسرارآمیز-نوع-کلید)
+      - [💡 ‫ توضیحات:](#--توضیحات-4)
+    - [▶ ‫ ببینیم می‌توانید این را حدس بزنید؟](#--ببینیم-میتوانید-این-را-حدس-بزنید)
+      - [💡 ‫ توضیح:](#--توضیح-5)
+    - [▶ ‫ از حد مجاز برای تبدیل رشته به عدد صحیح فراتر می‌رود](#--از-حد-مجاز-برای-تبدیل-رشته-به-عدد-صحیح-فراتر-میرود)
+      - [💡 ‫ توضیح:](#--توضیح-6)
   - [‫ بخش: شیب‌های لغزنده](#-بخش-شیبهای-لغزنده)
     - [▶ ‫ تغییر یک دیکشنری هنگام پیمایش روی آن](#--تغییر-یک-دیکشنری-هنگام-پیمایش-روی-آن)
-      - [‫ 💡 توضیح:](#--توضیح)
+      - [‫ 💡 توضیح:](#--توضیح-7)
     - [▶ عملیات سرسختانه‌ی `del`](#-عملیات-سرسختانهی-del)
-      - [‫ 💡 توضیح:](#--توضیح-1)
+      - [‫ 💡 توضیح:](#--توضیح-8)
     - [▶ ‫ متغیری که از حوزه خارج است](#--متغیری-که-از-حوزه-خارج-است)
-      - [‫ 💡 توضیح:](#--توضیح-2)
+      - [‫ 💡 توضیح:](#--توضیح-9)
     - [▶ ‫ حذف المان‌های لیست در حین پیمایش](#--حذف-المانهای-لیست-در-حین-پیمایش)
-      - [💡 Explanation:](#-explanation-30)
+      - [💡 Explanation:](#-explanation-17)
     - [▶ ‫ زیپِ دارای اتلاف برای پیمایشگرها \*](#--زیپِ-دارای-اتلاف-برای-پیمایشگرها-)
-      - [‫ 💡 توضیحات:](#--توضیحات)
+      - [‫ 💡 توضیحات:](#--توضیحات-5)
     - [▶ ‫ نشت کردن متغیرهای حلقه!](#--نشت-کردن-متغیرهای-حلقه)
-      - [💡 ‫ توضیحات:](#--توضیحات-1)
-    - [▶ ‫ مراقب آرگومان‌های تغییرپذیر پیش‌فرض باشید!](#--مراقب-آرگومانهای-تغییرپذیر-پیشفرض-باشید)
-      - [💡 ‫ توضیحات:](#--توضیحات-2)
-    - [▶ ‫ گرفتن استثناها (Exceptions)](#--گرفتن-استثناها-exceptions)
-      - [💡 ‫ توضیحات](#--توضیحات-3)
-    - [▶ ‫ عملوندهای یکسان، داستانی متفاوت!](#--عملوندهای-یکسان-داستانی-متفاوت)
-      - [💡 ‫ توضیحات:](#--توضیحات-4)
-    - [▶ ‫ تفکیک نام‌ها با نادیده گرفتن حوزه‌ی کلاس](#--تفکیک-نامها-با-نادیده-گرفتن-حوزهی-کلاس)
-      - [💡 ‫ توضیحات](#--توضیحات-5)
-    - [▶ ‫ گرد کردن به روش بانکدار \*](#--گرد-کردن-به-روش-بانکدار-)
       - [💡 ‫ توضیحات:](#--توضیحات-6)
-    - [▶ ‫ سوزن‌هایی در انبار کاه \*](#--سوزنهایی-در-انبار-کاه-)
+    - [▶ ‫ مراقب آرگومان‌های تغییرپذیر پیش‌فرض باشید!](#--مراقب-آرگومانهای-تغییرپذیر-پیشفرض-باشید)
       - [💡 ‫ توضیحات:](#--توضیحات-7)
-    - [▶ ‫ تقسیم‌ها \*](#--تقسیمها-)
-      - [💡 ‫ توضیحات:](#--توضیحات-8)
-    - [▶ واردسازی‌های عمومی \*](#-واردسازیهای-عمومی-)
+    - [▶ ‫ گرفتن استثناها (Exceptions)](#--گرفتن-استثناها-exceptions)
+      - [💡 ‫ توضیحات](#--توضیحات-8)
+    - [▶ ‫ عملوندهای یکسان، داستانی متفاوت!](#--عملوندهای-یکسان-داستانی-متفاوت)
       - [💡 ‫ توضیحات:](#--توضیحات-9)
-    - [▶ ‫ همه چیز مرتب شده؟ \*](#--همه-چیز-مرتب-شده-)
-      - [💡 ‫ توضیحات:](#--توضیحات-10)
-    - [▶ ‫ زمان نیمه‌شب وجود ندارد؟](#--زمان-نیمهشب-وجود-ندارد)
+    - [▶ ‫ تفکیک نام‌ها با نادیده گرفتن حوزه‌ی کلاس](#--تفکیک-نامها-با-نادیده-گرفتن-حوزهی-کلاس)
+      - [💡 ‫ توضیحات](#--توضیحات-10)
+    - [▶ ‫ گرد کردن به روش بانکدار \*](#--گرد-کردن-به-روش-بانکدار-)
       - [💡 ‫ توضیحات:](#--توضیحات-11)
+    - [▶ ‫ سوزن‌هایی در انبار کاه \*](#--سوزنهایی-در-انبار-کاه-)
+      - [💡 ‫ توضیحات:](#--توضیحات-12)
+    - [▶ ‫ تقسیم‌ها \*](#--تقسیمها-)
+      - [💡 ‫ توضیحات:](#--توضیحات-13)
+    - [▶ واردسازی‌های عمومی \*](#-واردسازیهای-عمومی-)
+      - [💡 ‫ توضیحات:](#--توضیحات-14)
+    - [▶ ‫ همه چیز مرتب شده؟ \*](#--همه-چیز-مرتب-شده-)
+      - [💡 ‫ توضیحات:](#--توضیحات-15)
+    - [▶ ‫ زمان نیمه‌شب وجود ندارد؟](#--زمان-نیمهشب-وجود-ندارد)
+      - [💡 ‫ توضیحات:](#--توضیحات-16)
   - [‫ بخش: گنجینه‌های پنهان!](#-بخش-گنجینههای-پنهان)
     - [▶ ‫ خب پایتون، می‌توانی کاری کنی پرواز کنم؟](#--خب-پایتون-میتوانی-کاری-کنی-پرواز-کنم)
-      - [‫ 💡 توضیح:](#--توضیح-3)
+      - [‫ 💡 توضیح:](#--توضیح-10)
     - [▶ ‫ `goto`، ولی چرا؟](#--goto-ولی-چرا)
-      - [‫ 💡 توضیح:](#--توضیح-4)
+      - [‫ 💡 توضیح:](#--توضیح-11)
     - [▶ ‫ خودتان را آماده کنید!](#--خودتان-را-آماده-کنید)
-      - [‫ 💡 توضیح:](#--توضیح-5)
+      - [‫ 💡 توضیح:](#--توضیح-12)
     - [▶ ‫ بیایید با «عمو زبان مهربان برای همیشه» آشنا شویم](#--بیایید-با-عمو-زبان-مهربان-برای-همیشه-آشنا-شویم)
-      - [‫ 💡 توضیح:](#--توضیح-6)
+      - [‫ 💡 توضیح:](#--توضیح-13)
     - [▶ ‫ حتی پایتون هم می‌داند که عشق پیچیده است](#--حتی-پایتون-هم-میداند-که-عشق-پیچیده-است)
-      - [‫ 💡 توضیح:](#--توضیح-7)
+      - [‫ 💡 توضیح:](#--توضیح-14)
     - [▶ ‫ بله، این واقعاً وجود دارد!](#--بله-این-واقعاً-وجود-دارد)
-      - [‫ 💡 توضیح:](#--توضیح-8)
+      - [‫ 💡 توضیح:](#--توضیح-15)
     - [▶ Ellipsis \*](#-ellipsis-)
       - [‫ 💡توضیح](#-توضیح)
     - [▶ ‫ بی‌نهایت (`Inpinity`)](#--بینهایت-inpinity)
-      - [‫ 💡 توضیح:](#--توضیح-9)
+      - [‫ 💡 توضیح:](#--توضیح-16)
     - [▶ ‫ بیایید خرابکاری کنیم](#--بیایید-خرابکاری-کنیم)
-      - [‫ 💡 توضیح:](#--توضیح-10)
+      - [‫ 💡 توضیح:](#--توضیح-17)
   - [‫ بخش: ظاهرها فریبنده‌اند!](#-بخش-ظاهرها-فریبندهاند)
     - [▶ ‫ خطوط را رد می‌کند؟](#--خطوط-را-رد-میکند)
-      - [‫ 💡 توضیح](#--توضیح-11)
+      - [‫ 💡 توضیح](#--توضیح-18)
     - [▶ ‫ تله‌پورت کردن](#--تلهپورت-کردن)
-      - [‫ 💡 توضیح:](#--توضیح-12)
+      - [‫ 💡 توضیح:](#--توضیح-19)
     - [▶ ‫ خب، یک جای کار مشکوک است...](#--خب-یک-جای-کار-مشکوک-است)
-      - [‫ 💡 توضیح](#--توضیح-13)
+      - [‫ 💡 توضیح](#--توضیح-20)
   - [بخش: متفرقه](#بخش-متفرقه)
     - [‫ ▶ `+=` سریع‌تر است](#---سریعتر-است)
       - [‫  💡 توضیح:](#---توضیح)
     - [‫ ▶ بیایید یک رشته‌ی بزرگ بسازیم!](#--بیایید-یک-رشتهی-بزرگ-بسازیم)
-      - [💡 توضیحات](#-توضیحات-1)
+      - [💡 توضیحات](#-توضیحات-2)
     - [▶ ‫  کُند کردن جستجوها در `dict` \*](#---کُند-کردن-جستجوها-در-dict-)
       - [‫  💡 توضیح:](#---توضیح-1)
     - [‫ ▶ حجیم کردن دیکشنری نمونه‌ها (`instance dicts`) \*](#--حجیم-کردن-دیکشنری-نمونهها-instance-dicts-)
@@ -1238,7 +1238,7 @@ The Subclass relationships were expected to be transitive, right? (i.e., if `A` 
 
 ---
 
-### ▶ Methods equality and identity
+### ▶ &#x202b; برابری و هویت متدها
 <!-- Example ID: 94802911-48fe-4242-defa-728ae893fa32 --->
 
 1.
@@ -1256,7 +1256,7 @@ class SomeClass:
         pass
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> print(SomeClass.method is SomeClass.method)
 True
@@ -1268,8 +1268,8 @@ True
 True
 ```
 
-Accessing `classm` twice, we get an equal object, but not the *same* one? Let's see what happens
-with instances of `SomeClass`:
+&#x202b; با دوبار دسترسی به `classm`، یک شیء برابر دریافت می‌کنیم، اما *همان* شیء نیست؟ بیایید ببینیم
+&#x202b; چه اتفاقی برای نمونه‌های `SomeClass` می‌افتد:
 
 2.
 ```py
@@ -1277,7 +1277,7 @@ o1 = SomeClass()
 o2 = SomeClass()
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> print(o1.method == o2.method)
 False
@@ -1293,53 +1293,41 @@ True
 True
 ```
 
-Accessing `classm` or `method` twice, creates equal but not *same* objects for the same instance of `SomeClass`.
+&#x202b; دسترسی به `classm` یا `method` دو بار، اشیایی برابر اما نه *یکسان* را برای همان نمونه از `SomeClass` ایجاد می‌کند.
 
-#### 💡 Explanation
-* Functions are [descriptors](https://docs.python.org/3/howto/descriptor.html). Whenever a function is accessed as an
-attribute, the descriptor is invoked, creating a method object which "binds" the function with the object owning the
-attribute. If called, the method calls the function, implicitly passing the bound object as the first argument
-(this is how we get `self` as the first argument, despite not passing it explicitly).
+#### 💡 &#x202b; توضیحات
+* &#x202b; تابع‌ها [وصاف](https://docs.python.org/3/howto/descriptor.html) هستند. هر زمان که تابعی به عنوان یک ویژگی فراخوانی شود، وصف فعال می‌شود و یک شیء متد ایجاد می‌کند که تابع را به شیء صاحب آن ویژگی "متصل" می‌کند. اگر این متد فراخوانی شود، تابع را با ارسال ضمنی شیء متصل‌شده به عنوان اولین آرگومان صدا می‌زند (به این ترتیب است که `self` را به عنوان اولین آرگومان دریافت می‌کنیم، با وجود اینکه آن را به‌طور صریح ارسال نکرده‌ایم).
 ```py
 >>> o1.method
 <bound method SomeClass.method of <__main__.SomeClass object at ...>>
 ```
-* Accessing the attribute multiple times creates a method object every time! Therefore `o1.method is o1.method` is
-never truthy. Accessing functions as class attributes (as opposed to instance) does not create methods, however; so
-`SomeClass.method is SomeClass.method` is truthy.
+* &#x202b; دسترسی به ویژگی چندین بار، هر بار یک شیء متد جدید ایجاد می‌کند! بنابراین عبارت `o1.method is o1.method` هرگز درست (truthy) نیست. با این حال، دسترسی به تابع‌ها به عنوان ویژگی‌های کلاس (و نه نمونه) متد ایجاد نمی‌کند؛ بنابراین عبارت `SomeClass.method is SomeClass.method` درست است.
 ```py
 >>> SomeClass.method
 <function SomeClass.method at ...>
 ```
-* `classmethod` transforms functions into class methods. Class methods are descriptors that, when accessed, create
-a method object which binds the *class* (type) of the object, instead of the object itself.
+* &#x202b; `classmethod` توابع را به متدهای کلاس تبدیل می‌کند. متدهای کلاس وصاف‌هایی هستند که هنگام دسترسی، یک شیء متد ایجاد می‌کنند که به *کلاس* (نوع) شیء متصل می‌شود، نه خود شیء.
 ```py
 >>> o1.classm
 <bound method SomeClass.classm of <class '__main__.SomeClass'>>
 ```
-* Unlike functions, `classmethod`s will create a method also when accessed as class attributes (in which case they
-bind the class, not to the type of it). So `SomeClass.classm is SomeClass.classm` is falsy.
+* &#x202b; برخلاف توابع، `classmethod`‌ها هنگام دسترسی به عنوان ویژگی‌های کلاس نیز یک شیء متد ایجاد می‌کنند (که در این حالت به خود کلاس متصل می‌شوند، نه نوع آن). بنابراین عبارت `SomeClass.classm is SomeClass.classm` نادرست (falsy) است.
 ```py
 >>> SomeClass.classm
 <bound method SomeClass.classm of <class '__main__.SomeClass'>>
 ```
-* A method object compares equal when both the functions are equal, and the bound objects are the same. So
-`o1.method == o1.method` is truthy, although not the same object in memory.
-* `staticmethod` transforms functions into a "no-op" descriptor, which returns the function as-is. No method
-objects are ever created, so comparison with `is` is truthy.
+* &#x202b; یک شیء متد زمانی برابر در نظر گرفته می‌شود که هم تابع‌ها برابر باشند و هم شیءهای متصل‌شده یکسان باشند. بنابراین عبارت `o1.method == o1.method` درست (truthy) است، هرچند که آن‌ها در حافظه شیء یکسانی نیستند.
+* &#x202b; `staticmethod` توابع را به یک وصف "بدون عملیات" (no-op) تبدیل می‌کند که تابع را به همان صورت بازمی‌گرداند. هیچ شیء متدی ایجاد نمی‌شود، بنابراین مقایسه با `is` نیز درست (truthy) است.
 ```py
 >>> o1.staticm
 <function SomeClass.staticm at ...>
 >>> SomeClass.staticm
 <function SomeClass.staticm at ...>
 ```
-* Having to create new "method" objects every time Python calls instance methods and having to modify the arguments
-every time in order to insert `self` affected performance badly.
-CPython 3.7 [solved it](https://bugs.python.org/issue26110) by introducing new opcodes that deal with calling methods
-without creating the temporary method objects. This is used only when the accessed function is actually called, so the
-snippets here are not affected, and still generate methods :)
+* &#x202b; ایجاد شیءهای "متد" جدید در هر بار فراخوانی متدهای نمونه و نیاز به اصلاح آرگومان‌ها برای درج `self`، عملکرد را به شدت تحت تأثیر قرار می‌داد.
+CPython 3.7 [این مشکل را حل کرد](https://bugs.python.org/issue26110) با معرفی opcodeهای جدیدی که فراخوانی متدها را بدون ایجاد شیء متد موقتی مدیریت می‌کنند. این به شرطی است که تابع دسترسی‌یافته واقعاً فراخوانی شود، بنابراین قطعه‌کدهای اینجا تحت تأثیر قرار نمی‌گیرند و همچنان متد ایجاد می‌کنند :)
 
-### ▶ All-true-ation *
+### ▶ &#x202b; آل-ترو-یشن *
 
 <!-- Example ID: dfe6d845-e452-48fe-a2da-0ed3869a8042 -->
 
@@ -1357,11 +1345,11 @@ False
 True
 ```
 
-Why's this True-False alteration?
+&#x202b; چرا این تغییر درست-نادرسته؟
 
 #### 💡 Explanation:
 
-- The implementation of `all` function is equivalent to
+- &#x202b; پیاده‌سازی تابع `all` معادل است با
 
 - ```py
   def all(iterable):
@@ -1371,15 +1359,15 @@ Why's this True-False alteration?
       return True
   ```
 
-- `all([])` returns `True` since the iterable is empty. 
-- `all([[]])` returns `False` because the passed array has one element, `[]`, and in python, an empty list is falsy.
-- `all([[[]]])` and higher recursive variants are always `True`. This is because the passed array's single element (`[[...]]`) is no longer empty, and lists with values are truthy.
+- &#x202b; `all([])` مقدار `True` را برمی‌گرداند چون iterable خالی است.  
+- &#x202b; `all([[]])` مقدار `False` را برمی‌گرداند چون آرایه‌ی داده‌شده یک عنصر دارد، یعنی `[]`، و در پایتون، لیست خالی مقدار falsy دارد.  
+- &#x202b; `all([[[]]])` و نسخه‌های بازگشتی بالاتر همیشه `True` هستند. دلیلش این است که عنصر واحد آرایه‌ی داده‌شده (`[[...]]`) دیگر خالی نیست، و لیست‌هایی که دارای مقدار باشند، truthy در نظر گرفته می‌شوند.
 
 ---
 
-### ▶ The surprising comma
+### ▶ &#x202b; کاما‌ی شگفت‌انگیز
 <!-- Example ID: 31a819c8-ed73-4dcc-84eb-91bedbb51e58 --->
-**Output (< 3.6):**
+&#x202b; **خروجی (< 3.6):**
 
 ```py
 >>> def f(x, y,):
@@ -1401,17 +1389,17 @@ SyntaxError: invalid syntax
 SyntaxError: invalid syntax
 ```
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیح:
 
-- Trailing comma is not always legal in formal parameters list of a Python function.
--  In Python, the argument list is defined partially with leading commas and partially with trailing commas. This conflict causes situations where a comma is trapped in the middle, and no rule accepts it.
--  **Note:** The trailing comma problem is [fixed in Python 3.6](https://bugs.python.org/issue9232). The remarks in [this](https://bugs.python.org/issue9232#msg248399) post discuss in brief different usages of trailing commas in Python.
+- &#x202b; کامای انتهایی همیشه در لیست پارامترهای رسمی یک تابع در پایتون قانونی نیست.
+- &#x202b; در پایتون، لیست آرگومان‌ها تا حدی با کاماهای ابتدایی و تا حدی با کاماهای انتهایی تعریف می‌شود. این تضاد باعث ایجاد موقعیت‌هایی می‌شود که در آن یک کاما در وسط گیر می‌افتد و هیچ قانونی آن را نمی‌پذیرد.
+- &#x202b; **نکته:** مشکل کامای انتهایی در [پایتون ۳.۶ رفع شده است](https://bugs.python.org/issue9232). توضیحات در [این پست](https://bugs.python.org/issue9232#msg248399) به‌طور خلاصه کاربردهای مختلف کاماهای انتهایی در پایتون را بررسی می‌کند.
 
 ---
 
-### ▶ Strings and the backslashes
+### ▶ &#x202b; رشته‌ها و بک‌اسلش‌ها
 <!-- Example ID: 6ae622c3-6d99-4041-9b33-507bd1a4407b --->
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> print("\"")
 "
@@ -1429,14 +1417,14 @@ SyntaxError: EOL while scanning string literal
 True
 ```
 
-#### 💡 Explanation
+#### 💡 &#x202b; توضیح:
 
-- In a usual python string, the backslash is used to escape characters that may have a special meaning (like single-quote, double-quote, and the backslash itself).
+- &#x202b; در یک رشته‌ی معمولی در پایتون، بک‌اسلش برای فرار دادن (escape) نویسه‌هایی استفاده می‌شود که ممکن است معنای خاصی داشته باشند (مانند تک‌نقل‌قول، دوتا‌نقل‌قول، و خودِ بک‌اسلش).
     ```py
     >>> "wt\"f"
     'wt"f'
     ```
-- In a raw string literal (as indicated by the prefix `r`),  the backslashes pass themselves as is along with the behavior of escaping the following character.
+- &#x202b; در یک رشته‌ی خام (raw string literal) که با پیشوند `r` مشخص می‌شود، بک‌اسلش‌ها خودشان به همان شکل منتقل می‌شوند، به‌همراه رفتار فرار دادن نویسه‌ی بعدی.
     ```py
     >>> r'wt\"f' == 'wt\\"f'
     True
@@ -1448,18 +1436,18 @@ True
     >>> print(r"\\n")
     '\\n'
     ```
-- This means when a parser encounters a backslash in a raw string, it expects another character following it. And in our case (`print(r"\")`), the backslash escaped the trailing quote, leaving the parser without a terminating quote (hence the `SyntaxError`). That's why backslashes don't work at the end of a raw string.
+- &#x202b; در یک رشته‌ی خام (raw string) که با پیشوند `r` مشخص می‌شود، بک‌اسلش‌ها خودشان به همان صورت منتقل می‌شوند، همراه با رفتاری که کاراکتر بعدی را فرار می‌دهد (escape می‌کند).
 
 ---
 
-### ▶ not knot!
+### ▶ &#x202b; گره نیست، نَه!
 <!-- Example ID: 7034deb1-7443-417d-94ee-29a800524de8 --->
 ```py
 x = True
 y = False
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> not x == y
 True
@@ -1472,16 +1460,16 @@ SyntaxError: invalid syntax
 
 #### 💡 Explanation:
 
-* Operator precedence affects how an expression is evaluated, and `==` operator has higher precedence than `not` operator in Python.
-* So `not x == y` is equivalent to `not (x == y)` which is equivalent to `not (True == False)` finally evaluating to `True`.
-* But `x == not y` raises a `SyntaxError` because it can be thought of being equivalent to `(x == not) y` and not `x == (not y)` which you might have expected at first sight.
-* The parser expected the `not` token to be a part of the `not in` operator (because both `==` and `not in` operators have the same precedence), but after not being able to find an `in` token following the `not` token, it raises a `SyntaxError`.
+* &#x202b; تقدم عملگرها بر نحوه‌ی ارزیابی یک عبارت تأثیر می‌گذارد، و در پایتون، عملگر `==` تقدم بالاتری نسبت به عملگر `not` دارد.
+* &#x202b; بنابراین عبارت `not x == y` معادل `not (x == y)` است که خودش معادل `not (True == False)` بوده و در نهایت به `True` ارزیابی می‌شود.
+* &#x202b; اما `x == not y` یک `SyntaxError` ایجاد می‌کند، چون می‌توان آن را به صورت `(x == not) y` تفسیر کرد، نه آن‌طور که در نگاه اول انتظار می‌رود یعنی `x == (not y)`.
+* &#x202b; تجزیه‌گر (parser) انتظار دارد که توکن `not` بخشی از عملگر `not in` باشد (چون هر دو عملگر `==` و `not in` تقدم یکسانی دارند)، اما پس از اینکه توکن `in` بعد از `not` پیدا نمی‌شود، خطای `SyntaxError` صادر می‌شود.
 
 ---
 
-### ▶ Half triple-quoted strings
+### ▶ رشته‌های نیمه سه‌نقل‌قولی
 <!-- Example ID: c55da3e2-1034-43b9-abeb-a7a970a2ad9e --->
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> print('wtfpython''')
 wtfpython
@@ -1496,25 +1484,25 @@ wtfpython
 SyntaxError: EOF while scanning triple-quoted string literal
 ```
 
-#### 💡 Explanation:
-+ Python supports implicit [string literal concatenation](https://docs.python.org/3/reference/lexical_analysis.html#string-literal-concatenation), Example,
+#### 💡 &#x202b; توضیح:
++ &#x202b; پایتون از الحاق ضمنی [رشته‌های متنی](https://docs.python.org/3/reference/lexical_analysis.html#string-literal-concatenation) پشتیبانی می‌کند. برای مثال،
   ```
   >>> print("wtf" "python")
   wtfpython
   >>> print("wtf" "") # or "wtf"""
   wtf
   ```
-+ `'''` and `"""` are also string delimiters in Python which causes a SyntaxError because the Python interpreter was expecting a terminating triple quote as delimiter while scanning the currently encountered triple quoted string literal.
++ &#x202b; `'''` و `"""` نیز جداکننده‌های رشته‌ای در پایتون هستند که باعث ایجاد SyntaxError می‌شوند، چون مفسر پایتون هنگام اسکن رشته‌ای که با سه‌نقل‌قول آغاز شده، انتظار یک سه‌نقل‌قول پایانی به‌عنوان جداکننده را دارد.
 
 ---
 
-### ▶ What's wrong with booleans?
+### ▶ &#x202b; مشکل بولین ها چیست؟
 <!-- Example ID: 0bba5fa7-9e6d-4cd2-8b94-952d061af5dd --->
 1\.
 
 ```py
-# A simple example to count the number of booleans and
-# integers in an iterable of mixed data types.
+# یک مثال ساده برای شمردن تعداد مقادیر بولی و
+# اعداد صحیح در یک iterable با انواع داده‌ی مخلوط.
 mixed_list = [False, 1.0, "some_string", 3, True, [], False]
 integers_found_so_far = 0
 booleans_found_so_far = 0
@@ -1526,7 +1514,7 @@ for item in mixed_list:
         booleans_found_so_far += 1
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> integers_found_so_far
 4
@@ -1554,7 +1542,7 @@ def tell_truth():
         print("I have lost faith in truth!")
 ```
 
-**Output (< 3.x):**
+&#x202b; **خروجی (< 3.x):**
 
 ```py
 >>> tell_truth()
@@ -1563,9 +1551,9 @@ I have lost faith in truth!
 
 
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
 
-* `bool` is a subclass of `int` in Python
+* &#x202b; در پایتون، `bool` زیرکلاسی از `int` است
     
     ```py
     >>> issubclass(bool, int)
@@ -1574,7 +1562,7 @@ I have lost faith in truth!
     False
     ```
     
-* And thus, `True` and `False` are instances of `int`
+* &#x202b; و بنابراین، `True` و `False` نمونه‌هایی از `int` هستند
   ```py
   >>> isinstance(True, int)
   True
@@ -1582,7 +1570,7 @@ I have lost faith in truth!
   True
   ```
 
-* The integer value of `True` is `1` and that of `False` is `0`.
+* &#x202b; مقدار عددی `True` برابر با `1` و مقدار عددی `False` برابر با `0` است.
   ```py
   >>> int(True)
   1
@@ -1590,15 +1578,15 @@ I have lost faith in truth!
   0
   ```
 
-* See this StackOverflow [answer](https://stackoverflow.com/a/8169049/4354153) for the rationale behind it.
+* &#x202b; این پاسخ در StackOverflow را ببینید: [answer](https://stackoverflow.com/a/8169049/4354153) برای توضیح منطقی پشت این موضوع.
 
-* Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true).  `True`, `False`, and a `bool` type was added in 2.x versions, but, for backward compatibility, `True` and `False` couldn't be made constants. They just were built-in variables, and it was possible to reassign them
+* &#x202b; در ابتدا، پایتون نوع `bool` نداشت (کاربران از 0 برای false و مقادیر غیر صفر مثل 1 برای true استفاده می‌کردند). `True`، `False` و نوع `bool` در نسخه‌های 2.x اضافه شدند، اما برای سازگاری با نسخه‌های قبلی، `True` و `False` نمی‌توانستند به عنوان ثابت تعریف شوند. آن‌ها فقط متغیرهای توکار (built-in) بودند و امکان تغییر مقدارشان وجود داشت.
 
-* Python 3 was backward-incompatible, the issue was finally fixed, and thus the last snippet won't work with Python 3.x!
+* &#x202b; پایتون ۳ با نسخه‌های قبلی ناسازگار بود، این مشکل سرانجام رفع شد، و بنابراین قطعه‌کد آخر در نسخه‌های Python 3.x کار نخواهد کرد!
 
 ---
 
-### ▶ Class attributes and instance attributes
+### ▶ &#x202b; ویژگی‌های کلاس و ویژگی‌های نمونه
 <!-- Example ID: 6f332208-33bd-482d-8106-42863b739ed9 --->
 1\.
 ```py
@@ -1620,7 +1608,7 @@ class C(A):
 >>> A.x, B.x, C.x
 (1, 2, 1)
 >>> A.x = 3
->>> A.x, B.x, C.x # C.x changed, but B.x didn't
+>>> A.x, B.x, C.x # C.x تغییر کرد, اما B.x تغییر نکرد.
 (3, 2, 3)
 >>> a = A()
 >>> a.x, A.x
@@ -1642,7 +1630,7 @@ class SomeClass:
         self.another_list += [x]
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 
 ```py
 >>> some_obj = SomeClass(420)
@@ -1661,10 +1649,11 @@ True
 True
 ```
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیح:
 
-* Class variables and variables in class instances are internally handled as dictionaries of a class object. If a variable name is not found in the dictionary of the current class, the parent classes are searched for it.
-* The `+=` operator modifies the mutable object in-place without creating a new object. So changing the attribute of one instance affects the other instances and the class attribute as well.
+* &#x202b; متغیرهای کلاس و متغیرهای نمونه‌های کلاس درونی به‌صورت دیکشنری‌هایی از شیء کلاس مدیریت می‌شوند. اگر نام متغیری در دیکشنری کلاس جاری پیدا نشود، کلاس‌های والد برای آن جست‌وجو می‌شوند.
+* &#x202b; عملگر `+=` شیء قابل‌تغییر (mutable) را به‌صورت درجا (in-place) تغییر می‌دهد بدون اینکه شیء جدیدی ایجاد کند. بنابراین، تغییر ویژگی یک نمونه بر نمونه‌های دیگر و همچنین ویژگی کلاس تأثیر می‌گذارد.
+
 
 ---
 
@@ -1713,14 +1702,14 @@ def some_func(x):
         yield from range(x)
 ```
 
-**Output (> 3.3):**
+&#x202b; **خروجی (> 3.3):**
 
 ```py
 >>> list(some_func(3))
 []
 ```
 
-Where did the `"wtf"` go? Is it due to some special effect of `yield from`? Let's validate that,
+&#x202b; چی شد که `"wtf"` ناپدید شد؟ آیا به خاطر اثر خاصی از `yield from` است؟ بیایید این موضوع را بررسی کنیم،
 
 2\.
 
@@ -1733,24 +1722,24 @@ def some_func(x):
           yield i
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 
 ```py
 >>> list(some_func(3))
 []
 ```
 
-The same result, this didn't work either.
+&#x202b; همان نتیجه، این یکی هم کار نکرد.
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیح:
 
-+ From Python 3.3 onwards, it became possible to use `return` statement with values inside generators (See [PEP380](https://www.python.org/dev/peps/pep-0380/)). The [official docs](https://www.python.org/dev/peps/pep-0380/#enhancements-to-stopiteration) say that,
++ &#x202b; از پایتون نسخه ۳.۳ به بعد، امکان استفاده از عبارت `return` همراه با مقدار در داخل ژنراتورها فراهم شد (نگاه کنید به [PEP380](https://www.python.org/dev/peps/pep-0380/)). [مستندات رسمی](https://www.python.org/dev/peps/pep-0380/#enhancements-to-stopiteration) می‌گویند:
 
-> "... `return expr` in a generator causes `StopIteration(expr)` to be raised upon exit from the generator."
+> &#x202b; "... `return expr` در یک ژنراتور باعث می‌شود که هنگام خروج از ژنراتور، `StopIteration(expr)` ایجاد شود."
 
-+ In the case of `some_func(3)`, `StopIteration` is raised at the beginning because of `return` statement. The `StopIteration` exception is automatically caught inside the `list(...)` wrapper and the `for` loop. Therefore, the above two snippets result in an empty list.
++ &#x202b; در حالت `some_func(3)`، استثنای `StopIteration` در ابتدای اجرا به دلیل وجود دستور `return` رخ می‌دهد. این استثنا به‌طور خودکار درون پوشش `list(...)` و حلقه `for` گرفته می‌شود. بنابراین، دو قطعه‌کد بالا منجر به یک لیست خالی می‌شوند.
 
-+ To get `["wtf"]` from the generator `some_func` we need to catch the `StopIteration` exception,
++ &#x202b; برای اینکه مقدار `["wtf"]` را از ژنراتور `some_func` بگیریم، باید استثنای `StopIteration` را خودمان مدیریت کنیم،
 
   ```py
   try:
@@ -1766,7 +1755,7 @@ The same result, this didn't work either.
 
 ---
 
-### ▶ Nan-reflexivity *
+### ▶ &#x202b; بازتاب‌ناپذیری *
 
 <!-- Example ID: 59bee91a-36e0-47a4-8c7d-aa89bf1d3976 --->
 
@@ -1775,11 +1764,11 @@ The same result, this didn't work either.
 ```py
 a = float('inf')
 b = float('nan')
-c = float('-iNf')  # These strings are case-insensitive
+c = float('-iNf')  # این رشته‌ها نسبت به حروف بزرگ و کوچک حساس نیستند
 d = float('nan')
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 
 ```py
 >>> a
@@ -1794,7 +1783,7 @@ ValueError: could not convert string to float: some_other_string
 True
 >>> None == None # None == None
 True
->>> b == d # but nan!=nan
+>>> b == d # اما nan!=nan
 False
 >>> 50 / a
 0.0
@@ -1809,21 +1798,21 @@ nan
 ```py
 >>> x = float('nan')
 >>> y = x / x
->>> y is y # identity holds
+>>> y is y # برابری هویتی برقرار است
 True
->>> y == y # equality fails of y
+>>> y == y #برابری در مورد y برقرار نیست
 False
->>> [y] == [y] # but the equality succeeds for the list containing y
+>>> [y] == [y] # اما برابری برای لیستی که شامل y است برقرار می‌شود
 True
 ```
 
 
 
-#### 💡 Explanation:
+#### 💡 توضیحات:
 
-- `'inf'` and `'nan'` are special strings (case-insensitive), which, when explicitly typecast-ed to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
+- &#x202b; `'inf'` و `'nan'` رشته‌هایی خاص هستند (نسبت به حروف بزرگ و کوچک حساس نیستند) که وقتی به‌طور صریح به نوع `float` تبدیل شوند، به ترتیب برای نمایش "بی‌نهایت" ریاضی و "عدد نیست" استفاده می‌شوند.
 
-- Since according to IEEE standards ` NaN != NaN`, obeying this rule breaks the reflexivity assumption of a collection element in Python i.e. if `x` is a part of a collection like `list`, the implementations like comparison are based on the assumption that `x == x`.  Because of this assumption, the identity is compared first (since it's faster) while comparing two elements, and the values are compared only when the identities mismatch. The following snippet will make things clearer,
+- &#x202b; از آنجا که طبق استاندارد IEEE، `NaN != NaN`، پایبندی به این قانون فرض بازتاب‌پذیری (reflexivity) یک عنصر در مجموعه‌ها را در پایتون نقض می‌کند؛ یعنی اگر `x` عضوی از مجموعه‌ای مثل `list` باشد، پیاده‌سازی‌هایی مانند مقایسه، بر اساس این فرض هستند که `x == x`. به دلیل همین فرض، ابتدا هویت (identity) دو عنصر مقایسه می‌شود (چون سریع‌تر است) و فقط زمانی مقادیر مقایسه می‌شوند که هویت‌ها متفاوت باشند. قطعه‌کد زیر موضوع را روشن‌تر می‌کند،
 
   ```py
   >>> x = float('nan')
@@ -1836,24 +1825,24 @@ True
   (False, False)
   ```
 
-  Since the identities of `x` and `y` are different, the values are considered, which are also different; hence the comparison returns `False` this time.
+  &#x202b; از آنجا که هویت‌های `x` و `y` متفاوت هستند، مقادیر آن‌ها در نظر گرفته می‌شوند که آن‌ها نیز متفاوت‌اند؛ بنابراین مقایسه این بار `False` را برمی‌گرداند.
 
-- Interesting read: [Reflexivity, and other pillars of civilization](https://bertrandmeyer.com/2010/02/06/reflexivity-and-other-pillars-of-civilization/)
+- &#x202b; خواندنی جالب: [بازتاب‌پذیری و دیگر ارکان تمدن](https://bertrandmeyer.com/2010/02/06/reflexivity-and-other-pillars-of-civilization/)
 
 ---
 
-### ▶ Mutating the immutable!
+### ▶ &#x202b; تغییر دادن اشیای تغییرناپذیر!
 
 <!-- Example ID: 15a9e782-1695-43ea-817a-a9208f6bb33d --->
 
-This might seem trivial if you know how references work in Python.
+&#x202b; این موضوع ممکن است بدیهی به نظر برسد اگر با نحوه‌ی کار ارجاع‌ها در پایتون آشنا باشید.
 
 ```py
 some_tuple = ("A", "tuple", "with", "values")
 another_tuple = ([1, 2], [3, 4], [5, 6])
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> some_tuple[2] = "change this"
 TypeError: 'tuple' object does not support item assignment
@@ -1866,21 +1855,22 @@ TypeError: 'tuple' object does not support item assignment
 ([1, 2], [3, 4], [5, 6, 1000, 99, 999])
 ```
 
-But I thought tuples were immutable...
+اما من فکر می‌کردم تاپل‌ها تغییرناپذیر هستند...
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
 
-* Quoting from https://docs.python.org/3/reference/datamodel.html
+* &#x202b; نقل‌قول از https://docs.python.org/3/reference/datamodel.html
 
-    > Immutable sequences
-        An object of an immutable sequence type cannot change once it is created. (If the object contains references to other objects, these other objects may be mutable and may be modified; however, the collection of objects directly referenced by an immutable object cannot change.)
+    > &#x202b; دنباله‌های تغییرناپذیر  
+        &#x202b; شیئی از نوع دنباله‌ی تغییرناپذیر، پس از ایجاد دیگر قابل تغییر نیست. (اگر شیء شامل ارجاع‌هایی به اشیای دیگر باشد، این اشیای دیگر ممکن است قابل تغییر باشند و تغییر کنند؛ اما مجموعه‌ی اشیایی که مستقیماً توسط یک شیء تغییرناپذیر ارجاع داده می‌شوند، نمی‌تواند تغییر کند.)
 
-* `+=` operator changes the list in-place. The item assignment doesn't work, but when the exception occurs, the item has already been changed in place.
-* There's also an explanation in [official Python FAQ](https://docs.python.org/3/faq/programming.html#why-does-a-tuple-i-item-raise-an-exception-when-the-addition-works).
+* &#x202b; عملگر `+=` لیست را به‌صورت درجا (in-place) تغییر می‌دهد. تخصیص به یک عضو کار نمی‌کند، اما زمانی که استثنا ایجاد می‌شود، عضو موردنظر پیش از آن به‌صورت درجا تغییر کرده است.
+* &#x202b; همچنین توضیحی در [پرسش‌های متداول رسمی پایتون](https://docs.python.org/3/faq/programming.html#why-does-a-tuple-i-item-raise-an-exception-when-the-addition-works) وجود دارد.
+
 
 ---
 
-### ▶ The disappearing variable from outer scope
+### ▶ &#x202b; متغیری که از اسکوپ بیرونی ناپدید می‌شود
 <!-- Example ID: 7f1e71b6-cb3e-44fb-aa47-87ef1b7decc8 --->
 
 ```py
@@ -1894,7 +1884,7 @@ except Exception as e:
 **Output (Python 2.x):**
 ```py
 >>> print(e)
-# prints nothing
+# &#x202b; چیزی چاپ نمی شود.
 ```
 
 **Output (Python 3.x):**
@@ -1903,18 +1893,17 @@ except Exception as e:
 NameError: name 'e' is not defined
 ```
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
+* &#x202b; منبع: [مستندات رسمی پایتون](https://docs.python.org/3/reference/compound_stmts.html#except)
 
-* Source: https://docs.python.org/3/reference/compound_stmts.html#except
-
-  When an exception has been assigned using `as` target, it is cleared at the end of the `except` clause. This is as if
+&#x202b; هنگامی که یک استثنا (Exception) با استفاده از کلمه‌ی کلیدی `as` به متغیری تخصیص داده شود، این متغیر در انتهای بلاکِ `except` پاک می‌شود. این رفتار مشابه کد زیر است:
 
   ```py
   except E as N:
       foo
   ```
 
-  was translated into
+  &#x202b; به این شکل ترجمه شده باشد:
 
   ```py
   except E as N:
@@ -1924,9 +1913,10 @@ NameError: name 'e' is not defined
           del N
   ```
 
-  This means the exception must be assigned to a different name to be able to refer to it after the except clause. Exceptions are cleared because, with the traceback attached to them, they form a reference cycle with the stack frame, keeping all locals in that frame alive until the next garbage collection occurs.
+&#x202b; این بدان معناست که استثنا باید به نام دیگری انتساب داده شود تا بتوان پس از پایان بند `except` به آن ارجاع داد. استثناها پاک می‌شوند چون با داشتن «ردیابی» (traceback) ضمیمه‌شده، یک چرخه‌ی مرجع (reference cycle) با قاب پشته (stack frame) تشکیل می‌دهند که باعث می‌شود تمام متغیرهای محلی (locals) در آن قاب تا زمان پاکسازی حافظه (garbage collection) باقی بمانند.
 
-* The clauses are not scoped in Python. Everything in the example is present in the same scope, and the variable `e` got removed due to the execution of the `except` clause. The same is not the case with functions that have their separate inner-scopes. The example below illustrates this:
+* &#x202b; در پایتون، بندها (`clauses`) حوزه‌ی مستقل ندارند. در مثال بالا، همه‌چیز در یک حوزه‌ی واحد قرار دارد، و متغیر `e` در اثر اجرای بند `except` حذف می‌شود. این موضوع در مورد توابع صادق نیست، زیرا توابع حوزه‌های داخلی جداگانه‌ای دارند. مثال زیر این نکته را نشان می‌دهد:
+
 
      ```py
      def f(x):
@@ -1937,7 +1927,7 @@ NameError: name 'e' is not defined
      y = [5, 4, 3]
      ```
 
-     **Output:**
+     &#x202b; **خروجی:**
      ```py
      >>> f(x)
      UnboundLocalError: local variable 'x' referenced before assignment
@@ -1949,20 +1939,20 @@ NameError: name 'e' is not defined
      [5, 4, 3]
      ```
 
-* In Python 2.x, the variable name `e` gets assigned to `Exception()` instance, so when you try to print, it prints nothing.
+* &#x202b; در پایتون نسخه‌ی ۲.x، نام متغیر `e` به یک نمونه از `Exception()` انتساب داده می‌شود، بنابراین وقتی سعی کنید آن را چاپ کنید، چیزی نمایش داده نمی‌شود.
 
-    **Output (Python 2.x):**
+    &#x202b; **خروجی (Python 2.x):**
     ```py
     >>> e
     Exception()
     >>> print e
-    # Nothing is printed!
+    # چیزی چاپ نمی شود.
     ```
 
 ---
 
 
-### ▶ The mysterious key type conversion
+### ▶ &#x202b; تبدیل اسرارآمیز نوع کلید
 <!-- Example ID: 00f42dd0-b9ef-408d-9e39-1bc209ce3f36 --->
 ```py
 class SomeClass(str):
@@ -1971,7 +1961,7 @@ class SomeClass(str):
 some_dict = {'s': 42}
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> type(list(some_dict.keys())[0])
 str
@@ -1983,12 +1973,12 @@ str
 str
 ```
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیحات:
 
-* Both the object `s` and the string `"s"` hash to the same value because `SomeClass` inherits the `__hash__` method of `str` class.
-* `SomeClass("s") == "s"` evaluates to `True` because `SomeClass` also inherits `__eq__` method from `str` class.
-* Since both the objects hash to the same value and are equal, they are represented by the same key in the dictionary.
-* For the desired behavior, we can redefine the `__eq__` method in `SomeClass`
+* &#x202b; هر دو شیء `s` و رشته‌ی `"s"` به دلیل ارث‌بری `SomeClass` از متد `__hash__` کلاس `str`، هش یکسانی دارند.
+* &#x202b; عبارت `SomeClass("s") == "s"` به دلیل ارث‌بری `SomeClass` از متد `__eq__` کلاس `str` برابر با `True` ارزیابی می‌شود.
+* &#x202b; از آنجا که این دو شیء هش یکسان و برابری دارند، به عنوان یک کلید مشترک در دیکشنری در نظر گرفته می‌شوند.
+* &#x202b; برای رسیدن به رفتار دلخواه، می‌توانیم متد `__eq__` را در کلاس `SomeClass` بازتعریف کنیم.
   ```py
   class SomeClass(str):
     def __eq__(self, other):
@@ -1998,14 +1988,14 @@ str
             and super().__eq__(other)
         )
 
-    # When we define a custom __eq__, Python stops automatically inheriting the
-    # __hash__ method, so we need to define it as well
+    # &#x202b; هنگامی که متد __eq__ را به‌طور دلخواه تعریف می‌کنیم، پایتون دیگر متد __hash__ را به صورت خودکار به ارث نمی‌برد،
+    # &#x202b; بنابراین باید متد __hash__ را نیز مجدداً تعریف کنیم.
     __hash__ = str.__hash__
 
   some_dict = {'s':42}
   ```
 
-  **Output:**
+  &#x202b; **خروجی:**
   ```py
   >>> s = SomeClass('s')
   >>> some_dict[s] = 40
@@ -2018,37 +2008,37 @@ str
 
 ---
 
-### ▶ Let's see if you can guess this?
+### ▶ &#x202b; ببینیم می‌توانید این را حدس بزنید؟
 <!-- Example ID: 81aa9fbe-bd63-4283-b56d-6fdd14c9105e --->
 ```py
 a, b = a[b] = {}, 5
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> a
 {5: ({...}, 5)}
 ```
 
-#### 💡 Explanation:
+#### 💡 &#x202b; توضیح:
 
-* According to [Python language reference](https://docs.python.org/3/reference/simple_stmts.html#assignment-statements), assignment statements have the form
+* &#x202b; طبق [مرجع زبان پایتون](https://docs.python.org/3/reference/simple_stmts.html#assignment-statements)، دستورات انتساب فرم زیر را دارند:
   ```
   (target_list "=")+ (expression_list | yield_expression)
   ```
-  and
+  و
   
-> An assignment statement evaluates the expression list (remember that this can be a single expression or a comma-separated list, the latter yielding a tuple) and assigns the single resulting object to each of the target lists, from left to right.
+> &#x202b; یک دستور انتساب ابتدا فهرست عبارت‌ها (expression list) را ارزیابی می‌کند (توجه کنید این عبارت می‌تواند یک عبارت تکی یا فهرستی از عبارت‌ها جداشده با ویرگول باشد که دومی به یک تاپل منجر می‌شود)، سپس شیء حاصل را به هریک از اهداف انتساب از **چپ به راست** تخصیص می‌دهد.
 
-* The `+` in `(target_list "=")+` means there can be **one or more** target lists. In this case, target lists are `a, b` and `a[b]` (note the expression list is exactly one, which in our case is `{}, 5`).
+* &#x202b; علامت `+` در `(target_list "=")+` به این معناست که می‌توان **یک یا چند** هدف انتساب داشت. در این حالت، اهداف انتساب ما `a, b` و `a[b]` هستند (توجه کنید که عبارت ارزیابی‌شده دقیقاً یکی است، که در اینجا `{}` و `5` است).
 
-* After the expression list is evaluated, its value is unpacked to the target lists from **left to right**. So, in our case, first the `{}, 5` tuple is unpacked to `a, b` and we now have `a = {}` and `b = 5`.
+* &#x202b; پس از ارزیابی عبارت، نتیجه از **چپ به راست** به اهداف انتساب داده می‌شود. در این مثال ابتدا تاپل `({}, 5)` به `a, b` باز می‌شود، بنابراین `a = {}` و `b = 5` خواهیم داشت.
 
-* `a` is now assigned to `{}`, which is a mutable object.
+* &#x202b; حالا `a` یک شیء قابل تغییر (mutable) است (`{}`).
 
-* The second target list is `a[b]` (you may expect this to throw an error because both `a` and `b` have not been defined in the statements before. But remember, we just assigned `a` to `{}` and `b` to `5`).
+* &#x202b; هدف انتساب بعدی `a[b]` است (شاید انتظار داشته باشید که اینجا خطا بگیریم زیرا پیش از این هیچ مقداری برای `a` و `b` مشخص نشده است؛ اما به یاد داشته باشید که در گام قبل به `a` مقدار `{}` و به `b` مقدار `5` دادیم).
 
-* Now, we are setting the key `5` in the dictionary to the tuple `({}, 5)` creating a circular reference (the `{...}` in the output refers to the same object that `a` is already referencing). Another simpler example of circular reference could be
+* &#x202b; اکنون، کلید `5` در دیکشنری به تاپل `({}, 5)` مقداردهی می‌شود و یک مرجع دوری (Circular Reference) ایجاد می‌کند (علامت `{...}` در خروجی به همان شیئی اشاره دارد که قبلاً توسط `a` به آن ارجاع داده شده است). یک مثال ساده‌تر از مرجع دوری می‌تواند به این صورت باشد:
   ```py
   >>> some_list = some_list[0] = [0]
   >>> some_list
@@ -2060,14 +2050,15 @@ a, b = a[b] = {}, 5
   >>> some_list[0][0][0][0][0][0] == some_list
   True
   ```
-  Similar is the case in our example (`a[b][0]` is the same object as `a`)
+  &#x202b; در مثال ما نیز شرایط مشابه است (`a[b][0]` همان شیئی است که `a` به آن اشاره دارد).
 
-* So to sum it up, you can break the example down to
+
+* &#x202b; بنابراین برای جمع‌بندی، می‌توانید مثال بالا را به این صورت ساده کنید:
   ```py
   a, b = {}, 5
   a[b] = a, b
   ```
-  And the circular reference can be justified by the fact that `a[b][0]` is the same object as `a`
+  &#x202b; و مرجع دوری به این دلیل قابل توجیه است که `a[b][0]` همان شیئی است که `a` به آن اشاره دارد.
   ```py
   >>> a[b][0] is a
   True
@@ -2076,7 +2067,7 @@ a, b = a[b] = {}, 5
 
 ---
 
-### ▶ Exceeds the limit for integer string conversion
+### ▶ &#x202b; از حد مجاز برای تبدیل رشته به عدد صحیح فراتر می‌رود
 ```py
 >>> # Python 3.10.6
 >>> int("2" * 5432)
@@ -2085,7 +2076,7 @@ a, b = a[b] = {}, 5
 >>> int("2" * 5432)
 ```
 
-**Output:**
+&#x202b; **خروجی:**
 ```py
 >>> # Python 3.10.6
 222222222222222222222222222222222222222222222222222222222222222...
@@ -2098,15 +2089,16 @@ ValueError: Exceeds the limit (4300) for integer string conversion:
    to increase the limit.
 ```
 
-#### 💡 Explanation:
-This call to `int()` works fine in Python 3.10.6 and raises a ValueError in Python 3.10.8. Note that Python can still work with large integers. The error is only raised when converting between integers and strings.
+#### 💡 &#x202b; توضیح:
+&#x202b; فراخوانی تابع `int()` در نسخه‌ی Python 3.10.6 به‌خوبی کار می‌کند اما در نسخه‌ی Python 3.10.8 منجر به خطای `ValueError` می‌شود. توجه کنید که پایتون همچنان قادر به کار با اعداد صحیح بزرگ است. این خطا تنها هنگام تبدیل اعداد صحیح به رشته یا برعکس رخ می‌دهد.
 
-Fortunately, you can increase the limit for the allowed number of digits when you expect an operation to exceed it. To do this, you can use one of the following:
-- The -X int_max_str_digits command-line flag
-- The set_int_max_str_digits() function from the sys module
-- The PYTHONINTMAXSTRDIGITS environment variable
+&#x202b; خوشبختانه می‌توانید در صورت انتظار عبور از این حد مجاز، مقدار آن را افزایش دهید. برای انجام این کار می‌توانید از یکی از روش‌های زیر استفاده کنید:
 
-[Check the documentation](https://docs.python.org/3/library/stdtypes.html#int-max-str-digits) for more details on changing the default limit if you expect your code to exceed this value.
+- &#x202b; استفاده از فلگ خط فرمان `-X int_max_str_digits`
+- &#x202b; تابع `set_int_max_str_digits()` از ماژول `sys`
+- &#x202b; متغیر محیطی `PYTHONINTMAXSTRDIGITS`
+
+&#x202b; برای جزئیات بیشتر درباره‌ی تغییر مقدار پیش‌فرض این حد مجاز، [مستندات رسمی پایتون](https://docs.python.org/3/library/stdtypes.html#int-max-str-digits) را مشاهده کنید.
 
 
 ---

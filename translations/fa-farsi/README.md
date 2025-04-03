@@ -47,33 +47,33 @@
     - [▶ اول از همه! \*](#-اول-از-همه-)
       - [💡 توضیحات](#-توضیحات)
     - [▶ بعضی وقت‌ها رشته‌ها می‌توانند دردسرساز شوند](#-بعضی-وقتها-رشتهها-میتوانند-دردسرساز-شوند)
-      - [💡 Explanation:](#-explanation)
-    - [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
-      - [💡 Explanation:](#-explanation-1)
-    - [▶ How not to use `is` operator](#-how-not-to-use-is-operator)
-      - [💡 Explanation:](#-explanation-2)
-    - [▶ Hash brownies](#-hash-brownies)
-      - [💡 Explanation](#-explanation-3)
-    - [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same)
-      - [💡 Explanation:](#-explanation-4)
-    - [▶ Disorder within order \*](#-disorder-within-order-)
-      - [💡 Explanation:](#-explanation-5)
-    - [▶ Keep trying... \*](#-keep-trying-)
-      - [💡 Explanation:](#-explanation-6)
-    - [▶ For what?](#-for-what)
-      - [💡 Explanation:](#-explanation-7)
-    - [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
-      - [💡 Explanation](#-explanation-8)
-    - [▶ `is not ...` is not `is (not ...)`](#-is-not--is-not-is-not-)
-      - [💡 Explanation](#-explanation-9)
-    - [▶ A tic-tac-toe where X wins in the first attempt!](#-a-tic-tac-toe-where-x-wins-in-the-first-attempt)
-      - [💡 Explanation:](#-explanation-10)
-    - [▶ Schrödinger's variable \*](#-schrödingers-variable-)
-      - [💡 Explanation:](#-explanation-11)
-    - [▶ The chicken-egg problem \*](#-the-chicken-egg-problem-)
-      - [💡 Explanation](#-explanation-12)
-    - [▶ Subclass relationships](#-subclass-relationships)
-      - [💡 Explanation:](#-explanation-13)
+      - [💡 توضیح:](#-توضیح)
+    - [▶ مراقب عملیات‌های زنجیره‌ای باشید](#-مراقب-عملیاتهای-زنجیرهای-باشید)
+      - [💡 توضیحات:](#-توضیحات-1)
+    - [▶ چطور از عملگر `is` استفاده نکنیم](#-چطور-از-عملگر-is-استفاده-نکنیم)
+      - [💡 توضیحات:](#-توضیحات-2)
+    - [▶ کلیدهای هش](#-کلیدهای-هش)
+      - [💡 توضیحات](#-توضیحات-3)
+    - [▶ در عمق وجود همه ما یکسان هستیم](#-در-عمق-وجود-همه-ما-یکسان-هستیم)
+      - [💡 توضیحات:](#-توضیحات-4)
+    - [▶ بی‌نظمی در خود نظم \*](#-بینظمی-در-خود-نظم-)
+      - [💡 توضیحات:](#-توضیحات-5)
+    - [▶ تلاش کن... \*](#-تلاش-کن-)
+      - [💡 توضیحات:](#-توضیحات-6)
+    - [▶ برای چی؟](#-برای-چی)
+      - [💡 توضیحات:](#-توضیحات-7)
+    - [▶ اختلاف زمانی در محاسبه](#-اختلاف-زمانی-در-محاسبه)
+      - [💡 توضیحات](#-توضیحات-8)
+    - [▶ هر گردی، گردو نیست](#-هر-گردی-گردو-نیست)
+      - [💡 توضیحات](#-توضیحات-9)
+    - [▶ یک بازی دوز که توش X همون اول برنده میشه!](#-یک-بازی-دوز-که-توش-X-همون-اول-برنده-میشه)
+      - [💡 توضیحات:](#-توضیحات-10)
+    - [▶ متغیر شرودینگر \*](#-متغیر-شرودینگر-)
+      - [💡 توضیحات:](#-توضیحات-11)
+    - [▶ اول مرغ بوده یا تخم مرغ؟ \*](#-اول-مرغ-بوده-یا-تخم-مرغ-)
+      - [💡 توضیحات](#-توضیحات-12)
+    - [▶ روابط بین زیرمجموعه کلاس‌ها](#-روابط-بین-زیرمجموعه-کلاسها)
+      - [💡 توضیحات:](#-توضیحات-13)
     - [▶ ‫ برابری و هویت متدها](#--برابری-و-هویت-متدها)
       - [💡 ‫ توضیحات](#--توضیحات)
     - [▶ ‫ آل-ترو-یشن \*](#--آل-ترو-یشن-)
@@ -370,7 +370,7 @@ if a := some_func():
 >>> a = "some_string"
 >>> id(a)
 140420665652016
->>> id("some" + "_" + "string") # دقت کنید که هردو ID یکی هستند.
+>>> id("some" + "_" + "string") # دقت کنید که هردو شناسه یکسانند.
 140420665652016
 ```
 
@@ -420,15 +420,16 @@ True
 False
 ```
 
-Makes sense, right?
+منطقیه، نه؟
 
-#### 💡 Explanation:
-+ The behavior in first and second snippets is due to a CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
-+ After being "interned," many variables may reference the same string object in memory (saving memory thereby).
-+ In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation-dependent. There are some rules that can be used to guess if a string will be interned or not:
-  * All length 0 and length 1 strings are interned.
-  * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f'])` will not be interned)
-  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. CPython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
+#### 💡 توضیحات:
++ در قطعه‌کد اول و دوم، رفتار کد به دلیل یک بهینه سازی در CPython است (به نام داوطلب سازی رشته‌ها) که باعث می‌شود از برخی مقادیر غیرقابل تغییر، به جای مقداردهی مجدد، دوباره استفاده شود.
++ بیشتر متغیرهایی که به‌این صورت جایگزین می‌شوند، در حافظه دستگاه به مقدار داوطلب خود اشاره می‌کنند (تا از حافظه کمتری استفاده شود)
++ در قطعه‌کدهای بالا، رشته‌ها به‌صورت غیرمستقیم داوطلب می‌شوند. تصمیم اینکه رشته‌ها چه زمانی به صورت غیرمستقیم داوطلب شوند به نحوه پیاده‌سازی و مقداردهی آن‌ها بستگی دارد. برخی قوانین وجود دارند تا بتوانیم داوطلب شدن یا نشدن یک رشته را حدس بزنیم:
+  * همه رشته‌ها با طول صفر یا یک داوطلب می‌شوند.
+  * رشته‌ها در زمان کامپایل داوطلب می‌شوند (`'wtf'` داوطلب می‌شود اما `''.join(['w', 't', 'f'])` داوطلب نمی‌شود)
+  * رشته‌هایی که از حروف ASCII ، اعداد صحیح و آندرلاین تشکیل نشده‌باشند داوطلب نمی‌شود. به همین دلیل `'wtf!'` به خاطر وجود `'!'` داوطلب نشد. پیاده‌سازی این قانون در CPython در [اینجا](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19) قرار دارد.
+
 <p align="center">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="/images/string-intern/string_interning_dark_theme.svg">
@@ -437,22 +438,22 @@ Makes sense, right?
     </picture>
 </p>
 
-+ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `"wtf!"` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compile-time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
-+ A compile unit in an interactive environment like IPython consists of a single statement, whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement, whereas `a = "wtf!"; b = "wtf!"` are two statements in a single line. This explains why the identities are different in `a = "wtf!"; b = "wtf!"`, and also explain why they are same when invoked in `some_file.py`
-+ The abrupt change in the output of the fourth snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a  few clock cycles during runtime. Constant folding only occurs for strings having a length of less than 21. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
-+ Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the fourth snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549). 
++ زمانی که `"wtf!"` را در یک خط به `a` و `b` اختصاص می‌دهیم، مفسر پایتون شیء جدید می‌سازد و متغیر دوم را به آن ارجاع می‌دهد. اگر مقدار دهی در خط‌های جدا از هم انجام شود، در واقع مفسر "خبر ندارد" که یک شیء مختص به `"wtf!"` از قبل در برنامه وجود دارد (زیرا `"wtf!"` به دلایلی که در بالا گفته شد، به‌صورت غیرمستقیم داوطلب نمی‌شود). این بهینه سازی در زمان کامپایل انجام می‌شود. این بهینه سازی همچنین برای نسخه های (x).۳.۷ وجود ندارد (برای گفت‌وگوی بیشتر این [موضوع](https://github.com/satwikkansal/wtfpython/issues/100) را ببینید).
++ یک واحد کامپایل در یک محیط تعاملی مانند IPython از یک عبارت تشکیل می‌شود، در حالی که برای ماژول‌ها شامل کل ماژول می‌شود. `a, b = "wtf!", "wtf!"` یک عبارت است. در حالی که `a = "wtf!"; b = "wtf!"` دو عبارت در یک خط است. به همین دلیل شناسه‌ها در `a = "wtf!"; b = "wtf!"` متفاوتند و همین‌طور وقتی با مفسر پایتون داخل فایل `some_file.py` اجرا می‌شوند، شناسه‌ها یکسانند.
++ تغییر ناگهانی در خروجی قطعه‌کد چهارم به دلیل [بهینه‌سازی پنجره‌ای](https://en.wikipedia.org/wiki/Peephole_optimization) است که تکنیکی معروف به جمع آوری ثابت‌ها است. به همین خاطر عبارت `'a'*20` با `'aaaaaaaaaaaaaaaaaaaa'` در هنگام کامپایل جایگزین می‌شود تا کمی بار از دوش چرخه‌ساعتی پردازنده کم شود. تکنیک جمع آوری ثابت‌ها فقط مخصوص رشته‌هایی با طول کمتر از 21 است. (چرا؟ فرض کنید که فایل `.pyc` که توسط کامپایلر ساخته می‌شود چقدر بزرگ می‌شد اگر عبارت `'a'*10**10`). [این](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) هم کد پیاده‌سازی این تکنیک در CPython.
++ توجه: در پایتون ۳.۷، جمع آوری ثابت‌ها از بهینه‌ساز پنجره‌ای به بهینه‌ساز AST جدید انتقال داده شد همراه با تغییراتی در منطق آن. پس چهارمین قطعه‌کد در پایتون نسخه ۳.۷ کار نمی‌کند. شما می‌توانید در [اینجا](https://bugs.python.org/issue11549) بیشتر درمورد این تغییرات بخوانید.
 
 ---
 
 
-### ▶ Be careful with chained operations
+### ▶ مراقب عملیات‌های زنجیره‌ای باشید
 <!-- Example ID: 07974979-9c86-4720-80bd-467aa19470d9 --->
 ```py
->>> (False == False) in [False] # makes sense
+>>> (False == False) in [False] # منطقیه
 False
->>> False == (False in [False]) # makes sense
+>>> False == (False in [False]) # منطقیه
 False
->>> False == False in [False] # now what?
+>>> False == False in [False] # حالا چی؟
 True
 
 >>> True is False == False
@@ -468,31 +469,30 @@ False
 False
 ```
 
-#### 💡 Explanation:
+#### 💡 توضیحات:
 
-As per https://docs.python.org/3/reference/expressions.html#comparisons
+طبق https://docs.python.org/3/reference/expressions.html#comparisons
+> اگر a، b، c، ...، y، z عبارت‌های عملیات و op1، op2، ...، opN عملگرهای عملیات باشند، آنگاه عملیات a op1 b op2 c ... y opN z معادل عملیات a op1 b and b op2 c and  ... y opN z است. فقط دقت کنید که هر عبارت یک بار ارزیابی می‌شود.
 
-> Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.
+شاید چنین رفتاری برای شما احمقانه به نظر بیاد ولی برای عملیات‌هایی مثل `a == b == c` و `0 <= x <= 100` عالی عمل می‌کنه.
 
-While such behavior might seem silly to you in the above examples, it's fantastic with stuff like `a == b == c` and `0 <= x <= 100`.
-
-* `False is False is False` is equivalent to `(False is False) and (False is False)`
-* `True is False == False` is equivalent to `(True is False) and (False == False)` and since the first part of the statement (`True is False`) evaluates to `False`, the overall expression evaluates to `False`.
-* `1 > 0 < 1` is equivalent to `(1 > 0) and (0 < 1)` which evaluates to `True`.
-* The expression `(1 > 0) < 1` is equivalent to `True < 1` and
+* عبارت `False is False is False` معادل عبارت `(False is False) and (False is False)` است
+* عبارت `True is False == False` معادل عبارت `(True is False) and (False == False)` است و از آنجایی که قسمت اول این عبارت (`True is False`) پس از ارزیابی برابر با `False` می‌شود. پس کل عبارت معادل `False` می‌شود.
+* عبارت `1 > 0 < 1` معادل عبارت `(1 > 0) and (0 < 1)` است.
+* عبارت `(1 > 0) < 1` معادل عبارت `True < 1` است و :
   ```py
   >>> int(True)
   1
-  >>> True + 1 #not relevant for this example, but just for fun
+  >>> True + 1 # مربوط به این بخش نیست ولی همینجوری گذاشتم
   2
   ```
-  So, `1 < 1` evaluates to `False`
+  پس عبارت `True < 1` معادل عبارت `1 < 1` می‌شود که در کل معادل `False` است.
 
 ---
 
-### ▶ How not to use `is` operator
+### ▶ چطور از عملگر `is` استفاده نکنیم
 <!-- Example ID: 230fa2ac-ab36-4ad1-b675-5f5a1c1a6217 --->
-The following is a very famous example present all over the internet.
+عبارت پایین خیلی معروفه و تو کل اینترنت موجوده.
 
 1\.
 
@@ -523,7 +523,7 @@ True
 ```
 
 3\.
-**Output**
+**خروجی**
 
 ```py
 >>> a, b = 257, 257
@@ -531,7 +531,7 @@ True
 True
 ```
 
-**Output (Python 3.7.x specifically)**
+**خروجی (مخصوص نسخه‌های (x).۳.۷)**
 
 ```py
 >>> a, b = 257, 257
@@ -539,25 +539,25 @@ True
 False
 ```
 
-#### 💡 Explanation:
+#### 💡 توضیحات:
 
-**The difference between `is` and `==`**
+**فرض بین عملگرهای  `is` و `==`**
 
-* `is` operator checks if both the operands refer to the same object (i.e., it checks if the identity of the operands matches or not).
-* `==` operator compares the values of both the operands and checks if they are the same.
-* So `is` is for reference equality and `==` is for value equality. An example to clear things up,
+* عملگر `is` بررسی میکنه که دو متغیر در حافظه دستگاه به یک شیء اشاره میکنند یا نه (یعنی شناسه متغیرها رو با هم تطبیق میده).
+* عملگر `==` مقدار متغیرها رو با هم مقایسه میکنه و یکسان بودنشون رو بررسی میکنه.
+* پس `is` برای معادل بودن متغیرها در حافظه دستگاه و `==` برای معادل بودن مقادیر استفاده میشه. یه مثال برای شفاف سازی بیشتر:
   ```py
   >>> class A: pass
-  >>> A() is A() # These are two empty objects at two different memory locations.
+  >>> A() is A() # این‌ها دو شیء خالی هستند که در دو جای مختلف در حافظه قرار دارند.
   False
   ```
 
-**`256` is an existing object but `257` isn't**
+**عدد `256` از قبل تو حافظه قرار داده شده ولی `257` نه؟**
 
-When you start up python the numbers from `-5` to `256` will be allocated. These numbers are used a lot, so it makes sense just to have them ready.
+وقتی پایتون رو اجرا می‌کنید اعداد از `-5` تا `256` در حافظه ذخیره میشن. چون این اعداد خیلی پرکاربرد هستند پس منطقیه که اون‌ها رو در حافظه دستگاه، آماده داشته باشیم.
 
-Quoting from https://docs.python.org/3/c-api/long.html
-> The current implementation keeps an array of integer objects for all integers between -5 and 256, when you create an int in that range you just get back a reference to the existing object. So it should be possible to change the value of 1. I suspect the behavior of Python, in this case, is undefined. :-)
+نقل قول از https://docs.python.org/3/c-api/long.html
+> در پیاده سازی فعلی یک آرایه از اشیاء عددی صحیح برای تمام اعداد صحیح بین `-5` تا `256` نگه‌داری می‌شود. وقتی شما یک عدد صحیح در این بازه به مقداردهی می‌کنید، فقط یک ارجاع به آن عدد که از قبل در حافظه ذخیره شده است دریافت می‌کنید. پس تغییر مقدار عدد 1 باید ممکن باشد. که در این مورد من به رفتار پایتون شک دارم تعریف‌نشده است. :-)
 
 ```py
 >>> id(256)
@@ -578,13 +578,13 @@ Quoting from https://docs.python.org/3/c-api/long.html
 140084850247344
 ```
 
-Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257,` and so it goes on to create another object in the memory.
+در اینجا مفسر وقتی عبارت `y = 257` رو اجرا میکنه، به اندازه کافی زیرکانه عمل نمیکنه که تشخیص بده که ما یک عدد صحیح با مقدار `257` در حافظه ذخیره کرده‌ایم، پس به ساختن یک شیء جدید در حافظه ادامه میده.
 
-Similar optimization applies to other **immutable** objects like empty tuples as well. Since lists are mutable, that's why `[] is []` will return `False` and `() is ()` will return `True`. This explains our second snippet. Let's move on to the third one, 
+یک بهینه سازی مشابه شامل حال مقادیر **غیرقابل تغییر** دیگه مانند تاپل‌های خالی هم میشه. از اونجایی که لیست‌ها قابل تغییرند، عبارت `[] is []` مقدار `False` رو برمیگردونه و عبارت `() is ()` مقدار `True` رو برمیگردونه. به همین دلیله که قطعه کد دوم چنین رفتاری داره. بریم سراغ سومی.
 
-**Both `a` and `b` refer to the same object when initialized with same value in the same line.**
+**متغیرهای `a` و `b` وقتی در یک خط با مقادیر یکسانی مقداردهی میشن، هردو به یک شیء در حافظه اشاره میکنن**
 
-**Output**
+**خروجی**
 
 ```py
 >>> a, b = 257, 257
@@ -600,9 +600,9 @@ Similar optimization applies to other **immutable** objects like empty tuples as
 140640774013488
 ```
 
-* When a and b are set to `257` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `257` as an object.
+* وقتی a و b در یک خط با `257` مقداردهی میشن، مفسر پایتون یک شیء برای یکی از متغیرها در حافظه میسازه و متغیر دوم رو در حافظه به اون ارجاع میده. اگه این کار رو تو دو خط جدا از هم انجام بدید، درواقع مفسر پایتون از وجود مقدار `257` به عنوان یک شیء، "خبر نداره".
 
-* It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once. This optimization is not limited to integers, it works for other immutable data types like strings (check the "Strings are tricky example") and floats as well,
+* این یک بهینه سازی توسط کامپایلر هست و مخصوصا در محیط تعاملی به کار برده میشه. وقتی شما دو خط رو در یک مفسر زنده وارد می‌کنید، اون‌ها به صورت جداگانه کامپایل میشن، به همین دلیل بهینه سازی به صورت جداگانه برای هرکدوم اعمال میشه. اگر بخواهید این مثال رو در یک فایل `.py` امتحان کنید، رفتار متفاوتی می‌بینید زیرا فایل به صورت کلی و یک‌جا کامپایل میشه. این بهینه سازی محدود به اعداد صحیح نیست و برای انواع داده‌های غیرقابل تغییر دیگه مانند رشته‌ها (مثال "رشته‌ها می‌توانند دردسرساز شوند" رو ببینید) و اعداد اعشاری هم اعمال میشه.
 
   ```py
   >>> a, b = 257.0, 257.0
@@ -610,12 +610,12 @@ Similar optimization applies to other **immutable** objects like empty tuples as
   True
   ```
 
-* Why didn't this work for Python 3.7? The abstract reason is because such compiler optimizations are implementation specific (i.e. may change with version, OS, etc). I'm still figuring out what exact implementation change cause the issue, you can check out this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for updates.
+* چرا این برای پایتون ۳.۷ کار نکرد؟ دلیل انتزاعیش اینه که چنین بهینه‌سازی‌های کامپایلری وابسته به پیاده‌سازی هستن (یعنی بسته به نسخه، و نوع سیستم‌عامل و چیزهای دیگه تغییر میکنن). من هنوز پیگیرم که بدونم که کدوم تغییر تو پیاده‌سازی باعث همچین مشکلاتی میشه، می‌تونید برای خبرهای بیشتر این [موضوع](https://github.com/satwikkansal/wtfpython/issues/100) رو نگاه کنید.
 
 ---
 
 
-### ▶ Hash brownies
+### ▶ کلیدهای هش
 <!-- Example ID: eb17db53-49fd-4b61-85d6-345c5ca213ff --->
 1\.
 ```py
@@ -625,12 +625,12 @@ some_dict[5.0] = "Ruby"
 some_dict[5] = "Python"
 ```
 
-**Output:**
+**خروجی:**
 
 ```py
 >>> some_dict[5.5]
 "JavaScript"
->>> some_dict[5.0] # "Python" destroyed the existence of "Ruby"?
+>>> some_dict[5.0] # رشته ("Python")، رشته ("Ruby") رو از بین برد؟
 "Python"
 >>> some_dict[5] 
 "Python"
@@ -642,12 +642,11 @@ complex
 "Python"
 ```
 
-So, why is Python all over the place?
+خب، چرا Python همه جارو گرفت؟
 
 
-#### 💡 Explanation
-
-* Uniqueness of keys in a Python dictionary is by *equivalence*, not identity. So even though `5`, `5.0`, and `5 + 0j` are distinct objects of different types, since they're equal, they can't both be in the same `dict` (or `set`). As soon as you insert any one of them, attempting to look up any distinct but equivalent key will succeed with the original mapped value (rather than failing with a `KeyError`):
+#### 💡 توضیحات
+* تو دیکشنری‌های پایتون چیزی که کلیدها رو یگانه میکنه مقدار کلیدهاست، نه شناسه اون‌ها. پس با اینکه `5`، `5.0` و `5 + 0j` شیءهای متمایزی از نوع‌های متفاوتی هستند ولی از اون جایی که مقدارشون با هم برابره، نمیتونن داخل یه `dict` به عنوان کلید جدا از هم باشن (حتی به عنوان مقادیر داخل یه `set` نمیتونن باشن). وقتی بخواید داخل یه دیکشنری جست‌وجو کنید، به محض اینکه یکی از این داده‌ها رو وارد کنید، مقدار نگاشته‌شده به کلیدی که مقدار برابر با اون داده داره ولی نوعش متفاوته، با موفقیت برگردونده میشه (به جای اینکه به ارور `KeyError` بردخورد کنید.).
   ```py
   >>> 5 == 5.0 == 5 + 0j
   True
@@ -660,7 +659,7 @@ So, why is Python all over the place?
   >>> (5 in some_dict) and (5 + 0j in some_dict)
   True
   ```
-* This applies when setting an item as well. So when you do `some_dict[5] = "Python"`, Python finds the existing item with equivalent key `5.0 -> "Ruby"`, overwrites its value in place, and leaves the original key alone.
+* همچنین این قانون برای مقداردهی توی دیکشنری هم اعمال میشه. وقتی شما عبارت `some_dict[5] = "Python"` رو اجرا می‌کنید، پایتون دنبال کلیدی با مقدار یکسان می‌گرده که اینجا ما داریم `5.0 -> "Ruby"` و مقدار نگاشته‌شده به این کلید در دیکشنری رو با مقدار جدید جایگزین میکنه و کلید رو همونجوری که هست باقی میذاره.
   ```py
   >>> some_dict
   {5.0: 'Ruby'}
@@ -668,51 +667,50 @@ So, why is Python all over the place?
   >>> some_dict
   {5.0: 'Python'}
   ```
-* So how can we update the key to `5` (instead of `5.0`)? We can't actually do this update in place, but what we can do is first delete the key (`del some_dict[5.0]`), and then set it (`some_dict[5]`) to get the integer `5` as the key instead of floating `5.0`, though this should be needed in rare cases.
+* خب پس چطوری میتونیم مقدار خود کلید رو به `5` تغییر بدیم (جای `5.0`)؟ راستش ما نمیتونیم این کار رو درجا انجام بدیم، ولی میتونیم اول اون کلید رو پاک کنیم (`del some_dict[5.0]`) و بعد کلیدی که میخوایم رو قرار بدیم (`some_dict[5]`) تا بتونیم عدد صحیح `5` رو به جای عدد اعشاری `5.0` به عنوان کلید داخل دیکشنری داشته باشیم. درکل خیلی کم پیش میاد که بخوایم چنین کاری کنیم.
 
-* How did Python find `5` in a dictionary containing `5.0`? Python does this in constant time without having to scan through every item by using hash functions. When Python looks up a key `foo` in a dict, it first computes `hash(foo)` (which runs in constant-time). Since in Python it is required that objects that compare equal also have the same hash value ([docs](https://docs.python.org/3/reference/datamodel.html#object.__hash__) here), `5`, `5.0`, and `5 + 0j` have the same hash value.
+* پایتون چطوری توی دیکشنری که کلید `5.0` رو داره، کلید `5` رو پیدا کرد؟ پایتون این کار رو توی زمان ثابتی توسط توابع هش انجام میده بدون اینکه مجبور باشه همه کلیدها رو بررسی کنه. وقتی پایتون دنبال کلیدی مثل `foo` داخل یه `dict` میگرده، اول مقدار `hash(foo)` رو محاسبه میکنه (که توی زمان ثابتی انجام میشه). از اونجایی که توی پایتون برای مقایسه برابری مقدار دو شیء لازمه که هش یکسانی هم داشته باشند ([مستندات](https://docs.python.org/3/reference/datamodel.html#object.__hash__)). `5`، `5.0` و `5 + 0j` مقدار هش یکسانی دارند.
   ```py
   >>> 5 == 5.0 == 5 + 0j
   True
   >>> hash(5) == hash(5.0) == hash(5 + 0j)
   True
   ```
-  **Note:** The inverse is not necessarily true: Objects with equal hash values may themselves be unequal. (This causes what's known as a [hash collision](https://en.wikipedia.org/wiki/Collision_(computer_science)), and degrades the constant-time performance that hashing usually provides.)
+  **توجه:** برعکس این قضیه لزوما درست نیست. شیءهای میتونن هش های یکسانی داشته باشند ولی مقادیر نابرابری داشته باشند. (این باعث به وجود اومدن پدیده‌ای معروف [تصادم هش]() میشه)، در این صورت توابع هش عملکرد خودشون رو کندتر از حالت عادی انجام می‌دهند.
 
 ---
 
-### ▶ Deep down, we're all the same.
+### ▶ در عمق وجود همه ما یکسان هستیم
 <!-- Example ID: 8f99a35f-1736-43e2-920d-3b78ec35da9b --->
 ```py
 class WTF:
   pass
 ```
 
-**Output:**
+**خروجی:**
 ```py
->>> WTF() == WTF() # two different instances can't be equal
+>>> WTF() == WTF() # دو نمونه متفاوت از یک کلاس نمیتونند برابر هم باشند
 False
->>> WTF() is WTF() # identities are also different
+>>> WTF() is WTF() # شناسه‌ها هم متفاوتند
 False
->>> hash(WTF()) == hash(WTF()) # hashes _should_ be different as well
+>>> hash(WTF()) == hash(WTF()) # هش‌ها هم _باید_ متفاوت باشند
 True
 >>> id(WTF()) == id(WTF())
 True
 ```
 
-#### 💡 Explanation:
-
-* When `id` was called, Python created a `WTF` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
-* When we do this twice in succession, Python allocates the same memory location to this second object as well. Since (in CPython) `id` uses the memory location as the object id, the id of the two objects is the same.
-* So, the object's id is unique only for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
-* But why did the `is` operator evaluate to `False`? Let's see with this snippet.
+#### 💡 توضیحات:
+* وقتی `id` صدا زده شد، پایتون یک شیء با کلاس `WTF` ساخت و اون رو به تابع `id` داد. تابع `id` شناسه این شیء رو میگیره (درواقع آدرس اون شیء در حافظه دستگاه) و شیء رو حذف میکنه.
+* وقتی این کار رو دو بار متوالی انجام بدیم، پایتون آدرس یکسانی رو به شیء دوم اختصاص میده. از اونجایی که (در CPython) تابع `id` از آدرس شیءها توی حافظه به عنوان شناسه برای اون‌ها استفاده میکنه، پس شناسه این دو شیء یکسانه.
+* پس، شناسه یک شیء تا زمانی که اون شیء وجود داره، منحصربه‌فرده. بعد از اینکه اون شیء حذف میشه یا قبل از اینکه اون شیء به وجود بیاد، چیز دیگه‌ای میتونه اون شناسه رو داشته باشه.
+* ولی چرا با عملگر `is` مقدار `False` رو دریافت کردیم؟ بیاید با یه قطعه‌کد ببینیم دلیلش رو.
   ```py
   class WTF(object):
     def __init__(self): print("I")
     def __del__(self): print("D")
   ```
 
-  **Output:**
+  **خروجی:**
   ```py
   >>> WTF() is WTF()
   I
@@ -727,11 +725,12 @@ True
   D
   True
   ```
-  As you may observe, the order in which the objects are destroyed is what made all the difference here.
+  همونطور که مشاهده می‌کنید، ترتیب حذف شدن شیءها باعث تفاوت میشه.
 
 ---
 
-### ▶ Disorder within order *
+
+### ▶ بی‌نظمی در خود نظم *
 <!-- Example ID: 91bff1f8-541d-455a-9de4-6cd8ff00ea66 --->
 ```py
 from collections import OrderedDict
@@ -747,36 +746,36 @@ another_ordered_dict[2] = 'b'; another_ordered_dict[1] = 'a';
 
 class DictWithHash(dict):
     """
-    A dict that also implements __hash__ magic.
+    یک dict که تابع جادویی __hash__ هم توش پیاده شده.
     """
     __hash__ = lambda self: 0
 
 class OrderedDictWithHash(OrderedDict):
     """
-    An OrderedDict that also implements __hash__ magic.
+    یک OrderedDict که تابع جادویی __hash__ هم توش پیاده شده.
     """
     __hash__ = lambda self: 0
 ```
 
-**Output**
+**خروجی**
 ```py
->>> dictionary == ordered_dict # If a == b
+>>> dictionary == ordered_dict # اگر مقدار اولی با دومی برابره
 True
->>> dictionary == another_ordered_dict # and b == c
+>>> dictionary == another_ordered_dict # و مقدار اولی با سومی برابره
 True
->>> ordered_dict == another_ordered_dict # then why isn't c == a ??
+>>> ordered_dict == another_ordered_dict # پس چرا مقدار دومی با سومی برابر نیست؟
 False
 
-# We all know that a set consists of only unique elements,
-# let's try making a set of these dictionaries and see what happens...
+# ما همه‌مون میدونیم که یک مجموعه فقط شامل عناصر منحصربه‌فرد و غیرتکراریه.
+# بیاید یک مجموعه از این دیکشنری‌ها بسازیم ببینیم چه اتفاقی میافته...
 
 >>> len({dictionary, ordered_dict, another_ordered_dict})
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: unhashable type: 'dict'
 
-# Makes sense since dict don't have __hash__ implemented, let's use
-# our wrapper classes.
+# منطقیه چون dict ها __hash__ توشون پیاده‌سازی نشده. پس بیاید از
+# کلاس‌هایی که خودمون درست کردیم استفاده کنیم.
 >>> dictionary = DictWithHash()
 >>> dictionary[1] = 'a'; dictionary[2] = 'b';
 >>> ordered_dict = OrderedDictWithHash()
@@ -785,22 +784,21 @@ TypeError: unhashable type: 'dict'
 >>> another_ordered_dict[2] = 'b'; another_ordered_dict[1] = 'a';
 >>> len({dictionary, ordered_dict, another_ordered_dict})
 1
->>> len({ordered_dict, another_ordered_dict, dictionary}) # changing the order
+>>> len({ordered_dict, another_ordered_dict, dictionary}) # ترتیب رو عوض می‌کنیم
 2
 ```
 
-What is going on here?
+چی شد؟
 
-#### 💡 Explanation:
+#### 💡 توضیحات:
 
-- The reason why intransitive equality didn't hold among `dictionary`, `ordered_dict` and `another_ordered_dict` is because of the way `__eq__` method is implemented in `OrderedDict` class. From the [docs](https://docs.python.org/3/library/collections.html#ordereddict-objects)
-  
-    > Equality tests between OrderedDict objects are order-sensitive and are implemented as `list(od1.items())==list(od2.items())`. Equality tests between `OrderedDict` objects and other Mapping objects are order-insensitive like regular dictionaries.
-- The reason for this equality in behavior is that it allows `OrderedDict` objects to be directly substituted anywhere a regular dictionary is used.
-- Okay, so why did changing the order affect the length of the generated `set` object? The answer is the lack of intransitive equality only. Since sets are "unordered" collections of unique elements, the order in which elements are inserted shouldn't matter. But in this case, it does matter. Let's break it down a bit,
-    ```py
+- دلیل اینکه این مقایسه بین متغیرهای `dictionary`، `ordered_dict` و `another_ordered_dict` به درستی اجرا نمیشه به خاطر نحوه پیاده‌سازی تابع `__eq__` در کلاس `OrderedDict` هست. طبق [مستندات](https://docs.python.org/3/library/collections.html#ordereddict-objects)
+    > مقایسه برابری بین شیءهایی از نوع OrderedDict به ترتیب اعضای آن‌ها هم بستگی دارد و به صورت `list(od1.items())==list(od2.items())` پیاده سازی شده است. مقایسه برابری بین شیءهای `OrderedDict` و شیءهای قابل نگاشت دیگر به ترتیب اعضای آن‌ها بستگی ندارد و مقایسه همانند دیکشنری‌های عادی انجام می‌شود.
+- این رفتار باعث میشه که بتونیم `OrderedDict` ها رو هرجایی که یک دیکشنری عادی کاربرد داره، جایگزین کنیم و استفاده کنیم.
+- خب، حالا چرا تغییر ترتیب روی طول مجموعه‌ای که از دیکشنری‌ها ساختیم، تاثیر گذاشت؟ جوابش همین رفتار مقایسه‌ای غیرانتقالی بین این شیءهاست. از اونجایی که `set` ها مجموعه‌ای از عناصر غیرتکراری و بدون نظم هستند، ترتیبی که عناصر تو این مجموعه‌ها درج میشن نباید مهم باشه. ولی در این مورد، مهم هست. بیاید کمی تجزیه و تحلیلش کنیم.
+  ```py
     >>> some_set = set()
-    >>> some_set.add(dictionary) # these are the mapping objects from the snippets above
+    >>> some_set.add(dictionary) # این شیء‌ها از قطعه‌کدهای بالا هستند.
     >>> ordered_dict in some_set
     True
     >>> some_set.add(ordered_dict)
@@ -825,11 +823,13 @@ What is going on here?
     >>> len(another_set)
     2
     ```
-    So the inconsistency is due to `another_ordered_dict in another_set` being `False` because `ordered_dict` was already present in `another_set` and as observed before, `ordered_dict == another_ordered_dict` is `False`.
+
+    پس بی‌ثباتی تو این رفتار به خاطر اینه که مقدار `another_ordered_dict in another_set` برابر با `False` هست چون `ordered_dict` از قبل داخل `another_set` هست و همونطور که قبلا مشاهده کردید، مقدار `ordered_dict == another_ordered_dict` برابر با `False` هست.
 
 ---
 
-### ▶ Keep trying... *
+
+### ▶ تلاش کن... *
 <!-- Example ID: b4349443-e89f-4d25-a109-82616be9d41a --->
 ```py
 def some_func():
@@ -845,13 +845,14 @@ def another_func():
         finally:
             print("Finally!")
 
-def one_more_func(): # A gotcha!
+def one_more_func():
     try:
         for i in range(3):
             try:
                 1 / i
             except ZeroDivisionError:
-                # Let's throw it here and handle it outside for loop
+                # بذارید اینجا ارور بدیم و بیرون حلقه بهش
+                # رسیدگی کنیم
                 raise ZeroDivisionError("A trivial divide by zero error")
             finally:
                 print("Iteration", i)
@@ -860,7 +861,7 @@ def one_more_func(): # A gotcha!
         print("Zero division error occurred", e)
 ```
 
-**Output:**
+**خروجی:**
 
 ```py
 >>> some_func()
@@ -881,16 +882,16 @@ Iteration 0
 
 ```
 
-#### 💡 Explanation:
+#### 💡 توضیحات:
 
-- When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed on the way out.
-- The return value of a function is determined by the last `return` statement executed. Since the `finally` clause always executes, a `return` statement executed in the `finally` clause will always be the last one executed.
-- The caveat here is, if the finally clause executes a `return` or `break` statement, the temporarily saved exception is discarded.
+- وقتی یک عبارت `return`، `break` یا `continue` داخل بخش `try` از یک عبارت "try...finally" اجرا میشه، بخش `fianlly` هم هنگام خارج شدن اجرا میشه.
+- مقدار بازگشتی یک تابع از طریق آخرین عبارت `return` که داخل تابع اجرا میشه، مشخص میشه. از اونجایی که بخش `finally` همیشه اجرا میشه، عبارت `return` که داخل بخش `finally` هست آخرین عبارتیه که اجرا میشه.
+- نکته اینجاست که اگه بخش داخل بخش `finally` یک عبارت `return` یا `break` اجرا بشه، `exception` موقتی که ذخیره شده، رها میشه.
 
 ---
 
 
-### ▶ For what?
+### ▶ برای چی؟
 <!-- Example ID: 64a9dccf-5083-4bc9-98aa-8aeecde4f210 --->
 ```py
 some_string = "wtf"
@@ -899,27 +900,26 @@ for i, some_dict[i] in enumerate(some_string):
     i = 10
 ```
 
-**Output:**
+**خروجی:**
 ```py
->>> some_dict # An indexed dict appears.
+>>> some_dict # یک دیکشنری مرتب‌شده نمایان میشه.
 {0: 'w', 1: 't', 2: 'f'}
 ```
 
-####  💡 Explanation:
-
-* A `for` statement is defined in the [Python grammar](https://docs.python.org/3/reference/grammar.html) as:
+####  💡 توضیحات:
+* یک حلقه `for` در [گرامر پایتون](https://docs.python.org/3/reference/grammar.html) این طور تعریف میشه:
   ```
   for_stmt: 'for' exprlist 'in' testlist ':' suite ['else' ':' suite]
   ```
-  Where `exprlist` is the assignment target. This means that the equivalent of `{exprlist} = {next_value}` is **executed for each item** in the iterable.
-  An interesting example that illustrates this:
+  به طوری که `exprlist` یک هدف برای مقداردهیه. این یعنی، معادل عبارت `{exprlist} = {next_value}` **برای هر شیء داخل `testlist` اجرا می‌شود**.
+  یک مثال جالب برای نشون دادن این تعریف:
   ```py
   for i in range(4):
       print(i)
       i = 10
   ```
 
-  **Output:**
+  **خروجی:**
   ```
   0
   1
@@ -927,13 +927,13 @@ for i, some_dict[i] in enumerate(some_string):
   3
   ```
 
-  Did you expect the loop to run just once?
+  آیا انتظار داشتید که حلقه فقط یک بار اجرا بشه؟
 
-  **💡 Explanation:**
+  **💡 توضیحات:**
 
-  - The assignment statement `i = 10` never affects the iterations of the loop because of the way for loops work in Python. Before the beginning of every iteration, the next item provided by the iterator (`range(4)` in this case) is unpacked and assigned the target list variables (`i` in this case).
+  - عبارت مقداردهی `i = 10` به خاطر نحوه کار کردن حلقه‌ها، هیچوقت باعث تغییر در تکرار حلقه نمیشه. قبل از شروع هر تکرار، مقدار بعدی که توسط شیء قابل تکرار (که در اینجا `range(4)` است) ارائه میشه، از بسته خارج میشه و به متغیرهای لیست هدف (که در اینجا `i` است) مقداردهی میشه.
 
-* The `enumerate(some_string)` function yields a new value `i` (a counter going up) and a character from the `some_string` in each iteration. It then sets the (just assigned) `i` key of the dictionary `some_dict` to that character. The unrolling of the loop can be simplified as:
+* تابع `enumerate(some_string)`، یک متغیر `i` (که یک شمارنده اقزایشی است) و یک حرف از حروف رشته `some_string` رو در هر تکرار برمیگردونه. و بعدش برای کلید `i` (تازه مقداردهی‌شده) در دیکشنری `some_dict`، مقدار اون حرف رو تنظیم می‌کنه. بازشده این حلقه می‌تونه مانند مثال زیر ساده بشه:
   ```py
   >>> i, some_dict[i] = (0, 'w')
   >>> i, some_dict[i] = (1, 't')
@@ -943,20 +943,20 @@ for i, some_dict[i] in enumerate(some_string):
 
 ---
 
-### ▶ Evaluation time discrepancy
+### ▶ اختلاف زمانی در محاسبه
 <!-- Example ID: 6aa11a4b-4cf1-467a-b43a-810731517e98 --->
 1\.
 ```py
 array = [1, 8, 15]
-# A typical generator expression
+# یک عبارت تولیدکننده عادی
 gen = (x for x in array if array.count(x) > 0)
 array = [2, 8, 22]
 ```
 
-**Output:**
+**خروجی:**
 
 ```py
->>> print(list(gen)) # Where did the other values go?
+>>> print(list(gen)) # پس بقیه مقدارها کجا رفتن؟
 [8]
 ```
 
@@ -972,7 +972,7 @@ gen_2 = (x for x in array_2)
 array_2[:] = [1,2,3,4,5]
 ```
 
-**Output:**
+**خروجی:**
 ```py
 >>> print(list(gen_1))
 [1, 2, 3, 4]
@@ -992,27 +992,27 @@ array_3 = [4, 5, 6]
 array_4 = [400, 500, 600]
 ```
 
-**Output:**
+**خروجی:**
 ```py
 >>> print(list(gen))
 [401, 501, 601, 402, 502, 602, 403, 503, 603]
 ```
 
-#### 💡 Explanation
+#### 💡 توضیحات
 
-- In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at runtime.
-- So before runtime, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
-- The differences in the output of `g1` and `g2` in the second part is due the way variables `array_1` and `array_2` are re-assigned values.
-- In the first case, `array_1` is bound to the new object `[1,2,3,4,5]` and since the `in` clause is evaluated at the declaration time it still refers to the old object `[1,2,3,4]` (which is not destroyed).
-- In the second case, the slice assignment to `array_2` updates the same old object `[1,2,3,4]` to `[1,2,3,4,5]`. Hence both the `g2` and `array_2` still have reference to the same object (which has now been updated to `[1,2,3,4,5]`).
-- Okay, going by the logic discussed so far, shouldn't be the value of `list(gen)` in the third snippet be `[11, 21, 31, 12, 22, 32, 13, 23, 33]`? (because `array_3` and `array_4` are going to behave just like `array_1`). The reason why (only) `array_4` values got updated is explained in [PEP-289](https://www.python.org/dev/peps/pep-0289/#the-details)
-  
-    > Only the outermost for-expression is evaluated immediately, the other expressions are deferred until the generator is run.
+- در یک عبارت [تولیدکننده](https://wiki.python.org/moin/Generators)، عبارت بند `in` در هنگام تعریف محاسبه میشه ولی عبارت شرطی در زمان اجرا محاسبه میشه.
+- پس قبل از زمان اجرا، `array` دوباره با لیست `[2, 8, 22]` مقداردهی میشه و از آن‌جایی که در مقدار جدید `array`، بین `1`، `8` و `15`، فقط تعداد `8` بزرگتر از `0` است، تولیدکننده فقط مقدار `8` رو برمیگردونه
+- تفاوت در مقدار `gen_1` و `gen_2` در بخش دوم به خاطر نحوه مقداردهی دوباره `array_1` و `array_2` است.
+- در مورد اول، متغیر `array_1` به شیء جدید `[1,2,3,4,5]` وصله و از اون جایی که عبارت بند `in` در هنگام تعریف محاسبه میشه، `array_1` داخل تولیدکننده هنوز به شیء قدیمی `[1,2,3,4]` (که هنوز حذف نشده)
+- در مورد دوم، مقداردهی برشی به `array_2` باعث به‌روز شدن شیء قدیمی این متغیر از `[1,2,3,4]` به `[1,2,3,4,5]` میشه و هر دو متغیر `gen_2` و `array_2` به یک شیء اشاره میکنند که حالا به‌روز شده.
+- خیلی‌خب، حالا طبق منطقی که تا الان گفتیم، نباید مقدار `list(gen)` در قطعه‌کد سوم، `[11, 21, 31, 12, 22, 32, 13, 23, 33]` باشه؟ (چون `array_3` و `array_4` قراره درست مثل `array_1` رفتار کنن). دلیل این که چرا (فقط) مقادیر `array_4` به‌روز شدن، توی [PEP-289](https://www.python.org/dev/peps/pep-0289/#the-details) توضیح داده شده.
+
+    > فقط بیرونی‌ترین عبارت حلقه `for` بلافاصله محاسبه میشه و باقی عبارت‌ها به تعویق انداخته میشن تا زمانی که تولیدکننده اجرا بشه.
 
 ---
 
 
-### ▶ `is not ...` is not `is (not ...)`
+### ▶ هر گردی، گردو نیست
 <!-- Example ID: b26fb1ed-0c7d-4b9c-8c6d-94a58a055c0d --->
 ```py
 >>> 'something' is not None
@@ -1021,25 +1021,25 @@ True
 False
 ```
 
-#### 💡 Explanation
-
-- `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
-- `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise. 
-- In the example, `(not None)` evaluates to `True` since the value `None` is `False` in a boolean context, so the expression becomes `'something' is True`.
+#### 💡 توضیحات
+- عملگر `is not` یک عملگر باینری واحده و رفتارش متفاوت تر از استفاده `is` و `not` به صورت جداگانه‌ست.
+- عملگر `is not` مقدار `False` رو برمیگردونه اگر متغیرها در هردو سمت این عملگر به شیء یکسانی اشاره کنند و درغیر این صورت، مقدار `True` برمیگردونه
+- در مثال بالا، عبارت `(not None)` برابره با مقدار `True` از اونجایی که مقدار `None` در زمینه boolean به `False` تبدیل میشه. پس کل عبارت معادل عبارت `'something' is True` میشه.
 
 ---
 
-### ▶ A tic-tac-toe where X wins in the first attempt!
+
+### ▶ یک بازی دوز که توش X همون اول برنده میشه!
 <!-- Example ID: 69329249-bdcb-424f-bd09-cca2e6705a7a --->
 
 ```py
-# Let's initialize a row
+# بیاید یک سطر تشکیل بدیم
 row = [""] * 3 #row i['', '', '']
-# Let's make a board
+# حالا بیاید تخته بازی رو ایجاد کنیم
 board = [row] * 3
 ```
 
-**Output:**
+**خروجی:**
 
 ```py
 >>> board
@@ -1053,11 +1053,11 @@ board = [row] * 3
 [['X', '', ''], ['X', '', ''], ['X', '', '']]
 ```
 
-We didn't assign three `"X"`s, did we?
+ما که سه‌تا `"X"` نذاشتیم. گذاشتیم مگه؟
 
-#### 💡 Explanation:
+#### 💡 توضیحات:
 
-When we initialize `row` variable, this visualization explains what happens in the memory
+وقتی متغیر `row` رو تشکیل میدیم، تصویر زیر نشون میده که چه اتفاقی در حافظه دستگاه میافته.
 
 <p align="center">
     <picture>
@@ -1067,7 +1067,7 @@ When we initialize `row` variable, this visualization explains what happens in t
     </picture>
 </p>
 
-And when the `board` is initialized by multiplying the `row`, this is what happens inside the memory (each of the elements `board[0]`, `board[1]` and `board[2]` is a reference to the same list referred by `row`)
+و وقتی متغیر `board` رو با ضرب کردن متغیر `row` تشکیل میدیم، تصویر زیر به صورت کلی نشون میده که چه اتفاقی در حافظه میافته (هر کدوم از عناصر `board[0]`، `board[1]` و `board[2]` در حافظه به لیست یکسانی به نشانی `row` اشاره میکنند).
 
 <p align="center">
     <picture>
@@ -1077,7 +1077,7 @@ And when the `board` is initialized by multiplying the `row`, this is what happe
     </picture>
 </p>
 
-We can avoid this scenario here by not using `row` variable to generate `board`. (Asked in [this](https://github.com/satwikkansal/wtfpython/issues/68) issue).
+ما می‌تونیم با استفاده نکردن از متغیر `row` برای تولید متغیر `board` از این سناریو پرهیز کنیم. (در [این](https://github.com/satwikkansal/wtfpython/issues/68) موضوع پرسیده شده).
 
 ```py
 >>> board = [['']*3 for _ in range(3)]
@@ -1088,7 +1088,8 @@ We can avoid this scenario here by not using `row` variable to generate `board`.
 
 ---
 
-### ▶ Schrödinger's variable *
+
+### ▶ متغیر شرودینگر *
 <!-- Example ID: 4dc42f77-94cb-4eb5-a120-8203d3ed7604 --->
 
 
@@ -1104,7 +1105,7 @@ for x in range(7):
 funcs_results = [func() for func in funcs]
 ```
 
-**Output (Python version):**
+**خروجی:**
 ```py
 >>> results
 [0, 1, 2, 3, 4, 5, 6]
@@ -1112,7 +1113,7 @@ funcs_results = [func() for func in funcs]
 [6, 6, 6, 6, 6, 6, 6]
 ```
 
-The values of `x` were different in every iteration prior to appending `some_func` to `funcs`, but all the functions return 6 when they're evaluated after the loop completes.
+مقدار `x` در هر تکرار حلقه قبل از اضافه کردن `some_func` به لیست `funcs` متفاوت بود، ولی همه توابع در خارج از حلقه مقدار `6` رو برمیگردونند.
 
 2.
 
@@ -1122,14 +1123,16 @@ The values of `x` were different in every iteration prior to appending `some_fun
 [512, 512, 512, 512, 512, 512, 512, 512, 512, 512]
 ```
 
-#### 💡 Explanation:
-* When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the *variable*, not its *value*. The function looks up `x` in the surrounding context, rather than using the value of `x` at the time the function is created. So all of the functions use the latest value assigned to the variable for computation. We can see that it's using the `x` from the surrounding context (i.e. *not* a local variable) with:
+#### 💡 توضیحات:
+* وقتی یک تابع رو در داخل یک حلقه تعریف می‌کنیم که در بدنه‌اش از متغیر اون حلقه استفاده شده، بست این تابع به *متغیر* وصله، نه *مقدار* اون. تابع به جای اینکه از مقدار `x` در زمان تعریف تابع استفاده کنه، در زمینه اطرافش دنبال `x` می‌گرده. پس همه این توابع از آخرین مقداری که به متغیر `x` مقداردهی شده برای محاسباتشون استفاده می‌کنند. ما می‌تونیم ببینیم که این توابع از متغیر `x` که در زمینه اطرافشون (*نه* از متغیر محلی) هست، استفاده می‌کنند، به این صورت:
+
 ```py
 >>> import inspect
 >>> inspect.getclosurevars(funcs[0])
 ClosureVars(nonlocals={}, globals={'x': 6}, builtins={}, unbound=set())
 ```
-Since `x` is a global value, we can change the value that the `funcs` will lookup and return by updating `x`:
+
+از اونجایی که `x` یک متغیر سراسریه (گلوبال)، ما می‌تونیم مقداری که توابع داخل `funcs` دنبالشون می‌گردند و برمیگردونند رو با به‌روز کردن `x` تغییر بدیم:
 
 ```py
 >>> x = 42
@@ -1137,7 +1140,7 @@ Since `x` is a global value, we can change the value that the `funcs` will looku
 [42, 42, 42, 42, 42, 42, 42]
 ```
 
-* To get the desired behavior you can pass in the loop variable as a named variable to the function. **Why does this work?** Because this will define the variable *inside* the function's scope. It will no longer go to the surrounding (global) scope to look up the variables value but will create a local variable that stores the value of `x` at that point in time.
+* برای رسیدن به رفتار موردنظر شما می‌تونید متغیر حلقه رو به عنوان یک متغیر اسم‌دار به تابع بدید. **چرا در این صورت کار می‌کنه؟** چون اینجوری یک متغیر در دامنه خود تابع تعریف میشه. تابع دیگه دنبال مقدار `x` در دامنه اطراف (سراسری) نمی‌گرده ولی یک متغیر محلی برای ذخیره کردن مقدار `x` در اون لحظه می‌سازه.
 
 ```py
 funcs = []
@@ -1147,7 +1150,7 @@ for x in range(7):
     funcs.append(some_func)
 ```
 
-**Output:**
+**خروجی:**
 
 ```py
 >>> funcs_results = [func() for func in funcs]
@@ -1155,7 +1158,7 @@ for x in range(7):
 [0, 1, 2, 3, 4, 5, 6]
 ```
 
-It is not longer using the `x` in the global scope:
+دیگه از متغیر `x` در دامنه سراسری استفاده نمی‌کنه:
 
 ```py
 >>> inspect.getclosurevars(funcs[0])
@@ -1164,7 +1167,8 @@ ClosureVars(nonlocals={}, globals={}, builtins={}, unbound=set())
 
 ---
 
-### ▶ The chicken-egg problem *
+
+### ▶ اول مرغ بوده یا تخم مرغ؟ *
 <!-- Example ID: 60730dc2-0d79-4416-8568-2a63323b3ce8 --->
 1\.
 ```py
@@ -1176,7 +1180,7 @@ True
 True
 ```
 
-So which is the "ultimate" base class? There's more to the confusion by the way,
+پس کدوم کلاس پایه "نهایی" هست؟ راستی سردرگمی بیشتری هم تو راهه.
 
 2\. 
 
@@ -1202,21 +1206,23 @@ False
 ```
 
 
-#### 💡 Explanation
+#### 💡 توضیحات
 
-- `type` is a [metaclass](https://realpython.com/python-metaclasses/) in Python.
-- **Everything** is an `object` in Python, which includes classes as well as their objects (instances).
-- class `type` is the metaclass of class `object`, and every class (including `type`) has inherited directly or indirectly from `object`.
-- There is no real base class among `object` and `type`. The confusion in the above snippets is arising because we're thinking about these relationships (`issubclass` and `isinstance`) in terms of Python classes. The relationship between `object` and `type` can't be reproduced in pure python. To be more precise the following relationships can't be reproduced in pure Python,
-    + class A is an instance of class B, and class B is an instance of class A.
-    + class A is an instance of itself.
-- These relationships between `object` and `type` (both being instances of each other as well as themselves) exist in Python because of "cheating" at the implementation level.
+- در پایتون، `type` یک [متاکلاس](https://realpython.com/python-metaclasses/) است.
+- در پایتون **همه چیز** یک `object` است، که کلاس‌ها و همچنین نمونه‌هاشون (یا همان instance های کلاس‌ها) هم شامل این موضوع میشن.
+- کلاس `type` یک متاکلاسه برای کلاس `object` و همه کلاس‌ها (همچنین کلاس `type`) به صورت مستقیم یا غیرمستقیم از کلاس `object` ارث بری کرده است.
+- هیچ کلاس پایه واقعی بین کلاس‌های `object` و `type` وجود نداره. سردرگمی که در قطعه‌کدهای بالا به وجود اومده، به خاطر اینه که ما به این روابط (یعنی `issubclass` و `isinstance`) از دیدگاه کلاس‌های پایتون فکر می‌کنیم. رابطه بین `object` و `type` رو در پایتون خالص نمیشه بازتولید کرد. برای اینکه دقیق‌تر باشیم، رابطه‌های زیر در پایتون خالص نمی‌تونند بازتولید بشن.
+    + کلاس A یک نمونه از کلاس B، و کلاس B یک نمونه از کلاس A باشه.
+    + کلاس A یک نمونه از خودش باشه.
+- 
+- این روابط بین `object` و `type` (که هردو نمونه یکدیگه و همچنین خودشون باشند) به خاطر "تقلب" در مرحله پیاده‌سازی، وجود دارند.
 
 ---
 
-### ▶ Subclass relationships
+
+### ▶ روابط بین زیرمجموعه کلاس‌ها
 <!-- Example ID: 9f6d8cf0-e1b5-42d0-84a0-4cfab25a0bc0 --->
-**Output:**
+**خروجی:**
 ```py
 >>> from collections.abc import Hashable
 >>> issubclass(list, object)
@@ -1227,14 +1233,14 @@ True
 False
 ```
 
-The Subclass relationships were expected to be transitive, right? (i.e., if `A` is a subclass of `B`, and `B` is a subclass of `C`, the `A` _should_ a subclass of `C`)
+ما انتظار داشتیم که روابط بین زیرکلاس‌ها، انتقالی باشند، درسته؟ (یعنی اگه `A` زیرکلاس `B` باشه و `B` هم زیرکلاس `C` باشه، کلس `A` __باید__ زیرکلاس `C` باشه)
 
-#### 💡 Explanation:
+#### 💡 توضیحات:
 
-* Subclass relationships are not necessarily transitive in Python. Anyone is allowed to define their own, arbitrary `__subclasscheck__` in a metaclass.
-* When `issubclass(cls, Hashable)` is called, it simply looks for non-Falsey "`__hash__`" method in `cls` or anything it inherits from.
-* Since `object` is hashable, but `list` is non-hashable, it breaks the transitivity relation.
-* More detailed explanation can be found [here](https://www.naftaliharris.com/blog/python-subclass-intransitivity/).
+* روابط بین زیرکلاس‌ها در پایتون لزوما انتقالی نیستند. همه مجازند که تابع `__subclasscheck__` دلخواه خودشون رو در یک متاکلاس تعریف کنند.
+* وقتی عبارت `issubclass(cls, Hashable)` اجرا میشه، برنامه دنبال یک تابع "غیر نادرست" (یا non-Falsy) در `cls` یا هرچیزی که ازش ارث‌بری می‌کنه، می‌گرده.
+* از اونجایی که `object` قابل هش شدنه، ولی `list` این‌طور نیست، رابطه انتقالی شکسته میشه.
+* توضیحات با جزئیات بیشتر [اینجا](https://www.naftaliharris.com/blog/python-subclass-intransitivity/) پیدا میشه.
 
 ---
 

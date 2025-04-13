@@ -412,8 +412,8 @@ False
 
 شاید چنین رفتاری برای شما احمقانه به نظر بیاد ولی برای عملیات‌هایی مثل `a == b == c` و `0 <= x <= 100` عالی عمل می‌کنه.
 
-* عبارت `False is False is False` معادل عبارت `(False is False) and (False is False)` است
-* عبارت `True is False == False` معادل عبارت `(True is False) and (False == False)` است و از آنجایی که قسمت اول این عبارت (`True is False`) پس از ارزیابی برابر با `False` می‌شود. پس کل عبارت معادل `False` می‌شود.
+* &#x202b; عبارت `False is False is False` معادل عبارت `(False is False) and (False is False)` است
+* &#x202b; عبارت `True is False == False` معادل عبارت `(True is False) and (False == False)` است و از آنجایی که قسمت اول این عبارت (`True is False`) پس از ارزیابی برابر با `False` می‌شود. پس کل عبارت معادل `False` می‌شود.
 * عبارت `1 > 0 < 1` معادل عبارت `(1 > 0) and (0 < 1)` است.
 * عبارت `(1 > 0) < 1` معادل عبارت `True < 1` است و :
   ```py

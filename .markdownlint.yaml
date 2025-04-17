@@ -1,0 +1,17 @@
+MD013:
+  line_length: 120
+
+# no-duplicate-heading - Multiple headings with the same content (Ignore multiple `Explanation` headings)
+MD024: false
+
+# no-trailing-punctuation - Trailing punctuation in heading (Ignore exclamation marks in headings)
+MD026: false
+
+# no-inline-html : Inline HTML (HTML is used for centered and theme specific images)
+MD033: false
+
+# no-inline-html : Bare URL used (site should be attributed transparently, because otherwise we have to un-necesarily explain where the link directs)
+MD034: false
+
+# first-line-h1 : First line in a file should be a top-level heading (Ignore because diff file will never have valid heading)
+MD041: false

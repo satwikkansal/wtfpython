@@ -17,7 +17,8 @@ jobs:
     - name: Write git diff to temp file
       run: |
         git fetch origin
-        git diff origin/${{ github.base_ref }} --unified=0 *.md translations/*/*.md \
+        git diff origin/${{ github.base_ref }} *.md translations/*/*.md \
+        | sed -n '/^+/p' | sed '/^+++/d' | sed 's/^+//' \
         > ${{ runner.temp }}/diff.md
     - uses: DavidAnson/markdownlint-cli2-action@v17
       with:

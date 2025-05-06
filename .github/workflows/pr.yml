@@ -20,6 +20,9 @@ jobs:
         git diff origin/${{ github.base_ref }} *.md translations/*/*.md \
         | sed -n '/^+/p' | sed '/^+++/d' | sed 's/^+//' \
         > ${{ runner.temp }}/diff.md
-    - uses: DavidAnson/markdownlint-cli2-action@v17
+    - name: Output diff
+      run: cat ${{ runner.temp }}/diff.md
+    - name: Check diff with markdownlint
+      uses: DavidAnson/markdownlint-cli2-action@v17
       with:
         globs: "${{ runner.temp }}/diff.md"

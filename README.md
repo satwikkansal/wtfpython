@@ -9,19 +9,33 @@
 <h1 align="center">What the f*ck Python! 😱</h1>
 <p align="center">Exploring and understanding Python through surprising snippets.</p>
 
-Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn) | [Vietnamese Tiếng Việt](https://github.com/vuduclyunitn/wtfptyhon-vi) | [Spanish Español](https://web.archive.org/web/20220511161045/https://github.com/JoseDeFreitas/wtfpython-es) | [Korean 한국어](https://github.com/buttercrab/wtfpython-ko) | [Russian Русский](https://github.com/satwikkansal/wtfpython/tree/master/translations/ru-russian) | [German Deutsch](https://github.com/BenSt099/wtfpython) | [Persian فارسی](https://github.com/satwikkansal/wtfpython/tree/master/translations/fa-farsi) | [Add translation](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
+Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn) |
+[Vietnamese Tiếng Việt](https://github.com/vuduclyunitn/wtfptyhon-vi) |
+[Spanish Español](https://web.archive.org/web/20220511161045/https://github.com/JoseDeFreitas/wtfpython-es) |
+[Korean 한국어](https://github.com/buttercrab/wtfpython-ko) |
+[Russian Русский](https://github.com/satwikkansal/wtfpython/tree/master/translations/ru-russian) |
+[German Deutsch](https://github.com/BenSt099/wtfpython) |
+[Persian فارسی](https://github.com/satwikkansal/wtfpython/tree/master/translations/fa-farsi) |
+[Add translation](https://github.com/satwikkansal/wtfpython/issues/new?title=Add%20translation%20for%20[LANGUAGE]&body=Expected%20time%20to%20finish:%20[X]%20weeks.%20I%27ll%20start%20working%20on%20it%20from%20[Y].)
 
 Other modes: [Interactive Website](https://wtfpython-interactive.vercel.app) | [Interactive Notebook](https://colab.research.google.com/github/satwikkansal/wtfpython/blob/master/irrelevant/wtf.ipynb)
 
-Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious at first sight.
+Python, being a beautifully designed high-level and interpreter-based programming language,
+provides us with many features for the programmer's comfort.
+But sometimes, the outcomes of a Python snippet may not seem obvious at first sight.
 
-Here's a fun project attempting to explain what exactly is happening under the hood for some counter-intuitive snippets and lesser-known features in Python.
+Here's a fun project attempting to explain what exactly is happening under the hood for some counter-intuitive snippets
+and lesser-known features in Python.
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
+While some of the examples you see below may not be WTFs in the truest sense,
+but they'll reveal some of the interesting parts of Python that you might be unaware of.
+I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
 
-If you're an experienced Python programmer, you can take it as a challenge to get most of them right in the first attempt. You may have already experienced some of them before, and I might be able to revive sweet old memories of yours! :sweat_smile:
+If you're an experienced Python programmer, you can take it as a challenge to get most of them right in the first attempt
+You may have already experienced some of them before, and I might be able to revive sweet old memories of yours! :sweat_smile:
 
-PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/) (the examples marked with asterisk are the ones added in the latest major revision).
+PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/)
+(the examples marked with asterisk are the ones added in the latest major revision).
 
 So, here we go...
 
@@ -116,6 +130,8 @@ So, here we go...
 
 All the examples are structured like below:
 
+> ## Section: (if necessary)
+>
 > ### ▶ Some fancy Title
 >
 > ```py
@@ -148,17 +164,20 @@ All the examples are structured like below:
 > # some justified output
 > ```
 
-**Note:** All the examples are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified before the output.
+**Note:** All the examples are tested on Python 3.5.2 interactive interpreter,
+and they should work for all the Python versions unless explicitly specified before the output.
 
 # Usage
 
 A nice way to get the most out of these examples, in my opinion, is to read them in sequential order, and for every example:
 
-- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, you'll successfully anticipate what's going to happen next most of the time.
+- Carefully read the initial code for setting up the example.
+  If you're an experienced Python programmer, you'll successfully anticipate what's going to happen next most of the time.
 - Read the output snippets and,
   - Check if the outputs are the same as you'd expect.
   - Make sure if you know the exact reason behind the output being the way it is.
-    - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfpython/issues/new)).
+    - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation
+  (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfpython/issues/new)).
     - If yes, give a gentle pat on your back, and you may skip to the next example.
 
 ---
@@ -170,7 +189,6 @@ A nice way to get the most out of these examples, in my opinion, is to read them
 ### ▶ First things first! \*
 
 <!-- Example ID: d3d73936-3cf1-4632-b5ab-817981338863 -->
-<!-- read-only -->
 
 For some reason, the Python 3.8's "Walrus" operator (`:=`) has become quite popular. Let's check it out,
 
@@ -230,9 +248,8 @@ SyntaxError: invalid syntax
 
 #### 💡 Explanation
 
-**Quick walrus operator refresher**
-
-The Walrus operator (`:=`) was introduced in Python 3.8, it can be useful in situations where you'd want to assign values to variables within an expression.
+The Walrus operator (`:=`) was introduced in Python 3.8,
+it can be useful in situations where you'd want to assign values to variables within an expression.
 
 ```py
 def some_func():
@@ -264,12 +281,13 @@ if a := some_func():
 
 This saved one line of code, and implicitly prevented invoking `some_func` twice.
 
-- Unparenthesized "assignment expression" (use of walrus operator), is restricted at the top level, hence the `SyntaxError` in the `a := "wtf_walrus"` statement of the first snippet. Parenthesizing it worked as expected and assigned `a`.
-
-- As usual, parenthesizing of an expression containing `=` operator is not allowed. Hence the syntax error in `(a, b = 6, 9)`.
-
-- The syntax of the Walrus operator is of the form `NAME:= expr`, where `NAME` is a valid identifier, and `expr` is a valid expression. Hence, iterable packing and unpacking are not supported which means,
-
+- Unparenthesized "assignment expression" (use of walrus operator), is restricted at the top level,
+  hence the `SyntaxError` in the `a := "wtf_walrus"` statement of the first snippet.
+  Parenthesizing it worked as expected and assigned `a`.
+- As usual, parenthesizing of an expression containing `=` operator is not allowed.
+  Hence the syntax error in `(a, b = 6, 9)`.
+- The syntax of the Walrus operator is of the form `NAME:= expr`, where `NAME` is a valid identifier,
+  and `expr` is a valid expression. Hence, iterable packing and unpacking are not supported which means,
   - `(a := 6, 9)` is equivalent to `((a := 6), 9)` and ultimately `(a, 9)` (where `a`'s value is 6')
 
     ```py
@@ -319,7 +337,7 @@ a = "wtf!"; b = "wtf!"
 assert a is b
 ```
 
-4\. **Disclaimer - snippet is not relavant in modern Python versions**
+4\. **Disclaimer - snippet is not relevant in modern Python versions**
 
 **Output (< Python3.7 )**
 
@@ -334,12 +352,15 @@ Makes sense, right?
 
 #### 💡 Explanation:
 
-- The behavior in first and second snippets is due to a CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
+- The behavior in first and second snippets is due to a CPython optimization (called string interning)
+  that tries to use existing immutable objects in some cases rather than creating a new object every time.
 - After being "interned," many variables may reference the same string object in memory (saving memory thereby).
-- In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation-dependent. There are some rules that can be used to guess if a string will be interned or not:
+- In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is
+  implementation-dependent. There are some rules that can be used to guess if a string will be interned or not:
   - All length 0 and length 1 strings are interned.
   - Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f'])` will not be interned)
-  - Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. CPython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
+  - Strings that are not composed of ASCII letters, digits or underscores, are not interned.
+  This explains why `'wtf!'` was not interned due to `!`. CPython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
 
 <p align="center">
     <picture>
@@ -349,10 +370,25 @@ Makes sense, right?
     </picture>
 </p>
 
-- When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `"wtf!"` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compile-time optimization. This optimization doesn't apply to 3.7.x versions of CPython (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
-- A compile unit in an interactive environment like IPython consists of a single statement, whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement, whereas `a = "wtf!"; b = "wtf!"` are two statements in a single line. This explains why the identities are different in `a = "wtf!"; b = "wtf!"`, and also explain why they are same when invoked in `some_file.py`
-- The abrupt change in the output of the fourth snippet is due to a [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save a few clock cycles during runtime. Constant folding only occurs for strings having a length of less than 21. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
-- Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the fourth snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549).
+- When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object,
+  then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that
+  there's already `"wtf!"` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above).
+  It's a compile-time optimization. This optimization doesn't apply to 3.7.x versions of CPython
+  (check this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for more discussion).
+- A compile unit in an interactive environment like IPython consists of a single statement,
+  whereas it consists of the entire module in case of modules. `a, b = "wtf!", "wtf!"` is single statement,
+  whereas `a = "wtf!"; b = "wtf!"` are two statements in a single line.
+  This explains why the identities are different in `a = "wtf!"; b = "wtf!"`,
+  and also explain why they are same when invoked in `some_file.py`
+- The abrupt change in the output of the fourth snippet is due to a
+  [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) technique known as Constant folding.
+  This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to save
+  a few clock cycles during runtime. Constant folding only occurs for strings having a length of less than 21.
+  (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`).
+  [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
+- Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer
+  with some change in logic as well, so the fourth snippet doesn't work for Python 3.7.
+  You can read more about the change [here](https://bugs.python.org/issue11549).
 
 ---
 
@@ -385,19 +421,23 @@ False
 
 As per https://docs.python.org/3/reference/expressions.html#comparisons
 
-> Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators, then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z, except that each expression is evaluated at most once.
+> Formally, if a, b, c, ..., y, z are expressions and op1, op2, ..., opN are comparison operators,
+  then a op1 b op2 c ... y opN z is equivalent to a op1 b and b op2 c and ... y opN z,
+  except that each expression is evaluated at most once.
 
-While such behavior might seem silly to you in the above examples, it's fantastic with stuff like `a == b == c` and `0 <= x <= 100`.
+While such behavior might seem silly to you in the above examples,
+it's fantastic with stuff like `a == b == c` and `0 <= x <= 100`.
 
 - `False is False is False` is equivalent to `(False is False) and (False is False)`
-- `True is False == False` is equivalent to `(True is False) and (False == False)` and since the first part of the statement (`True is False`) evaluates to `False`, the overall expression evaluates to `False`.
+- `True is False == False` is equivalent to `(True is False) and (False == False)`
+  and since the first part of the statement (`True is False`) evaluates to `False`, the overall expression evaluates to `False`.
 - `1 > 0 < 1` is equivalent to `(1 > 0) and (0 < 1)` which evaluates to `True`.
 - The expression `(1 > 0) < 1` is equivalent to `True < 1` and
 
   ```py
   >>> int(True)
   1
-  >>> True + 1 #not relevant for this example, but just for fun
+  >>> True + 1 # not relevant for this example, but just for fun
   2
   ```
 
@@ -1079,7 +1119,11 @@ The values of `x` were different in every iteration prior to appending `some_fun
 
 #### 💡 Explanation:
 
-- When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the _variable_, not its _value_. The function looks up `x` in the surrounding context, rather than using the value of `x` at the time the function is created. So all of the functions use the latest value assigned to the variable for computation. We can see that it's using the `x` from the surrounding context (i.e. _not_ a local variable) with:
+- When defining a function inside a loop that uses the loop variable in its body,
+  the loop function's closure is bound to the _variable_, not its _value_.
+  The function looks up `x` in the surrounding context, rather than using the value of `x` at the time
+  the function is created. So all of the functions use the latest value assigned to the variable for computation.
+  We can see that it's using the `x` from the surrounding context (i.e. _not_ a local variable) with:
 
 ```py
 >>> import inspect
@@ -1313,10 +1357,10 @@ Accessing `classm` or `method` twice, creates equal but not _same_ objects for t
 ```
 
 - Having to create new "method" objects every time Python calls instance methods and having to modify the arguments
-  every time in order to insert `self` affected performance badly.
-  CPython 3.7 [solved it](https://bugs.python.org/issue26110) by introducing new opcodes that deal with calling methods
-  without creating the temporary method objects. This is used only when the accessed function is actually called, so the
-  snippets here are not affected, and still generate methods :)
+every time in order to insert `self` affected performance badly.
+CPython 3.7 [solved it](https://bugs.python.org/issue26110) by introducing new opcodes that deal with calling methods
+without creating the temporary method objects. This is used only when the accessed function is actually called, so the
+snippets here are not affected, and still generate methods :)
 
 ### ▶ All-true-ation \*
 
